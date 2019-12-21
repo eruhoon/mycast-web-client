@@ -1,6 +1,7 @@
 import { Stream } from './Stream';
 
 export abstract class JsonableStream implements Stream {
+
     abstract getPlatform(): string;
     abstract getKeyId(): string;
     abstract getIcon(): string;
@@ -21,7 +22,6 @@ export abstract class JsonableStream implements Stream {
             description: this.getDescription(),
             url: this.getDescription(),
             onair: this.isOnAir(),
-        }
+        };
     }
-
 }

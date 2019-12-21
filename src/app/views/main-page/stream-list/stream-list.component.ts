@@ -1,3 +1,6 @@
+import Axios from 'axios';
+import { Stream } from 'src/app/models/stream/Stream';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreamListComponent implements OnInit {
 
+  private mStreams = [1, 2, 3];
   constructor() { }
 
-  ngOnInit() {
+  public async ngOnInit() {
+    let ttt = await Axios.get('https://mycast.xyz:9000/local/');
+    console.log(ttt);
   }
 
+  public getStreams(): Stream[] {
+    const streams = [];
+    streams.push(1);
+    streams.push(2);
+    return streams;
+  }
 }

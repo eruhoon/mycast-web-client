@@ -1,8 +1,18 @@
 import { Stream } from './Stream';
 
-export class LocalStream implements Stream {
+export class MutableStream implements Stream {
+
+    private mPlatform: string;
+
+    public constructor() {
+
+    }
+
+    setPlatform(platform: string) {
+        this.mPlatform = platform;
+    }
     getPlatform(): string {
-        return '';
+        return this.mPlatform;
     }
     getKeyId(): string {
         return '';
@@ -10,9 +20,11 @@ export class LocalStream implements Stream {
     getIcon(): string {
         return '';
     }
+
     getThumbnail(): string {
         return '';
     }
+
     getTitle(): string {
         return '';
     }
@@ -28,4 +40,5 @@ export class LocalStream implements Stream {
     isOnAir(): boolean {
         return false;
     }
+
 }

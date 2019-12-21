@@ -1,0 +1,27 @@
+$default-chat-width: 300px;
+$default-menu-height: 60px;
+
+.stream-list-section {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: calc(100% - #{$default-chat-width});
+  height: $default-menu-height;
+}
+
+.chat-section {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: $default-chat-width;
+  height: 100%;
+}
+
+.stream-section {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: calc(100% - #{$default-chat-width});
+  height: calc(100% - #{$default-menu-height});
+  background: #282828;
+}

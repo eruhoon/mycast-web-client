@@ -1,7 +1,7 @@
 $menu-icon-size: 60px;
 $background-color: #333;
 
-.main-list .icon-wrapper {
+.main-list>.icon-wrapper {
   position: relative;
   display: inline-block;
   width: $menu-icon-size - 5px;

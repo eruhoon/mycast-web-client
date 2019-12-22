@@ -1,27 +1,47 @@
-$default-chat-width: 300px;
-$default-menu-height: 60px;
+$top-bar-height: 50px;
+$default-chat-width: 25%;
+$stream-menu-height: 60px;
 
-.stream-list-section {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: calc(100% - #{$default-chat-width});
-  height: $default-menu-height;
+nav.top-bar-section {
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  width: 100%;
+  height: $top-bar-height;
+  margin: 0;
+  background: grey;
 }
 
-.chat-section {
-  position: absolute;
-  right: 0px;
-  top: 0px;
+.main-section {
+  // position: absolute;
+  // left: 0;
+  // bottom: 0;
+  display: flex;
+  width: 100%;
+  height: calc(100% - #{$top-bar-height});
+}
+
+.main-section>.stream-container-view {
+  width: calc(100% - #{$default-chat-width});
+  height: 100%;
+  background: yellow;
+}
+
+.main-section>.stream-container-view>.component-view {
+  width: 100%;
+  height: calc(100% - #{$stream-menu-height});
+  background: red;
+}
+
+.main-section>.chat-list-view {
   width: $default-chat-width;
+  height: 100%;
+  background: blue;
   height: 100%;
 }
 
-.stream-section {
-  position: absolute;
-  left: 0px;
-  top: 0px;
+.stream-view {
   width: calc(100% - #{$default-chat-width});
-  height: calc(100% - #{$default-menu-height});
+  height: calc(100% - #{$stream-menu-height});
   background: #282828;
 }

@@ -1,10 +1,7 @@
-import Axios from 'axios';
-import { Stream } from 'src/app/models/stream/Stream';
-
 import { Component, OnInit } from '@angular/core';
-import { MutableStream } from 'src/app/models/stream/MutableStream';
-import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
 import { MockStreamListLoader } from 'src/app/models/stream/MockStreamListLoader';
+import { Stream } from 'src/app/models/stream/Stream';
+import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
 
 @Component({
   selector: 'app-stream-list',

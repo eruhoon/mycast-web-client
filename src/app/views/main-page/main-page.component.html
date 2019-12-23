@@ -1,10 +1,15 @@
 <nav class="top-bar-section">
-    <app-top-bar></app-top-bar>
+    <app-top-bar (menuClick)="onMenuClick()"></app-top-bar>
 </nav>
 <div class="main-section">
     <div class="stream-container-view">
         <div class="component-view">
-            streamView
+            <div class="side-bar" [ngClass]="isMenuShow() ? 'show':''">
+                <app-side-bar></app-side-bar>
+            </div>
+            <div class="viewer">
+                viewer
+            </div>
         </div>
         <div class="stream-list-view">
             <app-stream-list></app-stream-list>

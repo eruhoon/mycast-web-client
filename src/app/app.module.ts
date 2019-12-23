@@ -6,6 +6,7 @@ import { AppComponent } from './views/app.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { StreamListComponent } from './views/main-page/stream-list/stream-list.component';
 import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
+import { SideBarComponent } from './views/main-page/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
     MainPageComponent,
     StreamListComponent,
     TopBarComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,

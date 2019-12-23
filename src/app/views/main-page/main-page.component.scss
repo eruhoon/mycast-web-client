@@ -3,9 +3,6 @@ $default-chat-width: 25%;
 $stream-menu-height: 60px;
 
 nav.top-bar-section {
-  // position: absolute;
-  // left: 0;
-  // top: 0;
   width: 100%;
   height: $top-bar-height;
   margin: 0;
@@ -13,12 +10,10 @@ nav.top-bar-section {
 }
 
 .main-section {
-  // position: absolute;
-  // left: 0;
-  // bottom: 0;
   display: flex;
   width: 100%;
   height: calc(100% - #{$top-bar-height});
+
 }
 
 .main-section>.stream-container-view {
@@ -28,9 +23,31 @@ nav.top-bar-section {
 }
 
 .main-section>.stream-container-view>.component-view {
+  position: relative;
   width: 100%;
   height: calc(100% - #{$stream-menu-height});
   background: red;
+
+  .side-bar {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    transition: .2s ease-in-out;
+    background: blue;
+    opacity: 0;
+
+    &.show {
+      left: 0px;
+      opacity: 1;
+    }
+  }
+}
+
+.main-section>.stream-container-view>.stream-list-view {
+  width: 100%;
+  height: $stream-menu-height;
+  background: #333333;
 }
 
 .main-section>.chat-list-view {

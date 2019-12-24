@@ -7,6 +7,7 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import { StreamListComponent } from './views/main-page/stream-list/stream-list.component';
 import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { SideBarComponent } from './views/main-page/side-bar/side-bar.component';
+import { StreamViewerComponent } from './views/main-page/stream-viewer/stream-viewer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SideBarComponent } from './views/main-page/side-bar/side-bar.component'
     StreamListComponent,
     TopBarComponent,
     SideBarComponent,
+    StreamViewerComponent,
   ],
   imports: [
     BrowserModule,

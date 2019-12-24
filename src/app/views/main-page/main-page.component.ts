@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { Stream } from 'src/app/models/stream/Stream';
 
 @Component({
     selector: 'app-main-page',
@@ -15,13 +16,19 @@ export class MainPageComponent implements OnInit {
     @ViewChild(SideBarComponent, { static: false })
     private mSideBar: SideBarComponent;
 
+    public mCurrentStream: Stream | null;
     private mMenuShow: boolean;
 
     public constructor() {
         this.mMenuShow = false;
+        this.mCurrentStream = null;
     }
 
     public ngOnInit() {
+    }
+
+    public getCurrentStream(): Stream {
+        return this.mCurrentStream;
     }
 
     public isMenuShow(): boolean {
@@ -30,7 +37,11 @@ export class MainPageComponent implements OnInit {
 
     protected onMenuClick() {
         this.toggleMenu();
-        console.log(this.mMenuShow);
+    }
+
+    protected onStreamIconClick(stream: Stream): void {
+        console.log('streamIconClick', stream);
+        this.mCurrentStream = stream;
     }
 
     private toggleMenu() {

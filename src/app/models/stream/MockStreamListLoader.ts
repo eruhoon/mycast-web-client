@@ -7,13 +7,30 @@ export class MockStreamListLoader implements StreamListLoader {
 
     public load(callback: OnLoadCallback<Stream[]>): void {
         const streams: Stream[] = [];
-        const stream = new MutableStream();
-        stream.setIcon('https://i.imgur.com/KUbNw6O.gif');
-        stream.setThumbnail('https://i.imgur.com/5hgzZcl.gif');
-        streams.push(stream);
-        const stream2 = new MutableStream();
-        stream2.setIcon('');
-        streams.push(stream2);
+
+        const shiguruna = new MutableStream();
+        shiguruna.setIcon('https://i.imgur.com/tXiHAIc.gif');
+        shiguruna.setThumbnail('https://i.imgur.com/5ndSAT7.jpg');
+        shiguruna.setTitle('시구르나');
+        shiguruna.setKeyId('kandelion');
+        shiguruna.setUrl('http://mycast.xyz/home/stream/local/9');
+        shiguruna.setViewer(1);
+        streams.push(shiguruna);
+
+        const megumin = new MutableStream();
+        megumin.setIcon('https://i.imgur.com/KUbNw6O.gif');
+        megumin.setThumbnail('https://i.imgur.com/5hgzZcl.gif');
+        megumin.setOnAir(true);
+        megumin.setKeyId('backtothearmy');
+        megumin.setTitle('ᎷᏋᎶᏬᎷᎥᏁ');
+        megumin.setDescription('ᎷᏋᎶᏬᎷᎥᏁ의 방송 [공용채널]');
+        megumin.setViewer(5);
+        streams.push(megumin);
+
+        const hojinLee = new MutableStream();
+        hojinLee.setKeyId('horidda');
+        hojinLee.setIcon('http://stimg.afreeca.com/LOGO/ho/horidda/horidda.jpg');
+        streams.push(hojinLee)
 
         callback(streams);
     }

@@ -4,15 +4,14 @@
 <div class="main-section">
     <div class="stream-container-view">
         <div class="component-view">
-            <div class="side-bar" [ngClass]="isMenuShow() ? 'show':''">
+            <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : ''">
                 <app-side-bar></app-side-bar>
             </div>
-            <div class="viewer">
-                viewer
-            </div>
+
+            <app-stream-viewer *ngIf="getCurrentStream()" [stream]="mCurrentStream"></app-stream-viewer>
         </div>
         <div class="stream-list-view">
-            <app-stream-list></app-stream-list>
+            <app-stream-list (streamIconClick)="onStreamIconClick($event)"></app-stream-list>
         </div>
     </div>
     <div class="chat-list-view">

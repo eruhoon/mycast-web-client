@@ -1,4 +1,4 @@
-import { MockStreamListLoader } from 'src/app/models/stream/MockStreamListLoader';
+import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
 
 import { Component, OnInit } from '@angular/core';
@@ -10,18 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  private mTwitchStreams: Stream[];
+  private mTwitchs: Stream[];
+  private mKakaos: Stream[];
 
   constructor() { }
 
   public ngOnInit() {
-    new MockStreamListLoader().load(streams => {
-      this.mTwitchStreams = streams;
+    new ExternalStreamListLoader().load(streams => {
+      this.mTwitchs = streams.filter(
+        stream => stream.getPlatform() === 'twitch');
+      this.mKakaos = streams.filter(
+        stream => stream.getPlatform() === 'kakaotv');
     });
   }
 
   public getTwitchList(): Stream[] {
-    return this.mTwitchStreams;
+    return this.mTwitchs;
+  }
+
+  public getKakaoList(): Stream[] {
+    return this.mKakaos;
   }
 
 }

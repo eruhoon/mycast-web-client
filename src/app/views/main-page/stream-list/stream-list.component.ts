@@ -1,7 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { LocalStreamListLoader } from 'src/app/models/stream/LocalStreamListLoader';
 import { MockStreamListLoader } from 'src/app/models/stream/MockStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
+
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-stream-list',
@@ -17,7 +19,7 @@ export class StreamListComponent implements OnInit {
   private mStreams: Stream[];
 
   constructor() {
-    this.mStreamListLoader = new MockStreamListLoader();
+    this.mStreamListLoader = new LocalStreamListLoader();
     this.mStreams = [];
   }
 

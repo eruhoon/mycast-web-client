@@ -1,3 +1,6 @@
+import { MockStreamListLoader } from 'src/app/models/stream/MockStreamListLoader';
+import { Stream } from 'src/app/models/stream/Stream';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
+  private mTwitchStreams: Stream[];
+
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    new MockStreamListLoader().load(streams => {
+      this.mTwitchStreams = streams;
+    });
+  }
+
+  public getTwitchList(): Stream[] {
+    return this.mTwitchStreams;
   }
 
 }

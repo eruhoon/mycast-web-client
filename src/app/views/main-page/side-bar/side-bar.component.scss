@@ -1,0 +1,47 @@
+h3 {
+  font-size: 18px;
+  padding: 0 10px;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 20px 0;
+}
+
+li {
+  display: flex;
+  height: 40px;
+  list-style-type: none;
+  padding: 5px 10px;
+  align-items: center;
+  font-size: 16px;
+
+  &:hover {
+    background: #e8e8e8;
+  }
+
+  span {
+    padding-left: 10px;
+    width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+  }
+}
+
+ul.main {
+  li {
+    i {
+      font-size: 30px;
+    }
+  }
+}
+
+ul.stream {
+  li {
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+    }
+  }
+}

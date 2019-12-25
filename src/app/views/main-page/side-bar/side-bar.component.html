@@ -1,11 +1,29 @@
 <div>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
-    t<br>
+    <ul class="main">
+        <li class="main">
+            <i class="material-icons">note</i>
+            <span>메모</span>
+        </li>
+        <li class="main">
+            <i class="material-icons">image</i>
+            <span>이미지 갤러리</span>
+        </li>
+    </ul>
+    <hr />
+    <ul class="stream">
+        <h3>트위치</h3>
+        <li *ngFor="let stream of getTwitchList()">
+            <img src="{{stream.getIcon()}}" alt="" />
+            <span>{{stream.getTitle()}}</span>
+        </li>
+    </ul>
+    <hr />
+    <ul class="stream">
+        <h3>카카오TV</h3>
+        <li *ngFor="let stream of getTwitchList()">
+            <img src="{{stream.getIcon()}}" alt="" />
+            <span>{{stream.getTitle()}}</span>
+        </li>
+    </ul>
+    <hr />
 </div>

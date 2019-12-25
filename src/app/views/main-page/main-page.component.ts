@@ -18,9 +18,11 @@ export class MainPageComponent implements OnInit {
 
     public mCurrentStream: Stream | null;
     private mMenuShow: boolean;
+    private mSettingShow: boolean;
 
     public constructor() {
         this.mMenuShow = false;
+        this.mSettingShow = false;
         this.mCurrentStream = null;
     }
 
@@ -35,8 +37,16 @@ export class MainPageComponent implements OnInit {
         return this.mMenuShow;
     }
 
+    public isSettingShow(): boolean {
+        return this.mSettingShow;
+    }
+
     protected onMenuClick() {
         this.toggleMenu();
+    }
+
+    protected onSettingClick() {
+        this.toggleSetting();
     }
 
     protected onStreamIconClick(stream: Stream): void {
@@ -46,5 +56,10 @@ export class MainPageComponent implements OnInit {
 
     private toggleMenu() {
         this.mMenuShow = !this.mMenuShow;
+    }
+
+    private toggleSetting() {
+        console.log(11111);
+        this.mSettingShow = !this.mSettingShow;
     }
 }

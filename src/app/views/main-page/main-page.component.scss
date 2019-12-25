@@ -3,6 +3,9 @@ $default-chat-width: 25%;
 $stream-menu-height: 60px;
 
 nav.top-bar-section {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: $top-bar-height;
   margin: 0;
@@ -10,10 +13,12 @@ nav.top-bar-section {
 }
 
 .main-section {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   display: flex;
   width: 100%;
   height: calc(100% - #{$top-bar-height});
-
 }
 
 .main-section>.stream-container-view {
@@ -67,4 +72,18 @@ nav.top-bar-section {
   width: calc(100% - #{$default-chat-width});
   height: calc(100% - #{$stream-menu-height});
   background: #282828;
+}
+
+.setting-view {
+  position: absolute;
+  top: 50px;
+  right: -300px;
+  width: 300px;
+  height: 500px;
+  background: #E8E8E8;
+  transition: .25s ease-in-out;
+
+  &.active {
+    right: 0;
+  }
 }

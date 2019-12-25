@@ -10,6 +10,9 @@ export class TopBarComponent implements OnInit {
   @Output()
   public menuClick = new EventEmitter();
 
+  @Output()
+  public settingClick = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +21,10 @@ export class TopBarComponent implements OnInit {
   protected onMenuClick() {
     console.log('menu clicked');
     this.menuClick.emit();
+  }
+
+  protected onSettingClick() {
+    this.settingClick.emit();
   }
 
 }

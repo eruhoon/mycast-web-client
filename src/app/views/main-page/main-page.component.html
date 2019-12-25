@@ -1,6 +1,3 @@
-<nav class="top-bar-section">
-    <app-top-bar (menuClick)="onMenuClick()"></app-top-bar>
-</nav>
 <div class="main-section">
     <div class="stream-container-view">
         <div class="component-view">
@@ -20,3 +17,9 @@
         chat
     </div>
 </div>
+<nav class="top-bar-section">
+    <app-top-bar (menuClick)="onMenuClick()" (settingClick)="onSettingClick()"></app-top-bar>
+    <div class="setting-view" [ngClass]="isSettingShow() ? 'active' : ''">
+        <app-setting-view></app-setting-view>
+    </div>
+</nav>

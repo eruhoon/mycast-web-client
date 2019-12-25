@@ -16,8 +16,10 @@ div.part {
         width: $icon-size;
         height: $icon-size;
         border-radius: 50%;
+        border: none;
         outline: none;
         cursor: pointer;
+        padding: 0;
     }
 }
 

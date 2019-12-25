@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
 
-declare var hdwplayer: any;
+declare var RTMP: any;
 
 @Component({
   selector: 'app-stream-viewer',
@@ -12,33 +12,57 @@ export class StreamViewerComponent implements OnInit, OnChanges {
 
   @Input() stream: Stream;
 
+  private mPlayer: any;
+
   public constructor() {
+    this.mPlayer = null;
   }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void { }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    //throw new Error("Method not implemented.");
 
     const keyId = this.stream.getKeyId();
     console.log(keyId);
-    // if (player !== null) {
-    //   console.log(player);
-    //   player.stopVideo();
-    //   player = null;
-    // }
-    hdwplayer({
-      id: 'player',
-      swf: './assets/hdwplayer/player/player.swf?api=true',
-      width: '640',
-      height: '360',
-      type: 'rtmp',
-      video: keyId,
-      streamer: 'rtmp://mycast.xyz/live/',
-      autoStart: 'true',
-    });
-    console.log(player);
+
+    this.getPlayer().load(`rtmp://mycast.xyz/live/${keyId}`, 'mpeg/flv', true);
+
+  }
+
+  private getPlayer() {
+    if (this.mPlayer === null) {
+      this.mPlayer = new Clappr.Player({
+        parentId: "#player",
+        width: '100%',
+        height: '100%',
+        plugins: { 'playback': [RTMP] },
+        rtmpConfig: {
+          swfPath: './assets/clappr/player/RTMP.swf',
+          scaling: 'stretch',
+          playbackType: 'live',
+          bufferTime: 1,
+          startLevel: 0,
+          switchRules: {
+            "SufficientBandwidthRule": {
+              "bandwidthSafetyMultiple": 1.15,
+              "minDroppedFps": 2
+            },
+            "InsufficientBufferRule": {
+              "minBufferLength": 2
+            },
+            "DroppedFramesRule": {
+              "downSwitchByOne": 10,
+              "downSwitchByTwo": 20,
+              "downSwitchToZero": 24
+            },
+            "InsufficientBandwidthRule": {
+              "bitrateMultiplier": 1.15
+            }
+          }
+        },
+      });
+    }
+    return this.mPlayer;
   }
 
 }

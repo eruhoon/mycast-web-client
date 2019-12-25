@@ -28,7 +28,7 @@ export class MockStreamListLoader implements StreamListLoader {
         streams.push(megumin);
 
         const hojinLee = new MutableStream();
-        hojinLee.setKeyId('horidda');
+        hojinLee.setKeyId('eruhoon');
         hojinLee.setIcon('http://stimg.afreeca.com/LOGO/ho/horidda/horidda.jpg');
         streams.push(hojinLee)
 

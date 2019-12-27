@@ -21,13 +21,13 @@ nav.top-bar-section {
   height: calc(100% - #{$top-bar-height});
 }
 
-.main-section > .stream-container-view {
+.main-section>.stream-container-view {
   width: calc(100% - #{$default-chat-width});
   height: 100%;
   background: yellow;
 }
 
-.main-section > .stream-container-view > .component-view {
+.main-section>.stream-container-view>.component-view {
   position: relative;
   width: 100%;
   height: calc(100% - #{$stream-menu-height});
@@ -35,17 +35,19 @@ nav.top-bar-section {
 
   .side-bar {
     position: absolute;
-    left: -300px;
+    z-index: 1;
     width: 300px;
     height: 100%;
     transition: 0.2s ease-in-out;
     background: white;
-    opacity: 0;
 
     &.show {
       left: 0px;
-      opacity: 1;
-      z-index: 1;
+      transition: 0.2s ease-in-out;
+    }
+
+    &.hide {
+      left: -300px;
     }
   }
 
@@ -55,13 +57,13 @@ nav.top-bar-section {
   }
 }
 
-.main-section > .stream-container-view > .stream-list-view {
+.main-section>.stream-container-view>.stream-list-view {
   width: 100%;
   height: $stream-menu-height;
   background: #e8e8e8;
 }
 
-.main-section > .chat-list-view {
+.main-section>.chat-list-view {
   width: $default-chat-width;
   height: 100%;
   background: blue;

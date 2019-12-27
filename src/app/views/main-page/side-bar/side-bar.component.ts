@@ -1,7 +1,6 @@
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
-
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
+
+  @Output()
+  public streamClick = new EventEmitter<Stream>();
 
   private mTwitchs: Stream[];
   private mKakaos: Stream[];
@@ -32,4 +34,7 @@ export class SideBarComponent implements OnInit {
     return this.mKakaos;
   }
 
+  protected onStreamClick(stream: Stream): void {
+    this.streamClick.emit(stream);
+  }
 }

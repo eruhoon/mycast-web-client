@@ -12,7 +12,7 @@
     <hr />
     <ul class="stream">
         <h3>트위치</h3>
-        <li *ngFor="let stream of getTwitchList()">
+        <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
             <img src="{{stream.getIcon()}}" alt="" />
             <span>{{stream.getTitle()}}</span>
         </li>
@@ -20,7 +20,7 @@
     <hr />
     <ul class="stream">
         <h3>카카오TV</h3>
-        <li *ngFor="let stream of getKakaoList()">
+        <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
             <img src="{{stream.getIcon()}}" alt="" />
             <span>{{stream.getTitle()}}</span>
         </li>

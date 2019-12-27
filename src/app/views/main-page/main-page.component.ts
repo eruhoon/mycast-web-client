@@ -49,6 +49,11 @@ export class MainPageComponent implements OnInit {
         this.toggleSetting();
     }
 
+    protected onStreamClick(stream: Stream): void {
+        this.mCurrentStream = stream;
+        this.closeMenu();
+    }
+
     protected onStreamIconClick(stream: Stream): void {
         console.log('streamIconClick', stream);
         this.mCurrentStream = stream;
@@ -56,6 +61,10 @@ export class MainPageComponent implements OnInit {
 
     private toggleMenu() {
         this.mMenuShow = !this.mMenuShow;
+    }
+
+    private closeMenu(): void {
+        this.mMenuShow = false;
     }
 
     private toggleSetting() {

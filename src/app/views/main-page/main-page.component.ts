@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { Stream } from 'src/app/models/stream/Stream';
@@ -19,14 +19,28 @@ export class MainPageComponent implements OnInit {
     public mCurrentStream: Stream | null;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
+    private mPrevInnerWidth: number;
+    private mInnerWidth: number;
+    private mMoveMode: boolean;
+    private mDividerPosition: number;
 
     public constructor() {
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
+        this.mMoveMode = false;
+        this.mDividerPosition = 300;
+        this.mPrevInnerWidth = window.innerWidth;
+        this.mInnerWidth = window.innerWidth;
     }
 
     public ngOnInit() {
+    }
+
+    @HostListener('window:resize', ['$event'])
+    protected onResize(event: Event) {
+        this.mPrevInnerWidth = this.mInnerWidth;
+        this.mInnerWidth = window.innerWidth;
     }
 
     public getCurrentStream(): Stream {
@@ -39,6 +53,32 @@ export class MainPageComponent implements OnInit {
 
     public isSettingShow(): boolean {
         return this.mSettingShow;
+    }
+
+    public isMoveMode(): boolean {
+        return this.mMoveMode;
+    }
+
+    public isChatRight(): boolean {
+        const center = window.innerWidth / 2;
+        return this.mDividerPosition > center;
+    }
+
+    public getChatSize(): number {
+        if (this.isChatRight()) {
+            return this.mInnerWidth - this.getDividerPosition();
+        } else {
+            return this.getDividerPosition()
+        }
+    }
+
+    public getDividerPosition(): number {
+        const minSize = 300;
+        const minX = minSize;
+        const maxX = this.mInnerWidth - minSize;
+        const max = (pos: number) => pos > minX ? pos : minX;
+        const min = (pos: number) => pos < maxX ? pos : maxX;
+        return min(max(this.mDividerPosition));
     }
 
     protected onMenuClick() {
@@ -59,6 +99,23 @@ export class MainPageComponent implements OnInit {
         this.mCurrentStream = stream;
     }
 
+    protected onDividerMouseDown(event: MouseEvent): void {
+        this.mMoveMode = true;
+        this.mDividerPosition = event.clientX;
+    }
+
+    protected onDividerMove(event: MouseEvent): void {
+        if (!this.mMoveMode) {
+            return;
+        }
+        const left = event.clientX;
+        this.mDividerPosition = left;
+    }
+
+    protected onDividerMouseUp(): void {
+        this.mMoveMode = false;
+    }
+
     private toggleMenu() {
         this.mMenuShow = !this.mMenuShow;
     }
@@ -70,5 +127,9 @@ export class MainPageComponent implements OnInit {
     private toggleSetting() {
         console.log(11111);
         this.mSettingShow = !this.mSettingShow;
+    }
+
+    private static getDividerPosition() {
+
     }
 }

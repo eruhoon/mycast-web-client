@@ -14,15 +14,18 @@ nav.top-bar-section {
 }
 
 .main-section {
-  position: absolute;
+  position: relative;
   left: 0;
-  bottom: 0;
-  display: flex;
+  top: $top-bar-height;
+  display: block;
   width: 100%;
   height: calc(100% - #{$top-bar-height});
 }
 
 .main-section>.stream-container-view {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: calc(100% - #{$default-chat-width});
   height: 100%;
   background: yellow;
@@ -64,7 +67,28 @@ nav.top-bar-section {
   background: #e8e8e8;
 }
 
+.divider {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  cursor: col-resize;
+
+  &.move-mode {
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none;
+    -webkit-transform: none;
+  }
+}
+
 .main-section>.chat-list-view {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: $default-chat-width;
   height: 100%;
   background: blue;

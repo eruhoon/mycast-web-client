@@ -1,9 +1,10 @@
 <div class="main-section">
-    <div class="stream-container-view">
+    <div class="stream-container-view" [ngStyle]="{
+        'left': isChatRight() ? '0' : 'auto',
+        'right': isChatRight() ? 'auto' : '0',
+        'width': 'calc(100% - ' + getChatSize() + 'px)'
+    }">
         <div class="component-view">
-            <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
-                <app-side-bar (streamClick)="onStreamClick($event)"></app-side-bar>
-            </div>
 
             <div class="contents-viewer">
                 <app-stream-viewer *ngIf="getCurrentStream()" [stream]="mCurrentStream"></app-stream-viewer>
@@ -13,8 +14,18 @@
             <app-stream-list (streamIconClick)="onStreamIconClick($event)"></app-stream-list>
         </div>
     </div>
-    <div class="chat-list-view">
+    <div class="chat-list-view" [ngStyle]="{
+        'left': isChatRight() ? 'auto' : '0',
+        'right': isChatRight() ? '0' : 'auto',
+        'width': getChatSize()+'px'}">
         chat
+    </div>
+    <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
+        <app-side-bar (streamClick)="onStreamClick($event)"></app-side-bar>
+    </div>
+    <div class="divider" (mousedown)="onDividerMouseDown($event)" (mousemove)="onDividerMove($event)"
+        (mouseup)="onDividerMouseUp()" [ngClass]="isMoveMode() ? 'move-mode' : ''"
+        [ngStyle]="{'left': getDividerPosition()+'px'}">
     </div>
 </div>
 <nav class="top-bar-section">

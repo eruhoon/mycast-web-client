@@ -37,21 +37,20 @@ nav.top-bar-section {
     z-index: 1;
     width: 300px;
     height: 100%;
+    border-right: 1px solid #e0e0e0;
     transition: 0.2s ease-in-out;
     background: white;
-<<<<<<< HEAD
-    border-right: 1px solid #e0e0e0;
     opacity: 0;
-=======
->>>>>>> 0c613b5f1340cb16ef4501918c0face3b671215b
 
     &.show {
       left: 0px;
       transition: 0.2s ease-in-out;
+      opacity: 1;
     }
 
     &.hide {
       left: -300px;
+      opacity: 0;
     }
   }
 
@@ -61,7 +60,6 @@ nav.top-bar-section {
   }
 }
 
-<<<<<<< HEAD
 .main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
@@ -74,12 +72,6 @@ nav.top-bar-section {
   position: fixed;
   right: 26%;
   bottom: 5px;
-=======
-.main-section>.stream-container-view>.stream-list-view {
-  width: 100%;
-  height: $stream-menu-height;
-  background: #e8e8e8;
->>>>>>> 0c613b5f1340cb16ef4501918c0face3b671215b
 }
 
 .main-section>.chat-list-view {

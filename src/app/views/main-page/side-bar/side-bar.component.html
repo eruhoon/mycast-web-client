@@ -13,7 +13,7 @@
     <h3 (click)="onTwitchListClick()">트위치</h3>
     <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
         <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
-            <img src="{{stream.getIcon()}}" alt="" />
+            <img src="{{stream.getIcon()}}" alt="{{stream.getTitle()}}" />
             <span>{{stream.getTitle()}}</span>
         </li>
     </ul>
@@ -21,7 +21,7 @@
     <h3 (click)="onKakaoListClick()">카카오TV</h3>
     <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
         <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
-            <img src="{{stream.getIcon()}}" alt="" />
+            <img src="{{stream.getIcon()}}" alt="{{stream.getTitle()}}" />
             <span>{{stream.getTitle()}}</span>
         </li>
     </ul>

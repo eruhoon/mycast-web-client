@@ -14,9 +14,6 @@ nav.top-bar-section {
 }
 
 .main-section {
-  position: absolute;
-  left: 0;
-  bottom: 0;
   display: flex;
   width: 100%;
   height: calc(100% - #{$top-bar-height});
@@ -25,14 +22,15 @@ nav.top-bar-section {
 .main-section > .stream-container-view {
   width: calc(100% - #{$default-chat-width});
   height: 100%;
-  background: yellow;
+  background: #f0f0f0;
 }
 
 .main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
-  height: calc(100% - #{$stream-menu-height});
-  background: red;
+  height: 100%;
+  background: #f0f0f0;
+  padding-top: 50px;
 
   .side-bar {
     position: absolute;
@@ -41,6 +39,7 @@ nav.top-bar-section {
     height: 100%;
     transition: 0.2s ease-in-out;
     background: white;
+    border-right: 1px solid #e0e0e0;
     opacity: 0;
 
     &.show {
@@ -57,16 +56,25 @@ nav.top-bar-section {
 }
 
 .main-section > .stream-container-view > .stream-list-view {
-  width: 100%;
-  height: $stream-menu-height;
-  background: #e8e8e8;
+  width: auto;
+  height: 60px;
+  padding: 0px 5px;
+  box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .25);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+
+  position: fixed;
+  right: 26%;
+  bottom: 5px;
 }
 
 .main-section > .chat-list-view {
   width: $default-chat-width;
   height: 100%;
-  background: blue;
-  height: 100%;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  padding-top: 50px;
 }
 
 .stream-view {

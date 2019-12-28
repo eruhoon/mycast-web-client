@@ -1,4 +1,4 @@
-<div>
+<div class="side-bar">
     <ul class="main">
         <li class="main">
             <i class="material-icons">note</i>
@@ -10,16 +10,16 @@
         </li>
     </ul>
     <hr />
-    <ul class="stream">
-        <h3>트위치</h3>
+    <h3 (click)="onTwitchListClick()">트위치</h3>
+    <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
         <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
             <img src="{{stream.getIcon()}}" alt="" />
             <span>{{stream.getTitle()}}</span>
         </li>
     </ul>
     <hr />
-    <ul class="stream">
-        <h3>카카오TV</h3>
+    <h3 (click)="onKakaoListClick()">카카오TV</h3>
+    <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
         <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
             <img src="{{stream.getIcon()}}" alt="" />
             <span>{{stream.getTitle()}}</span>

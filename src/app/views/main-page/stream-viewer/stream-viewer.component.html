@@ -1,3 +1,7 @@
 <div class="viewer">
-    <div id="player"></div>
+    <!-- <div class="local" *ngIf="isLocal()">
+        <div id="player"></div>
+    </div> -->
+    <app-local-viewer *ngIf="isLocal()" [stream]="getLocalStream()"></app-local-viewer>
+    <app-external-viewer *ngIf="!isLocal()" [stream]="getExternalStream()"></app-external-viewer>
 </div>

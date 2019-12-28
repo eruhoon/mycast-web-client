@@ -19,13 +19,13 @@ nav.top-bar-section {
   height: calc(100% - #{$top-bar-height});
 }
 
-.main-section > .stream-container-view {
+.main-section>.stream-container-view {
   width: calc(100% - #{$default-chat-width});
   height: 100%;
   background: #f0f0f0;
 }
 
-.main-section > .stream-container-view > .component-view {
+.main-section>.stream-container-view>.component-view {
   position: relative;
   width: 100%;
   height: 100%;
@@ -34,18 +34,24 @@ nav.top-bar-section {
 
   .side-bar {
     position: absolute;
-    left: -300px;
+    z-index: 1;
     width: 300px;
     height: 100%;
     transition: 0.2s ease-in-out;
     background: white;
+<<<<<<< HEAD
     border-right: 1px solid #e0e0e0;
     opacity: 0;
+=======
+>>>>>>> 0c613b5f1340cb16ef4501918c0face3b671215b
 
     &.show {
       left: 0px;
-      opacity: 1;
-      z-index: 1;
+      transition: 0.2s ease-in-out;
+    }
+
+    &.hide {
+      left: -300px;
     }
   }
 
@@ -55,6 +61,7 @@ nav.top-bar-section {
   }
 }
 
+<<<<<<< HEAD
 .main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
@@ -67,9 +74,15 @@ nav.top-bar-section {
   position: fixed;
   right: 26%;
   bottom: 5px;
+=======
+.main-section>.stream-container-view>.stream-list-view {
+  width: 100%;
+  height: $stream-menu-height;
+  background: #e8e8e8;
+>>>>>>> 0c613b5f1340cb16ef4501918c0face3b671215b
 }
 
-.main-section > .chat-list-view {
+.main-section>.chat-list-view {
   width: $default-chat-width;
   height: 100%;
   background: #ffffff;

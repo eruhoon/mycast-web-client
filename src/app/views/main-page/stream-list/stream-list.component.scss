@@ -1,4 +1,5 @@
 $menu-icon-size: 60px;
+$menu-icon-size-5px: 65px;
 $background-color: #333;
 
 .main-list>.icon-wrapper {
@@ -22,14 +23,17 @@ $background-color: #333;
     position: absolute;
     display: none;
     align-items: center;
-    left: -5px;
-    bottom: $menu-icon-size;
+    right: -5px;
+    bottom: $menu-icon-size-5px;
     width: $width;
     height: 100px;
     background: darken($background-color, 10%);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.25);
 
     &.thumbnail {
       height: 150px;

@@ -12,12 +12,16 @@ export class SideBarComponent implements OnInit {
   @Output()
   public streamClick = new EventEmitter<Stream>();
 
+  private mTwitchListShow: boolean;
+  private mKakaoListShow: boolean;
   private mTwitchs: Stream[];
   private mKakaos: Stream[];
 
   constructor() { }
 
   public ngOnInit() {
+    this.mTwitchListShow = false;
+    this.mKakaoListShow = false;
     new ExternalStreamListLoader().load(streams => {
       this.mTwitchs = streams.filter(
         stream => stream.getPlatform() === 'twitch');
@@ -34,7 +38,31 @@ export class SideBarComponent implements OnInit {
     return this.mKakaos;
   }
 
+  public isTwitchListShow(): boolean {
+    return this.mTwitchListShow;
+  }
+
+  public isKakaoListShow(): boolean {
+    return this.mKakaoListShow;
+  }
+
   protected onStreamClick(stream: Stream): void {
     this.streamClick.emit(stream);
+  }
+
+  protected onTwitchListClick(): void {
+    this.toggleTwtichList();
+  }
+
+  protected onKakaoListClick(): void {
+    this.toggleKakaoList();
+  }
+
+  private toggleTwtichList(): void {
+    this.mTwitchListShow = !this.mTwitchListShow;
+  }
+
+  private toggleKakaoList(): void {
+    this.mKakaoListShow = !this.mKakaoListShow;
   }
 }

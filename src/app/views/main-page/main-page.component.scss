@@ -28,30 +28,35 @@ nav.top-bar-section {
   top: 0;
   width: calc(100% - #{$default-chat-width});
   height: 100%;
-  background: yellow;
+  background: #f0f0f0;
 }
 
 .main-section>.stream-container-view>.component-view {
   position: relative;
   width: 100%;
   height: calc(100% - #{$stream-menu-height});
-  background: #585858;
+  background: #f0f0f0;
+  margin-top: 50px;
 
   .side-bar {
     position: absolute;
     z-index: 1;
-    width: 300px;
+    width: 200px;
     height: 100%;
+    border-right: 1px solid #e0e0e0;
     transition: 0.2s ease-in-out;
     background: white;
+    opacity: 0;
 
     &.show {
       left: 0px;
       transition: 0.2s ease-in-out;
+      opacity: 1;
     }
 
     &.hide {
       left: -300px;
+      opacity: 0;
     }
   }
 
@@ -62,9 +67,17 @@ nav.top-bar-section {
 }
 
 .main-section>.stream-container-view>.stream-list-view {
-  width: 100%;
-  height: $stream-menu-height;
-  background: #e8e8e8;
+  width: auto;
+  height: 60px;
+  padding: 0px 5px;
+  box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .25);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+
+  position: fixed;
+  right: 26%;
+  bottom: 5px;
 }
 
 .divider {
@@ -91,8 +104,9 @@ nav.top-bar-section {
   right: 0;
   width: $default-chat-width;
   height: 100%;
-  background: blue;
-  height: 100%;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  padding-top: 50px;
 }
 
 .stream-view {

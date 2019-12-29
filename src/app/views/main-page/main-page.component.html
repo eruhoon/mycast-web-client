@@ -21,6 +21,7 @@
         <chat-page></chat-page>
     </div>
     <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
+        <div class="click-blocker" (click)="onOutOfMenuClick()"></div>
         <app-side-bar (streamClick)="onStreamClick($event)"></app-side-bar>
     </div>
     <div class="divider" (mousedown)="onDividerMouseDown($event)" (mousemove)="onDividerMove($event)"

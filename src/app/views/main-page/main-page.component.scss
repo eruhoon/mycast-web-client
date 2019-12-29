@@ -22,7 +22,7 @@ nav.top-bar-section {
   height: calc(100% - #{$top-bar-height});
 }
 
-.main-section>.stream-container-view {
+.main-section > .stream-container-view {
   position: absolute;
   left: 0;
   top: 0;
@@ -31,7 +31,7 @@ nav.top-bar-section {
   background: #f0f0f0;
 }
 
-.main-section>.stream-container-view>.component-view {
+.main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
   height: calc(100% - #{$stream-menu-height});
@@ -44,11 +44,11 @@ nav.top-bar-section {
   }
 }
 
-.main-section>.stream-container-view>.stream-list-view {
+.main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
   padding: 0px 5px;
-  box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .25);
+  box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: 0.25);
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -60,23 +60,49 @@ nav.top-bar-section {
 
 .side-bar {
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: 1;
-  width: 200px;
-  height: 100%;
-  border-right: 1px solid #e0e0e0;
   transition: 0.2s ease-in-out;
-  background: white;
-  opacity: 0;
+  width: 100%;
+  height: 100%;
+
+  app-side-bar {
+    position: absolute;
+    left: -200px;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    border-right: 1px solid #e0e0e0;
+    transition: 0.2s ease-in-out;
+    background: white;
+  }
+
+  .click-blocker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.6;
+  }
 
   &.show {
-    left: 0px;
-    transition: 0.2s ease-in-out;
     opacity: 1;
+    visibility: visible;
+    app-side-bar {
+      left: 0;
+    }
   }
 
   &.hide {
-    left: -300px;
     opacity: 0;
+    visibility: hidden;
+    app-side-bar {
+      left: -200px;
+      opacity: 0;
+    }
   }
 }
 
@@ -98,7 +124,7 @@ nav.top-bar-section {
   }
 }
 
-.main-section>.chat-list-view {
+.main-section > .chat-list-view {
   position: absolute;
   top: 0;
   right: 0;

@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { Stream } from 'src/app/models/stream/Stream';
+
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @Component({
     selector: 'app-main-page',
@@ -83,6 +85,10 @@ export class MainPageComponent implements OnInit {
 
     protected onMenuClick() {
         this.toggleMenu();
+    }
+
+    protected onOutOfMenuClick() {
+        this.closeMenu();
     }
 
     protected onSettingClick() {

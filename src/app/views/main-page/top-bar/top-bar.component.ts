@@ -19,7 +19,6 @@ export class TopBarComponent implements OnInit {
   }
 
   protected onMenuClick() {
-    console.log('menu clicked');
     this.menuClick.emit();
   }
 

@@ -95,7 +95,6 @@ export class MainPageComponent implements OnInit {
     }
 
     protected onStreamIconClick(stream: Stream): void {
-        console.log('streamIconClick', stream);
         this.mCurrentStream = stream;
     }
 
@@ -125,7 +124,6 @@ export class MainPageComponent implements OnInit {
     }
 
     private toggleSetting() {
-        console.log(11111);
         this.mSettingShow = !this.mSettingShow;
     }
 

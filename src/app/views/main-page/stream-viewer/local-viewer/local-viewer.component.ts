@@ -24,8 +24,6 @@ export class LocalViewerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.stream);
-    console.log(this.stream.getUrl());
     const keyId = this.stream.getKeyId();
     this.getPlayer().load(`rtmp://mycast.xyz/live/${keyId}`, 'mpeg/flv', true);
   }

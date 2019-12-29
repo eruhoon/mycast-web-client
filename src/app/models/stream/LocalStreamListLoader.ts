@@ -8,7 +8,6 @@ import { StreamListLoader } from './StreamListLoader';
 export class LocalStreamListLoader implements StreamListLoader {
     public load(callback: OnLoadCallback<Stream[]>): void {
         Axios.get('https://mycast.xyz:9000/local/').then(rawResult => {
-            console.log(rawResult);
             const rawStreams: RawStream[] = rawResult.data;
             callback(rawStreams.map(raw => {
                 const stream: MutableStream = new MutableStream();

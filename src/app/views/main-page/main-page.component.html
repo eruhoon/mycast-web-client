@@ -18,7 +18,7 @@
         'left': isChatRight() ? 'auto' : '0',
         'right': isChatRight() ? '0' : 'auto',
         'width': getChatSize()+'px'}">
-        chat
+        <chat-page></chat-page>
     </div>
     <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
         <app-side-bar (streamClick)="onStreamClick($event)"></app-side-bar>

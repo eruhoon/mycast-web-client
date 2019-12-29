@@ -12,6 +12,9 @@ import { SettingViewComponent } from './views/main-page/setting-view/setting-vie
 import { ExternalViewerComponent } from './views/main-page/stream-viewer/external-viewer/external-viewer.component';
 import { SafePipe } from './models/pipe/safe.pipe';
 import { LocalViewerComponent } from './views/main-page/stream-viewer/local-viewer/local-viewer.component';
+import { ChatListComponent } from './views/chat/chat-list/chat-list.component';
+import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
+import { ChatEntryComponent } from './views/chat/chat-entry/chat-entry.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { LocalViewerComponent } from './views/main-page/stream-viewer/local-view
     ExternalViewerComponent,
     SafePipe,
     LocalViewerComponent,
+    ChatListComponent,
+    ChatPageComponent,
+    ChatEntryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LocalStreamListLoader } from 'src/app/models/stream/LocalStreamListLoader';
+import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
+
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-stream-list',
@@ -36,7 +38,7 @@ export class StreamListComponent implements OnInit {
   }
 
   protected onShareClick(stream: Stream): void {
-    console.log('share', stream)
+    console.log('share', stream);
   }
 
   protected onNewWindowClick(stream: Stream): void {

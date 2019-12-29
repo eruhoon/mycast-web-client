@@ -20,6 +20,14 @@ $background-color: #333;
     opacity: 0.6;
   }
 
+  .bridge {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    width: $menu-icon-size;
+    height: 5px;
+  }
+
   .detail {
     $width: 200px;
     position: absolute;

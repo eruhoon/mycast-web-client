@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'stream-entry',
@@ -21,6 +23,8 @@ export class StreamEntryComponent implements OnInit {
 
   protected onShareClick(stream: Stream): void {
     console.log('share', stream)
+    const share = new StreamShareCommand(stream);
+    share.execute();
   }
 
   protected onNewWindowClick(stream: Stream): void {

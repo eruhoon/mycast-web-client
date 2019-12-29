@@ -132,8 +132,4 @@ export class MainPageComponent implements OnInit {
     private toggleSetting() {
         this.mSettingShow = !this.mSettingShow;
     }
-
-    private static getDividerPosition() {
-
-    }
 }

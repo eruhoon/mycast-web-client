@@ -7,6 +7,7 @@ $background-color: #333;
   display: inline-block;
   width: $menu-icon-size - 5px;
   height: $menu-icon-size;
+
   .icon {
     width: $menu-icon-size - 10px;
     height: $menu-icon-size - 10px;
@@ -18,6 +19,7 @@ $background-color: #333;
     background-position: center;
     opacity: 0.6;
   }
+
   .detail {
     $width: 200px;
     position: absolute;
@@ -38,10 +40,12 @@ $background-color: #333;
     &.thumbnail {
       height: 150px;
     }
+
     .thumbnail {
       width: $width;
       max-height: 100%;
     }
+
     .wrapper {
       position: absolute;
       left: 0px;
@@ -52,6 +56,7 @@ $background-color: #333;
       background: darken($background-color, 10%);
       background: linear-gradient(transparent, darken($background-color, 10%));
       opacity: 0.8;
+
       .title {
         position: absolute;
         width: calc(100% - 100px);
@@ -64,6 +69,7 @@ $background-color: #333;
         font-weight: bold;
         opacity: 0;
       }
+
       .description {
         position: absolute;
         width: calc(100% - 20px);
@@ -76,6 +82,7 @@ $background-color: #333;
         font-size: 9px;
         overflow: hidden;
       }
+
       .button {
         position: absolute;
         top: 10px;
@@ -85,20 +92,25 @@ $background-color: #333;
         background: $background-color;
         text-align: center;
         cursor: pointer;
+
         i {
           color: #eee;
           font-size: 15px;
           line-height: 20px;
+
           &.enabled {
             color: #cc0;
           }
         }
+
         &:hover {
           background: lighten($background-color, 10%);
         }
       }
+
       .viewer {
         display: flex;
+        align-items: center;
         -webkit-align-items: center;
         position: absolute;
         right: 10px;
@@ -106,10 +118,12 @@ $background-color: #333;
         height: 20px;
         color: #eee;
         font-size: 12px;
+
         span {
           font-size: 12px;
           line-height: 20px;
         }
+
         i {
           font-size: 12px;
           line-height: 20px;
@@ -117,10 +131,12 @@ $background-color: #333;
       }
     }
   }
+
   &:hover {
     .icon {
       opacity: 1;
     }
+
     .detail {
       display: flex;
     }

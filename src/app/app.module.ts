@@ -15,6 +15,7 @@ import { LocalViewerComponent } from './views/main-page/stream-viewer/local-view
 import { ChatListComponent } from './views/chat/chat-list/chat-list.component';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { ChatEntryComponent } from './views/chat/chat-entry/chat-entry.component';
+import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ChatEntryComponent } from './views/chat/chat-entry/chat-entry.component
     ChatListComponent,
     ChatPageComponent,
     ChatEntryComponent,
+    StreamEntryComponent,
   ],
   imports: [
     BrowserModule,

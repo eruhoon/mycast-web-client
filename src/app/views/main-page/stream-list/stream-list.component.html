@@ -1,5 +1,7 @@
 <div class="main-list">
-    <div class="icon-wrapper" *ngFor="let stream of getStreams()">
+    <stream-entry *ngFor="let stream of getStreams()" [stream]="stream" (iconClick)="onIconClick(stream)">
+    </stream-entry>
+    <!--<div class="icon-wrapper" *ngFor="let stream of getStreams()">
         <div class="icon" [style.background-image]="'url('+stream.getIcon()+')'" (click)="onIconClick(stream)"></div>
         <div class="detail thumbnail">
             <img class="thumbnail" [src]="stream.getThumbnail()" style="display: inline;">
@@ -18,5 +20,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

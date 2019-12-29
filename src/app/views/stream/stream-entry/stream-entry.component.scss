@@ -1,0 +1,144 @@
+$menu-icon-size: 60px;
+$menu-icon-size-5px: 65px;
+$background-color: #333;
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  width: $menu-icon-size - 5px;
+  height: $menu-icon-size;
+
+  .icon {
+    width: $menu-icon-size - 10px;
+    height: $menu-icon-size - 10px;
+    margin: 5px 2.5px 5px 2.5px;
+    border-radius: 5px;
+    background: darken($background-color, 10%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: 0.6;
+  }
+
+  .detail {
+    $width: 200px;
+    position: absolute;
+    display: none;
+    align-items: center;
+    right: -5px;
+    bottom: $menu-icon-size-5px;
+    width: $width;
+    height: 100px;
+    background: darken($background-color, 10%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.25);
+
+    &.thumbnail {
+      height: 150px;
+    }
+
+    .thumbnail {
+      width: $width;
+      max-height: 100%;
+    }
+
+    .wrapper {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      bottom: 0px;
+      background: darken($background-color, 10%);
+      background: linear-gradient(transparent, darken($background-color, 10%));
+      opacity: 0.8;
+
+      .title {
+        position: absolute;
+        width: calc(100% - 100px);
+        left: 10px;
+        height: 15px;
+        bottom: 40px;
+        text-align: left;
+        color: #eee;
+        font-size: 12px;
+        font-weight: bold;
+        opacity: 0;
+      }
+
+      .description {
+        position: absolute;
+        width: calc(100% - 20px);
+        left: 10px;
+        height: 38px;
+        bottom: 0px;
+        border-top: solid 1px #eee;
+        text-align: left;
+        color: #eee;
+        font-size: 9px;
+        overflow: hidden;
+      }
+
+      .button {
+        position: absolute;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 15px;
+        background: $background-color;
+        text-align: center;
+        cursor: pointer;
+
+        i {
+          color: #eee;
+          font-size: 15px;
+          line-height: 20px;
+
+          &.enabled {
+            color: #cc0;
+          }
+        }
+
+        &:hover {
+          background: lighten($background-color, 10%);
+        }
+      }
+
+      .viewer {
+        display: flex;
+        align-items: center;
+        -webkit-align-items: center;
+        position: absolute;
+        right: 10px;
+        bottom: 40px;
+        height: 20px;
+        color: #eee;
+        font-size: 12px;
+
+        span {
+          font-size: 12px;
+          line-height: 20px;
+        }
+
+        i {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .icon {
+      opacity: 1;
+    }
+
+    .detail {
+      display: flex;
+    }
+  }
+}

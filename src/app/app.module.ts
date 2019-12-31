@@ -16,6 +16,7 @@ import { ChatListComponent } from './views/chat/chat-list/chat-list.component';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { ChatEntryComponent } from './views/chat/chat-entry/chat-entry.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
+import { LoginPageComponent } from './views/login/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.c
     ChatPageComponent,
     ChatEntryComponent,
     StreamEntryComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,18 +8,30 @@ div.page {
 
 
 .login {
-  width: 400px;
-  height: 100%;
+  width: 300px;
+  min-height: 500px;
   position: fixed;
-  top: 0%;
-  right: 0%;
+  top: calc(50% - 370px);
+  right: calc(50% - 200px);
   background-color: white;
-  padding: 50px 70px;
+  padding: 50px;
+  padding-top: 20px;
+  border: 1px soild #e0e0e0;
+  border-radius: 5px;
+
+  box-shadow: 0 1px 1px 0 rgba(60,64,67,.08),0 1px 3px 1px rgba(60,64,67,.16);
+
   .logo {
-    width: 100%;
+    width: 75%;
+    padding: 12.5%;
+    padding-bottom: 0%;
     height: auto;
     text-align: center;
     margin-top: 25%;
+
+    img {
+      width: 100%;
+    }
   }
   .in-box {
     width: 100%;
@@ -58,10 +70,42 @@ div.page {
       background-color: #FF4081;
       border: 1px solid #E91E63;
       border-radius: 5px;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bolder;
       color: #fff;
       letter-spacing: 3px;
+    }
+  }
+
+  .bottom {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 20px 0px;
+    padding-top: 20px;
+
+    button {
+      width: 100%;
+      height: 50px;
+      background-color: #ffffff;
+      border: 1px solid #EC407A;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: lighter;
+      color: #EC407A;
+      letter-spacing: 3px;
+
+      &:hover {
+        background-color: #FCE4EC;
+        border-color: #E91E63;
+        color: #E91E63;
+      }
+
+      &:active {
+        background-color: #F06292;
+        border-color: #D81B60;
+        color: #ffffff;
+      }
     }
   }
 }

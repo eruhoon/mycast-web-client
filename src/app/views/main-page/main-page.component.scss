@@ -11,7 +11,6 @@ nav.top-bar-section {
   margin: 0;
   background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
-  z-index: 90;
 }
 
 .main-section {
@@ -21,7 +20,6 @@ nav.top-bar-section {
   display: block;
   width: 100%;
   height: calc(100% - #{$top-bar-height});
-  z-index: 20;
 }
 
 .main-section > .stream-container-view {
@@ -64,7 +62,7 @@ nav.top-bar-section {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 21;
+  z-index: 1;
   transition: 0.2s ease-in-out;
   width: 100%;
   height: 100%;
@@ -75,8 +73,7 @@ nav.top-bar-section {
     top: 0;
     width: 200px;
     height: 100%;
-    border-right: 1px solid #424242;
-    box-shadow: 0px 3px 5px 1px rgba($color: #000000, $alpha: 0.3);
+    border-right: 1px solid #e0e0e0;
     transition: 0.2s ease-in-out;
     background: white;
   }
@@ -149,11 +146,9 @@ nav.top-bar-section {
   top: 50px;
   right: -300px;
   width: 220px;
-  height: 528px;
-  z-index: 60;
+  height: 500px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
-  overflow: hidden;
   border-radius: 5px;
   box-shadow: 0px 3px 5px 1px rgba($color: #000000, $alpha: 0.3);
 

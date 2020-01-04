@@ -12,7 +12,7 @@ export class LoginCommand {
     }
 
     public execute() {
-        const url = 'http://mycast.xyz:3000/login';
+        const url = 'http://mycast.xyz:3000/auth';
         const request = Axios.post(url, qs.stringify({
             mcid: this.mId,
             mcpw: this.mPassword
@@ -20,6 +20,8 @@ export class LoginCommand {
 
         request.then(res => {
             console.log(res.data);
+        }).catch(reason => {
+            console.log(reason);
         });
     }
 }

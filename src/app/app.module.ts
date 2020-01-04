@@ -17,6 +17,7 @@ import { LocalViewerComponent } from './views/main-page/stream-viewer/local-view
 import { StreamViewerComponent } from './views/main-page/stream-viewer/stream-viewer.component';
 import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
+import { JoinPageComponent } from './views/login/join-page/join-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.c
     ChatEntryComponent,
     StreamEntryComponent,
     LoginPageComponent,
+    JoinPageComponent,
   ],
   imports: [
     BrowserModule,

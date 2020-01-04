@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
+import { JoinPageComponent } from './views/login/join-page/join-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'join',
+    component: JoinPageComponent
   },
   {
     path: 'chat',

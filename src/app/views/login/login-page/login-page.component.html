@@ -3,13 +3,13 @@
         <div class="logo">
             <img src="/../assets/image/login/logo-300.png" width="300">
         </div>
-        <form class="in-box">
+        <div class="in-box">
             <!-- 사용자 로그인 정보 -->
-            <input type="text">
-            <input type="password">
+            <input type="text" placeholder="id" id="id" [(ngModel)]="mLoginForm.id">
+            <input type="password" placeholder="password" id="pw" [(ngModel)]="mLoginForm.pw">
             <!-- 로그인 버튼 -->
-            <button type="submit">LOGIN</button>
-        </form>
+            <button type="submit" (click)="onSubmit()">LOGIN</button>
+        </div>
         <div class="bottom">
             <button type="button">E-Mail Join</button>
         </div>

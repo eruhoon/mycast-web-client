@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { LoginCommand } from 'src/app/models/login/LoginCommand';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  protected mLoginForm: LoginForm;
+
+  constructor() {
+    this.mLoginForm = { id: '', pw: '' };
+  }
 
   ngOnInit() {
   }
 
+  protected onSubmit() {
+    console.log(this.mLoginForm);
+    const login = new LoginCommand(this.mLoginForm.id, this.mLoginForm.pw);
+    login.execute();
+  }
+
+}
+
+type LoginForm = {
+  id: string,
+  pw: string,
 }

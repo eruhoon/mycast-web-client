@@ -1,0 +1,17 @@
+.chat-interface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.input-box {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background: #e8e8e8;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}

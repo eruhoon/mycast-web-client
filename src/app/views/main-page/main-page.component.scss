@@ -137,7 +137,14 @@ nav.top-bar-section {
   height: 100%;
   background: #ffffff;
   border-left: 1px solid #e0e0e0;
-  padding-top: 50px;
+
+  chat-page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .stream-view {

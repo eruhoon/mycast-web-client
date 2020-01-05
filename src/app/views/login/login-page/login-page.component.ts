@@ -1,8 +1,7 @@
-import { LoginCommand } from 'src/app/models/login/LoginCommand';
-
-import { Component, Input, OnInit, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
+import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
 
 @Component({

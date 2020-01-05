@@ -3,6 +3,7 @@ import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { Component, Input, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
+import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
 
 @Component({
   selector: 'app-login-page',
@@ -12,14 +13,15 @@ import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
 export class LoginPageComponent implements OnInit {
 
   protected mLoginForm: LoginForm;
+  private mPageNavigator: PageNavigator;
+  private mRenderer: Renderer2;
 
-  constructor(
-    private mRouter: Router,
-    private mRenderer: Renderer2) {
+  constructor(router: Router, renderer: Renderer2) {
 
     this.mLoginForm = { id: '', pw: '' };
 
-    console.log(this.mRenderer);
+    this.mPageNavigator = new PageNavigator(router);
+    this.mRenderer = renderer;
   }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   protected onJoinClick(): void {
-    this.mRouter.navigate(['/join']);
+    this.mPageNavigator.navigateJoinPage();
   }
 
   private setFocusPassword() {
@@ -54,7 +56,7 @@ export class LoginPageComponent implements OnInit {
   private requestLogin(): void {
     const login = new LoginCommand(this.mLoginForm.id, this.mLoginForm.pw);
     login.onSuccess(() => {
-      this.mRouter.navigate(['/']);
+      this.mPageNavigator.navigateMainPage();
     });
     login.onFailure(() => {
       console.warn('failed');

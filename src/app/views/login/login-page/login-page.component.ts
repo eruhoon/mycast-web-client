@@ -41,6 +41,10 @@ export class LoginPageComponent implements OnInit {
     this.requestLogin();
   }
 
+  protected onJoinClick(): void {
+    this.mRouter.navigate(['/join']);
+  }
+
   private setFocusPassword() {
     const passwordInput = this.mRenderer.selectRootElement('#pw');
     console.log(passwordInput);

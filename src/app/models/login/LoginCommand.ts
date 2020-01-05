@@ -2,12 +2,13 @@ import Axios from 'axios';
 import * as qs from 'querystring';
 
 import { Callback } from '../common/callback/Callback';
+import { TypeCallback } from '../common/callback/TypeCallback';
 
 export class LoginCommand {
 
     private mId: string;
     private mPassword: string;
-    private mSuccess: Callback;
+    private mSuccess: TypeCallback<LoginResponse>;
     private mFailure: Callback;
 
     public constructor(id: string, password: string) {
@@ -17,7 +18,7 @@ export class LoginCommand {
         this.mFailure = () => { };
     }
 
-    public onSuccess(success: Callback) {
+    public onSuccess(success: TypeCallback<LoginResponse>) {
         this.mSuccess = success;
     }
 
@@ -27,14 +28,14 @@ export class LoginCommand {
 
     public execute() {
         const url = 'http://mycast.xyz:3000/auth';
-        const request = Axios.post(url, qs.stringify({
+        const request = Axios.post<LoginResponse>(url, qs.stringify({
             mcid: this.mId,
             mcpw: this.mPassword
         }));
 
         request.then(res => {
-            console.log(res.data);
-            this.mSuccess();
+            const loginResponse = res.data;
+            this.mSuccess(loginResponse);
         }).catch(reason => {
             console.log(reason);
             this.mFailure();
@@ -44,6 +45,7 @@ export class LoginCommand {
 
 type LoginResponse = {
     result: boolean,
+    sid: string,
     hash: string,
     message: string,
 };

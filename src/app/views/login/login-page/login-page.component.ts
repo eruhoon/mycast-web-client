@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
 import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
+import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 @Component({
   selector: 'app-login-page',
@@ -14,6 +15,7 @@ export class LoginPageComponent implements OnInit {
   protected mLoginForm: LoginForm;
   private mPageNavigator: PageNavigator;
   private mRenderer: Renderer2;
+  private mSessionStorage: SessionStorage;
 
   constructor(router: Router, renderer: Renderer2) {
 
@@ -21,9 +23,12 @@ export class LoginPageComponent implements OnInit {
 
     this.mPageNavigator = new PageNavigator(router);
     this.mRenderer = renderer;
+    this.mSessionStorage = SessionStorage.getInstance();
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    console.log(this.mSessionStorage.getSessionId());
+    console.log(this.mSessionStorage.getPrivateKey());
   }
 
   protected onIdKeyPress(event: KeyboardEvent) {
@@ -54,7 +59,9 @@ export class LoginPageComponent implements OnInit {
 
   private requestLogin(): void {
     const login = new LoginCommand(this.mLoginForm.id, this.mLoginForm.pw);
-    login.onSuccess(() => {
+    login.onSuccess(res => {
+      this.mSessionStorage.setSessionId(res.sid);
+      this.mSessionStorage.setPrivateKey(res.hash);
       this.mPageNavigator.navigateMainPage();
     });
     login.onFailure(() => {

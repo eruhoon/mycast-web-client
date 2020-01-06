@@ -1,13 +1,13 @@
 <div class="chat-entry">
     <div class="icon-section">
         <div class="icon">
-            <img src="https://i.imgur.com/nkpMn6R.jpg" style="border-color: #43A047;">
+            <img [src]="chat.getIcon()" style="border-color: #43A047;">
         </div>
     </div>
     <div class="message-section">
         <div class="header">
-            <div class="level">Lv. 34</div>
-            <div class="nickname"><span>『메구밍』</span></div>
+            <div class="level">Lv.{{chat.getLevel()}}</div>
+            <div class="nickname"><span>{{chat.getNickname()}}</span></div>
         </div>
         <div class="body black-text">
         </div>

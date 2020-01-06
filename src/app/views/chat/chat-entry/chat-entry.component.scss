@@ -1,5 +1,4 @@
-
-  /*
+/*
   **
   ** 사용자 공용색상 관련
   ** 초록 - 배경 : 43A047 / 텍스트 : ffffff
@@ -11,58 +10,71 @@
   **
   */
 
-      .chat-entry {
+.chat-entry {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: pink;
+
   .icon {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 40px;
-    height: 40px;
-    
+    width: 44px;
+    height: 44px;
+
     img {
-      width: 100%;
-      height: 100%;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: solid 2px #e8e8e8;
     }
   }
-  .message-box {
-    position: absolute;
-    top: 7px;
-    left: 65px;
-    width: calc(100% - 65px);
-    min-height: 50px;
+}
 
-    .header {
-      width: 100%;
-      height: 24px;
-      padding-bottom: 5px;
+.message-section {
+  display: block;
+  width: calc(100% - 50px);
+  min-height: 50px;
+  background: yellowgreen;
 
-      // 공통 구문
-      & > div {
-        display: inline;
-      }
-      .level {
-        width: 100px;
-        font-size: 12px;
-        line-height: 14px;
-        padding: 2.5px 7.5px;
-        border-radius: 8px;
-        background-color: #43A047;
-        color: #ffffff;
-      }
-      .nickname {
-        width: calc(100% - 100px);
-        font-size: 16px;
-        line-height: 18px;
-        padding-left: 10px;
-        color: #43A047;
-      }
+  .header {
+    width: 100%;
+    height: 24px;
+    padding-bottom: 5px;
+
+    // 공통 구문
+    &>div {
+      display: inline;
     }
 
-    .black-text {
-      width: 100%;
-      height: auto;
+    .level {
+      width: 100px;
+      font-size: 12px;
+      line-height: 14px;
+      padding: 2.5px 7.5px;
+      border-radius: 8px;
+      background-color: #43A047;
+      color: #ffffff;
     }
+
+    .nickname {
+      width: calc(100% - 100px);
+      font-size: 16px;
+      line-height: 18px;
+      padding-left: 10px;
+      color: #43A047;
+    }
+  }
+
+  .black-text {
+    width: 100%;
+    height: auto;
   }
 }

@@ -1,15 +1,68 @@
-.chat-entry {
+
+  /*
+  **
+  ** 사용자 공용색상 관련
+  ** 초록 - 배경 : 43A047 / 텍스트 : ffffff
+  ** 노랑 - 배경 : FFF59D / 텍스트 : 212121
+  ** 회색 - 배경 : E0E0E0 / 텍스트 : 212121
+  ** 검정 - 배경 : 212121 / 텍스트 : ffffff
+  ** 분홍 - 배경 : EC407A / 텍스트 : ffffff
+  ** 주황 - 배경 : F4511E / 텍스트 : ffffff
+  **
+  */
+
+      .chat-entry {
   .icon {
     position: absolute;
     top: 5px;
-    left: 5px;
+    left: 10px;
     width: 40px;
     height: 40px;
+    
     img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       border: solid 2px #e8e8e8;
+    }
+  }
+  .message-box {
+    position: absolute;
+    top: 7px;
+    left: 65px;
+    width: calc(100% - 65px);
+    min-height: 50px;
+
+    .header {
+      width: 100%;
+      height: 24px;
+      padding-bottom: 5px;
+
+      // 공통 구문
+      & > div {
+        display: inline;
+      }
+      .level {
+        width: 100px;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 2.5px 7.5px;
+        border-radius: 8px;
+        background-color: #43A047;
+        color: #ffffff;
+      }
+      .nickname {
+        width: calc(100% - 100px);
+        font-size: 16px;
+        line-height: 18px;
+        padding-left: 10px;
+        color: #43A047;
+      }
+    }
+
+    .black-text {
+      width: 100%;
+      height: auto;
     }
   }
 }

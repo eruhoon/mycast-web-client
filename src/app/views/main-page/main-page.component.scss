@@ -135,7 +135,9 @@ nav.top-bar-section {
   right: 0;
   width: $default-chat-width;
   height: 100%;
+  z-index: 30;
   background: #ffffff;
+  border-right: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
 
   chat-page {

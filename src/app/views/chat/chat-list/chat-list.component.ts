@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
 import { MockChat } from 'src/app/models/chat/MockChat';
 import { MockChat2 } from 'src/app/models/chat/MockChat2';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'chat-list',
@@ -10,15 +11,17 @@ import { MockChat2 } from 'src/app/models/chat/MockChat2';
 })
 export class ChatListComponent implements OnInit {
 
-  private mChats: Chat[];
+  @Input() chats: Chat[];
+  // private mChats: Chat[];
 
   public constructor() {
-    this.mChats = [new MockChat(), new MockChat2()];
+    // this.mChats = [new MockChat(), new MockChat2()];
   }
 
   public ngOnInit() { }
 
   protected getChats(): Chat[] {
-    return this.mChats;
+    return this.chats;
+    // return this.mChats;
   }
 }

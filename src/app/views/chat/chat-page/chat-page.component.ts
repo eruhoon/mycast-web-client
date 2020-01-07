@@ -1,3 +1,8 @@
+import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
+import { WebSocketModel } from 'src/app/models/socket/WebSocketModel';
+import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPageComponent implements OnInit {
 
-  constructor() { }
+  private mChatNetwork: ChatNetworkModel;
 
-  ngOnInit() {
+  constructor() {
+    const privateKey = SessionStorage.getInstance().getPrivateKey();
+    if (privateKey !== null) {
+      this.mChatNetwork = new ChatNetworkModelImpl(privateKey);
+    } else {
+      console.error('key was lost');
+    }
   }
 
+  public ngOnInit() {
+  }
 }

@@ -21,7 +21,7 @@ export class SessionStorage {
         this.setItem(SessionStorageKey.SESSION_ID, id);
     }
 
-    public getPrivateKey(): string {
+    public getPrivateKey(): string | null {
         return this.getItem(SessionStorageKey.PRIVATE_KEY);
     }
 

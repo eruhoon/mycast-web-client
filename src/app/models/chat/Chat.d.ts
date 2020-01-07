@@ -3,4 +3,5 @@ export interface Chat {
     getNickname(): string;
     getLevel(): number;
     getIcon(): string;
+    getMessage(): string;
 }

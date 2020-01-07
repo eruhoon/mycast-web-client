@@ -18,4 +18,8 @@ export class MockChat2 implements Chat {
     public getIcon(): string {
         return 'https://i.imgur.com/XEHbEY6.png';
     }
+
+    public getMessage(): string {
+        return '테스트트트트트';
+    }
 }

@@ -6,6 +6,7 @@ export class MutableChat implements Chat {
     private mNickname: string;
     private mLevel: number;
     private mIcon: string;
+    private mMessage: string;
 
     public constructor() { }
 
@@ -25,6 +26,10 @@ export class MutableChat implements Chat {
         return this.mIcon;
     }
 
+    public getMessage(): string {
+        return this.mMessage;
+    }
+
     public setHash(hash: string): void {
         this.mHash = hash;
     }
@@ -39,6 +44,10 @@ export class MutableChat implements Chat {
 
     public setIcon(icon: string): void {
         this.mIcon = icon;
+    }
+
+    public setMessage(message: string): void {
+        this.mMessage = message;
     }
 
 }

@@ -1,14 +1,16 @@
 <div class="chat-entry">
-    <div class="icon-section">
-        <div class="icon">
-            <img [src]="chat.getIcon()" style="border-color: #43A047;">
-        </div>
+  <div class="icon-section">
+    <div class="icon">
+      <img [src]="chat.getIcon()" style="border-color: #F5F5F5;" />
     </div>
-    <div class="message-section">
-        <div class="header">
-            <div class="level">Lv.{{chat.getLevel()}}</div>
-            <div class="nickname"><span>{{chat.getNickname()}}</span></div>
-        </div>
-        <div class="body black-text">{{chat.getMessage()}}</div>
+  </div>
+  <div class="message-section">
+    <div class="header">
+      <div class="level">Lv.{{ chat.getLevel() }}</div>
+      <div class="nickname">
+        <span>{{ chat.getNickname() }}</span>
+      </div>
     </div>
+    <div class="body black-text">{{ chat.getMessage() }}</div>
+  </div>
 </div>

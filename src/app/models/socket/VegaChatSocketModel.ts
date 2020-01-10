@@ -5,6 +5,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
     public abstract login(): void;
 
     protected abstract onRefreshChatList(chats: RefreshChat[]): void;
+    protected abstract onChat(res): void;
 
     protected onMessage(rawMessage: string | null) {
         if (!rawMessage) {
@@ -21,9 +22,13 @@ export abstract class VegaChatSocketModel implements SocketModel {
     }
 
     protected onMessageData(messageData: MessageData) {
+        console.log(messageData);
         switch (messageData.commandType) {
             case 'applyCurrentChatList':
                 this.onRefreshChatList(messageData.response);
+                break;
+            case 'chat':
+                this.onChat(messageData.response);
                 break;
             default:
         }

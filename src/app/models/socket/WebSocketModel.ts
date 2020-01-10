@@ -10,12 +10,14 @@ export class WebSocketModel extends VegaChatSocketModel {
     private mPrivKey: string;
     private mWebSocket: WebSocket;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
+    private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
         super();
         this.mPrivKey = privateKey;
         this.mWebSocket = new WebSocket(WebSocketModel.URL);
         this.mOnRefreshChatList = _ => { };
+        this.mOnChat = _ => { };
 
         this.mWebSocket.onopen = () => this.onOpenSocket();
         this.mWebSocket.onmessage = message => this.onRawMessage(message);
@@ -33,6 +35,10 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mOnRefreshChatList = callback;
     }
 
+    public setOnChatCallback(callback: TypeCallback<Chat>): void {
+        this.mOnChat = callback;
+    }
+
     protected onRefreshChatList(refreshChats: RefreshChat[]) {
         const chats: Chat[] = refreshChats.map(refreshChat => {
             const chat = new MutableChat();
@@ -44,6 +50,16 @@ export class WebSocketModel extends VegaChatSocketModel {
             return chat;
         });
         this.mOnRefreshChatList(chats);
+    }
+
+    protected onChat(res: RefreshChat) {
+        const chat = new MutableChat();
+        chat.setHash(res.hash);
+        chat.setIcon(res.icon);
+        chat.setLevel(res.level);
+        chat.setNickname(res.nickname);
+        chat.setMessage(res.msg.response);
+        this.mOnChat(chat);
     }
 
     private onOpenSocket(): void {

@@ -2,7 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { MockChat } from 'src/app/models/chat/MockChat';
 import { MockChat2 } from 'src/app/models/chat/MockChat2';
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'chat-list',
@@ -10,6 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./chat-list.component.scss']
 })
 export class ChatListComponent implements OnInit {
+
+  @ViewChild('scrollList', { static: false })
+  private mScrollList: ElementRef<HTMLDivElement>;
 
   @Input() chats: Chat[];
   // private mChats: Chat[];
@@ -20,6 +23,13 @@ export class ChatListComponent implements OnInit {
 
   public ngOnInit() { }
 
+  public scrollDown() {
+    try {
+      const scrollListView = this.mScrollList.nativeElement;
+      scrollListView.scrollTo(scrollListView.scrollLeft, scrollListView.scrollHeight);
+      this.mScrollList.nativeElement.scrollTop = this.mScrollList.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
   protected getChats(): Chat[] {
     return this.chats;
     // return this.mChats;

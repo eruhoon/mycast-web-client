@@ -4,7 +4,8 @@ import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImp
 import { WebSocketModel } from 'src/app/models/socket/WebSocketModel';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChatListComponent } from '../chat-list/chat-list.component';
 
 @Component({
   selector: 'chat-page',
@@ -13,6 +14,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPageComponent implements OnInit {
 
+  @ViewChild(ChatListComponent, { static: false })
+  private mChatListComponent: ChatListComponent;
   private mCurrentChats: Chat[];
 
   constructor() {
@@ -35,10 +38,15 @@ export class ChatPageComponent implements OnInit {
     const chatNetwork = new ChatNetworkModelImpl(privateKey);
     chatNetwork.setOnRefreshChatListCallback(
       chats => this.onChatListRefresh(chats));
-
+    chatNetwork.setOnChatCallback(chat => this.onChat(chat));
   }
 
   private onChatListRefresh(chats: Chat[]) {
     this.mCurrentChats = chats;
+  }
+
+  private onChat(chat: Chat) {
+    this.mCurrentChats.push(chat);
+    this.mChatListComponent.scrollDown();
   }
 }

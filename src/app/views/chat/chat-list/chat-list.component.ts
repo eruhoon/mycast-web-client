@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'chat-list',
@@ -14,7 +15,8 @@ export class ChatListComponent implements OnInit {
   private mChatMerger: ChatMerger;
 
   public constructor() {
-    this.mChatMerger = new ChatMerger;
+    this.chats = [];
+    this.mChatMerger = new ChatMerger();
   }
 
   public ngOnInit() { }

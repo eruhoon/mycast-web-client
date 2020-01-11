@@ -1,6 +1,6 @@
 import { Chat } from '../Chat';
-import { MutableChat } from '../MutableChat';
 import { ChatSender } from '../ChatSender';
+import { MutableChat } from '../MutableChat';
 
 export class ChatMerger {
 
@@ -31,7 +31,7 @@ export class ChatMerger {
     }
 
     public mergeMessages(from: Chat, src: Chat): Chat {
-        const merged = new MutableChat;
+        const merged = new MutableChat();
         merged.setHash(from.getHash());
         merged.setNickname(from.getSender().getNickname());
         merged.setLevel(from.getSender().getLevel());

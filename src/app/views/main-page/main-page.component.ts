@@ -70,7 +70,7 @@ export class MainPageComponent implements OnInit {
         if (this.isChatRight()) {
             return this.mInnerWidth - this.getDividerPosition();
         } else {
-            return this.getDividerPosition()
+            return this.getDividerPosition();
         }
     }
 

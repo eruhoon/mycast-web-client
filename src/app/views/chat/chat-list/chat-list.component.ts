@@ -10,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChatListComponent implements OnInit {
 
-  @Input() chats: Chat[];
+  @Input() chats: Chat[] | undefined = [];
 
   private mChatMerger: ChatMerger;
 
@@ -26,6 +26,7 @@ export class ChatListComponent implements OnInit {
   }
 
   private getMergedChats(): Chat[] {
-    return this.mChatMerger.mergeChats(this.chats);
+    const chats = this.chats || [];
+    return this.mChatMerger.mergeChats(chats);
   }
 }

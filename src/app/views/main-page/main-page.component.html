@@ -7,7 +7,7 @@
         <div class="component-view">
 
             <div class="contents-viewer">
-                <app-stream-viewer *ngIf="getCurrentStream()" [stream]="mCurrentStream"></app-stream-viewer>
+                <app-stream-viewer *ngIf="isStreamActivated()" [stream]="mCurrentStream"></app-stream-viewer>
             </div>
         </div>
         <div class="stream-list-view">

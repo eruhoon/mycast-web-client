@@ -45,8 +45,12 @@ export class MainPageComponent implements OnInit {
         this.mInnerWidth = window.innerWidth;
     }
 
-    public getCurrentStream(): Stream {
+    public getCurrentStream(): Stream | null {
         return this.mCurrentStream;
+    }
+
+    public isStreamActivated(): boolean {
+        return this.getCurrentStream() !== null;
     }
 
     public isMenuShow(): boolean {

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
+
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -17,12 +18,19 @@ export class SideBarComponent implements OnInit {
   private mTwitchs: Stream[];
   private mKakaos: Stream[];
 
-  constructor() { }
+  constructor() {
+    this.mTwitchs = [];
+    this.mKakaos = [];
+  }
 
   public ngOnInit() {
     this.mTwitchListShow = false;
     this.mKakaoListShow = false;
     new ExternalStreamListLoader().load(streams => {
+      if (!streams) {
+        console.warn('Invalid Streams');
+        return;
+      }
       this.mTwitchs = streams.filter(
         stream => stream.getPlatform() === 'twitch');
       this.mKakaos = streams.filter(

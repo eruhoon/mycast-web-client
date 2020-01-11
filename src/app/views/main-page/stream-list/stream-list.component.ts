@@ -25,6 +25,10 @@ export class StreamListComponent implements OnInit {
 
   public async ngOnInit() {
     this.mStreamListLoader.load(streams => {
+      if (!streams) {
+        console.log('Invalid streams');
+        return;
+      }
       this.mStreams = streams;
     });
   }

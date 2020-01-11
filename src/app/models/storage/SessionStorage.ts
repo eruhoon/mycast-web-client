@@ -13,7 +13,7 @@ export class SessionStorage {
         return this.sInstance;
     }
 
-    public getSessionId(): string {
+    public getSessionId(): string | null {
         return this.getItem(SessionStorageKey.SESSION_ID);
     }
 
@@ -29,7 +29,7 @@ export class SessionStorage {
         this.setItem(SessionStorageKey.PRIVATE_KEY, privateKey);
     }
 
-    private getItem(key: SessionStorageKey): string {
+    private getItem(key: SessionStorageKey): string | null {
         return sessionStorage.getItem(key.toString());
     }
 

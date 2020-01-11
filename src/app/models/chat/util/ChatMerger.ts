@@ -6,15 +6,12 @@ export class ChatMerger {
 
 
     public mergeChats(chats: Chat[]): Chat[] {
-
         const mergedChats: Chat[] = [];
-        for (let idx = 0; idx < chats.length; idx++) {
-            const currentChat = chats[idx];
-
-            if (mergedChats.length === 0) {
+        chats.forEach(currentChat => {
+            const prevChat = mergedChats.pop();
+            if (!prevChat) {
                 mergedChats.push(currentChat);
             } else {
-                const prevChat = mergedChats.pop();
                 const prevSender = prevChat.getSender();
                 const currentSender = currentChat.getSender();
 
@@ -26,7 +23,7 @@ export class ChatMerger {
                     mergedChats.push(currentChat);
                 }
             }
-        }
+        });
         return mergedChats;
     }
 
@@ -43,7 +40,7 @@ export class ChatMerger {
 
         src.getMessages().forEach(chatMessage => {
             merged.addMessage(chatMessage.getMessage());
-        })
+        });
 
         return merged;
     }

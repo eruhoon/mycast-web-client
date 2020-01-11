@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'chat-interface',
@@ -8,19 +7,16 @@ import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
 })
 export class ChatInterfaceComponent implements OnInit {
 
-  @ViewChild('inputBox', { static: false })
-  private mInputBox: ElementRef<HTMLInputElement>;
-
   @Input() chatText: string;
+
+  @Output() chatInput = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  protected onKeyPress(event: KeyboardEvent): void {
-    if (event.keyCode === Keyboard.KEY_ENTER) {
-      this.mInputBox.nativeElement.value = '';
-    }
+  protected onEnter(chatStr: string): void {
+    this.chatInput.emit(chatStr);
   }
 }

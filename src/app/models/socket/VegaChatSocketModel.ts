@@ -6,6 +6,13 @@ export abstract class VegaChatSocketModel implements SocketModel {
 
     protected abstract onRefreshChatList(chats: RefreshChat[]): void;
     protected abstract onChat(res): void;
+    protected abstract requestChat(request: ChatRequest): void;
+    public chat(chat: string): void {
+        this.requestChat({
+            msg: chat,
+            type: 'chat'
+        });
+    }
 
     protected onMessage(rawMessage: string | null) {
         if (!rawMessage) {
@@ -56,6 +63,12 @@ export type RefreshChatMessage = {
     request: string,
     response: string,
 };
+
+export type ChatRequest = {
+    msg: string,
+    type: string
+};
+
 
 /*
 hash: "2b07dda6bbdd6531c07977e754a0b898ad5b890a499c4960d5d3408783405bbe"

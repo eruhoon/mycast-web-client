@@ -1,7 +1,7 @@
 import { Chat } from '../chat/Chat';
 import { MutableChat } from '../chat/MutableChat';
 import { TypeCallback } from '../common/callback/TypeCallback';
-import { RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
+import { ChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
 
@@ -28,6 +28,14 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.sendMessage('user-login', {
             channel: 'chat',
             privateKey: this.mPrivKey
+        });
+    }
+
+    protected requestChat(request: ChatRequest): void {
+        this.sendMessage('chat', {
+            userKey: this.mPrivKey,
+            msg: request.msg,
+            type: request.type
         });
     }
 
@@ -82,7 +90,6 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private sendMessage(commandType: string, resource: any) {
         const sendMsg = { commandType, resource };
-        console.log(sendMsg);
         this.mWebSocket.send(JSON.stringify(sendMsg));
     }
 }

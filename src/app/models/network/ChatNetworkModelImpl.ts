@@ -1,17 +1,23 @@
 import { Chat } from '../chat/Chat';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { SocketModel } from '../socket/SocketModel';
 import { WebSocketModel } from '../socket/WebSocketModel';
 import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatNetworkModelImpl implements ChatNetworkModel {
 
+    private mSocket: SocketModel;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
+        this.mSocket = this.createSocketModel(privateKey);
         this.mOnRefreshChatList = _ => { };
         this.mOnChat = _ => { };
-        this.initSocketModel(privateKey);
+    }
+
+    public chat(chat: string): void {
+        this.mSocket.chat(chat);
     }
 
     public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
@@ -30,10 +36,11 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mOnChat(chat);
     }
 
-    private initSocketModel(privateKey: string): void {
+    private createSocketModel(privateKey: string): SocketModel {
         const model = new WebSocketModel(privateKey);
         model.setOnRefreshChatListCallback(
             chats => this.onRefreshChatList(chats));
         model.setOnChatCallback(chat => this.onChat(chat));
+        return model;
     }
 }

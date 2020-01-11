@@ -1,11 +1,9 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
-import { WebSocketModel } from 'src/app/models/socket/WebSocketModel';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChatListComponent } from '../chat-list/chat-list.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'chat-page',
@@ -14,31 +12,39 @@ import { ChatListComponent } from '../chat-list/chat-list.component';
 })
 export class ChatPageComponent implements OnInit {
 
-  @ViewChild(ChatListComponent, { static: false })
-  private mChatListComponent: ChatListComponent;
+  private mChatNetwork: ChatNetworkModel | null;
   private mCurrentChats: Chat[];
 
   constructor() {
     const privateKey = SessionStorage.getInstance().getPrivateKey();
     if (privateKey !== null) {
-      this.initChatNetworkModel(privateKey);
+      this.mChatNetwork = this.createChatNetworkModel(privateKey);
     } else {
       console.error('key was lost');
+      this.mChatNetwork = null;
     }
   }
 
   public ngOnInit() {
   }
 
+  protected onChatInput(rawChat: string): void {
+    console.log(rawChat);
+    if (this.mChatNetwork !== null) {
+      this.mChatNetwork.chat(rawChat);
+    }
+  }
+
   protected getCurrentChats(): Chat[] {
     return this.mCurrentChats;
   }
 
-  private initChatNetworkModel(privateKey: string) {
+  private createChatNetworkModel(privateKey: string): ChatNetworkModel {
     const chatNetwork = new ChatNetworkModelImpl(privateKey);
     chatNetwork.setOnRefreshChatListCallback(
       chats => this.onChatListRefresh(chats));
     chatNetwork.setOnChatCallback(chat => this.onChat(chat));
+    return chatNetwork;
   }
 
   private onChatListRefresh(chats: Chat[]) {

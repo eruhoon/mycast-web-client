@@ -46,7 +46,7 @@ export class ChatPageComponent implements OnInit {
   }
 
   private onChat(chat: Chat) {
-    this.mCurrentChats.push(chat);
-    this.mChatListComponent.scrollDown();
+    this.mCurrentChats = [...this.mCurrentChats, chat];
+    // this.mChatListComponent.scrollDown();
   }
 }

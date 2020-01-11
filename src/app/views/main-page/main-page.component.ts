@@ -21,7 +21,6 @@ export class MainPageComponent implements OnInit {
     public mCurrentStream: Stream | null;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
-    private mPrevInnerWidth: number;
     private mInnerWidth: number;
     private mMoveMode: boolean;
     private mDividerPosition: number;
@@ -32,7 +31,6 @@ export class MainPageComponent implements OnInit {
         this.mCurrentStream = null;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
-        this.mPrevInnerWidth = window.innerWidth;
         this.mInnerWidth = window.innerWidth;
     }
 
@@ -41,7 +39,6 @@ export class MainPageComponent implements OnInit {
 
     @HostListener('window:resize', ['$event'])
     protected onResize(event: Event) {
-        this.mPrevInnerWidth = this.mInnerWidth;
         this.mInnerWidth = window.innerWidth;
     }
 

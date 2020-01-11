@@ -2,5 +2,6 @@
     <div class="input-sticker">
 
     </div>
-    <input #inputBox class="input-box" (keydown.enter)="onEnter(inputBox.value); inputBox.value=''">
+    <input #inputBox class="input-box" (keydown.enter)="onEnter(inputBox.value); inputBox.value=''"
+        (keydown.arrowup)="onUp(inputBox.value); inputBox.value=''">
 </div>

@@ -19,4 +19,8 @@ export class ChatInterfaceComponent implements OnInit {
   protected onEnter(chatStr: string): void {
     this.chatInput.emit(chatStr);
   }
+
+  protected onUp(): void {
+    console.log('up');
+  }
 }

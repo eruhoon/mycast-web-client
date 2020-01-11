@@ -1,8 +1,5 @@
+import { Component, Input, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
-import { MockChat } from 'src/app/models/chat/MockChat';
-import { MockChat2 } from 'src/app/models/chat/MockChat2';
-
-import { Component, Input, OnInit, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'chat-list',
@@ -11,20 +8,13 @@ import { Component, Input, OnInit, ViewChild, ElementRef, OnChanges, SimpleChang
 })
 export class ChatListComponent implements OnInit {
 
-  // @ViewChild('scrollList', { static: false })
-  // private mScrollList: ElementRef<HTMLDivElement>;
-
   @Input() chats: Chat[];
-  // private mChats: Chat[];
 
-  public constructor() {
-    // this.mChats = [new MockChat(), new MockChat2()];
-  }
+  public constructor() { }
 
   public ngOnInit() { }
 
   protected getChats(): Chat[] {
     return this.chats;
-    // return this.mChats;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
+import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
 
 @Component({
   selector: 'chat-list',
@@ -10,11 +11,19 @@ export class ChatListComponent implements OnInit {
 
   @Input() chats: Chat[];
 
-  public constructor() { }
+  private mChatMerger: ChatMerger;
+
+  public constructor() {
+    this.mChatMerger = new ChatMerger;
+  }
 
   public ngOnInit() { }
 
   protected getChats(): Chat[] {
-    return this.chats;
+    return this.getMergedChats();
+  }
+
+  private getMergedChats(): Chat[] {
+    return this.mChatMerger.mergeChats(this.chats);
   }
 }

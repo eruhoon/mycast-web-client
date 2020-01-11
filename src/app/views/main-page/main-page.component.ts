@@ -15,9 +15,6 @@ export class MainPageComponent implements OnInit {
     @ViewChild(TopBarComponent, { static: false })
     private mTopBar: TopBarComponent;
 
-    @ViewChild(SideBarComponent, { static: false })
-    private mSideBar: SideBarComponent;
-
     public mCurrentStream: Stream | null;
     private mMenuShow: boolean;
     private mSettingShow: boolean;

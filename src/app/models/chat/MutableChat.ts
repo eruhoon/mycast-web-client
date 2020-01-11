@@ -1,4 +1,8 @@
 import { Chat } from './Chat';
+import { ChatSender } from './ChatSender';
+import { MutableChatSender } from './MutableChatSender';
+import { ChatMessage } from './ChatMessage';
+import { MutableChatMessage } from './MutableChatMessage';
 
 export class MutableChat implements Chat {
 
@@ -6,28 +10,27 @@ export class MutableChat implements Chat {
     private mNickname: string;
     private mLevel: number;
     private mIcon: string;
-    private mMessage: string;
+    private mMessages: ChatMessage[];
 
-    public constructor() { }
+    public constructor() {
+        this.mMessages = [];
+    }
+
+    public getSender(): ChatSender {
+        const sender = new MutableChatSender;
+        sender.setHash(this.mNickname + this.mLevel + this.mIcon);
+        sender.setNickname(this.mNickname);
+        sender.setLevel(this.mLevel);
+        sender.setIcon(this.mIcon);
+        return sender;
+    }
+
+    public getMessages(): ChatMessage[] {
+        return this.mMessages;
+    }
 
     public getHash(): string {
         return this.mHash;
-    }
-
-    public getNickname(): string {
-        return this.mNickname;
-    }
-
-    public getLevel(): number {
-        return this.mLevel;
-    }
-
-    public getIcon(): string {
-        return this.mIcon;
-    }
-
-    public getMessage(): string {
-        return this.mMessage;
     }
 
     public setHash(hash: string): void {
@@ -46,8 +49,10 @@ export class MutableChat implements Chat {
         this.mIcon = icon;
     }
 
-    public setMessage(message: string): void {
-        this.mMessage = message;
+    public addMessage(message: string): void {
+        const chatMessage = new MutableChatMessage;
+        chatMessage.setMessage(message);
+        this.mMessages.push(chatMessage);
     }
 
 }

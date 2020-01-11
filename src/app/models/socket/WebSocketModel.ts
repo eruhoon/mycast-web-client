@@ -46,7 +46,7 @@ export class WebSocketModel extends VegaChatSocketModel {
             chat.setIcon(refreshChat.icon);
             chat.setLevel(refreshChat.level);
             chat.setNickname(refreshChat.nickname);
-            chat.setMessage(refreshChat.msg.response);
+            chat.addMessage(refreshChat.msg.response);
             return chat;
         });
         this.mOnRefreshChatList(chats);
@@ -58,7 +58,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         chat.setIcon(res.icon);
         chat.setLevel(res.level);
         chat.setNickname(res.nickname);
-        chat.setMessage(res.msg.response);
+        chat.addMessage(res.msg.response);
         this.mOnChat(chat);
     }
 

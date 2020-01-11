@@ -1,5 +1,8 @@
-
 import { Chat } from './Chat';
+import { ChatSender } from './ChatSender';
+import { MockChatSender2 } from './MockChatSender2';
+import { ChatMessage } from './ChatMessage';
+import { MockChatMessage } from './MockChatMessage';
 
 export class MockChat2 implements Chat {
 
@@ -7,19 +10,11 @@ export class MockChat2 implements Chat {
         return 'chat-hash-2';
     }
 
-    public getNickname(): string {
-        return '메구밍';
+    public getSender(): ChatSender {
+        return new MockChatSender2;
     }
 
-    public getLevel(): number {
-        return 65;
-    }
-
-    public getIcon(): string {
-        return 'https://i.imgur.com/XEHbEY6.png';
-    }
-
-    public getMessage(): string {
-        return '테스트트트트트';
+    public getMessages(): ChatMessage[] {
+        return [new MockChatMessage];
     }
 }

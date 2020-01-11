@@ -38,9 +38,8 @@ nav.top-bar-section {
 .main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
-  height: calc(100% - #{$stream-menu-height});
+  height: 100%;
   background: #f0f0f0;
-  margin-top: 50px;
 
   .contents-viewer {
     width: 100%;
@@ -48,6 +47,8 @@ nav.top-bar-section {
   }
 }
 
+// 방송을 켜서 볼경우
+// 색상값 반전 필수 - 검정으로 변경
 .main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
@@ -58,8 +59,8 @@ nav.top-bar-section {
   border-radius: 10px;
 
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 15px;
+  bottom: 10px;
 }
 
 .side-bar {

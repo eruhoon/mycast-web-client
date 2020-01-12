@@ -17,9 +17,7 @@
       <div *ngIf="message.getType()==='chat'">
         <span>{{ message.getMessage() }}</span>
       </div>
-      <div *ngIf="message.getType()==='image'">
-        <img [src]="message.getMessage()">
-      </div>
+      <image-pack *ngIf="message.getType()==='image'" [message]="message"></image-pack>
       <div *ngIf="message.getType()==='youtube'">
         <img [src]="message.getMessage()">
       </div>

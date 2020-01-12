@@ -19,6 +19,7 @@ import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { ChatInterfaceComponent } from './views/chat/chat-interface/chat-interface.component';
+import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ChatInterfaceComponent } from './views/chat/chat-interface/chat-interfa
     LoginPageComponent,
     JoinPageComponent,
     ChatInterfaceComponent,
+    ImagePackComponent,
   ],
   imports: [
     BrowserModule,

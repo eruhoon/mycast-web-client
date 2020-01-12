@@ -1,11 +1,12 @@
 import { ChatMessage } from './ChatMessage';
+import { ChatType } from './ChatType';
 
 export class MutableChatMessage implements ChatMessage {
 
-    private mType: string;
+    private mType: ChatType;
     private mMessage: string;
 
-    public getType(): string {
+    public getType(): ChatType {
         return this.mType;
     }
 
@@ -13,7 +14,7 @@ export class MutableChatMessage implements ChatMessage {
         return this.mMessage;
     }
 
-    public setType(type: string): void {
+    public setType(type: ChatType): void {
         this.mType = type;
     }
 

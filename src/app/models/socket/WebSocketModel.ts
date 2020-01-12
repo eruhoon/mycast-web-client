@@ -1,6 +1,8 @@
 import { Chat } from '../chat/Chat';
+import { ChatType } from '../chat/ChatType';
 import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
+import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
 import { ChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
 
@@ -10,6 +12,7 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private mPrivKey: string;
     private mWebSocket: WebSocket;
+    private mChatTypeParser: ChatTypeParser;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnChat: TypeCallback<Chat>;
 
@@ -17,6 +20,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         super();
         this.mPrivKey = privateKey;
         this.mWebSocket = new WebSocket(WebSocketModel.URL);
+        this.mChatTypeParser = new ChatTypeParser();
         this.mOnRefreshChatList = _ => { };
         this.mOnChat = _ => { };
 
@@ -51,7 +55,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     protected onRefreshChatList(refreshChats: RefreshChat[]) {
         const chats: Chat[] = refreshChats.map(refreshChat => {
             const message = new MutableChatMessage();
-            message.setType(refreshChat.type);
+            message.setType(this.mChatTypeParser.parse(refreshChat.type));
             message.setMessage(refreshChat.msg.response);
             const chat = new MutableChat();
             chat.setHash(refreshChat.hash);
@@ -66,7 +70,7 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     protected onChat(res: RefreshChat) {
         const message = new MutableChatMessage();
-        message.setType(res.type);
+        message.setType(this.mChatTypeParser.parse(res.type));
         message.setMessage(res.msg.response);
         const chat = new MutableChat();
         chat.setHash(res.hash);

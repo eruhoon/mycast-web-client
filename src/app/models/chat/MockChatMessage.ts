@@ -1,9 +1,10 @@
 import { ChatMessage } from './ChatMessage';
+import { ChatType } from './ChatType';
 
 export class MockChatMessage implements ChatMessage {
 
-    public getType(): string {
-        return 'chat';
+    public getType(): ChatType {
+        return ChatType.TEXT;
     }
 
     public getMessage(): string {

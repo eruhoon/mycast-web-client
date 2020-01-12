@@ -1,4 +1,6 @@
+import { ChatType } from './ChatType';
+
 export interface ChatMessage {
-    getType(): string;
+    getType(): ChatType;
     getMessage(): string;
 }

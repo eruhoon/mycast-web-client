@@ -25,7 +25,9 @@ export class ChatListComponent implements OnInit, OnChanges {
   public ngOnInit() { }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.scrollToBottom();
+    if (changes.chats) {
+      this.scrollToBottom(changes.chats.isFirstChange());
+    }
   }
 
   protected getChats(): Chat[] {
@@ -36,16 +38,14 @@ export class ChatListComponent implements OnInit, OnChanges {
     return this.mChatMerger.mergeChats(this.chats || []);
   }
 
-  private scrollToBottom(): void {
-    try {
-      setTimeout(() => {
-        const listElm = this.mScrollList.nativeElement;
-        this.mScrollList.nativeElement.scrollTo({
-          left: 0,
-          top: listElm.scrollHeight,
-          behavior: 'smooth'
-        });
+  private scrollToBottom(isFirst: boolean): void {
+    setTimeout(() => {
+      const listElm = this.mScrollList.nativeElement;
+      this.mScrollList.nativeElement.scrollTo({
+        left: 0,
+        top: listElm.scrollHeight,
+        behavior: isFirst ? 'auto' : 'smooth'
       });
-    } catch (err) { }
+    });
   }
 }

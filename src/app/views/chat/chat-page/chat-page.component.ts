@@ -53,9 +53,6 @@ export class ChatPageComponent implements OnInit {
   }
 
   private onChat(chat: Chat) {
-    /*this.mCurrentChats.push(chat);
-    this.mCurrentChats = this.mCurrentChats.slice(
-      this.mCurrentChats.length - ChatPageComponent.CHAT_CAPACITY);*/
     const newChats = [...this.mCurrentChats, chat];
     this.mCurrentChats = newChats.slice(
       newChats.length - ChatPageComponent.CHAT_CAPACITY);

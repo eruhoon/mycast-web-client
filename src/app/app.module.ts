@@ -20,6 +20,7 @@ import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.c
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { ChatInterfaceComponent } from './views/chat/chat-interface/chat-interface.component';
 import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.component';
+import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.compon
     JoinPageComponent,
     ChatInterfaceComponent,
     ImagePackComponent,
+    TextPackComponent,
   ],
   imports: [
     BrowserModule,

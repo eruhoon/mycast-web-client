@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPageComponent implements OnInit {
 
+  private static readonly CHAT_CAPACITY = 50;
   private mChatNetwork: ChatNetworkModel | null;
   private mCurrentChats: Chat[];
 
@@ -52,7 +53,8 @@ export class ChatPageComponent implements OnInit {
   }
 
   private onChat(chat: Chat) {
-    this.mCurrentChats = [...this.mCurrentChats, chat];
-    // this.mChatListComponent.scrollDown();
+    this.mCurrentChats.push(chat);
+    this.mCurrentChats = this.mCurrentChats.slice(
+      this.mCurrentChats.length - ChatPageComponent.CHAT_CAPACITY);
   }
 }

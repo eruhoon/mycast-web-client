@@ -3,5 +3,5 @@
 
     </div>
     <input #inputBox class="input-box" (keydown.enter)="onEnter(inputBox.value); inputBox.value=''"
-        (keydown.arrowup)="onUp(inputBox.value); inputBox.value=''">
+        (keydown.arrowup)="inputBox.value=getPrevChat()" (keydown.arrowdown)="inputBox.value=getNextChat()">
 </div>

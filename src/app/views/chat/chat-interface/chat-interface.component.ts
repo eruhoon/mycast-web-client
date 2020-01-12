@@ -1,3 +1,5 @@
+import { ChatHistoryList } from 'src/app/models/chat/history/ChatHistoryList';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -11,16 +13,35 @@ export class ChatInterfaceComponent implements OnInit {
 
   @Output() chatInput = new EventEmitter<string>();
 
-  constructor() { }
+  private mChatHistoryList: ChatHistoryList;
+
+  constructor() {
+    this.mChatHistoryList = new ChatHistoryList();
+  }
 
   ngOnInit() {
   }
 
   protected onEnter(chatStr: string): void {
+    if (!chatStr) {
+      return;
+    }
     this.chatInput.emit(chatStr);
+    this.mChatHistoryList.addHistory(chatStr);
+    this.mChatHistoryList.resetIndex();
   }
 
-  protected onUp(): void {
-    console.log('up');
+  protected getPrevChat(): string {
+    if (this.mChatHistoryList.isEmpty()) {
+      return '';
+    }
+    return this.mChatHistoryList.getPrev();
+  }
+
+  protected getNextChat(): string {
+    if (this.mChatHistoryList.isEmpty()) {
+      return '';
+    }
+    return this.mChatHistoryList.getNext();
   }
 }

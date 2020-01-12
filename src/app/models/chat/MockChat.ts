@@ -1,8 +1,8 @@
 import { Chat } from './Chat';
-import { ChatSender } from './ChatSender';
-import { MockChatSender } from './MockChatSender';
 import { ChatMessage } from './ChatMessage';
+import { ChatSender } from './ChatSender';
 import { MockChatMessage } from './MockChatMessage';
+import { MockChatSender } from './MockChatSender';
 
 export class MockChat implements Chat {
 

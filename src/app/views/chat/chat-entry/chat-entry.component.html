@@ -14,7 +14,15 @@
       </div>
     </div>
     <div *ngFor="let message of chat.getMessages()" class="body black-text">
-      <span>{{ message.getMessage() }}</span>
+      <div *ngIf="message.getType()==='chat'">
+        <span>{{ message.getMessage() }}</span>
+      </div>
+      <div *ngIf="message.getType()==='image'">
+        <img [src]="message.getMessage()">
+      </div>
+      <div *ngIf="message.getType()==='youtube'">
+        <img [src]="message.getMessage()">
+      </div>
     </div>
   </div>
 </div>

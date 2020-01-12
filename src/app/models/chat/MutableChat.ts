@@ -1,8 +1,8 @@
 import { Chat } from './Chat';
-import { ChatSender } from './ChatSender';
-import { MutableChatSender } from './MutableChatSender';
 import { ChatMessage } from './ChatMessage';
+import { ChatSender } from './ChatSender';
 import { MutableChatMessage } from './MutableChatMessage';
+import { MutableChatSender } from './MutableChatSender';
 
 export class MutableChat implements Chat {
 
@@ -49,9 +49,7 @@ export class MutableChat implements Chat {
         this.mIcon = icon;
     }
 
-    public addMessage(message: string): void {
-        const chatMessage = new MutableChatMessage;
-        chatMessage.setMessage(message);
+    public addMessage(chatMessage: ChatMessage): void {
         this.mMessages.push(chatMessage);
     }
 

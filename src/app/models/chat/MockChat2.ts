@@ -1,8 +1,8 @@
 import { Chat } from './Chat';
-import { ChatSender } from './ChatSender';
-import { MockChatSender2 } from './MockChatSender2';
 import { ChatMessage } from './ChatMessage';
+import { ChatSender } from './ChatSender';
 import { MockChatMessage } from './MockChatMessage';
+import { MockChatSender2 } from './MockChatSender2';
 
 export class MockChat2 implements Chat {
 
@@ -11,10 +11,10 @@ export class MockChat2 implements Chat {
     }
 
     public getSender(): ChatSender {
-        return new MockChatSender2;
+        return new MockChatSender2();
     }
 
     public getMessages(): ChatMessage[] {
-        return [new MockChatMessage];
+        return [new MockChatMessage()];
     }
 }

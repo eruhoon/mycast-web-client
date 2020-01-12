@@ -1,5 +1,6 @@
 import { Chat } from '../chat/Chat';
 import { MutableChat } from '../chat/MutableChat';
+import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { TypeCallback } from '../common/callback/TypeCallback';
 import { ChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
 
@@ -49,24 +50,30 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     protected onRefreshChatList(refreshChats: RefreshChat[]) {
         const chats: Chat[] = refreshChats.map(refreshChat => {
+            const message = new MutableChatMessage();
+            message.setType(refreshChat.type);
+            message.setMessage(refreshChat.msg.response);
             const chat = new MutableChat();
             chat.setHash(refreshChat.hash);
             chat.setIcon(refreshChat.icon);
             chat.setLevel(refreshChat.level);
             chat.setNickname(refreshChat.nickname);
-            chat.addMessage(refreshChat.msg.response);
+            chat.addMessage(message);
             return chat;
         });
         this.mOnRefreshChatList(chats);
     }
 
     protected onChat(res: RefreshChat) {
+        const message = new MutableChatMessage();
+        message.setType(res.type);
+        message.setMessage(res.msg.response);
         const chat = new MutableChat();
         chat.setHash(res.hash);
         chat.setIcon(res.icon);
         chat.setLevel(res.level);
         chat.setNickname(res.nickname);
-        chat.addMessage(res.msg.response);
+        chat.addMessage(message);
         this.mOnChat(chat);
     }
 

@@ -1,6 +1,7 @@
 import { Chat } from '../Chat';
 import { ChatSender } from '../ChatSender';
 import { MutableChat } from '../MutableChat';
+import { MutableChatMessage } from '../MutableChatMessage';
 
 export class ChatMerger {
 
@@ -35,11 +36,11 @@ export class ChatMerger {
         merged.setIcon(from.getSender().getIcon());
 
         from.getMessages().forEach(chatMessage => {
-            merged.addMessage(chatMessage.getMessage());
+            merged.addMessage(chatMessage);
         });
 
         src.getMessages().forEach(chatMessage => {
-            merged.addMessage(chatMessage.getMessage());
+            merged.addMessage(chatMessage);
         });
 
         return merged;

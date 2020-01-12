@@ -1,3 +1,3 @@
-<div #scrollList class="chat-list" [scrollTop]="scrollList.scrollHeight">
+<div #scrollList class="chat-list">
     <chat-entry *ngFor="let chat of getChats()" [chat]="chat"></chat-entry>
 </div>

@@ -2,6 +2,6 @@
     <div class="input-sticker">
 
     </div>
-    <input #inputBox class="input-box" (keydown.enter)="onEnter(inputBox.value); inputBox.value=''"
+    <input #inputBox class="input-box" (keyup.enter)="onEnter(inputBox.value); inputBox.value=''"
         (keydown.arrowup)="inputBox.value=getPrevChat()" (keydown.arrowdown)="inputBox.value=getNextChat()">
 </div>

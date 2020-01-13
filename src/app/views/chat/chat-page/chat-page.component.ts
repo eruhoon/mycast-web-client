@@ -36,6 +36,12 @@ export class ChatPageComponent implements OnInit {
     }
   }
 
+  protected onChatEntryIconSelect(icon: string) {
+    if (this.mChatNetwork !== null) {
+      this.mChatNetwork.chat(icon);
+    }
+  }
+
   protected getCurrentChats(): Chat[] {
     return this.mCurrentChats;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
 
 @Component({
@@ -6,12 +6,20 @@ import { Chat } from 'src/app/models/chat/Chat';
   templateUrl: './chat-entry.component.html',
   styleUrls: ['./chat-entry.component.scss']
 })
-export class ChatEntryComponent implements OnInit {
+export class ChatEntryComponent {
 
   @Input() chat: Chat;
 
+  @ViewChild('icon', { static: false }) mIconView: ElementRef<HTMLImageElement>;
+
+  @Output()
+  public profileIconSelect = new EventEmitter<string>();
+
   public constructor() { }
 
-  public ngOnInit() { }
-
+  protected onIconContextMenu(): boolean {
+    const iconElm = this.mIconView.nativeElement;
+    this.profileIconSelect.emit(iconElm.src);
+    return false;
+  }
 }

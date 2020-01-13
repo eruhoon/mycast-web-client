@@ -2,7 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
 
 import {
-    Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild
+  Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, Output, EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -14,11 +14,13 @@ export class ChatListComponent implements OnInit, OnChanges {
 
   @ViewChild('scrollList', { static: true }) mScrollList: ElementRef;
   @Input() chats: Chat[] | undefined = [];
+  @Output() entryIconSelect: EventEmitter<string>;
 
   private mChatMerger: ChatMerger;
 
   public constructor() {
     this.chats = [];
+    this.entryIconSelect = new EventEmitter<string>();
     this.mChatMerger = new ChatMerger();
   }
 
@@ -32,6 +34,10 @@ export class ChatListComponent implements OnInit, OnChanges {
 
   protected getChats(): Chat[] {
     return this.getMergedChats();
+  }
+
+  protected onProfileIconSelect(iconSrc: string): void {
+    this.entryIconSelect.emit(iconSrc);
   }
 
   private getMergedChats(): Chat[] {

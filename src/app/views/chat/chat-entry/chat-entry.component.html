@@ -1,7 +1,8 @@
 <div class="chat-entry">
   <div class="icon-section">
     <div class="icon">
-      <img [src]="chat.getSender().getIcon()" style="border-color: #F5F5F5;" />
+      <img #icon [src]="chat.getSender().getIcon()" style="border-color: #F5F5F5;"
+        (contextmenu)="onIconContextMenu()" />
     </div>
   </div>
   <div class="message-section">

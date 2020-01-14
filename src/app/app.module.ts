@@ -21,6 +21,7 @@ import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { ChatInterfaceComponent } from './views/chat/chat-interface/chat-interface.component';
 import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.component';
 import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
+import { ImagePopupViewerComponent } from './views/main-page/image-popup-viewer/image-popup-viewer.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component
     ChatInterfaceComponent,
     ImagePackComponent,
     TextPackComponent,
+    ImagePopupViewerComponent,
   ],
   imports: [
     BrowserModule,

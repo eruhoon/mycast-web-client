@@ -16,6 +16,7 @@ export class MainPageComponent implements OnInit {
     private mTopBar: TopBarComponent;
 
     public mCurrentStream: Stream | null;
+    protected mImagePopup: boolean;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
@@ -26,6 +27,7 @@ export class MainPageComponent implements OnInit {
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
+        this.mImagePopup = false;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
         this.mInnerWidth = window.innerWidth;

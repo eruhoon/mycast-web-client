@@ -1,6 +1,6 @@
 <div class="image-pack">
     <div class="img-wrapper">
-        <img class="img" [src]="message.getMessage()">
+        <img class="img" [src]="message.getMessage()" (click)="onImageClick()">
         <!-- <div #buttonWrapper class="button-wrapper">
             <button>
                 <i class="material-icons">security</i>

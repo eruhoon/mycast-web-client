@@ -22,4 +22,8 @@ export class ChatEntryComponent {
     this.profileIconSelect.emit(iconElm.src);
     return false;
   }
+
+  protected onImagePackClick(image: string): void {
+    console.log(image);
+  }
 }

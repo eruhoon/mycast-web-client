@@ -1,7 +1,4 @@
-import { ChatMessage } from 'src/app/models/chat/ChatMessage';
-
-import { Component, Input } from '@angular/core';
-
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -11,7 +8,15 @@ import { ChatPack } from '../ChatPack';
 })
 export class ImagePackComponent extends ChatPack {
 
+  @Output() packClick: EventEmitter<string>;
+
   public constructor() {
     super();
+    this.packClick = new EventEmitter<string>();
+  }
+
+  protected onImageClick(): void {
+    const image = this.message.getMessage();
+    this.packClick.emit(image);
   }
 }

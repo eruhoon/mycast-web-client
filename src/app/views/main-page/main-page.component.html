@@ -35,4 +35,4 @@
         <app-setting-view></app-setting-view>
     </div>
 </nav>
-<image-popup-viewer *ngIf="mImagePopup" (backgroundClick)="mImagePopup=false"></image-popup-viewer>
+<image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>

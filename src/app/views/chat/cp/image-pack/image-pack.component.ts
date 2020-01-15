@@ -1,4 +1,7 @@
+import { ImagePopupService } from 'src/app/models/image/image-popup.service';
+
 import { Component, EventEmitter, Output } from '@angular/core';
+
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -10,13 +13,15 @@ export class ImagePackComponent extends ChatPack {
 
   @Output() packClick: EventEmitter<string>;
 
-  public constructor() {
+  private mImagePopupService: ImagePopupService;
+
+  public constructor(imagePopupService: ImagePopupService) {
     super();
-    this.packClick = new EventEmitter<string>();
+    this.mImagePopupService = imagePopupService;
   }
 
   protected onImageClick(): void {
     const image = this.message.getMessage();
-    this.packClick.emit(image);
+    this.mImagePopupService.setImage(image);
   }
 }

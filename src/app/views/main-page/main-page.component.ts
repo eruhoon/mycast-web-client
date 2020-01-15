@@ -1,3 +1,4 @@
+import { ImagePopupService } from 'src/app/models/image/image-popup.service';
 import { Stream } from 'src/app/models/stream/Stream';
 
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
@@ -16,18 +17,19 @@ export class MainPageComponent implements OnInit {
     private mTopBar: TopBarComponent;
 
     public mCurrentStream: Stream | null;
-    protected mImagePopup: boolean;
+
+    private mImagePopupService: ImagePopupService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
     private mMoveMode: boolean;
     private mDividerPosition: number;
 
-    public constructor() {
+    public constructor(imagePopupService: ImagePopupService) {
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
-        this.mImagePopup = false;
+        this.mImagePopupService = imagePopupService;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
         this.mInnerWidth = window.innerWidth;
@@ -64,6 +66,14 @@ export class MainPageComponent implements OnInit {
     public isChatRight(): boolean {
         const center = window.innerWidth / 2;
         return this.mDividerPosition > center;
+    }
+
+    public isImagePopup(): boolean {
+        return this.mImagePopupService.isPopup();
+    }
+
+    public closeImagePopup(): void {
+        this.mImagePopupService.setImage(null);
     }
 
     public getChatSize(): number {

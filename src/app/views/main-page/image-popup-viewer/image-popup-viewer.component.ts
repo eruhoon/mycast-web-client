@@ -1,3 +1,5 @@
+import { ImagePopupService } from 'src/app/models/image/image-popup.service';
+
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -9,11 +11,23 @@ export class ImagePopupViewerComponent {
 
   @Output() backgroundClick: EventEmitter<void>;
 
-  public constructor() {
+  private mImagePopupService: ImagePopupService;
+
+  public constructor(imagePopupService: ImagePopupService) {
+    this.mImagePopupService = imagePopupService;
     this.backgroundClick = new EventEmitter<void>();
+  }
+
+  public getImage(): string {
+    const image = this.mImagePopupService.getImage();
+    return image !== null ? image : '';
   }
 
   protected onBackgroundClick(): void {
     this.backgroundClick.emit();
+  }
+
+  protected onImageClick(): boolean {
+    return false;
   }
 }

@@ -11,6 +11,10 @@ export class ImagePopupService {
     this.mCurrentImage = null;
   }
 
+  public getImage(): string | null {
+    return this.mCurrentImage;
+  }
+
   public setImage(image: string | null): void {
     this.mCurrentImage = image;
   }

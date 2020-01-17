@@ -1,17 +1,23 @@
+import { ChatRequestFactory } from './chat-request/ChatRequestFactory';
 import { SocketModel } from './SocketModel';
 
 export abstract class VegaChatSocketModel implements SocketModel {
+
+    private mChatRequestFactory: ChatRequestFactory;
+
+    public constructor() {
+        this.mChatRequestFactory = new ChatRequestFactory();
+    }
 
     public abstract login(): void;
 
     protected abstract onRefreshChatList(chats: RefreshChat[]): void;
     protected abstract onChat(res): void;
-    protected abstract requestChat(request: ChatRequest): void;
+    protected abstract requestChat(request: RawChatRequest): void;
     public chat(chat: string): void {
-        this.requestChat({
-            msg: chat,
-            type: 'chat'
-        });
+
+        const request = this.mChatRequestFactory.getRequest(chat);
+        this.requestChat(request.toRawChatRequest());
     }
 
     protected onMessage(rawMessage: string | null) {
@@ -64,7 +70,7 @@ export type RefreshChatMessage = {
     response: string,
 };
 
-export type ChatRequest = {
+export type RawChatRequest = {
     msg: string,
     type: string
 };

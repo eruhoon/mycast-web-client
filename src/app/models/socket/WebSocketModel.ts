@@ -1,10 +1,9 @@
 import { Chat } from '../chat/Chat';
-import { ChatType } from '../chat/ChatType';
 import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
-import { ChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
+import { RawChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
 
@@ -36,7 +35,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         });
     }
 
-    protected requestChat(request: ChatRequest): void {
+    protected requestChat(request: RawChatRequest): void {
         this.sendMessage('chat', {
             userKey: this.mPrivKey,
             msg: request.msg,

@@ -1,5 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Chat } from 'src/app/models/chat/Chat';
+
+import {
+    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'chat-entry',
@@ -16,6 +19,10 @@ export class ChatEntryComponent {
   public profileIconSelect = new EventEmitter<string>();
 
   public constructor() { }
+
+  public getIcon(): string {
+    return this.chat.getSender().getIcon().trim();
+  }
 
   protected onIconContextMenu(): boolean {
     const iconElm = this.mIconView.nativeElement;

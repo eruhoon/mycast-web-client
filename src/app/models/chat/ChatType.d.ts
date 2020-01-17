@@ -1,4 +1,5 @@
 export const enum ChatType {
     TEXT = 'chat',
-    IMAGE = 'image'
+    IMAGE = 'image',
+    TWITCH = 'twitch',
 }

@@ -17,6 +17,8 @@
       <text-pack *ngIf="message.getType()==='chat'" [message]="message"></text-pack>
       <image-pack *ngIf="message.getType()==='image'" [message]="message">
       </image-pack>
+      <twitch-pack *ngIf="message.getType()==='twitch'" [message]="message">
+      </twitch-pack>
       <div *ngIf="message.getType()==='youtube'">
         <img [src]="message.getMessage()">
       </div>

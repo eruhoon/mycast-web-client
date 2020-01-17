@@ -19,6 +19,8 @@
       </image-pack>
       <twitch-pack *ngIf="message.getType()==='twitch'" [message]="message">
       </twitch-pack>
+      <link-pack *ngIf="message.getType()==='link'" [message]="message">
+      </link-pack>
       <div *ngIf="message.getType()==='youtube'">
         <img [src]="message.getMessage()">
       </div>

@@ -7,6 +7,7 @@ export class ChatTypeParser {
             case 'chat': return ChatType.TEXT;
             case 'image': return ChatType.IMAGE;
             case 'twitch': return ChatType.TWITCH;
+            case 'link': return ChatType.LINK;
             default: return ChatType.TEXT;
         }
     }

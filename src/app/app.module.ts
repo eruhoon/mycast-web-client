@@ -23,6 +23,7 @@ import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.compon
 import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
 import { ImagePopupViewerComponent } from './views/main-page/image-popup-viewer/image-popup-viewer.component';
 import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.component';
+import { LinkPackComponent } from './views/chat/cp/link-pack/link-pack.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.com
     TextPackComponent,
     ImagePopupViewerComponent,
     TwitchPackComponent,
+    LinkPackComponent,
   ],
   imports: [
     BrowserModule,

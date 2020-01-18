@@ -1,3 +1,5 @@
+import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
+
 import { Component, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
@@ -9,11 +11,14 @@ import { ChatPack } from '../ChatPack';
 })
 export class LinkPackComponent extends ChatPack implements OnInit {
 
+  private mLinkViewService: LinkContentViewService;
   private mLink: string;
   private mTitle: string;
   private mThumbnail: string;
-  public constructor() {
+
+  public constructor(linkViewService: LinkContentViewService) {
     super();
+    this.mLinkViewService = linkViewService;
   }
 
   public ngOnInit() {
@@ -27,6 +32,16 @@ export class LinkPackComponent extends ChatPack implements OnInit {
       this.mLink = 'link';
       this.mThumbnail = '';
     }
+  }
+
+  public onClick(): boolean {
+    window.open(this.mLink, '_blank');
+    return false;
+  }
+
+  public onContextMenu(): boolean {
+    this.mLinkViewService.setLink(this.mLink);
+    return false;
   }
 
   public getThumbnail(): string {

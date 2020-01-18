@@ -1,4 +1,5 @@
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -18,10 +19,15 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   private mLink: string;
 
   private mLinkPopup: LinkPopupService;
+  private mLinkContentView: LinkContentViewService;
 
-  public constructor(linkPopup: LinkPopupService) {
+  public constructor(
+    linkPopup: LinkPopupService,
+    linkContentView: LinkContentViewService) {
+
     super();
     this.mLinkPopup = linkPopup;
+    this.mLinkContentView = linkContentView;
   }
 
   public ngOnInit() {
@@ -53,6 +59,7 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   }
 
   public onContextMenu(): boolean {
+    this.mLinkContentView.setLink(this.mLink);
     return false;
   }
 }

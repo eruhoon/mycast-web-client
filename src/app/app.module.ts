@@ -34,6 +34,7 @@ import {
 import { StreamViewerComponent } from './views/main-page/stream-viewer/stream-viewer.component';
 import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
+import { LinkContentViewerComponent } from './views/main-page/link-content-viewer/link-content-viewer.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.c
     LinkPackComponent,
     YoutubePackComponent,
     LinkPopupComponent,
+    LinkContentViewerComponent,
   ],
   imports: [
     BrowserModule,

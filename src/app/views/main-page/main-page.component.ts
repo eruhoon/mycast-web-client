@@ -1,6 +1,7 @@
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
+import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
 import { Component, HostListener, ViewChild } from '@angular/core';
@@ -21,6 +22,7 @@ export class MainPageComponent {
 
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
+    private mLinkContentViewService: LinkContentViewService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
@@ -29,13 +31,15 @@ export class MainPageComponent {
 
     public constructor(
         imagePopupService: ImagePopupService,
-        linkPopupService: LinkPopupService) {
+        linkPopupService: LinkPopupService,
+        linkContentViewService: LinkContentViewService) {
 
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
+        this.mLinkContentViewService = linkContentViewService;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
         this.mInnerWidth = window.innerWidth;
@@ -48,6 +52,14 @@ export class MainPageComponent {
 
     public getCurrentStream(): Stream | null {
         return this.mCurrentStream;
+    }
+
+    public getCurrentLink(): string | null {
+        return this.mLinkContentViewService.getLink();
+    }
+
+    public isLinkMode(): boolean {
+        return this.getCurrentLink() !== null;
     }
 
     public isStreamActivated(): boolean {
@@ -109,12 +121,12 @@ export class MainPageComponent {
     }
 
     public onStreamClick(stream: Stream): void {
-        this.mCurrentStream = stream;
+        this.setCurrentStream(stream);
         this.closeMenu();
     }
 
     public onStreamIconClick(stream: Stream): void {
-        this.mCurrentStream = stream;
+        this.setCurrentStream(stream);
     }
 
     public onDividerMouseDown(event: MouseEvent): void {
@@ -148,5 +160,10 @@ export class MainPageComponent {
 
     private toggleSetting() {
         this.mSettingShow = !this.mSettingShow;
+    }
+
+    private setCurrentStream(stream: Stream): void {
+        this.mCurrentStream = stream;
+        this.mLinkContentViewService.setLink(null);
     }
 }

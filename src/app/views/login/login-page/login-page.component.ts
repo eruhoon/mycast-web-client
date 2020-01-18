@@ -33,13 +33,13 @@ export class LoginPageComponent implements OnInit {
   }
 
   public onIdKeyPress(event: KeyboardEvent) {
-    if (event.keyCode === Keyboard.KEY_ENTER) {
+    if (event.key === 'Enter') {
       this.setFocusPassword();
     }
   }
 
   public onPasswordKeyPress(event: KeyboardEvent) {
-    if (event.keyCode === Keyboard.KEY_ENTER) {
+    if (event.key === 'Enter') {
       this.requestLogin();
     }
   }
@@ -76,4 +76,4 @@ export class LoginPageComponent implements OnInit {
 type LoginForm = {
   id: string,
   pw: string,
-}
+};

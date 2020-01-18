@@ -1,4 +1,4 @@
-<div class="youtube-pack" (click)="onClick()">
+<div class="youtube-pack" (click)="onClick()" (contextmenu)="onContextMenu()">
     <img class="thumbnail" [src]="getThumbnail()">
     <div class="logo description-added"></div>
     <div class="title description-added">{{getTitle()}}</div>

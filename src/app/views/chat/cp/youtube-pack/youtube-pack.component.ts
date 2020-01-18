@@ -51,6 +51,10 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   public onClick(): void {
     this.mLinkPopup.addLink(new YoutubeLinkPopup(this.mLink));
   }
+
+  public onContextMenu(): boolean {
+    return false;
+  }
 }
 
 type Param = {

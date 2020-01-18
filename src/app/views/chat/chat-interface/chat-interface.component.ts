@@ -39,14 +39,15 @@ export class ChatInterfaceComponent implements OnInit {
     this.setInput('');
   }
 
-  protected onKeyPress(event: KeyboardEvent) {
+  public onKeyPress(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter': return this.onPressEnter();
       case 'ArrowUp': return this.onPressUp();
       case 'ArrowDown': return this.onPressDown();
     }
   }
-  protected onPressEnter(): void {
+
+  public onPressEnter(): void {
     const input = this.getInput();
     if (!input) {
       return;
@@ -57,10 +58,10 @@ export class ChatInterfaceComponent implements OnInit {
     this.clearInput();
   }
 
-  protected onPressUp(): void {
+  public onPressUp(): void {
     this.setInput(this.getPrevChat());
   }
-  protected onPressDown(): void {
+  public onPressDown(): void {
     this.setInput(this.getNextChat());
   }
 

@@ -2,7 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
 
 import {
-  Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, Output, EventEmitter
+    Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 
 @Component({
@@ -32,11 +32,11 @@ export class ChatListComponent implements OnInit, OnChanges {
     }
   }
 
-  protected getChats(): Chat[] {
+  public getChats(): Chat[] {
     return this.getMergedChats();
   }
 
-  protected onProfileIconSelect(iconSrc: string): void {
+  public onProfileIconSelect(iconSrc: string): void {
     this.entryIconSelect.emit(iconSrc);
   }
 

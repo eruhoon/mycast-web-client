@@ -54,15 +54,15 @@ export class SideBarComponent implements OnInit {
     return this.mKakaoListShow;
   }
 
-  protected onStreamClick(stream: Stream): void {
+  public onStreamClick(stream: Stream): void {
     this.streamClick.emit(stream);
   }
 
-  protected onTwitchListClick(): void {
+  public onTwitchListClick(): void {
     this.toggleTwtichList();
   }
 
-  protected onKakaoListClick(): void {
+  public onKakaoListClick(): void {
     this.toggleKakaoList();
   }
 

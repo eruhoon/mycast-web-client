@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent {
 
   @Output()
   public menuClick = new EventEmitter();
@@ -15,14 +15,11 @@ export class TopBarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  protected onMenuClick() {
+  public onMenuClick() {
     this.menuClick.emit();
   }
 
-  protected onSettingClick() {
+  public onSettingClick() {
     this.settingClick.emit();
   }
 

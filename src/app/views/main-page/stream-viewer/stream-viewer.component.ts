@@ -36,11 +36,11 @@ export class StreamViewerComponent implements OnInit, OnChanges {
     return this.stream.getPlatform() === 'local';
   }
 
-  protected getLocalStream(): Stream | null {
+  public getLocalStream(): Stream | null {
     return this.mLocalStream;
   }
 
-  protected getExternalStream(): Stream | null {
+  public getExternalStream(): Stream | null {
     return this.mExternalStream;
   }
 }

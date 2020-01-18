@@ -37,7 +37,7 @@ export class StreamListComponent implements OnInit {
     return this.mStreams;
   }
 
-  protected onIconClick(stream: Stream): void {
+  public onIconClick(stream: Stream): void {
     this.streamIconClick.emit(stream);
   }
 

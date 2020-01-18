@@ -20,7 +20,7 @@ export class ImagePackComponent extends ChatPack {
     this.mImagePopupService = imagePopupService;
   }
 
-  protected onImageClick(): void {
+  public onImageClick(): void {
     const image = this.message.getMessage();
     this.mImagePopupService.setImage(image);
   }

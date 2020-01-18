@@ -23,11 +23,11 @@ export class ImagePopupViewerComponent {
     return image !== null ? image : '';
   }
 
-  protected onBackgroundClick(): void {
+  public onBackgroundClick(): void {
     this.backgroundClick.emit();
   }
 
-  protected onImageClick(): boolean {
+  public onImageClick(): boolean {
     return false;
   }
 }

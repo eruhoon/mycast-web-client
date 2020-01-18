@@ -11,7 +11,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
     @ViewChild(TopBarComponent, { static: false })
     private mTopBar: TopBarComponent;
@@ -35,11 +35,8 @@ export class MainPageComponent implements OnInit {
         this.mInnerWidth = window.innerWidth;
     }
 
-    public ngOnInit() {
-    }
-
     @HostListener('window:resize', ['$event'])
-    protected onResize(event: Event) {
+    public onResize(event: Event) {
         this.mInnerWidth = window.innerWidth;
     }
 
@@ -93,33 +90,33 @@ export class MainPageComponent implements OnInit {
         return min(max(this.mDividerPosition));
     }
 
-    protected onMenuClick() {
+    public onMenuClick() {
         this.toggleMenu();
     }
 
-    protected onOutOfMenuClick() {
+    public onOutOfMenuClick() {
         this.closeMenu();
     }
 
-    protected onSettingClick() {
+    public onSettingClick() {
         this.toggleSetting();
     }
 
-    protected onStreamClick(stream: Stream): void {
+    public onStreamClick(stream: Stream): void {
         this.mCurrentStream = stream;
         this.closeMenu();
     }
 
-    protected onStreamIconClick(stream: Stream): void {
+    public onStreamIconClick(stream: Stream): void {
         this.mCurrentStream = stream;
     }
 
-    protected onDividerMouseDown(event: MouseEvent): void {
+    public onDividerMouseDown(event: MouseEvent): void {
         this.mMoveMode = true;
         this.mDividerPosition = event.clientX;
     }
 
-    protected onDividerMove(event: MouseEvent): void {
+    public onDividerMove(event: MouseEvent): void {
         if (!this.mMoveMode) {
             return;
         }
@@ -127,7 +124,7 @@ export class MainPageComponent implements OnInit {
         this.mDividerPosition = left;
     }
 
-    protected onDividerMouseUp(): void {
+    public onDividerMouseUp(): void {
         this.mMoveMode = false;
     }
 

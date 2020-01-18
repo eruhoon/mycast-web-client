@@ -24,13 +24,13 @@ export class ChatEntryComponent {
     return this.chat.getSender().getIcon().trim();
   }
 
-  protected onIconContextMenu(): boolean {
+  public onIconContextMenu(): boolean {
     const iconElm = this.mIconView.nativeElement;
     this.profileIconSelect.emit(iconElm.src);
     return false;
   }
 
-  protected onImagePackClick(image: string): void {
+  public onImagePackClick(image: string): void {
     console.log(image);
   }
 }

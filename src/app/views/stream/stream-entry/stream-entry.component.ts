@@ -17,17 +17,17 @@ export class StreamEntryComponent implements OnInit {
 
   public ngOnInit() { }
 
-  protected onIconClick(): void {
+  public onIconClick(): void {
     this.iconClick.emit(this.stream);
   }
 
-  protected onShareClick(stream: Stream): void {
+  public onShareClick(stream: Stream): void {
     console.log('share', stream)
     const share = new StreamShareCommand(stream);
     share.execute();
   }
 
-  protected onNewWindowClick(stream: Stream): void {
+  public onNewWindowClick(stream: Stream): void {
     console.log('new window', stream);
   }
 }

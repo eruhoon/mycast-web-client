@@ -46,11 +46,11 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
     return `https://player.twitch.tv/?channel=${this.mId}`;
   }
 
-  protected onClick(): void {
+  public onClick(): void {
     console.log('click', this.getLink());
   }
 
-  protected onContextMenu(): void {
+  public onContextMenu(): void {
     console.log('contextMenu', this.getLink());
   }
 

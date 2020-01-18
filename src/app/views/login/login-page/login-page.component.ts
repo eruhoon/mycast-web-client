@@ -1,9 +1,10 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
 import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,7 @@ import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 })
 export class LoginPageComponent implements OnInit {
 
-  protected mLoginForm: LoginForm;
+  public mLoginForm: LoginForm;
   private mPageNavigator: PageNavigator;
   private mRenderer: Renderer2;
   private mSessionStorage: SessionStorage;
@@ -31,23 +32,23 @@ export class LoginPageComponent implements OnInit {
     console.log(this.mSessionStorage.getPrivateKey());
   }
 
-  protected onIdKeyPress(event: KeyboardEvent) {
+  public onIdKeyPress(event: KeyboardEvent) {
     if (event.keyCode === Keyboard.KEY_ENTER) {
       this.setFocusPassword();
     }
   }
 
-  protected onPasswordKeyPress(event: KeyboardEvent) {
+  public onPasswordKeyPress(event: KeyboardEvent) {
     if (event.keyCode === Keyboard.KEY_ENTER) {
       this.requestLogin();
     }
   }
 
-  protected onSubmit(): void {
+  public onSubmit(): void {
     this.requestLogin();
   }
 
-  protected onJoinClick(): void {
+  public onJoinClick(): void {
     this.mPageNavigator.navigateJoinPage();
   }
 

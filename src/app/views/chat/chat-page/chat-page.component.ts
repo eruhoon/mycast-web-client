@@ -1,10 +1,10 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
+import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 import { Component, OnInit } from '@angular/core';
-import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
 
 @Component({
   selector: 'chat-page',
@@ -24,16 +24,16 @@ export class ChatPageComponent implements OnInit {
   public ngOnInit() {
   }
 
-  protected onChatInput(rawChat: string): void {
+  public onChatInput(rawChat: string): void {
     console.log(rawChat);
     this.mChatNetwork.chat(rawChat);
   }
 
-  protected onChatEntryIconSelect(icon: string) {
+  public onChatEntryIconSelect(icon: string) {
     this.mChatNetwork.chat(icon);
   }
 
-  protected getCurrentChats(): Chat[] {
+  public getCurrentChats(): Chat[] {
     return this.mCurrentChats;
   }
 
@@ -53,7 +53,7 @@ export class ChatPageComponent implements OnInit {
     this.mCurrentChats = chats;
   }
 
-  private onChat(chat: Chat) {
+  public onChat(chat: Chat) {
     const newChats = [...this.mCurrentChats, chat];
     this.mCurrentChats = newChats.slice(
       newChats.length - ChatPageComponent.CHAT_CAPACITY);

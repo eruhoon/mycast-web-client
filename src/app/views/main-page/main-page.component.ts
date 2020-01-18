@@ -1,5 +1,5 @@
-import { ImagePopupService } from 'src/app/models/image/image-popup.service';
 import { Stream } from 'src/app/models/stream/Stream';
+import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 

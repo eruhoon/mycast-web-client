@@ -1,4 +1,4 @@
-import { ImagePopupService } from 'src/app/models/image/image-popup.service';
+import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 
 import { Component, EventEmitter, Output } from '@angular/core';
 

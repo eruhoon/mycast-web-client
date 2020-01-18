@@ -24,6 +24,7 @@ import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component
 import { ImagePopupViewerComponent } from './views/main-page/image-popup-viewer/image-popup-viewer.component';
 import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.component';
 import { LinkPackComponent } from './views/chat/cp/link-pack/link-pack.component';
+import { YoutubePackComponent } from './views/chat/cp/youtube-pack/youtube-pack.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LinkPackComponent } from './views/chat/cp/link-pack/link-pack.component
     ImagePopupViewerComponent,
     TwitchPackComponent,
     LinkPackComponent,
+    YoutubePackComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,10 @@
+import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
+import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
 @Component({
@@ -19,17 +20,22 @@ export class MainPageComponent {
     public mCurrentStream: Stream | null;
 
     private mImagePopupService: ImagePopupService;
+    private mLinkPopupService: LinkPopupService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
     private mMoveMode: boolean;
     private mDividerPosition: number;
 
-    public constructor(imagePopupService: ImagePopupService) {
+    public constructor(
+        imagePopupService: ImagePopupService,
+        linkPopupService: LinkPopupService) {
+
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mImagePopupService = imagePopupService;
+        this.mLinkPopupService = linkPopupService;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
         this.mInnerWidth = window.innerWidth;
@@ -126,6 +132,10 @@ export class MainPageComponent {
 
     public onDividerMouseUp(): void {
         this.mMoveMode = false;
+    }
+
+    public getLinkPopups(): LinkPopup[] {
+        return this.mLinkPopupService.getLinks();
     }
 
     private toggleMenu() {

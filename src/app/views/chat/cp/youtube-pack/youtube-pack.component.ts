@@ -1,3 +1,6 @@
+import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { LinkPopupService } from 'src/app/services/link/link-popup.service';
+
 import { Component, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
@@ -14,8 +17,11 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   private mThumbnail: string;
   private mLink: string;
 
-  public constructor() {
+  private mLinkPopup: LinkPopupService;
+
+  public constructor(linkPopup: LinkPopupService) {
     super();
+    this.mLinkPopup = linkPopup;
   }
 
   public ngOnInit() {
@@ -42,12 +48,8 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
     return this.mThumbnail;
   }
 
-  public getLink(): string {
-    return this.mLink;
-  }
-
   public onClick(): void {
-
+    this.mLinkPopup.addLink(new YoutubeLinkPopup(this.mLink));
   }
 }
 
@@ -58,3 +60,19 @@ type Param = {
   thumbnail: string,
   link: string,
 };
+
+class YoutubeLinkPopup implements LinkPopup {
+  private mLink: string;
+  public constructor(link: string) {
+    this.mLink = link;
+  }
+  public getWidth(): number {
+    return 480;
+  }
+  public getHeight(): number {
+    return 360;
+  }
+  public getLink(): string {
+    return this.mLink;
+  }
+}

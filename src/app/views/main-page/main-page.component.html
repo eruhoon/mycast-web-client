@@ -35,4 +35,5 @@
         <app-setting-view></app-setting-view>
     </div>
 </nav>
+<link-popup *ngFor="let linkPopup of getLinkPopups()" [linkPopup]="linkPopup"></link-popup>
 <image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>

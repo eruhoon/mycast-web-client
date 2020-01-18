@@ -1,0 +1,78 @@
+@mixin shadow($color: #000000) {
+  box-shadow: 0px 0px 5px $color;
+}
+
+.link-popup {
+  align-items: center;
+  position: fixed;
+  left: calc(50% - 240px);
+  top: calc(50% - 150px);
+
+  iframe.content {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    width: 100%;
+    height: calc(100% - 30px);
+    border: 0px;
+    background: white;
+  }
+}
+
+.movebox {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.title-bar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  top: 0px;
+  align-items: center;
+  cursor: default;
+  opacity: 0;
+  background: #333;
+  color: #ccc;
+  i {
+    padding: 0 5px 0 5px;
+  }
+  .title {
+    display: inline-block;
+    width: calc(100% - 30px);
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    background: #333;
+    color: #ccc;
+    border: none;
+    outline: none;
+    i {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    &:hover {
+      background: #666;
+    }
+  }
+}
+
+.link-popup:hover {
+  @include shadow();
+
+  .title-bar {
+    opacity: 1;
+  }
+}

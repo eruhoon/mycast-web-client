@@ -39,30 +39,25 @@ export class ChatInterfaceComponent implements OnInit {
     this.setInput('');
   }
 
-  public onKeyPress(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'Enter': return this.onPressEnter();
-      case 'ArrowUp': return this.onPressUp();
-      case 'ArrowDown': return this.onPressDown();
-    }
-  }
-
-  public onPressEnter(): void {
+  public onPressEnter(): boolean {
     const input = this.getInput();
     if (!input) {
-      return;
+      return false;
     }
     this.chatInput.emit(input);
     this.mChatHistoryList.addHistory(input);
     this.mChatHistoryList.resetIndex();
     this.clearInput();
+    return false;
   }
 
-  public onPressUp(): void {
+  public onPressUp(): boolean {
     this.setInput(this.getPrevChat());
+    return false;
   }
-  public onPressDown(): void {
+  public onPressDown(): boolean {
     this.setInput(this.getNextChat());
+    return false;
   }
 
   private getPrevChat(): string {

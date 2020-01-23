@@ -2,5 +2,6 @@
     <div class="input-sticker">
 
     </div>
-    <input #inputBox class="input-box" (keydown)="onKeyPress($event)">
+    <input #inputBox type="text" class="input-box" (keydown.enter)="onPressEnter()" (keydown.arrowup)="onPressUp()"
+        (keydown.arrowdown)="onPressDown()">
 </div>

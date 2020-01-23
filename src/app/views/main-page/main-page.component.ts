@@ -163,7 +163,6 @@ export class MainPageComponent {
     }
 
     private setCurrentStream(stream: Stream): void {
-        this.mCurrentStream = stream;
-        this.mLinkContentViewService.setLink(null);
+        this.mLinkContentViewService.setLink(stream.getUrl());
     }
 }

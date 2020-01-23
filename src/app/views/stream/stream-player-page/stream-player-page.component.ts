@@ -29,7 +29,6 @@ export class StreamPlayerPageComponent implements OnInit {
   public ngOnInit() {
     this.mRoute.paramMap.subscribe(params => {
       this.mPlayerId = params.get('playerId') || '';
-      console.log(this.mPlayerId);
       this.getPlayer().load(`rtmp://mycast.xyz/live/${this.mPlayerId}`, 'mpeg/flv', true);
     });
   }

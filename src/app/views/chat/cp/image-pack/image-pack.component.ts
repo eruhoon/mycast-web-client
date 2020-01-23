@@ -20,6 +20,10 @@ export class ImagePackComponent extends ChatPack {
     this.mImagePopupService = imagePopupService;
   }
 
+  public getImage(): string {
+    return this.message.getMessage().trim();
+  }
+
   public onImageClick(): void {
     const image = this.message.getMessage();
     this.mImagePopupService.setImage(image);

@@ -30,7 +30,7 @@ export class MockStreamListLoader implements StreamListLoader {
         const hojinLee = new MutableStream();
         hojinLee.setKeyId('eruhoon');
         hojinLee.setIcon('http://stimg.afreeca.com/LOGO/ho/horidda/horidda.jpg');
-        streams.push(hojinLee)
+        streams.push(hojinLee);
 
         callback(streams);
     }

@@ -17,7 +17,7 @@ export class MutableChat implements Chat {
     }
 
     public getSender(): ChatSender {
-        const sender = new MutableChatSender;
+        const sender = new MutableChatSender();
         sender.setHash(this.mNickname + this.mLevel + this.mIcon);
         sender.setNickname(this.mNickname);
         sender.setLevel(this.mLevel);

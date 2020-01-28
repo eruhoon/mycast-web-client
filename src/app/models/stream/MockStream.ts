@@ -62,7 +62,7 @@ export class MockStream {
                 result: true,
                 platform: 'kakaotv',
                 keyid: '2669634',
-                icon: 'https://t1.daumcdn.net/thumb/R200x0/?fname=http%3A%2F%2Fimg1.daumcdn.net%2Fkakaotv%2FCHANNEL%2F2669634%2Fprofile%2F20170221223702',
+                icon: 'https://image.ytn.co.kr/general/jpg/mp3/google/logo.png',
                 nickname: 'YTN',
                 thumbnail: 'https://thumb.kakaocdn.net/dn/live_image/snapshot/873179579b985817_ss.jpg?t=157690209',
                 onair: true,

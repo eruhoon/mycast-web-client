@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './services/auth/auth.guard';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
@@ -12,7 +13,10 @@ import {
 const routes: Routes = [
   {
     path: '',
-    component: MainPageComponent
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: MainPageComponent }
+    ]
   },
   {
     path: 'login',

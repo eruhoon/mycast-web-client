@@ -1,5 +1,4 @@
-
-@media all and (max-width:768px)  {
+@media all and (max-width: 768px) {
   div.page {
     position: absolute;
     top: 0;
@@ -10,17 +9,21 @@
     background: #ffffff;
     overflow: auto;
   }
-  
+
   .login {
     width: 300px;
     height: 766px;
-    
+
     display: inline-block;
     vertical-align: middle;
     background-color: white;
 
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 30px 30px 60px #c2c2c2, -30px -30px 60px #ffffff;
+
     border: 1px soild #e0e0e0;
-  
+
     .logo {
       width: 75%;
       padding: 12.5%;
@@ -28,7 +31,7 @@
       height: auto;
       text-align: center;
       margin-top: 25%;
-  
+
       img {
         width: 100%;
       }
@@ -47,16 +50,16 @@
         margin-bottom: 20px;
         border-radius: 5px;
         border: 1px solid #eeeeee;
-        
-        -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
-        -moz-appearance: none; 
+
+        -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */
+        -moz-appearance: none;
         appearance: none;
-  
+
         //내부 텍스트 설정
         color: #636363;
         font-size: 15px;
         font-weight: lighter;
-  
+
         &:hover {
           border-color: #e0e0e0;
         }
@@ -67,8 +70,8 @@
       button {
         width: 100%;
         height: 50px;
-        background-color: #FF4081;
-        border: 1px solid #E91E63;
+        background-color: #ff4081;
+        border: 1px solid #e91e63;
         border-radius: 5px;
         font-size: 20px;
         font-weight: bolder;
@@ -76,49 +79,49 @@
         letter-spacing: 3px;
       }
     }
-  
+
     .bottom {
       width: 100%;
       height: auto;
       text-align: center;
       margin: 20px 0px;
       padding-top: 20px;
-  
+
       button {
         width: 100%;
         height: 50px;
         background-color: #ffffff;
-        border: 1px solid #EC407A;
+        border: 1px solid #ec407a;
         border-radius: 5px;
         font-size: 16px;
         font-weight: lighter;
-        color: #EC407A;
+        color: #ec407a;
         letter-spacing: 3px;
-  
+
         &:hover {
-          background-color: #FCE4EC;
-          border-color: #E91E63;
-          color: #E91E63;
+          background-color: #fce4ec;
+          border-color: #e91e63;
+          color: #e91e63;
         }
-  
+
         &:active {
-          background-color: #F06292;
-          border-color: #D81B60;
+          background-color: #f06292;
+          border-color: #d81b60;
           color: #ffffff;
         }
       }
     }
   }
 }
-@media all and (min-width:768px) {
+@media all and (min-width: 768px) {
   div.page {
     height: 100%;
-  
+
     background: url("/../assets/image/login/bg.jpg");
     background-size: auto 100%;
     background-position: center top;
   }
-  
+
   .login {
     width: 300px;
     min-height: 500px;
@@ -130,9 +133,10 @@
     padding-top: 20px;
     border: 1px soild #e0e0e0;
     border-radius: 5px;
-  
-    box-shadow: 0 1px 1px 0 rgba(60,64,67,.08),0 1px 3px 1px rgba(60,64,67,.16);
-  
+
+    box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+      0 1px 3px 1px rgba(60, 64, 67, 0.16);
+
     .logo {
       width: 75%;
       padding: 12.5%;
@@ -140,7 +144,7 @@
       height: auto;
       text-align: center;
       margin-top: 25%;
-  
+
       img {
         width: 100%;
       }
@@ -159,16 +163,16 @@
         margin-bottom: 20px;
         border-radius: 5px;
         border: 1px solid #eeeeee;
-        
-        -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
-        -moz-appearance: none; 
+
+        -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */
+        -moz-appearance: none;
         appearance: none;
-  
+
         //내부 텍스트 설정
         color: #636363;
         font-size: 15px;
         font-weight: lighter;
-  
+
         &:hover {
           border-color: #e0e0e0;
         }
@@ -179,8 +183,8 @@
       button {
         width: 100%;
         height: 50px;
-        background-color: #FF4081;
-        border: 1px solid #E91E63;
+        background-color: #ff4081;
+        border: 1px solid #e91e63;
         border-radius: 5px;
         font-size: 20px;
         font-weight: bolder;
@@ -188,38 +192,37 @@
         letter-spacing: 3px;
       }
     }
-  
+
     .bottom {
       width: 100%;
       height: auto;
       text-align: center;
       margin: 20px 0px;
       padding-top: 20px;
-  
+
       button {
         width: 100%;
         height: 50px;
         background-color: #ffffff;
-        border: 1px solid #EC407A;
+        border: 1px solid #ec407a;
         border-radius: 5px;
         font-size: 16px;
         font-weight: lighter;
-        color: #EC407A;
+        color: #ec407a;
         letter-spacing: 3px;
-  
+
         &:hover {
-          background-color: #FCE4EC;
-          border-color: #E91E63;
-          color: #E91E63;
+          background-color: #fce4ec;
+          border-color: #e91e63;
+          color: #e91e63;
         }
-  
+
         &:active {
-          background-color: #F06292;
-          border-color: #D81B60;
+          background-color: #f06292;
+          border-color: #d81b60;
           color: #ffffff;
         }
       }
     }
   }
 }
-

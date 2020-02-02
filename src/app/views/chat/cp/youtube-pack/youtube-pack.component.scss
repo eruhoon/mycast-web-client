@@ -49,8 +49,8 @@
   }
   .logo {
     position: absolute;
-    bottom: 8px;
-    left: 5px;
+    top: 8px;
+    left: 10px;
     width: 50px;
     height: 22px;
     border-radius: 5px;
@@ -63,9 +63,10 @@
   .title {
     position: absolute;
     bottom: 10px;
-    left: 60px;
-    width: calc(100% - 65px);
+    left: 0px;
+    width: calc(100% - 14px);
     height: 20px;
+    padding: 0px 7px;
     border-bottom: solid 1px #aaa;
     font-size: 15px;
     line-height: 20px;

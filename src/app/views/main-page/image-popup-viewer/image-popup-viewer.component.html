@@ -1,6 +1,13 @@
 <div class="container" (click)="onBackgroundClick()">
-    <div class="background"></div>
-    <div class="image-wrapper">
-        <img [src]="getImage()">
+  <div class="background"></div>
+  <div class="image-wrapper">
+    <img [src]="getImage()" />
+    <div class="image-info">
+      <a>
+        <i class="material-icons">
+          save_alt
+        </i>
+      </a>
     </div>
+  </div>
 </div>

@@ -23,6 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   img {
     width: auto;
@@ -35,5 +36,35 @@
     border-radius: 5px;
     border: 5px solid #ffffff;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  div {
+    width: auto;
+    height: 40px;
+    max-width: 90%;
+    margin-top: 15px;
+
+    a {
+      width: auto;
+      height: auto;
+      float: right;
+      padding: 3px 7px;
+      padding-top: 6px;
+      background: #fff;
+      border-radius: 50%;
+      color: #757575;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      i {
+        font-weight: lighter;
+      }
+      &:hover {
+        background-color: #ec407a;
+        color: #ffffff;
+      }
+      &:active {
+        background-color: #c2185b;
+        color: #ffffff;
+      }
+    }
   }
 }

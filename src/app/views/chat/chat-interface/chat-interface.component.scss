@@ -17,13 +17,24 @@
   a {
     width: auto;
     height: auto;
+    display: inline-block;
+    color: #757575;
+    user-select: none;
 
     i {
       font-size: 20px;
       padding: 6px;
-      margin-left: 5px;
-      color: #757575;
     }
+
+    &:hover {
+      color: #ec407a;
+    }
+    &:active {
+      color: #c2185b;
+    }
+  }
+  a:first-child {
+    margin-left: 5px;
   }
 }
 .input-box {

@@ -1,7 +1,17 @@
 <div class="chat-interface">
-    <div class="input-sticker">
-
-    </div>
-    <input #inputBox type="text" class="input-box" (keydown.enter)="onPressEnter()" (keydown.arrowup)="onPressUp()"
-        (keydown.arrowdown)="onPressDown()">
+  <div class="input-sticker">
+    <a>
+      <i class="material-icons">
+        assignment_ind
+      </i>
+    </a>
+  </div>
+  <input
+    #inputBox
+    type="text"
+    class="input-box"
+    (keydown.enter)="onPressEnter()"
+    (keydown.arrowup)="onPressUp()"
+    (keydown.arrowdown)="onPressDown()"
+  />
 </div>

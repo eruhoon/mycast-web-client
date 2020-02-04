@@ -7,7 +7,7 @@
   background-color: #ffffff;
 }
 
-// 대충 ~ 짤 or 스티커형태의 아이콘 보내주기(태그별 묶은 형태)
+// 스티커 & 채팅 클리어 & 채팅 인원 안내
 .input-sticker {
   width: 100%;
   height: 30px;
@@ -31,6 +31,10 @@
     }
     &:active {
       color: #c2185b;
+    }
+    &:last-child {
+      position: absolute;
+      right: 5px;
     }
   }
   a:first-child {

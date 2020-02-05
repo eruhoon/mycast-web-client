@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 import { Injectable } from '@angular/core';
 import {
@@ -11,16 +12,18 @@ import {
 export class AuthGuard implements CanActivate {
 
   private mRouter: Router;
+  private mSessionStorage: SessionStorage;
 
   constructor(router: Router) {
     this.mRouter = router;
+    this.mSessionStorage = SessionStorage.getInstance();
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const isLogin = true;
+    const isLogin = this.mSessionStorage.getSessionId();
     if (isLogin) {
       return true;
     } else {

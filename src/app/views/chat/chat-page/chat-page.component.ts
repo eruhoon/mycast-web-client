@@ -1,8 +1,6 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
-import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
-import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
-import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -13,19 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPageComponent implements OnInit {
 
-  private static readonly CHAT_CAPACITY = 50;
+  private mMainService: MainService;
   private mChatNetwork: ChatNetworkModel;
-  private mCurrentChats: Chat[];
 
-  constructor() {
-    this.mChatNetwork = this.createChatNetworkModel();
+  public constructor(mainService: MainService) {
+    this.mMainService = mainService;
+    this.mChatNetwork = mainService.getChatNework();
   }
 
   public ngOnInit() {
   }
 
   public onChatInput(rawChat: string): void {
-    console.log(rawChat);
     this.mChatNetwork.chat(rawChat);
   }
 
@@ -34,28 +31,6 @@ export class ChatPageComponent implements OnInit {
   }
 
   public getCurrentChats(): Chat[] {
-    return this.mCurrentChats;
-  }
-
-  private createChatNetworkModel(): ChatNetworkModel {
-    const privateKey = SessionStorage.getInstance().getPrivateKey();
-    if (privateKey === null) {
-      return new NullChatNetworkModel();
-    }
-    const chatNetwork = new ChatNetworkModelImpl(privateKey);
-    chatNetwork.setOnRefreshChatListCallback(
-      chats => this.onChatListRefresh(chats));
-    chatNetwork.setOnChatCallback(chat => this.onChat(chat));
-    return chatNetwork;
-  }
-
-  private onChatListRefresh(chats: Chat[]) {
-    this.mCurrentChats = chats;
-  }
-
-  public onChat(chat: Chat) {
-    const newChats = [...this.mCurrentChats, chat];
-    this.mCurrentChats = newChats.slice(
-      newChats.length - ChatPageComponent.CHAT_CAPACITY);
+    return this.mMainService.getCurrentChats();
   }
 }

@@ -3,6 +3,7 @@ import { Stream } from 'src/app/models/stream/Stream';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
+import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, HostListener, ViewChild } from '@angular/core';
 
@@ -20,6 +21,7 @@ export class MainPageComponent {
 
     public mCurrentStream: Stream | null;
 
+    private mMainService: MainService;
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
     private mLinkContentViewService: LinkContentViewService;
@@ -30,6 +32,7 @@ export class MainPageComponent {
     private mDividerPosition: number;
 
     public constructor(
+        mainService: MainService,
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
         linkContentViewService: LinkContentViewService) {
@@ -37,6 +40,7 @@ export class MainPageComponent {
         this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
+        this.mMainService = mainService;
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
         this.mLinkContentViewService = linkContentViewService;

@@ -1,4 +1,4 @@
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Chat } from 'src/app/models/chat/Chat';
 
 import { Injectable } from '@angular/core';

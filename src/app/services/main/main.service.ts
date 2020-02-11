@@ -6,29 +6,24 @@ import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 import { Injectable } from '@angular/core';
 
+import { CurrentChatService } from '../chat/current-chat.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 
-  private static readonly CHAT_CAPACITY = 50;
-
+  private mCurrentChatService: CurrentChatService;
   private mChatNetwork: ChatNetworkModel;
-  private mCurrentChats: Chat[];
 
-  constructor() {
+  public constructor(currentChatService: CurrentChatService) {
+    this.mCurrentChatService = currentChatService;
     this.mChatNetwork = this.createChatNetworkModel();
-    this.mCurrentChats = [];
   }
 
   // TODO: Remove
   public getChatNework(): ChatNetworkModel {
     return this.mChatNetwork;
-  }
-
-  // TODO: Remove
-  public getCurrentChats(): Chat[] {
-    return this.mCurrentChats;
   }
 
   private createChatNetworkModel(): ChatNetworkModel {
@@ -44,13 +39,11 @@ export class MainService {
   }
 
   private onChatListRefresh(chats: Chat[]) {
-    this.mCurrentChats = chats;
+    this.mCurrentChatService.setCurrentChat(chats);
   }
 
   public onChat(chat: Chat) {
-    const newChats = [...this.mCurrentChats, chat];
-    this.mCurrentChats = newChats.slice(
-      newChats.length - MainService.CHAT_CAPACITY);
+    this.mCurrentChatService.addChat(chat);
   }
 
 }

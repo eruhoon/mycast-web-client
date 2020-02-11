@@ -1,5 +1,6 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPageComponent implements OnInit {
 
-  private mMainService: MainService;
+  private mCurrentChatService: CurrentChatService;
   private mChatNetwork: ChatNetworkModel;
 
-  public constructor(mainService: MainService) {
-    this.mMainService = mainService;
+  public constructor(
+    mainService: MainService, currentChatService: CurrentChatService) {
+
+    this.mCurrentChatService = currentChatService;
     this.mChatNetwork = mainService.getChatNework();
   }
 
@@ -31,6 +34,6 @@ export class ChatPageComponent implements OnInit {
   }
 
   public getCurrentChats(): Chat[] {
-    return this.mMainService.getCurrentChats();
+    return this.mCurrentChatService.getChats();
   }
 }

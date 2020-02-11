@@ -1,4 +1,4 @@
 <div class="chat-page">
-    <chat-list [chats]="getCurrentChats()" (entryIconSelect)="onChatEntryIconSelect($event)"></chat-list>
+    <chat-list (entryIconSelect)="onChatEntryIconSelect($event)"></chat-list>
     <chat-interface (chatInput)="onChatInput($event)"></chat-interface>
 </div>

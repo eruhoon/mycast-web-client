@@ -3,7 +3,9 @@ import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
-import { RawChatRequest, RefreshChat, VegaChatSocketModel } from './VegaChatSocketModel';
+import {
+    RawChatRequest, RefreshChat, RefreshUser, VegaChatSocketModel
+} from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
 
@@ -49,6 +51,10 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     public setOnChatCallback(callback: TypeCallback<Chat>): void {
         this.mOnChat = callback;
+    }
+
+    protected onRefreshUserList(users: RefreshUser[]) {
+        console.log(users);
     }
 
     protected onRefreshChatList(refreshChats: RefreshChat[]) {

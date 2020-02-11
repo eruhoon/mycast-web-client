@@ -11,6 +11,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
 
     public abstract login(): void;
 
+    protected abstract onRefreshUserList(users: RefreshUser[]): void;
     protected abstract onRefreshChatList(chats: RefreshChat[]): void;
     protected abstract onChat(res): void;
     protected abstract requestChat(request: RawChatRequest): void;
@@ -37,6 +38,9 @@ export abstract class VegaChatSocketModel implements SocketModel {
     protected onMessageData(messageData: MessageData) {
         console.log(messageData);
         switch (messageData.commandType) {
+            case 'applyCurrentUserList':
+                this.onRefreshUserList(messageData.response);
+                break;
             case 'applyCurrentChatList':
                 this.onRefreshChatList(messageData.response);
                 break;
@@ -53,6 +57,16 @@ type MessageData = {
     commandType: string, // TODO: type
     request: any,
     response: any
+};
+
+export type RefreshUser = {
+    channelList: string[],
+    computer: boolean,
+    hash: string,
+    icon: string
+    level: number,
+    mobile: boolean,
+    nickname: string
 };
 
 export type RefreshChat = {

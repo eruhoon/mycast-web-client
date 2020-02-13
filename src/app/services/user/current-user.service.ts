@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CurrentUserService {
 
-  private mUserSubject: Subject<User[]>
+  private mUserSubject: Subject<User[]>;
   private mUsers: User[];
 
   public constructor() {

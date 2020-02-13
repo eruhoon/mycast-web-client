@@ -3,6 +3,8 @@ import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { MutableUser } from '../user/MutableUser';
+import { User } from '../user/User';
 import {
     RawChatRequest, RefreshChat, RefreshUser, VegaChatSocketModel
 } from './VegaChatSocketModel';
@@ -15,6 +17,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     private mWebSocket: WebSocket;
     private mChatTypeParser: ChatTypeParser;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
+    private mOnRefreshUserList: TypeCallback<User[]>;
     private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
@@ -23,6 +26,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mWebSocket = new WebSocket(WebSocketModel.URL);
         this.mChatTypeParser = new ChatTypeParser();
         this.mOnRefreshChatList = _ => { };
+        this.mOnRefreshUserList = _ => { };
         this.mOnChat = _ => { };
 
         this.mWebSocket.onopen = () => this.onOpenSocket();
@@ -49,12 +53,23 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mOnRefreshChatList = callback;
     }
 
+    public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
+        this.mOnRefreshUserList = callback;
+    }
+
     public setOnChatCallback(callback: TypeCallback<Chat>): void {
         this.mOnChat = callback;
     }
 
-    protected onRefreshUserList(users: RefreshUser[]) {
-        console.log(users);
+    protected onRefreshUserList(refreshUsers: RefreshUser[]) {
+        const users: User[] = refreshUsers.map(refreshUser => {
+            console.log(refreshUser);
+            const user = new MutableUser(refreshUser.hash);
+            user.setName(refreshUser.nickname);
+            console.log(user);
+            return user;
+        });
+        this.mOnRefreshUserList(users);
     }
 
     protected onRefreshChatList(refreshChats: RefreshChat[]) {

@@ -1,0 +1,18 @@
+.chat-user-list {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  overflow-y: scroll;
+  background: blue;
+}
+
+user-entry {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+
+  border-bottom: 1px solid #e8e8e8;
+  &:last-child {
+    border-bottom-color: #ffffff;
+  }
+}

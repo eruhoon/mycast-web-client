@@ -36,6 +36,8 @@ import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 import { LinkContentViewerComponent } from './views/main-page/link-content-viewer/link-content-viewer.component';
 import { StreamPlayerPageComponent } from './views/stream/stream-player-page/stream-player-page.component';
+import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
+import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { StreamPlayerPageComponent } from './views/stream/stream-player-page/str
     LinkPopupComponent,
     LinkContentViewerComponent,
     StreamPlayerPageComponent,
+    ChatUserListComponent,
+    ChatUserEntryComponent,
   ],
   imports: [
     BrowserModule,

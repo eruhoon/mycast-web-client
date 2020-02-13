@@ -1,3 +1,6 @@
+import { Observable, Subject } from 'rxjs';
+import { User } from 'src/app/models/user/User';
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +8,21 @@ import { Injectable } from '@angular/core';
 })
 export class CurrentUserService {
 
-  constructor() { }
+  private mUserSubject: Subject<User[]>
+  private mUsers: User[];
+
+  public constructor() {
+    this.mUserSubject = new Subject<User[]>();
+    this.mUsers = [];
+  }
+
+  public getUsers(): Observable<User[]> {
+    return this.mUserSubject.asObservable();
+  }
+
+  public setUsers(users: User[]): void {
+    console.log('setUser', users);
+    this.mUsers = users;
+    this.mUserSubject.next(this.mUsers);
+  }
 }

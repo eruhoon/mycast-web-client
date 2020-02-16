@@ -63,10 +63,11 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     protected onRefreshUserList(refreshUsers: RefreshUser[]) {
         const users: User[] = refreshUsers.map(refreshUser => {
-            console.log(refreshUser);
             const user = new MutableUser(refreshUser.hash);
             user.setName(refreshUser.nickname);
-            console.log(user);
+            user.setLevel(refreshUser.level);
+            user.setMobile(refreshUser.mobile);
+            user.setComputer(refreshUser.computer);
             return user;
         });
         this.mOnRefreshUserList(users);

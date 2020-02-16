@@ -7,14 +7,14 @@
       <span>{{ user.getName() }} /</span>
     </div>
     <div class="level">
-      <span>Lv.30</span>
+      <span>Lv.{{user.getLevel()}}</span>
     </div>
   </div>
   <div class="icon">
-    <i class="material-icons">
+    <i class="material-icons" [ngClass]="user.isMobile()?'active':''">
       phone_iphone
     </i>
-    <i class="material-icons">
+    <i class="material-icons" [ngClass]="user.isComputer()?'active':''">
       computer
     </i>
   </div>

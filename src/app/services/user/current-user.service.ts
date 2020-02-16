@@ -21,7 +21,6 @@ export class CurrentUserService {
   }
 
   public setUsers(users: User[]): void {
-    console.log('setUser', users);
     this.mUsers = users;
     this.mUserSubject.next(this.mUsers);
   }

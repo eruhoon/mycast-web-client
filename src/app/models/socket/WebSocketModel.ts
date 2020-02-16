@@ -65,6 +65,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         const users: User[] = refreshUsers.map(refreshUser => {
             const user = new MutableUser(refreshUser.hash);
             user.setName(refreshUser.nickname);
+            user.setIcon(refreshUser.icon);
             user.setLevel(refreshUser.level);
             user.setMobile(refreshUser.mobile);
             user.setComputer(refreshUser.computer);

@@ -4,6 +4,7 @@ export class MutableUser implements User {
 
     private mHash: string;
     private mName: string;
+    private mIcon: string;
     private mLevel: number;
     private mComputer: boolean;
     private mMobile: boolean;
@@ -22,6 +23,14 @@ export class MutableUser implements User {
 
     public getName(): string {
         return this.mName;
+    }
+
+    public setIcon(icon: string): void {
+        this.mIcon = icon;
+    }
+
+    public getIcon(): string {
+        return this.mIcon;
     }
 
     public setLevel(level: number): void {

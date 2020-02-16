@@ -1,17 +1,65 @@
 .chat-user-list {
-  position: fixed;
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  width: 100%;
+  height: 220px;
   overflow-y: scroll;
-  background: blue;
+  background: white;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-user-entry {
-  display: block;
+.cu-list-title {
   width: 100%;
-  min-height: 50px;
+  height: 35px;
+  background-color: #ec407a;
+  color: #ffffff;
 
+  * {
+    margin: 0%;
+    padding: 0%;
+  }
+  h3 {
+    width: 45%;
+    height: auto;
+    padding: 6px;
+    float: left;
+  }
+  span {
+    width: 45%;
+    height: 23px;
+    padding: 6px;
+    display: block;
+    float: right;
+  }
+  span > * {
+    width: auto;
+    height: auto;
+    float: right;
+    display: inline-block;
+  }
+  span > p {
+    float: right;
+    padding: 2px 5px;
+  }
+}
+
+.cu-entry {
+  width: 100%;
+  height: 185px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+chat-user-entry {
+  display: block;
+  width: calc(100% - 10px);
+  height: 30px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 20px;
   border-bottom: 1px solid #e8e8e8;
+
   &:last-child {
     border-bottom-color: #ffffff;
   }

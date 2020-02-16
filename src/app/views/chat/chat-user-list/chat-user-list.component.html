@@ -1,3 +1,16 @@
 <div class="chat-user-list">
-    <chat-user-entry *ngFor="let user of getUserList()" [user]="user"></chat-user-entry>
+  <div class="cu-list-title">
+    <h3>채팅 접속자</h3>
+    <span>
+      <i class="material-icons">
+        person_pin
+      </i>
+      <p>20명</p>
+    </span>
+  </div>
+  <div class="cu-entry">
+    <chat-user-entry *ngFor="let user of getUserList()" [user]="user">
+      <img src="https://i.imgur.com/RrF5Sfm.png" />
+    </chat-user-entry>
+  </div>
 </div>

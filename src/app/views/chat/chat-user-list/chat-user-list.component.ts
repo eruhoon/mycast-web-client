@@ -19,7 +19,8 @@ export class ChatUserListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mService.getUsers().subscribe(users => {
+    this.mUsers = this.mService.getUsers();
+    this.mService.getUsersObservable().subscribe(users => {
       this.mUsers = users;
     });
   }

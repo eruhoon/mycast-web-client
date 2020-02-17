@@ -1,4 +1,5 @@
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+import { ChatService } from 'src/app/services/chat/chat.service';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component } from '@angular/core';
@@ -10,10 +11,16 @@ import { Component } from '@angular/core';
 })
 export class ChatPageComponent {
 
+  private mChatService: ChatService;
   private mChatNetwork: ChatNetworkModel;
 
-  public constructor(mainService: MainService) {
+  public constructor(mainService: MainService, chatService: ChatService) {
+    this.mChatService = chatService;
     this.mChatNetwork = mainService.getChatNework();
+  }
+
+  public isChatUserListShow(): boolean {
+    return this.mChatService.isChatUserListShow();
   }
 
   public onChatInput(rawChat: string): void {

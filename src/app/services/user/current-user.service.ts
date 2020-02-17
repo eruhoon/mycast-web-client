@@ -16,7 +16,11 @@ export class CurrentUserService {
     this.mUsers = [];
   }
 
-  public getUsers(): Observable<User[]> {
+  public getUsers(): User[] {
+    return this.mUsers;
+  }
+
+  public getUsersObservable(): Observable<User[]> {
     return this.mUserSubject.asObservable();
   }
 

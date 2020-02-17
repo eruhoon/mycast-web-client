@@ -2,12 +2,14 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
 import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
+import { Profile } from 'src/app/models/profile/Profile';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 import { User } from 'src/app/models/user/User';
 
 import { Injectable } from '@angular/core';
 
 import { CurrentChatService } from '../chat/current-chat.service';
+import { ProfileService } from '../profile/profile.service';
 import { CurrentUserService } from '../user/current-user.service';
 
 @Injectable({
@@ -15,14 +17,17 @@ import { CurrentUserService } from '../user/current-user.service';
 })
 export class MainService {
 
+  private mProfileService: ProfileService;
   private mCurrentChatService: CurrentChatService;
   private mCurrentUserService: CurrentUserService;
   private mChatNetwork: ChatNetworkModel;
 
   public constructor(
+    profileService: ProfileService,
     currentChatService: CurrentChatService,
     currentUserService: CurrentUserService) {
 
+    this.mProfileService = profileService;
     this.mCurrentChatService = currentChatService;
     this.mCurrentUserService = currentUserService;
     this.mChatNetwork = this.createChatNetworkModel();
@@ -39,12 +44,18 @@ export class MainService {
       return new NullChatNetworkModel();
     }
     const chatNetwork = new ChatNetworkModelImpl(privateKey);
+    chatNetwork.setOnRefreshMyProfileCallback(
+      profile => this.onMyProfileRefresh(profile));
     chatNetwork.setOnRefreshChatListCallback(
       chats => this.onChatListRefresh(chats));
     chatNetwork.setOnRefreshUserListCallback(
       users => this.onUserListRefresh(users));
     chatNetwork.setOnChatCallback(chat => this.onChat(chat));
     return chatNetwork;
+  }
+
+  private onMyProfileRefresh(profile: Profile) {
+    this.mProfileService.setProfileIcon(profile.icon);
   }
 
   private onChatListRefresh(chats: Chat[]) {

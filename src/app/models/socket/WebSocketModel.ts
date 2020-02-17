@@ -3,10 +3,11 @@ import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { Profile } from '../profile/Profile';
 import { MutableUser } from '../user/MutableUser';
 import { User } from '../user/User';
 import {
-    RawChatRequest, RefreshChat, RefreshUser, VegaChatSocketModel
+    RawChatRequest, RefreshChat, RefreshMyProfile, RefreshUser, VegaChatSocketModel
 } from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
@@ -16,6 +17,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     private mPrivKey: string;
     private mWebSocket: WebSocket;
     private mChatTypeParser: ChatTypeParser;
+    private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
     private mOnChat: TypeCallback<Chat>;
@@ -49,6 +51,10 @@ export class WebSocketModel extends VegaChatSocketModel {
         });
     }
 
+    public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
+        this.mOnRefreshMyProfile = callback;
+    }
+
     public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
         this.mOnRefreshChatList = callback;
     }
@@ -59,6 +65,13 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     public setOnChatCallback(callback: TypeCallback<Chat>): void {
         this.mOnChat = callback;
+    }
+
+    protected onRefreshMyProfile(rawProfile: RefreshMyProfile): void {
+        const profile: Profile = {
+            icon: rawProfile.icon
+        };
+        this.mOnRefreshMyProfile(profile);
     }
 
     protected onRefreshUserList(refreshUsers: RefreshUser[]) {

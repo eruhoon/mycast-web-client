@@ -1,5 +1,6 @@
 import { Chat } from '../chat/Chat';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { Profile } from '../profile/Profile';
 import { SocketModel } from '../socket/SocketModel';
 import { WebSocketModel } from '../socket/WebSocketModel';
 import { User } from '../user/User';
@@ -8,6 +9,7 @@ import { ChatNetworkModel } from './ChatNetworkModel';
 export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     private mSocket: SocketModel;
+    private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
     private mOnChat: TypeCallback<Chat>;
@@ -22,6 +24,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mSocket.chat(chat);
     }
 
+    public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
+        this.mOnRefreshMyProfile = callback;
+    }
+
     public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
         this.mOnRefreshChatList = callback;
     }
@@ -34,6 +40,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mOnChat = callback;
     }
 
+    private onRefreshMyProfile(profile: Profile): void {
+        this.mOnRefreshMyProfile(profile);
+    }
+
     private onRefreshChatList(chats: Chat[]): void {
         this.mOnRefreshChatList(chats);
     }
@@ -44,6 +54,8 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     private createSocketModel(privateKey: string): SocketModel {
         const model = new WebSocketModel(privateKey);
+        model.setOnRefreshMyProfileCallback(
+            profile => this.onRefreshMyProfile(profile));
         model.setOnRefreshChatListCallback(
             chats => this.onRefreshChatList(chats));
         model.setOnRefreshUserListCallback(

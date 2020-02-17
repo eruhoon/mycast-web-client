@@ -2,11 +2,11 @@
     <div class="user-info">
         <h5>유저안내</h5>
         <div class="u-info">
-            <img class="profile" src="https://i.imgur.com/XjsUghQ.gif" width="40">
+            <img class="profile" [src]="getIcon() | safe" width="40">
             <span class="u-name">
                 <p class="lv">Lv. 21</p>
                 <p class="name">고양이야기(환자)</p>
-            </span>            
+            </span>
         </div>
     </div>
     <div class="alarm">

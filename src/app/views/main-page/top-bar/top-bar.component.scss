@@ -22,6 +22,13 @@ div.part {
     padding: 0;
     color: #616161;
     background-color: #fff;
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+    &:active {
+      background-color: #f3f3f3;
+    }
   }
 
   a.alert-btn {

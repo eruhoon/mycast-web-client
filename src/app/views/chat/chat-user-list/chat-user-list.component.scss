@@ -19,11 +19,12 @@
     margin: 0%;
     padding: 0%;
   }
-  h3 {
+  h4 {
     width: 45%;
     height: auto;
     padding: 6px;
     float: left;
+    line-height: 23px;
   }
   span {
     width: 45%;
@@ -41,6 +42,8 @@
   span > p {
     float: right;
     padding: 2px 5px;
+    font-size: 12px;
+    line-height: 20px;
   }
 }
 

@@ -31,4 +31,8 @@ export class CurrentChatService {
     this.setCurrentChat(newChats.slice(
       newChats.length - CurrentChatService.CHAT_CAPACITY));
   }
+
+  public clearChat(): void {
+    this.setCurrentChat([]);
+  }
 }

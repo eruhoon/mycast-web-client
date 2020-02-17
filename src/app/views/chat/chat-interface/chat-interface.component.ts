@@ -1,5 +1,6 @@
 import { ChatHistoryList } from 'src/app/models/chat/history/ChatHistoryList';
 import { ChatService } from 'src/app/services/chat/chat.service';
+import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 
 import {
     Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
@@ -20,9 +21,14 @@ export class ChatInterfaceComponent implements OnInit {
   private mInputBox: ElementRef<HTMLInputElement>;
   private mChatHistoryList: ChatHistoryList;
   private mChatService: ChatService;
+  private mCurrentChatService: CurrentChatService;
 
-  constructor(chatService: ChatService) {
+  constructor(
+    chatService: ChatService,
+    currentChatService: CurrentChatService) {
+
     this.mChatService = chatService;
+    this.mCurrentChatService = currentChatService;
     this.mChatHistoryList = new ChatHistoryList();
   }
 
@@ -44,6 +50,10 @@ export class ChatInterfaceComponent implements OnInit {
 
   public onChatUserButtonClick(): void {
     this.mChatService.toggleChatUserList();
+  }
+
+  public onChatClearButtonClick(): void {
+    this.mCurrentChatService.clearChat();
   }
 
   public onPressEnter(): boolean {

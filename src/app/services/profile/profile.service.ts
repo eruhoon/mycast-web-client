@@ -1,3 +1,6 @@
+import { DefaultProfile } from 'src/app/models/profile/DefaultProfile';
+import { Profile } from 'src/app/models/profile/Profile';
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,17 +8,25 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
-  private mIcon: string;
+  private mProfile: Profile;
 
   public constructor() {
-    this.mIcon = 'https://i.imgur.com/XjsUghQ.gif';
+    this.mProfile = new DefaultProfile();
   }
 
-  public setProfileIcon(icon: string): void {
-    this.mIcon = icon;
+  public setProfile(profile: Profile): void {
+    this.mProfile = profile;
+  }
+
+  public getName(): string {
+    return this.mProfile.getName();
   }
 
   public getProfileIcon(): string {
-    return this.mIcon;
+    return this.mProfile.getIcon();
+  }
+
+  public getLevel(): number {
+    return this.mProfile.getLevel();
   }
 }

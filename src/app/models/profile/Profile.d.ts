@@ -1,3 +1,5 @@
-export type Profile = {
-    icon: string
-};
+export interface Profile {
+    getName(): string;
+    getIcon(): string;
+    getLevel(): number;
+}

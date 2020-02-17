@@ -55,7 +55,7 @@ export class MainService {
   }
 
   private onMyProfileRefresh(profile: Profile) {
-    this.mProfileService.setProfileIcon(profile.icon);
+    this.mProfileService.setProfile(profile);
   }
 
   private onChatListRefresh(chats: Chat[]) {

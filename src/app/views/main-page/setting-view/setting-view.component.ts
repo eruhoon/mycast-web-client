@@ -15,7 +15,15 @@ export class SettingViewComponent {
     this.mProfileService = profileService;
   }
 
+  public getName(): string {
+    return this.mProfileService.getName();
+  }
+
   public getIcon(): string {
     return this.mProfileService.getProfileIcon();
+  }
+
+  public getLevel(): number {
+    return this.mProfileService.getLevel();
   }
 }

@@ -4,8 +4,8 @@
         <div class="u-info">
             <img class="profile" [src]="getIcon() | safe" width="40">
             <span class="u-name">
-                <p class="lv">Lv. 21</p>
-                <p class="name">고양이야기(환자)</p>
+                <p class="lv">Lv. {{ getLevel() }}</p>
+                <p class="name">{{ getName() }}</p>
             </span>
         </div>
     </div>

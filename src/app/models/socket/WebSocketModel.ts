@@ -3,6 +3,7 @@ import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { MutableProfile } from '../profile/MutableProfile';
 import { Profile } from '../profile/Profile';
 import { MutableUser } from '../user/MutableUser';
 import { User } from '../user/User';
@@ -68,9 +69,10 @@ export class WebSocketModel extends VegaChatSocketModel {
     }
 
     protected onRefreshMyProfile(rawProfile: RefreshMyProfile): void {
-        const profile: Profile = {
-            icon: rawProfile.icon
-        };
+        const profile = new MutableProfile();
+        profile.setName(rawProfile.nickname);
+        profile.setIcon(rawProfile.icon);
+        profile.setLevel(rawProfile.level);
         this.mOnRefreshMyProfile(profile);
     }
 

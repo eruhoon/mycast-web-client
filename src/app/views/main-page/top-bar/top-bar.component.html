@@ -12,7 +12,7 @@
       </i>
     </a>
     <button (click)="onSettingClick()">
-      <img class="profile" src="https://i.imgur.com/XjsUghQ.gif" />
+      <img class="profile" [src]="getProfileIcon() | safe" />
     </button>
   </div>
 </div>

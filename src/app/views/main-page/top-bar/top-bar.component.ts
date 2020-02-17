@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ProfileService } from 'src/app/services/profile/profile.service';
+
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
@@ -13,7 +15,15 @@ export class TopBarComponent {
   @Output()
   public settingClick = new EventEmitter();
 
-  constructor() { }
+  private mProfileService: ProfileService;
+
+  public constructor(profileService: ProfileService) {
+    this.mProfileService = profileService;
+  }
+
+  public getProfileIcon(): string {
+    return this.mProfileService.getProfileIcon();
+  }
 
   public onMenuClick() {
     this.menuClick.emit();

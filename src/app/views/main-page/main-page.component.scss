@@ -198,6 +198,16 @@ link-content-viewer {
   height: 100%;
 }
 
+notification-push-list {
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  width: 400px;
+  height: auto;
+
+  z-index: 120;
+}
+
 // 스크롤바 관련 처리
 
 /* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */

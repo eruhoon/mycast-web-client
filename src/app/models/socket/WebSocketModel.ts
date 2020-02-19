@@ -104,6 +104,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         receivedNotification: ReceivedNotification) {
 
         const notification = new MutableNotification();
+        notification.setIcon(receivedNotification.from.icon);
 
         this.mOnNotificationReceived(notification);
     }

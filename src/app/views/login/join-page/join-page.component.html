@@ -1,1 +1,40 @@
-<p>join-page works!</p>
+<div class="page">
+  <div class="login">
+    <div class="logo">
+      <img src="/../assets/image/login/logo-300.png" width="300" />
+    </div>
+    <div class="in-box">
+      <!-- 사용자 로그인 정보 -->
+      <input
+        type="text"
+        placeholder="아이디"
+        id="id"
+        [(ngModel)]="mLoginForm.id"
+        (keypress)="onIdKeyPress($event)"
+      />
+      <input
+        type="text"
+        placeholder="닉네임"
+        id="id"
+        [(ngModel)]="mLoginForm.id"
+        (keypress)="onIdKeyPress($event)"
+      />
+      <input
+        type="password"
+        placeholder="비밀번호"
+        id="pw"
+        [(ngModel)]="mLoginForm.pw"
+        (keypress)="onPasswordKeyPress($event)"
+      />
+      <input
+        type="password"
+        placeholder="비밀번호 확인"
+        id="pw"
+        [(ngModel)]="mLoginForm.pw"
+        (keypress)="onPasswordKeyPress($event)"
+      />
+      <!-- 로그인 버튼 -->
+      <button type="submit" (click)="onSubmit()">JOIN</button>
+    </div>
+  </div>
+</div>

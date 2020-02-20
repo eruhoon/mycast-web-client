@@ -1,3 +1,4 @@
+// 모바일 환경 처리용 SCSS
 @media all and (max-width: 768px) {
   div.page {
     position: absolute;
@@ -11,18 +12,12 @@
   }
 
   .login {
-    width: 300px;
+    width: 75%;
     height: 766px;
 
     display: inline-block;
     vertical-align: middle;
     background-color: white;
-
-    border-radius: 10px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    box-shadow: 30px 30px 60px #c2c2c2, -30px -30px 60px #ffffff;
-
-    border: 1px soild #e0e0e0;
 
     .logo {
       width: 75%;
@@ -113,11 +108,12 @@
     }
   }
 }
+
+// 일반적 환경 (PC환경 접속시 처리 되는 SCSS)
 @media all and (min-width: 768px) {
   div.page {
     height: 100%;
-
-    background: url("/../assets/image/login/bg.jpg");
+    background: url("/../assets/image/login/main_bg_04.png");
     background-size: auto 100%;
     background-position: center top;
   }

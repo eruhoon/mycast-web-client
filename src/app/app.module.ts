@@ -38,6 +38,7 @@ import { LinkContentViewerComponent } from './views/main-page/link-content-viewe
 import { StreamPlayerPageComponent } from './views/stream/stream-player-page/stream-player-page.component';
 import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
+import { NotificationPushListComponent } from './views/main-page/notification-push-list/notification-push-list.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-e
     StreamPlayerPageComponent,
     ChatUserListComponent,
     ChatUserEntryComponent,
+    NotificationPushListComponent,
   ],
   imports: [
     BrowserModule,

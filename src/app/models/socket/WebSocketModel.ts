@@ -3,12 +3,15 @@ import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { MutableNotification } from '../notification/MutableNotification';
+import { Notification } from '../notification/Notification';
 import { MutableProfile } from '../profile/MutableProfile';
 import { Profile } from '../profile/Profile';
 import { MutableUser } from '../user/MutableUser';
 import { User } from '../user/User';
 import {
-    RawChatRequest, RefreshChat, RefreshMyProfile, RefreshUser, VegaChatSocketModel
+    RawChatRequest, ReceivedNotification, RefreshChat, RefreshMyProfile, RefreshUser,
+    VegaChatSocketModel
 } from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
@@ -21,6 +24,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
+    private mOnNotificationReceived: TypeCallback<Notification>;
     private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
@@ -30,6 +34,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mChatTypeParser = new ChatTypeParser();
         this.mOnRefreshChatList = _ => { };
         this.mOnRefreshUserList = _ => { };
+        this.mOnNotificationReceived = _ => { };
         this.mOnChat = _ => { };
 
         this.mWebSocket.onopen = () => this.onOpenSocket();
@@ -64,6 +69,12 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mOnRefreshUserList = callback;
     }
 
+    public setOnNotificationReceived(
+        callback: TypeCallback<Notification>): void {
+
+        this.mOnNotificationReceived = callback;
+    }
+
     public setOnChatCallback(callback: TypeCallback<Chat>): void {
         this.mOnChat = callback;
     }
@@ -87,6 +98,15 @@ export class WebSocketModel extends VegaChatSocketModel {
             return user;
         });
         this.mOnRefreshUserList(users);
+    }
+
+    protected onNotificationReceived(
+        receivedNotification: ReceivedNotification) {
+
+        const notification = new MutableNotification();
+        notification.setIcon(receivedNotification.from.icon);
+
+        this.mOnNotificationReceived(notification);
     }
 
     protected onRefreshChatList(refreshChats: RefreshChat[]) {

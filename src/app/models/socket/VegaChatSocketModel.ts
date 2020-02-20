@@ -14,6 +14,8 @@ export abstract class VegaChatSocketModel implements SocketModel {
     protected abstract onRefreshMyProfile(profile: RefreshMyProfile): void;
     protected abstract onRefreshUserList(users: RefreshUser[]): void;
     protected abstract onRefreshChatList(chats: RefreshChat[]): void;
+    protected abstract onNotificationReceived(
+        notification: ReceivedNotification): void;
     protected abstract onChat(res): void;
     protected abstract requestChat(request: RawChatRequest): void;
     public chat(chat: string): void {
@@ -45,6 +47,9 @@ export abstract class VegaChatSocketModel implements SocketModel {
             case 'applyCurrentChatList':
                 this.onRefreshChatList(messageData.response);
                 break;
+            case 'applyNotifyFrom':
+                this.onNotificationReceived(messageData.response);
+                break;
             case 'chat':
                 this.onChat(messageData.response);
                 break;
@@ -62,6 +67,11 @@ type MessageData = {
     request: any,
     response: any
 };
+
+export type ReceivedNotification = {
+    from: { icon: string, nickname: string },
+    timestamp: number,
+}
 
 export type RefreshMyProfile = {
     coin: number,

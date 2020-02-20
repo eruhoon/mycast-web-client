@@ -1,5 +1,6 @@
 import { Chat } from '../chat/Chat';
 import { TypeCallback } from '../common/callback/TypeCallback';
+import { Notification } from '../notification/Notification';
 import { Profile } from '../profile/Profile';
 import { SocketModel } from '../socket/SocketModel';
 import { WebSocketModel } from '../socket/WebSocketModel';
@@ -12,6 +13,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
+    private mOnNotifcationReceived: TypeCallback<Notification>;
     private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
@@ -34,6 +36,12 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
         this.mOnRefreshUserList = callback;
+    }
+
+    public setOnNotificationReceivedCallback(
+        callback: TypeCallback<Notification>): void {
+
+        this.mOnNotifcationReceived = callback;
     }
 
     public setOnChatCallback(callback: TypeCallback<Chat>): void {
@@ -60,6 +68,8 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
             chats => this.onRefreshChatList(chats));
         model.setOnRefreshUserListCallback(
             users => this.mOnRefreshUserList(users));
+        model.setOnNotificationReceived(
+            notification => this.mOnNotifcationReceived(notification));
         model.setOnChatCallback(chat => this.onChat(chat));
         return model;
     }

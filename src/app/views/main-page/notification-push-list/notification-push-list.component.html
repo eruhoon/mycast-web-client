@@ -1,0 +1,12 @@
+<div style="background:blue; min-height:100px;">
+    <div class="entry" *ngFor="let notification of getNotification()">
+        <img [src]="notification.getIcon() | safe">
+    </div>
+</div>
+
+<!-- todo: remove behind code -->
+<div style="background:red; min-height:100px;">
+    <div class="entry" *ngFor="let notification of getAllNotification()">
+        <img [src]="notification.getIcon() | safe">
+    </div>
+</div>

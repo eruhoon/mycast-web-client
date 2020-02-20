@@ -200,12 +200,12 @@ link-content-viewer {
 
 notification-push-list {
   position: absolute;
-  right: 50px;
-  top: 100px;
+  right: 10px;
+  top: 60px;
   width: 400px;
   height: auto;
 
-  z-index: 120;
+  z-index: 50;
 }
 
 // 스크롤바 관련 처리

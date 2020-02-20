@@ -1,35 +1,34 @@
 <div class="nt-push-list">
-  <div class="entry">
-    <img src="https://i.imgur.com/eSHBOji.jpg" />
-  </div>
-  <div class="nt-info-txt">
-    <div class="title">
-      <h4>여우</h4>
-      <p>30분 전</p>
+  <div class="nt-push-entry" *ngFor="let notification of getAllNotification()">
+    <div class="entry">
+      <img [src]="notification.getIcon()" />
     </div>
-    <div class="nt-alert">
-      <p>"여우"로 부터 알림이 왔어요.</p>
+    <div class="nt-info-txt">
+      <div class="title">
+        <h4>여우</h4>
+        <p>30분 전</p>
+      </div>
+      <div class="nt-alert">
+        <p>"여우"로 부터 알림이 왔어요.</p>
+      </div>
     </div>
   </div>
 </div>
+
 <!-- todo: remove behind code -->
 <div class="nt-push-list">
-  <div class="entry">
-    <img src="https://i.imgur.com/Ik8qcRc.jpg" />
-  </div>
-  <div class="nt-info-txt">
-    <div class="title">
-      <h4>랭겜혐오자 스똡뜨</h4>
-      <p>30분 전</p>
+  <div class="nt-push-entry">
+    <div class="entry">
+      <img src="https://i.imgur.com/Ik8qcRc.jpg" />
     </div>
-    <div class="nt-alert">
-      <p>"랭겜혐오자 스똡뜨"로 부터 알림이 왔어요.</p>
+    <div class="nt-info-txt">
+      <div class="title">
+        <h4>랭겜혐오자 스똡뜨</h4>
+        <p>30분 전</p>
+      </div>
+      <div class="nt-alert">
+        <p>"랭겜혐오자 스똡뜨"로 부터 알림이 왔어요.</p>
+      </div>
     </div>
   </div>
-</div>
-<div class="nt-push-list">
-  <div class="entry" *ngFor="let notification of getAllNotification()">
-    <img src="" />
-  </div>
-  <div class="nt-info-txt"></div>
 </div>

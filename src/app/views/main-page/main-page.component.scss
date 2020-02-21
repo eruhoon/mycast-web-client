@@ -164,7 +164,7 @@ nav.top-bar-section {
   top: 50px;
   right: -300px;
   width: 220px;
-  height: 542px;
+  height: 555px;
   overflow: hidden;
   z-index: 60;
   background: #ffffff;
@@ -210,7 +210,7 @@ notification-push-list {
 
 // 스크롤바 관련 처리
 
-/* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */
+/* Cu.setting-viewomize website's scrollbar like Mac OS Not supports in Firefox and IE */
 /* total width */
 .chat-list-view::-webkit-scrollbar {
   background-color: #fff;

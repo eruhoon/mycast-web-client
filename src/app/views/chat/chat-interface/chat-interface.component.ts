@@ -3,7 +3,7 @@ import { ChatService } from 'src/app/services/chat/chat.service';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
 
 @Component({
@@ -56,14 +56,9 @@ export class ChatInterfaceComponent implements OnInit {
     this.mCurrentChatService.clearChat();
   }
 
-  public onPressEnter(): boolean {
+  public onPressEnter(event: KeyboardEvent): boolean {
     const input = this.getInput();
-    if (!input) {
-      return false;
-    }
-    this.chatInput.emit(input);
-    this.mChatHistoryList.addHistory(input);
-    this.mChatHistoryList.resetIndex();
+    this.sendChat(input);
     this.clearInput();
     return false;
   }
@@ -72,9 +67,17 @@ export class ChatInterfaceComponent implements OnInit {
     this.setInput(this.getPrevChat());
     return false;
   }
+
   public onPressDown(): boolean {
     this.setInput(this.getNextChat());
     return false;
+  }
+
+  private sendChat(input: string | null): void {
+    if (!input) return;
+    this.chatInput.emit(input);
+    this.mChatHistoryList.addHistory(input);
+    this.mChatHistoryList.resetIndex();
   }
 
   private getPrevChat(): string {

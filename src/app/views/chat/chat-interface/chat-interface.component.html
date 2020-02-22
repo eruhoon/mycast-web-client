@@ -21,6 +21,6 @@
       </i>
     </a>
   </div>
-  <input #inputBox type="text" class="input-box" (keydown.enter)="onPressEnter()" (keydown.arrowup)="onPressUp()"
-    (keydown.arrowdown)="onPressDown()" />
+  <input #inputBox type="text" class="input-box" (keydown.arrowup)="onPressUp()" (keydown.arrowdown)="onPressDown()"
+    (keypress)="$event.keyCode!=13 || ($event.keyCode==13 && onPressEnter())" />
 </div>

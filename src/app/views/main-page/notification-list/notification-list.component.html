@@ -1,0 +1,16 @@
+<div class="nt-list">
+    <div class="nt-entry" *ngFor="let notification of getNotification()">
+        <div class="entry">
+            <img [src]="notification.getIcon()" />
+        </div>
+        <div class="nt-info-txt">
+            <div class="title">
+                <h4>{{notification.getTitle()}}</h4>
+                <p>30분 전</p>
+            </div>
+            <div class="nt-alert">
+                <p>{{notification.getBody()}}</p>
+            </div>
+        </div>
+    </div>
+</div>

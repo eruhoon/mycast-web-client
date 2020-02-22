@@ -39,6 +39,7 @@ import { StreamPlayerPageComponent } from './views/stream/stream-player-page/str
 import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
 import { NotificationPushListComponent } from './views/main-page/notification-push-list/notification-push-list.component';
+import { NotificationListComponent } from './views/main-page/notification-list/notification-list.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { NotificationPushListComponent } from './views/main-page/notification-pu
     ChatUserListComponent,
     ChatUserEntryComponent,
     NotificationPushListComponent,
+    NotificationListComponent,
   ],
   imports: [
     BrowserModule,

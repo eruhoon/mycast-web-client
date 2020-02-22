@@ -37,4 +37,7 @@
 </nav>
 <link-popup *ngFor="let linkPopup of getLinkPopups()" [linkPopup]="linkPopup"></link-popup>
 <image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>
+<notification-list style="position: fixed; right: 100px; top:100px; 
+  background: violet; width: 100px; height: 100px; z-index: 80;">
+</notification-list>
 <notification-push-list></notification-push-list>

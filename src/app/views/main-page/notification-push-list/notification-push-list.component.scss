@@ -1,27 +1,3 @@
-@-webkit-keyframes moveOpen {
-  from {
-    -webkit-transform: translate(0, -50px);
-  }
-  10% {
-    -webkit-transform: translate(0, 10px);
-  }
-  12% {
-    -webkit-transform: translate(0, 11px);
-  }
-  16% {
-    -webkit-transform: translate(0, 10px);
-  }
-  80% {
-    -webkit-transform: translate(0, 10px);
-  }
-  85% {
-    -webkit-transform: translate(0, 12.5px);
-  }
-  to {
-    -webkit-transform: translate(0, -50px);
-  }
-}
-
 .nt-push-entry {
   width: 370px;
   height: 50px;
@@ -32,17 +8,15 @@
   background: linear-gradient(145deg, #ffffff, #fefefe);
   box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.16);
 
-  -webkit-animation: slide 0.5s forwards;
-  -webkit-animation-delay: 2s;
+  // -webkit-animation: slide 0.5s forwards;
+  // -webkit-animation-delay: 2s;
   animation: slide 0.5s forwards;
 
   padding: 10px 15px;
 
-  &.animateOpen {
-    -webkit-animation: moveOpen 4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-fill-mode: forwards;
-  }
+  -webkit-animation: moveOpen 4s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
 
   &:first-child {
     border-top-left-radius: 5px;
@@ -116,5 +90,52 @@
         text-overflow: ellipsis;
       }
     }
+  }
+}
+
+@keyframes moveOpen {
+  from {
+    -webkit-transform: translate(0, -50px);
+  }
+  10% {
+    -webkit-transform: translate(0, 10px);
+  }
+  12% {
+    -webkit-transform: translate(0, 11px);
+  }
+  16% {
+    -webkit-transform: translate(0, 10px);
+  }
+  80% {
+    -webkit-transform: translate(0, 10px);
+  }
+  85% {
+    -webkit-transform: translate(0, 12.5px);
+  }
+  to {
+    -webkit-transform: translate(0, -50px);
+  }
+}
+@-webkit-keyframes moveOpen {
+  from {
+    -webkit-transform: translate(0, -50px);
+  }
+  10% {
+    -webkit-transform: translate(0, 10px);
+  }
+  12% {
+    -webkit-transform: translate(0, 11px);
+  }
+  16% {
+    -webkit-transform: translate(0, 10px);
+  }
+  80% {
+    -webkit-transform: translate(0, 10px);
+  }
+  85% {
+    -webkit-transform: translate(0, 12.5px);
+  }
+  to {
+    -webkit-transform: translate(0, -50px);
   }
 }

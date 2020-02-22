@@ -20,10 +20,6 @@ export class NotificationPushListComponent implements OnInit {
   }
 
   public getNotification(): Notification[] {
-    return this.mNotificationService.getNotificationPushes();
-  }
-
-  public getAllNotification(): Notification[] {
-    return this.mNotificationService.getNotifications();
+    return [...this.mNotificationService.getNotificationPushes()];
   }
 }

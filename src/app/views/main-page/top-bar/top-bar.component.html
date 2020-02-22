@@ -7,9 +7,8 @@
   </div>
   <div class="part right">
     <a class="alert-btn">
-      <i class="material-icons">
-        notifications
-      </i>
+      <i class="material-icons">notifications</i>
+      <div *ngIf="this.getNotificationCount() > 0">{{this.getNotificationCount()}}</div>
     </a>
     <button (click)="onSettingClick()">
       <img class="profile" [src]="getProfileIcon() | safe" />

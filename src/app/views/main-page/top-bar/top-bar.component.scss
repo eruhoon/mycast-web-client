@@ -19,6 +19,7 @@ div.part {
     border: none;
     outline: none;
     cursor: pointer;
+    margin: 5px;
     padding: 0;
     color: #616161;
     background-color: #fff;
@@ -32,8 +33,10 @@ div.part {
   }
 
   a.alert-btn {
-    width: auto;
-    height: auto;
+    position: relative;
+    width: $icon-size;
+    height: $icon-size;
+    margin: 5px;
     color: #757575;
 
     // 드래그 방지
@@ -43,6 +46,20 @@ div.part {
       font-size: 24px;
       padding: 8px;
       margin-right: 10px;
+    }
+
+    div {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      border-radius: 15px;
+      text-align: center;
+      line-height: 18px;
+      background: #ec407a;
+      color: white;
     }
 
     &:hover {

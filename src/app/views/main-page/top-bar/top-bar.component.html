@@ -6,12 +6,15 @@
     <img class="logo" src="/../assets/image/main/main-logo-30.png" />
   </div>
   <div class="part right">
-    <a class="alert-btn">
+    <button [class]="isNotificationListShow()?'alert-btn active':'alert-btn'" (click)="toggleNotificationList()">
       <i class="material-icons">notifications</i>
       <div *ngIf="this.getNotificationCount() > 0">{{this.getNotificationCount()}}</div>
-    </a>
+    </button>
     <button (click)="onSettingClick()">
       <img class="profile" [src]="getProfileIcon() | safe" />
     </button>
   </div>
 </div>
+
+<notification-list [class]="isNotificationListShow()?'active':'deactive'">
+</notification-list>

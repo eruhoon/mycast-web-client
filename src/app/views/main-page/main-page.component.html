@@ -1,73 +1,40 @@
 <div class="main-section">
-  <div
-    class="stream-container-view"
-    [ngStyle]="{
+  <div class="stream-container-view" [ngStyle]="{
       left: isChatRight() ? '0' : 'auto',
       right: isChatRight() ? 'auto' : '0',
       width: 'calc(100% - ' + getChatSize() + 'px)'
-    }"
-  >
+    }">
     <div class="component-view">
       <div class="contents-viewer">
-        <app-stream-viewer
-          *ngIf="isStreamActivated()"
-          [stream]="mCurrentStream"
-        ></app-stream-viewer>
-        <link-content-viewer
-          *ngIf="isLinkMode()"
-          [link]="getCurrentLink()"
-        ></link-content-viewer>
+        <app-stream-viewer *ngIf="isStreamActivated()" [stream]="mCurrentStream"></app-stream-viewer>
+        <link-content-viewer *ngIf="isLinkMode()" [link]="getCurrentLink()"></link-content-viewer>
       </div>
     </div>
     <div class="stream-list-view">
-      <app-stream-list
-        (streamIconClick)="onStreamIconClick($event)"
-      ></app-stream-list>
+      <app-stream-list (streamIconClick)="onStreamIconClick($event)"></app-stream-list>
     </div>
   </div>
-  <div
-    class="chat-list-view"
-    [ngStyle]="{
+  <div class="chat-list-view" [ngStyle]="{
       left: isChatRight() ? 'auto' : '0',
       right: isChatRight() ? '0' : 'auto',
       width: getChatSize() + 'px'
-    }"
-  >
+    }">
     <chat-page></chat-page>
   </div>
   <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
     <div class="click-blocker" (click)="onOutOfMenuClick()"></div>
     <app-side-bar (streamClick)="onStreamClick($event)"></app-side-bar>
   </div>
-  <div
-    class="divider"
-    (mousedown)="onDividerMouseDown($event)"
-    (mousemove)="onDividerMove($event)"
-    (mouseup)="onDividerMouseUp()"
-    [ngClass]="isMoveMode() ? 'move-mode' : ''"
-    [ngStyle]="{ left: getDividerPosition() + 'px' }"
-  ></div>
+  <div class="divider" (mousedown)="onDividerMouseDown($event)" (mousemove)="onDividerMove($event)"
+    (mouseup)="onDividerMouseUp()" [ngClass]="isMoveMode() ? 'move-mode' : ''"
+    [ngStyle]="{ left: getDividerPosition() + 'px' }"></div>
 </div>
 <nav class="top-bar-section">
-  <app-top-bar
-    (menuClick)="onMenuClick()"
-    (settingClick)="onSettingClick()"
-  ></app-top-bar>
+  <app-top-bar (menuClick)="onMenuClick()" (settingClick)="onSettingClick()"></app-top-bar>
   <div class="setting-view" [ngClass]="isSettingShow() ? 'active' : ''">
     <app-setting-view></app-setting-view>
   </div>
 </nav>
-<link-popup
-  *ngFor="let linkPopup of getLinkPopups()"
-  [linkPopup]="linkPopup"
-></link-popup>
-<image-popup-viewer
-  *ngIf="isImagePopup()"
-  (backgroundClick)="closeImagePopup()"
-></image-popup-viewer>
-<notification-list
-  style="position: fixed; right: 10px; top:60px; 
-  background: violet; width: 400px; min-height:72px; max-height: 288px; overflow-x: hidden; overflow-y: scroll; z-index: 80;"
->
-</notification-list>
+<link-popup *ngFor="let linkPopup of getLinkPopups()" [linkPopup]="linkPopup"></link-popup>
+<image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>
 <notification-push-list></notification-push-list>

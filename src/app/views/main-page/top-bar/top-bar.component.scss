@@ -32,7 +32,7 @@ div.part {
     }
   }
 
-  a.alert-btn {
+  button.alert-btn {
     position: relative;
     width: $icon-size;
     height: $icon-size;
@@ -65,7 +65,7 @@ div.part {
     &:hover {
       color: #ec407a;
     }
-    &:active {
+    &.active {
       color: #c2185b;
     }
   }
@@ -84,4 +84,24 @@ img.profile {
   width: 40px;
   height: 40px;
   border-radius: 20px;
+}
+
+notification-list {
+  position: fixed;
+  right: 50px;
+  z-index: 80;
+  overflow-y: hidden;
+
+  &.active {
+    height: auto;
+  }
+
+  &.deactive {
+    height: 0px;
+  }
+
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }

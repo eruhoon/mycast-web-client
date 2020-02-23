@@ -1,4 +1,7 @@
 <div class="nt-list">
+    <div class="nt-no-entry" *ngIf="getNotification().length === 0">
+        알림이 없습니다.
+    </div>
     <div class="nt-entry" *ngFor="let notification of getNotification()">
         <div class="entry">
             <img [src]="notification.getIcon()" />

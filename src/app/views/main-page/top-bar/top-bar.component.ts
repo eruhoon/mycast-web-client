@@ -18,12 +18,14 @@ export class TopBarComponent {
 
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
+  private mNotificationListShow: boolean;
 
   public constructor(
     profileService: ProfileService,
     notificationService: NotificationService) {
     this.mProfileService = profileService;
     this.mNotificationService = notificationService;
+    this.mNotificationListShow = false;
   }
 
   public getProfileIcon(): string {
@@ -32,6 +34,15 @@ export class TopBarComponent {
 
   public getNotificationCount(): number {
     return this.mNotificationService.getNotifications().length;
+  }
+
+  public toggleNotificationList(): void {
+    this.mNotificationListShow = !this.mNotificationListShow;
+    console.log(this.mNotificationListShow);
+  }
+
+  public isNotificationListShow(): boolean {
+    return this.mNotificationListShow;
   }
 
   public onMenuClick() {

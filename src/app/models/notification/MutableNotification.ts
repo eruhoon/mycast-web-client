@@ -6,12 +6,14 @@ export class MutableNotification implements Notification {
     private mTitle: string;
     private mBody: string;
     private mTimeStamp: number;
+    private mRead: boolean;
 
     public constructor() {
         this.mIcon = '';
         this.mTitle = '';
         this.mBody = '';
         this.mTimeStamp = new Date().getTime();
+        this.mRead = false;
     }
 
     public setIcon(icon: string): void {
@@ -40,5 +42,13 @@ export class MutableNotification implements Notification {
 
     public getTimeStamp(): number {
         return this.mTimeStamp;
+    }
+
+    public isRead(): boolean {
+        return this.mRead;
+    }
+
+    public read(): void {
+        this.mRead = true;
     }
 }

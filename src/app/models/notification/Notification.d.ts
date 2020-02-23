@@ -3,4 +3,5 @@ export interface Notification {
     getTitle(): string;
     getBody(): string;
     getTimeStamp(): number;
+    isRead(): boolean;
 }

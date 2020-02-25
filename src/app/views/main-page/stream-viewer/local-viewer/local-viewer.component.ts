@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
+
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 declare var Clappr: any;
 declare var RTMP: any;

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-external-viewer',

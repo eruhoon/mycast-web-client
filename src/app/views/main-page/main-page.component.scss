@@ -208,6 +208,15 @@ notification-push-list {
   z-index: 50;
 }
 
+modify-profile-modal {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
 // 스크롤바 관련 처리
 
 /* Cu.setting-viewomize website's scrollbar like Mac OS Not supports in Firefox and IE */

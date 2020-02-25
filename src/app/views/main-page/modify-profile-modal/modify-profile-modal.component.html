@@ -1,4 +1,6 @@
 <div class="click-blocker"></div>
 <div class="modal">
-
+    <input id="name" [(ngModel)]="profileForm.name" type="text" />
+    <input id="icon" [(ngModel)]="profileForm.icon" type="text" />
+    <button (click)="onSubmitClick()">submit</button>
 </div>

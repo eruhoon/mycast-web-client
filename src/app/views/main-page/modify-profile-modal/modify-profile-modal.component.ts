@@ -1,3 +1,5 @@
+import { ProfileService } from 'src/app/services/profile/profile.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifyProfileModalComponent implements OnInit {
 
-  constructor() { }
+  public profileForm = { name: '', icon: '' };
 
-  ngOnInit() {
+  private mProfileService: ProfileService;
+
+  public constructor(profileService: ProfileService) {
+    this.profileForm.name = profileService.getName();
+    this.profileForm.icon = profileService.getProfileIcon();
+    this.mProfileService = profileService;
   }
 
+  public ngOnInit() {
+  }
+
+  public onSubmitClick(): void {
+    console.log(this.profileForm.name, this.profileForm.icon);
+    this.mProfileService.requestToModifyProfile(
+      this.profileForm.name, this.profileForm.icon);
+  }
 }

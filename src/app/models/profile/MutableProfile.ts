@@ -6,10 +6,16 @@ export class MutableProfile implements Profile {
     private mIcon: string;
     private mLevel: number;
 
-    public constructor() {
-        this.mName = '';
-        this.mIcon = 'https://i.imgur.com/y81MZAJ.png';
-        this.mLevel = 1;
+    public constructor(profile: Profile | null = null) {
+        if (profile === null) {
+            this.mName = '';
+            this.mIcon = 'https://i.imgur.com/y81MZAJ.png';
+            this.mLevel = 1;
+        } else {
+            this.mName = profile.getName();
+            this.mIcon = profile.getIcon();
+            this.mLevel = profile.getLevel();
+        }
     }
 
     public setName(name: string): void {

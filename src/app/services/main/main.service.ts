@@ -3,6 +3,7 @@ import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
 import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
 import { Notification } from 'src/app/models/notification/Notification';
+import { ModifyProfileCommand } from 'src/app/models/profile/ModifyProfileCommand';
 import { Profile } from 'src/app/models/profile/Profile';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 import { User } from 'src/app/models/user/User';
@@ -36,6 +37,9 @@ export class MainService {
     this.mCurrentUserService = currentUserService;
     this.mNotificationService = notificationService;
     this.mChatNetwork = this.createChatNetworkModel();
+
+    this.mProfileService.setModifyProfileCommand(
+      new ModifyProfileCommand(this.mChatNetwork));
   }
 
   // TODO: Remove

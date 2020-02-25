@@ -49,6 +49,13 @@ export class WebSocketModel extends VegaChatSocketModel {
         });
     }
 
+    public modifyProfile(name: string, icon: string): void {
+        this.sendMessage('modify-profile', {
+            privateKey: this.mPrivKey,
+            userInfo: { nickname: name, icon },
+        });
+    }
+
     protected requestChat(request: RawChatRequest): void {
         this.sendMessage('chat', {
             userKey: this.mPrivKey,

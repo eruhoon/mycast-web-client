@@ -10,6 +10,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
     }
 
     public abstract login(): void;
+    public abstract modifyProfile(name: string, icon: string): void;
 
     protected abstract onRefreshMyProfile(profile: RefreshMyProfile): void;
     protected abstract onRefreshUserList(users: RefreshUser[]): void;

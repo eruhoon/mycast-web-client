@@ -40,6 +40,7 @@ import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-lis
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
 import { NotificationPushListComponent } from './views/main-page/notification-push-list/notification-push-list.component';
 import { NotificationListComponent } from './views/main-page/notification-list/notification-list.component';
+import { ModifyProfileModalComponent } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { NotificationListComponent } from './views/main-page/notification-list/n
     ChatUserEntryComponent,
     NotificationPushListComponent,
     NotificationListComponent,
+    ModifyProfileModalComponent,
   ],
   imports: [
     BrowserModule,

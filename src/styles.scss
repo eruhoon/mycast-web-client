@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 html,
 body,
 app-root {
@@ -7,12 +9,10 @@ app-root {
   padding: 0px !important;
   overflow: hidden;
 
-  font-family: 'Gothic A1', sans-serif;
-
   * {
     font-family: 'Nanum Gothic', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Gothic A1', sans-serif !important;
+    font-family: 'Jeju Gothic', sans-serif !important;
   }
 }

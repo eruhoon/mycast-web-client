@@ -17,12 +17,13 @@
 }
 
 .user-setting > div {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #eeeeee;
   padding: 15px 10px;
   h5 {
     margin: 0%;
     padding: 0%;
     color: #616161;
+    font-weight: 800;
   }
   p {
     margin: 0%;
@@ -31,12 +32,16 @@
   &:last-child {
     border-bottom: 0px;
   }
+  &:hover {
+    background-color: #F5F5F5;
+  }
 }
 
 // 유저 안내 및 레벨 안내
 .u-info {
   padding: 0px;
   height: 40px;
+  position: relative;
   img {
     width: 40px;
     height: 40px;
@@ -56,6 +61,21 @@
   p {
     width: 90%;
     color: #424242;
+  }
+  a {
+    border-radius: 50%;
+    i {
+      position: absolute;
+      top: 11px;
+      right: 0px;
+      color: #616161;
+      font-size: 24px;
+    }
+    &:hover {
+      i {
+        color: #ec407a;
+      }
+    }
   }
 }
 

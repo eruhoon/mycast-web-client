@@ -1,12 +1,15 @@
 <div class="user-setting">
     <div class="user-info">
-        <h5>유저안내</h5>
         <div class="u-info">
             <img class="profile" [src]="getIcon() | safe" width="40">
             <span class="u-name">
                 <p class="lv">Lv. {{ getLevel() }}</p>
                 <p class="name">{{ getName() }}</p>
             </span>
+            <!-- 유저세팅 영역 클릭 -->
+            <a href="#" onclick="#">
+                <i class="material-icons">settings</i>
+            </a>
         </div>
     </div>
     <div class="alarm">

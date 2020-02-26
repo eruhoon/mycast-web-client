@@ -164,9 +164,9 @@ nav.top-bar-section {
   top: 50px;
   right: -300px;
   width: 220px;
-  height: 555px;
+  height: 544px;
   overflow: hidden;
-  z-index: 60;
+  z-index: 85; // 알림보다 상위 노출
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 5px;

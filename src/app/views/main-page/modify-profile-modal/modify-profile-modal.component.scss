@@ -64,7 +64,27 @@
       border: 1px solid #eeeeee;
       border-radius: 5px;
       overflow: hidden;
-
+    }
+    p.error-up{
+      display: none;
+    }
+  }
+  .u-input.error {
+    position: relative;
+    label {
+      color: #D50000;
+    }
+    input {
+      border: 1px solid #D50000;
+      background-color: #FFEBEE;
+    }
+    p.error-up {
+      position: absolute;
+      top: 18px;
+      right: 0px;
+      font-size: 14px;
+      color: #D50000;
+      display: block;
     }
   }
   button {

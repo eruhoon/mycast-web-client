@@ -23,7 +23,6 @@ export class ModifyProfileModalComponent implements OnInit {
   }
 
   public onSubmitClick(): void {
-    console.log(this.profileForm.name, this.profileForm.icon);
     this.mProfileService.requestToModifyProfile(
       this.profileForm.name, this.profileForm.icon);
   }

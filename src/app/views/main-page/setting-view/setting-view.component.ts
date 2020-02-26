@@ -26,4 +26,8 @@ export class SettingViewComponent {
   public getLevel(): number {
     return this.mProfileService.getLevel();
   }
+
+  public onProfileSettingClick(): void {
+    this.mProfileService.setModifyMode(true);
+  }
 }

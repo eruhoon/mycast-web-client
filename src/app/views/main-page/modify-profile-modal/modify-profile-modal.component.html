@@ -1,7 +1,7 @@
 <div class="click-blocker"></div>
 <div class="modal">
     <div class="u-img">
-        <img src="https://i.imgur.com/XjsUghQ.gif"/>
+        <img [src]="profileForm.icon" (error)="onProfileIconError($event)" />
     </div>
     <div class="title">
         <h3>회원 정보 수정</h3>
@@ -10,7 +10,7 @@
         <label>
             <p>닉네임</p>
         </label>
-        <input id="name" [(ngModel)]="profileForm.name" type="text" />
+        <input id="name" maxlength="15" [(ngModel)]="profileForm.name" type="text" />
     </div>
     <div class="u-input">
         <label>
@@ -20,7 +20,7 @@
     </div>
     <button (click)="onSubmitClick()">확인</button>
 
-    <a href="#" class="modal-close">
+    <a href="#" class="modal-close" (click)="onCloseClick()">
         <i class="material-icons">
             close
         </i>

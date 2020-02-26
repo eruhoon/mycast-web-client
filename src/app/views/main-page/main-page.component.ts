@@ -4,6 +4,7 @@ import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component, HostListener, ViewChild } from '@angular/core';
 
@@ -25,6 +26,7 @@ export class MainPageComponent {
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
     private mLinkContentViewService: LinkContentViewService;
+    private mProfileService: ProfileService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
@@ -35,7 +37,8 @@ export class MainPageComponent {
         mainService: MainService,
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
-        linkContentViewService: LinkContentViewService) {
+        linkContentViewService: LinkContentViewService,
+        profileService: ProfileService) {
 
         this.mMenuShow = false;
         this.mSettingShow = false;
@@ -44,6 +47,7 @@ export class MainPageComponent {
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
         this.mLinkContentViewService = linkContentViewService;
+        this.mProfileService = profileService;
         this.mMoveMode = false;
         this.mDividerPosition = 300;
         this.mInnerWidth = window.innerWidth;
@@ -152,6 +156,10 @@ export class MainPageComponent {
 
     public getLinkPopups(): LinkPopup[] {
         return this.mLinkPopupService.getLinks();
+    }
+
+    public isModifyProfileMode(): boolean {
+        return this.mProfileService.isModifyMode();
     }
 
     private toggleMenu() {

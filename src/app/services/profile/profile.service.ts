@@ -9,10 +9,12 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
+  private mModifyMode: boolean;
   private mProfile: Profile;
   private mModifyProfileCommand: ModifyProfileCommand;
 
   public constructor() {
+    this.mModifyMode = false;
     this.mProfile = new DefaultProfile();
   }
 
@@ -34,6 +36,14 @@ export class ProfileService {
 
   public getLevel(): number {
     return this.mProfile.getLevel();
+  }
+
+  public isModifyMode(): boolean {
+    return this.mModifyMode;
+  }
+
+  public setModifyMode(modifyMode: boolean): void {
+    this.mModifyMode = modifyMode;
   }
 
   public requestToModifyProfile(name: string, icon: string): void {

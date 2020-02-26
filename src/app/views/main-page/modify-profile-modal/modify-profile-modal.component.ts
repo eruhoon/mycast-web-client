@@ -25,5 +25,18 @@ export class ModifyProfileModalComponent implements OnInit {
   public onSubmitClick(): void {
     this.mProfileService.requestToModifyProfile(
       this.profileForm.name, this.profileForm.icon);
+    this.mProfileService.setModifyMode(false);
+  }
+
+  public onCloseClick(): void {
+    this.mProfileService.setModifyMode(false);
+  }
+
+  public onProfileIconError(event: Event): void {
+    if (!event || !event.target) {
+      return;
+    }
+    const img = event.target as HTMLImageElement;
+    img.src = 'https://i.imgur.com/HcBf3yq.png';
   }
 }

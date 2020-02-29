@@ -9,10 +9,13 @@ import { Component } from '@angular/core';
 })
 export class SettingViewComponent {
 
+  public notificationSoundId: string;
   private mProfileService: ProfileService;
   private mNotificationSounds: NotificationOption[];
 
   public constructor(profileService: ProfileService) {
+    this.notificationSoundId = 'hello-robot';
+
     this.mProfileService = profileService;
     this.mNotificationSounds = [
       { id: 'hello-robot', name: '안녕로봇' },
@@ -20,7 +23,7 @@ export class SettingViewComponent {
       { id: 'iphone', name: '아이폰' },
       { id: 'horn', name: '기상나팔' },
       { id: 'wake-up', name: '어서일어나' },
-    ]
+    ];
   }
 
   public getNotificationSounds(): NotificationOption[] {

@@ -15,11 +15,9 @@
     <div class="alarm">
         <h5>알림음</h5>
         <ul>
-            <li><input name="alarm" type="radio" value="hellorobot">안녕로봇</li>
-            <li><input name="alarm" type="radio" value="hellorobot">디바</li>
-            <li><input name="alarm" type="radio" value="hellorobot">아이폰</li>
-            <li><input name="alarm" type="radio" value="hellorobot">기상나팔</li>
-            <li><input name="alarm" type="radio" value="hellorobot">어서일어나</li>
+            <li *ngFor="let option of getNotificationSounds()">
+                <input name="alarm" type="radio" [value]="option.id">{{option.name}}
+            </li>
         </ul>
     </div>
     <div class="theme">

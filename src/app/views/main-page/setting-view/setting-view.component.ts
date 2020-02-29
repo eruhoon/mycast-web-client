@@ -10,9 +10,21 @@ import { Component } from '@angular/core';
 export class SettingViewComponent {
 
   private mProfileService: ProfileService;
+  private mNotificationSounds: NotificationOption[];
 
   public constructor(profileService: ProfileService) {
     this.mProfileService = profileService;
+    this.mNotificationSounds = [
+      { id: 'hello-robot', name: '안녕로봇' },
+      { id: 'd-va', name: '디바' },
+      { id: 'iphone', name: '아이폰' },
+      { id: 'horn', name: '기상나팔' },
+      { id: 'wake-up', name: '어서일어나' },
+    ]
+  }
+
+  public getNotificationSounds(): NotificationOption[] {
+    return this.mNotificationSounds;
   }
 
   public getName(): string {
@@ -27,7 +39,13 @@ export class SettingViewComponent {
     return this.mProfileService.getLevel();
   }
 
+  public getNotificationSound(): string {
+    return 'hello-robot';
+  }
+
   public onProfileSettingClick(): void {
     this.mProfileService.setModifyMode(true);
   }
 }
+
+type NotificationOption = { id: string, name: string };

@@ -6,21 +6,21 @@
     <div class="title">
         <h3>회원 정보 수정</h3>
     </div>
-    <div class="u-input error">
+    <div [class]="isNameError() ? 'u-input error' : 'u-input'">
         <label>
             <p>닉네임</p>
         </label>
         <input id="name" maxlength="15" [(ngModel)]="profileForm.name" type="text" />
-        <p class="error-up">글자가 너무 깁니다.</p>
+        <p class="error-up">닉네임을 입력하세요.</p>
     </div>
-    <div class="u-input">
+    <div [class]="isIconError() ? 'u-input error' : 'u-input'">
         <label>
             <p>아이콘 이미지 변경</p>
         </label>
         <input id="icon" [(ngModel)]="profileForm.icon" type="text" />
-        <p class="error-up">글자가 너무 깁니다.</p>
+        <p class="error-up">아이콘을 입력하세요.</p>
     </div>
-    <button (click)="onSubmitClick()" class="error">확인</button>
+    <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button>
 
     <a href="#" class="modal-close" (click)="onCloseClick()">
         <i class="material-icons">

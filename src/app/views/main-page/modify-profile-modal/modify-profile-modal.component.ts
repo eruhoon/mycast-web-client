@@ -1,25 +1,24 @@
+import { Component } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'modify-profile-modal',
   templateUrl: './modify-profile-modal.component.html',
   styleUrls: ['./modify-profile-modal.component.scss']
 })
-export class ModifyProfileModalComponent implements OnInit {
+export class ModifyProfileModalComponent {
 
-  public profileForm = { name: '', icon: '' };
+  public profileForm: ProfileForm;
 
   private mProfileService: ProfileService;
 
-  public constructor(profileService: ProfileService) {
-    this.profileForm.name = profileService.getName();
-    this.profileForm.icon = profileService.getProfileIcon();
-    this.mProfileService = profileService;
-  }
 
-  public ngOnInit() {
+  public constructor(profileService: ProfileService) {
+    this.profileForm = {
+      name: profileService.getName(),
+      icon: profileService.getProfileIcon(),
+    };
+    this.mProfileService = profileService;
   }
 
   public onSubmitClick(): void {
@@ -39,4 +38,14 @@ export class ModifyProfileModalComponent implements OnInit {
     const img = event.target as HTMLImageElement;
     img.src = 'https://i.imgur.com/HcBf3yq.png';
   }
+
+  public isNameError(): boolean {
+    return !this.profileForm.name || this.profileForm.name.length === 0;
+  }
+
+  public isIconError(): boolean {
+    return !this.profileForm.icon || this.profileForm.icon.length === 0;
+  }
 }
+
+type ProfileForm = { name: string, icon: string };

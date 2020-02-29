@@ -24,8 +24,9 @@
     <div class="theme">
         <h5>테마</h5>
         <ul>
-            <li>기본</li>
-            <li>어두운모드</li>
+            <li *ngFor="let option of getThemes()" [class]="option.id===themeId ? 'select' : ''"
+                (click)="onThemeClick(option)">
+                {{option.name}}</li>
         </ul>
     </div>
     <div>

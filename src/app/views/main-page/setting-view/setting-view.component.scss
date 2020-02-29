@@ -5,31 +5,36 @@
 
   border-radius: 5px;
   background: #ffffff;
-  
+
   li {
     list-style-type: none;
+
     &:hover {
       background-color: #f5f5f5;
     }
   }
 }
 
-.user-setting > div {
+.user-setting>div {
   border-bottom: 1px solid #eeeeee;
   padding: 15px 10px;
+
   h5 {
     margin: 0%;
     padding: 0%;
     color: #616161;
     font-weight: 800;
   }
+
   p {
     margin: 0%;
     padding: 0%;
   }
+
   &:last-child {
     border-bottom: 0px;
   }
+
   &:hover {
     background-color: #F5F5F5;
   }
@@ -40,6 +45,7 @@
   padding: 0px;
   height: 40px;
   position: relative;
+
   img {
     width: 40px;
     height: 40px;
@@ -47,21 +53,26 @@
     margin-right: 10px;
     float: left;
   }
+
   .u-name {
     width: 150px;
     float: left;
     height: 32px;
     padding-top: 4px;
+
     .lv {
       font-size: 10px;
     }
   }
+
   p {
     width: 90%;
     color: #424242;
   }
+
   a {
     border-radius: 50%;
+
     i {
       position: absolute;
       top: 11px;
@@ -69,6 +80,7 @@
       color: #616161;
       font-size: 24px;
     }
+
     &:hover {
       i {
         color: #ec407a;
@@ -81,6 +93,7 @@
 .alarm {
   width: 91%;
   height: auto;
+
   ul {
     width: 100%;
     margin: 0%;
@@ -95,9 +108,11 @@
       font-size: 12px;
       color: #616161;
       border-radius: 3px;
+
       input {
         margin-right: 10px;
       }
+
       &.select {
         color: #f50057;
       }
@@ -109,6 +124,7 @@
 .theme {
   width: 91%;
   height: auto;
+
   ul {
     width: 100%;
     margin: 0%;
@@ -124,6 +140,8 @@
       color: #616161;
       border-radius: 3px;
       padding-left: 10px;
+      cursor: pointer;
+
       &.select {
         color: #f50057;
       }
@@ -132,18 +150,22 @@
 }
 
 // 로그아웃 부분
-.user-setting > .logout {
+.user-setting>.logout {
   h5 {
     color: #f50057;
   }
+
   &:hover {
     background-color: #ec407a;
+
     h5 {
       color: #ffffff;
     }
   }
+
   &:active {
     background-color: #c2185b;
+
     h5 {
       color: #ffffff;
     }

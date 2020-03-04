@@ -1,3 +1,4 @@
+import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component } from '@angular/core';
@@ -12,14 +13,17 @@ export class SettingViewComponent {
   public notificationSoundId: string;
   public themeId: string;
   private mProfileService: ProfileService;
+  private mOptionService: OptionService;
   private mNotificationSounds: NotificationOption[];
   private mThemes: Option[];
 
-  public constructor(profileService: ProfileService) {
+  public constructor(
+    profileService: ProfileService, optionService: OptionService) {
     this.notificationSoundId = 'hello-robot';
     this.themeId = 'default';
 
     this.mProfileService = profileService;
+    this.mOptionService = optionService;
     this.mNotificationSounds = [
       { id: 'hello-robot', name: '안녕로봇' },
       { id: 'd-va', name: '디바' },
@@ -55,6 +59,15 @@ export class SettingViewComponent {
 
   public getNotificationSound(): string {
     return 'hello-robot';
+  }
+
+  public isDataSaveMode(): boolean {
+    return this.mOptionService.isDataSaveMode();
+  }
+
+  public toggleDataSaveMode(): void {
+    const option = this.mOptionService.isDataSaveMode();
+    return this.mOptionService.setDataSaveMode(!option);
   }
 
   public onProfileSettingClick(): void {

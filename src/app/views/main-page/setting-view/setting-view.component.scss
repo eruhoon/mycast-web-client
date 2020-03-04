@@ -15,7 +15,7 @@
   }
 }
 
-.user-setting>div {
+.user-setting > div {
   border-bottom: 1px solid #eeeeee;
   padding: 15px 10px;
 
@@ -24,6 +24,11 @@
     padding: 0%;
     color: #616161;
     font-weight: 800;
+    cursor: pointer;
+
+    &.active::before {
+      content: "✔️ ";
+    }
   }
 
   p {
@@ -36,7 +41,7 @@
   }
 
   &:hover {
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 }
 
@@ -150,7 +155,7 @@
 }
 
 // 로그아웃 부분
-.user-setting>.logout {
+.user-setting > .logout {
   h5 {
     color: #f50057;
   }

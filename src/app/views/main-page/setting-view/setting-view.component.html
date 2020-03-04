@@ -30,7 +30,7 @@
         </ul>
     </div>
     <div>
-        <h5>데이터세이브 모드</h5>
+        <h5 [ngClass]="{'active':isDataSaveMode()}" (click)="toggleDataSaveMode()">데이터세이브 모드</h5>
     </div>
     <div>
         <h5>챗봇 설정</h5>

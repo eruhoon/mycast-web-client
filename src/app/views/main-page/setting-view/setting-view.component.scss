@@ -18,6 +18,8 @@
 .user-setting > div {
   border-bottom: 1px solid #eeeeee;
   padding: 15px 10px;
+  
+  position: relative;
 
   h5 {
     margin: 0%;
@@ -26,9 +28,16 @@
     font-weight: 800;
     cursor: pointer;
 
-    &.active::before {
-      content: "✔️ ";
-    }
+  }
+
+  i {
+    font-family: 'Material Icons';
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: #616161;
+    font-size: 18px;
+    line-height: 20px;
   }
 
   p {

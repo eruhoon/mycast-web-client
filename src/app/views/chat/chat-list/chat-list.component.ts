@@ -29,14 +29,7 @@ export class ChatListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mCurrentChatService.getChats().subscribe(chats => {
-      const prevChats = this.mChats;
-      this.mChats = chats;
-      const isFirst = prevChats.length === 0;
-      if (!this.mOptionService.isScrollLockMode()) {
-        this.scrollToBottom(isFirst);
-      }
-    });
+    this.mCurrentChatService.subscribeChat(chats => this.onChatsChanged(chats));
   }
 
   public getChats(): Chat[] {
@@ -56,5 +49,14 @@ export class ChatListComponent implements OnInit {
         behavior: isFirst ? 'auto' : 'smooth'
       });
     });
+  }
+
+  private onChatsChanged(chats: Chat[]): void {
+    const prevChats = this.mChats;
+    this.mChats = chats;
+    const isFirst = prevChats.length === 0;
+    if (!this.mOptionService.isScrollLockMode()) {
+      this.scrollToBottom(isFirst);
+    }
   }
 }

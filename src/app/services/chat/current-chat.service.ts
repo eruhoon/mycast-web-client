@@ -3,6 +3,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatContianer as ChatContainer } from 'src/app/models/chat/ChatContainer';
 
 import { Injectable } from '@angular/core';
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class CurrentChatService {
   public constructor() {
     this.mChatSubject = new Subject<Chat[]>();
     this.mChatContainer = new ChatContainer([]);
+  }
+
+  public subscribeChat(callback: TypeCallback<Chat[]>): void {
+    const observable = this.mChatSubject.asObservable();
+    observable.subscribe(callback);
   }
 
   public getChats(): Observable<Chat[]> {

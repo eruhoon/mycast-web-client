@@ -66,7 +66,6 @@ export class SettingViewComponent {
   }
 
   public toggleDataSaveMode(): void {
-    console.log('toggle');
     const option = this.mOptionService.isDataSaveMode();
     return this.mOptionService.setDataSaveMode(!option);
   }

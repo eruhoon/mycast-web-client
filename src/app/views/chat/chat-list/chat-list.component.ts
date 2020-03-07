@@ -42,10 +42,10 @@ export class ChatListComponent implements OnInit {
 
   private scrollToBottom(isFirst: boolean): void {
     setTimeout(() => {
-      const listElm = this.mScrollList.nativeElement;
-      this.mScrollList.nativeElement.scrollTo({
+      const listElement = this.mScrollList.nativeElement;
+      listElement.scrollTo({
         left: 0,
-        top: listElm.scrollHeight,
+        top: listElement.scrollHeight,
         behavior: isFirst ? 'auto' : 'smooth'
       });
     });

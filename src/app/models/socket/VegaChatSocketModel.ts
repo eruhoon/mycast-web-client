@@ -40,7 +40,6 @@ export abstract class VegaChatSocketModel implements SocketModel {
     }
 
     protected onMessageData(messageData: MessageData) {
-        console.log('onMessageData', messageData);
         switch (messageData.commandType) {
             case 'applyCurrentUserList':
                 this.onRefreshUserList(messageData.response);

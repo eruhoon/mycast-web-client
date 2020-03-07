@@ -55,7 +55,6 @@ export class MainPageComponent {
 
         this.mMoveMode = false;
         this.mDividerPosition = optionService.getChatPosition();
-        console.log('ini', this.mDividerPosition);
         this.mInnerWidth = window.innerWidth;
     }
 
@@ -159,8 +158,6 @@ export class MainPageComponent {
     public onDividerMouseUp(): void {
         this.mMoveMode = false;
         this.mOptionService.setChatPosition(this.mDividerPosition);
-        console.log('saved');
-        console.log(this.mOptionService.getChatPosition());
     }
 
     public getLinkPopups(): LinkPopup[] {

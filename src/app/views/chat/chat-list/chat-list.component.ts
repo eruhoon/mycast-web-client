@@ -2,6 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-list',
@@ -15,11 +16,16 @@ export class ChatListComponent implements OnInit {
 
   private mChats: Chat[];
   private mCurrentChatService: CurrentChatService;
+  private mOptionService: OptionService;
 
-  public constructor(currentChatService: CurrentChatService) {
+  public constructor(
+    currentChatService: CurrentChatService,
+    optionService: OptionService) {
+
     this.mChats = [];
     this.entryIconSelect = new EventEmitter<string>();
     this.mCurrentChatService = currentChatService;
+    this.mOptionService = optionService;
   }
 
   public ngOnInit() {
@@ -27,7 +33,9 @@ export class ChatListComponent implements OnInit {
       const prevChats = this.mChats;
       this.mChats = chats;
       const isFirst = prevChats.length === 0;
-      this.scrollToBottom(isFirst);
+      if (!this.mOptionService.isScrollLockMode()) {
+        this.scrollToBottom(isFirst);
+      }
     });
   }
 

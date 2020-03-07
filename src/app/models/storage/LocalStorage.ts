@@ -25,6 +25,17 @@ export class LocalStorage {
             LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
     }
 
+    public getScrollLockMode(): boolean {
+        const rawScrollLockMode =
+            this.getItem(LocalStorageKey.SCROLL_LOCK_MODE);
+        return rawScrollLockMode === LocalStorage.OPTION_TRUE;
+    }
+
+    public setScrollLockMode(value: boolean): void {
+        this.setItem(LocalStorageKey.SCROLL_LOCK_MODE, value ?
+            LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
+    }
+
     private getItem(key: LocalStorageKey): string | null {
         return localStorage.getItem(key.toString());
     }
@@ -40,4 +51,5 @@ export class LocalStorage {
 
 enum LocalStorageKey {
     DATA_SAVE_MODE = 'vega.data_save_mode',
+    SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
 }

@@ -70,6 +70,15 @@ export class SettingViewComponent {
     return this.mOptionService.setDataSaveMode(!option);
   }
 
+  public isScrollLockMode(): boolean {
+    return this.mOptionService.isScrollLockMode();
+  }
+
+  public toggleScrollLockMode(): void {
+    const option = this.mOptionService.isScrollLockMode();
+    return this.mOptionService.setScrollLockMode(!option);
+  }
+
   public onProfileSettingClick(): void {
     this.mProfileService.setModifyMode(true);
   }

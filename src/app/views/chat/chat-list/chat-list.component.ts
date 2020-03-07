@@ -1,5 +1,4 @@
 import { Chat } from 'src/app/models/chat/Chat';
-import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
@@ -16,13 +15,11 @@ export class ChatListComponent implements OnInit {
 
   private mChats: Chat[];
   private mCurrentChatService: CurrentChatService;
-  private mChatMerger: ChatMerger;
 
   public constructor(currentChatService: CurrentChatService) {
     this.mChats = [];
     this.entryIconSelect = new EventEmitter<string>();
     this.mCurrentChatService = currentChatService;
-    this.mChatMerger = new ChatMerger();
   }
 
   public ngOnInit() {
@@ -35,7 +32,7 @@ export class ChatListComponent implements OnInit {
   }
 
   public getChats(): Chat[] {
-    return this.mChatMerger.mergeChats(this.mChats || []);
+    return this.mChats;
   }
 
   public onProfileIconSelect(iconSrc: string): void {

@@ -2,6 +2,7 @@ export class LocalStorage {
 
     private static sInstance: LocalStorage | null = null;
 
+    private static readonly DEFAULT_CHAT_POSITION = 300;
     private static OPTION_TRUE = 'true';
     private static OPTION_FALSE = 'false';
 
@@ -13,6 +14,20 @@ export class LocalStorage {
             this.sInstance = new LocalStorage();
         }
         return this.sInstance;
+    }
+
+    public getChatPosition(): number {
+        const rawPos = this.getItem(LocalStorageKey.CHAT_POSITION);
+        if (rawPos === null) {
+            return LocalStorage.DEFAULT_CHAT_POSITION;
+        } else {
+            return parseInt(rawPos);
+        }
+    }
+
+    public setChatPosition(value: number): void {
+        const pos = Math.round(value);
+        this.setItem(LocalStorageKey.CHAT_POSITION, pos.toString());
     }
 
     public getDataSaveMode(): boolean {
@@ -50,6 +65,7 @@ export class LocalStorage {
 }
 
 enum LocalStorageKey {
+    CHAT_POSITION = 'vega.chat_position',
     DATA_SAVE_MODE = 'vega.data_save_mode',
     SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
 }

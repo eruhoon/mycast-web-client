@@ -21,7 +21,7 @@ export class LocalStorage {
         if (rawPos === null) {
             return LocalStorage.DEFAULT_CHAT_POSITION;
         } else {
-            return parseInt(rawPos);
+            return Number(rawPos);
         }
     }
 

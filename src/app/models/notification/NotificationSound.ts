@@ -1,16 +1,18 @@
 export class NotificationSound {
 
     private static readonly NONE =
-        new NotificationSound('none', '무음');
-    private static readonly DEFAULT_NOTIFICATION_SOUND =
-        new NotificationSound('hello-robot', '안녕로봇');
+        new NotificationSound('none', '무음', '');
+    private static readonly DEFAULT_NOTIFICATION_SOUND = new NotificationSound(
+        'hello-robot', '안녕로봇', './assets/sound/alarm_hellorobot.mp3');
 
     private mId: string;
     private mName: string;
+    private mSource: string;
 
-    public constructor(id: string, name: string) {
+    public constructor(id: string, name: string, source: string) {
         this.mId = id;
         this.mName = name;
+        this.mSource = source;
     }
 
     public static getNone(): NotificationSound {
@@ -27,5 +29,9 @@ export class NotificationSound {
 
     public getName(): string {
         return this.mName;
+    }
+
+    public getSource(): string {
+        return this.mSource;
     }
 }

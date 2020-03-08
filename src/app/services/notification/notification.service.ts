@@ -1,16 +1,19 @@
 import { Notification } from 'src/app/models/notification/Notification';
 
 import { Injectable } from '@angular/core';
+import { OptionService } from '../option/option.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
+  private mOption: OptionService;
   private mNotifications: Notification[];
   private mNotificationPushes: Notification[];
 
-  public constructor() {
+  public constructor(option: OptionService) {
+    this.mOption = option;
     this.mNotifications = [];
     this.mNotificationPushes = [];
   }
@@ -28,9 +31,17 @@ export class NotificationService {
     this.mNotifications =
       this.mNotifications.filter((_, i) => i < 10);
     this.mNotificationPushes.push(notification);
+    this.performSound();
     setTimeout(() => {
       this.mNotificationPushes =
         this.mNotificationPushes.filter(n => n !== notification);
     }, 3000);
+  }
+
+  private performSound(): void {
+    const audio = new Audio();
+    audio.src = this.mOption.getNotificationSound().getSource();
+    audio.load();
+    audio.play();
   }
 }

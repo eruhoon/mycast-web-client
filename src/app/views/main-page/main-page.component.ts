@@ -9,6 +9,7 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 import { Component, HostListener, ViewChild } from '@angular/core';
 
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
     selector: 'app-main-page',
@@ -26,6 +27,7 @@ export class MainPageComponent {
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
     private mLinkContentViewService: LinkContentViewService;
+    private mOptionService: OptionService;
     private mProfileService: ProfileService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
@@ -38,6 +40,7 @@ export class MainPageComponent {
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
         linkContentViewService: LinkContentViewService,
+        optionService: OptionService,
         profileService: ProfileService) {
 
         this.mMenuShow = false;
@@ -47,9 +50,11 @@ export class MainPageComponent {
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
         this.mLinkContentViewService = linkContentViewService;
+        this.mOptionService = optionService;
         this.mProfileService = profileService;
+
         this.mMoveMode = false;
-        this.mDividerPosition = 300;
+        this.mDividerPosition = optionService.getChatPosition();
         this.mInnerWidth = window.innerWidth;
     }
 
@@ -152,6 +157,7 @@ export class MainPageComponent {
 
     public onDividerMouseUp(): void {
         this.mMoveMode = false;
+        this.mOptionService.setChatPosition(this.mDividerPosition);
     }
 
     public getLinkPopups(): LinkPopup[] {

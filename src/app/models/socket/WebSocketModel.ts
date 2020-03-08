@@ -147,12 +147,10 @@ export class WebSocketModel extends VegaChatSocketModel {
     }
 
     private onOpenSocket(): void {
-        console.log('onOpenSocket');
         this.login();
     }
 
     private onRawMessage(event: MessageEvent): void {
-        console.log('onMessage', event);
         if (!event || !event.data || typeof (event.data) !== 'string') {
             console.error('Invalid data');
             return;

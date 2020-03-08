@@ -2,7 +2,7 @@
     <div class="icon" [style.background-image]="'url('+stream.getIcon()+')'" (click)="onIconClick()"></div>
     <div class="bridge"></div>
     <div class="detail thumbnail">
-        <img class="thumbnail" [src]="stream.getThumbnail()" style="display: inline;">
+        <img class="thumbnail" [src]="stream.getThumbnail() | safe" style="display: inline;">
         <div class="wrapper">
             <div class="title">{{stream.getTitle()}}</div>
             <div class="description">{{stream.getDescription()}}</div>

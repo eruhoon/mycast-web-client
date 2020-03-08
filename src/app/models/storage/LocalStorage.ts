@@ -1,7 +1,10 @@
+import { NotificationSound } from '../notification/NotificationSound';
+
 export class LocalStorage {
 
     private static sInstance: LocalStorage | null = null;
 
+    private static readonly DEFAULT_CHAT_POSITION = 300;
     private static OPTION_TRUE = 'true';
     private static OPTION_FALSE = 'false';
 
@@ -15,6 +18,29 @@ export class LocalStorage {
         return this.sInstance;
     }
 
+    public getChatPosition(): number {
+        const rawPos = this.getItem(LocalStorageKey.CHAT_POSITION);
+        if (rawPos === null) {
+            return LocalStorage.DEFAULT_CHAT_POSITION;
+        } else {
+            return Number(rawPos);
+        }
+    }
+
+    public setChatPosition(value: number): void {
+        const pos = Math.round(value);
+        this.setItem(LocalStorageKey.CHAT_POSITION, pos.toString());
+    }
+
+    public getNotificationSoundId(): string {
+        const raw = this.getItem(LocalStorageKey.NOTIFICATION_SOUND);
+        return raw ? raw : NotificationSound.getDefaultSound().getId();
+    }
+
+    public setNotificationSoundId(id: string): void {
+        this.setItem(LocalStorageKey.DATA_SAVE_MODE, id);
+    }
+
     public getDataSaveMode(): boolean {
         const rawDataSaveMode = this.getItem(LocalStorageKey.DATA_SAVE_MODE);
         return rawDataSaveMode === LocalStorage.OPTION_TRUE;
@@ -22,6 +48,17 @@ export class LocalStorage {
 
     public setDataSaveMode(value: boolean): void {
         this.setItem(LocalStorageKey.DATA_SAVE_MODE, value ?
+            LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
+    }
+
+    public getScrollLockMode(): boolean {
+        const rawScrollLockMode =
+            this.getItem(LocalStorageKey.SCROLL_LOCK_MODE);
+        return rawScrollLockMode === LocalStorage.OPTION_TRUE;
+    }
+
+    public setScrollLockMode(value: boolean): void {
+        this.setItem(LocalStorageKey.SCROLL_LOCK_MODE, value ?
             LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
     }
 
@@ -39,5 +76,8 @@ export class LocalStorage {
 }
 
 enum LocalStorageKey {
+    CHAT_POSITION = 'vega.chat_position',
+    NOTIFICATION_SOUND = 'vega.notification_sound',
     DATA_SAVE_MODE = 'vega.data_save_mode',
+    SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
 }

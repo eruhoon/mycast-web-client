@@ -1,7 +1,9 @@
+import { NotificationSound } from 'src/app/models/notification/NotificationSound';
+import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-setting-view',
@@ -14,7 +16,7 @@ export class SettingViewComponent {
   public themeId: string;
   private mProfileService: ProfileService;
   private mOptionService: OptionService;
-  private mNotificationSounds: NotificationOption[];
+  private mNotificationSounds: NotificationSounds;
   private mThemes: Option[];
 
   public constructor(
@@ -24,21 +26,15 @@ export class SettingViewComponent {
 
     this.mProfileService = profileService;
     this.mOptionService = optionService;
-    this.mNotificationSounds = [
-      { id: 'hello-robot', name: '안녕로봇' },
-      { id: 'd-va', name: '디바' },
-      { id: 'iphone', name: '아이폰' },
-      { id: 'horn', name: '기상나팔' },
-      { id: 'wake-up', name: '어서일어나' },
-    ];
+    this.mNotificationSounds = new NotificationSounds();
     this.mThemes = [
       { id: 'default', name: '기본' },
       { id: 'dark', name: '어두운모드' },
     ];
   }
 
-  public getNotificationSounds(): NotificationOption[] {
-    return this.mNotificationSounds;
+  public getNotificationSounds(): NotificationSound[] {
+    return this.mNotificationSounds.getList();
   }
 
   public getThemes(): Option[] {
@@ -70,6 +66,15 @@ export class SettingViewComponent {
     return this.mOptionService.setDataSaveMode(!option);
   }
 
+  public isScrollLockMode(): boolean {
+    return this.mOptionService.isScrollLockMode();
+  }
+
+  public toggleScrollLockMode(): void {
+    const option = this.mOptionService.isScrollLockMode();
+    return this.mOptionService.setScrollLockMode(!option);
+  }
+
   public onProfileSettingClick(): void {
     this.mProfileService.setModifyMode(true);
   }
@@ -81,4 +86,3 @@ export class SettingViewComponent {
 }
 
 type Option = { id: string, name: string };
-type NotificationOption = { id: string, name: string };

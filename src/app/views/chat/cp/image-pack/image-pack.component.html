@@ -1,5 +1,8 @@
 <div class="image-pack">
-    <div class="img-wrapper">
+    <div class="data-save-alter" *ngIf="!isOpen()" (click)="openImage()">
+        클릭해서 이미지 열기
+    </div>
+    <div class="img-wrapper" *ngIf="isOpen()">
         <img class="img" [src]="getImage()" (click)="onImageClick()">
         <!-- <div #buttonWrapper class="button-wrapper">
             <button>

@@ -1,8 +1,8 @@
 import { Chat } from 'src/app/models/chat/Chat';
-import { ChatMerger } from 'src/app/models/chat/util/ChatMerger';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-list',
@@ -16,26 +16,24 @@ export class ChatListComponent implements OnInit {
 
   private mChats: Chat[];
   private mCurrentChatService: CurrentChatService;
-  private mChatMerger: ChatMerger;
+  private mOptionService: OptionService;
 
-  public constructor(currentChatService: CurrentChatService) {
+  public constructor(
+    currentChatService: CurrentChatService,
+    optionService: OptionService) {
+
     this.mChats = [];
     this.entryIconSelect = new EventEmitter<string>();
     this.mCurrentChatService = currentChatService;
-    this.mChatMerger = new ChatMerger();
+    this.mOptionService = optionService;
   }
 
   public ngOnInit() {
-    this.mCurrentChatService.getChats().subscribe(chats => {
-      const prevChats = this.mChats;
-      this.mChats = chats;
-      const isFirst = prevChats.length === 0;
-      this.scrollToBottom(isFirst);
-    });
+    this.mCurrentChatService.subscribeChat(chats => this.onChatsChanged(chats));
   }
 
   public getChats(): Chat[] {
-    return this.mChatMerger.mergeChats(this.mChats || []);
+    return this.mChats;
   }
 
   public onProfileIconSelect(iconSrc: string): void {
@@ -44,12 +42,21 @@ export class ChatListComponent implements OnInit {
 
   private scrollToBottom(isFirst: boolean): void {
     setTimeout(() => {
-      const listElm = this.mScrollList.nativeElement;
-      this.mScrollList.nativeElement.scrollTo({
+      const listElement = this.mScrollList.nativeElement;
+      listElement.scrollTo({
         left: 0,
-        top: listElm.scrollHeight,
+        top: listElement.scrollHeight,
         behavior: isFirst ? 'auto' : 'smooth'
       });
     });
+  }
+
+  private onChatsChanged(chats: Chat[]): void {
+    const prevChats = this.mChats;
+    this.mChats = chats;
+    const isFirst = prevChats.length === 0;
+    if (!this.mOptionService.isScrollLockMode()) {
+      this.scrollToBottom(isFirst);
+    }
   }
 }

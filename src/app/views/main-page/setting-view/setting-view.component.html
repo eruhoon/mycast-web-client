@@ -16,9 +16,14 @@
         <h5>알림음</h5>
         <ul>
             <li *ngFor="let option of getNotificationSounds()">
+<<<<<<< HEAD
                 {{option.name}}
                 <!--<input name="alarm" type="radio" [(ngModel)]="notificationSoundId" [value]="option.id"
                     [checked]="notificationSoundId === option.id">{{option.name}}-->
+=======
+                <input name="alarm" type="radio" [(ngModel)]="notificationSoundId" [value]="option.getId()"
+                    [checked]="notificationSoundId === option.getId()">{{option.getName()}}
+>>>>>>> 64482cc480f946a6b62e858c970aafe5b20b1f60
             </li>
         </ul>
     </div>
@@ -30,20 +35,19 @@
                 {{option.name}}</li>
         </ul>
     </div>
-    <div>
-        <h5 [ngClass]="{'active':isDataSaveMode()}" (click)="toggleDataSaveMode()">데이터세이브 모드</h5>
-        <i class="material-icons">
-            done
-            </i>
+    <div class="toggle-option" (click)="toggleDataSaveMode()">
+        <h5>데이터세이브 모드</h5>
+        <i *ngIf="isDataSaveMode()" class="material-icons">done</i>
     </div>
     <div>
         <h5>챗봇 설정</h5>
     </div>
-    <div>
+    <div class="toggle-option">
         <h5>후방주의</h5>
     </div>
-    <div>
+    <div class="toggle-option" (click)="toggleScrollLockMode()">
         <h5>스크롤잠금</h5>
+        <i *ngIf="isScrollLockMode()" class="material-icons">done</i>
     </div>
     <div class="logout">
         <h5>로그아웃</h5>

@@ -1,20 +1,26 @@
 import { Observable, Subject } from 'rxjs';
 import { Chat } from 'src/app/models/chat/Chat';
+import { ChatContianer as ChatContainer } from 'src/app/models/chat/ChatContainer';
 
 import { Injectable } from '@angular/core';
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentChatService {
 
-  private static readonly CHAT_CAPACITY = 100;
   private mChatSubject: Subject<Chat[]>;
-  private mChats: Chat[];
+  private mChatContainer: ChatContainer;
 
   public constructor() {
     this.mChatSubject = new Subject<Chat[]>();
-    this.mChats = [];
+    this.mChatContainer = new ChatContainer([]);
+  }
+
+  public subscribeChat(callback: TypeCallback<Chat[]>): void {
+    const observable = this.mChatSubject.asObservable();
+    observable.subscribe(callback);
   }
 
   public getChats(): Observable<Chat[]> {
@@ -22,14 +28,13 @@ export class CurrentChatService {
   }
 
   public setCurrentChat(chats: Chat[]): void {
-    this.mChats = chats;
-    this.mChatSubject.next(this.mChats);
+    this.mChatContainer = new ChatContainer(chats);
+    this.mChatSubject.next(this.mChatContainer.toArray());
   }
 
   public addChat(chat: Chat): void {
-    const newChats = [...this.mChats, chat];
-    this.setCurrentChat(newChats.slice(
-      newChats.length - CurrentChatService.CHAT_CAPACITY));
+    this.mChatContainer.addChat(chat);
+    this.mChatSubject.next(this.mChatContainer.toArray());
   }
 
   public clearChat(): void {

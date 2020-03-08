@@ -38,7 +38,6 @@ export class TopBarComponent {
 
   public toggleNotificationList(): void {
     this.mNotificationListShow = !this.mNotificationListShow;
-    console.log(this.mNotificationListShow);
   }
 
   public isNotificationListShow(): boolean {

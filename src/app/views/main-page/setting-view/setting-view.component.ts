@@ -3,25 +3,24 @@ import { NotificationSounds } from 'src/app/models/notification/NotificationSoun
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-setting-view',
   templateUrl: './setting-view.component.html',
   styleUrls: ['./setting-view.component.scss']
 })
-export class SettingViewComponent {
+export class SettingViewComponent implements OnInit {
 
-  public notificationSoundId: string;
   public themeId: string;
   private mProfileService: ProfileService;
   private mOptionService: OptionService;
   private mNotificationSounds: NotificationSounds;
   private mThemes: Option[];
+  private mNotificationSoundId: string;
 
   public constructor(
     profileService: ProfileService, optionService: OptionService) {
-    this.notificationSoundId = 'hello-robot';
     this.themeId = 'default';
 
     this.mProfileService = profileService;
@@ -31,6 +30,15 @@ export class SettingViewComponent {
       { id: 'default', name: '기본' },
       { id: 'dark', name: '어두운모드' },
     ];
+    this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
+  }
+
+  public ngOnInit(): void {
+    this.mNotificationSoundId = this.mOptionService.getNotificationSound().getId();
+  }
+
+  public getNotficationSoundId(): string {
+    return this.mNotificationSoundId;
   }
 
   public getNotificationSounds(): NotificationSound[] {
@@ -53,10 +61,6 @@ export class SettingViewComponent {
     return this.mProfileService.getLevel();
   }
 
-  public getNotificationSound(): string {
-    return 'hello-robot';
-  }
-
   public isDataSaveMode(): boolean {
     return this.mOptionService.isDataSaveMode();
   }
@@ -77,6 +81,12 @@ export class SettingViewComponent {
 
   public onProfileSettingClick(): void {
     this.mProfileService.setModifyMode(true);
+  }
+
+  public onNotificationSoundClick(option: NotificationSound): void {
+    const soundId = option.getId();
+    this.mNotificationSoundId = soundId;
+    this.mOptionService.setNotificationSound(soundId);
   }
 
   public onThemeClick(themeOption: Option): void {

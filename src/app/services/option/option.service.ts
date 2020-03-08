@@ -38,6 +38,7 @@ export class OptionService {
   }
 
   public setNotificationSound(soundId: string): void {
+    this.mNotificationSoundId = soundId;
     this.mStorage.setNotificationSoundId(soundId);
   }
 

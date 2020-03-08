@@ -38,7 +38,7 @@ export class LocalStorage {
     }
 
     public setNotificationSoundId(id: string): void {
-        this.setItem(LocalStorageKey.DATA_SAVE_MODE, id);
+        this.setItem(LocalStorageKey.NOTIFICATION_SOUND, id);
     }
 
     public getDataSaveMode(): boolean {

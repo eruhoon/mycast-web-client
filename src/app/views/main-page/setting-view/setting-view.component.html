@@ -15,10 +15,10 @@
     <div class="alarm">
         <h5>알림음</h5>
         <ul>
-            <li *ngFor="let option of getNotificationSounds()">
+            <li *ngFor="let option of getNotificationSounds()"
+                [ngClass]="{'select':option.getId()===getNotficationSoundId()}"
+                (click)="onNotificationSoundClick(option)">
                 {{option.getName()}}
-                <!--<input name="alarm" type="radio" [(ngModel)]="notificationSoundId" [value]="option.getId()"
-                    [checked]="notificationSoundId === option.getId()">{{option.getName()}}-->
             </li>
         </ul>
     </div>

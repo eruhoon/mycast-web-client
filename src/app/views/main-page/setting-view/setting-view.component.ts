@@ -3,7 +3,7 @@ import { NotificationSounds } from 'src/app/models/notification/NotificationSoun
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-setting-view',

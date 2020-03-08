@@ -1,3 +1,5 @@
+import { NotificationSound } from '../notification/NotificationSound';
+
 export class LocalStorage {
 
     private static sInstance: LocalStorage | null = null;
@@ -28,6 +30,15 @@ export class LocalStorage {
     public setChatPosition(value: number): void {
         const pos = Math.round(value);
         this.setItem(LocalStorageKey.CHAT_POSITION, pos.toString());
+    }
+
+    public getNotificationSoundId(): string {
+        const raw = this.getItem(LocalStorageKey.NOTIFICATION_SOUND);
+        return raw ? raw : NotificationSound.getDefaultSound().getId();
+    }
+
+    public setNotificationSoundId(id: string): void {
+        this.setItem(LocalStorageKey.DATA_SAVE_MODE, id);
     }
 
     public getDataSaveMode(): boolean {
@@ -66,6 +77,7 @@ export class LocalStorage {
 
 enum LocalStorageKey {
     CHAT_POSITION = 'vega.chat_position',
+    NOTIFICATION_SOUND = 'vega.notification_sound',
     DATA_SAVE_MODE = 'vega.data_save_mode',
     SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
 }

@@ -1,6 +1,7 @@
-import { LocalStorage } from 'src/app/models/storage/LocalStorage';
-
 import { Injectable } from '@angular/core';
+import { NotificationSound } from 'src/app/models/notification/NotificationSound';
+import { LocalStorage } from 'src/app/models/storage/LocalStorage';
+import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,16 @@ export class OptionService {
 
   private mStorage: LocalStorage;
   private mChatPosition: number;
+  private mNotificationSounds: NotificationSounds;
+  private mNotificationSoundId: string;
   private mDataSaveMode: boolean;
   private mScrollLockMode: boolean;
 
   public constructor() {
     this.mStorage = LocalStorage.getInstance();
     this.mChatPosition = this.mStorage.getChatPosition();
+    this.mNotificationSounds = new NotificationSounds();
+    this.mNotificationSoundId = this.mStorage.getNotificationSoundId();
     this.mDataSaveMode = this.mStorage.getDataSaveMode();
     this.mScrollLockMode = this.mStorage.getScrollLockMode();
   }
@@ -26,6 +31,14 @@ export class OptionService {
   public setChatPosition(pos: number): void {
     this.mChatPosition = pos;
     this.mStorage.setChatPosition(pos);
+  }
+
+  public getNotificationSound(): NotificationSound {
+    return this.mNotificationSounds.getSoundById(this.mNotificationSoundId);
+  }
+
+  public setNotificationSound(soundId: string): void {
+    this.mStorage.setNotificationSoundId(soundId);
   }
 
   public isDataSaveMode(): boolean {

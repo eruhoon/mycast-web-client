@@ -25,7 +25,7 @@
     <div class="theme">
         <h5>테마</h5>
         <ul>
-            <li *ngFor="let option of getThemes()" [class]="option.id===themeId ? 'select' : ''"
+            <li *ngFor="let option of getThemes()" [ngClass]="{'select':option.id===themeId}"
                 (click)="onThemeClick(option)">
                 {{option.name}}</li>
         </ul>

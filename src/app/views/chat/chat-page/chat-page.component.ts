@@ -4,6 +4,7 @@ import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { MainService } from 'src/app/services/main/main.service';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 
 @Component({
   selector: 'chat-page',
@@ -13,11 +14,16 @@ import { MainService } from 'src/app/services/main/main.service';
 export class ChatPageComponent {
 
   private mChatService: ChatService;
+  private mClipboardImageService: ClipboardImageService;
   private mChatNetwork: ChatNetworkModel;
   private mClipboardManager: ClipboardManager;
 
-  public constructor(mainService: MainService, chatService: ChatService) {
+  public constructor(
+    mainService: MainService,
+    chatService: ChatService,
+    clipboardImageService: ClipboardImageService) {
     this.mChatService = chatService;
+    this.mClipboardImageService = clipboardImageService;
     this.mChatNetwork = mainService.getChatNework();
     this.mClipboardManager = new ClipboardManager();
   }
@@ -30,7 +36,7 @@ export class ChatPageComponent {
     if (!event.clipboardData) return;
 
     this.mClipboardManager.uploadImageCache(event.clipboardData, imageUri => {
-      console.log(imageUri);
+      this.mClipboardImageService.setCurrentImage(imageUri);
     });
   }
 

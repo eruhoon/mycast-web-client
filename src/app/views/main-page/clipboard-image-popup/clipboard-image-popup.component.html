@@ -1,1 +1,5 @@
-<p>clipboard-image-popup works!</p>
+<div #focus class="container" (focus)="onFocus()" (keydown.enter)="sendImage()" tabindex="0">
+    <p>clipboard-image-popup works!</p>
+    <img *ngIf="getCurrentImage()" [src]="getCurrentImage()">
+    <button (click)="sendImage()">send</button>
+</div>

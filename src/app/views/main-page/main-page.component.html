@@ -39,4 +39,4 @@
 <image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>
 <notification-push-list></notification-push-list>
 <modify-profile-modal *ngIf="isModifyProfileMode()"></modify-profile-modal>
-<clipboard-image-popup></clipboard-image-popup>
+<clipboard-image-popup *ngIf="isClipboardImageMode()"></clipboard-image-popup>

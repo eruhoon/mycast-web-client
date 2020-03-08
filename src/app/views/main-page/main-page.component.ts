@@ -10,6 +10,7 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { OptionService } from 'src/app/services/option/option.service';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 
 @Component({
     selector: 'app-main-page',
@@ -29,6 +30,7 @@ export class MainPageComponent {
     private mLinkContentViewService: LinkContentViewService;
     private mOptionService: OptionService;
     private mProfileService: ProfileService;
+    private mClipboardImageService: ClipboardImageService;
     private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
@@ -41,7 +43,8 @@ export class MainPageComponent {
         linkPopupService: LinkPopupService,
         linkContentViewService: LinkContentViewService,
         optionService: OptionService,
-        profileService: ProfileService) {
+        profileService: ProfileService,
+        clipboardImageService: ClipboardImageService) {
 
         this.mMenuShow = false;
         this.mSettingShow = false;
@@ -52,6 +55,7 @@ export class MainPageComponent {
         this.mLinkContentViewService = linkContentViewService;
         this.mOptionService = optionService;
         this.mProfileService = profileService;
+        this.mClipboardImageService = clipboardImageService;
 
         this.mMoveMode = false;
         this.mDividerPosition = optionService.getChatPosition();
@@ -61,6 +65,10 @@ export class MainPageComponent {
     @HostListener('window:resize', ['$event'])
     public onResize(event: Event) {
         this.mInnerWidth = window.innerWidth;
+    }
+
+    public isClipboardImageMode(): boolean {
+        return this.mClipboardImageService.getCurrentImage() !== null;
     }
 
     public getCurrentStream(): Stream | null {

@@ -41,6 +41,7 @@ import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-e
 import { NotificationPushListComponent } from './views/main-page/notification-push-list/notification-push-list.component';
 import { NotificationListComponent } from './views/main-page/notification-list/notification-list.component';
 import { ModifyProfileModalComponent } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
+import { ClipboardImagePopupComponent } from './views/main-page/clipboard-image-popup/clipboard-image-popup.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ModifyProfileModalComponent } from './views/main-page/modify-profile-mo
     NotificationPushListComponent,
     NotificationListComponent,
     ModifyProfileModalComponent,
+    ClipboardImagePopupComponent,
   ],
   imports: [
     BrowserModule,

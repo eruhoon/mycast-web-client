@@ -1,5 +1,5 @@
 <div #focus class="container" (focus)="onFocus()" (keydown.enter)="sendImage()" tabindex="0">
-    <div class="background"></div>
+    <div class="background" (click)="onCloseClick()"></div>
     <div class="image-mod">
         <div class="image-wrapper">
             <div class="title">
@@ -10,15 +10,10 @@
             </div>
             <img *ngIf="getCurrentImage()" [src]="getCurrentImage()">
             <a href="#" class="modal-close" (click)="onCloseClick()">
-                <i class="material-icons">
-                    close
-                </i>
+                <i class="material-icons">close</i>
             </a>
             <button (click)="sendImage()">
-                <i class="material-icons">
-                    save_alt
-                    </i>
-                    보내기
+                <i class="material-icons">save_alt</i> 보내기
             </button>
         </div>
     </div>

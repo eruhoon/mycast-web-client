@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { MainService } from 'src/app/services/main/main.service';
-import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'clipboard-image-popup',
@@ -33,6 +34,10 @@ export class ClipboardImagePopupComponent implements OnInit {
 
   public sendImage(): void {
     this.mChatNetwork.chat(`사진::${this.getCurrentImage()}`);
+    this.mService.clearImage();
+  }
+
+  public onCloseClick(): void {
     this.mService.clearImage();
   }
 }

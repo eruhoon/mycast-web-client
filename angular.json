@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "mycast-web-client"
+  "defaultProject": "mycast-web-client",
+  "cli": {
+    "analytics": "61609057-cb11-40f5-b0b8-13dd85ccd2a8"
+  }
 }

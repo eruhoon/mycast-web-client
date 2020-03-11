@@ -1,5 +1,20 @@
-<div #focus class="container" (focus)="onFocus()" (keydown.enter)="sendImage()" tabindex="0">
-    <p>clipboard-image-popup works!</p>
-    <img *ngIf="getCurrentImage()" [src]="getCurrentImage()">
-    <button (click)="sendImage()">send</button>
+<div #focus class="container" (keydown.enter)="sendImage()" tabindex="0">
+    <div class="background" (click)="onCloseClick()"></div>
+    <div class="image-mod">
+        <div class="image-wrapper">
+            <div class="title">
+                <i class="material-icons">
+                    add_photo_alternate
+                </i>
+                <p>클립보드 붙여넣기</p>
+            </div>
+            <img *ngIf="getCurrentImage()" [src]="getCurrentImage()">
+            <a href="#" class="modal-close" (click)="onCloseClick()">
+                <i class="material-icons">close</i>
+            </a>
+            <button (click)="sendImage()">
+                <i class="material-icons">save_alt</i> 보내기
+            </button>
+        </div>
+    </div>
 </div>

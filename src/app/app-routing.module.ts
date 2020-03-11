@@ -9,6 +9,9 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import {
     StreamPlayerPageComponent
 } from './views/stream/stream-player-page/stream-player-page.component';
+import {
+    TestPlayerPageComponent
+} from './views/stream/test-player-page/test-player-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +36,10 @@ const routes: Routes = [
   {
     path: 'player/:playerId',
     component: StreamPlayerPageComponent
+  },
+  {
+    path: 'player_dev',
+    component: TestPlayerPageComponent
   }
 ];
 

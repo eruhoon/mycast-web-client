@@ -42,6 +42,7 @@ import { NotificationPushListComponent } from './views/main-page/notification-pu
 import { NotificationListComponent } from './views/main-page/notification-list/notification-list.component';
 import { ModifyProfileModalComponent } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
 import { ClipboardImagePopupComponent } from './views/main-page/clipboard-image-popup/clipboard-image-popup.component';
+import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ClipboardImagePopupComponent } from './views/main-page/clipboard-image-
     NotificationListComponent,
     ModifyProfileModalComponent,
     ClipboardImagePopupComponent,
+    TestPlayerPageComponent,
   ],
   imports: [
     BrowserModule,

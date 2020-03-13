@@ -1,7 +1,6 @@
+import { Component, OnInit } from '@angular/core';
 import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
-
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MainService } from 'src/app/services/main/main.service';
 
 @Component({

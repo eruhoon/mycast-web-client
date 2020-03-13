@@ -2,6 +2,7 @@ import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareComma
 import { Stream } from 'src/app/models/stream/Stream';
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MainService } from 'src/app/services/main/main.service';
 
 @Component({
   selector: 'stream-entry',
@@ -11,14 +12,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class StreamEntryComponent implements OnInit {
 
   @Input() stream: Stream;
-  @Output() iconClick = new EventEmitter<Stream>();
 
-  public constructor() { }
+  private mMainService: MainService;
+
+  public constructor(mainService: MainService) {
+    this.mMainService = mainService;
+  }
 
   public ngOnInit() { }
 
   public onIconClick(): void {
-    this.iconClick.emit(this.stream);
+    this.mMainService.setCurrentLink(this.stream.getUrl());
   }
 
   public onShareClick(stream: Stream): void {

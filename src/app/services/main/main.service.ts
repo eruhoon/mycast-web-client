@@ -25,6 +25,7 @@ export class MainService {
   private mCurrentUserService: CurrentUserService;
   private mNotificationService: NotificationService;
   private mChatNetwork: ChatNetworkModel;
+  private mCurrentLink: string;
 
   public constructor(
     profileService: ProfileService,
@@ -37,6 +38,7 @@ export class MainService {
     this.mCurrentUserService = currentUserService;
     this.mNotificationService = notificationService;
     this.mChatNetwork = this.createChatNetworkModel();
+    this.mCurrentLink = '';
 
     this.mProfileService.setModifyProfileCommand(
       new ModifyProfileCommand(this.mChatNetwork));
@@ -45,6 +47,14 @@ export class MainService {
   // TODO: Remove
   public getChatNework(): ChatNetworkModel {
     return this.mChatNetwork;
+  }
+
+  public setCurrentLink(link: string) {
+    this.mCurrentLink = link;
+  }
+
+  public getCurrentLink(): string {
+    return this.mCurrentLink;
   }
 
   private createChatNetworkModel(): ChatNetworkModel {

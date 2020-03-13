@@ -18,7 +18,7 @@ import { YoutubePackComponent } from './views/chat/cp/youtube-pack/youtube-pack.
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import {
-    ImagePopupViewerComponent
+  ImagePopupViewerComponent
 } from './views/main-page/image-popup-viewer/image-popup-viewer.component';
 import { LinkPopupComponent } from './views/main-page/link-popup/link-popup.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
@@ -26,15 +26,14 @@ import { SettingViewComponent } from './views/main-page/setting-view/setting-vie
 import { SideBarComponent } from './views/main-page/side-bar/side-bar.component';
 import { StreamListComponent } from './views/main-page/stream-list/stream-list.component';
 import {
-    ExternalViewerComponent
+  ExternalViewerComponent
 } from './views/main-page/stream-viewer/external-viewer/external-viewer.component';
 import {
-    LocalViewerComponent
+  LocalViewerComponent
 } from './views/main-page/stream-viewer/local-viewer/local-viewer.component';
 import { StreamViewerComponent } from './views/main-page/stream-viewer/stream-viewer.component';
 import { TopBarComponent } from './views/main-page/top-bar/top-bar.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
-import { LinkContentViewerComponent } from './views/main-page/link-content-viewer/link-content-viewer.component';
 import { StreamPlayerPageComponent } from './views/stream/stream-player-page/stream-player-page.component';
 import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
@@ -71,7 +70,6 @@ import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/tot
     LinkPackComponent,
     YoutubePackComponent,
     LinkPopupComponent,
-    LinkContentViewerComponent,
     StreamPlayerPageComponent,
     ChatUserListComponent,
     ChatUserEntryComponent,

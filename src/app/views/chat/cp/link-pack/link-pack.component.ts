@@ -1,7 +1,5 @@
-import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
-
 import { Component, OnInit } from '@angular/core';
-
+import { MainService } from 'src/app/services/main/main.service';
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -11,14 +9,14 @@ import { ChatPack } from '../ChatPack';
 })
 export class LinkPackComponent extends ChatPack implements OnInit {
 
-  private mLinkViewService: LinkContentViewService;
+  private mMainService: MainService;
   private mLink: string;
   private mTitle: string;
   private mThumbnail: string;
 
-  public constructor(linkViewService: LinkContentViewService) {
+  public constructor(mainService: MainService) {
     super();
-    this.mLinkViewService = linkViewService;
+    this.mMainService = mainService;
   }
 
   public ngOnInit() {
@@ -40,7 +38,7 @@ export class LinkPackComponent extends ChatPack implements OnInit {
   }
 
   public onContextMenu(): boolean {
-    this.mLinkViewService.setLink(this.mLink);
+    this.mMainService.setCurrentLink(this.mLink);
     return false;
   }
 

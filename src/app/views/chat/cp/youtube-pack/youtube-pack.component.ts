@@ -1,9 +1,7 @@
-import { LinkPopup } from 'src/app/models/link/LinkPopup';
-import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
-import { LinkPopupService } from 'src/app/services/link/link-popup.service';
-
 import { Component, OnInit } from '@angular/core';
-
+import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { LinkPopupService } from 'src/app/services/link/link-popup.service';
+import { MainService } from 'src/app/services/main/main.service';
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -19,15 +17,15 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   private mLink: string;
 
   private mLinkPopup: LinkPopupService;
-  private mLinkContentView: LinkContentViewService;
+  private mMainService: MainService;
 
   public constructor(
     linkPopup: LinkPopupService,
-    linkContentView: LinkContentViewService) {
+    mainService: MainService) {
 
     super();
     this.mLinkPopup = linkPopup;
-    this.mLinkContentView = linkContentView;
+    this.mMainService = mainService;
   }
 
   public ngOnInit() {
@@ -59,7 +57,7 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   }
 
   public onContextMenu(): boolean {
-    this.mLinkContentView.setLink(this.mLink);
+    this.mMainService.setCurrentLink(this.mLink);
     return false;
   }
 }

@@ -1,16 +1,13 @@
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
-import { LinkContentViewService } from 'src/app/services/link/link-content-view.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
-
-import { Component, HostListener, ViewChild } from '@angular/core';
-
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { OptionService } from 'src/app/services/option/option.service';
-import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @Component({
     selector: 'app-main-page',
@@ -27,7 +24,6 @@ export class MainPageComponent {
     private mMainService: MainService;
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
-    private mLinkContentViewService: LinkContentViewService;
     private mOptionService: OptionService;
     private mProfileService: ProfileService;
     private mClipboardImageService: ClipboardImageService;
@@ -41,7 +37,6 @@ export class MainPageComponent {
         mainService: MainService,
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
-        linkContentViewService: LinkContentViewService,
         optionService: OptionService,
         profileService: ProfileService,
         clipboardImageService: ClipboardImageService) {
@@ -52,7 +47,6 @@ export class MainPageComponent {
         this.mMainService = mainService;
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
-        this.mLinkContentViewService = linkContentViewService;
         this.mOptionService = optionService;
         this.mProfileService = profileService;
         this.mClipboardImageService = clipboardImageService;
@@ -71,13 +65,17 @@ export class MainPageComponent {
         return this.mClipboardImageService.getCurrentImage() !== null;
     }
 
+    public getCurrentLink(): string {
+        return this.mMainService.getCurrentLink();
+    }
+
     public getCurrentStream(): Stream | null {
         return this.mCurrentStream;
     }
 
-    public getCurrentLink(): string | null {
-        return this.mLinkContentViewService.getLink();
-    }
+    // public getCurrentLink(): string | null {
+    //     return this.mLinkContentViewService.getLink();
+    // }
 
     public isLinkMode(): boolean {
         return this.getCurrentLink() !== null;

@@ -5,16 +5,13 @@
       width: 'calc(100% - ' + getChatSize() + 'px)'
     }">
     <div class="component-view">
-      <div class="contents-viewer">
-        <app-stream-viewer *ngIf="isStreamActivated()" [stream]="mCurrentStream"></app-stream-viewer>
-        <link-content-viewer *ngIf="isLinkMode()" [link]="getCurrentLink()"></link-content-viewer>
-      </div>
+      <iframe [src]="getCurrentLink() | safe" frameborder="0"></iframe>
     </div>
     <div class="stream-list-view">
-      <app-stream-list (streamIconClick)="onStreamIconClick($event)"></app-stream-list>
+      <app-stream-list></app-stream-list>
       <a class="show-btn">
         <i class="material-icons">
-        keyboard_arrow_left
+          keyboard_arrow_left
         </i>
       </a>
     </div>

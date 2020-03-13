@@ -1,7 +1,6 @@
+import { Component, Input, OnInit } from '@angular/core';
 import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
-
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MainService } from 'src/app/services/main/main.service';
 
 @Component({

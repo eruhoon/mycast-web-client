@@ -14,15 +14,26 @@ export class StreamEntryComponent implements OnInit {
   @Input() stream: Stream;
 
   private mMainService: MainService;
+  private mThumbnailShow: boolean;
 
   public constructor(mainService: MainService) {
     this.mMainService = mainService;
   }
 
-  public ngOnInit() { }
+  public ngOnInit() {
+    this.mThumbnailShow = true;
+  }
 
   public onIconClick(): void {
     this.mMainService.setCurrentLink(this.stream.getUrl());
+  }
+
+  public onThumbnailError(): void {
+    this.mThumbnailShow = false;
+  }
+
+  public isThumbnailShow(): boolean {
+    return this.mThumbnailShow;
   }
 
   public onShareClick(stream: Stream): void {

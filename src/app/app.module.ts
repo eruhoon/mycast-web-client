@@ -43,6 +43,7 @@ import { NotificationListComponent } from './views/main-page/notification-list/n
 import { ModifyProfileModalComponent } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
 import { ClipboardImagePopupComponent } from './views/main-page/clipboard-image-popup/clipboard-image-popup.component';
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
+import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
     ModifyProfileModalComponent,
     ClipboardImagePopupComponent,
     TestPlayerPageComponent,
+    TotoroPlayerPageComponent,
   ],
   imports: [
     BrowserModule,

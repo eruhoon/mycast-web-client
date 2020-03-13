@@ -7,11 +7,12 @@ import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import {
-    StreamPlayerPageComponent
+  StreamPlayerPageComponent
 } from './views/stream/stream-player-page/stream-player-page.component';
 import {
-    TestPlayerPageComponent
+  TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
+import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'player/:playerId',
     component: StreamPlayerPageComponent
+  },
+  {
+    path: 'player/totoro/:playerId',
+    component: TotoroPlayerPageComponent
   },
   {
     path: 'player_dev',

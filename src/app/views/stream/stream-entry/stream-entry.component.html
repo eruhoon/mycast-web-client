@@ -4,17 +4,21 @@
     <div class="detail thumbnail">
         <img class="thumbnail" [src]="stream.getThumbnail() | safe" style="display: inline;">
         <div class="wrapper">
-            <div class="title">{{stream.getTitle()}}</div>
-            <div class="description">{{stream.getDescription()}}</div>
-            <div class="viewer">
-                <i class="material-icons">person</i>
-                <span>{{stream.getViewer()}}</span>
+            <div class="text">
+                <h4 class="title">{{stream.getTitle()}}</h4>
+                <div class="viewer">
+                    <i class="material-icons">person</i>
+                    <span>{{stream.getViewer()}}</span>
+                </div>
             </div>
-            <div class="button" style="right: 10px;" (click)="onShareClick(stream)">
-                <i class="material-icons">link</i>
-            </div>
-            <div class="button" style="right: 32px;" (click)="onNewWindowClick(stream)">
-                <i class="material-icons">open_in_new</i>
+            <p class="description">{{stream.getDescription()}}</p>
+            <div class="btn-box">
+                <div class="button" style="right: 10px;" (click)="onShareClick(stream)">
+                    <i class="material-icons">link</i>
+                </div>
+                <div class="button" style="right: 32px;" (click)="onNewWindowClick(stream)">
+                    <i class="material-icons">open_in_new</i>
+                </div>
             </div>
         </div>
     </div>

@@ -53,14 +53,35 @@ nav.top-bar-section {
   width: auto;
   height: 60px;
   padding: 0px 5px;
-  box-shadow: 1px 1px 0px 1px rgba($color: #000000, $alpha: 0.3);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
 
   position: absolute;
-  right: 15px;
+  right: -20px;
   bottom: 10px;
+
+  padding-right: 25px;
+
+  .show-btn {
+    position: absolute;
+    top: 15px;
+    left: -20px;
+    width: 24px;
+    height: 30px;
+    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #fff;
+    z-index: 10;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    i {
+      line-height: 32px;
+    }
+  }
 }
 
 .side-bar {

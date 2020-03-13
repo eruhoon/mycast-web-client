@@ -2,6 +2,7 @@ import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamLi
 import { Stream } from 'src/app/models/stream/Stream';
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MainService } from 'src/app/services/main/main.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,15 +11,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  @Output()
-  public streamClick = new EventEmitter<Stream>();
-
+  private mMainService: MainService;
   private mTwitchListShow: boolean;
   private mKakaoListShow: boolean;
   private mTwitchs: Stream[];
   private mKakaos: Stream[];
 
-  constructor() {
+  constructor(main: MainService) {
+    this.mMainService = main;
     this.mTwitchs = [];
     this.mKakaos = [];
   }
@@ -55,7 +55,7 @@ export class SideBarComponent implements OnInit {
   }
 
   public onStreamClick(stream: Stream): void {
-    this.streamClick.emit(stream);
+    this.mMainService.setCurrentLink(stream.getUrl());
   }
 
   public onTwitchListClick(): void {

@@ -73,10 +73,6 @@ export class MainPageComponent {
         return this.mCurrentStream;
     }
 
-    // public getCurrentLink(): string | null {
-    //     return this.mLinkContentViewService.getLink();
-    // }
-
     public isLinkMode(): boolean {
         return this.getCurrentLink() !== null;
     }
@@ -139,15 +135,6 @@ export class MainPageComponent {
         this.toggleSetting();
     }
 
-    public onStreamClick(stream: Stream): void {
-        this.setCurrentStream(stream);
-        this.closeMenu();
-    }
-
-    public onStreamIconClick(stream: Stream): void {
-        this.setCurrentStream(stream);
-    }
-
     public onDividerMouseDown(event: MouseEvent): void {
         this.mMoveMode = true;
         this.mDividerPosition = event.clientX;
@@ -184,9 +171,5 @@ export class MainPageComponent {
 
     private toggleSetting() {
         this.mSettingShow = !this.mSettingShow;
-    }
-
-    private setCurrentStream(stream: Stream): void {
-        this.mLinkContentViewService.setLink(stream.getUrl());
     }
 }

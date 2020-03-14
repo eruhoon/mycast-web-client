@@ -19,10 +19,18 @@ export abstract class VegaChatSocketModel implements SocketModel {
         notification: ReceivedNotification): void;
     protected abstract onChat(res): void;
     protected abstract requestChat(request: RawChatRequest): void;
+    protected abstract requestNotify(to: string): void;
+
     public chat(chat: string): void {
 
         const request = this.mChatRequestFactory.getRequest(chat);
         this.requestChat(request.toRawChatRequest());
+    }
+
+    public notify(to: string): void {
+        //{"commandType":"notify","resource":{"from":"45f16a716ec8f9cfb811ff035edbcea6","to":"45f16a716ec8f9cfb811ff035edbcea6"}}
+        this.requestNotify(to);
+        console.log('notify');
     }
 
     protected onMessage(rawMessage: string | null) {

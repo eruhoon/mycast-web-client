@@ -1,6 +1,6 @@
 <div>
   <div class="user-icon">
-    <img [src]="user.getIcon() | safe" style="border-color: #F5F5F5;" />
+    <img [src]="user.getIcon() | safe" style="border-color: #F5F5F5;" (click)="onUserIconClick()" />
   </div>
   <div class="info">
     <div class="nickname">

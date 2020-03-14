@@ -26,6 +26,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mSocket.chat(chat);
     }
 
+    public notify(to: string): void {
+        this.mSocket.notify(to);
+    }
+
     public modifyProfile(name: string, icon: string): void {
         this.mSocket.modifyProfile(name, icon);
     }

@@ -95,4 +95,8 @@ export class MainService {
     this.mCurrentChatService.addChat(chat);
   }
 
+  public notify(to: string): void {
+    this.mChatNetwork.notify(to);
+  }
+
 }

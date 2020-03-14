@@ -1,4 +1,5 @@
 import { User } from 'src/app/models/user/User';
+import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, Input } from '@angular/core';
 
@@ -11,6 +12,14 @@ export class ChatUserEntryComponent {
 
   @Input() user: User;
 
-  public constructor() { }
+  private mMainService: MainService;
+
+  public constructor(mainService: MainService) {
+    this.mMainService = mainService;
+  }
+
+  public onUserIconClick(): void {
+    this.mMainService.notify(this.user.getHash());
+  }
 
 }

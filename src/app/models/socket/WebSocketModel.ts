@@ -64,6 +64,10 @@ export class WebSocketModel extends VegaChatSocketModel {
         });
     }
 
+    protected requestNotify(to: string): void {
+        this.sendMessage('notify-user', { from: this.mPrivKey, to });
+    }
+
     public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
         this.mOnRefreshMyProfile = callback;
     }

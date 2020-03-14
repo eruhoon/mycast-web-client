@@ -1,19 +1,19 @@
 <div class="nt-list">
-    <div class="nt-no-entry" *ngIf="getNotification().length === 0">
+    <div class="nt-no-entry" *ngIf="getNotificationParams().length === 0">
         <i class="material-icons">visibility_off</i>
         <p>알림이 없습니다.</p>
     </div>
-    <div class="nt-entry" *ngFor="let notification of getNotification()">
+    <div class="nt-entry" *ngFor="let param of getNotificationParams()">
         <div class="entry">
-            <img [src]="notification.getIcon()" />
+            <img [src]="param.notification.getIcon()" />
         </div>
         <div class="nt-info-txt">
             <div class="title">
-                <h4>{{notification.getTitle()}}</h4>
-                <p>30분 전</p>
+                <h4>{{param.notification.getTitle()}}</h4>
+                <p>{{param.timeText}}</p>
             </div>
             <div class="nt-alert">
-                <p>{{notification.getBody()}}</p>
+                <p>{{param.notification.getBody()}}</p>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
-import { Notification } from 'src/app/models/notification/Notification';
-
 import { Injectable } from '@angular/core';
+import { Notification } from 'src/app/models/notification/Notification';
 import { OptionService } from '../option/option.service';
 
 @Injectable({

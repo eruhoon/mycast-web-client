@@ -1,7 +1,8 @@
 import { Notification } from './Notification';
-
+import { Md5 } from 'ts-md5/dist/md5';
 export class MutableNotification implements Notification {
 
+    private mHash: string;
     private mIcon: string;
     private mTitle: string;
     private mBody: string;
@@ -9,11 +10,16 @@ export class MutableNotification implements Notification {
     private mRead: boolean;
 
     public constructor() {
+        this.mHash = this.generateHash();
         this.mIcon = '';
         this.mTitle = '';
         this.mBody = '';
         this.mTimeStamp = new Date().getTime();
         this.mRead = false;
+    }
+
+    public getHash(): string {
+        return this.mHash;
     }
 
     public setIcon(icon: string): void {
@@ -50,5 +56,10 @@ export class MutableNotification implements Notification {
 
     public read(): void {
         this.mRead = true;
+    }
+
+    private generateHash(): string {
+        const key = `vega-noti-${new Date().getTime()}`;
+        return Md5.hashStr(key).toString();
     }
 }

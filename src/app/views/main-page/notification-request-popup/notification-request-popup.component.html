@@ -1,13 +1,10 @@
-<div class="dialog-wrapper">
-    <div class="header">
+<div class="background" (click)="clearTarget()"></div>
+<div class="modal">
+    <div class="title">
         <i class="material-icons">alarm</i>
-        <span>유저 호출</span>
+        <p>유저 호출</p>
     </div>
-    <div class="body">
-        <img class="icon" [src]="getIcon()">
-        <div class="message"><span>호출하시겠어요?</span></div>
-    </div>
-    <div class="footer">
-        <button (click)="onSendClick()">호출</button>
-    </div>
+    <img class="icon" [src]="getIcon()">
+    <div>호출하시겠어요?</div>
+    <button (click)="onSendClick()">호출</button>
 </div>

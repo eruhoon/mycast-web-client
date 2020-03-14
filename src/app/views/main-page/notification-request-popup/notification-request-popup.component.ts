@@ -45,4 +45,8 @@ export class NotificationRequestPopupComponent implements OnInit {
     }
     this.mMainService.notify(target.getHash());
   }
+
+  public clearTarget(): void {
+    this.mNotificationService.setTarget(null);
+  }
 }

@@ -8,6 +8,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
     selector: 'app-main-page',
@@ -22,6 +23,7 @@ export class MainPageComponent {
     public mCurrentStream: Stream | null;
 
     private mMainService: MainService;
+    private mNotificationService: NotificationService;
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
     private mOptionService: OptionService;
@@ -35,6 +37,7 @@ export class MainPageComponent {
 
     public constructor(
         mainService: MainService,
+        notificationService: NotificationService,
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
         optionService: OptionService,
@@ -45,6 +48,7 @@ export class MainPageComponent {
         this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mMainService = mainService;
+        this.mNotificationService = notificationService;
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
         this.mOptionService = optionService;
@@ -100,6 +104,10 @@ export class MainPageComponent {
 
     public isImagePopup(): boolean {
         return this.mImagePopupService.isPopup();
+    }
+
+    public isNotificationRequestShow(): boolean {
+        return this.mNotificationService.getTarget() !== null;
     }
 
     public closeImagePopup(): void {

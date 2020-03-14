@@ -40,7 +40,7 @@ export class NotificationListComponent {
     } else if (agoMinute > 0) {
       timeText = `${agoMinute}분 전`;
     } else {
-      timeText = '방금' + agoSecond;
+      timeText = '방금';
     }
     return timeText;
   }

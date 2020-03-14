@@ -82,7 +82,9 @@ export class ChatInterfaceComponent implements OnInit {
   }
 
   private sendChat(input: string | null): void {
-    if (!input) return;
+    if (!input) {
+      return;
+    }
     this.chatInput.emit(input);
     this.mChatHistoryList.addHistory(input);
     this.mChatHistoryList.resetIndex();

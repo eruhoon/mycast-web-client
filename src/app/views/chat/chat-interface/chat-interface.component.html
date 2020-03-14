@@ -13,12 +13,12 @@
         format_clear
       </i>
     </a>
-    <a class="toggle-option"  (click)="toggleScrollLockMode()">
+    <a class="toggle-option" [ngClass]="{active: isScrollLockMode()}" (click)="toggleScrollLockMode()">
       <i class="material-icons">
         lock
       </i>
     </a>
-    
+
     <!-- right section -->
     <!-- imoticon -->
     <a>

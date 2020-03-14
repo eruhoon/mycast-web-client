@@ -2,7 +2,7 @@
   <div class="input-sticker">
     <!-- left section -->
     <!-- user list -->
-    <a (click)="onChatUserButtonClick()">
+    <a [ngClass]="{active: isChatUserListShow()}" (click)=" onChatUserButtonClick()">
       <i class="material-icons">
         assignment_ind
       </i>

@@ -52,6 +52,10 @@ export class ChatInterfaceComponent implements OnInit {
     this.setInput('');
   }
 
+  public isChatUserListShow(): boolean {
+    return this.mChatService.isChatUserListShow();
+  }
+
   public onChatUserButtonClick(): void {
     this.mChatService.toggleChatUserList();
   }

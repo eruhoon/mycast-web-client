@@ -26,11 +26,11 @@
       padding: 6px;
     }
 
+    &.active {
+      color: #c2185b;
+    }
     &:hover {
       color: #ec407a;
-    }
-    &:active {
-      color: #c2185b;
     }
     &:last-child {
       position: absolute;

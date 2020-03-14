@@ -3,6 +3,33 @@
   width: 100%;
   height: calc(100% - 80px);
   overflow-y: scroll;
+
+  scrollbar-color: #E0E0E0 #ffffff;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border: 3px solid #fff;
+  }
+  &::-webkit-scrollbar-button:start:decrement,
+  &::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 5px;
+    background: #fff;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    -webkit-border-radius: 10px;
+    border-radius:10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 50px;
+    width: 50px;
+    background: #E0E0E0;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+  }
 }
 
 chat-entry {
@@ -15,3 +42,5 @@ chat-entry {
     border-bottom-color: #ffffff;
   }
 }
+
+

@@ -25,7 +25,7 @@ nav.top-bar-section {
   z-index: 20;
 }
 
-.main-section>.stream-container-view {
+.main-section > .stream-container-view {
   position: absolute;
   left: 0;
   top: 0;
@@ -35,7 +35,7 @@ nav.top-bar-section {
   z-index: 21;
 }
 
-.main-section>.stream-container-view>.component-view {
+.main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
   height: 100%;
@@ -49,11 +49,12 @@ nav.top-bar-section {
 
 // 방송을 켜서 볼경우
 // 색상값 반전 필수 - 검정으로 변경
-.main-section>.stream-container-view>.stream-list-view {
+.main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
   padding: 0px 5px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -154,7 +155,7 @@ nav.top-bar-section {
   }
 }
 
-.main-section>.chat-list-view {
+.main-section > .chat-list-view {
   position: absolute;
   top: 0;
   right: 0;
@@ -191,9 +192,8 @@ nav.top-bar-section {
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, .12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   transition: 0.25s ease-in-out;
 
@@ -247,6 +247,16 @@ clipboard-image-popup {
   width: 100%;
   height: 100%;
   z-index: 100;
+}
+
+notification-request-popup {
+  position: fixed;
+  left: 30px;
+  top: 30px;
+  width: 300px;
+  height: 300px;
+  z-index: 100;
+  background: blue;
 }
 
 // 스크롤바 관련 처리

@@ -1,8 +1,7 @@
-import { User } from 'src/app/models/user/User';
-import { MainService } from 'src/app/services/main/main.service';
-
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/models/user/User';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+
 
 @Component({
   selector: 'chat-user-entry',
@@ -13,13 +12,10 @@ export class ChatUserEntryComponent {
 
   @Input() user: User;
 
-  private mMainService: MainService;
   private mNotificationService: NotificationService;
 
   public constructor(
-    mainService: MainService,
     notificationService: NotificationService) {
-    this.mMainService = mainService;
     this.mNotificationService = notificationService;
   }
 

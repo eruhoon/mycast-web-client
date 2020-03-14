@@ -28,9 +28,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
     }
 
     public notify(to: string): void {
-        //{"commandType":"notify","resource":{"from":"45f16a716ec8f9cfb811ff035edbcea6","to":"45f16a716ec8f9cfb811ff035edbcea6"}}
         this.requestNotify(to);
-        console.log('notify');
     }
 
     protected onMessage(rawMessage: string | null) {

@@ -10,7 +10,7 @@ export abstract class BaseToast implements Toast {
     }
 
     public getHash(): string {
-        throw new Error("Method not implemented.");
+        return this.mHash;
     }
 
     public abstract getText(): string;

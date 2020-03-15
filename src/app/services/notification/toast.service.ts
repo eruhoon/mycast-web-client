@@ -12,14 +12,20 @@ export class ToastService {
   private mToasts: Toast[];
 
   public constructor() {
+    this.mToasts = [];
   }
 
   public toast(msg: string): void {
     const toast = new DefaultToast(msg);
-    this.mToasts.push();
+    this.mToasts.push(toast);
 
     setTimeout(() => {
-      this.mToasts = this.mToasts.filter(t => t.getHash === toast.getHash);
+      this.mToasts = this.mToasts.filter(
+        t => t.getHash() !== toast.getHash());
     }, ToastService.SHOW_INTERVAL);
+  }
+
+  public getToasts(): Toast[] {
+    return this.mToasts;
   }
 }

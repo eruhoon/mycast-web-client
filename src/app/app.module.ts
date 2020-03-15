@@ -44,6 +44,7 @@ import { ClipboardImagePopupComponent } from './views/main-page/clipboard-image-
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
 import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { NotificationRequestPopupComponent } from './views/main-page/notification-request-popup/notification-request-popup.component';
+import { ToastListComponent } from './views/main-page/toast-list/toast-list.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { NotificationRequestPopupComponent } from './views/main-page/notificatio
     TestPlayerPageComponent,
     TotoroPlayerPageComponent,
     NotificationRequestPopupComponent,
+    ToastListComponent,
   ],
   imports: [
     BrowserModule,

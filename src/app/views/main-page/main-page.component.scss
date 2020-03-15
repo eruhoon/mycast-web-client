@@ -258,6 +258,15 @@ notification-request-popup {
   z-index: 100;
 }
 
+toast-list {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 30px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
+
 // 스크롤바 관련 처리
 
 /* Cu.setting-viewomize website's scrollbar like Mac OS Not supports in Firefox and IE */

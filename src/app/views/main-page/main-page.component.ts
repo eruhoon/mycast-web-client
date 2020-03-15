@@ -9,6 +9,8 @@ import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { ToastService } from 'src/app/services/notification/toast.service';
+import { Toast } from 'src/app/models/notification/Toast';
 
 @Component({
     selector: 'app-main-page',
@@ -24,6 +26,7 @@ export class MainPageComponent {
 
     private mMainService: MainService;
     private mNotificationService: NotificationService;
+    private mToastService: ToastService;
     private mImagePopupService: ImagePopupService;
     private mLinkPopupService: LinkPopupService;
     private mOptionService: OptionService;
@@ -38,6 +41,7 @@ export class MainPageComponent {
     public constructor(
         mainService: MainService,
         notificationService: NotificationService,
+        toastService: ToastService,
         imagePopupService: ImagePopupService,
         linkPopupService: LinkPopupService,
         optionService: OptionService,
@@ -49,6 +53,7 @@ export class MainPageComponent {
         this.mCurrentStream = null;
         this.mMainService = mainService;
         this.mNotificationService = notificationService;
+        this.mToastService = toastService;
         this.mImagePopupService = imagePopupService;
         this.mLinkPopupService = linkPopupService;
         this.mOptionService = optionService;
@@ -67,6 +72,10 @@ export class MainPageComponent {
 
     public isClipboardImageMode(): boolean {
         return this.mClipboardImageService.getCurrentImage() !== null;
+    }
+
+    public isToastListShow(): boolean {
+        return this.mToastService.getToasts().length > 0;
     }
 
     public getCurrentLink(): string {

@@ -21,7 +21,7 @@ export class TopBarComponent {
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
   private mNotificationListShow: boolean;
-  private mNotificationTimer: NodeJS.Timer;
+  private mNotificationTimer: number;
 
   public constructor(
     profileService: ProfileService,
@@ -62,9 +62,9 @@ export class TopBarComponent {
   }
 
   private startNotificationTimer(): void {
-    this.mNotificationTimer = setInterval(() => {
+    this.mNotificationTimer = Number(setInterval(() => {
       this.mNotificationService.readAll();
-    }, TopBarComponent.INTERVAL_READ);
+    }, TopBarComponent.INTERVAL_READ));
   }
 
   private stopNotificationTimer(): void {

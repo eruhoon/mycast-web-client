@@ -10,6 +10,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class TopBarComponent {
 
+  private static readonly INTERVAL_READ: number = 10000;
+
   @Output()
   public menuClick = new EventEmitter();
 
@@ -19,6 +21,7 @@ export class TopBarComponent {
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
   private mNotificationListShow: boolean;
+  private mNotificationTimer: NodeJS.Timer;
 
   public constructor(
     profileService: ProfileService,
@@ -32,11 +35,17 @@ export class TopBarComponent {
     return this.mProfileService.getProfileIcon();
   }
 
-  public getNotificationCount(): number {
-    return this.mNotificationService.getNotifications().length;
+  public getUnreadNotificationCount(): number {
+    return this.mNotificationService.getUnreadNotificationCount();
   }
 
   public toggleNotificationList(): void {
+    if (!this.mNotificationListShow) {
+      this.mNotificationService.readAll();
+      this.startNotificationTimer();
+    } else {
+      this.stopNotificationTimer();
+    }
     this.mNotificationListShow = !this.mNotificationListShow;
   }
 
@@ -52,4 +61,13 @@ export class TopBarComponent {
     this.settingClick.emit();
   }
 
+  private startNotificationTimer(): void {
+    this.mNotificationTimer = setInterval(() => {
+      this.mNotificationService.readAll();
+    }, TopBarComponent.INTERVAL_READ);
+  }
+
+  private stopNotificationTimer(): void {
+    clearInterval(this.mNotificationTimer);
+  }
 }

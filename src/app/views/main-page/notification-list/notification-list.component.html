@@ -3,7 +3,8 @@
         <i class="material-icons">visibility_off</i>
         <p>알림이 없습니다.</p>
     </div>
-    <div class="nt-entry" *ngFor="let param of getNotificationParams()">
+    <div class="nt-entry" [ngClass]="{'read': param.notification.isRead()}"
+        *ngFor="let param of getNotificationParams()">
         <div class="entry">
             <img [src]="param.notification.getIcon()" />
         </div>

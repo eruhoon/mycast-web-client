@@ -2,6 +2,7 @@ import { Injectable, Input } from '@angular/core';
 import { Notification } from 'src/app/models/notification/Notification';
 import { User } from 'src/app/models/user/User';
 import { OptionService } from '../option/option.service';
+import { MutableNotification } from 'src/app/models/notification/MutableNotification';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class NotificationService {
 
   private mOption: OptionService;
   private mTarget: User | null;
-  private mNotifications: Notification[];
+  private mNotifications: MutableNotification[];
   private mNotificationPushes: Notification[];
 
   public constructor(option: OptionService) {
@@ -28,6 +29,10 @@ export class NotificationService {
     return this.mTarget;
   }
 
+  public getUnreadNotificationCount(): number {
+    return this.mNotifications.filter(n => !n.isRead()).length;
+  }
+
   public getNotifications(): Notification[] {
     return this.mNotifications;
   }
@@ -37,15 +42,19 @@ export class NotificationService {
   }
 
   public pushNotification(notification: Notification): void {
-    this.mNotifications.unshift(notification);
-    this.mNotifications =
-      this.mNotifications.filter((_, i) => i < 10);
-    this.mNotificationPushes.push(notification);
+    const mutableNotification = MutableNotification.clone(notification);
+    this.mNotifications.unshift(mutableNotification);
+    this.mNotifications = this.mNotifications.filter((_, i) => i < 10);
+    this.mNotificationPushes.push(mutableNotification);
     this.performSound();
     setTimeout(() => {
       this.mNotificationPushes =
-        this.mNotificationPushes.filter(n => n !== notification);
+        this.mNotificationPushes.filter(n => n !== mutableNotification);
     }, 3000);
+  }
+
+  public readAll(): void {
+    this.mNotifications.forEach(notification => notification.read());
   }
 
   private performSound(): void {

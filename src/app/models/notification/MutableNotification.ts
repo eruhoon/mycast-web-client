@@ -10,12 +10,16 @@ export class MutableNotification implements Notification {
     private mRead: boolean;
 
     public constructor() {
-        this.mHash = this.generateHash();
+        this.mHash = MutableNotification.generateHash();
         this.mIcon = '';
         this.mTitle = '';
         this.mBody = '';
         this.mTimeStamp = new Date().getTime();
         this.mRead = false;
+    }
+
+    public setHash(hash: string): void {
+        this.mHash = hash;
     }
 
     public getHash(): string {
@@ -46,6 +50,10 @@ export class MutableNotification implements Notification {
         return this.mBody;
     }
 
+    public setTimeStamp(timeStamp: number): void {
+        this.mTimeStamp = timeStamp;
+    }
+
     public getTimeStamp(): number {
         return this.mTimeStamp;
     }
@@ -54,11 +62,26 @@ export class MutableNotification implements Notification {
         return this.mRead;
     }
 
+    public setRead(read: boolean): void {
+        this.mRead = read;
+    }
+
     public read(): void {
         this.mRead = true;
     }
 
-    private generateHash(): string {
+    public static clone(notification: Notification): MutableNotification {
+        const newNotification = new MutableNotification();
+        newNotification.setHash(notification.getHash());
+        newNotification.setIcon(notification.getIcon());
+        newNotification.setTitle(notification.getTitle());
+        newNotification.setBody(notification.getBody());
+        newNotification.setTimeStamp(notification.getTimeStamp());
+        newNotification.setRead(notification.isRead());
+        return newNotification;
+    }
+
+    private static generateHash(): string {
         const key = `vega-noti-${new Date().getTime()}`;
         return Md5.hashStr(key).toString();
     }

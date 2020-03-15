@@ -8,7 +8,7 @@
   <div class="part right">
     <button [class]="isNotificationListShow()?'alert-btn active':'alert-btn'" (click)="toggleNotificationList()">
       <i class="material-icons">notifications</i>
-      <div *ngIf="this.getNotificationCount() > 0">{{this.getNotificationCount()}}</div>
+      <div *ngIf="this.getUnreadNotificationCount() > 0">{{this.getUnreadNotificationCount()}}</div>
     </button>
     <button (click)="onSettingClick()">
       <img class="profile" [src]="getProfileIcon() | safe" />

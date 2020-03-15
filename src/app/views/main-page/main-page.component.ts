@@ -1,16 +1,15 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
-import { OptionService } from 'src/app/services/option/option.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
-import { Toast } from 'src/app/models/notification/Toast';
+import { OptionService } from 'src/app/services/option/option.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
+
+import { Component, HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-main-page',
@@ -18,9 +17,6 @@ import { Toast } from 'src/app/models/notification/Toast';
     styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
-
-    @ViewChild(TopBarComponent, { static: false })
-    private mTopBar: TopBarComponent;
 
     public mCurrentStream: Stream | null;
 

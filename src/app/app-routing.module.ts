@@ -13,6 +13,8 @@ import {
   TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
 import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
+import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatPageComponent
+  },
+  {
+    path: 'photo',
+    component: PhotoPageComponent
+  },
+  {
+    path: 'memo',
+    component: MemoPageComponent
   },
   {
     path: 'player/:playerId',

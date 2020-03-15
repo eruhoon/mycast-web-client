@@ -45,6 +45,8 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
 import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { NotificationRequestPopupComponent } from './views/main-page/notification-request-popup/notification-request-popup.component';
 import { ToastListComponent } from './views/main-page/toast-list/toast-list.component';
+import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
+import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { ToastListComponent } from './views/main-page/toast-list/toast-list.comp
     TotoroPlayerPageComponent,
     NotificationRequestPopupComponent,
     ToastListComponent,
+    PhotoPageComponent,
+    MemoPageComponent,
   ],
   imports: [
     BrowserModule,

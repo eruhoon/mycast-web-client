@@ -57,6 +57,14 @@ export class SideBarComponent implements OnInit {
     this.mMainService.setCurrentLink(stream.getUrl());
   }
 
+  public onMemoClick(): void {
+    this.mMainService.setCurrentLink('./memo');
+  }
+
+  public onPhotoClick(): void {
+    this.mMainService.setCurrentLink('./photo');
+  }
+
   public onTwitchListClick(): void {
     this.toggleTwtichList();
   }

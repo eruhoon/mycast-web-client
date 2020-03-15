@@ -1,21 +1,4 @@
 <div class="background" (click)="clearTarget()"></div>
-<!--
-    <div class="modal">
-    <div class="title">
-        <i class="material-icons">alarm</i>
-        <h3>유저 호출</h3>
-    </div>
-    <div class="post">
-        <img class="icon" [src]="getIcon()">
-        <div class="text">
-            <p><b>"한강이야기"</b>를</p>
-            <p>호출하시겠어요?</p>
-        </div>
-    </div>
-    <button (click)="onSendClick()">호출</button>
-</div>
--->
-
 <div class="modal">
     <img class="icon" [src]="getIcon()">
     <div class="title">
@@ -25,5 +8,7 @@
     <div class="text">
         <p>호출하시겠어요?</p>
     </div>
-    <button (click)="onSendClick()"><h3>호출</h3></button>
+    <button (click)="onSendClick()">
+        <h3>호출</h3>
+    </button>
 </div>

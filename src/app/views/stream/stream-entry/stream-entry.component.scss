@@ -60,17 +60,16 @@ $background-color: #333;
       position: absolute;
       left: 0px;
       bottom: 0px;
-      background: darken($background-color, 10%);
-      background: linear-gradient(transparent, darken($background-color, 10%));
-      opacity: 0.8;
+      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.75)));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
 
       .text {
-        width: calc(100% - 20px);
-        margin: 0px 10px;
+        width: calc(100% - 10px);
+        margin-left: 10px;
         margin-top: 10px;
 
         .title {
-          width: calc(100% - 40px);
+          width: calc(100% - 90px);
           text-align: left;
           color: #fff;
           font-size: 20px;
@@ -82,8 +81,9 @@ $background-color: #333;
           float: left;
         }
         .viewer {
-          width: 40px;
+          max-width: 70px;
           height: 20px;
+          margin-right: 5px;
           color: #eee;
           font-size: 12px;
           float: right;
@@ -114,7 +114,7 @@ $background-color: #333;
 
       .btn-box {
         position: absolute;
-        top: -50px;
+        top: -70px;
         right: 5px;
 
         .button {

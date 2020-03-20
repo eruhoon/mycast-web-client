@@ -12,6 +12,10 @@
             </a>
         </div>
     </div>
+    <div class="toggle-option" (click)="toggleScrollLockMode()">
+        <h5>방송설정 </h5>
+        <i *ngIf="isScrollLockMode()" class="material-icons">done</i>
+    </div>
     <div class="alarm">
         <h5>알림음</h5>
         <ul>
@@ -39,10 +43,6 @@
     </div>
     <div class="toggle-option">
         <h5>후방주의</h5>
-    </div>
-    <div class="toggle-option" (click)="toggleScrollLockMode()">
-        <h5>스크롤잠금</h5>
-        <i *ngIf="isScrollLockMode()" class="material-icons">done</i>
     </div>
     <div class="logout">
         <h5>로그아웃</h5>

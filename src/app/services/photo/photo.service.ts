@@ -11,7 +11,7 @@ export class PhotoService {
 
     this.mPhotos = [];
 
-    Axios.get<any[]>('http://api.mycast.xyz/photo?start=0&num=10').then(res => {
+    Axios.get<any[]>('http://api.mycast.xyz/photo?start=0&num=100').then(res => {
       console.log(res.data);
       const photos = res.data;
       photos.forEach(photo => {

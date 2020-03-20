@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <div class="photo-main-content">
+    <div #scroller class="photo-main-content" (scroll)="onScroll()">
         <div class="ph-d-list" *ngFor="let photoSet of getPhotoSets()">
             <p>{{photoSet.dateString}}</p>
             <div class="ph-list">

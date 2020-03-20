@@ -5,24 +5,36 @@ import Axios from 'axios';
 })
 export class PhotoService {
 
+  private mLoading: boolean;
   private mPhotos: any[];
+  private mNextStart: number;
 
   public constructor() {
 
     this.mPhotos = [];
+    this.mNextStart = 0;
+    this.mLoading = false;
 
-    Axios.get<any[]>('http://api.mycast.xyz/photo?start=0&num=100').then(res => {
-      console.log(res.data);
-      const photos = res.data;
-      photos.forEach(photo => {
-        console.log(photo);
-      });
-      this.mPhotos = photos;
-    });
-
+    this.loadMore();
   }
 
   public getPhotos(): any[] {
     return this.mPhotos;
+  }
+
+  public loadMore(): void {
+    console.log('loadMore');
+    this.mLoading = true;
+    const url = `http://api.mycast.xyz/photo?start=${this.mNextStart}&num=100`;
+    Axios.get<any[]>(url).then(res => {
+      const photos = res.data;
+      this.mPhotos = [...this.mPhotos, ...photos];
+      this.mNextStart += 100;
+      this.mLoading = false;
+    });
+  }
+
+  public isLoading(): boolean {
+    return this.mLoading;
   }
 }

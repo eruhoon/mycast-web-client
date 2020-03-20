@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { PhotoService } from 'src/app/services/photo/photo.service';
 })
 export class PhotoPageComponent implements OnInit {
 
+  @ViewChild('scroller', { static: false })
+  public mScroller: ElementRef<HTMLDivElement>;
   private mService: PhotoService;
 
   public constructor(service: PhotoService) {
@@ -69,6 +71,16 @@ export class PhotoPageComponent implements OnInit {
     };
   }
 
+  public onScroll(): void {
+    if (this.mService.isLoading()) {
+      return;
+    }
+    const elm = this.mScroller.nativeElement;
+    const diff = elm.scrollHeight - elm.scrollTop;
+    if (diff < 1000) {
+      this.mService.loadMore();
+    }
+  }
 }
 
 type PhotoSet = {

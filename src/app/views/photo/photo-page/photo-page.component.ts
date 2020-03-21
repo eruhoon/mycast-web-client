@@ -42,26 +42,14 @@ export class PhotoPageComponent implements OnInit {
       }
 
       const photoList = photoSetParam.list;
-      if (photoList.every(param => param.hash !== photo.getHash())) {
-        photoList.push(this.createPhotoParam(photo));
+      if (photoList.every(p => p.getHash() !== photo.getHash())) {
+        photoList.push(photo);
       }
     });
   }
 
   private createPhotoSetParam(dateString: string): PhotoSetParam {
     return { dateString, list: [] };
-  }
-
-  private createPhotoParam(photo: Photo): PhotoParam {
-    const param = {
-      hash: photo.getHash(),
-      url: photo.getUrl(),
-      thumbnail: `https://i.imgur.com/${photo.getHash()}m.png`,
-      width: photo.getWidth(),
-      height: photo.getHeight(),
-      date: photo.getRegDate(),
-    };
-    return param;
   }
 
   public onScroll(): void {
@@ -75,14 +63,5 @@ export class PhotoPageComponent implements OnInit {
 
 type PhotoSetParam = {
   dateString: string,
-  list: PhotoParam[]
-};
-
-type PhotoParam = {
-  hash: string,
-  url: string,
-  thumbnail: string,
-  width: number,
-  height: number,
-  date: Date,
+  list: Photo[]
 };

@@ -47,6 +47,7 @@ import { NotificationRequestPopupComponent } from './views/main-page/notificatio
 import { ToastListComponent } from './views/main-page/toast-list/toast-list.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
+import { PhotoEntryComponent } from './views/photo/photo-entry/photo-entry.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
     ToastListComponent,
     PhotoPageComponent,
     MemoPageComponent,
+    PhotoEntryComponent,
   ],
   imports: [
     BrowserModule,

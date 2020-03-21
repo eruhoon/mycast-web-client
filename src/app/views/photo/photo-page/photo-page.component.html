@@ -24,28 +24,7 @@
         <div class="ph-d-list" *ngFor="let photoSet of getPhotoSetModel()">
             <p>{{photoSet.dateString}}</p>
             <div class="ph-list">
-                <div class="ph-img" *ngFor="let photo of photoSet.list">
-                    <img [src]="photo.thumbnail">
-                    <div class="ph-info">
-                        <div class="bg"></div>
-                        <div class="img-wh">
-                            <i class="material-icons">crop_original</i>
-                            <p>{{photo.width}}x{{photo.height}}</p>
-                        </div>
-                        <div class="ph-btn-group">
-                            <a class="ph-btn warning">
-                                <i class="material-icons">
-                                    warning
-                                </i>
-                            </a>
-                            <a class="ph-btn link">
-                                <i class="material-icons">
-                                    link
-                                </i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <photo-entry [photo]="photo" *ngFor="let photo of photoSet.list"></photo-entry>
             </div>
         </div>
     </div>

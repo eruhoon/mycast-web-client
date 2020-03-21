@@ -28,7 +28,6 @@ export class MainPageComponent {
     private mOptionService: OptionService;
     private mProfileService: ProfileService;
     private mClipboardImageService: ClipboardImageService;
-    private mMenuShow: boolean;
     private mSettingShow: boolean;
     private mInnerWidth: number;
     private mMoveMode: boolean;
@@ -44,7 +43,6 @@ export class MainPageComponent {
         profileService: ProfileService,
         clipboardImageService: ClipboardImageService) {
 
-        this.mMenuShow = false;
         this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mMainService = mainService;
@@ -91,7 +89,7 @@ export class MainPageComponent {
     }
 
     public isMenuShow(): boolean {
-        return this.mMenuShow;
+        return this.mMainService.isSidebarShow();
     }
 
     public isSettingShow(): boolean {
@@ -175,11 +173,11 @@ export class MainPageComponent {
     }
 
     private toggleMenu() {
-        this.mMenuShow = !this.mMenuShow;
+        this.mMainService.toggleSidebar();
     }
 
     private closeMenu(): void {
-        this.mMenuShow = false;
+        this.mMainService.closeSidebar();
     }
 
     private toggleSetting() {

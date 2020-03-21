@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -55,14 +56,17 @@ export class SideBarComponent implements OnInit {
 
   public onStreamClick(stream: Stream): void {
     this.mMainService.setCurrentLink(stream.getUrl());
+    this.mMainService.closeSidebar();
   }
 
   public onMemoClick(): void {
     this.mMainService.setCurrentLink('./memo');
+    this.mMainService.closeSidebar();
   }
 
   public onPhotoClick(): void {
     this.mMainService.setCurrentLink('./photo');
+    this.mMainService.closeSidebar();
   }
 
   public onTwitchListClick(): void {

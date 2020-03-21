@@ -25,8 +25,6 @@ export class PhotoService {
   }
 
   public loadMore(): void {
-    console.log('loadMore');
-
     this.mLoader.load(photos => {
       this.mPhotos = [...this.mPhotos, ...photos];
       this.mNextStart += 100;

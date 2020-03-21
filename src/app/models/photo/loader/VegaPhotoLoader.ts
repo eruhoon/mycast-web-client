@@ -68,6 +68,7 @@ type PhotoDto = {
     mimeType: string,
     regDate: string,
     url: string,
+    tag: string,
     width: number,
 };
 
@@ -85,6 +86,9 @@ class PhotoDtoAdapter implements Photo {
     public getMimeType(): string { return this.mPhotoDto.mimeType; }
     public getRegDate(): Date { return new Date(this.mPhotoDto.regDate); }
     public getViewer(): number { return 0; }
-    public getTags(): string[] { return []; }
+    public getTags(): string[] {
+        const tag = this.mPhotoDto.tag || '';
+        return tag.split(',');
+    }
     public isForAdult(): boolean { return this.mPhotoDto.adult; }
 }

@@ -56,6 +56,7 @@ export class PhotoPageComponent implements OnInit {
     const param = {
       hash: photo.getHash(),
       url: photo.getUrl(),
+      thumbnail: `https://i.imgur.com/${photo.getHash()}m.png`,
       width: photo.getWidth(),
       height: photo.getHeight(),
       date: photo.getRegDate(),
@@ -80,6 +81,7 @@ type PhotoSetParam = {
 type PhotoParam = {
   hash: string,
   url: string,
+  thumbnail: string,
   width: number,
   height: number,
   date: Date,

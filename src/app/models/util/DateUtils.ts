@@ -1,4 +1,12 @@
 export class DateUtils {
+
+    public static getDateString(dateObj: Date): string {
+        const date = dateObj.getDate();
+        const month = dateObj.getMonth() + 1;
+        const dayString = this.getDayString(dateObj.getDay());
+        return `${month}월 ${date}일 (${dayString})`;
+    }
+
     public static getDayString(day: number): string {
         switch (day) {
             case 0: return '일';

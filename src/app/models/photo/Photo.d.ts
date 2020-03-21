@@ -5,5 +5,7 @@ export interface Photo {
     getHeight(): number;
     getMimeType(): string;
     getRegDate(): Date;
+    getViewer(): number;
+    getTags(): string[];
     isForAdult(): boolean;
 }

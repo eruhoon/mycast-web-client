@@ -14,14 +14,8 @@
                 <span class="material-icons">add_comment</span>
             </a>
             <div class="tag-list">
-                <div class="tag-box">
-                    <p>애니</p>
-                </div>
-                <div class="tag-box">
-                    <p>어서오세요 실력지상주의 교실에</p>
-                </div>
-                <div class="tag-box">
-                    <p>일본</p>
+                <div class="tag-box" *ngFor="let tag of getTags()">
+                    <p>{{tag}}</p>
                 </div>
             </div>
         </div>
@@ -44,7 +38,7 @@
             <div class="in-txt">
                 <span class="material-icons">visibility</span>
                 <div class="in-txt-list">
-                    <p class="ma-title see-txt">22명</p>
+                    <p class="ma-title see-txt">{{getViewer()}}명</p>
                 </div>
             </div>
         </div>

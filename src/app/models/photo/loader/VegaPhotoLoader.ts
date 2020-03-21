@@ -84,5 +84,7 @@ class PhotoDtoAdapter implements Photo {
     public getHeight(): number { return this.mPhotoDto.height; }
     public getMimeType(): string { return this.mPhotoDto.mimeType; }
     public getRegDate(): Date { return new Date(this.mPhotoDto.regDate); }
+    public getViewer(): number { return 0; }
+    public getTags(): string[] { return []; }
     public isForAdult(): boolean { return this.mPhotoDto.adult; }
 }

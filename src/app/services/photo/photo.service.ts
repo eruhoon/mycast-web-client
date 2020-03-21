@@ -10,11 +10,13 @@ export class PhotoService {
 
   private mLoader: VegaPhotoLoader;
   private mPhotos: Photo[];
+  private mCurrentPhoto: Photo | null;
   private mNextStart: number;
 
   public constructor() {
     this.mLoader = new VegaPhotoLoader();
     this.mPhotos = [];
+    this.mCurrentPhoto = null;
     this.mNextStart = 0;
 
     this.loadMore();
@@ -22,6 +24,14 @@ export class PhotoService {
 
   public getPhotos(): Photo[] {
     return this.mPhotos;
+  }
+
+  public getCurrentPhoto(): Photo | null {
+    return this.mCurrentPhoto;
+  }
+
+  public setCurrentPhoto(photo: Photo): void {
+    this.mCurrentPhoto = photo;
   }
 
   public loadMore(): void {

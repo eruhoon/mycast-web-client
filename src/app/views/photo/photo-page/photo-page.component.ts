@@ -30,6 +30,15 @@ export class PhotoPageComponent implements OnInit {
     return this.mPhotoSetModel;
   }
 
+  public isPhotoDetailShow(): boolean {
+    return this.mService.getCurrentPhoto() !== null;
+  }
+
+  public onPhotoClick(photo: Photo): void {
+    console.log(photo);
+    this.mService.setCurrentPhoto(photo);
+  }
+
   private applyPhoto(photos: Photo[]): void {
     photos.forEach(photo => {
       const dateString = DateUtils.getDateString(photo.getRegDate());

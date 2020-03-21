@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
+import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
 
 @Component({
   selector: 'photo-detail-view',
@@ -11,12 +12,21 @@ import { DateUtils } from 'src/app/models/util/DateUtils';
 export class PhotoDetailViewComponent implements OnInit {
 
   private mPhotoService: PhotoService;
+  private mImgurLoader: VegaImgurLoader;
+  private mViewer: number;
 
   public constructor(photoService: PhotoService) {
     this.mPhotoService = photoService;
+    this.mViewer = 0;
   }
 
   public ngOnInit() {
+    this.mViewer = this.getPhoto().getViewer();
+
+    new VegaImgurLoader(this.getPhoto().getHash()).load(photo => {
+      if (!photo) { return; }
+      this.mViewer = photo.getViewer();
+    });
   }
 
   public getPhoto(): Photo {
@@ -70,7 +80,7 @@ export class PhotoDetailViewComponent implements OnInit {
   }
 
   public getViewer(): number {
-    return this.getPhoto().getViewer();
+    return this.mViewer;;
   }
 
   public getTags(): string[] {

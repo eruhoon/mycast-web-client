@@ -1,5 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
+
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'photo-page',
@@ -19,24 +21,21 @@ export class PhotoPageComponent implements OnInit {
   public ngOnInit() {
   }
 
-  public getPhotos(): any[] {
-    return this.mService.getPhotos();
-  }
-
-  public getPhotoSets(): PhotoSet[] {
-    const photos: Photo[] = this.mService.getPhotos().map(raw => {
-      let dateSet = this.getDateSet(raw.regDate);
+  public createPhotoSets(): PhotoSetParam[] {
+    const photoParams: PhotoParam[] = this.mService.getPhotos().map(photo => {
+      const dateSet = this.createDateSet(photo.getRegDate());
       return {
-        url: raw.url,
-        width: raw.width,
-        height: raw.height,
+        url: photo.getUrl(),
+        width: photo.getWidth(),
+        height: photo.getHeight(),
         date: dateSet,
-      }
+      };
     });
 
-    const photoSets: PhotoSet[] = [];
-    photos.forEach(photo => {
-      let photoSet = photoSets.find(photoSet => photoSet.dateString === photo.date.dateString);
+    const photoSets: PhotoSetParam[] = [];
+    photoParams.forEach(photo => {
+      let photoSet = photoSets.find(
+        param => param.dateString === photo.date.dateString);
       if (!photoSet) {
         photoSet = {
           dateString: photo.date.dateString,
@@ -50,52 +49,38 @@ export class PhotoPageComponent implements OnInit {
     return photoSets;
   }
 
-  private getDateSet(regDate: string): DateSet {
-    const date = new Date(regDate);
-    const dayString = (d: number) => {
-      switch (d) {
-        case 0: return '일';
-        case 1: return '월';
-        case 2: return '화';
-        case 3: return '수';
-        case 4: return '목';
-        case 5: return '금';
-        case 6: return '토';
-      }
-      return '';
-    }
-
+  private createDateSet(dateObj: Date): DateSetParam {
+    const date = dateObj.getDate();
+    const month = dateObj.getMonth() + 1;
+    const dayString = DateUtils.getDayString(dateObj.getDay());
     return {
-      date,
-      dateString: `${date.getMonth() + 1}월 ${date.getDate()}일 (${dayString(date.getDay())})`,
+      date: dateObj,
+      dateString: `${month}월 ${date}일 (${dayString})`,
     };
   }
 
   public onScroll(): void {
-    if (this.mService.isLoading()) {
-      return;
-    }
     const elm = this.mScroller.nativeElement;
     const diff = elm.scrollHeight - elm.scrollTop;
-    if (diff < 1000) {
+    if (diff < 1000 && !this.mService.isLoading()) {
       this.mService.loadMore();
     }
   }
 }
 
-type PhotoSet = {
+type PhotoSetParam = {
   dateString: string,
-  list: Photo[]
-}
+  list: PhotoParam[]
+};
 
-type DateSet = {
+type DateSetParam = {
   date: Date,
   dateString: string,
-}
+};
 
-type Photo = {
+type PhotoParam = {
   url: string,
   width: number,
   height: number,
-  date: DateSet,
-}
+  date: DateSetParam,
+};

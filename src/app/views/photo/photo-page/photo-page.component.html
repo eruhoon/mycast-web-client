@@ -21,7 +21,7 @@
         </div>
     </div>
     <div #scroller class="photo-main-content" (scroll)="onScroll()">
-        <div class="ph-d-list" *ngFor="let photoSet of getPhotoSets()">
+        <div class="ph-d-list" *ngFor="let photoSet of createPhotoSets()">
             <p>{{photoSet.dateString}}</p>
             <div class="ph-list">
                 <div class="ph-img" *ngFor="let photo of photoSet.list">

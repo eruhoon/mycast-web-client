@@ -4,7 +4,7 @@
 
     padding: 0%;
     margin: 0%;
-    
+
     background: #f0f0f0;
 
     .photo-info {
@@ -27,18 +27,21 @@
                 line-height: 28px;
                 color: #757575;
             }
+
             span {
                 width: 28px;
                 height: 28px;
                 font-size: 28px;
                 line-height: 28px;
                 color: #757575;
+                cursor: pointer;
 
                 position: absolute;
                 top: 31px;
                 right: 10px;
             }
         }
+
         .p-info-box {
             width: 100%;
             height: auto;
@@ -47,18 +50,21 @@
             padding-bottom: 30px;
 
             position: relative;
+
             p.lab {
                 font-size: 14px;
                 color: #9E9E9E;
                 padding: 0%;
                 margin: 0%;
             }
+
             p.info-txt {
                 font-size: 36px;
                 color: #424242;
                 padding: 0%;
                 margin: 0%;
             }
+
             .add-tag {
                 width: auto;
                 width: 24px;
@@ -68,10 +74,12 @@
                 position: absolute;
                 right: 5px;
                 top: 6px;
+
                 span {
                     font-size: 18px;
                 }
             }
+
             .tag-list {
                 width: 100%;
                 height: auto;
@@ -82,7 +90,7 @@
                 .tag-box {
                     width: auto;
                     height: auto;
-                    
+
                     background-color: #F8BBD0;
                     color: #F50057;
                     border-radius: 15px;
@@ -96,10 +104,11 @@
                     }
                 }
             }
+
             .in-txt {
                 width: 100%;
                 height: 40px;
-                
+
                 margin-top: 20px;
 
 
@@ -111,31 +120,37 @@
                     color: #424242;
                     float: left;
                 }
+
                 .in-txt-list {
                     width: calc(100% - 45px);
                     padding-left: 5px;
                     float: left;
+
                     p {
                         padding: 0%;
                         margin: 0%;
                     }
+
                     p.ma-title {
                         font-size: 20px;
                         color: #424242;
                         line-height: 20px;
                     }
+
                     p.sub-text {
                         font-size: 14px;
                         color: #757575;
                         line-height: 16px;
                     }
-                    p.ma-title.see-txt{
+
+                    p.ma-title.see-txt {
                         padding-top: 4px;
                     }
                 }
             }
         }
     }
+
     .photo-img {
         width: calc(100% - 322px);
         height: 100%;
@@ -155,7 +170,7 @@
             margin: auto;
 
             box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-                        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                0px 1px 3px 0px rgba(0, 0, 0, 0.12);
         }
     }
 }

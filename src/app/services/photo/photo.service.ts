@@ -30,7 +30,7 @@ export class PhotoService {
     return this.mCurrentPhoto;
   }
 
-  public setCurrentPhoto(photo: Photo): void {
+  public setCurrentPhoto(photo: Photo | null): void {
     this.mCurrentPhoto = photo;
   }
 

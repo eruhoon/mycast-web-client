@@ -69,6 +69,14 @@ export class PhotoDetailViewComponent implements OnInit {
     return this.getPhoto().getUrl();
   }
 
+  public getViewer(): number {
+    return this.getPhoto().getViewer();
+  }
+
+  public getTags(): string[] {
+    return this.getPhoto().getTags();
+  }
+
   public onCloseClick(): void {
     this.mPhotoService.setCurrentPhoto(null);
   }
@@ -82,5 +90,7 @@ class EmptyPhoto implements Photo {
   public getHeight(): number { return 0; }
   public getMimeType(): string { return ''; }
   public getRegDate(): Date { return new Date(); }
+  public getViewer(): number { return 0; }
+  public getTags(): string[] { return []; }
   public isForAdult(): boolean { return false; }
 }

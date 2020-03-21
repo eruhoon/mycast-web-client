@@ -6,6 +6,15 @@ export class PageNavigator {
 
     public constructor(router: Router) {
         this.mRouter = router;
+        console.log(router);
+    }
+
+    public navigate(path: string | null) {
+        if (!path) {
+            this.navigateMainPage();
+            return;
+        }
+        this.mRouter.navigate([path]);
     }
 
     public navigateMainPage() {

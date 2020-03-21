@@ -6,15 +6,17 @@ import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
+import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
+import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import {
-  StreamPlayerPageComponent
+    StreamPlayerPageComponent
 } from './views/stream/stream-player-page/stream-player-page.component';
 import {
-  TestPlayerPageComponent
+    TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
-import { TotoroPlayerPageComponent } from './views/stream/totoro-player-page/totoro-player-page.component';
-import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
-import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
+import {
+    TotoroPlayerPageComponent
+} from './views/stream/totoro-player-page/totoro-player-page.component';
 
 const routes: Routes = [
   {
@@ -38,7 +40,8 @@ const routes: Routes = [
   },
   {
     path: 'photo',
-    component: PhotoPageComponent
+    component: PhotoPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'memo',

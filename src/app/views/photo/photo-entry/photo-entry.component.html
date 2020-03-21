@@ -1,5 +1,5 @@
 <div class="ph-img">
-    <img [src]="getThumbnail()">
+    <img [src]="getThumbnail()" (click)="onClick()">
     <div class="ph-info">
         <div class="bg"></div>
         <div class="img-wh">
@@ -11,7 +11,7 @@
                 <i class="material-icons">warning</i>
             </a>
             <a class="ph-btn link">
-                <i class="material-icons">link</i>
+                <i class="material-icons" (click)="onLinkClick()">link</i>
             </a>
         </div>
     </div>

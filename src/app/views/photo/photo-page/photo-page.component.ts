@@ -35,8 +35,6 @@ export class PhotoPageComponent implements OnInit {
   }
 
   public onPhotoClick(photo: Photo): void {
-    console.log(photo);
-    this.mService.setCurrentPhoto(photo);
   }
 
   private applyPhoto(photos: Photo[]): void {

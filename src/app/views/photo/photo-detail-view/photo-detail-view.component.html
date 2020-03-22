@@ -13,6 +13,7 @@
             <a href="#" class="add-tag">
                 <span class="material-icons">add_comment</span>
             </a>
+<<<<<<< HEAD
             <div class="tag-input-box">
                 <input type="text" class="tag-input" />
                 <span class="material-icons">
@@ -20,6 +21,9 @@
                 </span>
             </div>
             <div class="tag-list">
+=======
+            <div class="tag-list" *ngIf="getTags()">
+>>>>>>> 48c82a7326990e20297b35539ac8b056cfaa119e
                 <div class="tag-box" *ngFor="let tag of getTags()">
                     <p>{{tag}}</p>
                 </div>

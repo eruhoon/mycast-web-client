@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import * as qs from 'querystring';
 
+import { SessionStorage } from '../../storage/SessionStorage';
 import { Stream } from '../Stream';
 
 export class StreamShareCommand {
@@ -10,10 +11,10 @@ export class StreamShareCommand {
     public constructor(stream: Stream) {
         this.mStream = stream;
     }
+
     public execute() {
         const url = 'http://mycast.xyz:8001/stream/';
-        // TODO: implement user priv-hash
-        const user = 'user-priv-hash';
+        const privKey = SessionStorage.getInstance().getPrivateKey();
         const msg = JSON.stringify({
             keyId: this.mStream.getKeyId(),
             icon: this.mStream.getIcon(),
@@ -23,6 +24,6 @@ export class StreamShareCommand {
             thumbnail: this.mStream.getThumbnail(),
             viewer: this.mStream.getViewer()
         });
-        Axios.post(url, qs.stringify({ user, msg }));
+        Axios.post(url, qs.stringify({ user: privKey, msg }));
     }
 }

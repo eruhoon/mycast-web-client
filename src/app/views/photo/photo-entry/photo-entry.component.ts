@@ -34,7 +34,6 @@ export class PhotoEntryComponent implements OnInit {
   }
 
   public onLinkClick(): void {
-    console.log('TODO: LinkClick');
     this.mShareCommand.execute();
   }
 }

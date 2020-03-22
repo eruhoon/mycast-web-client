@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo/photo.service';
+import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
-import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
+import { PhotoService } from 'src/app/services/photo/photo.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'photo-detail-view',

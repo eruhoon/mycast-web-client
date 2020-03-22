@@ -13,7 +13,7 @@
             <a href="#" class="add-tag">
                 <span class="material-icons">add_comment</span>
             </a>
-            <div class="tag-list" *ngIf="getTags()">
+            <div class="tag-list" *ngIf="getTags() && getTags().length > 0">
                 <div class="tag-box" *ngFor="let tag of getTags()">
                     <p>{{tag}}</p>
                 </div>

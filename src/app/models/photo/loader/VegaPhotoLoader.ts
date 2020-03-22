@@ -88,7 +88,8 @@ class PhotoDtoAdapter implements Photo {
     public getViewer(): number { return 0; }
     public getTags(): string[] {
         const tag = this.mPhotoDto.tag || '';
-        return tag.split(',');
+        const tags = tag.split(',').filter(t => t.length > 0);
+        return tags;
     }
     public isForAdult(): boolean { return this.mPhotoDto.adult; }
 }

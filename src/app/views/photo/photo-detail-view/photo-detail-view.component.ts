@@ -1,10 +1,11 @@
 import { PhotoShareCommand } from 'src/app/models/photo/command/PhotoShareCommand';
+import { PhotoTagCommand } from 'src/app/models/photo/command/PhotoTagCommand';
 import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'photo-detail-view',
@@ -12,6 +13,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./photo-detail-view.component.scss']
 })
 export class PhotoDetailViewComponent implements OnInit {
+
+  @ViewChild('tags', { static: false })
+  public tagInput: ElementRef<HTMLInputElement>;
 
   private mPhotoService: PhotoService;
   private mShareCommand: PhotoShareCommand;
@@ -94,6 +98,11 @@ export class PhotoDetailViewComponent implements OnInit {
     return this.getPhoto().getTags();
   }
 
+  public getTagString(): string {
+    const tags = this.getPhoto().getTags();
+    return tags.join(',');
+  }
+
   public isEditTagMode(): boolean {
     return this.mEditTagMode;
   }
@@ -110,6 +119,11 @@ export class PhotoDetailViewComponent implements OnInit {
     this.mPhotoService.setCurrentPhoto(null);
   }
 
+  public onTagSubmitClick(): void {
+    const newTags = this.tagInput.nativeElement.value;
+    new PhotoTagCommand(this.getPhoto()).execute(newTags);
+    this.setEditTagMode(false);
+  }
 }
 
 class EmptyPhoto implements Photo {

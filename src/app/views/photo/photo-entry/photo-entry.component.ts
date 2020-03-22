@@ -1,5 +1,5 @@
+import { PhotoShareCommand } from 'src/app/models/photo/command/PhotoShareCommand';
 import { Photo } from 'src/app/models/photo/Photo';
-import { PhotoShareCommand } from 'src/app/models/photo/share/PhotoShareCommand';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, Input, OnInit } from '@angular/core';

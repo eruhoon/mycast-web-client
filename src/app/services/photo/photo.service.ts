@@ -1,4 +1,5 @@
 import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
+import { MutablePhoto } from 'src/app/models/photo/MutablePhoto';
 import { Photo } from 'src/app/models/photo/Photo';
 
 import { Injectable } from '@angular/core';
@@ -9,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class PhotoService {
 
   private mLoader: VegaPhotoLoader;
-  private mPhotos: Photo[];
+  private mPhotos: MutablePhoto[];
   private mCurrentPhoto: Photo | null;
   private mNextStart: number;
 
@@ -36,7 +37,13 @@ export class PhotoService {
 
   public loadMore(): void {
     this.mLoader.load(photos => {
-      this.mPhotos = [...this.mPhotos, ...photos];
+      if (!photos) {
+        console.warn('load failed');
+        return;
+      }
+      const mutablePhotos = photos.map(
+        photo => MutablePhoto.createWithPhoto(photo));
+      this.mPhotos = [...this.mPhotos, ...mutablePhotos];
       this.mNextStart += 100;
       this.mLoader.setStart(this.mNextStart);
     });

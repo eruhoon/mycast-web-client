@@ -10,14 +10,12 @@
         </div>
         <div class="p-info-box">
             <p class="lab">태그</p>
-            <a href="#" class="add-tag">
+            <a class="add-tag" *ngIf="!isEditTagMode()" (click)="setEditTagMode(true)">
                 <span class="material-icons">add_comment</span>
             </a>
-            <div class="tag-input-box">
+            <div class="tag-input-box" *ngIf="isEditTagMode()">
                 <input type="text" class="tag-input" />
-                <span class="material-icons">
-                    send
-                </span>
+                <span class="material-icons" (click)="setEditTagMode(false)">send</span>
             </div>
             <div class="tag-list">
                 <div class="tag-box" *ngFor="let tag of getTags()">

@@ -15,14 +15,17 @@ export class PhotoDetailViewComponent implements OnInit {
   private mPhotoService: PhotoService;
   private mImgurLoader: VegaImgurLoader;
   private mViewer: number;
+  private mEditTagMode: boolean;
 
   public constructor(photoService: PhotoService) {
     this.mPhotoService = photoService;
     this.mViewer = 0;
+    this.mEditTagMode = false;
   }
 
   public ngOnInit() {
     this.mViewer = this.getPhoto().getViewer();
+    this.mEditTagMode = false;
 
     new VegaImgurLoader(this.getPhoto().getHash()).load(photo => {
       if (!photo) { return; }
@@ -86,6 +89,14 @@ export class PhotoDetailViewComponent implements OnInit {
 
   public getTags(): string[] {
     return this.getPhoto().getTags();
+  }
+
+  public isEditTagMode(): boolean {
+    return this.mEditTagMode;
+  }
+
+  public setEditTagMode(tagMode: boolean): void {
+    this.mEditTagMode = tagMode;
   }
 
   public onCloseClick(): void {

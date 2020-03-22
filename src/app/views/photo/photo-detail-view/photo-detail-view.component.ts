@@ -81,7 +81,7 @@ export class PhotoDetailViewComponent implements OnInit {
   }
 
   public getViewer(): number {
-    return this.mViewer;;
+    return this.mViewer;
   }
 
   public getTags(): string[] {

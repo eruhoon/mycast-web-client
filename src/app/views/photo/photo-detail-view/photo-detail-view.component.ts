@@ -121,6 +121,7 @@ export class PhotoDetailViewComponent implements OnInit {
 
   public onTagSubmitClick(): void {
     const newTags = this.tagInput.nativeElement.value;
+    this.mPhotoService.setTags(this.getPhoto().getHash(), newTags);
     new PhotoTagCommand(this.getPhoto()).execute(newTags);
     this.setEditTagMode(false);
   }

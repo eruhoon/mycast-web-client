@@ -49,6 +49,15 @@ export class PhotoService {
     });
   }
 
+  public setTags(hash: string, tagQuery: string): void {
+    const photo = this.mPhotos.find(p => p.getHash() === hash);
+    if (!photo) {
+      console.warn('not found');
+      return;
+    }
+    photo.setTags(tagQuery.split(',').map(s => s.trim()).filter(s => s));
+  }
+
   public isLoading(): boolean {
     return this.mLoader.isLoading();
   }

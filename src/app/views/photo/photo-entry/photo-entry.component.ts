@@ -1,3 +1,4 @@
+import { PhotoAdultFilterCommand } from 'src/app/models/photo/command/PhotoAdultFilterCommand';
 import { PhotoShareCommand } from 'src/app/models/photo/command/PhotoShareCommand';
 import { Photo } from 'src/app/models/photo/Photo';
 import { PhotoService } from 'src/app/services/photo/photo.service';
@@ -15,6 +16,7 @@ export class PhotoEntryComponent implements OnInit {
   public photo: Photo;
 
   private mService: PhotoService;
+  private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
 
   public constructor(service: PhotoService) {
@@ -22,6 +24,7 @@ export class PhotoEntryComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mFilterCommand = new PhotoAdultFilterCommand(this.photo);
     this.mShareCommand = new PhotoShareCommand(this.photo);
   }
 
@@ -31,6 +34,10 @@ export class PhotoEntryComponent implements OnInit {
 
   public onClick(): void {
     this.mService.setCurrentPhoto(this.photo);
+  }
+
+  public onFilterClick(): void {
+    this.mFilterCommand.execute();
   }
 
   public onLinkClick(): void {

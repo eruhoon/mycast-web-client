@@ -13,6 +13,12 @@
             <a href="#" class="add-tag">
                 <span class="material-icons">add_comment</span>
             </a>
+            <div class="tag-input-box">
+                <input type="text" class="tag-input" />
+                <span class="material-icons">
+                    send
+                </span>
+            </div>
             <div class="tag-list">
                 <div class="tag-box" *ngFor="let tag of getTags()">
                     <p>{{tag}}</p>

@@ -11,11 +11,10 @@ export class StreamShareCommand {
     public constructor(stream: Stream) {
         this.mStream = stream;
     }
+
     public execute() {
         const url = 'http://mycast.xyz:8001/stream/';
-        // TODO: implement user priv-hash
         const privKey = SessionStorage.getInstance().getPrivateKey();
-        const user = 'user-priv-hash';
         const msg = JSON.stringify({
             keyId: this.mStream.getKeyId(),
             icon: this.mStream.getIcon(),

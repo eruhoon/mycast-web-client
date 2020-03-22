@@ -148,6 +148,10 @@
 
         margin-top: 20px;
 
+        &.tool {
+          cursor: pointer;
+        }
+
         span {
           width: auto;
           height: auto;

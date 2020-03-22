@@ -1,3 +1,4 @@
+import { PhotoShareCommand } from 'src/app/models/photo/command/PhotoShareCommand';
 import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
@@ -13,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class PhotoDetailViewComponent implements OnInit {
 
   private mPhotoService: PhotoService;
+  private mShareCommand: PhotoShareCommand;
   private mImgurLoader: VegaImgurLoader;
   private mViewer: number;
   private mEditTagMode: boolean;
@@ -24,6 +26,7 @@ export class PhotoDetailViewComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mShareCommand = new PhotoShareCommand(this.getPhoto());
     this.mViewer = this.getPhoto().getViewer();
     this.mEditTagMode = false;
 
@@ -97,6 +100,10 @@ export class PhotoDetailViewComponent implements OnInit {
 
   public setEditTagMode(tagMode: boolean): void {
     this.mEditTagMode = tagMode;
+  }
+
+  public onShareClick(): void {
+    this.mShareCommand.execute();
   }
 
   public onCloseClick(): void {

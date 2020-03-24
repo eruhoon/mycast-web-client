@@ -1,5 +1,5 @@
 <div class="ph-img">
-    <img [src]="getThumbnail()" (click)="onClick()">
+    <img [src]="getThumbnail()" (click)="onClick()" class="blurEffect">
     <div class="ph-info">
         <div class="bg"></div>
         <div class="img-wh">
@@ -15,4 +15,12 @@
             </a>
         </div>
     </div>
+    <div class="img-chk attention-limit">
+        <img class="logo" src="/../assets/image/main/img_19_limit.png" />
+    </div>
+    <!-- gif 체크
+        <div class="img-chk gif-chk">
+        <img class="logo" src="/../assets/image/main/img_gif.png" />
+    </div>
+    -->
 </div>

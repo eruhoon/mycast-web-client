@@ -10,8 +10,14 @@
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
+  overflow: hidden;
+
   img {
     height: 250px;
+  }
+  img.blurEffect{
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
   }
 
   .ph-info {
@@ -77,12 +83,39 @@
         text-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
           0px 1px 3px 0px rgba(0, 0, 0, 0.12);
       }
-    }
+    }    
   }
 
   &:hover {
     .ph-info {
       display: block;
     }
+  }
+
+  .img-chk {
+    width: 30px;
+    height: 16px;
+    padding: 2px 3px;
+    padding-right: 7px;
+
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    
+    background-color: #fff;
+    background-color: var(--mdc-theme-surface, #fff);
+    opacity: 0.9;
+    
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    img {
+      width: 20px;
+      height: 10px;
+      padding: 3px;
+    }
+  }
+  .img-chk.attention-limit {
+    background-color: #F50057;
   }
 }

@@ -55,6 +55,7 @@ export class PhotoEntryComponent implements OnInit {
 
   public onFilterClick(): void {
     const adult = !this.photo.isForAdult();
+    this.mService.setAdult(this.photo.getHash(), adult);
     this.mFilterCommand.execute(adult);
   }
 

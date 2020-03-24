@@ -6,8 +6,8 @@ import { Photo } from '../Photo';
 
 export class PhotoAdultFilterCommand {
 
-    private static readonly TRUE = 1;
-    private static readonly FALSE = 0;
+    private static readonly TRUE = 'true';
+    private static readonly FALSE = 'false';
 
     private mPhoto: Photo;
 

@@ -32,6 +32,15 @@ export class PhotoEntryComponent implements OnInit {
     return `https://i.imgur.com/${this.photo.getHash()}m.png`;
   }
 
+  public isForAdult(): boolean {
+    return this.photo.isForAdult();
+  }
+
+  public isAnimated(): boolean {
+    const mimeType = this.photo.getMimeType();
+    return !mimeType ? false : mimeType.includes('gif');
+  }
+
   public onClick(): void {
     this.mService.setCurrentPhoto(this.photo);
   }

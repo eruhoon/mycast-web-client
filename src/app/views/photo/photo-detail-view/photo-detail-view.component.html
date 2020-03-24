@@ -48,7 +48,7 @@
         </div>
         <div class="p-info-box">
             <p class="lab">세부도구</p>
-            <div class="in-txt tool attention-limit">
+            <div class="in-txt tool attention-limit" [ngClass]="{'active':isForAdult()}">
                 <span class="material-icons">verified_user</span>
                 <div class="in-txt-list">
                     <p class="ma-title see-txt">후방주의 이미지</p>

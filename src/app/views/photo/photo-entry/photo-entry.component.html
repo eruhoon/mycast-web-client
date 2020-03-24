@@ -1,5 +1,5 @@
 <div class="ph-img">
-    <img [src]="getThumbnail()" (click)="onClick()" class="blurEffect">
+    <img [ngClass]="{'blurEffect':isForAdult()}" [src]="getThumbnail()" (click)="onClick()">
     <div class="ph-info">
         <div class="bg"></div>
         <div class="img-wh">
@@ -15,10 +15,10 @@
             </a>
         </div>
     </div>
-    <div class="img-chk attention-limit">
+    <div class="img-chk attention-limit" *ngIf="isForAdult()">
         <img class="logo" src="/../assets/image/main/img_19_limit.png" />
     </div>
-    <div class="img-chk gif-chk">
+    <div class="img-chk gif-chk" *ngIf="isAnimated()">
         <img class="logo" src="/../assets/image/main/img_gif.png" />
-    </div>    
+    </div>
 </div>

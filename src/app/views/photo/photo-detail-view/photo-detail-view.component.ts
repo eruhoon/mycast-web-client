@@ -103,6 +103,10 @@ export class PhotoDetailViewComponent implements OnInit {
     return tags.join(',');
   }
 
+  public isForAdult(): boolean {
+    return this.getPhoto().isForAdult();
+  }
+
   public isEditTagMode(): boolean {
     return this.mEditTagMode;
   }

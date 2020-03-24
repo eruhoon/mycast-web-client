@@ -19,6 +19,10 @@
     filter: blur(10px);
     -webkit-filter: blur(10px);
   }
+  img.blurEffect:hover {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+  }
 
   .ph-info {
     width: 100%;

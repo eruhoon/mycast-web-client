@@ -88,13 +88,14 @@
         margin-top: 15px;
 
         .tag-input {
-          width: calc(100% - 40px);
+          width: calc(100% - 64px);
           height: 20px;
           line-height: 20px;
           font-size: 14px;
           color: #757575;
 
           padding: 7px 15px;
+          padding-right: 40px;
           border-radius: 25px;
           border: 1px solid #e3e3e3;
           outline: none;
@@ -214,9 +215,13 @@
 
         overflow: hidden;
     }
-    img.blurEffect{
+    img.blurEffect:active{
       filter: blur(10px);
       -webkit-filter: blur(10px);
+    }
+    img.blurEffect:active{
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
     }
   }
 }

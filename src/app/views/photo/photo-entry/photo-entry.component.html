@@ -1,5 +1,5 @@
 <div class="ph-img" (mouseenter)="setHover(true)" (mouseleave)="setHover(false)">
-    <img [ngClass]="{'blurEffect':isForAdult()}" [src]="getThumbnail()" (click)="onClick()">
+    <img [ngClass]="{'blurEffect':isForAdult()}" [src]="getThumbnail() | safe" (click)="onClick()">
     <div class="ph-info">
         <div class="bg"></div>
         <div class="img-wh">

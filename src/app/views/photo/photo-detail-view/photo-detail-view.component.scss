@@ -152,6 +152,15 @@
         &.tool {
           cursor: pointer;
         }
+        &.attention-limit:active {
+          color: #f50057;
+          span {
+            color: #f50057;
+          }
+          .in-txt-list > p.see-txt {
+            color: #f50057;
+          }
+        }
 
         span {
           width: auto;

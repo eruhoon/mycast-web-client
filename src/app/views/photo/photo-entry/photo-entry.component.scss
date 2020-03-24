@@ -12,6 +12,13 @@
 
   overflow: hidden;
 
+  &:hover{
+    img.blurEffect:hover {
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
+    }
+  }
+
   img {
     height: 250px;
   }
@@ -19,10 +26,7 @@
     filter: blur(10px);
     -webkit-filter: blur(10px);
   }
-  img.blurEffect:hover {
-    filter: blur(0px);
-    -webkit-filter: blur(0px);
-  }
+  
 
   .ph-info {
     width: 100%;
@@ -121,5 +125,8 @@
   }
   .img-chk.attention-limit {
     background-color: #F50057;
+  }
+  .attention-limit + .gif-chk {
+    top: 30px;
   }
 }

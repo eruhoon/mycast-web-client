@@ -21,6 +21,13 @@
         </div>
     </div>
     <div #scroller class="photo-main-content" (scroll)="onScroll()">
+        <div class="ph-search">
+            <label>검색</label>
+            <div class="ph-search-input">
+                <input type="text">
+                <i class="material-icons">search</i>
+            </div>
+        </div>
         <div class="ph-d-list" *ngFor="let photoSet of getPhotoSetModel()">
             <p>{{photoSet.dateString}}</p>
             <div class="ph-list">

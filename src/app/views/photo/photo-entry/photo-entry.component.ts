@@ -15,6 +15,8 @@ export class PhotoEntryComponent implements OnInit {
   @Input()
   public photo: Photo;
 
+  private mHover: boolean;
+
   private mService: PhotoService;
   private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
@@ -26,10 +28,12 @@ export class PhotoEntryComponent implements OnInit {
   public ngOnInit() {
     this.mFilterCommand = new PhotoAdultFilterCommand(this.photo);
     this.mShareCommand = new PhotoShareCommand(this.photo);
+    this.mHover = false;
   }
 
   public getThumbnail(): string {
-    return `https://i.imgur.com/${this.photo.getHash()}m.png`;
+    const suffix = this.mHover ? '' : 'm';
+    return `https://i.imgur.com/${this.photo.getHash()}${suffix}.png`;
   }
 
   public isForAdult(): boolean {
@@ -41,12 +45,18 @@ export class PhotoEntryComponent implements OnInit {
     return !mimeType ? false : mimeType.includes('gif');
   }
 
+  public setHover(hover: boolean): void {
+    this.mHover = hover;
+  }
+
   public onClick(): void {
     this.mService.setCurrentPhoto(this.photo);
   }
 
   public onFilterClick(): void {
-    this.mFilterCommand.execute();
+    const adult = !this.photo.isForAdult();
+    this.mService.setAdult(this.photo.getHash(), adult);
+    this.mFilterCommand.execute(adult);
   }
 
   public onLinkClick(): void {

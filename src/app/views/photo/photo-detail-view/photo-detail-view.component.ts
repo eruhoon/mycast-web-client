@@ -6,6 +6,7 @@ import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { PhotoAdultFilterCommand } from 'src/app/models/photo/command/PhotoAdultFilterCommand';
 
 @Component({
   selector: 'photo-detail-view',
@@ -18,6 +19,7 @@ export class PhotoDetailViewComponent implements OnInit {
   public tagInput: ElementRef<HTMLInputElement>;
 
   private mPhotoService: PhotoService;
+  private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
   private mImgurLoader: VegaImgurLoader;
   private mViewer: number;
@@ -30,6 +32,7 @@ export class PhotoDetailViewComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mFilterCommand = new PhotoAdultFilterCommand(this.getPhoto());
     this.mShareCommand = new PhotoShareCommand(this.getPhoto());
     this.mViewer = this.getPhoto().getViewer();
     this.mEditTagMode = false;
@@ -105,6 +108,12 @@ export class PhotoDetailViewComponent implements OnInit {
 
   public isForAdult(): boolean {
     return this.getPhoto().isForAdult();
+  }
+
+  public toggleAdult(): void {
+    const adult = !this.isForAdult();
+    this.mPhotoService.setAdult(this.getPhoto().getHash(), adult);
+    this.mFilterCommand.execute(adult);
   }
 
   public isEditTagMode(): boolean {

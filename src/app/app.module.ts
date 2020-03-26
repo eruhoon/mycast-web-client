@@ -49,6 +49,7 @@ import { PhotoPageComponent } from './views/photo/photo-page/photo-page.componen
 import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 import { PhotoEntryComponent } from './views/photo/photo-entry/photo-entry.component';
 import { PhotoDetailViewComponent } from './views/photo/photo-detail-view/photo-detail-view.component';
+import { PhotoMainViewComponent } from './views/photo/photo-main-view/photo-main-view.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { PhotoDetailViewComponent } from './views/photo/photo-detail-view/photo-
     MemoPageComponent,
     PhotoEntryComponent,
     PhotoDetailViewComponent,
+    PhotoMainViewComponent,
   ],
   imports: [
     BrowserModule,

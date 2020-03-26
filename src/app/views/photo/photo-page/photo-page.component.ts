@@ -11,64 +11,16 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class PhotoPageComponent implements OnInit {
 
-  @ViewChild('scroller', { static: false })
-  public mScroller: ElementRef<HTMLDivElement>;
-
   private mService: PhotoService;
-  private mPhotoSetModel: PhotoSetParam[];
 
   public constructor(service: PhotoService) {
     this.mService = service;
-    this.mPhotoSetModel = [];
   }
 
   public ngOnInit() {
   }
 
-  public getPhotoSetModel(): PhotoSetParam[] {
-    this.applyPhoto(this.mService.getPhotos());
-    return this.mPhotoSetModel;
-  }
-
   public isPhotoDetailShow(): boolean {
     return this.mService.getCurrentPhoto() !== null;
   }
-
-  public onPhotoClick(photo: Photo): void {
-  }
-
-  private applyPhoto(photos: Photo[]): void {
-    photos.forEach(photo => {
-      const dateString = DateUtils.getDateString(photo.getRegDate());
-      let photoSetParam = this.mPhotoSetModel.find(
-        set => set.dateString === dateString);
-
-      if (!photoSetParam) {
-        photoSetParam = this.createPhotoSetParam(dateString);
-        this.mPhotoSetModel.push(photoSetParam);
-      }
-
-      const photoList = photoSetParam.list;
-      if (photoList.every(p => p.getHash() !== photo.getHash())) {
-        photoList.push(photo);
-      }
-    });
-  }
-
-  private createPhotoSetParam(dateString: string): PhotoSetParam {
-    return { dateString, list: [] };
-  }
-
-  public onScroll(): void {
-    const elm = this.mScroller.nativeElement;
-    const diff = elm.scrollHeight - elm.scrollTop;
-    if (diff < 1000 && !this.mService.isLoading()) {
-      this.mService.loadMore();
-    }
-  }
 }
-
-type PhotoSetParam = {
-  dateString: string,
-  list: Photo[]
-};

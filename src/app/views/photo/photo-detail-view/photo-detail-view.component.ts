@@ -123,7 +123,7 @@ export class PhotoDetailViewComponent implements OnInit {
     this.mPhotoService.setCurrentPhoto(null);
   }
 
-  public onTagSubmitClick(): void {
+  public onTagSubmit(): void {
     const newTags = this.tagInput.nativeElement.value;
     this.mPhotoService.setTags(this.getPhoto().getHash(), newTags);
     new PhotoTagCommand(this.getPhoto()).execute(newTags);

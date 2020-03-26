@@ -14,8 +14,8 @@
                 <span class="material-icons">add_comment</span>
             </a>
             <div class="tag-input-box" *ngIf="isEditTagMode()">
-                <input #tags type="text" class="tag-input" [value]="getTags()" />
-                <span class="material-icons" (click)="onTagSubmitClick()">send</span>
+                <input #tags type="text" class="tag-input" [value]="getTags()" (keydown.enter)="onTagSubmit()" />
+                <span class="material-icons" (click)="onTagSubmit()">send</span>
             </div>
             <div class="tag-list">
                 <div class="tag-box" *ngFor="let tag of getTags()">

@@ -6,13 +6,10 @@
             포토
         </h2>
         <div class="ph-menu-list">
-            <a class="ph-m-li">
-                <i class="material-icons">insert_photo</i>
-                <p>포토</p>
-            </a>
-            <a class="ph-m-li">
-                <i class="material-icons">collections_bookmark</i>
-                <p>앨범</p>
+            <a class="ph-m-li" *ngFor="let menu of getMenus()" [ngClass]="{'active': getCurrentMenuId()===menu.id}"
+                (click)="setCurrentMenuId(menu.id)">
+                <i class="material-icons">{{menu.icon}}</i>
+                <p>{{menu.name}}</p>
             </a>
             <a class="ph-m-li ph-li-btm">
                 <i class="material-icons">cloud_upload</i>
@@ -20,7 +17,7 @@
             </a>
         </div>
     </div>
-    <photo-main-view></photo-main-view>
+    <photo-main-view *ngIf="getCurrentMenuId()===0"></photo-main-view>
 </div>
 
 <photo-detail-view *ngIf="isPhotoDetailShow()"></photo-detail-view>

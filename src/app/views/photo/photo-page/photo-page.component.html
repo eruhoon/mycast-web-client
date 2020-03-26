@@ -18,6 +18,7 @@
         </div>
     </div>
     <photo-main-view *ngIf="getCurrentMenuId()===0"></photo-main-view>
+    <photo-album-view *ngIf="getCurrentMenuId()===1"></photo-album-view>
 </div>
 
 <photo-detail-view *ngIf="isPhotoDetailShow()"></photo-detail-view>

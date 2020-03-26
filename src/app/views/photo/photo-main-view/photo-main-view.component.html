@@ -9,7 +9,7 @@
     <div class="ph-d-list" *ngFor="let photoSet of getPhotoSetModel()">
         <p>{{photoSet.dateString}}</p>
         <div class="ph-list">
-            <photo-entry [photo]="photo" *ngFor="let photo of photoSet.list" (click)="onPhotoClick(photo)">
+            <photo-entry [photo]="photo" *ngFor="let photo of photoSet.list">
             </photo-entry>
         </div>
     </div>

@@ -159,8 +159,8 @@
   
 
   .memo-box {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     position: relative;
     margin: 0px 10px;
     margin-top: 35px;
@@ -180,7 +180,7 @@
       left: 10px;
       top: -14px;
       overflow: hidden;
-      background: #FAFAFA;
+      background: #F50057;
       border-radius: 3px;
 
       box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
@@ -190,7 +190,7 @@
 
       p {
         font-size: 12px;
-        color: #616161;
+        color: #ffffff;
         line-height: 30px;
         margin: 0%;
         padding: 0%;
@@ -199,7 +199,7 @@
 
     .mm-txt {
       width: calc(100% - 10px);
-      height: 186px;
+      height: 236px;
       padding: 10px 5px;
       padding-bottom: 0px;
       margin-bottom: 0px;
@@ -216,7 +216,7 @@
       text-align: left;
       word-wrap: break-word;
       display: -webkit-box;
-      -webkit-line-clamp: 11;
+      -webkit-line-clamp: 14;
       -webkit-box-orient: vertical;
 
     }
@@ -254,4 +254,163 @@
     }
 }
 
+/* 메모 컨텐츠 표기 부분 - 모달 */
+.memo-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+  }
+  .memo-box {
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+    border-radius: 10px;
+
+    background-color: #fff;
+    background-color: var(--mdc-theme-surface, #fff);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+    z-index: 120;
+
+    .title {
+      width: calc(100% - 40px);
+      height: 60px;
+      padding: 25px 20px;
+
+      position: relative;
+
+      .user-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        overflow: hidden;
+
+        float: left;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .title-txt {
+        width: calc(100% - 70px);
+        margin-left: 70px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        h3 {
+          width: 100%;
+          font-weight: normal;
+          color: #424242;
+          margin: 0%;
+          padding: 0%;
+          font-size: 24px;
+          line-height: 30px;
+        }
+        p {
+          width: 100%;
+          font-weight: normal;
+          color: #616161;
+          margin: 0%;
+          padding: 0%;
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+    }
+    .favorite {
+      width: auto;
+      height: auto;
+      background-color: #F5F5F5;
+      color: #616161;
+      position: absolute;
+      top: 33px;
+      right: 20px;
+      border-radius: 5px;
+      
+      i {
+        font-size: 24px;
+        float: left;
+
+        padding: 10px;
+      }
+      p {
+        font-size: 14px;
+        float: left;
+        padding: 12px;
+        margin: 0px;
+        padding-left: 0px;
+      }
+
+      &:hover {
+        background-color: #F48FB1;
+        color: #880E4F;
+      }
+      &:active {
+        background-color: #F50057;
+        color: #ffffff;
+      }
+    }
+    .content {
+      width: 100%;
+
+      p{
+        width: 100%;
+        padding: 10px 5px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
   
+        font-size: 14px;
+        line-height: 18px;
+        color: #616161;  
+      }
+    }
+  }
+
+  // 상단, 좌우 버튼
+  i.clear {
+    font-size: 40px;
+    color: #E0E0E0;
+    z-index: 120;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+  }
+  a.btn {
+    position: absolute;
+    top: calc(50% - 20px);
+    margin: auto;
+
+    
+    z-index: 120;
+
+    i{
+      font-size: 40px;
+      color: #E0E0E0;
+    }
+
+    &.left-btn {
+      left: 0px;
+    }
+    &.right-btn {
+      right: 0px;
+    }
+  }
+}

@@ -1,1 +1,98 @@
-<p>modify-stream-modal works!</p>
+<div class="click-blocker"></div>
+<div class="bg"></div>
+<div class="modal">
+    <div class="title">
+        <i class="material-icons">live_tv</i>
+        <h3>회원 정보 수정</h3>
+    </div>
+    <div class="stream-setup-box">
+        <div class="ss-list-set">
+            <div class="stream-server-box">
+                <img src="\assets\image\stream\mycast.png" />
+                <p>마이캐스트</p>
+            </div>
+            <div class="stream-server-box">
+                <img src="\assets\image\stream\totoro.png" />
+                <p>토토로</p>
+            </div>
+            <div class="stream-server-box">
+                <img src="\assets\image\stream\afreeca.png" />
+                <p>아프리카TV</p>
+            </div>
+            <div class="stream-server-box">
+                <img src="\assets\image\stream\twitch.png" />
+                <p>트위치</p>
+            </div>
+            <div class="stream-server-box">
+                <img src="\assets\image\stream\mixer.png" />
+                <p>믹서</p>
+            </div>
+        </div>
+        <div class="ss-setup">
+            <div class="mycast ss-setup-box">
+                <div class="u-img">
+                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                </div>
+                <div class="stream-img-set ss-set-input">
+                    <label>
+                        <p>배경이미지</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+                <div class="stream-url ss-set-input">
+                    <label>
+                        <p>OBS FMS URL</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+                <div class="stream-key ss-set-input">
+                    <label>
+                        <p>STREAM KEY</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+            </div>
+            <div class="totoro ss-setup-box">
+                <div class="u-img">
+                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                </div>
+                <div class="stream-img-set ss-set-input">
+                    <label>
+                        <p>배경이미지</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+                <div class="stream-url ss-set-input">
+                    <label>
+                        <p>OBS FMS URL</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+                <div class="stream-key ss-set-input">
+                    <label>
+                        <p>STREAM KEY</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+            </div>
+            <div class="afreeca ss-setup-box">
+                <div class="u-img">
+                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                </div>
+                <div class="stream-key ss-set-input">
+                    <label>
+                        <p>STREAM KEY</p>
+                    </label>
+                    <input type="text" class="stream-img-set">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button>
+
+    <a href="#" class="modal-close" (click)="onCloseClick()">
+        <i class="material-icons">
+            close
+        </i>
+    </a>
+</div>

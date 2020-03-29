@@ -11,7 +11,7 @@
                 <i class="material-icons">{{menu.icon}}</i>
                 <p>{{menu.name}}</p>
             </a>
-            <a class="ph-m-li ph-li-btm">
+            <a class="ph-m-li ph-li-btm" (click)="onClickUpload()">
                 <i class="material-icons">cloud_upload</i>
                 <p>업로드</p>
             </a>
@@ -20,5 +20,8 @@
     <photo-main-view *ngIf="getCurrentMenuId()===0"></photo-main-view>
     <photo-album-view *ngIf="getCurrentMenuId()===1"></photo-album-view>
 </div>
+<form enctype="multipart/form-data">
+    <input #uploadInput type="file" (change)="onUploadFileStaged()">
+</form>
 
 <photo-detail-view *ngIf="isPhotoDetailShow()"></photo-detail-view>

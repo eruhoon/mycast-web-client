@@ -1,3 +1,4 @@
+import { PhotoUploadCommand } from 'src/app/models/photo/command/PhotoUploadCommand';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
@@ -10,6 +11,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./photo-page.component.scss']
 })
 export class PhotoPageComponent {
+
+  @ViewChild('uploadInput', { static: true })
+  public uploadInput: ElementRef<HTMLInputElement>;
 
   private mMenus: Menu[];
   private mCurrentMenuId: number;
@@ -38,6 +42,20 @@ export class PhotoPageComponent {
 
   public isPhotoDetailShow(): boolean {
     return this.mService.getCurrentPhoto() !== null;
+  }
+
+  public onClickUpload(): void {
+    this.uploadInput.nativeElement.click();
+  }
+
+  public onUploadFileStaged(): void {
+    const elm = this.uploadInput.nativeElement;
+    if (!elm.files) {
+      return;
+    }
+    const item = elm.files[0];
+    const command = new PhotoUploadCommand(item);
+    command.execute();
   }
 }
 

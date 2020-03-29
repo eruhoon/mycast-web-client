@@ -1,5 +1,6 @@
+import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+
 import { Component } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'modify-profile-modal',
@@ -24,11 +25,11 @@ export class ModifyProfileModalComponent {
   public onSubmitClick(): void {
     this.mProfileService.requestToModifyProfile(
       this.profileForm.name, this.profileForm.icon);
-    this.mProfileService.setModifyMode(false);
+    this.close();
   }
 
   public onCloseClick(): void {
-    this.mProfileService.setModifyMode(false);
+    this.close();
   }
 
   public onProfileIconError(event: Event): void {
@@ -45,6 +46,10 @@ export class ModifyProfileModalComponent {
 
   public isIconError(): boolean {
     return !this.profileForm.icon || this.profileForm.icon.length === 0;
+  }
+
+  public close(): void {
+    this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
   }
 }
 

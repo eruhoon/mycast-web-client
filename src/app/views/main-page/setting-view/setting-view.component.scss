@@ -42,6 +42,7 @@
     margin: 0%;
     padding: 0%;
   }
+  
 
   &:last-child {
     border-bottom: 0px;
@@ -54,6 +55,13 @@
   &.toggle-option {
     cursor: pointer;
   }
+}
+
+.stream-set > img {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-left: 1px solid #eeeeee;
 }
 
 // 유저 안내 및 레벨 안내

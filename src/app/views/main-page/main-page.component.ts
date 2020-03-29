@@ -7,7 +7,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component, HostListener } from '@angular/core';
 
@@ -169,7 +169,13 @@ export class MainPageComponent {
     }
 
     public isModifyProfileMode(): boolean {
-        return this.mProfileService.isModifyMode();
+        const mode = this.mProfileService.getModifyMode();
+        return mode === ProfileModifyMode.PROFILE;
+    }
+
+    public isModifyStreamMode(): boolean {
+        const mode = this.mProfileService.getModifyMode();
+        return mode === ProfileModifyMode.STREAM;
     }
 
     private toggleMenu() {

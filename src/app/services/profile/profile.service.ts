@@ -9,12 +9,12 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
-  private mModifyMode: boolean;
+  private mModifyMode: ProfileModifyMode;
   private mProfile: Profile;
   private mModifyProfileCommand: ModifyProfileCommand;
 
   public constructor() {
-    this.mModifyMode = false;
+    this.mModifyMode = ProfileModifyMode.NONE;
     this.mProfile = new DefaultProfile();
   }
 
@@ -38,15 +38,21 @@ export class ProfileService {
     return this.mProfile.getLevel();
   }
 
-  public isModifyMode(): boolean {
+  public getModifyMode(): ProfileModifyMode {
     return this.mModifyMode;
   }
 
-  public setModifyMode(modifyMode: boolean): void {
+  public setModifyMode(modifyMode: ProfileModifyMode): void {
     this.mModifyMode = modifyMode;
   }
 
   public requestToModifyProfile(name: string, icon: string): void {
     this.mModifyProfileCommand.execute({ name, icon });
   }
+}
+
+export const enum ProfileModifyMode {
+  NONE = 'NONE',
+  PROFILE = 'PROFILE',
+  STREAM = 'STREAM',
 }

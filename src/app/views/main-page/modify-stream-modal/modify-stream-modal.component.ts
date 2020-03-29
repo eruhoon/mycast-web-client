@@ -1,3 +1,5 @@
+import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifyStreamModalComponent implements OnInit {
 
-  constructor() { }
+  private mProfileService: ProfileService;
+
+  public constructor(profileService: ProfileService) {
+    this.mProfileService = profileService;
+  }
 
   ngOnInit() {
+  }
+
+  public close() {
+    this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
   }
 
 }

@@ -1,9 +1,9 @@
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 
-import { Component, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-setting-view',
@@ -70,17 +70,12 @@ export class SettingViewComponent implements OnInit {
     return this.mOptionService.setDataSaveMode(!option);
   }
 
-  public isScrollLockMode(): boolean {
-    return this.mOptionService.isScrollLockMode();
+  public openProfileSettingView(): void {
+    this.mProfileService.setModifyMode(ProfileModifyMode.PROFILE);
   }
 
-  public toggleScrollLockMode(): void {
-    const option = this.mOptionService.isScrollLockMode();
-    return this.mOptionService.setScrollLockMode(!option);
-  }
-
-  public onProfileSettingClick(): void {
-    this.mProfileService.setModifyMode(true);
+  public openStreamSettingView(): void {
+    this.mProfileService.setModifyMode(ProfileModifyMode.STREAM);
   }
 
   public onNotificationSoundClick(option: NotificationSound): void {

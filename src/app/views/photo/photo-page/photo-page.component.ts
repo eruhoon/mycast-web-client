@@ -19,7 +19,7 @@ export class PhotoPageComponent {
     this.mService = service;
     this.mMenus = [
       { id: 0, icon: 'insert_photo', name: '포토' },
-      { id: 1, icon: 'collections_bookmark', name: '앨범' },
+      // { id: 1, icon: 'collections_bookmark', name: '앨범' },
     ];
     this.mCurrentMenuId = 0;
   }

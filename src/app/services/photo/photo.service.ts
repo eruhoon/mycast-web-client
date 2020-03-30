@@ -1,3 +1,4 @@
+import { PhotoUploadCommand } from 'src/app/models/photo/command/PhotoUploadCommand';
 import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
 import { MutablePhoto } from 'src/app/models/photo/MutablePhoto';
 import { Photo } from 'src/app/models/photo/Photo';
@@ -33,6 +34,15 @@ export class PhotoService {
 
   public setCurrentPhoto(photo: Photo | null): void {
     this.mCurrentPhoto = photo;
+  }
+
+  public addPhotoByFile(file: File): void {
+    const command = new PhotoUploadCommand(file);
+    command.setOnComplete(photo => {
+      const newPhoto = MutablePhoto.createWithPhoto(photo);
+      this.mPhotos = [newPhoto, ...this.mPhotos];
+    });
+    command.execute();
   }
 
   public loadMore(): void {

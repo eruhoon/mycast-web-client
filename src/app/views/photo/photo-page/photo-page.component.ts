@@ -54,8 +54,7 @@ export class PhotoPageComponent {
       return;
     }
     const item = elm.files[0];
-    const command = new PhotoUploadCommand(item);
-    command.execute();
+    this.mService.addPhotoByFile(item);
   }
 }
 

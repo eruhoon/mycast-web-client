@@ -1,9 +1,16 @@
 import Axios from 'axios';
 import * as qs from 'querystring';
 
+import { TypeCallback } from '../../common/callback/TypeCallback';
 import { SessionStorage } from '../../storage/SessionStorage';
+import { MutablePhoto } from '../MutablePhoto';
+import { Photo } from '../Photo';
 
 export class PhotoUploadCommand {
+
+    private mFile: File;
+    private mReader: FileReader;
+    private mOnComplete: TypeCallback<Photo>;
 
     public constructor(file: File) {
         this.mFile = file;
@@ -14,10 +21,12 @@ export class PhotoUploadCommand {
                 this.onFileLoad(base64);
             }
         };
+        this.mOnComplete = _ => { };
     }
 
-    private mFile: File;
-    private mReader: FileReader;
+    public setOnComplete(onComplete: TypeCallback<Photo>) {
+        this.mOnComplete = onComplete;
+    }
 
     public execute() {
         if (!this.isValidFile()) {
@@ -28,16 +37,23 @@ export class PhotoUploadCommand {
     }
 
     private onFileLoad(base64: string | null): void {
-        console.log(base64);
-
-        // const host = 'http://mycast.xyz/home/photo/uploadbase64';
-        // const privKey = SessionStorage.getInstance().getPrivateKey();
-        // const query = qs.stringify({ b: base64, ukey: privKey });
-        /*
-        const url = `${host}/photo/${this.mPhoto.getHash()}/tags`;
+        const uri = 'http://api.mycast.xyz/photo';
         const privKey = SessionStorage.getInstance().getPrivateKey();
-        Axios.post(url, qs.stringify({ user: privKey, msg: tags }));
-        */
+        const query = qs.stringify({ base64, privKey });
+        Axios.post<PhotoDto>(uri, query).then(res => {
+            const photoDto = res.data;
+            const photo = new MutablePhoto(photoDto.hash);
+            photo.setForAdult(photoDto.adult);
+            photo.setHeight(photoDto.height);
+            photo.setMimeType(photoDto.mimeType);
+            photo.setRegDate(new Date(photoDto.regDate));
+            photo.setTags(photoDto.tag);
+            photo.setUrl(photoDto.url);
+            photo.setViewer(0);
+            photo.setWidth(photoDto.width);
+
+            this.mOnComplete(photo);
+        });
     }
 
     private isValidFile(): boolean {
@@ -47,3 +63,14 @@ export class PhotoUploadCommand {
         return true;
     }
 }
+
+type PhotoDto = {
+    adult: boolean,
+    hash: string,
+    height: number,
+    mimeType: string,
+    regDate: number,
+    url: string,
+    width: number,
+    tag: string[],
+};

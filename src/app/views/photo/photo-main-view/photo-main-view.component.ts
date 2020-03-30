@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Photo } from 'src/app/models/photo/Photo';
-import { PhotoService } from 'src/app/services/photo/photo.service';
 import { DateUtils } from 'src/app/models/util/DateUtils';
+import { PhotoService } from 'src/app/services/photo/photo.service';
+
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'photo-main-view',
@@ -51,6 +52,8 @@ export class PhotoMainViewComponent implements OnInit {
       const photoList = photoSetParam.list;
       if (photoList.every(p => p.getHash() !== photo.getHash())) {
         photoList.push(photo);
+        photoList.sort(
+          (a, b) => b.getRegDate().getTime() - a.getRegDate().getTime());
       }
     });
   }

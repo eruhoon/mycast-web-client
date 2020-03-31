@@ -44,6 +44,44 @@ export class PhotoPageComponent {
     return this.mService.getCurrentPhoto() !== null;
   }
 
+  public getUploadingPhoto(): File | null {
+    return this.mService.getUploadingFile();
+  }
+
+  public getUploadingFileImage(): string {
+    const image = this.mService.getUploadingImage();
+    return image || '';
+  }
+
+  public getUploadingFileName(): string {
+    const photo = this.getUploadingPhoto();
+    return photo ? photo.name : 'unknown';
+  }
+
+  public getUploadingFileSize(): string {
+    const photo = this.getUploadingPhoto();
+    if (!photo) {
+      return '- KB';
+    }
+    return `${Math.round(photo.size / 1024 * 10) / 10} KB`;
+  }
+
+  public getUploadingFileType(): string {
+    const photo = this.getUploadingPhoto();
+    if (!photo) {
+      return 'PNG';
+    }
+    try {
+      return photo.type.split('/')[1].toUpperCase();
+    } catch {
+      return 'PNG';
+    }
+  }
+
+  public isUploading(): boolean {
+    return this.mService.isUploading();
+  }
+
   public onClickUpload(): void {
     this.uploadInput.nativeElement.click();
   }

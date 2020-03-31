@@ -11,12 +11,18 @@ import { Injectable } from '@angular/core';
 export class PhotoService {
 
   private mLoader: VegaPhotoLoader;
+  private mPhotoUploadCommand: PhotoUploadCommand;
   private mPhotos: MutablePhoto[];
   private mCurrentPhoto: Photo | null;
   private mNextStart: number;
 
   public constructor() {
     this.mLoader = new VegaPhotoLoader();
+    this.mPhotoUploadCommand = new PhotoUploadCommand();
+    this.mPhotoUploadCommand.setOnComplete(photo => {
+      const newPhoto = MutablePhoto.createWithPhoto(photo);
+      this.mPhotos = [newPhoto, ...this.mPhotos];
+    });
     this.mPhotos = [];
     this.mCurrentPhoto = null;
     this.mNextStart = 0;
@@ -37,12 +43,8 @@ export class PhotoService {
   }
 
   public addPhotoByFile(file: File): void {
-    const command = new PhotoUploadCommand(file);
-    command.setOnComplete(photo => {
-      const newPhoto = MutablePhoto.createWithPhoto(photo);
-      this.mPhotos = [newPhoto, ...this.mPhotos];
-    });
-    command.execute();
+    this.mPhotoUploadCommand.setFile(file);
+    this.mPhotoUploadCommand.execute();
   }
 
   public loadMore(): void {
@@ -79,5 +81,17 @@ export class PhotoService {
 
   public isLoading(): boolean {
     return this.mLoader.isLoading();
+  }
+
+  public getUploadingFile(): File | null {
+    return this.mPhotoUploadCommand.getUploadingFile();
+  }
+
+  public getUploadingImage(): string | null {
+    return this.mPhotoUploadCommand.getUploadingBase64();
+  }
+
+  public isUploading(): boolean {
+    return this.mPhotoUploadCommand.isProgress();
   }
 }

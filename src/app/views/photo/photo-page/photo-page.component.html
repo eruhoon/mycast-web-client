@@ -23,19 +23,19 @@
 <form enctype="multipart/form-data">
     <input #uploadInput type="file" (change)="onUploadFileStaged()">
 </form>
-<div class="photo-upload-view">
+<div class="photo-upload-view" *ngIf="isUploading()">
     <div class="photo-img-box">
-        <img src="https://i.imgur.com/WVUFtFi.png" />
+        <img [src]="getUploadingFileImage()" />
     </div>
     <div class="photo-info-box">
-        <h4>20200326221643_891835c951a044c4800bb1046ca9fff0_ehdo</h4>
-        <p>6,545KB / GIF</p>
+        <h4>{{ getUploadingFileName() }}</h4>
+        <p>{{ getUploadingFileSize() }} / {{ getUploadingFileType()}}</p>
     </div>
     <div class="photo-state">
         <!-- 업로드 중 -->
         <img src="\assets\image\main\loader-large.gif" />
         <!-- 업로드 종료 -->
-        <I class="material-icons">done</I>
+        <!-- <i class="material-icons">done</i> -->
     </div>
 </div>
 

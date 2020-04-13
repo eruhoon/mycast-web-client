@@ -52,6 +52,8 @@ import { PhotoDetailViewComponent } from './views/photo/photo-detail-view/photo-
 import { PhotoMainViewComponent } from './views/photo/photo-main-view/photo-main-view.component';
 import { PhotoAlbumViewComponent } from './views/photo/photo-album-view/photo-album-view.component';
 import { ModifyStreamModalComponent } from './views/main-page/modify-stream-modal/modify-stream-modal.component';
+import { MemoDetailViewComponent } from './views/memo/memo-detail-view/memo-detail-view.component';
+import { MemoEntryComponent } from './views/memo/memo-entry/memo-entry.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,8 @@ import { ModifyStreamModalComponent } from './views/main-page/modify-stream-moda
     PhotoMainViewComponent,
     PhotoAlbumViewComponent,
     ModifyStreamModalComponent,
+    MemoDetailViewComponent,
+    MemoEntryComponent,
   ],
   imports: [
     BrowserModule,

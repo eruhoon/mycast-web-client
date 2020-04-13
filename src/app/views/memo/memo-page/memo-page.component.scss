@@ -1,416 +1,158 @@
 .memo-page {
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
-    overflow: hidden;
-    margin: 0%;
-    padding: 0%;
-  
-    .left-menu {
-      width: 200px;
-      height: calc(100% - 20px);
-      margin: 10px;
-      border-right: 1px solid #e3e3e3;
-  
-      position: relative;
-  
-      float: left;
-      h2 {
-        width: 180px;
-        text-align: right;
-        padding: 10px;
-        font-size: 36px;
-        color: #f50057;
-      }
-      .mm-menu-list {
-        width: 40px;
-        padding-right: 10px;
-        padding-left: 150px;
-        text-align: right;
-  
-        .mm-m-li {
-          width: 40px;
-          height: 60px;
-          display: block;
-          text-align: center;
-  
-          margin-bottom: 15px;
-  
-          i {
-            font-size: 28px;
-            line-height: 32px;
-            color: #616161;
-          }
-          p {
-            width: auto;
-            height: auto;
-            padding: 0%;
-            margin: 0%;
-            color: #616161;
-            font-size: 14px;
-          }
-        }
-        .mm-li-btm {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-        }
-      }
-    }
-    .memo-main-content {
-      width: calc(100% - 231px);
-      height: 100%;
-      margin: 0%;
-      padding-left: 10px;
-      position: relative;
-      float: left;
-      overflow-y: scroll;
-  
-      scrollbar-color: #e0e0e0 #f0f0f0;
-      scrollbar-width: thin;
-  
-      &::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-        border: 3px solid #f0f0f0;
-      }
-      &::-webkit-scrollbar-button:start:decrement,
-      &::-webkit-scrollbar-button:end:increment {
-        display: block;
-        height: 5px;
-        background: #f0f0f0;
-      }
-      &::-webkit-scrollbar-track {
-        background: #f0f0f0;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-      }
-      &::-webkit-scrollbar-thumb {
-        height: 50px;
-        width: 50px;
-        background: #e0e0e0;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
-      }
-  
-      .mm-search {
-        width: 100%;
-        height: 36px;
-        padding-top: 25px;
-        padding-bottom: 20px;
-        position: relative;
-  
-        label {
-          width: 40px;
-          font-size: 16px;
-          line-height: 36px;
-          margin-left: 10px;
-          color: #616161;
-          float: left;
-        }
-        .mm-search-input {
-          width: calc(50% - 30px);
-          height: 36px;
-          position: relative;
-          float: left;
-  
-          input {
-            width: calc(100% - 64px);
-            height: 20px;
-            line-height: 20px;
-            font-size: 14px;
-            color: #757575;
-  
-            padding: 7px 15px;
-            padding-right: 40px;
-            border-radius: 25px;
-            border: 1px solid #e3e3e3;
-            outline: none;
-          }
-          i {
-            width: 36px;
-            height: 36px;
-  
-            position: absolute;
-            right: 9px;
-            top: 1px;
-  
-            color: #757575;
-            text-align: center;
-            line-height: 36px;
-  
-            &:hover {
-              color: #ff4081;
-            }
-          }
-        }
-      }
-      
-      .mm-list {
-          width: 100%;
-          height: auto;
-  
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-      }
-    }
-}
-  
-
-  .memo-box {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    margin: 0px 10px;
-    margin-top: 35px;
-
-    border-radius: 3px;
-  
-    background-color: #fff;
-    background-color: var(--mdc-theme-surface, #fff);
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  
-    .mm-info {
-      max-width: 50%;
-      height: 30px;
-      padding: 0px 10px;
-      position: absolute;
-      left: 10px;
-      top: -14px;
-      overflow: hidden;
-      background: #F50057;
-      border-radius: 3px;
-
-      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
-      text-align: center;
-
-      p {
-        font-size: 12px;
-        color: #ffffff;
-        line-height: 30px;
-        margin: 0%;
-        padding: 0%;
-      }
-    }
-
-    .mm-txt {
-      width: calc(100% - 10px);
-      height: 236px;
-      padding: 10px 5px;
-      padding-bottom: 0px;
-      margin-bottom: 0px;
-
-      font-size: 14px;
-      color: #616161;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      /* 여러 줄 자르기 추가 스타일 */
-      white-space: normal;
-      line-height: 1.2;
-      text-align: left;
-      word-wrap: break-word;
-      display: -webkit-box;
-      -webkit-line-clamp: 14;
-      -webkit-box-orient: vertical;
-
-    }
-    .mm-user {
-        width: calc(100% - 103px);
-        height: 30px;
-        padding: 5px;
-        float: left;
-
-        p {
-          font-size: 12px;
-          color: #616161;
-          line-height: 25px;
-          margin: 0%;
-          padding: 0%;
-        }
-    }
-    .mm-btn-group {
-        width: 78px;
-        height: 30px;
-        padding: 5px;
-        float: right;
-  
-        .mm-btn {
-          width: 30px;
-          height: 30px;
-          font-size: 28px;
-          line-height: 30px;
-          cursor: pointer;
-          padding: 0px 5px;
-          color: #717171;
-          text-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-        }
-    }
-}
-
-/* 메모 컨텐츠 표기 부분 - 모달 */
-.memo-content {
   width: 100%;
   height: 100%;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  margin: 0%;
+  padding: 0%;
 
-  .bg {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 100;
-  }
-  .memo-box {
-    width: 50%;
-    height: 500px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
-    margin: auto;
-    border-radius: 10px;
+  .left-menu {
+    width: 200px;
+    height: calc(100% - 20px);
+    margin: 10px;
+    border-right: 1px solid #e3e3e3;
 
-    background-color: #fff;
-    background-color: var(--mdc-theme-surface, #fff);
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    position: relative;
 
-    z-index: 120;
+    float: left;
+    h2 {
+      width: 180px;
+      text-align: right;
+      padding: 10px;
+      font-size: 36px;
+      color: #f50057;
+    }
+    .mm-menu-list {
+      width: 40px;
+      padding-right: 10px;
+      padding-left: 150px;
+      text-align: right;
 
-    .title {
-      width: calc(100% - 40px);
-      height: 60px;
-      padding: 25px 20px;
-
-      position: relative;
-
-      .user-img {
-        width: 60px;
+      .mm-m-li {
+        width: 40px;
         height: 60px;
-        border-radius: 100%;
-        overflow: hidden;
+        display: block;
+        text-align: center;
 
-        float: left;
+        margin-bottom: 15px;
 
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .title-txt {
-        width: calc(100% - 70px);
-        margin-left: 70px;
-        padding-top: 7px;
-        padding-bottom: 7px;
-        h3 {
-          width: 100%;
-          font-weight: normal;
-          color: #424242;
-          margin: 0%;
-          padding: 0%;
-          font-size: 24px;
-          line-height: 30px;
+        i {
+          font-size: 28px;
+          line-height: 32px;
+          color: #616161;
         }
         p {
-          width: 100%;
-          font-weight: normal;
-          color: #616161;
-          margin: 0%;
+          width: auto;
+          height: auto;
           padding: 0%;
+          margin: 0%;
+          color: #616161;
           font-size: 14px;
-          line-height: 16px;
+        }
+      }
+      .mm-li-btm {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  }
+  .memo-main-content {
+    width: calc(100% - 231px);
+    height: 100%;
+    margin: 0%;
+    padding-left: 10px;
+    position: relative;
+    float: left;
+    overflow-y: scroll;
+
+    scrollbar-color: #e0e0e0 #f0f0f0;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+      border: 3px solid #f0f0f0;
+    }
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      display: block;
+      height: 5px;
+      background: #f0f0f0;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 50px;
+      width: 50px;
+      background: #e0e0e0;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+    }
+
+    .mm-search {
+      width: 100%;
+      height: 36px;
+      padding-top: 25px;
+      padding-bottom: 20px;
+      position: relative;
+
+      label {
+        width: 40px;
+        font-size: 16px;
+        line-height: 36px;
+        margin-left: 10px;
+        color: #616161;
+        float: left;
+      }
+      .mm-search-input {
+        width: calc(50% - 30px);
+        height: 36px;
+        position: relative;
+        float: left;
+
+        input {
+          width: calc(100% - 64px);
+          height: 20px;
+          line-height: 20px;
+          font-size: 14px;
+          color: #757575;
+
+          padding: 7px 15px;
+          padding-right: 40px;
+          border-radius: 25px;
+          border: 1px solid #e3e3e3;
+          outline: none;
+        }
+        i {
+          width: 36px;
+          height: 36px;
+
+          position: absolute;
+          right: 9px;
+          top: 1px;
+
+          color: #757575;
+          text-align: center;
+          line-height: 36px;
+
+          &:hover {
+            color: #ff4081;
+          }
         }
       }
     }
-    .favorite {
-      width: auto;
-      height: auto;
-      background-color: #F5F5F5;
-      color: #616161;
-      position: absolute;
-      top: 33px;
-      right: 20px;
-      border-radius: 5px;
-      
-      i {
-        font-size: 24px;
-        float: left;
 
-        padding: 10px;
-      }
-      p {
-        font-size: 14px;
-        float: left;
-        padding: 12px;
-        margin: 0px;
-        padding-left: 0px;
-      }
-
-      &:hover {
-        background-color: #F48FB1;
-        color: #880E4F;
-      }
-      &:active {
-        background-color: #F50057;
-        color: #ffffff;
-      }
-    }
-    .content {
+    .mm-list {
       width: 100%;
+      height: auto;
 
-      p{
-        width: 100%;
-        padding: 10px 5px;
-        padding-bottom: 0px;
-        margin-bottom: 0px;
-  
-        font-size: 14px;
-        line-height: 18px;
-        color: #616161;  
-      }
-    }
-  }
-
-  // 상단, 좌우 버튼
-  i.clear {
-    font-size: 40px;
-    color: #E0E0E0;
-    z-index: 120;
-    position: absolute;
-    right: 0px;
-    top: 10px;
-  }
-  a.btn {
-    position: absolute;
-    top: calc(50% - 20px);
-    margin: auto;
-
-    
-    z-index: 120;
-
-    i{
-      font-size: 40px;
-      color: #E0E0E0;
-    }
-
-    &.left-btn {
-      left: 0px;
-    }
-    &.right-btn {
-      right: 0px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 }

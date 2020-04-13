@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Memo } from 'src/app/models/memo/Memo';
+import { MemoService } from 'src/app/services/memo/memo.service';
+
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'memo-page',
   templateUrl: './memo-page.component.html',
   styleUrls: ['./memo-page.component.scss']
 })
-export class MemoPageComponent implements OnInit {
+export class MemoPageComponent {
 
-  constructor() { }
+  private mService: MemoService;
 
-  ngOnInit() {
+  public constructor(service: MemoService) {
+    this.mService = service;
+  }
+
+  public getMemos(): Memo[] {
+    console.log('memoes', this.mService.getMemos());
+    return this.mService.getMemos();
   }
 
 }

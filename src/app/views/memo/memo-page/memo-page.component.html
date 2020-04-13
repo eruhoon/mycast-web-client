@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <div #scroller class="memo-main-content" (scroll)="onScroll()">
+    <div #scroller class="memo-main-content">
         <div class="mm-search">
             <label>검색</label>
             <div class="mm-search-input">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="mm-list">
-            <memo-entry *ngFor="let entry of [1,2,3,4,5]"></memo-entry>
+            <memo-entry *ngFor="let memo of getMemos()"></memo-entry>
         </div>
     </div>
     <memo-detail-view *ngIf="false"></memo-detail-view>

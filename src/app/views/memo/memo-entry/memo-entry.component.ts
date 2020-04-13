@@ -13,3 +13,7 @@ export class MemoEntryComponent implements OnInit {
   }
 
 }
+
+type MemoParam = {
+  body: string,
+};

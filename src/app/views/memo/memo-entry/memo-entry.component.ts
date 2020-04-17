@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Memo } from 'src/app/models/memo/Memo';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'memo-entry',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemoEntryComponent implements OnInit {
 
-  constructor() { }
+  @Input() memo: Memo;
+
+  public constructor() { }
+
+  public getBody(): string {
+    return this.memo.getBody();
+  }
 
   ngOnInit() {
   }

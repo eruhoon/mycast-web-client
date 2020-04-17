@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="mm-list">
-            <memo-entry *ngFor="let memo of getMemos()"></memo-entry>
+            <memo-entry [memo]="memo" *ngFor="let memo of getMemos()"></memo-entry>
         </div>
     </div>
     <memo-detail-view *ngIf="false"></memo-detail-view>

@@ -17,6 +17,10 @@ export class MemoEntryComponent implements OnInit {
     return this.memo.getBody();
   }
 
+  public getUserName(): string {
+    return this.memo.getUserName();
+  }
+
   ngOnInit() {
   }
 

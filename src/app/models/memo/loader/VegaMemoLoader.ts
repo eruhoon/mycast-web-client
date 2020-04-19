@@ -64,5 +64,7 @@ class MemoDtoAdapter implements Memo {
 
     public getUserName(): string { return this.mMemoDto.userNickname; }
 
+    public getUserIcon(): string { return this.mMemoDto.userIcon; }
+
     public getBody(): string { return this.mMemoDto.content; }
 }

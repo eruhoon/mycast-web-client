@@ -23,7 +23,8 @@ export class MemoDetailViewComponent implements OnInit {
   }
 
   public getUserIcon(): string {
-    return 'https://i.imgur.com/tXiHAIc.gif';
+    const memo = this.mService.getCurrentMemo();
+    return memo !== null ? memo.getUserIcon() : '';
   }
 
   public getUserName(): string {

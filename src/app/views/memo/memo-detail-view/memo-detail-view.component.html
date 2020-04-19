@@ -15,7 +15,7 @@
             </div>
             <div class="content">
                 <p class="text">{{getBody()}}</p>
-                <a *ngIf="hasLink()" [href]="getLink()">
+                <a class="link" *ngIf="hasLink()" (click)="openLink()">
                     <p>{{getLink()}}</p>
                 </a>
             </div>

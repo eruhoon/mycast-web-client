@@ -42,10 +42,15 @@ export class MemoDetailViewComponent implements OnInit {
     return /https?\:\/\//.test(body);
   }
 
-  public getLink(): string | null {
+  public getLink(): string {
     const body = this.getBody();
     const match = /https?\:\/\/[^\s]+/.exec(body);
-    return match ? match[0] : null;
+    return match ? match[0] : '';
+  }
+
+  public openLink(): void {
+    const link = this.getLink();
+    const win = window.open(link, '_blank');
   }
 
 }

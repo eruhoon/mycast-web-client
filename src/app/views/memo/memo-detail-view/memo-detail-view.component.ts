@@ -22,6 +22,15 @@ export class MemoDetailViewComponent implements OnInit {
     this.mService.setCurrentMemo(null);
   }
 
+  public getUserIcon(): string {
+    return 'https://i.imgur.com/tXiHAIc.gif';
+  }
+
+  public getUserName(): string {
+    const memo = this.mService.getCurrentMemo();
+    return memo !== null ? memo.getUserName() : '';
+  }
+
   public getBody(): string {
     const memo = this.mService.getCurrentMemo();
     return memo !== null ? memo.getBody() : '';

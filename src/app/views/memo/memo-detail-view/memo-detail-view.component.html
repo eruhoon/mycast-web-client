@@ -3,13 +3,13 @@
     <div class="memo-box">
         <div class="title">
             <div class="user-img">
-                <img src="https://i.imgur.com/tXiHAIc.gif" />
+                <img [src]="getUserIcon()" />
             </div>
             <div class="title-txt">
-                <h3>테스트 메모 모달</h3>
-                <p>시구르나 작성, 03월 26일</p>
+                <h3>{{getUserName()}}</h3>
+                <p>03월 26일</p>
             </div>
-            <div class="favorite">
+            <div class="favorite" *ngIf="false">
                 <i class="material-icons">star</i>
                 <p>즐겨찾기</p>
             </div>
@@ -23,10 +23,10 @@
         </div>
     </div>
     <i class="material-icons clear" (click)="closeDetailView()">clear</i>
-    <a class="left-btn btn">
+    <a class="left-btn btn" *ngIf="false">
         <i class="material-icons">navigate_before</i>
     </a>
-    <a class="right-btn btn">
+    <a class="right-btn btn" *ngIf="false">
         <i class="material-icons">navigate_next</i>
     </a>
 </div>

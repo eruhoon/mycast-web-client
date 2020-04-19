@@ -32,5 +32,5 @@
             <memo-entry [memo]="memo" *ngFor="let memo of getMemos()"></memo-entry>
         </div>
     </div>
-    <memo-detail-view *ngIf="false"></memo-detail-view>
+    <memo-detail-view *ngIf="isDetailMode()"></memo-detail-view>
 </div>

@@ -12,15 +12,25 @@ export class MemoService {
 
   private mLoader: VegaMemoLoader;
   private mMemos: MutableMemo[];
+  private mCurrentMemo: Memo | null;
 
   public constructor() {
     this.mLoader = new VegaMemoLoader();
     this.mMemos = [];
+    this.mCurrentMemo = null;
     this.loadMore();
   }
 
   public getMemos(): Memo[] {
     return this.mMemos;
+  }
+
+  public getCurrentMemo(): Memo | null {
+    return this.mCurrentMemo;
+  }
+
+  public setCurrentMemo(memo: Memo | null): void {
+    this.mCurrentMemo = memo;
   }
 
   public loadMore(): void {

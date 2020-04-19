@@ -1,3 +1,5 @@
+import { MemoService } from 'src/app/services/memo/memo.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemoDetailViewComponent implements OnInit {
 
-  constructor() { }
+  private mService: MemoService;
+
+  public constructor(service: MemoService) {
+    this.mService = service;
+  }
 
   ngOnInit() {
   }
+
+  public closeDetailView(): void {
+    this.mService.setCurrentMemo(null);
+  }
+
 
 }

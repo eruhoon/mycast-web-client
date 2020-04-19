@@ -21,4 +21,8 @@ export class MemoPageComponent {
     return this.mService.getMemos();
   }
 
+  public isDetailMode(): boolean {
+    return this.mService.getCurrentMemo() !== null;
+  }
+
 }

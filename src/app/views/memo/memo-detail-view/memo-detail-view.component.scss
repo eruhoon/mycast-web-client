@@ -135,11 +135,13 @@
         position: absolute;
         right: 0px;
         top: 10px;
+        cursor: pointer;
     }
     a.btn {
         position: absolute;
         top: calc(50% - 20px);
         margin: auto;
+        cursor: pointer;
 
         z-index: 120;
 

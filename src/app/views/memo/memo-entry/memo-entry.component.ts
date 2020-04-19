@@ -1,4 +1,5 @@
 import { Memo } from 'src/app/models/memo/Memo';
+import { MemoService } from 'src/app/services/memo/memo.service';
 
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,7 +12,11 @@ export class MemoEntryComponent implements OnInit {
 
   @Input() memo: Memo;
 
-  public constructor() { }
+  private mService: MemoService;
+
+  public constructor(service: MemoService) {
+    this.mService = service;
+  }
 
   public getBody(): string {
     return this.memo.getBody();
@@ -19,6 +24,10 @@ export class MemoEntryComponent implements OnInit {
 
   public getUserName(): string {
     return this.memo.getUserName();
+  }
+
+  public onClick(): void {
+    this.mService.setCurrentMemo(this.memo);
   }
 
   ngOnInit() {

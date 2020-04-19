@@ -22,5 +22,20 @@ export class MemoDetailViewComponent implements OnInit {
     this.mService.setCurrentMemo(null);
   }
 
+  public getBody(): string {
+    const memo = this.mService.getCurrentMemo();
+    return memo !== null ? memo.getBody() : '';
+  }
+
+  public hasLink(): boolean {
+    const body = this.getBody();
+    return /https?\:\/\//.test(body);
+  }
+
+  public getLink(): string | null {
+    const body = this.getBody();
+    const match = /https?\:\/\/[^\s]+/.exec(body);
+    return match ? match[0] : null;
+  }
 
 }

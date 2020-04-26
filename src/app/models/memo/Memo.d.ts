@@ -3,4 +3,5 @@ export interface Memo {
     getUserIcon(): string;
     getUserName(): string;
     getBody(): string;
+    getRegDate(): Date;
 }

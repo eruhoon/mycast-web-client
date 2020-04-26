@@ -6,11 +6,13 @@ export class MutableMemo implements Memo {
     private mUserName: string;
     private mUserIcon: string;
     private mBody: string;
+    private mRegDate: Date;
 
     public constructor(hash: string) {
         this.mHash = hash;
         this.mUserName = '';
         this.mUserIcon = '';
+        this.mRegDate = new Date(0);
     }
 
     public static createWithMemo(memo: Memo): MutableMemo {
@@ -18,6 +20,7 @@ export class MutableMemo implements Memo {
         newMemo.setBody(memo.getBody());
         newMemo.setUserName(memo.getUserName());
         newMemo.setUserIcon(memo.getUserIcon());
+        newMemo.setRegDate(memo.getRegDate());
         return newMemo;
     }
 
@@ -40,4 +43,8 @@ export class MutableMemo implements Memo {
     public getUserIcon(): string { return this.mUserIcon; }
 
     public setUserIcon(icon: string): void { this.mUserIcon = icon; }
+
+    public getRegDate(): Date { return this.mRegDate; }
+
+    public setRegDate(regDate: Date): void { this.mRegDate = regDate; }
 }

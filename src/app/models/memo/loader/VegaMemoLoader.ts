@@ -52,6 +52,7 @@ type MemoDto = {
     userIcon: string,
     userNickname: string,
     content: string,
+    regDate: number,
 };
 
 class MemoDtoAdapter implements Memo {
@@ -68,4 +69,6 @@ class MemoDtoAdapter implements Memo {
     public getUserIcon(): string { return this.mMemoDto.userIcon; }
 
     public getBody(): string { return this.mMemoDto.content; }
+
+    public getRegDate(): Date { return new Date(this.mMemoDto.regDate); }
 }

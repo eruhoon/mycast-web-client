@@ -14,11 +14,18 @@ export class MemoEntryComponent implements OnInit {
   @Input() memo: Memo;
 
   private mParam: MemoParam;
+  private mRegDate: Date;
   private mService: MemoService;
   private mShareCommand: MemoShareCommand | null;
 
   public constructor(service: MemoService) {
-    this.mParam = { hash: '', body: '', author: '', linkHash: '' };
+    this.mParam = {
+      hash: '',
+      body: '',
+      author: '',
+      linkHash: '',
+    };
+    this.mRegDate = new Date(0);
     this.mService = service;
     this.mShareCommand = null;
   }
@@ -30,6 +37,7 @@ export class MemoEntryComponent implements OnInit {
       body: this.memo.getBody(),
       linkHash: this.memo.getHash(),
     };
+    this.mRegDate = this.memo.getRegDate();
     this.mShareCommand = new MemoShareCommand(this.memo.getHash());
   }
 
@@ -39,6 +47,13 @@ export class MemoEntryComponent implements OnInit {
 
   public getAuthor(): string {
     return this.mParam.author;
+  }
+
+  public getRegDate(): string {
+    const padZero = (n: number) => n < 10 ? '0' + n : '' + n;
+    const month = this.mRegDate.getMonth() + 1;
+    const date = this.mRegDate.getDate();
+    return `${padZero(month)}.${padZero(date)}`;
   }
 
   public onClick(): void {

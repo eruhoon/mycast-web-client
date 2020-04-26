@@ -12,7 +12,6 @@ export class MemoShareCommand {
     }
 
     public execute() {
-        console.log('shareMemo', this.mMemoHash);
         const url = 'http://mycast.xyz:8001/memo';
         const privKey = SessionStorage.getInstance().getPrivateKey();
         Axios.post(url, qs.stringify({

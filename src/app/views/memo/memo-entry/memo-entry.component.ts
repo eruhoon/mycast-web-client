@@ -30,6 +30,10 @@ export class MemoEntryComponent implements OnInit {
     this.mService.setCurrentMemo(this.memo);
   }
 
+  public shareMemo(): void {
+    console.log('shareMemo', this.memo.getHash());
+  }
+
   ngOnInit() {
   }
 

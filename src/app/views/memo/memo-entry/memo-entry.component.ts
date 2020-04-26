@@ -1,3 +1,4 @@
+import { MemoShareCommand } from 'src/app/models/memo/command/MemoShareCommand';
 import { Memo } from 'src/app/models/memo/Memo';
 import { MemoService } from 'src/app/services/memo/memo.service';
 
@@ -14,10 +15,12 @@ export class MemoEntryComponent implements OnInit {
 
   private mParam: MemoParam;
   private mService: MemoService;
+  private mShareCommand: MemoShareCommand | null;
 
   public constructor(service: MemoService) {
     this.mParam = { hash: '', body: '', author: '', linkHash: '' };
     this.mService = service;
+    this.mShareCommand = null;
   }
 
   public ngOnInit() {
@@ -27,6 +30,7 @@ export class MemoEntryComponent implements OnInit {
       body: this.memo.getBody(),
       linkHash: this.memo.getHash(),
     };
+    this.mShareCommand = new MemoShareCommand(this.memo.getHash());
   }
 
   public getBody(): string {
@@ -42,7 +46,9 @@ export class MemoEntryComponent implements OnInit {
   }
 
   public shareMemo(): void {
-    console.log('shareMemo', this.memo.getHash());
+    if (this.mShareCommand) {
+      this.mShareCommand.execute();
+    }
   }
 
 }

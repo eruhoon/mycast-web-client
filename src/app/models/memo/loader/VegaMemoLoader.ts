@@ -48,6 +48,7 @@ export class VegaMemoLoader implements AsyncLoader<Memo[]> {
 }
 
 type MemoDto = {
+    idx: number,
     userIcon: string,
     userNickname: string,
     content: string,
@@ -60,7 +61,7 @@ class MemoDtoAdapter implements Memo {
         this.mMemoDto = memoDto;
     }
 
-    public getHash(): string { return 'hash'; }
+    public getHash(): string { return this.mMemoDto.idx.toString(); }
 
     public getUserName(): string { return this.mMemoDto.userNickname; }
 

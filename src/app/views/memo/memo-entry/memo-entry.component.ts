@@ -12,18 +12,29 @@ export class MemoEntryComponent implements OnInit {
 
   @Input() memo: Memo;
 
+  private mParam: MemoParam;
   private mService: MemoService;
 
   public constructor(service: MemoService) {
+    this.mParam = { hash: '', body: '', author: '', linkHash: '' };
     this.mService = service;
   }
 
-  public getBody(): string {
-    return this.memo.getBody();
+  public ngOnInit() {
+    this.mParam = {
+      hash: this.memo.getHash(),
+      author: this.memo.getUserName(),
+      body: this.memo.getBody(),
+      linkHash: this.memo.getHash(),
+    };
   }
 
-  public getUserName(): string {
-    return this.memo.getUserName();
+  public getBody(): string {
+    return this.mParam.body;
+  }
+
+  public getAuthor(): string {
+    return this.mParam.author;
   }
 
   public onClick(): void {
@@ -34,11 +45,11 @@ export class MemoEntryComponent implements OnInit {
     console.log('shareMemo', this.memo.getHash());
   }
 
-  ngOnInit() {
-  }
-
 }
 
 type MemoParam = {
+  hash: string,
+  author: string,
   body: string,
+  linkHash: string,
 };

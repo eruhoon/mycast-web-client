@@ -13,11 +13,14 @@ export class MemoService {
   private mLoader: VegaMemoLoader;
   private mMemos: MutableMemo[];
   private mCurrentMemo: Memo | null;
+  private mNextStart: number;
 
   public constructor() {
     this.mLoader = new VegaMemoLoader();
     this.mMemos = [];
     this.mCurrentMemo = null;
+    this.mNextStart = 0;
+
     this.loadMore();
   }
 
@@ -42,6 +45,12 @@ export class MemoService {
       const mutableMemos = memos.map(
         memo => MutableMemo.createWithMemo(memo));
       this.mMemos = [...this.mMemos, ...mutableMemos];
+      this.mNextStart += 10;
+      this.mLoader.setStart(this.mNextStart);
     });
+  }
+
+  public isLoading(): boolean {
+    return this.mLoader.isLoading();
   }
 }

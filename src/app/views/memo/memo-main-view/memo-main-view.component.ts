@@ -17,7 +17,6 @@ export class MemoMainViewComponent {
   }
 
   public getMemos(): Memo[] {
-    console.log('memoes', this.mService.getMemos());
     return this.mService.getMemos();
   }
 }

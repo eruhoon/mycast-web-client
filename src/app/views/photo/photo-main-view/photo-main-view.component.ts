@@ -33,7 +33,8 @@ export class PhotoMainViewComponent implements OnInit {
   public onScroll(): void {
     const elm = this.mScroller.nativeElement;
     const diff = elm.scrollHeight - elm.scrollTop;
-    if (diff < 1000 && !this.mService.isLoading()) {
+    const threashold = elm.clientHeight * 2;
+    if (diff < threashold && !this.mService.isLoading()) {
       this.mService.loadMore();
     }
   }

@@ -1,9 +1,6 @@
-import { PhotoUploadCommand } from 'src/app/models/photo/command/PhotoUploadCommand';
-import { Photo } from 'src/app/models/photo/Photo';
-import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'photo-page',

@@ -26,7 +26,7 @@ export class MemoMainViewComponent {
   public onScroll(): void {
     const elm = this.mScroller.nativeElement;
     const diff = elm.scrollHeight - elm.scrollTop;
-    const threashold = elm.clientHeight * 2;
+    const threashold = elm.clientHeight * 3;
     if (diff < threashold && !this.mService.isLoading()) {
       this.mService.loadMore();
     }

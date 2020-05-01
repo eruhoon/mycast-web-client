@@ -7,7 +7,7 @@ import { Memo } from '../Memo';
 export class VegaMemoLoader implements AsyncLoader<Memo[]> {
 
     private static readonly HOST = 'http://api.mycast.xyz/memo';
-    private static readonly DEFAULT_INDEX_LENGTH = 10;
+    private static readonly DEFAULT_INDEX_LENGTH = 20;
 
     private mStartIndex: number;
     private mIndexLength: number;

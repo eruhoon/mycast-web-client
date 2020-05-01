@@ -45,7 +45,7 @@ export class MemoService {
       const mutableMemos = memos.map(
         memo => MutableMemo.createWithMemo(memo));
       this.mMemos = [...this.mMemos, ...mutableMemos];
-      this.mNextStart += 10;
+      this.mNextStart += 20;
       this.mLoader.setStart(this.mNextStart);
     });
   }

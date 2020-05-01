@@ -1,0 +1,12 @@
+<div #scroller class="memo-main-content">
+    <div class="mm-search">
+        <label>검색</label>
+        <div class="mm-search-input">
+            <input type="text">
+            <i class="material-icons">search</i>
+        </div>
+    </div>
+    <div class="mm-list">
+        <memo-entry [memo]="memo" *ngFor="let memo of getMemos()"></memo-entry>
+    </div>
+</div>

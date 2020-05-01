@@ -16,11 +16,6 @@ export class MemoPageComponent {
     this.mService = service;
   }
 
-  public getMemos(): Memo[] {
-    console.log('memoes', this.mService.getMemos());
-    return this.mService.getMemos();
-  }
-
   public isDetailMode(): boolean {
     return this.mService.getCurrentMemo() !== null;
   }

@@ -53,7 +53,6 @@ export class VegaMemoLoader implements AsyncLoader<Memo[]> {
 
     private getUri(): string {
         const query = qs.stringify({
-            start: this.mStartIndex,
             size: this.mIndexLength,
         });
         return `${VegaMemoLoader.HOST}?${query}`;

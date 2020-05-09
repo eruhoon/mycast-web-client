@@ -12,10 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreamListComponent implements OnInit {
 
+  private mService: StreamService;
   private mStreamListLoader: StreamListLoader;
   private mStreams: Stream[];
 
   constructor(service: StreamService) {
+    this.mService = service;
     this.mStreamListLoader = new LocalStreamListLoader();
     this.mStreams = [];
   }
@@ -31,7 +33,7 @@ export class StreamListComponent implements OnInit {
   }
 
   public getStreams(): Stream[] {
-    return this.mStreams;
+    return this.mService.getLocalStreams();
   }
 
   protected onShareClick(stream: Stream): void {

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'stream-entry',
@@ -12,6 +13,8 @@ export class StreamEntryComponent implements OnInit {
 
   @Input() stream: Stream;
 
+  private mThumbnail: string;
+
   private mMainService: MainService;
   private mThumbnailShow: boolean;
 
@@ -20,8 +23,11 @@ export class StreamEntryComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mThumbnail = this.stream.getThumbnail();
     this.mThumbnailShow = true;
   }
+
+  public getThumbnail(): string { return this.mThumbnail; }
 
   public onIconClick(): void {
     this.mMainService.setCurrentLink(this.stream.getUrl());

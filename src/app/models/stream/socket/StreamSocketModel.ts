@@ -17,6 +17,9 @@ export class StreamSocketModel {
         this.mSocket.on('refresh_streams', (raw: RefreshStreamDto) => {
             this.onRefreshStreams(raw);
         });
+
+        this.mLocalStreamDtos = [];
+        this.mExternalStreamDtos = [];
     }
 
     private static createSocket(): SocketIOClient.Socket {
@@ -35,6 +38,7 @@ export class StreamSocketModel {
     }
 
     private onRefreshStreams(refreshStreamDto: RefreshStreamDto): void {
+        console.log('onRefreshStreams');
         this.mLocalStreamDtos = refreshStreamDto.local;
         this.mExternalStreamDtos = refreshStreamDto.external;
     }

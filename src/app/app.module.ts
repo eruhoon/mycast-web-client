@@ -55,6 +55,7 @@ import { ModifyStreamModalComponent } from './views/main-page/modify-stream-moda
 import { MemoDetailViewComponent } from './views/memo/memo-detail-view/memo-detail-view.component';
 import { MemoEntryComponent } from './views/memo/memo-entry/memo-entry.component';
 import { MemoMainViewComponent } from './views/memo/memo-main-view/memo-main-view.component';
+import { MemoUploadViewComponent } from './views/memo/memo-upload-view/memo-upload-view.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { MemoMainViewComponent } from './views/memo/memo-main-view/memo-main-vie
     MemoDetailViewComponent,
     MemoEntryComponent,
     MemoMainViewComponent,
+    MemoUploadViewComponent,
   ],
   imports: [
     BrowserModule,

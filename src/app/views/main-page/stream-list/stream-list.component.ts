@@ -13,11 +13,9 @@ import { Component, OnInit } from '@angular/core';
 export class StreamListComponent implements OnInit {
 
   private mService: StreamService;
-  private mStreams: Stream[];
 
   constructor(service: StreamService) {
     this.mService = service;
-    this.mStreams = [];
   }
 
   public async ngOnInit() {
@@ -33,9 +31,5 @@ export class StreamListComponent implements OnInit {
 
   protected onNewWindowClick(stream: Stream): void {
     console.log('new window', stream);
-  }
-
-  private onStreamChanged(streams: Stream[]): void {
-    this.mStreams = streams;
   }
 }

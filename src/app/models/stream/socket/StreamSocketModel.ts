@@ -50,8 +50,6 @@ export class StreamSocketModel {
     }
 
     private onRefreshStreams(refreshStreamDto: RefreshStreamDto): void {
-        console.log('onRefreshStreams');
-
         this.mLocalStreamDtos = refreshStreamDto.local;
         this.mExtStreamDtos = refreshStreamDto.external;
 

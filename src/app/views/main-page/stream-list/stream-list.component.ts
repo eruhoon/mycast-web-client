@@ -21,12 +21,9 @@ export class StreamListComponent implements OnInit {
   }
 
   public async ngOnInit() {
-    /*this.mService.subscribeLocalStreams(
-      streams => this.onStreamChanged(streams));*/
   }
 
   public getStreams(): Stream[] {
-    //return this.mStreams;
     return this.mService.getLocalStreams();
   }
 

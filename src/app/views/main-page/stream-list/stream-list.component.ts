@@ -12,28 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreamListComponent implements OnInit {
 
-  private mService: StreamService;
-  private mStreamListLoader: StreamListLoader;
-  private mStreams: Stream[];
+  // private mService: StreamService;
 
   constructor(service: StreamService) {
-    this.mService = service;
-    this.mStreamListLoader = new LocalStreamListLoader();
-    this.mStreams = [];
+    // this.mService = service;
   }
 
-  public async ngOnInit() {
-    this.mStreamListLoader.load(streams => {
-      if (!streams) {
-        console.log('Invalid streams');
-        return;
-      }
-      this.mStreams = streams;
-    });
-  }
+  public async ngOnInit() { }
 
   public getStreams(): Stream[] {
-    return this.mService.getLocalStreams();
+    console.log(11);
+    //return this.mService.getLocalStreams();
+    return [];
   }
 
   protected onShareClick(stream: Stream): void {

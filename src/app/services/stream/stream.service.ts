@@ -1,9 +1,9 @@
 
+import { Injectable } from '@angular/core';
 import { StreamSocketModel } from 'src/app/models/stream/socket/StreamSocketModel';
 import { Stream } from 'src/app/models/stream/Stream';
+import { StreamDto } from 'src/app/models/stream/StreamDto';
 import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
-
-import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +11,34 @@ import { Injectable } from '@angular/core';
 export class StreamService {
 
   private mSocket: StreamSocketModel;
+  private mLocalStreams: Stream[];
+  private mExternalStreams: Stream[];
 
   public constructor() {
     this.mSocket = new StreamSocketModel();
+    this.mSocket.setOnLocalStreamChanged(
+      streams => this.onLocalStreamChanged(streams));
+    this.mSocket.setOnExtStreamChanged(
+      streams => this.onExternalStreamChanged(streams));
+    this.mLocalStreams = [];
+    this.mExternalStreams = [];
   }
 
   public getLocalStreams(): Stream[] {
-    const dtos = this.mSocket.getLocalStreamDtos();
-    return dtos.map(dto => new StreamDtoAdapter(dto));
+    return this.mLocalStreams;
   }
 
-  public getExtreamStreams(): Stream[] {
-    const dtos = this.mSocket.getExternalStreamDtos();
-    return dtos.map(dto => new StreamDtoAdapter(dto));
+  public getExternalStreams(): Stream[] {
+    return this.mExternalStreams;
+  }
+
+  private onLocalStreamChanged(raws: StreamDto[]): void {
+    const streams = raws.map(dto => new StreamDtoAdapter(dto));
+    this.mLocalStreams = streams;
+  }
+
+  private onExternalStreamChanged(raws: StreamDto[]): void {
+    const streams = raws.map(dto => new StreamDtoAdapter(dto));
+    this.mExternalStreams = streams;
   }
 }

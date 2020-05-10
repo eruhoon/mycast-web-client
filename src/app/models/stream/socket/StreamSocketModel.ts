@@ -1,5 +1,5 @@
 import * as io from 'socket.io-client';
-
+import { TypeCallback } from '../../common/callback/TypeCallback';
 import { SessionStorage } from '../../storage/SessionStorage';
 import { StreamDto } from '../StreamDto';
 
@@ -9,7 +9,9 @@ export class StreamSocketModel {
 
     private mSocket: SocketIOClient.Socket;
     private mLocalStreamDtos: StreamDto[];
-    private mExternalStreamDtos: StreamDto[];
+    private mExtStreamDtos: StreamDto[];
+    private mOnLocalStreamChanged: TypeCallback<StreamDto[]>;
+    private mOnExtStreamChanged: TypeCallback<StreamDto[]>;
 
     public constructor() {
         this.mSocket = StreamSocketModel.createSocket();
@@ -19,7 +21,9 @@ export class StreamSocketModel {
         });
 
         this.mLocalStreamDtos = [];
-        this.mExternalStreamDtos = [];
+        this.mExtStreamDtos = [];
+        this.mOnLocalStreamChanged = _ => { };
+        this.mOnExtStreamChanged = _ => { };
     }
 
     private static createSocket(): SocketIOClient.Socket {
@@ -29,18 +33,30 @@ export class StreamSocketModel {
         return io.connect(this.SOCKET_HOST, option);
     }
 
+    public setOnLocalStreamChanged(callback: TypeCallback<StreamDto[]>): void {
+        this.mOnLocalStreamChanged = callback;
+    }
+
+    public setOnExtStreamChanged(callback: TypeCallback<StreamDto[]>): void {
+        this.mOnExtStreamChanged = callback;
+    }
+
     public getLocalStreamDtos(): StreamDto[] {
         return this.mLocalStreamDtos;
     }
 
-    public getExternalStreamDtos(): StreamDto[] {
-        return this.mExternalStreamDtos;
+    public getExtStreamDtos(): StreamDto[] {
+        return this.mExtStreamDtos;
     }
 
     private onRefreshStreams(refreshStreamDto: RefreshStreamDto): void {
         console.log('onRefreshStreams');
+
         this.mLocalStreamDtos = refreshStreamDto.local;
-        this.mExternalStreamDtos = refreshStreamDto.external;
+        this.mExtStreamDtos = refreshStreamDto.external;
+
+        this.mOnLocalStreamChanged(this.mLocalStreamDtos);
+        this.mOnExtStreamChanged(this.mExtStreamDtos);
     }
 }
 

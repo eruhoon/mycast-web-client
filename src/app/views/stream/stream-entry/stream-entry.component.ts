@@ -13,27 +13,35 @@ export class StreamEntryComponent implements OnInit {
 
   @Input() stream: Stream;
 
+  private mTitle: string;
   private mThumbnail: string;
 
-  private mMainService: MainService;
+  // private mMainService: MainService;
   private mThumbnailShow: boolean;
 
   public constructor(mainService: MainService) {
-    this.mMainService = mainService;
+    this.mTitle = '';
+    this.mThumbnail = '';
+    // this.mMainService = mainService;
+    this.mThumbnailShow = false;
   }
 
   public ngOnInit() {
+    this.mTitle = this.stream.getTitle();
     this.mThumbnail = this.stream.getThumbnail();
     this.mThumbnailShow = true;
   }
 
+  public getTitle(): string { return this.mTitle; }
+
   public getThumbnail(): string { return this.mThumbnail; }
 
   public onIconClick(): void {
-    this.mMainService.setCurrentLink(this.stream.getUrl());
+    // this.mMainService.setCurrentLink(this.stream.getUrl());
   }
 
   public onThumbnailError(): void {
+    this.mThumbnail = '';
     this.mThumbnailShow = false;
   }
 

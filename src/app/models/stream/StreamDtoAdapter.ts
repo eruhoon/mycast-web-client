@@ -1,11 +1,12 @@
 import { Stream } from './Stream';
 import { StreamDto } from './StreamDto';
 
-export class StreamDtoAdapter implements Stream {
+export class StreamDtoAdapter extends Stream {
 
     private mRaw: StreamDto;
 
     public constructor(rawStream: StreamDto) {
+        super();
         this.mRaw = rawStream;
     }
 

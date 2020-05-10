@@ -1,6 +1,6 @@
 import { Stream } from './Stream';
 
-export class MutableStream implements Stream {
+export class MutableStream extends Stream {
 
     private mPlatform: string;
     private mKeyId: string;
@@ -13,6 +13,7 @@ export class MutableStream implements Stream {
     private mOnAir: boolean;
 
     public constructor() {
+        super();
         this.mPlatform = '';
         this.mKeyId = '';
         this.mIcon = '';

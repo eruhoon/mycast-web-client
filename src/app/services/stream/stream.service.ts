@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { StreamSocketModel } from 'src/app/models/stream/socket/StreamSocketModel';
 import { Stream } from 'src/app/models/stream/Stream';
@@ -34,7 +33,15 @@ export class StreamService {
 
   private onLocalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
-    this.mLocalStreams = streams;
+    this.mLocalStreams = this.mergeStreams(this.mLocalStreams, streams);
+  }
+
+  private mergeStreams(origins: Stream[], srcs: Stream[]): Stream[] {
+    const duplicated = origins.filter(
+      origin => srcs.some(src => src.isEquivalent(origin)));
+    const newStreams = srcs.filter(
+      src => origins.every(origin => !origin.isEquivalent(src)));
+    return [...duplicated, ...newStreams];
   }
 
   private onExternalStreamChanged(raws: StreamDto[]): void {

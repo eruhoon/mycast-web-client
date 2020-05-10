@@ -16,13 +16,13 @@ export class StreamEntryComponent implements OnInit {
   private mTitle: string;
   private mThumbnail: string;
 
-  // private mMainService: MainService;
+  private mMainService: MainService;
   private mThumbnailShow: boolean;
 
   public constructor(mainService: MainService) {
     this.mTitle = '';
     this.mThumbnail = '';
-    // this.mMainService = mainService;
+    this.mMainService = mainService;
     this.mThumbnailShow = false;
   }
 
@@ -37,7 +37,7 @@ export class StreamEntryComponent implements OnInit {
   public getThumbnail(): string { return this.mThumbnail; }
 
   public onIconClick(): void {
-    // this.mMainService.setCurrentLink(this.stream.getUrl());
+    this.mMainService.setCurrentLink(this.stream.getUrl());
   }
 
   public onThumbnailError(): void {

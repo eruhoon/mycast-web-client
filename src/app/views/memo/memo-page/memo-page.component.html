@@ -14,7 +14,7 @@
                 <i class="material-icons">collections_bookmark</i>
                 <p>앨범</p>
             </a>-->
-            <a class="mm-m-li mm-li-btm">
+            <a class="mm-m-li mm-li-btm" (click)="goUploadMode()">
                 <i class="material-icons">edit</i>
                 <p>업로드</p>
             </a>
@@ -22,5 +22,5 @@
     </div>
     <memo-main-view></memo-main-view>
     <memo-detail-view *ngIf="isDetailMode()"></memo-detail-view>
-    <memo-upload-view></memo-upload-view>
+    <memo-upload-view *ngIf="isUploadMode()"></memo-upload-view>
 </div>

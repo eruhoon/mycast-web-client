@@ -20,4 +20,11 @@ export class MemoPageComponent {
     return this.mService.getCurrentMemo() !== null;
   }
 
+  public isUploadMode(): boolean {
+    return this.mService.isUploadMode();
+  }
+
+  public goUploadMode(): void {
+    return this.mService.setUploadMode(true);
+  }
 }

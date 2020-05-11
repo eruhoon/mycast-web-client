@@ -1,5 +1,5 @@
 <div class="memo-upload">
-    <div class="bg"></div>
+    <div class="bg" (click)="close()"></div>
     <div class="memo-box">
         <div class="title">
             <div class="user-img">
@@ -10,8 +10,9 @@
                 <p>{{getDateString()}}</p>
             </div>
             <form class="content">
-                <textarea placeholder="건전한 메모장을 위해 타인에게 불쾌감을 주는 욕설 또는 위험한 링크를 제한합니다."></textarea>
-                <button class="sub-btn memo-sub">메모작성</button>
+                <textarea name="memo" placeholder="건전한 메모장을 위해 타인에게 불쾌감을 주는 욕설 또는 위험한 링크를 제한합니다."
+                    [(ngModel)]="memoForm.memo"></textarea>
+                <button class="sub-btn memo-sub" (click)="upload()">메모작성</button>
             </form>
         </div>
     </div>

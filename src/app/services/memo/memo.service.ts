@@ -14,12 +14,14 @@ export class MemoService {
   private mMemos: MutableMemo[];
   private mCurrentMemo: Memo | null;
   private mNextStart: number;
+  private mUploadMode: boolean;
 
   public constructor() {
     this.mLoader = new VegaMemoLoader();
     this.mMemos = [];
     this.mCurrentMemo = null;
     this.mNextStart = 0;
+    this.mUploadMode = false;
 
     this.loadMore();
   }
@@ -52,5 +54,13 @@ export class MemoService {
 
   public isLoading(): boolean {
     return this.mLoader.isLoading();
+  }
+
+  public isUploadMode(): boolean {
+    return this.mUploadMode;
+  }
+
+  public setUploadMode(mode: boolean): void {
+    this.mUploadMode = mode;
   }
 }

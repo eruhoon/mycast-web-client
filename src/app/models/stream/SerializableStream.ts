@@ -1,6 +1,6 @@
 import { Stream } from './Stream';
 
-export abstract class JsonableStream implements Stream {
+export abstract class JsonableStream extends Stream {
 
     abstract getPlatform(): string;
     abstract getKeyId(): string;

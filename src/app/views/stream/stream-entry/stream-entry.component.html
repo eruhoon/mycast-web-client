@@ -2,11 +2,11 @@
     <div class="icon" [style.background-image]="'url('+stream.getIcon()+')'" (click)="onIconClick()"></div>
     <div class="bridge"></div>
     <div class="detail thumbnail">
-        <img class="thumbnail" *ngIf="isThumbnailShow()" [src]="stream.getThumbnail() | safe" style="display: inline;"
+        <img class="thumbnail" *ngIf="isThumbnailShow()" [src]="getThumbnail()|safe" style="display: inline;"
             (error)="onThumbnailError()">
         <div class="wrapper">
             <div class="text">
-                <h4 class="title">{{stream.getTitle()}}</h4>
+                <h4 class="title">{{getTitle()}}</h4>
                 <div class="viewer">
                     <span>{{stream.getViewer()}}</span>
                     <i class="material-icons">person</i>

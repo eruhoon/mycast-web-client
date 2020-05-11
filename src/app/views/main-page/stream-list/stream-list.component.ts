@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { LocalStreamListLoader } from 'src/app/models/stream/LocalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
+import { StreamService } from 'src/app/services/stream/stream.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stream-list',
@@ -10,26 +12,17 @@ import { StreamListLoader } from 'src/app/models/stream/StreamListLoader';
 })
 export class StreamListComponent implements OnInit {
 
-  private mStreamListLoader: StreamListLoader;
-  private mStreams: Stream[];
+  private mService: StreamService;
 
-  constructor() {
-    this.mStreamListLoader = new LocalStreamListLoader();
-    this.mStreams = [];
+  constructor(service: StreamService) {
+    this.mService = service;
   }
 
   public async ngOnInit() {
-    this.mStreamListLoader.load(streams => {
-      if (!streams) {
-        console.log('Invalid streams');
-        return;
-      }
-      this.mStreams = streams;
-    });
   }
 
   public getStreams(): Stream[] {
-    return this.mStreams;
+    return this.mService.getLocalStreams();
   }
 
   protected onShareClick(stream: Stream): void {

@@ -1,6 +1,6 @@
 import { Stream } from './Stream';
 
-export class LocalStream implements Stream {
+export class LocalStream extends Stream {
     getPlatform(): string {
         return '';
     }

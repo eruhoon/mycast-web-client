@@ -3,17 +3,17 @@
     <div class="memo-box">
         <div class="title">
             <div class="user-img">
-                <img src="https://i.imgur.com/XjsUghQ.gif" />
+                <img [src]="getIcon()|safe" />
             </div>
             <div class="title-txt">
-                <h3>이야기{{getUserName()}}</h3>
-                <p>03월 26일</p>
+                <h3>{{getName()}}</h3>
+                <p>{{getDateString()}}</p>
             </div>
             <form class="content">
                 <textarea placeholder="건전한 메모장을 위해 타인에게 불쾌감을 주는 욕설 또는 위험한 링크를 제한합니다."></textarea>
-                <button class="sub-btn memo-sub">메모장 켜기</button>
+                <button class="sub-btn memo-sub">메모작성</button>
             </form>
         </div>
     </div>
-    <i class="material-icons clear" (click)="closeDetailView()">clear</i>
+    <i class="material-icons clear" (click)="false">clear</i>
 </div>

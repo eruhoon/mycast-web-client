@@ -53,7 +53,6 @@ export class MemoUploadViewComponent implements OnInit {
 
   public upload(): void {
     this.mMemoService.upload(this.memoForm.memo);
-    this.close();
   }
 
   public close(): void {

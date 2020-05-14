@@ -8,12 +8,13 @@ export class MemoUploadCommand {
         this.mPrivKey = privKey;
     }
 
-    public execute(memo: string): void {
+    public async execute(memo: string): Promise<void> {
         const url = 'http://api.mycast.xyz/memo';
         const form = {
             userKey: this.mPrivKey,
             text: memo,
         };
-        Axios.post(url, form);
+        await Axios.post(url, form);
+        return;
     }
 }

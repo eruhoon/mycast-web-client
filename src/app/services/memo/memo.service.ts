@@ -59,6 +59,9 @@ export class MemoService {
   }
 
   public upload(memo: string): void {
-    this.mUploadCommand.execute(memo);
+    this.mUploadCommand.execute(memo).finally(() => {
+      this.mUploadMode = false;
+      this.loadMemos();
+    });
   }
 }

@@ -1,14 +1,14 @@
 import { Memo } from 'src/app/models/memo/Memo';
 import { MemoService } from 'src/app/services/memo/memo.service';
 
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'memo-main-view',
   templateUrl: './memo-main-view.component.html',
   styleUrls: ['./memo-main-view.component.scss']
 })
-export class MemoMainViewComponent {
+export class MemoMainViewComponent implements OnInit {
 
   @ViewChild('scroller', { static: false })
   public mScroller: ElementRef<HTMLDivElement>;
@@ -19,16 +19,11 @@ export class MemoMainViewComponent {
     this.mService = service;
   }
 
-  public getMemos(): Memo[] {
-    return this.mService.getMemos();
+  public ngOnInit(): void {
+    this.mService.loadMemos();
   }
 
-  public onScroll(): void {
-    const elm = this.mScroller.nativeElement;
-    const diff = elm.scrollHeight - elm.scrollTop;
-    const threashold = elm.clientHeight * 3;
-    if (diff < threashold && !this.mService.isLoading()) {
-      this.mService.loadMore();
-    }
+  public getMemos(): Memo[] {
+    return this.mService.getMemos();
   }
 }

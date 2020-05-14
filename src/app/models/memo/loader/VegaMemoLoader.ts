@@ -7,38 +7,11 @@ import { Memo } from '../Memo';
 export class VegaMemoLoader implements AsyncLoader<Memo[]> {
 
     private static readonly HOST = 'http://api.mycast.xyz/memo';
-    private static readonly DEFAULT_INDEX_LENGTH = 20;
 
-    private mStartIndex: number;
-    private mIndexLength: number;
-    private mLoading: boolean;
-
-    public constructor() {
-        this.mStartIndex = 0;
-        this.mIndexLength = VegaMemoLoader.DEFAULT_INDEX_LENGTH;
-        this.mLoading = false;
-    }
-
-    public isLoading(): boolean {
-        return this.mLoading;
-    }
-
-    public setStart(startIndex: number): void {
-        this.mStartIndex = startIndex;
-    }
+    public constructor() { }
 
     public load(callback: OnLoadCallback<Memo[]>): void {
-        if (this.mLoading) {
-            console.warn('already loading');
-            return;
-        }
-
-        this.loadInternal(callback);
-    }
-
-    private loadInternal(callback: OnLoadCallback<Memo[]>): void {
-        this.mLoading = true;
-        const uri = this.getUri();
+        const uri = VegaMemoLoader.HOST;
         Axios.get<MemoDto[]>(uri).then(res => {
             console.log(res.data);
             if (!res || !res.data) {
@@ -46,16 +19,7 @@ export class VegaMemoLoader implements AsyncLoader<Memo[]> {
                 return;
             }
             callback(res.data.map(dto => new MemoDtoAdapter(dto)));
-        }).finally(() => {
-            this.mLoading = false;
         });
-    }
-
-    private getUri(): string {
-        const query = qs.stringify({
-            size: this.mIndexLength,
-        });
-        return `${VegaMemoLoader.HOST}?${query}`;
     }
 }
 

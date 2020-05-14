@@ -1,7 +1,6 @@
 import { MemoUploadCommand } from 'src/app/models/memo/command/MemoUploadCommand';
 import { VegaMemoLoader } from 'src/app/models/memo/loader/VegaMemoLoader';
 import { Memo } from 'src/app/models/memo/Memo';
-import { MemoManager } from 'src/app/models/memo/MemoManager';
 import { MutableMemo } from 'src/app/models/memo/MutableMemo';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
@@ -16,7 +15,6 @@ export class MemoService {
   private mUploadCommand: MemoUploadCommand;
   private mMemos: MutableMemo[];
   private mCurrentMemo: Memo | null;
-  private mNextStart: number;
   private mUploadMode: boolean;
 
   public constructor() {
@@ -25,10 +23,7 @@ export class MemoService {
     this.mUploadCommand = new MemoUploadCommand(privKey);
     this.mMemos = [];
     this.mCurrentMemo = null;
-    this.mNextStart = 0;
     this.mUploadMode = false;
-
-    this.loadMore();
   }
 
   public getMemos(): Memo[] {
@@ -43,7 +38,7 @@ export class MemoService {
     this.mCurrentMemo = memo;
   }
 
-  public loadMore(): void {
+  public loadMemos(): void {
     this.mLoader.load(memos => {
       if (!memos) {
         console.warn('load failed');
@@ -52,13 +47,7 @@ export class MemoService {
       const mutableMemos = memos.map(
         memo => MutableMemo.createWithMemo(memo));
       this.mMemos = [...this.mMemos, ...mutableMemos];
-      this.mNextStart += 20;
-      this.mLoader.setStart(this.mNextStart);
     });
-  }
-
-  public isLoading(): boolean {
-    return this.mLoader.isLoading();
   }
 
   public isUploadMode(): boolean {

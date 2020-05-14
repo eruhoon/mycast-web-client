@@ -14,7 +14,6 @@ export class MemoUploadViewComponent implements OnInit {
   public memoForm: MemoForm;
   private mProfileSrv: MemoProfileService;
   private mMemoService: MemoService;
-  private mPrivKey: string;
   private mIcon: string;
   private mName: string;
   private mDateString: string;
@@ -23,7 +22,6 @@ export class MemoUploadViewComponent implements OnInit {
     this.memoForm = { memo: '' };
     this.mProfileSrv = service;
     this.mMemoService = memoService;
-    this.mPrivKey = '';
     this.mIcon = '';
     this.mName = '';
     this.mDateString = '';
@@ -36,7 +34,6 @@ export class MemoUploadViewComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mPrivKey = SessionStorage.getInstance().getPrivateKey() || '';
     this.mIcon = this.mProfileSrv.getIcon();
     this.mName = this.mProfileSrv.getName();
     this.mDateString = MemoUploadViewComponent.getDateString(new Date());
@@ -55,8 +52,8 @@ export class MemoUploadViewComponent implements OnInit {
   }
 
   public upload(): void {
-    // TODO: Implement Upload Module
-    console.log('upload', this.mPrivKey, this.memoForm.memo);
+    this.mMemoService.upload(this.memoForm.memo);
+    this.close();
   }
 
   public close(): void {

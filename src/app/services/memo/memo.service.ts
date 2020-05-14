@@ -1,7 +1,9 @@
+import { MemoUploadCommand } from 'src/app/models/memo/command/MemoUploadCommand';
 import { VegaMemoLoader } from 'src/app/models/memo/loader/VegaMemoLoader';
 import { Memo } from 'src/app/models/memo/Memo';
 import { MemoManager } from 'src/app/models/memo/MemoManager';
 import { MutableMemo } from 'src/app/models/memo/MutableMemo';
+import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 import { Injectable } from '@angular/core';
 
@@ -11,13 +13,16 @@ import { Injectable } from '@angular/core';
 export class MemoService {
 
   private mLoader: VegaMemoLoader;
+  private mUploadCommand: MemoUploadCommand;
   private mMemos: MutableMemo[];
   private mCurrentMemo: Memo | null;
   private mNextStart: number;
   private mUploadMode: boolean;
 
   public constructor() {
+    const privKey = SessionStorage.getInstance().getPrivateKey() || '';
     this.mLoader = new VegaMemoLoader();
+    this.mUploadCommand = new MemoUploadCommand(privKey);
     this.mMemos = [];
     this.mCurrentMemo = null;
     this.mNextStart = 0;
@@ -62,5 +67,9 @@ export class MemoService {
 
   public setUploadMode(mode: boolean): void {
     this.mUploadMode = mode;
+  }
+
+  public upload(memo: string): void {
+    this.mUploadCommand.execute(memo);
   }
 }

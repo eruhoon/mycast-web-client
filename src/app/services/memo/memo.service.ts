@@ -46,7 +46,7 @@ export class MemoService {
       }
       const mutableMemos = memos.map(
         memo => MutableMemo.createWithMemo(memo));
-      this.mMemos = [...this.mMemos, ...mutableMemos];
+      this.mMemos = mutableMemos;
     });
   }
 

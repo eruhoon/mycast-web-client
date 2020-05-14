@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import * as qs from 'querystring';
 
 import { AsyncLoader, OnLoadCallback } from '../../loader/AsyncLoader';
 import { Memo } from '../Memo';
@@ -13,7 +12,6 @@ export class VegaMemoLoader implements AsyncLoader<Memo[]> {
     public load(callback: OnLoadCallback<Memo[]>): void {
         const uri = VegaMemoLoader.HOST;
         Axios.get<MemoDto[]>(uri).then(res => {
-            console.log(res.data);
             if (!res || !res.data) {
                 callback(null);
                 return;

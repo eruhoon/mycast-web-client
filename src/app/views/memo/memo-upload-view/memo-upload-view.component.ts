@@ -29,6 +29,12 @@ export class MemoUploadViewComponent implements OnInit {
     this.mDateString = '';
   }
 
+  private static getDateString(dateObj: Date): string {
+    const month = dateObj.getMonth() + 1;
+    const date = dateObj.getDate();
+    return `${month}월 ${date}일`;
+  }
+
   public ngOnInit() {
     this.mPrivKey = SessionStorage.getInstance().getPrivateKey() || '';
     this.mIcon = this.mProfileSrv.getIcon();
@@ -55,12 +61,6 @@ export class MemoUploadViewComponent implements OnInit {
 
   public close(): void {
     this.mMemoService.setUploadMode(false);
-  }
-
-  private static getDateString(dateObj: Date): string {
-    const month = dateObj.getMonth() + 1;
-    const date = dateObj.getDate();
-    return `${month}월 ${date}일`;
   }
 }
 

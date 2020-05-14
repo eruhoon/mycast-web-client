@@ -14,6 +14,7 @@ export class MemoProfileService {
 
   public constructor() {
     this.mProfileLoader = new ProfileLoader();
+    this.mName = '';
     this.mIcon = '';
   }
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile/profile.service';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+import { MemoProfileService } from 'src/app/services/memo/memo-profile.service';
 import { MemoService } from 'src/app/services/memo/memo.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'memo-upload-view',
@@ -11,16 +12,16 @@ import { MemoService } from 'src/app/services/memo/memo.service';
 export class MemoUploadViewComponent implements OnInit {
 
   public memoForm: MemoForm;
-  private mService: ProfileService;
+  private mProfileSrv: MemoProfileService;
   private mMemoService: MemoService;
   private mPrivKey: string;
   private mIcon: string;
   private mName: string;
   private mDateString: string;
 
-  public constructor(service: ProfileService, memoService: MemoService) {
+  public constructor(service: MemoProfileService, memoService: MemoService) {
     this.memoForm = { memo: '' };
-    this.mService = service;
+    this.mProfileSrv = service;
     this.mMemoService = memoService;
     this.mPrivKey = '';
     this.mIcon = '';
@@ -30,8 +31,8 @@ export class MemoUploadViewComponent implements OnInit {
 
   public ngOnInit() {
     this.mPrivKey = SessionStorage.getInstance().getPrivateKey() || '';
-    this.mIcon = this.mService.getProfileIcon();
-    this.mName = this.mService.getName();
+    this.mIcon = this.mProfileSrv.getIcon();
+    this.mName = this.mProfileSrv.getName();
     this.mDateString = MemoUploadViewComponent.getDateString(new Date());
   }
 

@@ -1,19 +1,25 @@
-import { Memo } from 'src/app/models/memo/Memo';
+import { MemoProfileService } from 'src/app/services/memo/memo-profile.service';
 import { MemoService } from 'src/app/services/memo/memo.service';
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'memo-page',
   templateUrl: './memo-page.component.html',
   styleUrls: ['./memo-page.component.scss']
 })
-export class MemoPageComponent {
+export class MemoPageComponent implements OnInit {
 
   private mService: MemoService;
+  private mProfileService: MemoProfileService;
 
-  public constructor(service: MemoService) {
+  public constructor(service: MemoService, profileSrv: MemoProfileService) {
     this.mService = service;
+    this.mProfileService = profileSrv;
+  }
+
+  public ngOnInit(): void {
+    this.mProfileService.loadProfile();
   }
 
   public isDetailMode(): boolean {

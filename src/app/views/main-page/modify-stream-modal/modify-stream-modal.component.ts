@@ -11,7 +11,6 @@ export class ModifyStreamModalComponent implements OnInit {
 
   private mPlatforms: PlatformType[];
   private mProfileService: ProfileService;
-  private mCurrentPlatform: string;
 
   public constructor(profileService: ProfileService) {
     this.mPlatforms = [
@@ -22,23 +21,20 @@ export class ModifyStreamModalComponent implements OnInit {
       { id: 'mixer', name: '믹서', src: '/assets/image/stream/mixer.png' },
     ];
     this.mProfileService = profileService;
-    this.mCurrentPlatform = 'local';
   }
 
   public ngOnInit() {
-    this.mProfileService.loadStream().then(() => {
-      this.mCurrentPlatform = this.mProfileService.getStreamPlatform();
-    });
+    this.mProfileService.loadStream();
+  }
+
+  public onPlatformClick(platform: PlatformType): void {
+    this.mProfileService.requestToChangeStreamPlatform(platform.id);
   }
 
   public getPlatforms(): PlatformType[] { return this.mPlatforms; }
 
-  public isCurrentPlatform(platform: PlatformType): boolean {
-    return this.mCurrentPlatform === platform.id;
-  }
-
   public getCurrentPlatform(): string {
-    return this.mCurrentPlatform;
+    return this.mProfileService.getStreamPlatform();
   }
 
   public close() {

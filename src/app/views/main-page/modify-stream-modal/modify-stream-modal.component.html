@@ -8,7 +8,7 @@
     <div class="stream-setup-box">
         <div class="ss-list-set">
             <div *ngFor="let platform of getPlatforms()" class="stream-server-box"
-                [ngClass]="{active:isCurrentPlatform(platform)}">
+                [ngClass]="{active:platform.id===getCurrentPlatform()}" (click)="onPlatformClick(platform)">
                 <img [src]="platform.src" />
                 <p>{{platform.name}}</p>
             </div>

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { StreamProfile } from 'src/app/models/profile/StreamProfile';
 import { VegaStreamProfileLoader } from 'src/app/models/profile/VegaStreamProfileLoader';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+import { ModifyPlatformCommand } from 'src/app/models/profile/stream/ModifyPlatformCommand';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ProfileService {
   private mStreamPlatform: string;
   private mModifyProfileCommand: ModifyProfileCommand;
   private mStreamProfileLoader: VegaStreamProfileLoader;
+  private mModifyPlatformCommand: ModifyPlatformCommand;
 
   public constructor() {
     const privKey = SessionStorage.getInstance().getPrivateKey() || '';
@@ -24,6 +26,7 @@ export class ProfileService {
     this.mProfile = new DefaultProfile();
     this.mStreamPlatform = 'local';
     this.mStreamProfileLoader = new VegaStreamProfileLoader(privKey);
+    this.mModifyPlatformCommand = new ModifyPlatformCommand(privKey);
   }
 
   public async loadStream(): Promise<void> {
@@ -65,6 +68,15 @@ export class ProfileService {
 
   public requestToModifyProfile(name: string, icon: string): void {
     this.mModifyProfileCommand.execute({ name, icon });
+  }
+
+  public requestToChangeStreamPlatform(platform: string): void {
+    this.mModifyPlatformCommand.execute(platform).then(result => {
+      console.log(result);
+      if (result) {
+        this.mStreamPlatform = platform;
+      }
+    });
   }
 }
 

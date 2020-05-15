@@ -7,25 +7,10 @@
     </div>
     <div class="stream-setup-box">
         <div class="ss-list-set">
-            <div class="stream-server-box">
-                <img src="\assets\image\stream\mycast.png" />
-                <p>마이캐스트</p>
-            </div>
-            <div class="stream-server-box">
-                <img src="\assets\image\stream\totoro.png" />
-                <p>토토로</p>
-            </div>
-            <div class="stream-server-box">
-                <img src="\assets\image\stream\afreeca.png" />
-                <p>아프리카TV</p>
-            </div>
-            <div class="stream-server-box">
-                <img src="\assets\image\stream\twitch.png" />
-                <p>트위치</p>
-            </div>
-            <div class="stream-server-box">
-                <img src="\assets\image\stream\mixer.png" />
-                <p>믹서</p>
+            <div *ngFor="let platform of getPlatforms()" class="stream-server-box"
+                [ngClass]="{active:isCurrentPlatform(platform)}">
+                <img [src]="platform.src" />
+                <p>{{platform.name}}</p>
             </div>
         </div>
         <div class="ss-setup">
@@ -88,7 +73,7 @@
             </div>
         </div>
     </div>
-    <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button>
+    <button>확인</button>
 
     <a href="#" class="modal-close" (click)="close()">
         <i class="material-icons">

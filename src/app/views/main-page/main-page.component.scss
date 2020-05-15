@@ -50,6 +50,7 @@ nav.top-bar-section {
 // 방송을 켜서 볼경우
 // 색상값 반전 필수 - 검정으로 변경
 .main-section>.stream-container-view>.stream-list-view {
+  transition: all 0.4s;
   width: auto;
   height: 60px;
   padding: 0px 5px;
@@ -64,6 +65,17 @@ nav.top-bar-section {
   bottom: 10px;
 
   padding-right: 25px;
+
+  &.hidden {
+    transition: all 0.4s;
+    transform: translateX(calc(100% - 20px));
+    -webkit-transform: translateX(calc(100% - 20px));
+
+    i {
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+    }
+  }
 
   .show-btn {
     position: absolute;

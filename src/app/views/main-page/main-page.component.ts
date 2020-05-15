@@ -32,6 +32,7 @@ export class MainPageComponent {
     private mInnerWidth: number;
     private mMoveMode: boolean;
     private mDividerPosition: number;
+    private mStreamListShow: boolean;
 
     public constructor(
         mainService: MainService,
@@ -57,6 +58,7 @@ export class MainPageComponent {
         this.mMoveMode = false;
         this.mDividerPosition = optionService.getChatPosition();
         this.mInnerWidth = window.innerWidth;
+        this.mStreamListShow = true;
     }
 
     @HostListener('window:resize', ['$event'])
@@ -176,6 +178,12 @@ export class MainPageComponent {
     public isModifyStreamMode(): boolean {
         const mode = this.mProfileService.getModifyMode();
         return mode === ProfileModifyMode.STREAM;
+    }
+
+    public isStreamListShow(): boolean { return this.mStreamListShow; }
+
+    public toggleStreamList() {
+        this.mStreamListShow = !this.mStreamListShow;
     }
 
     private toggleMenu() {

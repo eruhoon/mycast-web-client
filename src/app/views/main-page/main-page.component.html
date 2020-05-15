@@ -7,12 +7,10 @@
     <div class="component-view">
       <iframe [src]="getCurrentLink() | safe" frameborder="0"></iframe>
     </div>
-    <div class="stream-list-view">
+    <div class="stream-list-view" [ngClass]="{hidden: !isStreamListShow()}">
       <app-stream-list></app-stream-list>
-      <a class="show-btn">
-        <i class="material-icons">
-          keyboard_arrow_left
-        </i>
+      <a class="show-btn" (click)="toggleStreamList()">
+        <i class="material-icons">keyboard_arrow_right</i>
       </a>
     </div>
   </div>

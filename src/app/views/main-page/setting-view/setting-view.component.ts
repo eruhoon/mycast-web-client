@@ -1,9 +1,8 @@
+import { Component, OnInit } from '@angular/core';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
-
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-setting-view',
@@ -12,11 +11,14 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 })
 export class SettingViewComponent implements OnInit {
 
+  private static DEFAULT_PLATFORM_IMAGE = '';
+
   public themeId: string;
   private mProfileService: ProfileService;
   private mOptionService: OptionService;
   private mNotificationSounds: NotificationSounds;
   private mThemes: Option[];
+  private mStreamPlatformImages: StreamPlatformImage[];
   private mNotificationSoundId: string;
 
   public constructor(
@@ -30,11 +32,19 @@ export class SettingViewComponent implements OnInit {
       { id: 'default', name: '기본' },
       { id: 'dark', name: '어두운모드' },
     ];
+    this.mStreamPlatformImages = [
+      { id: 'local', src: '/assets/image/stream/mycast_b.png' },
+      { id: 'twitch', src: '/assets/image/stream/twitch_b.png' },
+      { id: 'afreeca', src: '/assets/image/stream/afreeca_b.png' },
+      { id: 'mixer', src: '/assets/image/stream/mixer_b.png' },
+      { id: 'totoro', src: '/assets/image/stream/totoro_b.png' },
+    ];
     this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
   }
 
   public ngOnInit(): void {
     this.mNotificationSoundId = this.mOptionService.getNotificationSound().getId();
+    this.mProfileService.loadStream();
   }
 
   public getNotficationSoundId(): string {
@@ -59,6 +69,17 @@ export class SettingViewComponent implements OnInit {
 
   public getLevel(): number {
     return this.mProfileService.getLevel();
+  }
+
+  public getPlatform(): string {
+    return this.mProfileService.getStreamPlatform();
+  }
+
+  public getPlatformImage(): string {
+    const platform = this.mProfileService.getStreamPlatform();
+    const image = this.mStreamPlatformImages.find(p => p.id === platform);
+    const src = image ? image.src : SettingViewComponent.DEFAULT_PLATFORM_IMAGE;
+    return src;
   }
 
   public isDataSaveMode(): boolean {
@@ -91,3 +112,5 @@ export class SettingViewComponent implements OnInit {
 }
 
 type Option = { id: string, name: string };
+
+type StreamPlatformImage = { id: string, src: string };

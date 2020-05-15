@@ -3,6 +3,9 @@ import { ModifyProfileCommand } from 'src/app/models/profile/ModifyProfileComman
 import { Profile } from 'src/app/models/profile/Profile';
 
 import { Injectable } from '@angular/core';
+import { StreamProfile } from 'src/app/models/profile/StreamProfile';
+import { VegaStreamProfileLoader } from 'src/app/models/profile/VegaStreamProfileLoader';
+import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +14,21 @@ export class ProfileService {
 
   private mModifyMode: ProfileModifyMode;
   private mProfile: Profile;
+  private mStreamPlatform: string;
   private mModifyProfileCommand: ModifyProfileCommand;
+  private mStreamProfileLoader: VegaStreamProfileLoader;
 
   public constructor() {
+    const privKey = SessionStorage.getInstance().getPrivateKey() || '';
     this.mModifyMode = ProfileModifyMode.NONE;
     this.mProfile = new DefaultProfile();
+    this.mStreamPlatform = 'local';
+    this.mStreamProfileLoader = new VegaStreamProfileLoader(privKey);
+  }
+
+  public async loadStream(): Promise<void> {
+    const stream = await this.mStreamProfileLoader.load();
+    this.mStreamPlatform = stream.getPlatform();
   }
 
   public setModifyProfileCommand(command: ModifyProfileCommand): void {
@@ -40,6 +53,10 @@ export class ProfileService {
 
   public getModifyMode(): ProfileModifyMode {
     return this.mModifyMode;
+  }
+
+  public getStreamPlatform(): string {
+    return this.mStreamPlatform;
   }
 
   public setModifyMode(modifyMode: ProfileModifyMode): void {

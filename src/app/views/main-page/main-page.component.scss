@@ -68,8 +68,8 @@ nav.top-bar-section {
 
   &.hidden {
     transition: all 0.4s;
-    transform: translateX(calc(100% - 20px));
-    -webkit-transform: translateX(calc(100% - 20px));
+    transform: translateX(calc(100% - 25px));
+    -webkit-transform: translateX(calc(100% - 25px));
 
     i {
       transform: rotate(180deg);

@@ -1,3 +1,5 @@
+import { MainService } from 'src/app/services/main/main.service';
+
 import { Component, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
@@ -13,7 +15,7 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
   private mIcon: string;
   private mName: string;
 
-  constructor() {
+  constructor(private mMainService: MainService) {
     super();
   }
 
@@ -47,7 +49,7 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
   }
 
   public onClick(): void {
-    console.log('click', this.getLink());
+    this.mMainService.setCurrentLink(this.getLink());
   }
 
   public onContextMenu(): void {

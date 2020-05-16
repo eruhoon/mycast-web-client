@@ -50,6 +50,13 @@ export class ModifyStreamModalComponent implements OnInit {
     return this.mProfileService.getStreamPlatform();
   }
 
+  public submit(): void {
+    const platform = this.mProfileService.getStreamPlatform();
+    this.mProfileService.requestToChangeStream(
+      platform, this.streamForm.backgroundImage, this.streamForm.afreecaId,
+      this.streamForm.twitchId, this.streamForm.mixerId);
+  }
+
   public close() {
     this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
   }

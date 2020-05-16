@@ -1,12 +1,13 @@
 import { DefaultProfile } from 'src/app/models/profile/DefaultProfile';
 import { ModifyProfileCommand } from 'src/app/models/profile/ModifyProfileCommand';
 import { Profile } from 'src/app/models/profile/Profile';
-
-import { Injectable } from '@angular/core';
+import { ModifyPlatformCommand } from 'src/app/models/profile/stream/ModifyPlatformCommand';
+import { ModifyStreamCommand } from 'src/app/models/profile/stream/ModifyStreamCommand';
 import { StreamProfile } from 'src/app/models/profile/StreamProfile';
 import { VegaStreamProfileLoader } from 'src/app/models/profile/VegaStreamProfileLoader';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
-import { ModifyPlatformCommand } from 'src/app/models/profile/stream/ModifyPlatformCommand';
+
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class ProfileService {
   private mStreamMixerId: string;
   private mModifyProfileCommand: ModifyProfileCommand;
   private mStreamProfileLoader: VegaStreamProfileLoader;
+  private mModifyStreamCommand: ModifyStreamCommand;
   private mModifyPlatformCommand: ModifyPlatformCommand;
 
   public constructor() {
@@ -32,6 +34,7 @@ export class ProfileService {
     this.mStreamBackgroundImage = '';
     this.mStreamTwitchId = '';
     this.mStreamProfileLoader = new VegaStreamProfileLoader(privKey);
+    this.mModifyStreamCommand = new ModifyStreamCommand(privKey);
     this.mModifyPlatformCommand = new ModifyPlatformCommand(privKey);
   }
 
@@ -94,6 +97,18 @@ export class ProfileService {
 
   public requestToModifyProfile(name: string, icon: string): void {
     this.mModifyProfileCommand.execute({ name, icon });
+  }
+
+  public requestToChangeStream(
+    platform: string, backgroundImage: string,
+    afreecaId: string, twitchId: string, mixerId: string): void {
+    this.mModifyStreamCommand.execute(platform, backgroundImage,
+      afreecaId, twitchId, mixerId).then(result => {
+        if (result) {
+          this.mStreamPlatform = platform;
+          this.setModifyMode(ProfileModifyMode.NONE);
+        }
+      });
   }
 
   public requestToChangeStreamPlatform(platform: string): void {

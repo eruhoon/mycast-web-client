@@ -11,7 +11,7 @@ export class ModifyPlatformCommand {
     public async execute(platform: string): Promise<boolean> {
         const url = this.getUrl();
         try {
-            const { data } = await Axios.post<PutStreamPlatformDto>(url, { platform });
+            const { data } = await Axios.put<PutStreamPlatformDto>(url, { platform });
             return data.result;
         } catch {
             return false;

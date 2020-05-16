@@ -3,7 +3,6 @@ import { ModifyProfileCommand } from 'src/app/models/profile/ModifyProfileComman
 import { Profile } from 'src/app/models/profile/Profile';
 import { ModifyPlatformCommand } from 'src/app/models/profile/stream/ModifyPlatformCommand';
 import { ModifyStreamCommand } from 'src/app/models/profile/stream/ModifyStreamCommand';
-import { StreamProfile } from 'src/app/models/profile/StreamProfile';
 import { VegaStreamProfileLoader } from 'src/app/models/profile/VegaStreamProfileLoader';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 
@@ -99,16 +98,16 @@ export class ProfileService {
     this.mModifyProfileCommand.execute({ name, icon });
   }
 
-  public requestToChangeStream(
+  public async requestToChangeStream(
     platform: string, backgroundImage: string,
-    afreecaId: string, twitchId: string, mixerId: string): void {
-    this.mModifyStreamCommand.execute(platform, backgroundImage,
-      afreecaId, twitchId, mixerId).then(result => {
-        if (result) {
-          this.mStreamPlatform = platform;
-          this.setModifyMode(ProfileModifyMode.NONE);
-        }
-      });
+    afreecaId: string, twitchId: string, mixerId: string): Promise<void> {
+
+    const result = await this.mModifyStreamCommand.execute(
+      platform, backgroundImage, afreecaId, twitchId, mixerId);
+    if (result) {
+      this.mStreamPlatform = platform;
+      this.setModifyMode(ProfileModifyMode.NONE);
+    }
   }
 
   public requestToChangeStreamPlatform(platform: string): void {

@@ -1,3 +1,4 @@
+import { ToastService } from 'src/app/services/notification/toast.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -12,8 +13,11 @@ export class ModifyStreamModalComponent implements OnInit {
   public streamForm: StreamForm;
   private mPlatforms: PlatformType[];
   private mProfileService: ProfileService;
+  private mToastService: ToastService;
 
-  public constructor(profileService: ProfileService) {
+  public constructor(
+    profileService: ProfileService, toastService: ToastService) {
+
     this.streamForm = {
       backgroundImage: '',
       afreecaId: '',
@@ -28,6 +32,7 @@ export class ModifyStreamModalComponent implements OnInit {
       { id: 'mixer', name: '믹서', src: '/assets/image/stream/mixer.png' },
     ];
     this.mProfileService = profileService;
+    this.mToastService = toastService;
   }
 
   public ngOnInit() {
@@ -50,11 +55,16 @@ export class ModifyStreamModalComponent implements OnInit {
     return this.mProfileService.getStreamPlatform();
   }
 
-  public submit(): void {
+  public async submit(): Promise<void> {
     const platform = this.mProfileService.getStreamPlatform();
-    this.mProfileService.requestToChangeStream(
-      platform, this.streamForm.backgroundImage, this.streamForm.afreecaId,
-      this.streamForm.twitchId, this.streamForm.mixerId);
+    try {
+      await this.mProfileService.requestToChangeStream(
+        platform, this.streamForm.backgroundImage, this.streamForm.afreecaId,
+        this.streamForm.twitchId, this.streamForm.mixerId);
+      this.mToastService.toast('방송설정을 변경했어요!');
+    } catch {
+      this.mToastService.toast('설정에 문제가 발생했습니다.');
+    }
   }
 
   public close() {

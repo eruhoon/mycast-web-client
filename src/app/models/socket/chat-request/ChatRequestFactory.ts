@@ -68,7 +68,7 @@ export class ChatRequestFactory {
                 return new SimpleChatRequest('test', rawMsg);
 
             default:
-                return new TextChatRequest(rawMsg);
+                return new TextChatRequest(rawText);
 
             /*case '코인빵':
                 msg = parseInt(m[2]);

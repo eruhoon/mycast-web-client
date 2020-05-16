@@ -22,10 +22,18 @@ export class VegaStreamProfileLoader {
 }
 
 type UserStreamDto = {
-    platform: string
+    platform: string,
+    backgroundImage: string,
+    afreecaId: string,
+    twitchId: string,
+    mixerId: string,
 };
 
 class UserStreamDtoAdapter implements StreamProfile {
     constructor(private mStream: UserStreamDto) { }
     public getPlatform(): string { return this.mStream.platform; }
+    public getBackgroundImage(): string { return this.mStream.backgroundImage; }
+    public getAfreecaId(): string { return this.mStream.afreecaId; }
+    public getTwitchId(): string { return this.mStream.twitchId; }
+    public getMixerId(): string { return this.mStream.mixerId; }
 }

@@ -13,16 +13,16 @@
                 <p>{{platform.name}}</p>
             </div>
         </div>
-        <div class="ss-setup">
-            <div class="mycast ss-setup-box">
+        <div class="ss-setup" [ngSwitch]="getCurrentPlatform()">
+            <div class="mycast ss-setup-box" *ngSwitchCase="'local'">
                 <div class="u-img">
-                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                    <img [src]="streamForm.backgroundImage" />
                 </div>
                 <div class="stream-img-set ss-set-input">
                     <label>
                         <p>배경이미지</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" [(ngModel)]="streamForm.backgroundImage">
                 </div>
                 <div class="stream-url ss-set-input">
                     <label>
@@ -37,15 +37,15 @@
                     <input type="text" class="stream-img-set">
                 </div>
             </div>
-            <div class="totoro ss-setup-box">
+            <div class="totoro ss-setup-box" *ngSwitchCase="'totoro'">
                 <div class="u-img">
-                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                    <img [src]="streamForm.backgroundImage" />
                 </div>
                 <div class="stream-img-set ss-set-input">
                     <label>
                         <p>배경이미지</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" [(ngModel)]="streamForm.backgroundImage">
                 </div>
                 <div class="stream-url ss-set-input">
                     <label>
@@ -60,7 +60,7 @@
                     <input type="text" class="stream-img-set">
                 </div>
             </div>
-            <div class="afreeca ss-setup-box">
+            <div class="afreeca ss-setup-box" *ngSwitchCase="'afreeca'">
                 <div class="u-img">
                     <img src="https://i.imgur.com/XjsUghQ.gif" />
                 </div>
@@ -68,7 +68,29 @@
                     <label>
                         <p>STREAM KEY</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" [(ngModel)]="streamForm.afreecaId">
+                </div>
+            </div>
+            <div class="twitch ss-setup-box" *ngSwitchCase="'twitch'">
+                <div class="u-img">
+                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                </div>
+                <div class="stream-key ss-set-input">
+                    <label>
+                        <p>STREAM KEY</p>
+                    </label>
+                    <input type="text" class="stream-img-set" [(ngModel)]="streamForm.twitchId">
+                </div>
+            </div>
+            <div class="mixer ss-setup-box" *ngSwitchCase="'mixer'">
+                <div class="u-img">
+                    <img src="https://i.imgur.com/XjsUghQ.gif" />
+                </div>
+                <div class="stream-key ss-set-input">
+                    <label>
+                        <p>STREAM KEY</p>
+                    </label>
+                    <input type="text" class="stream-img-set" [(ngModel)]="streamForm.mixerId">
                 </div>
             </div>
         </div>

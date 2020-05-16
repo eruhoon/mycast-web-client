@@ -49,6 +49,10 @@ export class ModifyStreamModalComponent implements OnInit {
     this.mProfileService.requestToChangeStreamPlatform(platform.id);
   }
 
+  public getLocalId(): string {
+    return this.mProfileService.getStreamLocalId();
+  }
+
   public getPlatforms(): PlatformType[] { return this.mPlatforms; }
 
   public getCurrentPlatform(): string {

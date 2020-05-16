@@ -28,13 +28,13 @@
                     <label>
                         <p>OBS FMS URL</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" value="rtmp://mycast.xyz:1935/live">
                 </div>
                 <div class="stream-key ss-set-input">
                     <label>
                         <p>STREAM KEY</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" [value]="getLocalId()">
                 </div>
             </div>
             <div class="totoro ss-setup-box" *ngSwitchCase="'totoro'">
@@ -57,7 +57,7 @@
                     <label>
                         <p>STREAM KEY</p>
                     </label>
-                    <input type="text" class="stream-img-set">
+                    <input type="text" class="stream-img-set" [value]="getLocalId()">
                 </div>
             </div>
             <div class="afreeca ss-setup-box" *ngSwitchCase="'afreeca'">

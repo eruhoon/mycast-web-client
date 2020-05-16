@@ -17,6 +17,7 @@ export class ProfileService {
   private mProfile: Profile;
   private mStreamPlatform: string;
   private mStreamBackgroundImage: string;
+  private mStreamLocalId: string;
   private mStreamTwitchId: string;
   private mStreamAfreecaId: string;
   private mStreamMixerId: string;
@@ -31,7 +32,10 @@ export class ProfileService {
     this.mProfile = new DefaultProfile();
     this.mStreamPlatform = 'local';
     this.mStreamBackgroundImage = '';
+    this.mStreamLocalId = '';
     this.mStreamTwitchId = '';
+    this.mStreamAfreecaId = '';
+    this.mStreamMixerId = '';
     this.mStreamProfileLoader = new VegaStreamProfileLoader(privKey);
     this.mModifyStreamCommand = new ModifyStreamCommand(privKey);
     this.mModifyPlatformCommand = new ModifyPlatformCommand(privKey);
@@ -41,6 +45,7 @@ export class ProfileService {
     const stream = await this.mStreamProfileLoader.load();
     this.mStreamPlatform = stream.getPlatform();
     this.mStreamBackgroundImage = stream.getBackgroundImage();
+    this.mStreamLocalId = stream.getLocalId();
     this.mStreamTwitchId = stream.getTwitchId();
     this.mStreamAfreecaId = stream.getAfreecaId();
     this.mStreamMixerId = stream.getMixerId();
@@ -76,6 +81,10 @@ export class ProfileService {
 
   public getStreamBackgroundImage(): string {
     return this.mStreamBackgroundImage;
+  }
+
+  public getStreamLocalId(): string {
+    return this.mStreamLocalId;
   }
 
   public getStreamAfreecaId(): string {

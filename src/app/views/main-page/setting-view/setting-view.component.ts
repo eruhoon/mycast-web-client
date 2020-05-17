@@ -2,6 +2,7 @@ import { NotificationSound } from 'src/app/models/notification/NotificationSound
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +13,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingViewComponent implements OnInit {
 
-  private static DEFAULT_PLATFORM_IMAGE = '';
+  private static DEFAULT_PLATFORM_IMAGE = {
+    default: '',
+    dark: ''
+  };
 
   public themeId: string;
   private mProfileService: ProfileService;
@@ -23,6 +27,7 @@ export class SettingViewComponent implements OnInit {
   private mNotificationSoundId: string;
 
   public constructor(
+    private mThemeService: ThemeService,
     profileService: ProfileService, optionService: OptionService) {
     this.themeId = 'default';
 
@@ -34,11 +39,36 @@ export class SettingViewComponent implements OnInit {
       { id: 'dark', name: '어두운모드' },
     ];
     this.mStreamPlatformImages = [
-      { id: 'local', src: '/assets/image/stream/mycast_b.png' },
-      { id: 'twitch', src: '/assets/image/stream/twitch_b.png' },
-      { id: 'afreeca', src: '/assets/image/stream/afreeca_b.png' },
-      { id: 'mixer', src: '/assets/image/stream/mixer_b.png' },
-      { id: 'totoro', src: '/assets/image/stream/totoro_b.png' },
+      {
+        id: 'local', src: {
+          default: '/assets/image/stream/mycast_b.png',
+          dark: '/assets/image/stream/mycast.png'
+        }
+      },
+      {
+        id: 'twitch', src: {
+          default: '/assets/image/stream/twitch_b.png',
+          dark: '/assets/image/stream/twitch.png'
+        }
+      },
+      {
+        id: 'afreeca', src: {
+          default: '/assets/image/stream/afreeca_b.png',
+          dark: '/assets/image/stream/afreeca.png'
+        }
+      },
+      {
+        id: 'mixer', src: {
+          default: '/assets/image/stream/mixer_b.png',
+          dark: '/assets/image/stream/mixer.png'
+        }
+      },
+      {
+        id: 'totoro', src: {
+          default: '/assets/image/stream/totoro_b.png',
+          dark: '/assets/image/stream/totoro.png'
+        }
+      },
     ];
     this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
   }
@@ -76,11 +106,17 @@ export class SettingViewComponent implements OnInit {
     return this.mProfileService.getStreamPlatform();
   }
 
-  public getPlatformImage(): string {
+  public getPlatformImage(): ImageSrc {
     const platform = this.mProfileService.getStreamPlatform();
     const image = this.mStreamPlatformImages.find(p => p.id === platform);
     const src = image ? image.src : SettingViewComponent.DEFAULT_PLATFORM_IMAGE;
     return src;
+  }
+
+  public getPlatformImageSrc(): string {
+    const darkMode = this.mThemeService.isDarkMode();
+    const image = this.getPlatformImage();
+    return darkMode ? image.dark : image.default;
   }
 
   public isDataSaveMode(): boolean {
@@ -114,4 +150,4 @@ export class SettingViewComponent implements OnInit {
 
 type Option = { id: string, name: string };
 
-type StreamPlatformImage = { id: string, src: string };
+type StreamPlatformImage = { id: string, src: ImageSrc };

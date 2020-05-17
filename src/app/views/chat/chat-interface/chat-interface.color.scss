@@ -8,6 +8,12 @@
     border-bottom: 1px solid #e0e0e0;
     a {
       color: #757575;
+      &.active {
+        color: #c2185b;
+      }
+      &:hover {
+        color: #ec407a;
+      }
     }
   }
   .input-box {
@@ -26,6 +32,12 @@
     border-bottom: 1px solid #616161;
     a {
       color: #ffffff;
+      &.active {
+        color: #c2185b;
+      }
+      &:hover {
+        color: #ec407a;
+      }
     }
   }
   .input-box {

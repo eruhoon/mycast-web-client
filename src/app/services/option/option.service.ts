@@ -70,4 +70,9 @@ export class OptionService {
   public getTheme(): Theme {
     return this.mTheme;
   }
+
+  public setTheme(theme: Theme): void {
+    this.mTheme = theme;
+    this.mStorage.setTheme(theme);
+  }
 }

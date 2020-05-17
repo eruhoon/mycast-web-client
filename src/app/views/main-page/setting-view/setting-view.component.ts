@@ -1,5 +1,6 @@
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
+import { Theme } from 'src/app/models/theme/Theme';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
@@ -18,25 +19,26 @@ export class SettingViewComponent implements OnInit {
     dark: ''
   };
 
-  public themeId: string;
+  public theme: Theme;
   private mProfileService: ProfileService;
   private mOptionService: OptionService;
   private mNotificationSounds: NotificationSounds;
-  private mThemes: Option[];
+  private mThemes: ThemeOption[];
   private mStreamPlatformImages: StreamPlatformImage[];
   private mNotificationSoundId: string;
 
   public constructor(
     private mThemeService: ThemeService,
     profileService: ProfileService, optionService: OptionService) {
-    this.themeId = 'default';
+    this.theme = Theme.DEFAULT;
 
     this.mProfileService = profileService;
     this.mOptionService = optionService;
     this.mNotificationSounds = new NotificationSounds();
     this.mThemes = [
-      { id: 'default', name: '기본' },
-      { id: 'dark', name: '어두운모드' },
+      { theme: Theme.DEFAULT, name: '기본' },
+      { theme: Theme.LIGHT, name: '밝게' },
+      { theme: Theme.DARK, name: '어둡게' },
     ];
     this.mStreamPlatformImages = [
       {
@@ -86,7 +88,7 @@ export class SettingViewComponent implements OnInit {
     return this.mNotificationSounds.getList();
   }
 
-  public getThemes(): Option[] {
+  public getThemes(): ThemeOption[] {
     return this.mThemes;
   }
 
@@ -142,12 +144,12 @@ export class SettingViewComponent implements OnInit {
     this.mOptionService.setNotificationSound(soundId);
   }
 
-  public onThemeClick(themeOption: Option): void {
-    console.log(themeOption);
-    this.themeId = themeOption.id;
+  public onThemeClick(themeOption: ThemeOption): void {
+    this.theme = themeOption.theme;
+    this.mOptionService.setTheme(this.theme);
   }
 }
 
-type Option = { id: string, name: string };
+type ThemeOption = { name: string, theme: Theme };
 
 type StreamPlatformImage = { id: string, src: ImageSrc };

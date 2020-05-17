@@ -1,22 +1,133 @@
+@media (prefers-color-scheme: light) {
+  .user-setting {
+    background: #ffffff;
+    li {
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+  .user-setting > div {
+    border-bottom: 1px solid #eeeeee;
+    h5 {
+      color: #616161;
+    }
+    i {
+      color: #616161;
+    }
+    &.toggle-option:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  .stream-set > img {
+    border-left: 1px solid #eeeeee;
+  }
+  .u-info {
+    p {
+      color: #424242;
+    }
+    a {
+      i{
+        color: #424242;
+      }
+    }
+  }
+  .alarm {
+    ul {
+      li {
+        color: #616161;
+        &:hover {
+          background-color: #E0E0E0;
+        }
+      }
+    }
+  }
+  .theme {
+    ul {
+      li {
+        color: #616161;
+        &:hover {
+          background-color: #E0E0E0;
+        }
+      }
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .user-setting {
+    background: #212121;
+    li {
+      &:hover {
+        background-color: #424242;
+      }
+    }
+  }
+  .user-setting > div {
+    border-bottom: 1px solid #616161;
+    h5 {
+      color: #eeeeee;
+    }
+    i {
+      color: #eeeeee;
+    }
+    &.toggle-option:hover {
+      background-color: #616161;
+    }
+  }
+  .stream-set > img {
+    border-left: 1px solid #424242;
+  }
+  .u-info {
+    p {
+      color: #eeeeee;
+    }
+    a {
+      i{
+        color: #eeeeee;
+      }
+    }
+  }
+  .alarm {
+    ul {
+      li {
+        color: #eeeeee;
+        &:hover {
+          background-color: #616161;
+        }
+      }
+    }
+  }
+  .theme {
+    ul {
+      li {
+        color: #eeeeee;
+        &:hover {
+          background-color: #616161;
+        }
+      }
+    }
+  }
+}
+
 .user-setting {
   width: 100%;
   height: 100%;
   position: relative;
 
   border-radius: 5px;
-  background: #ffffff;
+  background: #212121;
 
   li {
     list-style-type: none;
 
     &:hover {
-      background-color: #f5f5f5;
+      background-color: #424242;
     }
   }
 }
 
 .user-setting > div {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #616161;
   padding: 15px 10px;
 
   position: relative;
@@ -24,7 +135,7 @@
   h5 {
     margin: 0%;
     padding: 0%;
-    color: #616161;
+    color: #eeeeee;
     font-weight: 800;
   }
 
@@ -33,7 +144,7 @@
     position: absolute;
     top: 12px;
     right: 15px;
-    color: #616161;
+    color: #eeeeee;
     font-size: 18px;
     line-height: 20px;
   }
@@ -49,7 +160,7 @@
   }
 
   &.toggle-option:hover {
-    background-color: #f5f5f5;
+    background-color: #616161;
   }
 
   &.toggle-option {
@@ -61,7 +172,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  border-left: 1px solid #eeeeee;
+  border-left: 1px solid #424242;
 }
 
 // 유저 안내 및 레벨 안내
@@ -91,7 +202,7 @@
 
   p {
     width: 90%;
-    color: #424242;
+    color: #eeeeee;
   }
 
   a {
@@ -101,7 +212,7 @@
       position: absolute;
       top: 11px;
       right: 0px;
-      color: #616161;
+      color: #eeeeee;
       font-size: 24px;
     }
 
@@ -129,13 +240,13 @@
       padding-bottom: 5px;
       padding-top: 5px;
       font-size: 12px;
-      color: #616161;
+      color: #eeeeee;
       border-radius: 3px;
       padding-left: 10px;
       cursor: pointer;
 
       &:hover {
-        background-color: #E0E0E0;
+        background-color: #616161;
       }
 
       &:nth-child(even){
@@ -151,40 +262,6 @@
       }
     }
   }
-  /* 
-  ul {
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    padding-top: 10px;
-
-    li {
-      width: 50%;
-      display: inline-block;
-      padding-bottom: 5px;
-      padding-top: 5px;
-      font-size: 12px;
-      color: #616161;
-      border-radius: 3px;
-
-      input {
-        margin-right: 10px;
-      }
-      input[type="radio"] {
-        display:none;
-      }
-
-      input[type="radio"] + label {
-        color:#f2f2f2;
-        font-family:Arial, sans-serif;
-      }
-
-      &.select {
-        color: #f50057;
-      }
-    }
-  }
-  */
 }
 
 // 테마 부분 scss 설정
@@ -204,13 +281,13 @@
       padding-bottom: 5px;
       padding-top: 5px;
       font-size: 12px;
-      color: #616161;
+      color: #eeeeee;
       border-radius: 3px;
       padding-left: 10px;
       cursor: pointer;
 
       &:hover {
-        background-color: #E0E0E0;
+        background-color: #616161;
       }
 
       &:last-child{

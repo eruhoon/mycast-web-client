@@ -1,24 +1,59 @@
+@media (prefers-color-scheme: light) {
+  .chat-interface {
+    background-color: #ffffff;
+  }
+  .input-sticker {
+    background-color: #fafafa;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    a {
+      color: #757575;
+    }
+  }
+  .input-box {
+    background: #ffffff;
+    color: #424242;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .chat-interface {
+    background-color: #424242;
+  }
+  .input-sticker {
+    background-color: #424242;
+    border-top: 1px solid #616161;
+    border-bottom: 1px solid #616161;
+    a {
+      color: #ffffff;
+    }
+  }
+  .input-box {
+    background: #424242;
+    color: #ffffff;
+  }
+}
+
 .chat-interface {
   position: relative;
   width: 100%;
   height: 100%;
   // 좌우측 채팅 부분에 대한 border의 1px 처리로
   margin-left: -1px;
-  background-color: #ffffff;
+  background-color: #424242;
 }
 
 // 스티커 & 채팅 클리어 & 채팅 인원 안내
 .input-sticker {
   width: 100%;
   height: 30px;
-  background-color: #fafafa;
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: #424242;
+  border-top: 1px solid #616161;
+  border-bottom: 1px solid #616161;
   a {
     width: auto;
     height: auto;
     display: inline-block;
-    color: #757575;
+    color: #eeeeee;
     user-select: none;
 
     i {
@@ -46,9 +81,9 @@
   height: 30px;
   padding: 10px;
 
-  background: #ffffff;
+  background: #424242;
   font-size: 14px;
-  color: #424242;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   outline: none;

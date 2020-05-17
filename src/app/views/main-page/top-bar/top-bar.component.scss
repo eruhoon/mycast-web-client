@@ -1,5 +1,35 @@
 $icon-size: 40px;
 
+@media (prefers-color-scheme: light) {
+  div.part{
+    button {
+      background-color: #fff;
+      color: #616161;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+      &:active {
+        background-color: #f3f3f3;
+      }
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  div.part{
+    button {
+      background-color: #212121;
+      color: #616161;
+      &:hover {
+        background-color: #313131;
+      }
+      &:active {
+        background-color: #313131;
+      }
+    }
+  }
+}
+
+
 div.main {
   display: flex;
   width: 100%;
@@ -22,14 +52,14 @@ div.part {
     margin: 5px;
     padding: 0;
     color: #616161;
-    background-color: #fff;
+    background-color: #212121;
 
     &:hover {
-      background-color: #f7f7f7;
+      background-color: #313131;
     }
 
     &:active {
-      background-color: #f3f3f3;
+      background-color: #313131;
     }
   }
 

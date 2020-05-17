@@ -2,6 +2,129 @@ $top-bar-height: 50px;
 $default-chat-width: 25%;
 $stream-menu-height: 60px;
 
+@media (prefers-color-scheme: light) {
+  nav.top-bar-section {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .main-section>.stream-container-view {
+    background: #f0f0f0;
+  }
+  .main-section>.stream-container-view>.component-view{
+    background: #f0f0f0;
+  }
+  .main-section>.stream-container-view>.stream-list-view {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    .show-btn{
+      background: #ffffff;
+      i{
+        color:#212121;
+      }
+    }
+  }
+  .side-bar {
+    app-side-bar {
+      background: #ffffff;
+      border-right: 1px solid #424242;
+    }
+  }
+  .main-section>.chat-list-view {
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+  }
+  .setting-view {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+  .chat-list-view::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+  }
+  // background of the scrollbar except button or resizer
+  .chat-list-view::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+  
+  .chat-list-view::-webkit-scrollbar-track:hover {
+    background-color: #f4f4f4;
+  }
+  
+  // scrollbar itself
+  .chat-list-view::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 5px solid #fff;
+  }
+  
+  .chat-list-view::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a5;
+    border: 4px solid #f4f4f4;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  nav.top-bar-section {
+    background: #212121;
+    border-bottom: 1px solid #424242;
+  }
+  .main-section>.stream-container-view {
+    background: #424242;
+  }
+  .main-section>.stream-container-view>.component-view{
+    background: #595959;
+  }
+  .main-section>.stream-container-view>.stream-list-view {
+    background: #212121;
+    border-bottom: 1px solid #424242;
+    .show-btn{
+      background: #212121;
+      i{
+        color:#ffffff;
+      }
+    }
+  }
+  .side-bar {
+    app-side-bar {
+      background: #212121;
+      border-right: 1px solid #424242;
+    }
+  }
+  .main-section>.chat-list-view {
+    background: #424242;
+    border-right: 1px solid #616161;
+    border-left: 1px solid #616161;
+  }
+  .setting-view {
+    background: #424242;
+    border: 1px solid #616161;
+  }
+  .chat-list-view::-webkit-scrollbar {
+    background-color: #212121;
+    width: 16px;
+  }
+  // background of the scrollbar except button or resizer
+  .chat-list-view::-webkit-scrollbar-track {
+    background-color: #212121;
+  }
+  
+  .chat-list-view::-webkit-scrollbar-track:hover {
+    background-color: #424242;
+  }
+  
+  // scrollbar itself
+  .chat-list-view::-webkit-scrollbar-thumb {
+    background-color: #616161;
+    border-radius: 16px;
+    border: 5px solid #424242;
+  }
+  
+  .chat-list-view::-webkit-scrollbar-thumb:hover {
+    background-color: #616161;
+    border: 4px solid #424242;
+  }
+}
 nav.top-bar-section {
   position: absolute;
   left: 0;
@@ -9,8 +132,8 @@ nav.top-bar-section {
   width: 100%;
   height: $top-bar-height;
   margin: 0;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  background: #212121;
+  border-bottom: 1px solid #424242;
 
   z-index: 90;
 }
@@ -31,7 +154,7 @@ nav.top-bar-section {
   top: 0;
   width: calc(100% - #{$default-chat-width});
   height: 100%;
-  background: #f0f0f0;
+  background: #424242;
   z-index: 21;
 }
 
@@ -39,7 +162,7 @@ nav.top-bar-section {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #f0f0f0;
+  background: #595959;
 
   iframe {
     width: 100%;
@@ -50,14 +173,13 @@ nav.top-bar-section {
 // 방송을 켜서 볼경우
 // 색상값 반전 필수 - 검정으로 변경
 .main-section>.stream-container-view>.stream-list-view {
-  transition: all 0.4s;
   width: auto;
   height: 60px;
   padding: 0px 5px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  background: #212121;
+  border: 1px solid #424242;
   border-radius: 10px;
 
   position: absolute;
@@ -65,17 +187,6 @@ nav.top-bar-section {
   bottom: 10px;
 
   padding-right: 25px;
-
-  &.hidden {
-    transition: all 0.4s;
-    transform: translateX(calc(100% - 25px));
-    -webkit-transform: translateX(calc(100% - 25px));
-
-    i {
-      transform: rotate(180deg);
-      -webkit-transform: rotate(180deg);
-    }
-  }
 
   .show-btn {
     position: absolute;
@@ -86,13 +197,14 @@ nav.top-bar-section {
     border-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background: #fff;
+    background: #212121;
     z-index: 10;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 
     i {
       line-height: 32px;
+      color:#ffffff;
     }
   }
 }
@@ -111,10 +223,10 @@ nav.top-bar-section {
     top: 0;
     width: 200px;
     height: 100%;
+    background: #212121;
     border-right: 1px solid #424242;
     box-shadow: 0px 3px 5px 1px rgba($color: #000000, $alpha: 0.3);
     transition: 0.2s ease-in-out;
-    background: white;
   }
 
   .click-blocker {
@@ -174,9 +286,9 @@ nav.top-bar-section {
   width: $default-chat-width;
   height: 100%;
   z-index: 30;
-  background: #ffffff;
-  border-right: 1px solid #e0e0e0;
-  border-left: 1px solid #e0e0e0;
+  background: #424242;
+  border-right: 1px solid #616161;
+  border-left: 1px solid #616161;
 
   chat-page {
     position: absolute;
@@ -201,8 +313,8 @@ nav.top-bar-section {
   height: 516px;
   overflow: hidden;
   z-index: 85; // 알림보다 상위 노출
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  background: #424242;
+  border: 1px solid #616161;
   border-radius: 5px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -280,38 +392,28 @@ toast-list {
 }
 
 // 스크롤바 관련 처리
-
-/* Cu.setting-viewomize website's scrollbar like Mac OS Not supports in Firefox and IE */
-/* total width */
 .chat-list-view::-webkit-scrollbar {
-  background-color: #fff;
+  background-color: #212121;
   width: 16px;
 }
-
 // background of the scrollbar except button or resizer
 .chat-list-view::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: #212121;
 }
-
 .chat-list-view::-webkit-scrollbar-track:hover {
-  background-color: #f4f4f4;
+  background-color: #424242;
 }
-
 // scrollbar itself
 .chat-list-view::-webkit-scrollbar-thumb {
-  background-color: #babac0;
+  background-color: #616161;
   border-radius: 16px;
-  border: 5px solid #fff;
+  border: 5px solid #424242;
 }
-
 .chat-list-view::-webkit-scrollbar-thumb:hover {
-  background-color: #a0a0a5;
-  border: 4px solid #f4f4f4;
+  background-color: #616161;
+  border: 4px solid #424242;
 }
-
 // set button(top and bottom of the scrollbar)
 .chat-list-view::-webkit-scrollbar-button {
   display: none;
 }
-
-/**/

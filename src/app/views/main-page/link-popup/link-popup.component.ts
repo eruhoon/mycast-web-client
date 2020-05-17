@@ -50,7 +50,6 @@ export class LinkPopupComponent implements OnInit {
 
   public onExit(): void {
     this.mService.removeLink(this.linkPopup);
-    console.log(this.mService.getLinks());
   }
 
   public onDragStart(): void {

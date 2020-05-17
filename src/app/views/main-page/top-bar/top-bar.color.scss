@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
     div.part {
         button {
             background-color: #fff;
@@ -12,7 +12,8 @@
         }
     }
 }
-@media (prefers-color-scheme: dark) {
+
+:host-context(.theme-dark) {
     div.part {
         button {
             background-color: #212121;

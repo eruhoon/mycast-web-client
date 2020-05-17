@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
   h3 {
     color: #616161;
   }
@@ -12,7 +12,8 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
+
+:host-context(.theme-dark) {
   h3 {
     color: #e0e0e0;
   }

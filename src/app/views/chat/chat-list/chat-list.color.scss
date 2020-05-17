@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
   .chat-list {
     background-color: #ffffff;
     scrollbar-color: #e0e0e0 #ffffff;
@@ -25,7 +25,8 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
+
+:host-context(.theme-dark) {
   .chat-list {
     background-color: #424242;
     scrollbar-color: #616161 #424242;

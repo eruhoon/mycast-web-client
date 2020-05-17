@@ -8,8 +8,9 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-main-page',

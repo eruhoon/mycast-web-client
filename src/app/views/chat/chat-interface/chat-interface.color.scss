@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
   .chat-interface {
     background-color: #ffffff;
   }
@@ -15,7 +15,8 @@
     color: #424242;
   }
 }
-@media (prefers-color-scheme: dark) {
+
+:host-context(.theme-dark) {
   .chat-interface {
     background-color: #424242;
   }

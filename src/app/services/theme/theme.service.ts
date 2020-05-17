@@ -1,7 +1,8 @@
 import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 import { Theme } from 'src/app/models/theme/Theme';
 
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 
 import { OptionService } from '../option/option.service';
 
@@ -11,15 +12,21 @@ import { OptionService } from '../option/option.service';
 export class ThemeService {
 
   private mDefaultDarkMode: boolean;
+  private mTheme: Theme;
 
-  public constructor(private mOptionService: OptionService) {
+  public constructor(
+    @Inject(DOCUMENT) private mDocument: Document,
+    private mOptionService: OptionService) {
+
     this.mDefaultDarkMode = ThemeService.importDefaultDarkMode();
-    ThemeService.addThemeListener(darkMode => this.onThemeChange(darkMode));
+    this.mTheme = this.mOptionService.getTheme();
+    ThemeService.addThemeListener(
+      darkMode => this.onDefaultDarkModeChange(darkMode));
+    mOptionService.addThemeCallback(theme => this.onThemeChange(theme));
   }
 
   public isDarkMode(): boolean {
-    const theme = this.mOptionService.getTheme();
-    switch (theme) {
+    switch (this.mTheme) {
       case Theme.LIGHT: return false;
       case Theme.DARK: return true;
       case Theme.DEFAULT:
@@ -28,8 +35,14 @@ export class ThemeService {
     }
   }
 
-  private onThemeChange(defaultDarkMode: boolean): void {
+  private onDefaultDarkModeChange(defaultDarkMode: boolean): void {
     this.mDefaultDarkMode = defaultDarkMode;
+    this.renderTheme();
+  }
+
+  private onThemeChange(theme: Theme): void {
+    this.mTheme = theme;
+    this.renderTheme();
   }
 
   private static importDefaultDarkMode(): boolean {
@@ -43,5 +56,16 @@ export class ThemeService {
       const newColorScheme = e.matches ? 'dark' : 'light';
       callback(newColorScheme === 'dark');
     });
+  }
+
+  private renderTheme(): void {
+    const classes = this.mDocument.body.classList;
+    if (this.isDarkMode()) {
+      classes.remove('theme-light');
+      classes.add('theme-dark');
+    } else {
+      classes.remove('theme-dark');
+      classes.add('theme-light');
+    }
   }
 }

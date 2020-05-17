@@ -1,3 +1,4 @@
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { LocalStorage } from 'src/app/models/storage/LocalStorage';
@@ -19,6 +20,7 @@ export class OptionService {
   private mDataSaveMode: boolean;
   private mScrollLockMode: boolean;
   private mTheme: Theme;
+  private mThemeCallbacks: TypeCallback<Theme>[];
 
   public constructor() {
     this.mStorage = LocalStorage.getInstance();
@@ -29,6 +31,7 @@ export class OptionService {
     this.mDataSaveMode = this.mStorage.getDataSaveMode();
     this.mScrollLockMode = this.mStorage.getScrollLockMode();
     this.mTheme = this.mThemeParser.parse(this.mStorage.getTheme());
+    this.mThemeCallbacks = [];
   }
 
   public getChatPosition(): number {
@@ -74,5 +77,10 @@ export class OptionService {
   public setTheme(theme: Theme): void {
     this.mTheme = theme;
     this.mStorage.setTheme(theme);
+    this.mThemeCallbacks.forEach(callback => callback(theme));
+  }
+
+  public addThemeCallback(callback: TypeCallback<Theme>): void {
+    this.mThemeCallbacks.push(callback);
   }
 }

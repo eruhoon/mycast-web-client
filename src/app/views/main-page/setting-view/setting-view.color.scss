@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
   .user-setting {
     background: #ffffff;
     li {
@@ -53,7 +53,8 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
+
+:host-context(.theme-dark) {
   .user-setting {
     background: #212121;
     li {

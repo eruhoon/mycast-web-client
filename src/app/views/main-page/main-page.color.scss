@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+:host-context(.theme-light) {
   nav.top-bar-section {
     background: #ffffff;
     border-bottom: 1px solid #e0e0e0;
@@ -60,7 +60,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+:host-context(.theme-dark) {
   nav.top-bar-section {
     background: #212121;
     border-bottom: 1px solid #424242;

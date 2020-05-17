@@ -40,8 +40,10 @@
         "order": [
           "static-field",
           "instance-field",
-          "static-method",
-          "instance-method"
+          "pulbic-instance-method",
+          "public-static-method",
+          "private-instance-method",
+          "private-static-method"
         ]
       }
     ],

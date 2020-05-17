@@ -39,6 +39,9 @@
         &:hover {
           background-color: #e0e0e0;
         }
+        &.select {
+          color: #f50057;
+        }
       }
     }
   }
@@ -48,6 +51,9 @@
         color: #616161;
         &:hover {
           background-color: #e0e0e0;
+        }
+        &.select {
+          color: #f50057;
         }
       }
     }
@@ -95,6 +101,9 @@
         &:hover {
           background-color: #616161;
         }
+        &.select {
+          color: #f50057;
+        }
       }
     }
   }
@@ -104,6 +113,9 @@
         color: #eeeeee;
         &:hover {
           background-color: #616161;
+        }
+        &.select {
+          color: #f50057;
         }
       }
     }

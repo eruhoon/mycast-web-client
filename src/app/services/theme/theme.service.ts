@@ -23,6 +23,8 @@ export class ThemeService {
     ThemeService.addThemeListener(
       darkMode => this.onDefaultDarkModeChange(darkMode));
     mOptionService.addThemeCallback(theme => this.onThemeChange(theme));
+
+    this.renderTheme();
   }
 
   public isDarkMode(): boolean {

@@ -64,7 +64,7 @@ export class ChatInterfaceComponent implements OnInit {
     this.mCurrentChatService.clearChat();
   }
 
-  public onPressEnter(event: KeyboardEvent): boolean {
+  public onPressEnter(): boolean {
     const input = this.getInput();
     this.sendChat(input);
     this.clearInput();

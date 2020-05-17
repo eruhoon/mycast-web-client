@@ -67,7 +67,6 @@ nav.top-bar-section {
   padding-right: 25px;
 
   .show-btn {
-    transition: transform 0.4s;
     position: absolute;
     top: 15px;
     left: -20px;
@@ -83,6 +82,8 @@ nav.top-bar-section {
     cursor: pointer;
 
     i {
+      user-select: none;
+      transition: transform 0.4s;
       line-height: 32px;
       color: #ffffff;
     }

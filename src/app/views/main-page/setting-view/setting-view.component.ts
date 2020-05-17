@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-setting-view',
   templateUrl: './setting-view.component.html',
-  styleUrls: ['./setting-view.component.scss']
+  styleUrls: ['./setting-view.component.scss', './setting-view.color.scss']
 })
 export class SettingViewComponent implements OnInit {
 

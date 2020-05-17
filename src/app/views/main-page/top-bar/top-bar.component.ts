@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss', './top-bar.color.scss']
 })
 export class TopBarComponent {
 

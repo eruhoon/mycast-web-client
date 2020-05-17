@@ -1,13 +1,13 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
+import { OptionService } from 'src/app/services/option/option.service';
 
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-list',
   templateUrl: './chat-list.component.html',
-  styleUrls: ['./chat-list.component.scss']
+  styleUrls: ['./chat-list.component.scss', './chat-list.color.scss']
 })
 export class ChatListComponent implements OnInit {
 

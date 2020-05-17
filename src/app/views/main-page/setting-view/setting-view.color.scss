@@ -1,0 +1,110 @@
+@media (prefers-color-scheme: light) {
+  .user-setting {
+    background: #ffffff;
+    li {
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+  .user-setting > div {
+    border-bottom: 1px solid #eeeeee;
+    h5 {
+      color: #616161;
+    }
+    i {
+      color: #616161;
+    }
+    &.toggle-option:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  .stream-set > img {
+    border-left: 1px solid #eeeeee;
+  }
+  .u-info {
+    p {
+      color: #424242;
+    }
+    a {
+      i {
+        color: #424242;
+      }
+    }
+  }
+  .alarm {
+    ul {
+      li {
+        color: #616161;
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+  }
+  .theme {
+    ul {
+      li {
+        color: #616161;
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .user-setting {
+    background: #212121;
+    li {
+      &:hover {
+        background-color: #424242;
+      }
+    }
+  }
+  .user-setting > div {
+    border-bottom: 1px solid #616161;
+    h5 {
+      color: #eeeeee;
+    }
+    i {
+      color: #eeeeee;
+    }
+    &.toggle-option:hover {
+      background-color: #616161;
+    }
+  }
+  .stream-set > img {
+    border-left: 1px solid #424242;
+  }
+  .u-info {
+    p {
+      color: #eeeeee;
+    }
+    a {
+      i {
+        color: #eeeeee;
+      }
+    }
+  }
+  .alarm {
+    ul {
+      li {
+        color: #eeeeee;
+        &:hover {
+          background-color: #616161;
+        }
+      }
+    }
+  }
+  .theme {
+    ul {
+      li {
+        color: #eeeeee;
+        &:hover {
+          background-color: #616161;
+        }
+      }
+    }
+  }
+}

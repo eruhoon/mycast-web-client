@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'chat-interface',
   templateUrl: './chat-interface.component.html',
-  styleUrls: ['./chat-interface.component.scss']
+  styleUrls: ['./chat-interface.component.scss', './chat-interface.color.scss']
 })
 export class ChatInterfaceComponent implements OnInit {
 

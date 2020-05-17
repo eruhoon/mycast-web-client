@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: light) {
+    div.part {
+        button {
+            background-color: #fff;
+            color: #616161;
+            &:hover {
+                background-color: #f7f7f7;
+            }
+            &:active {
+                background-color: #f3f3f3;
+            }
+        }
+    }
+}
+@media (prefers-color-scheme: dark) {
+    div.part {
+        button {
+            background-color: #212121;
+            color: #616161;
+            &:hover {
+                background-color: #313131;
+            }
+            &:active {
+                background-color: #313131;
+            }
+        }
+    }
+}

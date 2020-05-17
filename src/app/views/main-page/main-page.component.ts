@@ -14,7 +14,7 @@ import { Component, HostListener } from '@angular/core';
 @Component({
     selector: 'app-main-page',
     templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.scss']
+    styleUrls: ['./main-page.component.scss', './main-page.color.scss']
 })
 export class MainPageComponent {
 

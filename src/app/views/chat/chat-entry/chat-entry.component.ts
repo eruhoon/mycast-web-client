@@ -1,13 +1,11 @@
 import { Chat } from 'src/app/models/chat/Chat';
 
-import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'chat-entry',
   templateUrl: './chat-entry.component.html',
-  styleUrls: ['./chat-entry.component.scss']
+  styleUrls: ['./chat-entry.component.scss', './chat-entry.color.scss']
 })
 export class ChatEntryComponent {
 

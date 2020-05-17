@@ -1,0 +1,31 @@
+@media (prefers-color-scheme: light) {
+  h3 {
+    color: #616161;
+  }
+  hr {
+    border: 1px solid #f0f0f0;
+  }
+  li {
+    color: #424242;
+    &:hover {
+      background: #e0e0e0;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  h3 {
+    color: #e0e0e0;
+  }
+  hr {
+    border: 1px solid #515151;
+  }
+  li {
+    color: #f0f0f0;
+    &:hover {
+      background: #515151;
+    }
+  }
+}
+
+// 사이드바 흑백 전환 모드시 색상 관계 없이
+// 글자 - 흰색 // 테두리 - #424242 ~ #616161

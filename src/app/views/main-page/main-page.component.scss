@@ -2,129 +2,6 @@ $top-bar-height: 50px;
 $default-chat-width: 25%;
 $stream-menu-height: 60px;
 
-@media (prefers-color-scheme: light) {
-  nav.top-bar-section {
-    background: #ffffff;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  .main-section>.stream-container-view {
-    background: #f0f0f0;
-  }
-  .main-section>.stream-container-view>.component-view{
-    background: #f0f0f0;
-  }
-  .main-section>.stream-container-view>.stream-list-view {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    .show-btn{
-      background: #ffffff;
-      i{
-        color:#212121;
-      }
-    }
-  }
-  .side-bar {
-    app-side-bar {
-      background: #ffffff;
-      border-right: 1px solid #424242;
-    }
-  }
-  .main-section>.chat-list-view {
-    background: #ffffff;
-    border-right: 1px solid #e0e0e0;
-    border-left: 1px solid #e0e0e0;
-  }
-  .setting-view {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-  }
-  .chat-list-view::-webkit-scrollbar {
-    background-color: #fff;
-    width: 16px;
-  }
-  // background of the scrollbar except button or resizer
-  .chat-list-view::-webkit-scrollbar-track {
-    background-color: #fff;
-  }
-  
-  .chat-list-view::-webkit-scrollbar-track:hover {
-    background-color: #f4f4f4;
-  }
-  
-  // scrollbar itself
-  .chat-list-view::-webkit-scrollbar-thumb {
-    background-color: #babac0;
-    border-radius: 16px;
-    border: 5px solid #fff;
-  }
-  
-  .chat-list-view::-webkit-scrollbar-thumb:hover {
-    background-color: #a0a0a5;
-    border: 4px solid #f4f4f4;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  nav.top-bar-section {
-    background: #212121;
-    border-bottom: 1px solid #424242;
-  }
-  .main-section>.stream-container-view {
-    background: #424242;
-  }
-  .main-section>.stream-container-view>.component-view{
-    background: #595959;
-  }
-  .main-section>.stream-container-view>.stream-list-view {
-    background: #212121;
-    border-bottom: 1px solid #424242;
-    .show-btn{
-      background: #212121;
-      i{
-        color:#ffffff;
-      }
-    }
-  }
-  .side-bar {
-    app-side-bar {
-      background: #212121;
-      border-right: 1px solid #424242;
-    }
-  }
-  .main-section>.chat-list-view {
-    background: #424242;
-    border-right: 1px solid #616161;
-    border-left: 1px solid #616161;
-  }
-  .setting-view {
-    background: #424242;
-    border: 1px solid #616161;
-  }
-  .chat-list-view::-webkit-scrollbar {
-    background-color: #212121;
-    width: 16px;
-  }
-  // background of the scrollbar except button or resizer
-  .chat-list-view::-webkit-scrollbar-track {
-    background-color: #212121;
-  }
-  
-  .chat-list-view::-webkit-scrollbar-track:hover {
-    background-color: #424242;
-  }
-  
-  // scrollbar itself
-  .chat-list-view::-webkit-scrollbar-thumb {
-    background-color: #616161;
-    border-radius: 16px;
-    border: 5px solid #424242;
-  }
-  
-  .chat-list-view::-webkit-scrollbar-thumb:hover {
-    background-color: #616161;
-    border: 4px solid #424242;
-  }
-}
 nav.top-bar-section {
   position: absolute;
   left: 0;
@@ -148,7 +25,7 @@ nav.top-bar-section {
   z-index: 20;
 }
 
-.main-section>.stream-container-view {
+.main-section > .stream-container-view {
   position: absolute;
   left: 0;
   top: 0;
@@ -158,7 +35,7 @@ nav.top-bar-section {
   z-index: 21;
 }
 
-.main-section>.stream-container-view>.component-view {
+.main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
   height: 100%;
@@ -172,7 +49,7 @@ nav.top-bar-section {
 
 // 방송을 켜서 볼경우
 // 색상값 반전 필수 - 검정으로 변경
-.main-section>.stream-container-view>.stream-list-view {
+.main-section > .stream-container-view > .stream-list-view {
   width: auto;
   height: 60px;
   padding: 0px 5px;
@@ -204,7 +81,7 @@ nav.top-bar-section {
 
     i {
       line-height: 32px;
-      color:#ffffff;
+      color: #ffffff;
     }
   }
 }
@@ -279,7 +156,7 @@ nav.top-bar-section {
   }
 }
 
-.main-section>.chat-list-view {
+.main-section > .chat-list-view {
   position: absolute;
   top: 0;
   right: 0;
@@ -388,7 +265,7 @@ toast-list {
   left: 50%;
   bottom: 30px;
   -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 // 스크롤바 관련 처리

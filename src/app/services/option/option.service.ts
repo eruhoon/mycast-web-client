@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
-import { LocalStorage } from 'src/app/models/storage/LocalStorage';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
+import { LocalStorage } from 'src/app/models/storage/LocalStorage';
+import { Theme } from 'src/app/models/theme/Theme';
+import { ThemeParser } from 'src/app/models/theme/ThemeParser';
+
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +12,23 @@ import { NotificationSounds } from 'src/app/models/notification/NotificationSoun
 export class OptionService {
 
   private mStorage: LocalStorage;
+  private mThemeParser: ThemeParser;
   private mChatPosition: number;
   private mNotificationSounds: NotificationSounds;
   private mNotificationSoundId: string;
   private mDataSaveMode: boolean;
   private mScrollLockMode: boolean;
+  private mTheme: Theme;
 
   public constructor() {
     this.mStorage = LocalStorage.getInstance();
+    this.mThemeParser = new ThemeParser();
     this.mChatPosition = this.mStorage.getChatPosition();
     this.mNotificationSounds = new NotificationSounds();
     this.mNotificationSoundId = this.mStorage.getNotificationSoundId();
     this.mDataSaveMode = this.mStorage.getDataSaveMode();
     this.mScrollLockMode = this.mStorage.getScrollLockMode();
+    this.mTheme = this.mThemeParser.parse(this.mStorage.getTheme());
   }
 
   public getChatPosition(): number {
@@ -58,5 +65,9 @@ export class OptionService {
   public setScrollLockMode(mode: boolean): void {
     this.mScrollLockMode = mode;
     this.mStorage.setScrollLockMode(mode);
+  }
+
+  public getTheme(): Theme {
+    return this.mTheme;
   }
 }

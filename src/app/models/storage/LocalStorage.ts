@@ -4,6 +4,7 @@ export class LocalStorage {
 
     private static sInstance: LocalStorage | null = null;
 
+    private static readonly DEFAULT_STRING = '';
     private static readonly DEFAULT_CHAT_POSITION = 300;
     private static OPTION_TRUE = 'true';
     private static OPTION_FALSE = 'false';
@@ -62,6 +63,16 @@ export class LocalStorage {
             LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
     }
 
+    public getTheme(): string {
+        const rawThemeMode =
+            this.getItem(LocalStorageKey.THEME);
+        return rawThemeMode ? rawThemeMode : LocalStorage.DEFAULT_STRING;
+    }
+
+    public setTheme(value: string): void {
+        this.setItem(LocalStorageKey.THEME, value);
+    }
+
     private getItem(key: LocalStorageKey): string | null {
         return localStorage.getItem(key.toString());
     }
@@ -80,4 +91,5 @@ enum LocalStorageKey {
     NOTIFICATION_SOUND = 'vega.notification_sound',
     DATA_SAVE_MODE = 'vega.data_save_mode',
     SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
+    THEME = 'vega.theme',
 }

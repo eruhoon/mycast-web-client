@@ -9,22 +9,39 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import {
-    StreamPlayerPageComponent
+  StreamPlayerPageComponent
 } from './views/stream/stream-player-page/stream-player-page.component';
 import {
-    TestPlayerPageComponent
+  TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
 import {
-    TotoroPlayerPageComponent
+  TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
+
+const isMobile = () => {
+  const userAgent = navigator.userAgent;
+  if (userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const mainComponent =
+  isMobile() ? MobilePageComponent : MainPageComponent;
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: MainPageComponent }
+      { path: '', component: mainComponent }
     ]
+  },
+  {
+    path: 'mobile',
+    component: MobilePageComponent,
   },
   {
     path: 'login',

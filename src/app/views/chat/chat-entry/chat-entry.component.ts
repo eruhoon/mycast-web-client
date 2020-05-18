@@ -19,7 +19,6 @@ export class ChatEntryComponent {
   public constructor() { }
 
   public getIcon(): string {
-    console.log(this.chat.getMessages()[0].getType());
     return this.chat.getSender().getIcon().trim();
   }
 

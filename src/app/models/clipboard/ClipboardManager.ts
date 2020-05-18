@@ -1,5 +1,6 @@
-import { TypeCallback } from '../common/callback/TypeCallback';
 import Axios from 'axios';
+
+import { TypeCallback } from '../common/callback/TypeCallback';
 
 export class ClipboardManager {
 
@@ -7,24 +8,26 @@ export class ClipboardManager {
         rawData: DataTransfer | null, callback: TypeCallback<string>): void {
 
         const file = this.parseImageFile(rawData);
-        if (!file) return;
+        if (!file) {
+            return;
+        }
         this.uploadImageCacheWithFile(file, imageUri => {
             callback(imageUri);
         });
     }
 
     public parseImageFile(rawData: DataTransfer | null): File | null {
-        if (!rawData || !rawData.items) return null;
-        const items = rawData.items;
-
-        let blob: File | null = null;
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.type.indexOf('image') !== -1) {
-                blob = item.getAsFile();
-            }
+        if (!rawData || !rawData.files || !rawData.files.item(0)) {
+            console.log(rawData);
+            console.warn('no data');
+            return null;
         }
-        return !blob ? null : blob;
+        const file = rawData.files.item(0);
+        if (!file || file.type.indexOf('image') === -1) {
+            console.warn('no image');
+            return null;
+        }
+        return file;
     }
 
     private uploadImageCacheWithFile(
@@ -41,7 +44,7 @@ export class ClipboardManager {
             if (res.status !== 200 || !res.data) {
                 return;
             }
-            let imageUri = res.data;
+            const imageUri = res.data;
             callback(imageUri);
         });
     }

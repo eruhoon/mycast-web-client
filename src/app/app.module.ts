@@ -56,6 +56,13 @@ import { MemoDetailViewComponent } from './views/memo/memo-detail-view/memo-deta
 import { MemoEntryComponent } from './views/memo/memo-entry/memo-entry.component';
 import { MemoMainViewComponent } from './views/memo/memo-main-view/memo-main-view.component';
 import { MemoUploadViewComponent } from './views/memo/memo-upload-view/memo-upload-view.component';
+import { LolUserPackComponent } from './views/chat/cp/lol-user-pack/lol-user-pack.component';
+import { LolChampionPackComponent } from './views/chat/cp/lol-champion-pack/lol-champion-pack.component';
+import { BookPackComponent } from './views/chat/cp/book-pack/book-pack.component';
+import { StreamPackComponent } from './views/chat/cp/stream-pack/stream-pack.component';
+import { CqHeroPackComponent } from './views/chat/cp/cq-hero-pack/cq-hero-pack.component';
+import { AfreecaPackComponent } from './views/chat/cp/afreeca-pack/afreeca-pack.component';
+import { MagicConchPackComponent } from './views/chat/cp/magic-conch-pack/magic-conch-pack.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +112,13 @@ import { MemoUploadViewComponent } from './views/memo/memo-upload-view/memo-uplo
     MemoEntryComponent,
     MemoMainViewComponent,
     MemoUploadViewComponent,
+    LolUserPackComponent,
+    LolChampionPackComponent,
+    BookPackComponent,
+    StreamPackComponent,
+    CqHeroPackComponent,
+    AfreecaPackComponent,
+    MagicConchPackComponent,
   ],
   imports: [
     BrowserModule,

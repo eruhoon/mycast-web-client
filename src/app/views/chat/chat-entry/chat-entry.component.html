@@ -14,14 +14,28 @@
       </div>
     </div>
     <div *ngFor="let message of chat.getMessages()" class="body black-text" [ngSwitch]="message.getType()">
-      <text-pack *ngSwitchCase="'text'" [message]="message"></text-pack>
+      <afreeca-pack *ngSwitchCase="'afreeca'" [message]="message">
+      </afreeca-pack>
+      <book-pack *ngSwitchCase="'book'" [message]="message">
+      </book-pack>
       <image-pack *ngSwitchCase="'image'" [message]="message">
       </image-pack>
-      <twitch-pack *ngSwitchCase="'twitch'" [message]="message">
-      </twitch-pack>
       <link-pack *ngSwitchCase="'link'" [message]="message">
       </link-pack>
-      <youtube-pack *ngSwitchCase="'youtube'" [message]="message"></youtube-pack>
+      <lol-champion-pack *ngSwitchCase="'champion'" [message]="message">
+      </lol-champion-pack>
+      <lol-user-pack *ngSwitchCase="'lol-user'" [message]="message">
+      </lol-user-pack>
+      <magic-conch-pack *ngSwitchCase="'magic-conch'" [message]="message">
+      </magic-conch-pack>
+      <stream-pack *ngSwitchCase="'stream'" [message]="message">
+      </stream-pack>
+      <text-pack *ngSwitchCase="'text'" [message]="message">
+      </text-pack>
+      <twitch-pack *ngSwitchCase="'twitch'" [message]="message">
+      </twitch-pack>
+      <youtube-pack *ngSwitchCase="'youtube'" [message]="message">
+      </youtube-pack>
     </div>
 
   </div>

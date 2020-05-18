@@ -1,12 +1,10 @@
-<div class="image-pack">
+<div class="image-pack" (mouseenter)="showMenu()" (mouseleave)="hideMenu()">
     <div class="data-save-alter" *ngIf="!isOpen()" (click)="openImage()">
         클릭해서 이미지 열기
     </div>
     <div class="img-wrapper" *ngIf="isOpen()">
         <img class="img" [src]="getImage()" (click)="onImageClick()">
-        <!-- *ngIf="!isCensored()" -->
-        <!-- <div *ngIf="isCensored()">CENSORED</div> -->
-        <div class="button-wrapper">
+        <div class="button-wrapper" *ngIf="isMenuShow()">
             <button (click)="toggleCensor()">
                 <i class="material-icons">security</i>
             </button>

@@ -17,6 +17,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   private mImagePopupService: ImagePopupService;
   private mOptionService: OptionService;
   private mOpen: boolean;
+  private mCensored: boolean;
 
   public constructor(
     imagePopupService: ImagePopupService,
@@ -26,6 +27,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     this.mImagePopupService = imagePopupService;
     this.mOptionService = optionService;
     this.mOpen = false;
+    this.mCensored = false;
   }
 
   public ngOnInit(): void {
@@ -33,15 +35,27 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   }
 
   public getImage(): string {
-    return this.message.getMessage().trim();
+    if (this.isCensored()) {
+      return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
+    } else {
+      return this.message.getMessage().trim();
+    }
   }
 
   public isOpen(): boolean {
     return this.mOpen;
   }
 
+  public isCensored(): boolean {
+    return this.mCensored;
+  }
+
   public openImage(): void {
     this.mOpen = true;
+  }
+
+  public toggleCensor(): void {
+    this.mCensored = !this.mCensored;
   }
 
   public onImageClick(): void {

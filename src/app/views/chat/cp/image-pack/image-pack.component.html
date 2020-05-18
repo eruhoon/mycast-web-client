@@ -4,10 +4,12 @@
     </div>
     <div class="img-wrapper" *ngIf="isOpen()">
         <img class="img" [src]="getImage()" (click)="onImageClick()">
-        <!-- <div #buttonWrapper class="button-wrapper">
-            <button>
+        <!-- *ngIf="!isCensored()" -->
+        <!-- <div *ngIf="isCensored()">CENSORED</div> -->
+        <div class="button-wrapper">
+            <button (click)="toggleCensor()">
                 <i class="material-icons">security</i>
             </button>
-        </div> -->
+        </div>
     </div>
 </div>

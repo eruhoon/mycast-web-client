@@ -42,6 +42,14 @@ export class ChatPageComponent {
     });
   }
 
+  public onDrop(event: DragEvent): boolean {
+    const dataTransfer = event.dataTransfer;
+    this.mClipboardManager.uploadImageCache(dataTransfer, imageUri => {
+      this.mClipboardImageService.setCurrentImage(imageUri);
+    });
+    return false;
+  }
+
   public onChatInput(rawChat: string): void {
     this.mChatNetwork.chat(rawChat);
   }

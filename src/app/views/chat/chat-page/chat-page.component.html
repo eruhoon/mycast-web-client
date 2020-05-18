@@ -1,4 +1,5 @@
-<div class="chat-page" (paste)="onPaste($event)">
+<div class="chat-page" (paste)="onPaste($event)" (dragover)="$event.preventDefault()"
+    (drop)="$event.preventDefault(); onDrop($event)">
     <chat-list (entryIconSelect)="onChatEntryIconSelect($event)"></chat-list>
     <chat-user-list *ngIf="isChatUserListShow()"></chat-user-list>
     <chat-interface (chatInput)="onChatInput($event)"></chat-interface>

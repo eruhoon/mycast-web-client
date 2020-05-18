@@ -18,6 +18,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   private mOptionService: OptionService;
   private mOpen: boolean;
   private mCensored: boolean;
+  private mMenuShow: boolean;
 
   public constructor(
     imagePopupService: ImagePopupService,
@@ -28,6 +29,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     this.mOptionService = optionService;
     this.mOpen = false;
     this.mCensored = false;
+    this.mMenuShow = false;
   }
 
   public ngOnInit(): void {
@@ -48,6 +50,18 @@ export class ImagePackComponent extends ChatPack implements OnInit {
 
   public isCensored(): boolean {
     return this.mCensored;
+  }
+
+  public isMenuShow(): boolean {
+    return this.mMenuShow;
+  }
+
+  public showMenu(): void {
+    this.mMenuShow = true;
+  }
+
+  public hideMenu(): void {
+    this.mMenuShow = false;
   }
 
   public openImage(): void {

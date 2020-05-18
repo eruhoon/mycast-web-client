@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import Axios from 'axios';
 import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatService } from 'src/app/services/chat/chat.service';
-import { MainService } from 'src/app/services/main/main.service';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
+import { MainService } from 'src/app/services/main/main.service';
+
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'chat-page',
@@ -33,7 +33,9 @@ export class ChatPageComponent {
   }
 
   public onPaste(event: ClipboardEvent): void {
-    if (!event.clipboardData) return;
+    if (!event.clipboardData) {
+      return;
+    }
 
     this.mClipboardManager.uploadImageCache(event.clipboardData, imageUri => {
       this.mClipboardImageService.setCurrentImage(imageUri);

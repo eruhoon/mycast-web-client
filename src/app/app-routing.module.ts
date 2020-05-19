@@ -19,9 +19,17 @@ import {
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 
-const userAgent = navigator.userAgent;
-const mainComponent = (userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) ?
-  MobilePageComponent : MainPageComponent;
+const isMobile = () => {
+  const userAgent = navigator.userAgent;
+  if (userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const mainComponent =
+  isMobile() ? MobilePageComponent : MainPageComponent;
 
 const routes: Routes = [
   {

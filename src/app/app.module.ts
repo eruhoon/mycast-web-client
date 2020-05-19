@@ -63,7 +63,6 @@ import { StreamPackComponent } from './views/chat/cp/stream-pack/stream-pack.com
 import { CqHeroPackComponent } from './views/chat/cp/cq-hero-pack/cq-hero-pack.component';
 import { AfreecaPackComponent } from './views/chat/cp/afreeca-pack/afreeca-pack.component';
 import { MagicConchPackComponent } from './views/chat/cp/magic-conch-pack/magic-conch-pack.component';
-import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +119,6 @@ import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.comp
     CqHeroPackComponent,
     AfreecaPackComponent,
     MagicConchPackComponent,
-    MobilePageComponent,
   ],
   imports: [
     BrowserModule,

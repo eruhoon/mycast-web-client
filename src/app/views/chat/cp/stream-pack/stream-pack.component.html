@@ -4,13 +4,13 @@
     </div>
     <div class="stream-live-info">
         <div class="str-user-img">
-            <img src="https://i.imgur.com/XjsUghQ.gif">
+            <img [src]="getIcon() | safe">
         </div>
         <div class="str-user-info">
-            <h3>CAT이야기</h3>
+            <h3>{{getName()}}</h3>
             <div class="str-live-info">
                 <img src="http://mycast.xyz/home/asset/chat.original/img/stream-pack-plaform-totoro.png">
-                <p>mycast / 이웃방송</p>
+                <p>{{getId()}} / {{getPlatform()}}</p>
             </div>
         </div>
     </div>

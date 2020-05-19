@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './services/auth/auth.guard';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
@@ -19,17 +19,21 @@ import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 
-const userAgent = navigator.userAgent;
-const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
-const mainComponent = isMobile ? MobilePageComponent : MainPageComponent;
-
 const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: mainComponent }
+      {
+        path: '',
+        component: MainPageComponent
+      }
     ]
+  },
+  {
+    path: 'mobile',
+    canActivate: [AuthGuard],
+    component: MobilePageComponent
   },
   {
     path: 'login',

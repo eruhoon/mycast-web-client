@@ -11,6 +11,7 @@ import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/prof
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-main-page',
@@ -36,6 +37,7 @@ export class MainPageComponent {
     private mStreamListShow: boolean;
 
     public constructor(
+        router: Router,
         mainService: MainService,
         notificationService: NotificationService,
         toastService: ToastService,
@@ -45,6 +47,11 @@ export class MainPageComponent {
         profileService: ProfileService,
         clipboardImageService: ClipboardImageService) {
 
+        const userAgent = navigator.userAgent;
+        const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
+        if (isMobile) {
+            router.navigate(['/mobile']);
+        }
         this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mMainService = mainService;

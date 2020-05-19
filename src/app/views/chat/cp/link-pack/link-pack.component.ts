@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main/main.service';
+
+import { Component, Injector, OnInit } from '@angular/core';
+
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -14,8 +16,8 @@ export class LinkPackComponent extends ChatPack implements OnInit {
   private mTitle: string;
   private mThumbnail: string;
 
-  public constructor(mainService: MainService) {
-    super();
+  public constructor(injector: Injector, mainService: MainService) {
+    super(injector);
     this.mMainService = mainService;
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 
@@ -14,8 +14,8 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
   private mDivision: string;
   private mPoint: number;
 
-  public constructor() {
-    super();
+  public constructor(injector: Injector) {
+    super(injector);
     this.mName = '';
     this.mTier = '';
     this.mDivision = '';

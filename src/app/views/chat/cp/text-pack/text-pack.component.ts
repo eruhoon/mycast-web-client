@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 
@@ -9,7 +9,7 @@ import { ChatPack } from '../ChatPack';
 })
 export class TextPackComponent extends ChatPack {
 
-  public constructor() {
-    super();
+  public constructor(injector: Injector) {
+    super(injector);
   }
 }

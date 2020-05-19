@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
+
+import { Component, Injector, OnInit } from '@angular/core';
+
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -20,10 +22,11 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   private mMainService: MainService;
 
   public constructor(
+    injector: Injector,
     linkPopup: LinkPopupService,
     mainService: MainService) {
 
-    super();
+    super(injector);
     this.mLinkPopup = linkPopup;
     this.mMainService = mainService;
   }

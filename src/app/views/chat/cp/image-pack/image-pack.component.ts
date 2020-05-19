@@ -1,7 +1,6 @@
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
-import { OptionService } from 'src/app/services/option/option.service';
 
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 
@@ -15,25 +14,24 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   @Output() packClick: EventEmitter<string>;
 
   private mImagePopupService: ImagePopupService;
-  private mOptionService: OptionService;
   private mOpen: boolean;
   private mCensored: boolean;
   private mMenuShow: boolean;
 
   public constructor(
-    imagePopupService: ImagePopupService,
-    optionService: OptionService) {
+    injector: Injector,
+    imagePopupService: ImagePopupService) {
 
-    super();
+    super(injector);
     this.mImagePopupService = imagePopupService;
-    this.mOptionService = optionService;
     this.mOpen = false;
     this.mCensored = false;
     this.mMenuShow = false;
   }
 
   public ngOnInit(): void {
-    this.mOpen = this.mOptionService.isDataSaveMode() ? false : true;
+    console.log('isDataSaveMode', this.isDataSaveMode());
+    this.mOpen = this.isDataSaveMode() ? false : true;
   }
 
   public getImage(): string {

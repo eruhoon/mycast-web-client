@@ -1,6 +1,6 @@
 import { MainService } from 'src/app/services/main/main.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 
@@ -15,8 +15,8 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
   private mIcon: string;
   private mName: string;
 
-  constructor(private mMainService: MainService) {
-    super();
+  constructor(private mMainService: MainService, injector: Injector) {
+    super(injector);
   }
 
   public ngOnInit(): void {

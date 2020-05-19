@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 
@@ -9,8 +9,8 @@ import { ChatPack } from '../ChatPack';
 })
 export class AfreecaPackComponent extends ChatPack implements OnInit {
 
-  public constructor() {
-    super();
+  public constructor(injector: Injector) {
+    super(injector);
   }
 
   public ngOnInit() {

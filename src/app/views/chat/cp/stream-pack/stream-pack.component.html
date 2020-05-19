@@ -1,4 +1,4 @@
-<div class="stream-live-box">
+<div class="stream-live-box" *ngIf="!isDataSaveMode()">
     <div class="stream-live-img">
         <img [src]="getThumbnail()">
     </div>
@@ -15,3 +15,4 @@
         </div>
     </div>
 </div>
+<div *ngIf="isDataSaveMode()">(대충 {{getName()}} 방송)</div>

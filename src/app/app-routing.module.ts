@@ -7,6 +7,7 @@ import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
+import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import {
     StreamPlayerPageComponent
@@ -17,6 +18,10 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+
+const userAgent = navigator.userAgent;
+const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
+const mainComponent = isMobile ? MobilePageComponent : MainPageComponent;
 
 const routes: Routes = [
   {

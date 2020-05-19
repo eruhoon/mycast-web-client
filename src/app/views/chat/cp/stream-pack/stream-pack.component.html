@@ -1,6 +1,6 @@
 <div class="stream-live-box">
     <div class="stream-live-img">
-        <img src="https://w.wallhaven.cc/full/lm/wallhaven-lmxmxy.png">
+        <img [src]="getThumbnail()">
     </div>
     <div class="stream-live-info">
         <div class="str-user-img">
@@ -9,7 +9,7 @@
         <div class="str-user-info">
             <h3>{{getName()}}</h3>
             <div class="str-live-info">
-                <img src="http://mycast.xyz/home/asset/chat.original/img/stream-pack-plaform-totoro.png">
+                <img [src]="getPlatformIcon()">
                 <p>{{getId()}} / {{getPlatform()}}</p>
             </div>
         </div>

@@ -13,6 +13,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   private mIcon: string;
   private mName: string;
   private mPlatform: string;
+  private mThumbnail: string;
 
   public constructor(injector: Injector) {
     super(injector);
@@ -21,6 +22,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mIcon = '';
     this.mName = '';
     this.mPlatform = '';
+    this.mThumbnail = '';
   }
 
   public ngOnInit() {
@@ -29,6 +31,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mIcon = param.icon;
     this.mName = param.nickname;
     this.mPlatform = param.platform;
+    this.mThumbnail = param.thumbnail;
   }
 
   public getId(): string { return this.mId; }
@@ -38,5 +41,12 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   public getIcon(): string { return this.mIcon; }
 
   public getPlatform(): string { return this.mPlatform; }
+
+  public getThumbnail(): string { return this.mThumbnail; }
+
+  // TODO: Optimize PlatformIcon
+  public getPlatformIcon(): string {
+    return `http://mycast.xyz/home/asset/chat.original/img/stream-pack-plaform-${this.mPlatform}.png`;
+  }
 
 }

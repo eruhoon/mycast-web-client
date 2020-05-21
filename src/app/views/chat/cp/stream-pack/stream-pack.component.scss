@@ -1,6 +1,6 @@
 .stream-live-box {
     width: 100%;
-    height: 120px;
+    height: 70px;
     padding: 0px;
     overflow: hidden;
     position: relative;
@@ -21,7 +21,7 @@
         width: calc(100% - 10px);
         height: 50px;
         padding: 10px 5px;
-        background-color: rgba($color: #ffffff, $alpha: 0.75);
+        background-color: rgba($color: #000000, $alpha: 0.75);
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -32,7 +32,7 @@
             border-radius: 50px;
             overflow: hidden;
             float: left;
-            border: 1px solid #e3e3e3;
+            border: 1px solid #ffffff;
 
             img {
                 width: 50px;
@@ -48,15 +48,18 @@
             * {
                 padding: 0%;
                 margin: 0%;
+                color: #ffffff;
+                text-shadow: 2px 2px 2px rgba(0,0,0,.4);
             }
             h3 {
                 font-size: 18px;
                 font-weight: bolder;
                 margin-bottom: 5px;
+                margin-top: 5px;
             }
             .str-live-info {
                 width: 100%;
-                height: 25px;
+                height: 20px;
 
                 * {
                     float: left;
@@ -64,7 +67,6 @@
                 img {
                     width: 20px;
                     height: 20px;
-                    padding: 2.5px;
                     background-color: #424242;
                     border-radius: 3px;
                     overflow: hidden;

@@ -30,7 +30,6 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   }
 
   public ngOnInit(): void {
-    console.log('isDataSaveMode', this.isDataSaveMode());
     this.mOpen = this.isDataSaveMode() ? false : true;
   }
 

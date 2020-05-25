@@ -77,7 +77,6 @@ export class SettingViewComponent implements OnInit {
 
   public ngOnInit(): void {
     this.theme = this.mOptionService.getTheme();
-    console.log(this.theme, this.mOptionService.getTheme());
     this.mNotificationSoundId = this.mOptionService.getNotificationSound().getId();
     this.mProfileService.loadStream();
   }

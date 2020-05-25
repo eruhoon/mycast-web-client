@@ -124,6 +124,10 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     protected onRefreshChatList(refreshChats: RefreshChat[]) {
         const chats: Chat[] = refreshChats.map(refreshChat => {
+            const isLegacyBot = refreshChat.level === 100;
+            const isMobile = refreshChat.isMobile;
+            const senderType = isLegacyBot ? ChatSenderType.BOT :
+                isMobile ? ChatSenderType.MOBILE : ChatSenderType.PC;
             const message = new MutableChatMessage();
             message.setType(this.mChatTypeParser.parse(refreshChat.type));
             message.setMessage(refreshChat.msg.response);
@@ -133,8 +137,7 @@ export class WebSocketModel extends VegaChatSocketModel {
             chat.setIcon(refreshChat.icon);
             chat.setLevel(refreshChat.level);
             chat.setNickname(refreshChat.nickname);
-            chat.setSenderType(refreshChat.isMobile ?
-                ChatSenderType.MOBILE : ChatSenderType.PC);
+            chat.setSenderType(senderType);
             chat.addMessage(message);
             return chat;
         });
@@ -142,6 +145,10 @@ export class WebSocketModel extends VegaChatSocketModel {
     }
 
     protected onChat(res: RefreshChat) {
+        const isLegacyBot = res.level === 100;
+        const isMobile = res.isMobile;
+        const senderType = isLegacyBot ? ChatSenderType.BOT :
+            isMobile ? ChatSenderType.MOBILE : ChatSenderType.PC;
         const message = new MutableChatMessage();
         message.setType(this.mChatTypeParser.parse(res.type));
         message.setMessage(res.msg.response);
@@ -151,8 +158,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         chat.setIcon(res.icon);
         chat.setLevel(res.level);
         chat.setNickname(res.nickname);
-        chat.setSenderType(res.isMobile ?
-            ChatSenderType.MOBILE : ChatSenderType.PC);
+        chat.setSenderType(senderType);
         chat.addMessage(message);
         this.mOnChat(chat);
     }

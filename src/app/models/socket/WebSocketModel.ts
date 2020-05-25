@@ -1,7 +1,4 @@
 import { Chat } from '../chat/Chat';
-import { ChatSenderType } from '../chat/ChatSender';
-import { MutableChat } from '../chat/MutableChat';
-import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
 import { MutableNotification } from '../notification/MutableNotification';
@@ -10,9 +7,10 @@ import { MutableProfile } from '../profile/MutableProfile';
 import { Profile } from '../profile/Profile';
 import { MutableUser } from '../user/MutableUser';
 import { User } from '../user/User';
+import { RefreshChat } from './RefreshChat';
+import { RefreshChatDto } from './RefreshChatDto';
 import {
-    RawChatRequest, ReceivedNotification, RefreshChat, RefreshMyProfile, RefreshUser,
-    VegaChatSocketModel
+    RawChatRequest, ReceivedNotification, RefreshMyProfile, RefreshUser, VegaChatSocketModel
 } from './VegaChatSocketModel';
 
 export class WebSocketModel extends VegaChatSocketModel {
@@ -122,44 +120,15 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mOnNotificationReceived(notification);
     }
 
-    protected onRefreshChatList(refreshChats: RefreshChat[]) {
-        const chats: Chat[] = refreshChats.map(refreshChat => {
-            const isLegacyBot = refreshChat.level === 100;
-            const isMobile = refreshChat.isMobile;
-            const senderType = isLegacyBot ? ChatSenderType.BOT :
-                isMobile ? ChatSenderType.MOBILE : ChatSenderType.PC;
-            const message = new MutableChatMessage();
-            message.setType(this.mChatTypeParser.parse(refreshChat.type));
-            message.setMessage(refreshChat.msg.response);
-            message.setTimestamp(new Date(refreshChat.timestamp).getTime());
-            const chat = new MutableChat();
-            chat.setHash(refreshChat.hash);
-            chat.setIcon(refreshChat.icon);
-            chat.setLevel(refreshChat.level);
-            chat.setNickname(refreshChat.nickname);
-            chat.setSenderType(senderType);
-            chat.addMessage(message);
-            return chat;
+    protected onRefreshChatList(refreshChats: RefreshChatDto[]) {
+        const chats: Chat[] = refreshChats.map(dto => {
+            return new RefreshChat(dto);
         });
         this.mOnRefreshChatList(chats);
     }
 
-    protected onChat(res: RefreshChat) {
-        const isLegacyBot = res.level === 100;
-        const isMobile = res.isMobile;
-        const senderType = isLegacyBot ? ChatSenderType.BOT :
-            isMobile ? ChatSenderType.MOBILE : ChatSenderType.PC;
-        const message = new MutableChatMessage();
-        message.setType(this.mChatTypeParser.parse(res.type));
-        message.setMessage(res.msg.response);
-        message.setTimestamp(new Date(res.timestamp).getTime());
-        const chat = new MutableChat();
-        chat.setHash(res.hash);
-        chat.setIcon(res.icon);
-        chat.setLevel(res.level);
-        chat.setNickname(res.nickname);
-        chat.setSenderType(senderType);
-        chat.addMessage(message);
+    protected onChat(dto: RefreshChatDto) {
+        const chat = new RefreshChat(dto);
         this.mOnChat(chat);
     }
 

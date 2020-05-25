@@ -1,4 +1,5 @@
 import { ChatRequestFactory } from './chat-request/ChatRequestFactory';
+import { RefreshChatDto } from './RefreshChatDto';
 import { SocketModel } from './SocketModel';
 
 export abstract class VegaChatSocketModel implements SocketModel {
@@ -14,7 +15,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
 
     protected abstract onRefreshMyProfile(profile: RefreshMyProfile): void;
     protected abstract onRefreshUserList(users: RefreshUser[]): void;
-    protected abstract onRefreshChatList(chats: RefreshChat[]): void;
+    protected abstract onRefreshChatList(chats: RefreshChatDto[]): void;
     protected abstract onNotificationReceived(
         notification: ReceivedNotification): void;
     protected abstract onChat(res): void;
@@ -97,17 +98,6 @@ export type RefreshUser = {
     level: number,
     mobile: boolean,
     nickname: string
-};
-
-export type RefreshChat = {
-    hash: string,
-    icon: string,
-    level: number,
-    type: string,
-    msg: RefreshChatMessage,
-    nickname: string,
-    isMobile: boolean,
-    timestamp: string
 };
 
 export type RefreshChatMessage = {

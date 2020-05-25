@@ -1,4 +1,4 @@
-import { ChatSender } from './ChatSender';
+import { ChatSender, ChatSenderType } from './ChatSender';
 
 export class MockChatSender2 implements ChatSender {
 
@@ -18,5 +18,7 @@ export class MockChatSender2 implements ChatSender {
         return 'https://i.imgur.com/XEHbEY6.png';
     }
 
-
+    public getType(): ChatSenderType {
+        return ChatSenderType.MOBILE;
+    }
 }

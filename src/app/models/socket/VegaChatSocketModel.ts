@@ -106,6 +106,7 @@ export type RefreshChat = {
     type: string,
     msg: RefreshChatMessage,
     nickname: string,
+    isMobile: boolean,
     timestamp: string
 };
 

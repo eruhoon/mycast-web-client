@@ -1,4 +1,5 @@
 import { Chat } from '../chat/Chat';
+import { ChatSenderType } from '../chat/ChatSender';
 import { MutableChat } from '../chat/MutableChat';
 import { MutableChatMessage } from '../chat/MutableChatMessage';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
@@ -132,6 +133,8 @@ export class WebSocketModel extends VegaChatSocketModel {
             chat.setIcon(refreshChat.icon);
             chat.setLevel(refreshChat.level);
             chat.setNickname(refreshChat.nickname);
+            chat.setSenderType(refreshChat.isMobile ?
+                ChatSenderType.MOBILE : ChatSenderType.PC);
             chat.addMessage(message);
             return chat;
         });
@@ -148,6 +151,8 @@ export class WebSocketModel extends VegaChatSocketModel {
         chat.setIcon(res.icon);
         chat.setLevel(res.level);
         chat.setNickname(res.nickname);
+        chat.setSenderType(res.isMobile ?
+            ChatSenderType.MOBILE : ChatSenderType.PC);
         chat.addMessage(message);
         this.mOnChat(chat);
     }

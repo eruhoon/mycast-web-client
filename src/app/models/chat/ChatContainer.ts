@@ -20,6 +20,7 @@ export class ChatContianer {
         mutableChat.setIcon(chat.getSender().getIcon());
         mutableChat.setLevel(chat.getSender().getLevel());
         mutableChat.setNickname(chat.getSender().getNickname());
+        mutableChat.setSenderType(chat.getSender().getType());
         chat.getMessages().forEach(message => {
             const mutableMessage = new MutableChatMessage();
             mutableMessage.setType(message.getType());
@@ -34,7 +35,8 @@ export class ChatContianer {
         return s1.getHash() === s2.getHash() &&
             s1.getIcon() === s2.getIcon() &&
             s1.getLevel() === s2.getLevel() &&
-            s1.getNickname() === s2.getNickname();
+            s1.getNickname() === s2.getNickname() &&
+            s1.getType() === s2.getType();
     }
 
     public addChat(chat: Chat): void {

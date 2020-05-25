@@ -11,6 +11,10 @@
       </div>
       <div class="nickname">
         <span>{{ chat.getSender().getNickname() }}</span>
+        <span class="type" [ngSwitch]="getEnvironment()">
+          <i *ngSwitchCase="SenderEnv.MOBILE" class="material-icons">smartphone</i>
+          <i *ngSwitchCase="SenderEnv.BOT" class="material-icons">bug_report</i>
+        </span>
       </div>
     </div>
     <chat-message-entry *ngFor="let message of chat.getMessages()" [message]="message">

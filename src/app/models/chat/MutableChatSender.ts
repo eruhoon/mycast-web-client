@@ -1,4 +1,4 @@
-import { ChatSender } from './ChatSender';
+import { ChatSender, ChatSenderType } from './ChatSender';
 
 export class MutableChatSender implements ChatSender {
 
@@ -6,6 +6,7 @@ export class MutableChatSender implements ChatSender {
     private mNickname: string;
     private mLevel: number;
     private mIcon: string;
+    private mType: ChatSenderType;
 
     public getHash(): string {
         return this.mHash;
@@ -23,6 +24,10 @@ export class MutableChatSender implements ChatSender {
         return this.mIcon;
     }
 
+    public getType(): ChatSenderType {
+        return this.mType;
+    }
+
     public setHash(hash: string): void {
         this.mHash = hash;
     }
@@ -37,5 +42,9 @@ export class MutableChatSender implements ChatSender {
 
     public setIcon(icon: string): void {
         this.mIcon = icon;
+    }
+
+    public setType(type: ChatSenderType): void {
+        this.mType = type;
     }
 }

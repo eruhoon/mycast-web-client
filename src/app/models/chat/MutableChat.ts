@@ -1,7 +1,6 @@
 import { Chat } from './Chat';
 import { ChatMessage } from './ChatMessage';
-import { ChatSender } from './ChatSender';
-import { MutableChatMessage } from './MutableChatMessage';
+import { ChatSender, ChatSenderType } from './ChatSender';
 import { MutableChatSender } from './MutableChatSender';
 
 export class MutableChat implements Chat {
@@ -10,6 +9,7 @@ export class MutableChat implements Chat {
     private mNickname: string;
     private mLevel: number;
     private mIcon: string;
+    private mSenderType: ChatSenderType;
     private mMessages: ChatMessage[];
 
     public constructor() {
@@ -22,6 +22,7 @@ export class MutableChat implements Chat {
         sender.setNickname(this.mNickname);
         sender.setLevel(this.mLevel);
         sender.setIcon(this.mIcon);
+        sender.setType(this.mSenderType);
         return sender;
     }
 
@@ -47,6 +48,10 @@ export class MutableChat implements Chat {
 
     public setIcon(icon: string): void {
         this.mIcon = icon;
+    }
+
+    public setSenderType(senderType: ChatSenderType): void {
+        this.mSenderType = senderType;
     }
 
     public addMessage(chatMessage: ChatMessage): void {

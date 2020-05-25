@@ -3,4 +3,11 @@ export interface ChatSender {
     getNickname(): string;
     getLevel(): number;
     getIcon(): string;
+    getType(): ChatSenderType;
+}
+
+export const enum ChatSenderType {
+    PC,
+    MOBILE,
+    BOT,
 }

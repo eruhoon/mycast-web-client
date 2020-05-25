@@ -24,7 +24,7 @@ export class ChatContianer {
             const mutableMessage = new MutableChatMessage();
             mutableMessage.setType(message.getType());
             mutableMessage.setMessage(message.getMessage());
-
+            mutableMessage.setTimestamp(message.getTimestamp());
             mutableChat.addMessage(mutableMessage);
         });
         return mutableChat;

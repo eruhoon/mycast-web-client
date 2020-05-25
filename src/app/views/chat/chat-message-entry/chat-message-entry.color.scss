@@ -1,0 +1,10 @@
+:host-context(.theme-light) {
+  .black-text {
+    color: #424242;
+  }
+}
+:host-context(.theme-dark) {
+  .black-text {
+    color: #eeeeee;
+  }
+}

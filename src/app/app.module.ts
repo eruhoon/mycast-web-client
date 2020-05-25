@@ -88,6 +88,7 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { ChatMessageEntryComponent } from './views/chat/chat-message-entry/chat-message-entry.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +146,7 @@ import {
     AfreecaPackComponent,
     MagicConchPackComponent,
     MobilePageComponent,
+    ChatMessageEntryComponent,
   ],
   imports: [
     BrowserModule,

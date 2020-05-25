@@ -10,4 +10,8 @@ export class MockChatMessage implements ChatMessage {
     public getMessage(): string {
         return '';
     }
+
+    public getTimestamp(): number {
+        return 0;
+    }
 }

@@ -126,6 +126,7 @@ export class WebSocketModel extends VegaChatSocketModel {
             const message = new MutableChatMessage();
             message.setType(this.mChatTypeParser.parse(refreshChat.type));
             message.setMessage(refreshChat.msg.response);
+            message.setTimestamp(new Date(refreshChat.timestamp).getTime());
             const chat = new MutableChat();
             chat.setHash(refreshChat.hash);
             chat.setIcon(refreshChat.icon);
@@ -141,6 +142,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         const message = new MutableChatMessage();
         message.setType(this.mChatTypeParser.parse(res.type));
         message.setMessage(res.msg.response);
+        message.setTimestamp(new Date(res.timestamp).getTime());
         const chat = new MutableChat();
         chat.setHash(res.hash);
         chat.setIcon(res.icon);

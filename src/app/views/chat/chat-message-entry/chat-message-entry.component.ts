@@ -1,4 +1,5 @@
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
+import { OptionService } from 'src/app/services/option/option.service';
 
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -16,13 +17,18 @@ export class ChatMessageEntryComponent implements OnInit {
 
   private mTimeStr: string;
 
-  public constructor() {
+  public constructor(
+    private mOption: OptionService) {
     this.mTimeStr = '';
   }
 
   public ngOnInit() {
     const timestamp = this.message.getTimestamp();
     this.mTimeStr = ChatMessageEntryComponent.convertTimeToString(timestamp);
+  }
+
+  public isTimestampShow(): boolean {
+    return this.mOption.isTimestampShow();
   }
 
   public getTimeString() {

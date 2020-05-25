@@ -19,6 +19,7 @@ export class OptionService {
   private mNotificationSoundId: string;
   private mDataSaveMode: boolean;
   private mScrollLockMode: boolean;
+  private mTimestampShow: boolean;
   private mTheme: Theme;
   private mThemeCallbacks: TypeCallback<Theme>[];
 
@@ -30,6 +31,7 @@ export class OptionService {
     this.mNotificationSoundId = this.mStorage.getNotificationSoundId();
     this.mDataSaveMode = this.mStorage.getDataSaveMode();
     this.mScrollLockMode = this.mStorage.getScrollLockMode();
+    this.mTimestampShow = this.mStorage.getTimestampShow();
     this.mTheme = this.mThemeParser.parse(this.mStorage.getTheme());
     this.mThemeCallbacks = [];
   }
@@ -68,6 +70,15 @@ export class OptionService {
   public setScrollLockMode(mode: boolean): void {
     this.mScrollLockMode = mode;
     this.mStorage.setScrollLockMode(mode);
+  }
+
+  public isTimestampShow(): boolean {
+    return this.mTimestampShow;
+  }
+
+  public setTimestampShow(show: boolean): void {
+    this.mTimestampShow = show;
+    this.mStorage.setTimestampShow(show);
   }
 
   public getTheme(): Theme {

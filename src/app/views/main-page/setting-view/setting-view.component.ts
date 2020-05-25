@@ -132,6 +132,15 @@ export class SettingViewComponent implements OnInit {
     return this.mOptionService.setDataSaveMode(!option);
   }
 
+  public isTimestampShow(): boolean {
+    return this.mOptionService.isTimestampShow();
+  }
+
+  public toggleChatTimestamp(): void {
+    const option = this.mOptionService.isTimestampShow();
+    return this.mOptionService.setTimestampShow(!option);
+  }
+
   public openProfileSettingView(): void {
     this.mProfileService.setModifyMode(ProfileModifyMode.PROFILE);
   }

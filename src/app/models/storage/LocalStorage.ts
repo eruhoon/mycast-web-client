@@ -63,6 +63,17 @@ export class LocalStorage {
             LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
     }
 
+    public getTimestampShow(): boolean {
+        const rawTimestampShow =
+            this.getItem(LocalStorageKey.TIMESTAMP_SHOW);
+        return rawTimestampShow === LocalStorage.OPTION_TRUE;
+    }
+
+    public setTimestampShow(show: boolean): void {
+        this.setItem(LocalStorageKey.TIMESTAMP_SHOW, show ?
+            LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
+    }
+
     public getTheme(): string {
         const rawThemeMode =
             this.getItem(LocalStorageKey.THEME);
@@ -91,5 +102,6 @@ enum LocalStorageKey {
     NOTIFICATION_SOUND = 'vega.notification_sound',
     DATA_SAVE_MODE = 'vega.data_save_mode',
     SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',
+    TIMESTAMP_SHOW = 'vega.timestamp_show',
     THEME = 'vega.theme',
 }

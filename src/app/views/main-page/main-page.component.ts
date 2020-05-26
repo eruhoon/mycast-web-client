@@ -1,3 +1,5 @@
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
@@ -8,10 +10,6 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
-import { ThemeService } from 'src/app/services/theme/theme.service';
-
-import { Component, ElementRef, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-main-page',

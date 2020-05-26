@@ -1,1 +1,7 @@
-<p>mobile-page works!</p>
+<nav class="top-bar-section">
+    <top-bar (menuClick)="toggleMenu()" (settingClick)="false"></top-bar>
+</nav>
+<div class="side-bar" [ngClass]="{hidden: !isSideMenuShow()}">
+    <app-side-bar></app-side-bar>
+</div>
+<div class="body"></div>

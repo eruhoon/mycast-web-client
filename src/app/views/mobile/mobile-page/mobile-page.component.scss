@@ -1,0 +1,17 @@
+$header-height: 50px;
+
+.header {
+  width: 100vw;
+  height: $header-height;
+}
+
+.side-bar {
+  $width: 300px;
+  width: $width;
+  height: calc(100vh - #{$header-height});
+  transition: transform .4s ease-in-out;
+
+  &.hidden {
+    transform: translateX(-$width);
+  }
+}

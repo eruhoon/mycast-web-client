@@ -8,6 +8,7 @@ h3 {
   padding: 7.5px 10px;
   margin: 0;
   color: #e0e0e0;
+  cursor: pointer;
 }
 
 hr {
@@ -46,10 +47,12 @@ li {
 
 ul.main {
   padding: 10px 0px;
+
   li {
     i {
       font-size: 20px;
     }
+
     span {
       font-size: 12px;
       line-height: 14px;
@@ -72,6 +75,7 @@ ul.stream {
       height: 30px;
       border-radius: 15px;
     }
+
     span {
       font-size: 12px;
       line-height: 12px;

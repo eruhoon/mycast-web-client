@@ -18,6 +18,14 @@
     </li>
   </ul>
   <hr />
+  <h3 (click)="onAfreecaListClick()">아프리카</h3>
+  <ul class="stream" [ngClass]="isAfreecaListShow() ? 'selected' : ''">
+    <li *ngFor="let stream of getAfreecaList()" (click)="onStreamClick(stream)">
+      <img src="{{ stream.getIcon() }}" alt="{{ stream.getTitle() }}" />
+      <span>{{ stream.getTitle() }}</span>
+    </li>
+  </ul>
+  <hr />
   <h3 (click)="onKakaoListClick()">카카오TV</h3>
   <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
     <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
@@ -25,5 +33,4 @@
       <span>{{ stream.getTitle() }}</span>
     </li>
   </ul>
-  <hr />
 </div>

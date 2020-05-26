@@ -1,6 +1,6 @@
-import { ExternalStreamListLoader } from 'src/app/models/stream/ExternalStreamListLoader';
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
+import { StreamService } from 'src/app/services/stream/stream.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -13,41 +13,39 @@ export class SideBarComponent implements OnInit {
 
   private mMainService: MainService;
   private mTwitchListShow: boolean;
+  private mAfreecaListShow: boolean;
   private mKakaoListShow: boolean;
-  private mTwitchs: Stream[];
-  private mKakaos: Stream[];
 
-  constructor(main: MainService) {
+  constructor(main: MainService, private mStreamSrv: StreamService) {
     this.mMainService = main;
-    this.mTwitchs = [];
-    this.mKakaos = [];
   }
 
   public ngOnInit() {
     this.mTwitchListShow = false;
     this.mKakaoListShow = false;
-    new ExternalStreamListLoader().load(streams => {
-      if (!streams) {
-        console.warn('Invalid Streams');
-        return;
-      }
-      this.mTwitchs = streams.filter(
-        stream => stream.getPlatform() === 'twitch');
-      this.mKakaos = streams.filter(
-        stream => stream.getPlatform() === 'kakaotv');
-    });
   }
 
   public getTwitchList(): Stream[] {
-    return this.mTwitchs;
+    return this.mStreamSrv.getExternalStreams()
+      .filter(stream => stream.getPlatform() === 'twitch');
+  }
+
+  public getAfreecaList(): Stream[] {
+    return this.mStreamSrv.getExternalStreams()
+      .filter(stream => stream.getPlatform() === 'afreeca');
   }
 
   public getKakaoList(): Stream[] {
-    return this.mKakaos;
+    return this.mStreamSrv.getExternalStreams()
+      .filter(stream => stream.getPlatform() === 'kakaotv');
   }
 
   public isTwitchListShow(): boolean {
     return this.mTwitchListShow;
+  }
+
+  public isAfreecaListShow(): boolean {
+    return this.mAfreecaListShow;
   }
 
   public isKakaoListShow(): boolean {
@@ -73,12 +71,20 @@ export class SideBarComponent implements OnInit {
     this.toggleTwtichList();
   }
 
+  public onAfreecaListClick(): void {
+    this.toggleAfreecaList();
+  }
+
   public onKakaoListClick(): void {
     this.toggleKakaoList();
   }
 
   private toggleTwtichList(): void {
     this.mTwitchListShow = !this.mTwitchListShow;
+  }
+
+  private toggleAfreecaList(): void {
+    this.mAfreecaListShow = !this.mAfreecaListShow;
   }
 
   private toggleKakaoList(): void {

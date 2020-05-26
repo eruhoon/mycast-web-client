@@ -4,7 +4,7 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-top-bar',
+  selector: 'top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss', './top-bar.color.scss']
 })

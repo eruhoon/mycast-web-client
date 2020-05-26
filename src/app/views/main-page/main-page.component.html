@@ -30,7 +30,8 @@
     [ngStyle]="{ left: getDividerPosition() + 'px' }"></div>
 </div>
 <nav class="top-bar-section">
-  <app-top-bar (menuClick)="onMenuClick()" (settingClick)="onSettingClick()"></app-top-bar>
+  <top-bar (menuClick)="onMenuClick()" (settingClick)="onSettingClick()">
+  </top-bar>
   <div class="setting-view" [ngClass]="isSettingShow() ? 'active' : ''">
     <app-setting-view></app-setting-view>
   </div>

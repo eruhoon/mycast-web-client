@@ -53,14 +53,6 @@ export class TopBarComponent {
     return this.mNotificationListShow;
   }
 
-  public onMenuClick() {
-    this.menuClick.emit();
-  }
-
-  public onSettingClick() {
-    this.settingClick.emit();
-  }
-
   private startNotificationTimer(): void {
     this.mNotificationTimer = Number(setInterval(() => {
       this.mNotificationService.readAll();

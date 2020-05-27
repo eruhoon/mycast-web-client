@@ -49,7 +49,7 @@ export class LoginCommand {
 
     private isSecureProtocol(): boolean {
         const protocol = document.location.protocol;
-        return protocol && protocol.startsWith('https');
+        return protocol.startsWith('https');
     }
 }
 

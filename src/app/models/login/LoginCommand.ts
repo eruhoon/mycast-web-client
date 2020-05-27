@@ -27,7 +27,7 @@ export class LoginCommand {
     }
 
     public execute() {
-        const url = 'http://mycast.xyz:3000/auth';
+        const url = this.getUri();
         const request = Axios.post<LoginResponse>(url, qs.stringify({
             mcid: this.mId,
             mcpw: this.mPassword
@@ -40,6 +40,15 @@ export class LoginCommand {
             console.log(reason);
             this.mFailure();
         });
+    }
+
+    private getUri(): string {
+        return this.isSecureProtocol() ?
+            'https://mycast.xyz:3001/auth' : 'http://mycast.xyz:3000/auth';
+    }
+
+    private isSecureProtocol(): boolean {
+        return document.location.protocol === 'https';
     }
 }
 

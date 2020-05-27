@@ -48,7 +48,8 @@ export class LoginCommand {
     }
 
     private isSecureProtocol(): boolean {
-        return document.location.protocol === 'https';
+        const protocol = document.location.protocol;
+        return protocol && protocol.startsWith('https');
     }
 }
 

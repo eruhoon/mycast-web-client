@@ -1,0 +1,14 @@
+{
+    "short_name": "마이캐스트",
+    "name": "마이캐스트",
+    "icons": [
+        {
+            "src": "assets/icons/launcher-icon-300.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}

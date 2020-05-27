@@ -15,7 +15,8 @@ import {
 
 export class WebSocketModel extends VegaChatSocketModel {
 
-    private static readonly URL = 'ws://mycast.xyz:8001';
+    private static readonly HTTP_URL = 'ws://mycast.xyz:8001';
+    private static readonly HTTPS_URL = 'wss://mycast.xyz:8002';
 
     private mPrivKey: string;
     private mWebSocket: WebSocket;
@@ -29,7 +30,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     public constructor(privateKey: string) {
         super();
         this.mPrivKey = privateKey;
-        this.mWebSocket = new WebSocket(WebSocketModel.URL);
+        this.mWebSocket = new WebSocket(WebSocketModel.getUrl());
         this.mChatTypeParser = new ChatTypeParser();
         this.mOnRefreshChatList = _ => { };
         this.mOnRefreshUserList = _ => { };
@@ -151,5 +152,13 @@ export class WebSocketModel extends VegaChatSocketModel {
     private sendMessage(commandType: string, resource: any) {
         const sendMsg = { commandType, resource };
         this.mWebSocket.send(JSON.stringify(sendMsg));
+    }
+
+    private static isHttps(): boolean {
+        return document.location.protocol.startsWith('https');
+    }
+
+    private static getUrl(): string {
+        return this.isHttps() ? this.HTTPS_URL : this.HTTP_URL;
     }
 }

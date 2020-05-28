@@ -62,7 +62,7 @@ export class PhotoUploadCommand {
     }
 
     private onFileLoad(base64: string | null): void {
-        const uri = '//api.mycast.xyz/photo';
+        const uri = 'https://mycast.xyz:9011/photo';
         const privKey = SessionStorage.getInstance().getPrivateKey();
         const query = qs.stringify({ base64, privKey });
         Axios.post<PhotoDto>(uri, query).then(res => {

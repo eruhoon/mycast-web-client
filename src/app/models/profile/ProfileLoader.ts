@@ -13,7 +13,7 @@ export class ProfileLoader {
     }
 
     private getUrl(privKey: string): string {
-        return `//api.mycast.xyz/user/${privKey}`;
+        return `https://mycast.xyz:9011/user/${privKey}`;
     }
 
     private createProfile(user: UserDto): Profile {

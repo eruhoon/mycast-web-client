@@ -17,7 +17,7 @@ export class VegaStreamProfileLoader {
     }
 
     private getUrl(): string {
-        return `//api.mycast.xyz/user/${this.mPrivateKey}/stream`;
+        return `https://mycast.xyz:9011/user/${this.mPrivateKey}/stream`;
     }
 }
 

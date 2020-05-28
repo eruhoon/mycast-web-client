@@ -5,7 +5,7 @@ import { Photo } from '../Photo';
 
 export class VegaImgurLoader implements AsyncLoader<any> {
 
-    private static readonly HOST = '//api.mycast.xyz/imgur';
+    private static readonly HOST = 'https://mycast.xyz:9011/imgur';
 
     private mHash: string;
     private mLoading: boolean;

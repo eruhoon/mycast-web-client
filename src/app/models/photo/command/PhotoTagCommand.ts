@@ -13,7 +13,7 @@ export class PhotoTagCommand {
     }
 
     public execute(tags: string) {
-        const host = '//api.mycast.xyz';
+        const host = 'https://mycast.xyz:9011';
         const url = `${host}/photo/${this.mPhoto.getHash()}/tags`;
         const privKey = SessionStorage.getInstance().getPrivateKey();
         Axios.post(url, qs.stringify({ user: privKey, msg: tags }));

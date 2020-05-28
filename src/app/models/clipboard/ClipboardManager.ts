@@ -40,7 +40,8 @@ export class ClipboardManager {
                 'Content-Type': 'multipart/form-data'
             }
         };
-        Axios.post('http://mycast.xyz:8001/cache', formData, config).then(res => {
+
+        Axios.post('https://mycast.xyz:8002/cache', formData, config).then(res => {
             if (res.status !== 200 || !res.data) {
                 return;
             }

@@ -13,7 +13,7 @@ export class PhotoShareCommand {
     }
 
     public execute() {
-        const url = 'http://mycast.xyz:8001/photo';
+        const url = 'https://mycast.xyz:8002/photo';
         const privKey = SessionStorage.getInstance().getPrivateKey();
         const msg = this.mPhoto.getUrl();
         Axios.post(url, qs.stringify({ user: privKey, msg }));

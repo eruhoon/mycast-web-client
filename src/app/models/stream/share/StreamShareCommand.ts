@@ -13,7 +13,7 @@ export class StreamShareCommand {
     }
 
     public execute() {
-        const url = 'http://mycast.xyz:8001/stream/';
+        const url = 'https://mycast.xyz:8002/stream/';
         const privKey = SessionStorage.getInstance().getPrivateKey();
         const msg = JSON.stringify({
             keyId: this.mStream.getKeyId(),

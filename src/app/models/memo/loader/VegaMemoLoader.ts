@@ -5,7 +5,7 @@ import { Memo } from '../Memo';
 
 export class VegaMemoLoader implements AsyncLoader<Memo[]> {
 
-    private static readonly HOST = 'http://api.mycast.xyz/memo';
+    private static readonly HOST = '//api.mycast.xyz/memo';
 
     public constructor() { }
 

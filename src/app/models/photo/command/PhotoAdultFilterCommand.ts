@@ -16,7 +16,7 @@ export class PhotoAdultFilterCommand {
     }
 
     public execute(adult: boolean) {
-        const host = 'http://api.mycast.xyz';
+        const host = '//api.mycast.xyz';
         const url = `${host}/photo/${this.mPhoto.getHash()}/adult`;
         const privKey = SessionStorage.getInstance().getPrivateKey();
 

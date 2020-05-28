@@ -6,7 +6,7 @@ import { Photo } from '../Photo';
 
 export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
 
-    private static readonly HOST = 'http://api.mycast.xyz/photo';
+    private static readonly HOST = '//api.mycast.xyz/photo';
     private static readonly DEFAULT_INDEX_LENGTH = 100;
 
     private mStartIndex: number;

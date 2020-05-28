@@ -9,7 +9,7 @@ export class MemoUploadCommand {
     }
 
     public async execute(memo: string): Promise<void> {
-        const url = 'http://api.mycast.xyz/memo';
+        const url = '//api.mycast.xyz/memo';
         const form = {
             userKey: this.mPrivKey,
             text: memo,

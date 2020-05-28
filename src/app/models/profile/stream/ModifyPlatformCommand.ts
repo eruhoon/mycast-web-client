@@ -19,7 +19,7 @@ export class ModifyPlatformCommand {
     }
 
     private getUrl(): string {
-        return `http://api.mycast.xyz/user/${this.mPrivKey}/stream/platform`;
+        return `//api.mycast.xyz/user/${this.mPrivKey}/stream/platform`;
     }
 }
 

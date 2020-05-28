@@ -25,7 +25,7 @@ export class ModifyStreamCommand {
     }
 
     private getUrl(): string {
-        return `http://api.mycast.xyz/user/${this.mPrivKey}/stream`;
+        return `//api.mycast.xyz/user/${this.mPrivKey}/stream`;
     }
 }
 

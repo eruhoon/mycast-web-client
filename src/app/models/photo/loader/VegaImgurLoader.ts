@@ -1,10 +1,11 @@
 import Axios from 'axios';
+
 import { AsyncLoader, OnLoadCallback } from '../../loader/AsyncLoader';
 import { Photo } from '../Photo';
 
 export class VegaImgurLoader implements AsyncLoader<any> {
 
-    private static readonly HOST = 'http://api.mycast.xyz/imgur';
+    private static readonly HOST = '//api.mycast.xyz/imgur';
 
     private mHash: string;
     private mLoading: boolean;

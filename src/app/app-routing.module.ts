@@ -31,6 +31,11 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'main',
+    canActivate: [AuthGuard],
+    component: MainPageComponent
+  },
+  {
     path: 'mobile',
     canActivate: [AuthGuard],
     component: MobilePageComponent

@@ -96,6 +96,7 @@ nav.top-bar-section {
     i {
       transform: rotate(180deg);
       -webkit-transform: rotate(180deg);
+      line-height: 27px !important;
     }
   }
 }
@@ -201,7 +202,7 @@ nav.top-bar-section {
   top: 50px;
   right: -300px;
   width: 220px;
-  height: 516px;
+  height: 546px;
   overflow: hidden;
   z-index: 85; // 알림보다 상위 노출
   background: #424242;

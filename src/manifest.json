@@ -3,7 +3,7 @@
     "name": "마이캐스트",
     "icons": [
         {
-            "src": "assets/icons/launcher-icon-300.png",
+            "src": "assets/icons/launcher-icon-300-notitle.png",
             "sizes": "300x300",
             "type": "image/png"
         }

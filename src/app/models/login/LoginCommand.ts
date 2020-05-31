@@ -43,8 +43,7 @@ export class LoginCommand {
     }
 
     private getUri(): string {
-        return this.isSecureProtocol() ?
-            'https://mycast.xyz:3001/auth' : 'http://mycast.xyz:3000/auth';
+        return 'https://mycast.xyz:3001/auth';
     }
 
     private isSecureProtocol(): boolean {

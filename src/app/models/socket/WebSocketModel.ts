@@ -15,7 +15,6 @@ import {
 
 export class WebSocketModel extends VegaChatSocketModel {
 
-    private static readonly HTTP_URL = 'ws://mycast.xyz:8001';
     private static readonly HTTPS_URL = 'wss://mycast.xyz:8002';
 
     private mPrivKey: string;
@@ -154,11 +153,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mWebSocket.send(JSON.stringify(sendMsg));
     }
 
-    private static isHttps(): boolean {
-        return document.location.protocol.startsWith('https');
-    }
-
     private static getUrl(): string {
-        return this.isHttps() ? this.HTTPS_URL : this.HTTP_URL;
+        return this.HTTPS_URL;
     }
 }

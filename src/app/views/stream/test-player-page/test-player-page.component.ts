@@ -43,7 +43,7 @@ export class TestPlayerPageComponent implements OnInit {
         lazyLoadMaxDuration: 3 * 60,
         type: 'flv',
         isLive: true,
-        url: 'http://parasite.banjai.tv:8080/live/mcc1.flv'
+        url: 'https://parasite.banjai.tv:8080/live/mcc1.flv'
       });
 
       plyr.on('ready', (event: any) => {

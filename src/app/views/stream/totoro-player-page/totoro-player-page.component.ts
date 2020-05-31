@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 declare class Plyr {
@@ -65,7 +65,7 @@ export class TotoroPlayerPageComponent implements OnInit {
       lazyLoadMaxDuration: 3 * 60,
       type: 'flv',
       isLive: true,
-      url: `http://parasite.banjai.tv:8080/live/${this.mPlayerId}.flv`
+      url: `https://52.79.252.217/live/${this.mPlayerId}.flv`
     });
 
     player.attachMediaElement(this.mPlayerView.nativeElement);

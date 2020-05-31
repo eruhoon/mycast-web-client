@@ -10,9 +10,14 @@ app-root {
   overflow: hidden;
 
   * {
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: "Nanum Gothic", sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Jeju Gothic', sans-serif !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Jeju Gothic", sans-serif !important;
   }
 }

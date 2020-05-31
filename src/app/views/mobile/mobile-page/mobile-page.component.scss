@@ -10,7 +10,7 @@ $header-height: 50px;
 .main-section {
   position: relative;
   width: 100vw;
-  height: calc(100vh - #{$header-height});
+  height: calc(100% - #{$header-height});
 
   chat-page {
     width: 100vw;
@@ -21,8 +21,8 @@ $header-height: 50px;
     position: absolute;
     top: 0;
     width: 70vw;
-    height: calc(100vh - #{$header-height});
-    transition: transform .4s ease-in-out;
+    height: calc(100% - #{$header-height});
+    transition: transform 0.4s ease-in-out;
 
     &.hidden {
       transform: translateX(-100vw);

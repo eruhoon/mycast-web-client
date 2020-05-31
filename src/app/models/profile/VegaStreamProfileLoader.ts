@@ -13,6 +13,7 @@ export class VegaStreamProfileLoader {
     public async load(): Promise<StreamProfile> {
         const url = this.getUrl();
         const { data } = await Axios.get<UserStreamDto>(url);
+        console.log(data);
         return new UserStreamDtoAdapter(data);
     }
 
@@ -24,7 +25,7 @@ export class VegaStreamProfileLoader {
 type UserStreamDto = {
     platform: string,
     backgroundImage: string,
-    localId: string,
+    localHash: string,
     afreecaId: string,
     twitchId: string,
     mixerId: string,
@@ -34,7 +35,7 @@ class UserStreamDtoAdapter implements StreamProfile {
     constructor(private mStream: UserStreamDto) { }
     public getPlatform(): string { return this.mStream.platform; }
     public getBackgroundImage(): string { return this.mStream.backgroundImage; }
-    public getLocalId(): string { return this.mStream.localId; }
+    public getLocalId(): string { return this.mStream.localHash; }
     public getAfreecaId(): string { return this.mStream.afreecaId; }
     public getTwitchId(): string { return this.mStream.twitchId; }
     public getMixerId(): string { return this.mStream.mixerId; }

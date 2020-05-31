@@ -89,6 +89,8 @@ import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { ChatMessageEntryComponent } from './views/chat/chat-message-entry/chat-message-entry.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -153,6 +155,7 @@ import { ChatMessageEntryComponent } from './views/chat/chat-message-entry/chat-
     FormsModule,
     AppRoutingModule,
     DragDropModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

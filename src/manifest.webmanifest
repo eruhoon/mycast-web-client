@@ -1,7 +1,7 @@
 {
   "name": "마이캐스트",
   "short_name": "마이캐스트",
-  "theme_color": "#1976d2",
+  "theme_color": "#e7427a",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

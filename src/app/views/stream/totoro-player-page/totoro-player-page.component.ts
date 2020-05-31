@@ -65,7 +65,7 @@ export class TotoroPlayerPageComponent implements OnInit {
       lazyLoadMaxDuration: 3 * 60,
       type: 'flv',
       isLive: true,
-      url: `https://52.79.252.217/live/${this.mPlayerId}.flv`
+      url: `https://parasite.banjai.tv/live/${this.mPlayerId}.flv`
     });
 
     player.attachMediaElement(this.mPlayerView.nativeElement);

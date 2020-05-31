@@ -67,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'player/totoro/:playerId',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: TotoroPlayerPageComponent
   },
   {

@@ -16,21 +16,7 @@ export class ClipboardManager {
         });
     }
 
-    public parseImageFile(rawData: DataTransfer | null): File | null {
-        if (!rawData || !rawData.files || !rawData.files.item(0)) {
-            console.log(rawData);
-            console.warn('no data');
-            return null;
-        }
-        const file = rawData.files.item(0);
-        if (!file || file.type.indexOf('image') === -1) {
-            console.warn('no image');
-            return null;
-        }
-        return file;
-    }
-
-    private uploadImageCacheWithFile(
+    public uploadImageCacheWithFile(
         file: File, callback: TypeCallback<string>): void {
 
         const formData = new FormData();
@@ -48,5 +34,19 @@ export class ClipboardManager {
             const imageUri = res.data;
             callback(imageUri);
         });
+    }
+
+    private parseImageFile(rawData: DataTransfer | null): File | null {
+        if (!rawData || !rawData.files || !rawData.files.item(0)) {
+            console.log(rawData);
+            console.warn('no data');
+            return null;
+        }
+        const file = rawData.files.item(0);
+        if (!file || file.type.indexOf('image') === -1) {
+            console.warn('no image');
+            return null;
+        }
+        return file;
     }
 }

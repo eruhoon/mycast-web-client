@@ -4,7 +4,7 @@ import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
 
 @Component({
@@ -88,6 +88,10 @@ export class ChatInterfaceComponent implements OnInit {
     this.chatInput.emit(input);
     this.mChatHistoryList.addHistory(input);
     this.mChatHistoryList.resetIndex();
+  }
+
+  public isMobile(): boolean {
+    return this.mOptionService.isMobile();
   }
 
   public isScrollLockMode(): boolean {

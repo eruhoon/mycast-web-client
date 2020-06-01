@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main/main.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 
 @Component({
   selector: 'app-mobile-page',
@@ -11,7 +12,8 @@ export class MobilePageComponent implements OnInit {
 
   public constructor(
     private mMainSrv: MainService,
-    private mThemeSrv: ThemeService) { }
+    private mThemeSrv: ThemeService,
+    private mClipboardImageSrv: ClipboardImageService) { }
 
   public ngOnInit(): void {
   }
@@ -22,5 +24,9 @@ export class MobilePageComponent implements OnInit {
 
   public isSideMenuShow(): boolean {
     return this.mMainSrv.isSidebarShow();
+  }
+
+  public isClipboardImageMode(): boolean {
+    return this.mClipboardImageSrv.getCurrentImage() !== null;
   }
 }

@@ -1,4 +1,4 @@
-import { Notification } from 'src/app/models/notification/Notification';
+import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,7 @@ export class NotificationPushListComponent implements OnInit {
   public ngOnInit() {
   }
 
-  public getNotification(): Notification[] {
+  public getNotification(): VegaNotification[] {
     return [...this.mNotificationService.getNotificationPushes()];
   }
 }

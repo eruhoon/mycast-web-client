@@ -1,8 +1,10 @@
-import { Injectable, Input } from '@angular/core';
-import { Notification } from 'src/app/models/notification/Notification';
-import { User } from 'src/app/models/user/User';
-import { OptionService } from '../option/option.service';
 import { MutableNotification } from 'src/app/models/notification/MutableNotification';
+import { VegaNotification } from 'src/app/models/notification/VegaNotification';
+import { User } from 'src/app/models/user/User';
+
+import { Injectable } from '@angular/core';
+
+import { OptionService } from '../option/option.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class NotificationService {
   private mOption: OptionService;
   private mTarget: User | null;
   private mNotifications: MutableNotification[];
-  private mNotificationPushes: Notification[];
+  private mNotificationPushes: VegaNotification[];
 
   public constructor(option: OptionService) {
     this.mOption = option;
@@ -33,15 +35,15 @@ export class NotificationService {
     return this.mNotifications.filter(n => !n.isRead()).length;
   }
 
-  public getNotifications(): Notification[] {
+  public getNotifications(): VegaNotification[] {
     return this.mNotifications;
   }
 
-  public getNotificationPushes(): Notification[] {
+  public getNotificationPushes(): VegaNotification[] {
     return this.mNotificationPushes;
   }
 
-  public pushNotification(notification: Notification): void {
+  public pushNotification(notification: VegaNotification): void {
     const mutableNotification = MutableNotification.clone(notification);
     this.mNotifications.unshift(mutableNotification);
     this.mNotifications = this.mNotifications.filter((_, i) => i < 10);
@@ -51,6 +53,32 @@ export class NotificationService {
       this.mNotificationPushes =
         this.mNotificationPushes.filter(n => n !== mutableNotification);
     }, 3000);
+
+    this.requestToPushWebNotification(notification);
+  }
+
+  private requestToPushWebNotification(vegaNoti: VegaNotification): void {
+    const onGrant = () => {
+      const notification = new Notification(vegaNoti.getTitle(), {
+        icon: vegaNoti.getIcon(),
+        body: vegaNoti.getBody(),
+        timestamp: vegaNoti.getTimeStamp(),
+      });
+      notification.onclick = () => {
+        window.focus();
+      };
+    };
+    if (!('Notification' in window)) {
+      console.error('notification not supported');
+    } else if (Notification.permission === 'granted') {
+      onGrant();
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(permission => {
+        if (permission === 'granted') {
+          onGrant();
+        }
+      });
+    }
   }
 
   public readAll(): void {

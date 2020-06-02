@@ -2,7 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ChatNetworkModelImpl } from 'src/app/models/network/ChatNetworkModelImpl';
 import { NullChatNetworkModel } from 'src/app/models/network/NullChatNetworkModel';
-import { Notification } from 'src/app/models/notification/Notification';
+import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { ModifyProfileCommand } from 'src/app/models/profile/ModifyProfileCommand';
 import { Profile } from 'src/app/models/profile/Profile';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
@@ -105,7 +105,7 @@ export class MainService {
     this.mCurrentUserService.setUsers(users);
   }
 
-  private onNotificationRecieved(notification: Notification): void {
+  private onNotificationRecieved(notification: VegaNotification): void {
     this.mNotificationService.pushNotification(notification);
   }
 

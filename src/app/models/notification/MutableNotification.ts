@@ -1,6 +1,8 @@
-import { Notification } from './Notification';
 import { Md5 } from 'ts-md5/dist/md5';
-export class MutableNotification implements Notification {
+
+import { VegaNotification } from './VegaNotification';
+
+export class MutableNotification implements VegaNotification {
 
     private mHash: string;
     private mIcon: string;
@@ -70,7 +72,7 @@ export class MutableNotification implements Notification {
         this.mRead = true;
     }
 
-    public static clone(notification: Notification): MutableNotification {
+    public static clone(notification: VegaNotification): MutableNotification {
         const newNotification = new MutableNotification();
         newNotification.setHash(notification.getHash());
         newNotification.setIcon(notification.getIcon());

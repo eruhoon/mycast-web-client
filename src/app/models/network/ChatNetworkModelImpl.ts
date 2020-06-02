@@ -1,6 +1,6 @@
 import { Chat } from '../chat/Chat';
 import { TypeCallback } from '../common/callback/TypeCallback';
-import { Notification } from '../notification/Notification';
+import { VegaNotification } from '../notification/VegaNotification';
 import { Profile } from '../profile/Profile';
 import { SocketModel } from '../socket/SocketModel';
 import { WebSocketModel } from '../socket/WebSocketModel';
@@ -13,7 +13,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
-    private mOnNotifcationReceived: TypeCallback<Notification>;
+    private mOnNotifcationReceived: TypeCallback<VegaNotification>;
     private mOnChat: TypeCallback<Chat>;
 
     public constructor(privateKey: string) {
@@ -47,7 +47,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     }
 
     public setOnNotificationReceivedCallback(
-        callback: TypeCallback<Notification>): void {
+        callback: TypeCallback<VegaNotification>): void {
 
         this.mOnNotifcationReceived = callback;
     }

@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
-import { Notification } from 'src/app/models/notification/Notification';
+import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'notification-list',
@@ -47,6 +48,6 @@ export class NotificationListComponent {
 }
 
 type Param = {
-  notification: Notification,
+  notification: VegaNotification,
   timeText: string,
 };

@@ -10,29 +10,50 @@ import { ChatPack } from '../ChatPack';
 export class LolUserPackComponent extends ChatPack implements OnInit {
 
   private mName: string;
+  private mLevel: number;
+  private mIcon: string;
+  private mTierText: string;
   private mTier: string;
   private mDivision: string;
   private mPoint: number;
+  private mMostChamps: ChampParam[];
 
   public constructor(injector: Injector) {
     super(injector);
     this.mName = '';
+    this.mLevel = 0;
+    this.mIcon = '';
+    this.mTierText = '';
     this.mTier = '';
     this.mDivision = '';
     this.mPoint = 0;
+    this.mMostChamps = [];
   }
 
   public ngOnInit() {
-    const param = JSON.parse(this.message.getMessage()) as Param;
+    try {
+      const param = JSON.parse(this.message.getMessage()) as Param;
 
-    // console.log(param);
-    this.mName = param.name;
-    this.mTier = param.tier.tier;
-    this.mDivision = param.tier.division;
-    this.mPoint = param.tier.point;
+      this.mIcon = param.icon;
+      this.mLevel = param.level;
+      this.mName = param.name;
+      this.mTierText = LolUserPackComponent.getTierText(param.tier);
+      this.mTier = param.tier.tier;
+      this.mDivision = param.tier.division;
+      this.mPoint = param.tier.point;
+      this.mMostChamps = param.most.top;
+    } catch (e) {
+      console.error('fuck');
+    }
   }
 
+  public getIcon(): string { return this.mIcon; }
+
+  public getLevel(): number { return this.mLevel; }
+
   public getName(): string { return this.mName; }
+
+  public getTierText(): string { return this.mTierText; }
 
   public getTier(): string { return this.mTier; }
 
@@ -40,11 +61,32 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
 
   public getPoint(): number { return this.mPoint; }
 
-}
+  public getMostChamps(): ChampParam[] { return this.mMostChamps; }
 
+  private static getTierText(tierObj: TierParam): string {
+    const tier = tierObj.tier;
+    const division = tier === 'CHALLENGER' ||
+      tier === 'GRANDMASTER' ||
+      tier === 'MASTER' ||
+      tier === 'UNRANK' ? '' : tierObj.division;
+
+    const point = tierObj.point > 0 ? `${tierObj.point}P` : '';
+
+    return [tier, division, point].join(' ');
+  }
+
+}
 
 type Param = {
-  /*icon: "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/profileicon/1298.png", "id": "PbjxOHtSve7VjlVuMU3HR9zDpwb-xKsD619EqiBJMuUUfw", "level": 146, "mmr": { "fow": 1111, "opgg": 1111 }, "most": { "rank": [], "top": [{ "background": "https://cdn.communitydragon.org/10.10.3208608/champion/Rumble/splash-art/skin/0", "icon": "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/Rumble.png", "name": "럼블" }, { "background": "https://cdn.communitydragon.org/10.10.3208608/champion/Sona/splash-art/skin/0", "icon": "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/Sona.png", "name": "소나" }, { "background": "https://cdn.communitydragon.org/10.10.3208608/champion/Lulu/splash-art/skin/0", "icon": "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/Lulu.png", "name": "룰루" }, { "background": "https://cdn.communitydragon.org/10.10.3208608/champion/Zyra/splash-art/skin/0", "icon": "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/Zyra.png", "name": "자이라" }, { "background": "https://cdn.communitydragon.org/10.10.3208608/champion/Elise/splash-art/skin/0", "icon": "http://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/Elise.png", "name": "엘리스" }] },*/
+  icon: string,
   name: string,
-  tier: { division: "II", point: 21, tier: "SILVER" }
-}
+  level: number,
+  most: {
+    top: ChampParam[]
+  },
+  tier: TierParam,
+};
+
+type ChampParam = { background: string, icon: string, name: string };
+
+type TierParam = { division: string, point: number, tier: string };

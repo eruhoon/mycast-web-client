@@ -2,13 +2,18 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { SafePipe } from './models/pipe/safe.pipe';
 import { AppComponent } from './views/app.component';
 import { ChatEntryComponent } from './views/chat/chat-entry/chat-entry.component';
 import { ChatInterfaceComponent } from './views/chat/chat-interface/chat-interface.component';
 import { ChatListComponent } from './views/chat/chat-list/chat-list.component';
+import {
+    ChatMessageEntryComponent
+} from './views/chat/chat-message-entry/chat-message-entry.component';
 import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
 import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
@@ -88,76 +93,73 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
-import { ChatMessageEntryComponent } from './views/chat/chat-message-entry/chat-message-entry.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainPageComponent,
-    StreamListComponent,
-    TopBarComponent,
-    SideBarComponent,
-    StreamViewerComponent,
-    SettingViewComponent,
-    ExternalViewerComponent,
-    SafePipe,
-    LocalViewerComponent,
-    ChatListComponent,
-    ChatPageComponent,
-    ChatEntryComponent,
-    StreamEntryComponent,
-    LoginPageComponent,
-    JoinPageComponent,
-    ChatInterfaceComponent,
-    ImagePackComponent,
-    TextPackComponent,
-    ImagePopupViewerComponent,
-    TwitchPackComponent,
-    LinkPackComponent,
-    YoutubePackComponent,
-    LinkPopupComponent,
-    StreamPlayerPageComponent,
-    ChatUserListComponent,
-    ChatUserEntryComponent,
-    NotificationPushListComponent,
-    NotificationListComponent,
-    ModifyProfileModalComponent,
-    ClipboardImagePopupComponent,
-    TestPlayerPageComponent,
-    TotoroPlayerPageComponent,
-    NotificationRequestPopupComponent,
-    ToastListComponent,
-    PhotoPageComponent,
-    MemoPageComponent,
-    PhotoEntryComponent,
-    PhotoDetailViewComponent,
-    PhotoMainViewComponent,
-    PhotoAlbumViewComponent,
-    ModifyStreamModalComponent,
-    MemoDetailViewComponent,
-    MemoEntryComponent,
-    MemoMainViewComponent,
-    MemoUploadViewComponent,
-    LolUserPackComponent,
-    LolChampionPackComponent,
-    BookPackComponent,
-    StreamPackComponent,
-    CqHeroPackComponent,
-    AfreecaPackComponent,
-    MagicConchPackComponent,
-    MobilePageComponent,
-    ChatMessageEntryComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    DragDropModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MainPageComponent,
+        StreamListComponent,
+        TopBarComponent,
+        SideBarComponent,
+        StreamViewerComponent,
+        SettingViewComponent,
+        ExternalViewerComponent,
+        SafePipe,
+        LocalViewerComponent,
+        ChatListComponent,
+        ChatPageComponent,
+        ChatEntryComponent,
+        StreamEntryComponent,
+        LoginPageComponent,
+        JoinPageComponent,
+        ChatInterfaceComponent,
+        ImagePackComponent,
+        TextPackComponent,
+        ImagePopupViewerComponent,
+        TwitchPackComponent,
+        LinkPackComponent,
+        YoutubePackComponent,
+        LinkPopupComponent,
+        StreamPlayerPageComponent,
+        ChatUserListComponent,
+        ChatUserEntryComponent,
+        NotificationPushListComponent,
+        NotificationListComponent,
+        ModifyProfileModalComponent,
+        ClipboardImagePopupComponent,
+        TestPlayerPageComponent,
+        TotoroPlayerPageComponent,
+        NotificationRequestPopupComponent,
+        ToastListComponent,
+        PhotoPageComponent,
+        MemoPageComponent,
+        PhotoEntryComponent,
+        PhotoDetailViewComponent,
+        PhotoMainViewComponent,
+        PhotoAlbumViewComponent,
+        ModifyStreamModalComponent,
+        MemoDetailViewComponent,
+        MemoEntryComponent,
+        MemoMainViewComponent,
+        MemoUploadViewComponent,
+        LolUserPackComponent,
+        LolChampionPackComponent,
+        BookPackComponent,
+        StreamPackComponent,
+        CqHeroPackComponent,
+        AfreecaPackComponent,
+        MagicConchPackComponent,
+        MobilePageComponent,
+        ChatMessageEntryComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        DragDropModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

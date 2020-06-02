@@ -3,6 +3,7 @@ import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { User } from 'src/app/models/user/User';
 
 import { Injectable } from '@angular/core';
+import { SwPush } from '@angular/service-worker';
 
 import { OptionService } from '../option/option.service';
 
@@ -11,12 +12,15 @@ import { OptionService } from '../option/option.service';
 })
 export class NotificationService {
 
+  readonly VAPID_PUBLIC_KEY = 'BLjdihR3YREJZKH33geqT-5bZPe7Jxkq4QDSqfXq8QdRDqLnlmFpcyYCJrNuWrmIaOs0OxZdXBe7OnRjeffKq1w';
+
   private mOption: OptionService;
   private mTarget: User | null;
   private mNotifications: MutableNotification[];
   private mNotificationPushes: VegaNotification[];
 
-  public constructor(option: OptionService) {
+  public constructor(
+    option: OptionService) {
     this.mOption = option;
     this.mTarget = null;
     this.mNotifications = [];
@@ -59,14 +63,16 @@ export class NotificationService {
 
   private requestToPushWebNotification(vegaNoti: VegaNotification): void {
     const onGrant = () => {
-      const notification = new Notification(vegaNoti.getTitle(), {
-        icon: vegaNoti.getIcon(),
-        body: vegaNoti.getBody(),
-        timestamp: vegaNoti.getTimeStamp(),
+
+      navigator.serviceWorker.ready.then(r => {
+        if (r) {
+          r.showNotification(vegaNoti.getTitle(), {
+            icon: vegaNoti.getIcon(),
+            body: vegaNoti.getBody(),
+            timestamp: vegaNoti.getTimeStamp(),
+          });
+        }
       });
-      notification.onclick = () => {
-        window.focus();
-      };
     };
     if (!('Notification' in window)) {
       console.error('notification not supported');

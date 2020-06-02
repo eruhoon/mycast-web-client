@@ -13,7 +13,6 @@ export class VegaStreamProfileLoader {
     public async load(): Promise<StreamProfile> {
         const url = this.getUrl();
         const { data } = await Axios.get<UserStreamDto>(url);
-        console.log(data);
         return new UserStreamDtoAdapter(data);
     }
 

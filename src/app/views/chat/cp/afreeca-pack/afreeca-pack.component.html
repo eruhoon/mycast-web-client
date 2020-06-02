@@ -1,1 +1,5 @@
-<p>afreeca-pack works!</p>
+<div class="stream-pack" (click)="onClick()" (contextmenu)="onContextMenu(); false">
+    <img class="icon" [src]="getIcon()">
+    <div class="logo"></div>
+    <div class="name">{{getName()}} <span>({{getId()}})</span></div>
+</div>

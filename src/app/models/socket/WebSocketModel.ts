@@ -29,16 +29,13 @@ export class WebSocketModel extends VegaChatSocketModel {
     public constructor(privateKey: string) {
         super();
         this.mPrivKey = privateKey;
-        this.mWebSocket = new WebSocket(WebSocketModel.getUrl());
         this.mChatTypeParser = new ChatTypeParser();
         this.mOnRefreshChatList = _ => { };
         this.mOnRefreshUserList = _ => { };
         this.mOnNotificationReceived = _ => { };
         this.mOnChat = _ => { };
 
-        this.mWebSocket.onopen = () => this.onOpenSocket();
-        this.mWebSocket.onmessage = message => this.onRawMessage(message);
-        this.mWebSocket.onclose = () => this.onClose();
+        this.mWebSocket = this.connect();
     }
 
     public login(): void {
@@ -146,6 +143,7 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private onClose(): void {
         console.log('onClose');
+        setTimeout(() => { this.connect(); }, 1000);
     }
 
     private sendMessage(commandType: string, resource: any) {
@@ -155,5 +153,13 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private static getUrl(): string {
         return this.HTTPS_URL;
+    }
+
+    private connect(): WebSocket {
+        const socket = new WebSocket(WebSocketModel.getUrl());
+        socket.onopen = () => this.onOpenSocket();
+        socket.onmessage = message => this.onRawMessage(message);
+        socket.onclose = () => this.onClose();
+        return socket;
     }
 }

@@ -4,8 +4,10 @@ import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
+import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 
 @Component({
   selector: 'chat-interface',
@@ -20,20 +22,25 @@ export class ChatInterfaceComponent implements OnInit {
 
   @ViewChild('inputBox', { static: false })
   private mInputBox: ElementRef<HTMLInputElement>;
+  @ViewChild('imageInput', { static: false })
+  private mImageInput: ElementRef<HTMLInputElement>;
   private mChatHistoryList: ChatHistoryList;
   private mChatService: ChatService;
   private mOptionService: OptionService;
   private mCurrentChatService: CurrentChatService;
+  private mClipboardManager: ClipboardManager;
 
   constructor(
     chatService: ChatService,
     optionService: OptionService,
-    currentChatService: CurrentChatService) {
+    currentChatService: CurrentChatService,
+    private mClipboardImageService: ClipboardImageService) {
 
     this.mChatService = chatService;
     this.mOptionService = optionService;
     this.mCurrentChatService = currentChatService;
     this.mChatHistoryList = new ChatHistoryList();
+    this.mClipboardManager = new ClipboardManager();
   }
 
   ngOnInit() {
@@ -90,6 +97,10 @@ export class ChatInterfaceComponent implements OnInit {
     this.mChatHistoryList.resetIndex();
   }
 
+  public isMobile(): boolean {
+    return this.mOptionService.isMobile();
+  }
+
   public isScrollLockMode(): boolean {
     return this.mOptionService.isScrollLockMode();
   }
@@ -97,6 +108,24 @@ export class ChatInterfaceComponent implements OnInit {
   public toggleScrollLockMode(): void {
     const scrollLock = this.mOptionService.isScrollLockMode();
     this.mOptionService.setScrollLockMode(!scrollLock);
+  }
+
+  public openUploadImageDialog(): void {
+    this.mImageInput.nativeElement.click();
+  }
+
+  public uploadImage(): void {
+    const elm = this.mImageInput.nativeElement;
+    const files = elm ? elm.files : null;
+    const file = files ? files.item(0) : null;
+    if (!file) {
+      console.warn('image not found');
+      return;
+    }
+    this.mClipboardManager.uploadImageCacheWithFile(file, imageUri => {
+      this.mClipboardImageService.setCurrentImage(imageUri);
+      elm.value = '';
+    });
   }
 
   private getPrevChat(): string {

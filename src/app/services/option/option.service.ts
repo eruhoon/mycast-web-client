@@ -22,6 +22,7 @@ export class OptionService {
   private mTimestampShow: boolean;
   private mTheme: Theme;
   private mThemeCallbacks: TypeCallback<Theme>[];
+  private mMobile: boolean;
 
   public constructor() {
     this.mStorage = LocalStorage.getInstance();
@@ -34,6 +35,7 @@ export class OptionService {
     this.mTimestampShow = this.mStorage.getTimestampShow();
     this.mTheme = this.mThemeParser.parse(this.mStorage.getTheme());
     this.mThemeCallbacks = [];
+    this.mMobile = OptionService.isMobile();
   }
 
   public getChatPosition(): number {
@@ -93,5 +95,15 @@ export class OptionService {
 
   public addThemeCallback(callback: TypeCallback<Theme>): void {
     this.mThemeCallbacks.push(callback);
+  }
+
+  public isMobile(): boolean {
+    return this.mMobile;
+  }
+
+  private static isMobile(): boolean {
+    const userAgent = navigator.userAgent;
+    const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
+    return isMobile;
   }
 }

@@ -26,7 +26,11 @@
         insert_emoticon
       </i>
     </a>
+    <a [ngClass]="{hidden: !isMobile()}" (click)="openUploadImageDialog()">
+      <i class="material-icons">photo</i>
+    </a>
   </div>
   <input #inputBox type="text" class="input-box" (keydown.arrowup)="onPressUp()" (keydown.arrowdown)="onPressDown()"
     (keypress)="$event.keyCode!=13 || ($event.keyCode==13 && onPressEnter())" />
+  <input #imageInput type="file" accept="image/*" class="hidden" (change)="uploadImage()">
 </div>

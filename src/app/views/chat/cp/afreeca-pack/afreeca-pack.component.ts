@@ -15,6 +15,7 @@ export class AfreecaPackComponent extends ChatPack implements OnInit {
   private mTitle: string;
   private mIcon: string;
   private mLink: string;
+  private mError: boolean;
 
   public constructor(
     private mMainService: MainService,
@@ -25,6 +26,7 @@ export class AfreecaPackComponent extends ChatPack implements OnInit {
     this.mTitle = '';
     this.mIcon = '';
     this.mLink = '';
+    this.mError = false;
   }
 
   public ngOnInit() {
@@ -35,8 +37,10 @@ export class AfreecaPackComponent extends ChatPack implements OnInit {
       this.mTitle = param.title;
       this.mIcon = AfreecaPackComponent.getIcon(keyId);
       this.mLink = `http://play.afreecatv.com/${keyId}/embed`;
+      this.mError = false;
     } catch {
       console.log('fuck');
+      this.mError = true;
     }
   }
 
@@ -53,6 +57,8 @@ export class AfreecaPackComponent extends ChatPack implements OnInit {
   public onContextMenu(): void {
     window.open(this.mLink, '_blank', 'width=800');
   }
+
+  public isError(): boolean { return this.mError; }
 
   private static getIcon(keyId: string): string {
     const keyDict = keyId.substring(0, 2);

@@ -1,5 +1,6 @@
-<div class="stream-pack" (click)="onClick()" (contextmenu)="onContextMenu(); false">
+<div *ngIf="!isError()" class="stream-pack" (click)="onClick()" (contextmenu)="onContextMenu(); false">
     <img class="icon" [src]="getIcon() | safe">
     <div class="logo"></div>
     <div class="name">{{getName()}} <span>({{getId()}})</span></div>
 </div>
+<div *ngIf="isError()">방송정보가 없습니다.</div>

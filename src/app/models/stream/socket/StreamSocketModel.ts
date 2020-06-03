@@ -1,4 +1,5 @@
 import * as io from 'socket.io-client';
+
 import { TypeCallback } from '../../common/callback/TypeCallback';
 import { SessionStorage } from '../../storage/SessionStorage';
 import { StreamDto } from '../StreamDto';
@@ -12,6 +13,7 @@ export class StreamSocketModel {
     private mExtStreamDtos: StreamDto[];
     private mOnLocalStreamChanged: TypeCallback<StreamDto[]>;
     private mOnExtStreamChanged: TypeCallback<StreamDto[]>;
+    private mOnNewLocalStream: TypeCallback<StreamDto>;
 
     public constructor() {
         this.mSocket = StreamSocketModel.createSocket();
@@ -19,11 +21,15 @@ export class StreamSocketModel {
         this.mSocket.on('refresh_streams', (raw: RefreshStreamDto) => {
             this.onRefreshStreams(raw);
         });
+        this.mSocket.on('new_stream_notification', (raw: StreamDto) => {
+            this.mOnNewLocalStream(raw);
+        });
 
         this.mLocalStreamDtos = [];
         this.mExtStreamDtos = [];
         this.mOnLocalStreamChanged = _ => { };
         this.mOnExtStreamChanged = _ => { };
+        this.mOnNewLocalStream = _ => { };
     }
 
     private static createSocket(): SocketIOClient.Socket {
@@ -39,6 +45,10 @@ export class StreamSocketModel {
 
     public setOnExtStreamChanged(callback: TypeCallback<StreamDto[]>): void {
         this.mOnExtStreamChanged = callback;
+    }
+
+    public setOnNewLocalStream(callback: TypeCallback<StreamDto>): void {
+        this.mOnNewLocalStream = callback;
     }
 
     public getLocalStreamDtos(): StreamDto[] {

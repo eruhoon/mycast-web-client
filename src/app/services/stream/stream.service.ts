@@ -1,8 +1,12 @@
-import { Injectable } from '@angular/core';
+import { MutableNotification } from 'src/app/models/notification/MutableNotification';
 import { StreamSocketModel } from 'src/app/models/stream/socket/StreamSocketModel';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamDto } from 'src/app/models/stream/StreamDto';
 import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
+
+import { Injectable } from '@angular/core';
+
+import { NotificationService } from '../notification/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +17,16 @@ export class StreamService {
   private mLocalStreams: Stream[];
   private mExternalStreams: Stream[];
 
-  public constructor() {
+  public constructor(
+    private mNotificationService: NotificationService) {
+
     this.mSocket = new StreamSocketModel();
     this.mSocket.setOnLocalStreamChanged(
       streams => this.onLocalStreamChanged(streams));
     this.mSocket.setOnExtStreamChanged(
       streams => this.onExternalStreamChanged(streams));
+    this.mSocket.setOnNewLocalStream(
+      stream => this.onNewLocalStream(stream));
     this.mLocalStreams = [];
     this.mExternalStreams = [];
   }
@@ -47,5 +55,14 @@ export class StreamService {
   private onExternalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
     this.mExternalStreams = streams;
+  }
+
+  private onNewLocalStream(raw: StreamDto): void {
+    const noti = new MutableNotification();
+    noti.setTitle('새 방송 알림');
+    noti.setIcon(raw.icon);
+    noti.setBody(`${raw.nickname} 방송을 시작합니다`);
+    noti.setMute(true);
+    this.mNotificationService.pushNotification(noti);
   }
 }

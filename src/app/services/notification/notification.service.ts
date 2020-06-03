@@ -52,7 +52,9 @@ export class NotificationService {
     this.mNotifications.unshift(mutableNotification);
     this.mNotifications = this.mNotifications.filter((_, i) => i < 10);
     this.mNotificationPushes.push(mutableNotification);
-    this.performSound();
+    if (!notification.isMute()) {
+      this.performSound();
+    }
     setTimeout(() => {
       this.mNotificationPushes =
         this.mNotificationPushes.filter(n => n !== mutableNotification);

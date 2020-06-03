@@ -10,6 +10,7 @@ export class MutableNotification implements VegaNotification {
     private mBody: string;
     private mTimeStamp: number;
     private mRead: boolean;
+    private mMute: boolean;
 
     public constructor() {
         this.mHash = MutableNotification.generateHash();
@@ -18,6 +19,7 @@ export class MutableNotification implements VegaNotification {
         this.mBody = '';
         this.mTimeStamp = new Date().getTime();
         this.mRead = false;
+        this.mMute = false;
     }
 
     public setHash(hash: string): void {
@@ -72,6 +74,14 @@ export class MutableNotification implements VegaNotification {
         this.mRead = true;
     }
 
+    public isMute(): boolean {
+        return this.mMute;
+    }
+
+    public setMute(mute: boolean): void {
+        this.mMute = mute;
+    }
+
     public static clone(notification: VegaNotification): MutableNotification {
         const newNotification = new MutableNotification();
         newNotification.setHash(notification.getHash());
@@ -80,6 +90,7 @@ export class MutableNotification implements VegaNotification {
         newNotification.setBody(notification.getBody());
         newNotification.setTimeStamp(notification.getTimeStamp());
         newNotification.setRead(notification.isRead());
+        newNotification.setMute(notification.isMute());
         return newNotification;
     }
 

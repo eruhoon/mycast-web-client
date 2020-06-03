@@ -5,4 +5,5 @@ export interface VegaNotification {
     getBody(): string;
     getTimeStamp(): number;
     isRead(): boolean;
+    isMute(): boolean;
 }

@@ -186,6 +186,11 @@ export class MainPageComponent {
         return mode === ProfileModifyMode.STREAM;
     }
 
+    public isModifySettingMode(): boolean {
+        const mode = this.mProfileService.getModifyMode();
+        return mode === ProfileModifyMode.SETTING;
+    }
+
     public isStreamListShow(): boolean { return this.mStreamListShow; }
 
     public toggleStreamList() {

@@ -133,4 +133,5 @@ export const enum ProfileModifyMode {
   NONE = 'NONE',
   PROFILE = 'PROFILE',
   STREAM = 'STREAM',
+  SETTING = 'SETTING',
 }

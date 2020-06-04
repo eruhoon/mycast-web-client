@@ -148,6 +148,10 @@ export class SettingViewComponent implements OnInit {
     this.mProfileService.setModifyMode(ProfileModifyMode.STREAM);
   }
 
+  public openOptionSettingView(): void {
+    this.mProfileService.setModifyMode(ProfileModifyMode.SETTING);
+  }
+
   public onNotificationSoundClick(option: NotificationSound): void {
     const soundId = option.getId();
     this.mNotificationSoundId = soundId;

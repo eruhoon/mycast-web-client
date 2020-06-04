@@ -93,6 +93,7 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { ModifySettingModalComponent } from './views/main-page/modify-setting-modal/modify-setting-modal.component';
 
 @NgModule({
     declarations: [
@@ -151,6 +152,7 @@ import {
         MagicConchPackComponent,
         MobilePageComponent,
         ChatMessageEntryComponent,
+        ModifySettingModalComponent,
     ],
     imports: [
         BrowserModule,

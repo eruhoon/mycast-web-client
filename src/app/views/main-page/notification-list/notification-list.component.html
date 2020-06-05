@@ -6,7 +6,7 @@
     <div class="nt-entry" [ngClass]="{'read': param.notification.isRead()}"
         *ngFor="let param of getNotificationParams()">
         <div class="entry">
-            <img [src]="param.notification.getIcon()" />
+            <img [src]="param.notification.getIcon() | safe" />
         </div>
         <div class="nt-info-txt">
             <div class="title">

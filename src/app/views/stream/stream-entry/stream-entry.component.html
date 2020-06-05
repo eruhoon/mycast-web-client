@@ -1,5 +1,5 @@
 <div class="icon-wrapper">
-    <div class="icon" [style.background-image]="'url('+stream.getIcon()+')'" (click)="onIconClick()"></div>
+    <img class="icon" [src]="stream.getIcon()|safe" (click)="onIconClick()" />
     <div class="bridge"></div>
     <div class="detail thumbnail">
         <img class="thumbnail" *ngIf="isThumbnailShow()" [src]="getThumbnail()|safe" style="display: inline;"

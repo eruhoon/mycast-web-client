@@ -15,7 +15,7 @@
   }
 }
 
-.user-setting > div {
+.user-setting>div {
   border-bottom: 1px solid #616161;
   padding: 15px 10px;
 
@@ -56,7 +56,7 @@
   }
 }
 
-.stream-set > img {
+.stream-set>img {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -116,6 +116,7 @@
 .alarm {
   width: 91%;
   height: auto;
+
   ul {
     width: 100%;
     margin: 0%;
@@ -194,7 +195,7 @@
 }
 
 // 로그아웃 부분
-.user-setting > .logout {
+.user-setting>.logout {
   h5 {
     color: #f50057;
   }

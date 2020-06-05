@@ -18,7 +18,7 @@
   <div class="toggle-option stream-set" (click)="openOptionSettingView()">
     <h5>옵션</h5>
   </div>
-  <div class="alarm">
+  <!-- <div class="alarm">
     <h5>알림음</h5>
     <ul>
       <li *ngFor="let option of getNotificationSounds()" [ngClass]="{'select':option.getId()===getNotficationSoundId()}"
@@ -26,7 +26,7 @@
         {{option.getName()}}
       </li>
     </ul>
-  </div>
+  </div> -->
   <div class="theme">
     <h5>테마</h5>
     <ul>
@@ -34,20 +34,14 @@
         {{option.name}}</li>
     </ul>
   </div>
-  <div class="toggle-option" (click)="toggleDataSaveMode()">
+  <!-- <div class="toggle-option" (click)="toggleDataSaveMode()">
     <h5>데이터세이브 모드</h5>
     <i *ngIf="isDataSaveMode()" class="material-icons">done</i>
   </div>
   <div class="toggle-option" (click)="toggleChatTimestamp()">
     <h5>채팅 시각 표시</h5>
     <i *ngIf="isTimestampShow()" class="material-icons">done</i>
-  </div>
-  <div>
-    <h5>챗봇 설정</h5>
-  </div>
-  <div class="toggle-option">
-    <h5>후방주의</h5>
-  </div>
+  </div> -->
   <div class="logout">
     <h5>로그아웃</h5>
   </div>

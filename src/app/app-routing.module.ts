@@ -10,14 +10,15 @@ import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import {
-    StreamPlayerPageComponent
+  StreamPlayerPageComponent
 } from './views/stream/stream-player-page/stream-player-page.component';
 import {
-    TestPlayerPageComponent
+  TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
 import {
-    TotoroPlayerPageComponent
+  TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { HomePageComponent } from './views/home/home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MainPageComponent
+        component: HomePageComponent
       }
     ]
   },

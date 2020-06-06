@@ -94,6 +94,7 @@ import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { ModifySettingModalComponent } from './views/main-page/modify-setting-modal/modify-setting-modal.component';
+import { HomePageComponent } from './views/home/home-page/home-page.component';
 
 @NgModule({
     declarations: [
@@ -153,6 +154,7 @@ import { ModifySettingModalComponent } from './views/main-page/modify-setting-mo
         MobilePageComponent,
         ChatMessageEntryComponent,
         ModifySettingModalComponent,
+        HomePageComponent,
     ],
     imports: [
         BrowserModule,

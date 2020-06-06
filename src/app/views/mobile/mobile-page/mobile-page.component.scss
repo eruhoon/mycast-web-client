@@ -1,6 +1,7 @@
 $header-height: 50px;
 
 .top-bar-section {
+  position: absolute;
   width: 100vw;
   height: $header-height;
   left: 0;
@@ -8,7 +9,9 @@ $header-height: 50px;
 }
 
 .main-section {
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: $header-height;
   width: 100vw;
   height: calc(100% - #{$header-height});
 
@@ -21,7 +24,7 @@ $header-height: 50px;
     position: absolute;
     top: 0;
     width: 70vw;
-    height: calc(100% - #{$header-height});
+    height: 100%;
     transition: transform 0.4s ease-in-out;
 
     &.hidden {

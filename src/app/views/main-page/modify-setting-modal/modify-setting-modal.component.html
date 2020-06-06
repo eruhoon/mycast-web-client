@@ -1,108 +1,110 @@
 <div class="click-blocker" (click)="close()"></div>
-<div class="modal">
+<div class="modal-wrapper">
+  <div class="modal">
     <div class="title">
-        <h3>사이트 설정</h3>
+      <h3>사이트 설정</h3>
     </div>
-    <div class="site-set-box max-w">
+    <div class="body">
+      <div class="site-set-box max-w">
         <div class="set-title">
-            <p>알람음</p>
+          <p>알람음</p>
         </div>
         <div class="raido-switch">
-            <div class="radio-switch-btn" *ngFor="let option of getNotificationSounds()"
-                [ngClass]="{'select':option.getId()===getNotficationSoundId()}"
-                (click)="onNotificationSoundClick(option)">
-                {{option.getName()}}
-            </div>
+          <div class="radio-switch-btn" *ngFor="let option of getNotificationSounds()"
+            [ngClass]="{'select':option.getId()===getNotficationSoundId()}" (click)="onNotificationSoundClick(option)">
+            {{option.getName()}}
+          </div>
         </div>
-    </div>
-    <div class="site-set-box max-w">
+      </div>
+      <div class="site-set-box max-w">
         <div class="set-title">
-            <p>알람 표기</p>
+          <p>알람 표기</p>
         </div>
         <div class="radio-box">
-            <div class="radio-title">
-                <p>브라우저</p>
+          <div class="radio-title">
+            <p>브라우저</p>
+          </div>
+          <div class="raido-switch">
+            <div class="radio-switch-btn">
+              <p>호출</p>
             </div>
-            <div class="raido-switch">
-                <div class="radio-switch-btn">
-                    <p>호출</p>
-                </div>
-                <div class="radio-switch-btn select">
-                    <p>방송</p>
-                </div>
+            <div class="radio-switch-btn select">
+              <p>방송</p>
             </div>
+          </div>
         </div>
         <div class="radio-box">
-            <div class="radio-title">
-                <p>운영체제</p>
+          <div class="radio-title">
+            <p>운영체제</p>
+          </div>
+          <div class="raido-switch">
+            <div class="radio-switch-btn">
+              <p>호출</p>
             </div>
-            <div class="raido-switch">
-                <div class="radio-switch-btn">
-                    <p>호출</p>
-                </div>
-                <div class="radio-switch-btn select">
-                    <p>방송</p>
-                </div>
+            <div class="radio-switch-btn select">
+              <p>방송</p>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="site-set-box">
+      </div>
+      <div class="site-set-box">
         <div class="set-title">
-            <p>전체 알람</p>
+          <p>전체 알람</p>
         </div>
         <div class="set-switch">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
         </div>
-    </div>
-    <div class="site-set-box">
+      </div>
+      <div class="site-set-box">
         <div class="set-title">
-            <p>데이터세이브</p>
+          <p>데이터세이브</p>
         </div>
         <div class="set-switch">
-            <label class="switch" [ngClass]="{'active':isDataSaveMode()}" (click)="toggleDataSaveMode()">
-                <span class="slider"></span>
-            </label>
+          <label class="switch" [ngClass]="{'active':isDataSaveMode()}" (click)="toggleDataSaveMode()">
+            <span class="slider"></span>
+          </label>
         </div>
-    </div>
-    <div class="site-set-box">
+      </div>
+      <div class="site-set-box">
         <div class="set-title">
-            <p>채팅 시각 표기</p>
+          <p>채팅 시각 표기</p>
         </div>
         <div class="set-switch">
-            <label class="switch" [ngClass]="{'active':isTimestampShow()}" (click)="toggleChatTimestamp()">
-                <span class="slider"></span>
-            </label>
+          <label class="switch" [ngClass]="{'active':isTimestampShow()}" (click)="toggleChatTimestamp()">
+            <span class="slider"></span>
+          </label>
         </div>
-    </div>
-    <!-- <div class="site-set-box">
+      </div>
+      <!-- <div class="site-set-box">
         <div class="set-title">
-            <p>챗봇 표기</p>
+          <p>챗봇 표기</p>
         </div>
         <div class="set-switch">
-            <label class="switch">
-                <span class="slider"></span>
-            </label>
+          <label class="switch">
+            <span class="slider"></span>
+          </label>
         </div>
-    </div>
-    <div class="site-set-box">
+      </div>
+      <div class="site-set-box">
         <div class="set-title">
-            <p>후방주의</p>
+          <p>후방주의</p>
         </div>
         <div class="set-switch">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
         </div>
-    </div> -->
-    <!-- <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button> -->
-
-    <a href="#" class="modal-close" (click)="close()">
-        <i class="material-icons">
-            close
-        </i>
+      </div> -->
+      <!-- <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button> -->
+    </div>
+    <a class="modal-close" (click)="close()">
+      <i class="material-icons">
+        close
+      </i>
     </a>
+  </div>
 </div>

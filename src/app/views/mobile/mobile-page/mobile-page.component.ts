@@ -3,6 +3,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { TopBarService } from '../../main-page/top-bar/top-bar.service';
+import { ProfileService, ProfileModifyMode } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-mobile-page',
@@ -14,6 +15,7 @@ export class MobilePageComponent implements OnInit {
   public constructor(
     private mMainSrv: MainService,
     private mTopBarSrv: TopBarService,
+    private mProfileService: ProfileService,
     private mThemeSrv: ThemeService,
     private mClipboardImageSrv: ClipboardImageService) { }
 
@@ -34,5 +36,20 @@ export class MobilePageComponent implements OnInit {
 
   public isClipboardImageMode(): boolean {
     return this.mClipboardImageSrv.getCurrentImage() !== null;
+  }
+
+  public isModifyProfileMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.PROFILE;
+  }
+
+  public isModifyStreamMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.STREAM;
+  }
+
+  public isModifySettingMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.SETTING;
   }
 }

@@ -8,4 +8,9 @@
     <top-bar (menuClick)="toggleMenu()" (settingClick)="false"></top-bar>
 </nav>
 
+<modify-profile-modal *ngIf="isModifyProfileMode()"></modify-profile-modal>
+<modify-stream-modal *ngIf="isModifyStreamMode()"></modify-stream-modal>
+<modify-setting-modal *ngIf="isModifySettingMode()">
+</modify-setting-modal>
+
 <clipboard-image-popup *ngIf="isClipboardImageMode()"></clipboard-image-popup>

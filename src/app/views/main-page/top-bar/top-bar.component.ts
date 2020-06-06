@@ -1,7 +1,7 @@
 import { NotificationService } from 'src/app/services/notification/notification.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ProfileService, ProfileModifyMode } from 'src/app/services/profile/profile.service';
 
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, HostListener } from '@angular/core';
 
 @Component({
   selector: 'top-bar',
@@ -15,13 +15,11 @@ export class TopBarComponent {
   @Output()
   public menuClick = new EventEmitter();
 
-  @Output()
-  public settingClick = new EventEmitter();
-
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
   private mNotificationListShow: boolean;
   private mNotificationTimer: number;
+  private mSettingShow = false;
 
   public constructor(
     profileService: ProfileService,
@@ -51,6 +49,19 @@ export class TopBarComponent {
 
   public isNotificationListShow(): boolean {
     return this.mNotificationListShow;
+  }
+
+  public isSettingShow(): boolean {
+    return this.mSettingShow;
+  }
+
+  public toggleSetting() {
+    this.mSettingShow = !this.mSettingShow;
+  }
+
+  @HostListener('focusout')
+  public onFocusOut(): void {
+    this.toggleSetting();
   }
 
   private startNotificationTimer(): void {

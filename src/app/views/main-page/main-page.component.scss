@@ -197,27 +197,6 @@ nav.top-bar-section {
   background: #282828;
 }
 
-.setting-view {
-  position: absolute;
-  top: 50px;
-  right: -300px;
-  width: 220px;
-  height: auto;
-  overflow: hidden;
-  z-index: 85; // 알림보다 상위 노출
-  background: #424242;
-  border: 1px solid #616161;
-  border-radius: 5px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
-  transition: right 0.25s ease-in-out;
-
-  &.active {
-    right: 0;
-  }
-}
-
 image-popup-viewer {
   position: fixed;
   left: 0;

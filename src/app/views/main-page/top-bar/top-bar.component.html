@@ -10,10 +10,14 @@
       <i class="material-icons">notifications</i>
       <div *ngIf="this.getUnreadNotificationCount() > 0">{{this.getUnreadNotificationCount()}}</div>
     </button>
-    <button (click)="settingClick.emit()">
+    <button (click)="toggleSetting()">
       <img class="profile" [src]="getProfileIcon() | safe" />
     </button>
   </div>
+</div>
+
+<div class="setting-view" [ngClass]="isSettingShow() ? 'active' : ''">
+  <app-setting-view></app-setting-view>
 </div>
 
 <notification-list [class]="isNotificationListShow()?'active':'deactive'">

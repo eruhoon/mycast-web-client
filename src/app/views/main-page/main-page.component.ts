@@ -28,7 +28,6 @@ export class MainPageComponent {
     private mOptionService: OptionService;
     private mProfileService: ProfileService;
     private mClipboardImageService: ClipboardImageService;
-    private mSettingShow: boolean;
     private mInnerWidth: number;
     private mMoveMode: boolean;
     private mDividerPosition: number;
@@ -50,7 +49,6 @@ export class MainPageComponent {
         if (isMobile) {
             router.navigate(['/mobile']);
         }
-        this.mSettingShow = false;
         this.mCurrentStream = null;
         this.mMainService = mainService;
         this.mNotificationService = notificationService;
@@ -100,10 +98,6 @@ export class MainPageComponent {
         return this.mMainService.isSidebarShow();
     }
 
-    public isSettingShow(): boolean {
-        return this.mSettingShow;
-    }
-
     public isMoveMode(): boolean {
         return this.mMoveMode;
     }
@@ -150,10 +144,6 @@ export class MainPageComponent {
         this.closeMenu();
     }
 
-    public onSettingClick() {
-        this.toggleSetting();
-    }
-
     public onDividerMouseDown(event: MouseEvent): void {
         this.mMoveMode = true;
         this.mDividerPosition = event.clientX;
@@ -197,15 +187,17 @@ export class MainPageComponent {
         this.mStreamListShow = !this.mStreamListShow;
     }
 
+    public closeAllMenu() {
+        console.log(1111);
+        this.closeMenu();
+        this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
+    }
+
     private toggleMenu() {
         this.mMainService.toggleSidebar();
     }
 
     private closeMenu(): void {
         this.mMainService.closeSidebar();
-    }
-
-    private toggleSetting() {
-        this.mSettingShow = !this.mSettingShow;
     }
 }

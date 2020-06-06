@@ -41,7 +41,7 @@
     display: flex;
 
     // 공통 구문
-    & > div {
+    &>div {
       flex: 0;
     }
 
@@ -74,10 +74,17 @@
 
       span.type {
         margin-left: 2px;
+
         i {
           font-size: 10px;
         }
       }
     }
+  }
+}
+
+.chat-entry.data-save {
+  .message-section {
+    width: 100%;
   }
 }

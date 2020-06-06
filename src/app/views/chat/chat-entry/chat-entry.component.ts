@@ -2,8 +2,9 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-entry',
@@ -23,7 +24,7 @@ export class ChatEntryComponent implements OnInit {
 
   private mEnvironment: SenderEnv;
 
-  public constructor() { }
+  public constructor(private mOption: OptionService) { }
 
   public ngOnInit(): void {
     const env = this.chat.getSender().getType();
@@ -37,6 +38,10 @@ export class ChatEntryComponent implements OnInit {
 
   public getEnvironment(): SenderEnv {
     return this.mEnvironment;
+  }
+
+  public isDataSave(): boolean {
+    return this.mOption.isDataSaveMode();
   }
 
   public onIconContextMenu(): boolean {

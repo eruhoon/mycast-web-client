@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import { TopBarService } from './top-bar/top-bar.service';
 
 @Component({
     selector: 'app-main-page',
@@ -34,6 +35,7 @@ export class MainPageComponent {
     private mStreamListShow: boolean;
 
     public constructor(
+        private mTopBarSrv: TopBarService,
         router: Router,
         mainService: MainService,
         notificationService: NotificationService,
@@ -187,10 +189,8 @@ export class MainPageComponent {
         this.mStreamListShow = !this.mStreamListShow;
     }
 
-    public closeAllMenu() {
-        console.log(1111);
-        this.closeMenu();
-        this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
+    public closeSettingMenu(): void {
+        this.mTopBarSrv.closeSettingMenu();
     }
 
     private toggleMenu() {

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { TopBarService } from './top-bar.service';
 
 @Component({
   selector: 'top-bar',
@@ -18,9 +19,9 @@ export class TopBarComponent {
   private mNotificationService: NotificationService;
   private mNotificationListShow: boolean;
   private mNotificationTimer: number;
-  private mSettingShow = false;
 
   public constructor(
+    private mService: TopBarService,
     profileService: ProfileService,
     notificationService: NotificationService) {
     this.mProfileService = profileService;
@@ -51,20 +52,15 @@ export class TopBarComponent {
   }
 
   public isSettingShow(): boolean {
-    return this.mSettingShow;
+    return this.mService.isSettingMenuShow();
   }
 
   public toggleSetting() {
-    this.mSettingShow = !this.mSettingShow;
+    this.mService.toggleSettingMenu();
   }
 
   public closeSetting(): void {
-    this.mSettingShow = false;
-  }
-
-  @HostListener('focusout')
-  public onFocusOut(): void {
-    this.closeSetting();
+    this.mService.closeSettingMenu();
   }
 
   private startNotificationTimer(): void {

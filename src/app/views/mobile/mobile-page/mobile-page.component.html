@@ -1,4 +1,4 @@
-<div class="main-section">
+<div class="main-section" (mousedown)="closeSettingMenu()">
     <chat-page></chat-page>
     <div class="side-bar" [ngClass]="{hidden: !isSideMenuShow()}">
         <app-side-bar></app-side-bar>

@@ -59,9 +59,13 @@ export class TopBarComponent {
     this.mSettingShow = !this.mSettingShow;
   }
 
+  public closeSetting(): void {
+    this.mSettingShow = false;
+  }
+
   @HostListener('focusout')
   public onFocusOut(): void {
-    this.toggleSetting();
+    this.closeSetting();
   }
 
   private startNotificationTimer(): void {

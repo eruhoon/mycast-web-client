@@ -235,6 +235,15 @@ modify-profile-modal {
   z-index: 99;
 }
 
+modify-stream-modal {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
 modify-setting-modal {
   position: fixed;
   left: 0px;

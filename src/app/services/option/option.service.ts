@@ -1,4 +1,5 @@
 import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
+import { NotificationChannel } from 'src/app/models/notification/NotificationChannel';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { LocalStorage } from 'src/app/models/storage/LocalStorage';
@@ -16,6 +17,7 @@ export class OptionService {
   private mThemeParser: ThemeParser;
   private mChatPosition: number;
   private mNotificationEnable: boolean;
+  private mNotificationChannels: NotificationChannel[];
   private mNotificationSounds: NotificationSounds;
   private mNotificationSoundId: string;
   private mDataSaveMode: boolean;

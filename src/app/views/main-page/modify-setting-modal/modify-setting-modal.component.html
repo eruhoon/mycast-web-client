@@ -30,29 +30,18 @@
         <div class="set-title">
           <p>알람 표기</p>
         </div>
-        <div class="radio-box">
+        <div class="radio-box" *ngFor="let channel of getNotifcationChannels()">
           <div class="radio-title">
-            <p>브라우저</p>
+            <p>{{channel.name}}</p>
           </div>
           <div class="raido-switch">
-            <div class="radio-switch-btn">
-              <p>호출</p>
+            <div class="radio-switch-btn" [ngClass]="{'select': channel.browser}"
+              (click)="toggleNotificationBrowserChannel(channel.hash)">
+              <p>브라우저</p>
             </div>
-            <div class="radio-switch-btn select">
-              <p>방송</p>
-            </div>
-          </div>
-        </div>
-        <div class="radio-box">
-          <div class="radio-title">
-            <p>운영체제</p>
-          </div>
-          <div class="raido-switch">
-            <div class="radio-switch-btn">
-              <p>호출</p>
-            </div>
-            <div class="radio-switch-btn select">
-              <p>방송</p>
+            <div class="radio-switch-btn" [ngClass]="{'select': channel.os}"
+              (click)="toggleNotificationOsChannel(channel.hash)">
+              <p>OS</p>
             </div>
           </div>
         </div>

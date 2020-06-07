@@ -1,3 +1,4 @@
+import { NotificationChannel } from 'src/app/models/notification/NotificationChannel';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
@@ -12,12 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifySettingModalComponent implements OnInit {
 
+  private mNotificationChannels: NotificationChannel[];
   private mNotificationSounds: NotificationSounds;
   private mNotificationSoundId: string;
 
   public constructor(
     private mProfileSrv: ProfileService,
     private mOptionSrv: OptionService) {
+    this.mNotificationChannels = [
+      { hash: 'alarm', name: '호출 알림', browser: true, os: true },
+      { hash: 'local-stream', name: '방송 알림', browser: true, os: true },
+    ];
     this.mNotificationSounds = new NotificationSounds();
     this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
   }
@@ -28,6 +34,28 @@ export class ModifySettingModalComponent implements OnInit {
 
   public isNotificationEnabled(): boolean {
     return this.mOptionSrv.isNotificationEnabled();
+  }
+
+  public getNotifcationChannels(): NotificationChannel[] {
+    return this.mNotificationChannels;
+  }
+
+  public toggleNotificationBrowserChannel(hash: string) {
+    const channel = this.mNotificationChannels.find(c => c.hash === hash);
+    if (!channel) {
+      console.warn('invalid channel');
+      return;
+    }
+    channel.browser = !channel.browser;
+  }
+
+  public toggleNotificationOsChannel(hash: string) {
+    const channel = this.mNotificationChannels.find(c => c.hash === hash);
+    if (!channel) {
+      console.warn('invalid channel');
+      return;
+    }
+    channel.os = !channel.os;
   }
 
   public getNotficationSoundId(): string {
@@ -69,5 +97,9 @@ export class ModifySettingModalComponent implements OnInit {
 
   public close(): void {
     this.mProfileSrv.setModifyMode(ProfileModifyMode.NONE);
+  }
+
+  private applyNotificationChannel() {
+
   }
 }

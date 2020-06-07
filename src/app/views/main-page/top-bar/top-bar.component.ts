@@ -17,7 +17,6 @@ export class TopBarComponent {
 
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
-  private mNotificationListShow: boolean;
   private mNotificationTimer: number;
 
   public constructor(
@@ -26,7 +25,6 @@ export class TopBarComponent {
     notificationService: NotificationService) {
     this.mProfileService = profileService;
     this.mNotificationService = notificationService;
-    this.mNotificationListShow = false;
   }
 
   public getProfileIcon(): string {
@@ -38,21 +36,21 @@ export class TopBarComponent {
   }
 
   public toggleNotificationList(): void {
-    if (!this.mNotificationListShow) {
+    if (!this.mService.isNotiListOpen()) {
       this.mNotificationService.readAll();
       this.startNotificationTimer();
     } else {
       this.stopNotificationTimer();
     }
-    this.mNotificationListShow = !this.mNotificationListShow;
+    this.mService.toggleNotiList();
   }
 
   public isNotificationListShow(): boolean {
-    return this.mNotificationListShow;
+    return this.mService.isNotiListOpen();
   }
 
   public isSettingShow(): boolean {
-    return this.mService.isSettingMenuShow();
+    return this.mService.isSettingMenuOpen();
   }
 
   public toggleSetting() {

@@ -26,7 +26,7 @@ export class MobilePageComponent implements OnInit {
     this.mMainSrv.toggleSidebar();
   }
   //https://www.twitch.tv/sorammmm/clip/AmusedPleasantHabaneroPipeHype
-  public closeSettingMenu(): void {
+  public closeAllMenu(): void {
     this.mTopBarSrv.closeSettingMenu();
   }
 

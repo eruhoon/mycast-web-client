@@ -57,9 +57,15 @@ export class NotificationService {
 
   public pushNotificationInternal(notification: VegaNotification): void {
     const mutableNotification = MutableNotification.clone(notification);
+    const channel = this.mOption.getNotificationChannels().find(ch => {
+      return ch.hash === mutableNotification.getChannel();
+    });
     this.mNotifications.unshift(mutableNotification);
     this.mNotifications = this.mNotifications.filter((_, i) => i < 10);
-    this.mNotificationPushes.push(mutableNotification);
+
+    if (!channel || channel.browser) {
+      this.mNotificationPushes.push(mutableNotification);
+    }
     if (!notification.isMute()) {
       this.performSound();
     }
@@ -68,7 +74,9 @@ export class NotificationService {
         this.mNotificationPushes.filter(n => n !== mutableNotification);
     }, 3000);
 
-    this.requestToPushWebNotification(notification);
+    if (!channel || channel.os) {
+      this.requestToPushWebNotification(notification);
+    }
   }
 
   private requestToPushWebNotification(vegaNoti: VegaNotification): void {

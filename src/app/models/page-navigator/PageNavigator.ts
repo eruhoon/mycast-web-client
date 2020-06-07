@@ -6,7 +6,6 @@ export class PageNavigator {
 
     public constructor(router: Router) {
         this.mRouter = router;
-        console.log(router);
     }
 
     public navigate(path: string | null) {

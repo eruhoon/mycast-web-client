@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .modal {
@@ -281,4 +282,5 @@
   height: 100%;
   background: black;
   opacity: 0.8;
+  z-index: 100;
 }

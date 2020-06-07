@@ -58,6 +58,21 @@
       }
     }
   }
+  // 로그아웃 부분
+  .user-setting>.logout {
+    &:hover {
+      background-color: #ec407a;
+      h5 {
+        color: #ffffff;
+      }
+    }
+    &:active {
+      background-color: #c2185b;
+      h5 {
+        color: #ffffff;
+      }
+    }
+  }
 }
 
 :host-context(.theme-dark) {

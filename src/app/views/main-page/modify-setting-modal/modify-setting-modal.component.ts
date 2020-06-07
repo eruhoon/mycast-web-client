@@ -1,4 +1,4 @@
-import { NotificationChannel } from 'src/app/models/notification/NotificationChannel';
+import { NotificationChannel, NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
@@ -21,14 +21,15 @@ export class ModifySettingModalComponent implements OnInit {
     private mProfileSrv: ProfileService,
     private mOptionSrv: OptionService) {
     this.mNotificationChannels = [
-      { hash: 'alarm', name: '호출 알림', browser: true, os: true },
-      { hash: 'local-stream', name: '방송 알림', browser: true, os: true },
+      { hash: NotificationChannelHash.ALARM, name: '호출 알림', browser: true, os: true },
+      { hash: NotificationChannelHash.LOCAL_STREAM, name: '방송 알림', browser: true, os: true },
     ];
     this.mNotificationSounds = new NotificationSounds();
     this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
   }
 
   public ngOnInit(): void {
+    this.initNotificationChannel();
     this.mNotificationSoundId = this.mOptionSrv.getNotificationSound().getId();
   }
 
@@ -47,6 +48,7 @@ export class ModifySettingModalComponent implements OnInit {
       return;
     }
     channel.browser = !channel.browser;
+    this.mOptionSrv.setNotificationChannels(this.mNotificationChannels);
   }
 
   public toggleNotificationOsChannel(hash: string) {
@@ -56,6 +58,7 @@ export class ModifySettingModalComponent implements OnInit {
       return;
     }
     channel.os = !channel.os;
+    this.mOptionSrv.setNotificationChannels(this.mNotificationChannels);
   }
 
   public getNotficationSoundId(): string {
@@ -99,7 +102,11 @@ export class ModifySettingModalComponent implements OnInit {
     this.mProfileSrv.setModifyMode(ProfileModifyMode.NONE);
   }
 
-  private applyNotificationChannel() {
-
+  private initNotificationChannel(): void {
+    const channels = this.mOptionSrv.getNotificationChannels();
+    this.mNotificationChannels = this.mNotificationChannels.map(channel => {
+      const findChannel = channels.find(ch => ch.hash === channel.hash);
+      return findChannel ? findChannel : channel;
+    });
   }
 }

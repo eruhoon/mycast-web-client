@@ -60,6 +60,21 @@ export class OptionService {
     this.mStorage.setNotificationEnable(enable);
   }
 
+  public getNotificationChannels(): NotificationChannel[] {
+    try {
+      const raw = this.mStorage.getRawNotificationChannels();
+      const channels = JSON.parse(raw) as NotificationChannel[];
+      return channels.map(ch => ch);
+    } catch {
+      return [];
+    }
+  }
+
+  public setNotificationChannels(channels: NotificationChannel[]): void {
+    const raw = JSON.stringify(channels);
+    this.mStorage.setRawNotificationChannels(raw);
+  }
+
   public getNotificationSound(): NotificationSound {
     return this.mNotificationSounds.getSoundById(this.mNotificationSoundId);
   }

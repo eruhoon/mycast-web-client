@@ -126,3 +126,11 @@ notification-list {
     max-height: 0px;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  notification-list {
+    width: 100%;
+    right: 0px;
+  }
+}

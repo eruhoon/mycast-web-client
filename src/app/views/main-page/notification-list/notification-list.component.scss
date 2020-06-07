@@ -131,3 +131,14 @@
     }
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .nt-no-entry {
+    width: calc(100% - 32px);
+    height: 50px;
+  }
+  .nt-entry {
+    width: calc(100% - 32px);
+  }
+}

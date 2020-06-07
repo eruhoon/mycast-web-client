@@ -12,6 +12,7 @@ import { RefreshChatDto } from './RefreshChatDto';
 import {
     RawChatRequest, ReceivedNotification, RefreshMyProfile, RefreshUser, VegaChatSocketModel
 } from './VegaChatSocketModel';
+import { NotificationChannelHash } from '../notification/NotificationChannel';
 
 export class WebSocketModel extends VegaChatSocketModel {
 
@@ -114,6 +115,7 @@ export class WebSocketModel extends VegaChatSocketModel {
         notification.setIcon(receivedNotification.from.icon);
         notification.setTitle(receivedNotification.from.nickname);
         notification.setBody(`"${receivedNotification.from.nickname}"로 부터 알림이 왔어요.`);
+        notification.setChannel(NotificationChannelHash.ALARM);
         this.mOnNotificationReceived(notification);
     }
 

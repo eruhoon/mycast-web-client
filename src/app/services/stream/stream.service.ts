@@ -7,6 +7,7 @@ import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
 import { Injectable } from '@angular/core';
 
 import { NotificationService } from '../notification/notification.service';
+import { NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,7 @@ export class StreamService {
     noti.setIcon(raw.icon);
     noti.setBody(`${raw.nickname} 방송을 시작합니다`);
     noti.setMute(true);
+    noti.setChannel(NotificationChannelHash.LOCAL_STREAM);
     this.mNotificationService.pushNotification(noti);
   }
 }

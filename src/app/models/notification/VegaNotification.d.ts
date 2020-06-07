@@ -1,3 +1,5 @@
+import { NotificationChannelHash } from "./NotificationChannel";
+
 export interface VegaNotification {
     getHash(): string;
     getIcon(): string;
@@ -6,4 +8,5 @@ export interface VegaNotification {
     getTimeStamp(): number;
     isRead(): boolean;
     isMute(): boolean;
+    getChannel(): NotificationChannelHash;
 }

@@ -6,6 +6,7 @@ export type NotificationChannel = {
 };
 
 export const enum NotificationChannelHash {
+    DEFAULT = 'default',
     ALARM = 'alarm',
     LOCAL_STREAM = 'local-stream',
 }

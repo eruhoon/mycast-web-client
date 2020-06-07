@@ -1,6 +1,7 @@
 import { Md5 } from 'ts-md5/dist/md5';
 
 import { VegaNotification } from './VegaNotification';
+import { NotificationChannelHash } from './NotificationChannel';
 
 export class MutableNotification implements VegaNotification {
 
@@ -11,6 +12,7 @@ export class MutableNotification implements VegaNotification {
     private mTimeStamp: number;
     private mRead: boolean;
     private mMute: boolean;
+    private mChannel: NotificationChannelHash;
 
     public constructor() {
         this.mHash = MutableNotification.generateHash();
@@ -20,6 +22,7 @@ export class MutableNotification implements VegaNotification {
         this.mTimeStamp = new Date().getTime();
         this.mRead = false;
         this.mMute = false;
+        this.mChannel = NotificationChannelHash.DEFAULT;
     }
 
     public setHash(hash: string): void {
@@ -82,6 +85,14 @@ export class MutableNotification implements VegaNotification {
         this.mMute = mute;
     }
 
+    public getChannel(): NotificationChannelHash {
+        return this.mChannel;
+    }
+
+    public setChannel(channel: NotificationChannelHash): void {
+        this.mChannel = channel;
+    }
+
     public static clone(notification: VegaNotification): MutableNotification {
         const newNotification = new MutableNotification();
         newNotification.setHash(notification.getHash());
@@ -91,6 +102,7 @@ export class MutableNotification implements VegaNotification {
         newNotification.setTimeStamp(notification.getTimeStamp());
         newNotification.setRead(notification.isRead());
         newNotification.setMute(notification.isMute());
+        newNotification.setChannel(notification.getChannel());
         return newNotification;
     }
 

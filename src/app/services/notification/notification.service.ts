@@ -48,6 +48,14 @@ export class NotificationService {
   }
 
   public pushNotification(notification: VegaNotification): void {
+    if (!this.mOption.isNotificationEnabled()) {
+      return;
+    } else {
+      this.pushNotificationInternal(notification);
+    }
+  }
+
+  public pushNotificationInternal(notification: VegaNotification): void {
     const mutableNotification = MutableNotification.clone(notification);
     this.mNotifications.unshift(mutableNotification);
     this.mNotifications = this.mNotifications.filter((_, i) => i < 10);

@@ -5,7 +5,17 @@
       <h3>사이트 설정</h3>
     </div>
     <div class="body">
-      <div class="site-set-box max-w">
+      <div class="site-set-box">
+        <div class="set-title">
+          <p>전체 알람</p>
+        </div>
+        <div class="set-switch">
+          <label class="switch" [ngClass]="{'active':isNotificationEnabled()}" (click)="toggleNotificationEnable()">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="site-set-box max-w" *ngIf="isNotificationEnabled()">
         <div class="set-title">
           <p>알람음</p>
         </div>
@@ -16,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="site-set-box max-w">
+      <div class="site-set-box max-w" *ngIf="isNotificationEnabled()">
         <div class="set-title">
           <p>알람 표기</p>
         </div>
@@ -45,17 +55,6 @@
               <p>방송</p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="site-set-box">
-        <div class="set-title">
-          <p>전체 알람</p>
-        </div>
-        <div class="set-switch">
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-          </label>
         </div>
       </div>
       <div class="site-set-box">

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'modify-setting-modal',
@@ -25,6 +26,10 @@ export class ModifySettingModalComponent implements OnInit {
     this.mNotificationSoundId = this.mOptionSrv.getNotificationSound().getId();
   }
 
+  public isNotificationEnabled(): boolean {
+    return this.mOptionSrv.isNotificationEnabled();
+  }
+
   public getNotficationSoundId(): string {
     return this.mNotificationSoundId;
   }
@@ -44,6 +49,11 @@ export class ModifySettingModalComponent implements OnInit {
 
   public isTimestampShow(): boolean {
     return this.mOptionSrv.isTimestampShow();
+  }
+
+  public toggleNotificationEnable(): void {
+    const option = this.mOptionSrv.isNotificationEnabled();
+    this.mOptionSrv.setNotificationEnabled(!option);
   }
 
   public toggleChatTimestamp(): void {

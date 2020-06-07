@@ -33,6 +33,16 @@ export class LocalStorage {
         this.setItem(LocalStorageKey.CHAT_POSITION, pos.toString());
     }
 
+    public getNotificationEnable(): boolean {
+        const raw = this.getItem(LocalStorageKey.NOTIFICATION_ENABLE);
+        return raw !== LocalStorage.OPTION_FALSE;
+    }
+
+    public setNotificationEnable(value: boolean): void {
+        this.setItem(LocalStorageKey.NOTIFICATION_ENABLE, value ?
+            LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
+    }
+
     public getNotificationSoundId(): string {
         const raw = this.getItem(LocalStorageKey.NOTIFICATION_SOUND);
         return raw ? raw : NotificationSound.getDefaultSound().getId();
@@ -99,6 +109,7 @@ export class LocalStorage {
 
 enum LocalStorageKey {
     CHAT_POSITION = 'vega.chat_position',
+    NOTIFICATION_ENABLE = 'vega.notification_enable',
     NOTIFICATION_SOUND = 'vega.notification_sound',
     DATA_SAVE_MODE = 'vega.data_save_mode',
     SCROLL_LOCK_MODE = 'vega.scroll_lock_mode',

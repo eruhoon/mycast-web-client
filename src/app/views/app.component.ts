@@ -12,7 +12,6 @@ export class AppComponent {
   readonly VAPID_PUBLIC_KEY = 'BLjdihR3YREJZKH33geqT-5bZPe7Jxkq4QDSqfXq8QdRDqLnlmFpcyYCJrNuWrmIaOs0OxZdXBe7OnRjeffKq1w';
 
   constructor(private mSwPush: SwPush) {
-    console.log(this.mSwPush);
     this.subscribeToPush();
   }
 

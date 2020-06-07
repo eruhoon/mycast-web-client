@@ -1,10 +1,7 @@
+import { Injectable } from '@angular/core';
 import { MutableNotification } from 'src/app/models/notification/MutableNotification';
 import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { User } from 'src/app/models/user/User';
-
-import { Injectable } from '@angular/core';
-import { SwPush } from '@angular/service-worker';
-
 import { OptionService } from '../option/option.service';
 
 @Injectable({

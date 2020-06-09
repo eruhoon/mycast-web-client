@@ -132,6 +132,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     }
 
     private onOpenSocket(): void {
+        console.log('connected');
         this.login();
     }
 
@@ -145,7 +146,10 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private onClose(): void {
         console.log('onClose');
-        setTimeout(() => { this.connect(); }, 1000);
+        setTimeout(() => {
+            console.log('try to reconnect');
+            this.mWebSocket = this.connect();
+        }, 3000);
     }
 
     private sendMessage(commandType: string, resource: any) {

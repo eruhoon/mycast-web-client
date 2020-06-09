@@ -3,6 +3,7 @@ import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
+import { ChatListService } from '../../chat-list/chat-list.service';
 
 @Component({
   selector: 'image-pack',
@@ -20,6 +21,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
 
   public constructor(
     injector: Injector,
+    private mChatListSrv: ChatListService,
     imagePopupService: ImagePopupService) {
 
     super(injector);
@@ -72,5 +74,13 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   public onImageClick(): void {
     const image = this.message.getMessage();
     this.mImagePopupService.setImage(image);
+  }
+
+  public setErrorImage(): void {
+    console.log('todo: errorImage');
+  }
+
+  public onImageLoad(): void {
+    this.mChatListSrv.scrollToBottom(false);
   }
 }

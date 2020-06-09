@@ -3,6 +3,7 @@ import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ChatListService } from './chat-list.service';
 
 @Component({
   selector: 'chat-list',
@@ -19,6 +20,7 @@ export class ChatListComponent implements OnInit {
   private mOptionService: OptionService;
 
   public constructor(
+    private mService: ChatListService,
     currentChatService: CurrentChatService,
     optionService: OptionService) {
 
@@ -30,6 +32,8 @@ export class ChatListComponent implements OnInit {
 
   public ngOnInit() {
     this.mCurrentChatService.subscribeChat(chats => this.onChatsChanged(chats));
+
+    this.mService.setScroller(this);
   }
 
   public getChats(): Chat[] {
@@ -40,7 +44,7 @@ export class ChatListComponent implements OnInit {
     this.entryIconSelect.emit(iconSrc);
   }
 
-  private scrollToBottom(isFirst: boolean): void {
+  public scrollToBottom(isFirst: boolean): void {
     setTimeout(() => {
       const listElement = this.mScrollList.nativeElement;
       listElement.scrollTo({

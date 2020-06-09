@@ -3,7 +3,8 @@
         클릭해서 이미지 열기
     </div>
     <div class="img-wrapper" *ngIf="isOpen()">
-        <img class="img" [src]="getImage()" (click)="onImageClick()">
+        <img class="img" [src]="getImage() | safe" (click)="onImageClick()" (load)="onImageLoad()"
+            (error)="setErrorImage()">
         <div class="button-wrapper" *ngIf="isMenuShow()">
             <button (click)="toggleCensor()">
                 <i class="material-icons">security</i>

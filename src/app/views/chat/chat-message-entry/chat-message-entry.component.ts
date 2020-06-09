@@ -36,7 +36,7 @@ export class ChatMessageEntryComponent implements OnInit {
   }
 
   private static convertTimeToString(timestamp: number): string {
-    const padZero = (n: number) => n > 10 ? n : '0' + n;
+    const padZero = (n: number) => n < 10 ? `${0}n` : n;
     const time = new Date(timestamp);
 
     const y = time.getFullYear();

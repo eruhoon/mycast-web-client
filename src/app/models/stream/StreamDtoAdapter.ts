@@ -22,7 +22,13 @@ export class StreamDtoAdapter extends Stream {
 
     public getDescription(): string { return this.mRaw.description; }
 
-    public getUrl(): string { return this.mRaw.url; }
+    public getUrl(): string {
+        if (this.getPlatform() === 'twitch') {
+            return `${this.mRaw.url}&parent=${location.hostname}`;
+        } else {
+            return this.mRaw.url;
+        }
+    }
 
     public getViewer(): number { return this.mRaw.viewer; }
 

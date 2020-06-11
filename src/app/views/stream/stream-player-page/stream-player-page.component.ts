@@ -1,11 +1,12 @@
 
-import { Stream } from 'src/app/models/stream/Stream';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-declare var Clappr: any;
-declare var RTMP: any;
+declare class Plyr {
+  constructor(element: any, option: any);
+  public on(event: string, callback?: any): void;
+}
+declare var flvjs: any;
 
 @Component({
   selector: 'stream-player-page',
@@ -14,63 +15,71 @@ declare var RTMP: any;
 })
 export class StreamPlayerPageComponent implements OnInit {
 
+  @ViewChild('player', { static: true })
+  public mPlayerView: ElementRef<HTMLVideoElement>;
+
   private mRoute: ActivatedRoute;
-  @Input() stream: Stream;
+  private mPlayerId: string;
+  private mPlyr: Plyr | null;
+  private mPlayer: any;
 
-  public mPlayerId: string;
-
-  private mPlayer: any | null;
-
-  constructor(route: ActivatedRoute) {
+  public constructor(route: ActivatedRoute) {
     this.mRoute = route;
+    this.mPlyr = null;
     this.mPlayer = null;
   }
 
   public ngOnInit() {
-    this.mRoute.paramMap.subscribe(params => {
-      this.mPlayerId = params.get('playerId') || '';
-      this.getPlayer().load(`rtmp://mycast.xyz/live/${this.mPlayerId}`, 'mpeg/flv', true);
-    });
+    this.mRoute.paramMap.subscribe(params => this.onParamChanged(params));
   }
 
-  private getPlayer(): any {
-    if (this.mPlayer === null) {
-      this.mPlayer = this.loadPlayer();
+  private onParamChanged(params: ParamMap): void {
+    this.mPlayerId = params.get('playerId') || '';
+    this.onPlayerIdChanged();
+  }
+
+  private onPlayerIdChanged(): void {
+    if (flvjs.isSupported()) {
+      this.initPlayer();
     }
-    return this.mPlayer;
   }
 
-  private loadPlayer(): any {
-    return new Clappr.Player({
-      parentId: '#player',
-      width: '100%',
-      height: '100%',
-      plugins: { playback: [RTMP] },
-      rtmpConfig: {
-        swfPath: './assets/clappr/player/RTMP.swf',
-        scaling: 'stretch',
-        playbackType: 'live',
-        bufferTime: 1,
-        startLevel: 0,
-        switchRules: {
-          SufficientBandwidthRule: {
-            bandwidthSafetyMultiple: 1.15,
-            minDroppedFps: 2
-          },
-          InsufficientBufferRule: {
-            minBufferLength: 2
-          },
-          DroppedFramesRule: {
-            downSwitchByOne: 10,
-            downSwitchByTwo: 20,
-            downSwitchToZero: 24
-          },
-          InsufficientBandwidthRule: {
-            bitrateMultiplier: 1.15
-          }
-        }
+  private createPlyr(): Plyr {
+    const plyr = new Plyr(this.mPlayerView.nativeElement, {
+      speed: {
+        selected: 1,
+        options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
       },
+      clickToPlay: false,
+      controls: [
+        'play-large', 'play', 'mute',
+        'volume', 'pip', 'airplay', 'fullscreen'
+      ]
     });
+    plyr.on('ready', (event: any) => this.onPlayerReady());
+    return plyr;
   }
 
+  private createPlayer(): any {
+    const player = flvjs.createPlayer({
+      enableWorker: false,
+      lazyLoadMaxDuration: 3 * 60,
+      type: 'flv',
+      isLive: true,
+      url: `https://mycast.xyz:8087/live/${this.mPlayerId}.flv`
+    });
+
+    player.attachMediaElement(this.mPlayerView.nativeElement);
+    return player;
+  }
+
+  private initPlayer(): void {
+    this.mPlyr = this.createPlyr();
+    this.mPlayer = this.createPlayer();
+    this.mPlayer.load();
+  }
+
+  private onPlayerReady() {
+    this.mPlayer.play();
+  }
 }

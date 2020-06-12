@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { OptionService } from 'src/app/services/option/option.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'home-page',

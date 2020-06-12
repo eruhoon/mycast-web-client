@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NotificationService } from 'src/app/services/notification/notification.service';
 import { User } from 'src/app/models/user/User';
 import { MainService } from 'src/app/services/main/main.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'notification-request-popup',

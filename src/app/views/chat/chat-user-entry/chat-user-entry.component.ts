@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
 import { User } from 'src/app/models/user/User';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'chat-user-entry',

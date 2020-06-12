@@ -1,6 +1,8 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+
 import { TopBarService } from './top-bar.service';
 
 @Component({

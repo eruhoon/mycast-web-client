@@ -1,7 +1,7 @@
 import { Md5 } from 'ts-md5/dist/md5';
 
-import { VegaNotification } from './VegaNotification';
 import { NotificationChannelHash } from './NotificationChannel';
+import { VegaNotification } from './VegaNotification';
 
 export class MutableNotification implements VegaNotification {
 

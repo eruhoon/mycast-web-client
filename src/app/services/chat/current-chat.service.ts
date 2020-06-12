@@ -1,9 +1,9 @@
 import { Observable, Subject } from 'rxjs';
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatContianer as ChatContainer } from 'src/app/models/chat/ChatContainer';
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 import { Injectable } from '@angular/core';
-import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 @Injectable({
   providedIn: 'root'

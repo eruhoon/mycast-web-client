@@ -2,8 +2,8 @@ import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 
-import { ChatPack } from '../ChatPack';
 import { ChatListService } from '../../chat-list/chat-list.service';
+import { ChatPack } from '../ChatPack';
 
 @Component({
   selector: 'image-pack',

@@ -1,4 +1,4 @@
-import { NotificationChannelHash } from "./NotificationChannel";
+import { NotificationChannelHash } from './NotificationChannel';
 
 export interface VegaNotification {
     getHash(): string;

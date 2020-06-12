@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Toast } from 'src/app/models/notification/Toast';
 import { DefaultToast } from 'src/app/models/notification/DefaultToast';
+import { Toast } from 'src/app/models/notification/Toast';
+
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

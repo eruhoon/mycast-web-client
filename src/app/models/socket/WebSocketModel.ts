@@ -2,6 +2,7 @@ import { Chat } from '../chat/Chat';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { TypeCallback } from '../common/callback/TypeCallback';
 import { MutableNotification } from '../notification/MutableNotification';
+import { NotificationChannelHash } from '../notification/NotificationChannel';
 import { VegaNotification } from '../notification/VegaNotification';
 import { MutableProfile } from '../profile/MutableProfile';
 import { Profile } from '../profile/Profile';
@@ -12,7 +13,6 @@ import { RefreshChatDto } from './RefreshChatDto';
 import {
     RawChatRequest, ReceivedNotification, RefreshMyProfile, RefreshUser, VegaChatSocketModel
 } from './VegaChatSocketModel';
-import { NotificationChannelHash } from '../notification/NotificationChannel';
 
 export class WebSocketModel extends VegaChatSocketModel {
 

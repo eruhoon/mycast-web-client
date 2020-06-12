@@ -1,5 +1,6 @@
-import { Toast } from './Toast';
 import { Md5 } from 'ts-md5';
+
+import { Toast } from './Toast';
 
 export abstract class BaseToast implements Toast {
 

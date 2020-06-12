@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/app/services/notification/toast.service';
 import { Toast } from 'src/app/models/notification/Toast';
+import { ToastService } from 'src/app/services/notification/toast.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'toast-list',

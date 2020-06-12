@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MainService } from 'src/app/services/main/main.service';
-import { ThemeService } from 'src/app/services/theme/theme.service';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
+import { MainService } from 'src/app/services/main/main.service';
+import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
+
+import { Component, OnInit } from '@angular/core';
+
 import { TopBarService } from '../../main-page/top-bar/top-bar.service';
-import { ProfileService, ProfileModifyMode } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-mobile-page',

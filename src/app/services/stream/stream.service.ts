@@ -1,4 +1,5 @@
 import { MutableNotification } from 'src/app/models/notification/MutableNotification';
+import { NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
 import { StreamSocketModel } from 'src/app/models/stream/socket/StreamSocketModel';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamDto } from 'src/app/models/stream/StreamDto';
@@ -7,7 +8,6 @@ import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
 import { Injectable } from '@angular/core';
 
 import { NotificationService } from '../notification/notification.service';
-import { NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
 
 @Injectable({
   providedIn: 'root'

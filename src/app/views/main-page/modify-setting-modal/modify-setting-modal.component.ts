@@ -1,4 +1,6 @@
-import { NotificationChannel, NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
+import {
+    NotificationChannel, NotificationChannelHash
+} from 'src/app/models/notification/NotificationChannel';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { OptionService } from 'src/app/services/option/option.service';

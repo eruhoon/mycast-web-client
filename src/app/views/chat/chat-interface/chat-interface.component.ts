@@ -1,13 +1,13 @@
 import { ChatHistoryList } from 'src/app/models/chat/history/ChatHistoryList';
+import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
+import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
-import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
-import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 
 @Component({
   selector: 'chat-interface',

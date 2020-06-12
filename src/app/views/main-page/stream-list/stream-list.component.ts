@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamService } from 'src/app/services/stream/stream.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stream-list',

@@ -1,10 +1,10 @@
 import { Chat } from 'src/app/models/chat/Chat';
 import { ChatSenderType } from 'src/app/models/chat/ChatSender';
+import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
-import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-entry',

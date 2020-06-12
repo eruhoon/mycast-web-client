@@ -1,3 +1,4 @@
+import { PhotoAdultFilterCommand } from 'src/app/models/photo/command/PhotoAdultFilterCommand';
 import { PhotoShareCommand } from 'src/app/models/photo/command/PhotoShareCommand';
 import { PhotoTagCommand } from 'src/app/models/photo/command/PhotoTagCommand';
 import { VegaImgurLoader } from 'src/app/models/photo/loader/VegaImgurLoader';
@@ -6,7 +7,6 @@ import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { PhotoAdultFilterCommand } from 'src/app/models/photo/command/PhotoAdultFilterCommand';
 
 @Component({
   selector: 'photo-detail-view',

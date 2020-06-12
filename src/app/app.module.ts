@@ -33,6 +33,7 @@ import { StreamPackComponent } from './views/chat/cp/stream-pack/stream-pack.com
 import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
 import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.component';
 import { YoutubePackComponent } from './views/chat/cp/youtube-pack/youtube-pack.component';
+import { HomePageComponent } from './views/home/home-page/home-page.component';
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
 import {
@@ -46,6 +47,9 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import {
     ModifyProfileModalComponent
 } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
+import {
+    ModifySettingModalComponent
+} from './views/main-page/modify-setting-modal/modify-setting-modal.component';
 import {
     ModifyStreamModalComponent
 } from './views/main-page/modify-stream-modal/modify-stream-modal.component';
@@ -93,8 +97,6 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
-import { ModifySettingModalComponent } from './views/main-page/modify-setting-modal/modify-setting-modal.component';
-import { HomePageComponent } from './views/home/home-page/home-page.component';
 
 @NgModule({
     declarations: [

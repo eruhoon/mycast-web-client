@@ -56,6 +56,6 @@ export class StreamEntryComponent implements OnInit {
   }
 
   public onNewWindowClick(stream: Stream): void {
-    console.log('new window', stream);
+    window.open(stream.getUrl(), '_blank', 'width=1280, height=720');
   }
 }

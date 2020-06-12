@@ -1,5 +1,6 @@
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
+import { OptionService } from 'src/app/services/option/option.service';
 import { StreamService } from 'src/app/services/stream/stream.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,10 @@ export class SideBarComponent implements OnInit {
   private mAfreecaListShow: boolean;
   private mKakaoListShow: boolean;
 
-  constructor(main: MainService, private mStreamSrv: StreamService) {
+  constructor(
+    main: MainService,
+    private mStreamSrv: StreamService,
+    private mOptionSrv: OptionService) {
     this.mMainService = main;
   }
 
@@ -60,6 +64,10 @@ export class SideBarComponent implements OnInit {
 
   public isKakaoListShow(): boolean {
     return this.mKakaoListShow;
+  }
+
+  public isMobile(): boolean {
+    return this.mOptionSrv.isMobile();
   }
 
   public onStreamClick(stream: Stream): void {

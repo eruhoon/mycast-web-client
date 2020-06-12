@@ -23,8 +23,8 @@ export class MutableChatMessage implements ChatMessage {
         this.mType = type;
     }
 
-    public setMessage(message: string): void {
-        this.mMessage = message;
+    public setMessage(message: string | null): void {
+        this.mMessage = message || '';
     }
 
     public setTimestamp(timestamp: number): void {

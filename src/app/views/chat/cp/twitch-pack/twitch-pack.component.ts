@@ -45,7 +45,7 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
   }
 
   public getLink(): string {
-    return `https://player.twitch.tv/?channel=${this.mId}`;
+    return `https://player.twitch.tv/?channel=${this.mId}&parent=${location.hostname}`;
   }
 
   public onClick(): void {

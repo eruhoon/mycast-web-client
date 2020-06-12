@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class SideBarComponent implements OnInit {
 
   private mMainService: MainService;
+  private mLocalStreamListShow: boolean;
   private mTwitchListShow: boolean;
   private mAfreecaListShow: boolean;
   private mKakaoListShow: boolean;
@@ -21,8 +22,13 @@ export class SideBarComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mLocalStreamListShow = false;
     this.mTwitchListShow = false;
     this.mKakaoListShow = false;
+  }
+
+  public getLocalStreamList(): Stream[] {
+    return this.mStreamSrv.getLocalStreams();
   }
 
   public getTwitchList(): Stream[] {
@@ -38,6 +44,10 @@ export class SideBarComponent implements OnInit {
   public getKakaoList(): Stream[] {
     return this.mStreamSrv.getExternalStreams()
       .filter(stream => stream.getPlatform() === 'kakaotv');
+  }
+
+  public isLocalStreamListShow(): boolean {
+    return this.mLocalStreamListShow;
   }
 
   public isTwitchListShow(): boolean {
@@ -67,6 +77,10 @@ export class SideBarComponent implements OnInit {
     this.mMainService.closeSidebar();
   }
 
+  public onLocalStreamListClick(): void {
+    this.toggleLocalStreamList();
+  }
+
   public onTwitchListClick(): void {
     this.toggleTwtichList();
   }
@@ -77,6 +91,10 @@ export class SideBarComponent implements OnInit {
 
   public onKakaoListClick(): void {
     this.toggleKakaoList();
+  }
+
+  private toggleLocalStreamList(): void {
+    this.mLocalStreamListShow = !this.mLocalStreamListShow;
   }
 
   private toggleTwtichList(): void {

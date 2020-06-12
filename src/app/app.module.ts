@@ -97,6 +97,7 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
 
 @NgModule({
     declarations: [
@@ -157,6 +158,7 @@ import {
         ChatMessageEntryComponent,
         ModifySettingModalComponent,
         HomePageComponent,
+        AnimationPackComponent,
     ],
     imports: [
         BrowserModule,

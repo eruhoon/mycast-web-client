@@ -9,6 +9,8 @@ import {
     Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
 
+import { ChatListService } from '../chat-list/chat-list.service';
+
 @Component({
   selector: 'chat-interface',
   templateUrl: './chat-interface.component.html',
@@ -34,7 +36,8 @@ export class ChatInterfaceComponent implements OnInit {
     chatService: ChatService,
     optionService: OptionService,
     currentChatService: CurrentChatService,
-    private mClipboardImageService: ClipboardImageService) {
+    private mClipboardImageService: ClipboardImageService,
+    private mChatListService: ChatListService) {
 
     this.mChatService = chatService;
     this.mOptionService = optionService;
@@ -105,9 +108,22 @@ export class ChatInterfaceComponent implements OnInit {
     return this.mOptionService.isScrollLockMode();
   }
 
+  public enableScrollLockMode(): void {
+    this.mOptionService.setScrollLockMode(true);
+  }
+
+  public disableScrollLockMode(): void {
+    this.mOptionService.setScrollLockMode(false);
+    this.mChatListService.scrollToBottom(false);
+  }
+
   public toggleScrollLockMode(): void {
     const scrollLock = this.mOptionService.isScrollLockMode();
-    this.mOptionService.setScrollLockMode(!scrollLock);
+    if (scrollLock) {
+      this.disableScrollLockMode();
+    } else {
+      this.enableScrollLockMode();
+    }
   }
 
   public openUploadImageDialog(): void {

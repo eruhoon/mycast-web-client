@@ -9,13 +9,25 @@ $header-height: 50px;
 }
 
 .main-section {
+  $contents-height: 56.25vmin;
   position: absolute;
   left: 0;
   top: $header-height;
   width: 100vw;
   height: calc(100% - #{$header-height});
 
-  chat-page {
+  .contents-viewer {
+    width: 100vw;
+    height: $contents-height;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .chat-page-wrapper {
+    position: relative;
     width: 100vw;
     height: 100%;
   }
@@ -29,6 +41,12 @@ $header-height: 50px;
 
     &.hidden {
       transform: translateX(-100vw);
+    }
+  }
+
+  &.content-mode {
+    .chat-page-wrapper {
+      height: calc(100% - #{$contents-height});
     }
   }
 }

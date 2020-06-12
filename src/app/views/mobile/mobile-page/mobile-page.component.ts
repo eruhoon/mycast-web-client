@@ -19,9 +19,18 @@ export class MobilePageComponent implements OnInit {
     private mTopBarSrv: TopBarService,
     private mProfileService: ProfileService,
     private mThemeSrv: ThemeService,
-    private mClipboardImageSrv: ClipboardImageService) { }
+    private mClipboardImageSrv: ClipboardImageService) {
+  }
 
   public ngOnInit(): void {
+  }
+
+  public getCurrentLink(): string {
+    return this.mMainSrv.getCurrentLink();
+  }
+
+  public isContentMode(): boolean {
+    return this.getCurrentLink().length > 0;
   }
 
   public toggleMenu(): void {

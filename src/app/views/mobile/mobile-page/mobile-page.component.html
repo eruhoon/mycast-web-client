@@ -2,7 +2,7 @@
     <div class="chat-page-wrapper">
         <chat-page></chat-page>
     </div>
-    <div class="contents-viewer" *ngIf="isContentMode()">
+    <div class="contents-viewer">
         <iframe [src]="getCurrentLink()|safe" frameborder="0" allowfullscreen></iframe>
         <button (click)="clearContents()"><i class="material-icons">close</i></button>
     </div>

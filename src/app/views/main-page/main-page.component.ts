@@ -1,5 +1,3 @@
-import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
 import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Stream } from 'src/app/models/stream/Stream';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
@@ -10,6 +8,10 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { TopBarService } from './top-bar/top-bar.service';
 
 @Component({
@@ -189,8 +191,9 @@ export class MainPageComponent {
         this.mStreamListShow = !this.mStreamListShow;
     }
 
-    public closeSettingMenu(): void {
-        this.mTopBarSrv.closeSettingMenu();
+    public closeTopBarMenu(): void {
+        console.log('click');
+        this.mTopBarSrv.closeAllMenu();
     }
 
     private toggleMenu() {

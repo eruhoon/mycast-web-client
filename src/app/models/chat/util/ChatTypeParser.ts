@@ -20,7 +20,9 @@ export class ChatTypeParser {
             case 'twitch': return ChatType.TWITCH;
             case 'twitch-clip': return ChatType.TWITCH_CLIP;
             case 'youtube': return ChatType.YOUTUBE;
-            default: return ChatType.TEXT;
+            default:
+                console.warn('unknown type: ' + rawTypeString);
+                return ChatType.TEXT;
         }
     }
 }

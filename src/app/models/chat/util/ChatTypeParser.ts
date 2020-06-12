@@ -6,6 +6,7 @@ export class ChatTypeParser {
         switch (rawTypeString) {
             case 'al-ship': return ChatType.AZURLANE_SHIP;
             case 'afreeca': return ChatType.AFREECA;
+            case 'animation': return ChatType.ANIMATION;
             case 'cqhero': return ChatType.CRUSADERQUEST_HERO;
             case 'image': return ChatType.IMAGE;
             case 'kakao-clip': return ChatType.KAKAO_CLIP;

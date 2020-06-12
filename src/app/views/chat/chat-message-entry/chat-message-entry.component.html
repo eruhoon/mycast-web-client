@@ -1,6 +1,8 @@
 <div class="body black-text" [ngSwitch]="message.getType()">
     <afreeca-pack *ngSwitchCase="'afreeca'" [message]="message">
     </afreeca-pack>
+    <animation-pack *ngSwitchCase="'animation'" [message]="message">
+    </animation-pack>
     <book-pack *ngSwitchCase="'book'" [message]="message">
     </book-pack>
     <image-pack *ngSwitchCase="'image'" [message]="message">

@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { ChatPack } from '../ChatPack';
 
 @Component({
-  selector: 'app-animation-pack',
+  selector: 'animation-pack',
   templateUrl: './animation-pack.component.html',
   styleUrls: ['./animation-pack.component.scss']
 })

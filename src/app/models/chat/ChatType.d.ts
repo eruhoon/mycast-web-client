@@ -1,6 +1,7 @@
 export const enum ChatType {
     AZURLANE_SHIP = 'al-ship',
     AFREECA = 'afreeca',
+    ANIMATION = 'animation',
     BOOK = 'book',
     CRUSADERQUEST_HERO = 'cq-hero',
     IMAGE = 'image',

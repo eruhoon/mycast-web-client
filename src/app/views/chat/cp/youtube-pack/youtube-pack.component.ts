@@ -5,6 +5,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'youtube-pack',
@@ -23,6 +24,7 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
 
   public constructor(
     injector: Injector,
+    private mOptionSrv: OptionService,
     linkPopup: LinkPopupService,
     mainService: MainService) {
 
@@ -56,7 +58,11 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   }
 
   public onClick(): void {
-    this.mLinkPopup.addLink(new YoutubeLinkPopup(this.mLink));
+    if (this.mOptionSrv.isMobile()) {
+      this.mMainService.setCurrentLink(this.mLink);
+    } else {
+      this.mLinkPopup.addLink(new YoutubeLinkPopup(this.mLink));
+    }
   }
 
   public onContextMenu(): boolean {

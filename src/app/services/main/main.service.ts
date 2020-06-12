@@ -51,8 +51,8 @@ export class MainService {
     return this.mChatNetwork;
   }
 
-  public setCurrentLink(link: string) {
-    this.mCurrentLink = link;
+  public setCurrentLink(link: string | null) {
+    this.mCurrentLink = link || '';
   }
 
   public getCurrentLink(): string {

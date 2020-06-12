@@ -41,6 +41,10 @@ export class MobilePageComponent implements OnInit {
     this.mTopBarSrv.closeSettingMenu();
   }
 
+  public clearContents(): void {
+    this.mMainSrv.setCurrentLink(null);
+  }
+
   public isSideMenuShow(): boolean {
     return this.mMainSrv.isSidebarShow();
   }

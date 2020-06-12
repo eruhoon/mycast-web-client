@@ -1,9 +1,10 @@
 <div class="main-section" [ngClass]="{'content-mode':isContentMode()}" (mousedown)="closeAllMenu()">
-    <div class="contents-viewer" *ngIf="isContentMode()">
-        <iframe [src]="getCurrentLink()|safe" frameborder="0" allowfullscreen></iframe>
-    </div>
     <div class="chat-page-wrapper">
         <chat-page></chat-page>
+    </div>
+    <div class="contents-viewer" *ngIf="isContentMode()">
+        <iframe [src]="getCurrentLink()|safe" frameborder="0" allowfullscreen></iframe>
+        <button (click)="clearContents()"><i class="material-icons">close</i></button>
     </div>
     <div class="side-bar" [ngClass]="{hidden: !isSideMenuShow()}">
         <app-side-bar></app-side-bar>

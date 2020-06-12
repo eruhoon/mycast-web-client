@@ -1,4 +1,5 @@
-<div class="photo-page">
+<div class="photo-page" (paste)="onPaste($event)" (dragover)="$event.preventDefault()"
+    (drop)="$event.preventDefault(); onDrop($event)">
     <div class="left-menu">
         <h2>
             마이<br />

@@ -1,3 +1,5 @@
+import { ClipboardImageParser } from 'src/app/models/clipboard/ClipboardImageParser';
+import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
@@ -15,6 +17,7 @@ export class PhotoPageComponent {
   private mMenus: Menu[];
   private mCurrentMenuId: number;
   private mService: PhotoService;
+  private mImageParser: ClipboardImageParser;
 
   public constructor(service: PhotoService) {
     this.mService = service;
@@ -23,6 +26,16 @@ export class PhotoPageComponent {
       // { id: 1, icon: 'collections_bookmark', name: '앨범' },
     ];
     this.mCurrentMenuId = 0;
+    this.mImageParser = new ClipboardImageParser();
+  }
+  public onPaste(event: ClipboardEvent): void {
+    const imageFile = this.mImageParser.parseImageFile(event.clipboardData);
+    this.uploadImageFile(imageFile);
+  }
+
+  public onDrop(event: DragEvent): void {
+    const imageFile = this.mImageParser.parseImageFile(event.dataTransfer);
+    this.uploadImageFile(imageFile);
   }
 
   public getMenus(): Menu[] {
@@ -89,7 +102,15 @@ export class PhotoPageComponent {
       return;
     }
     const item = elm.files[0];
-    this.mService.addPhotoByFile(item);
+    this.uploadImageFile(item);
+  }
+
+  private uploadImageFile(imageFile: File | null): void {
+    if (!imageFile) {
+      console.error('null image');
+      return;
+    }
+    this.mService.addPhotoByFile(imageFile);
   }
 }
 

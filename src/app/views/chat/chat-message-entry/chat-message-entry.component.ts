@@ -23,7 +23,6 @@ export class ChatMessageEntryComponent implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.message.getType());
     const timestamp = this.message.getTimestamp();
     this.mTimeStr = ChatMessageEntryComponent.convertTimeToString(timestamp);
   }

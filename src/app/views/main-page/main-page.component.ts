@@ -192,7 +192,6 @@ export class MainPageComponent {
     }
 
     public closeTopBarMenu(): void {
-        console.log('click');
         this.mTopBarSrv.closeAllMenu();
     }
 

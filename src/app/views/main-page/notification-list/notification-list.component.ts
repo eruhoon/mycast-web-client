@@ -1,7 +1,7 @@
 import { VegaNotification } from 'src/app/models/notification/VegaNotification';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'notification-list',
@@ -19,10 +19,7 @@ export class NotificationListComponent {
   public getNotificationParams(): Param[] {
     return this.mNotificationService.getNotifications().map(n => {
       const timeText = this.createTimeText(n.getTimeStamp());
-      return {
-        notification: n,
-        timeText: timeText,
-      }
+      return { notification: n, timeText };
     });
   }
 

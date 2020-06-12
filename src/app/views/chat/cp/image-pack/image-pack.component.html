@@ -4,7 +4,7 @@
     </div>
     <div class="img-wrapper" *ngIf="isOpen()">
         <img class="img" [src]="getImage() | safe" (click)="onImageClick()" (load)="onImageLoad()"
-            (error)="setErrorImage()">
+            (error)="onImageError()">
         <div class="button-wrapper" *ngIf="isMenuShow()">
             <button (click)="toggleCensor()">
                 <i class="material-icons">security</i>

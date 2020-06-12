@@ -17,7 +17,9 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   private mImagePopupService: ImagePopupService;
   private mOpen: boolean;
   private mCensored: boolean;
+  private mError: boolean;
   private mMenuShow: boolean;
+  private mSrcImage: string;
 
   public constructor(
     injector: Injector,
@@ -28,18 +30,22 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     this.mImagePopupService = imagePopupService;
     this.mOpen = false;
     this.mCensored = false;
+    this.mError = false;
     this.mMenuShow = false;
   }
 
   public ngOnInit(): void {
     this.mOpen = this.isDataSaveMode() ? false : true;
+    this.mSrcImage = this.message.getMessage().trim();
   }
 
   public getImage(): string {
-    if (this.isCensored()) {
+    if (this.mError) {
+      return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
+    } else if (this.isCensored()) {
       return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
     } else {
-      return this.message.getMessage().trim();
+      return this.mSrcImage;
     }
   }
 
@@ -76,8 +82,8 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     this.mImagePopupService.setImage(image);
   }
 
-  public setErrorImage(): void {
-    console.log('todo: errorImage');
+  public onImageError(): void {
+    this.mError = true;
   }
 
   public onImageLoad(): void {

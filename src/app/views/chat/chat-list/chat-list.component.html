@@ -1,4 +1,4 @@
-<div #scrollList class="chat-list">
+<div #scrollList class="chat-list" (scroll)="onScroll($event)">
     <chat-entry *ngFor="let chat of getChats()" [chat]="chat" (profileIconSelect)="onProfileIconSelect($event)">
     </chat-entry>
 </div>

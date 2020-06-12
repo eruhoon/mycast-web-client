@@ -2,7 +2,7 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, HostListener } from '@angular/core';
 
 import { ChatListService } from './chat-list.service';
 
@@ -54,6 +54,16 @@ export class ChatListComponent implements OnInit {
         behavior: isFirst ? 'auto' : 'smooth'
       });
     });
+  }
+
+  private mScrollTop: number;
+
+  public onScroll(event: Event): void {
+    const listElement = this.mScrollList.nativeElement as HTMLDivElement;
+    if (this.mScrollTop > listElement.scrollTop) {
+      console.log('tick');
+    }
+    this.mScrollTop = listElement.scrollTop;
   }
 
   private onChatsChanged(chats: Chat[]): void {

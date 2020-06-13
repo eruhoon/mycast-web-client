@@ -65,7 +65,6 @@ export class ChatListComponent implements OnInit {
     const scrollHeight = listElement.scrollHeight;
     const scrollTop = listElement.scrollTop;
     const height = listElement.clientHeight;
-    console.log(scrollHeight, scrollTop, height, scrollTop + height);
     if (this.mScrollHeight === scrollHeight &&
       this.mScrollTop > scrollTop) {
       this.mOptionService.setScrollLockMode(true);

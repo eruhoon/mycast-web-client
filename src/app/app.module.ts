@@ -98,6 +98,7 @@ import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
+import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
 
 @NgModule({
     declarations: [
@@ -159,6 +160,7 @@ import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation
         ModifySettingModalComponent,
         HomePageComponent,
         AnimationPackComponent,
+        CvPackComponent,
     ],
     imports: [
         BrowserModule,

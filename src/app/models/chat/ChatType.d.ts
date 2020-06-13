@@ -3,6 +3,7 @@ export const enum ChatType {
     AFREECA = 'afreeca',
     ANIMATION = 'animation',
     BOOK = 'book',
+    CHARACTER_VOICE = 'character-voice',
     CRUSADERQUEST_HERO = 'cq-hero',
     IMAGE = 'image',
     KAKAO_CLIP = 'kakao-clip',

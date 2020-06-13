@@ -1,4 +1,4 @@
-<div class="ani-pack">
+<div class="ani-pack" *ngIf="!error">
     <div class="ani-box">
         <img class="ani-bg" [src]="thumbnail|safe" width="100%" />
         <div class="img-overlay"></div>
@@ -13,3 +13,4 @@
         </div>
     </div>
 </div>
+<div class="ani-pack-failed" *ngIf="error">애니 검색 실패</div>

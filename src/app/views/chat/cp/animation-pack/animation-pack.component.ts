@@ -11,20 +11,27 @@ export class AnimationPackComponent extends ChatPack implements OnInit {
   public title: string;
   public thumbnail: string;
   public date: string;
+  public error: boolean;
 
   public constructor(injector: Injector) {
     super(injector);
     this.title = '';
     this.thumbnail = '';
+    this.error = false;
   }
 
   public ngOnInit() {
     try {
       const raw = JSON.parse(this.message.getMessage()) as Param;
+      if (!raw) {
+        this.error = true;
+        return;
+      }
       this.title = raw.title;
       this.thumbnail = raw.thumbnail;
       this.date = raw.date;
     } catch (e) {
+      this.error = true;
       console.error('fuck', e);
     }
   }

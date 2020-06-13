@@ -50,6 +50,7 @@
                 max-height: 120px;
                 padding-left: 10px;
                 position: absolute;
+                overflow: hidden;
                 left: 110px;
                 bottom: 10px;
                 float: left;
@@ -64,6 +65,21 @@
                     text-shadow: 0 1px 1px rgba(0,0,0,.75);
                     margin-bottom: 5px;
                     margin-top: 30px;
+                    overflow: hidden;
+
+                    /* 한 줄 자르기 */
+                    display: inline-block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    /* 여러 줄 자르기 추가 스타일 */
+                    white-space: normal;
+                    line-height: 1.2;
+                    max-height: 3.6em;
+                    text-align: left;
+                    word-wrap: break-word;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
                 }
                 p {
 

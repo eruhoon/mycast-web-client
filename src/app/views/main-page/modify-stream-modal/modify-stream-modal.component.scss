@@ -221,6 +221,8 @@
     position: absolute;
     top: calc(0% - 15px);
     right: calc(0% - 15px);
+    cursor: pointer;
+    user-select: none;
 
     background-color: #FAFAFA;
     border: 1px solid #F5F5F5;

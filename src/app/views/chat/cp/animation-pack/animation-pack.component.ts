@@ -1,7 +1,5 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ChatPack } from '../ChatPack';
-import { LinkPopup } from 'src/app/models/link/LinkPopup';
-import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
 @Component({
   selector: 'animation-pack',
@@ -16,9 +14,7 @@ export class AnimationPackComponent extends ChatPack implements OnInit {
   public error: boolean;
   private mLink: string;
 
-  public constructor(
-    injector: Injector,
-    private mLinkPopup: LinkPopupService) {
+  public constructor(injector: Injector) {
     super(injector);
     this.title = '';
     this.thumbnail = '';

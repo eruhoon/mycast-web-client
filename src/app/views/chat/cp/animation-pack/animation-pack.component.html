@@ -1,4 +1,4 @@
-<div class="ani-pack" *ngIf="!error">
+<div class="ani-pack" *ngIf="!error" (click)="onClick()">
     <div class="ani-box">
         <img class="ani-bg" [src]="thumbnail|safe" width="100%" />
         <div class="img-overlay"></div>

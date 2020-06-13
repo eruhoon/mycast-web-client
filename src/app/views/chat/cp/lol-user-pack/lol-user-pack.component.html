@@ -1,6 +1,7 @@
 <div class="lol-user-info" *ngIf="!isDataSaveMode()">
     <div class="bg">
         <img [src]="getMostChamps()[0].background">
+        <div class="img-overlay"></div>
     </div>
     <div class="user-img">
         <img [src]="getIcon() | safe">

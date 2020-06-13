@@ -7,6 +7,8 @@ export class ChatTypeParser {
             case 'al-ship': return ChatType.AZURLANE_SHIP;
             case 'afreeca': return ChatType.AFREECA;
             case 'animation': return ChatType.ANIMATION;
+            case 'book': return ChatType.BOOK;
+            case 'character-voice': return ChatType.CHARACTER_VOICE;
             case 'cqhero': return ChatType.CRUSADERQUEST_HERO;
             case 'image': return ChatType.IMAGE;
             case 'kakao-clip': return ChatType.KAKAO_CLIP;

@@ -13,10 +13,13 @@
         format_clear
       </i>
     </a>
-    <a class="toggle-option" [ngClass]="{active: isScrollLockMode()}" (click)="toggleScrollLockMode()">
+    <!--<a class="toggle-option" [ngClass]="{active: isScrollLockMode()}" (click)="toggleScrollLockMode()">
       <i class="material-icons">
         lock
       </i>
+    </a>-->
+    <a class="toggle-option" *ngIf="isScrollLockMode()" (click)="toggleScrollLockMode()">
+      <i class="material-icons">vertical_align_bottom</i>
     </a>
 
     <!-- right section -->

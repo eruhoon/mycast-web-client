@@ -19,6 +19,8 @@ export class ChatListComponent implements OnInit {
   private mChats: Chat[];
   private mCurrentChatService: CurrentChatService;
   private mOptionService: OptionService;
+  private mScrollTop: number;
+  private mScrollHeight: number;
 
   public constructor(
     private mService: ChatListService,
@@ -29,6 +31,8 @@ export class ChatListComponent implements OnInit {
     this.entryIconSelect = new EventEmitter<string>();
     this.mCurrentChatService = currentChatService;
     this.mOptionService = optionService;
+    this.mScrollTop = 0;
+    this.mScrollHeight = 0;
   }
 
   public ngOnInit() {
@@ -56,14 +60,19 @@ export class ChatListComponent implements OnInit {
     });
   }
 
-  private mScrollTop: number;
-
   public onScroll(event: Event): void {
     const listElement = this.mScrollList.nativeElement as HTMLDivElement;
-    if (this.mScrollTop > listElement.scrollTop) {
-      console.log('tick');
+    const scrollHeight = listElement.scrollHeight;
+    const scrollTop = listElement.scrollTop;
+    const height = listElement.clientHeight;
+    if (this.mScrollHeight === scrollHeight &&
+      this.mScrollTop > scrollTop) {
+      this.mOptionService.setScrollLockMode(true);
+    } else if (this.mScrollHeight === scrollTop + height) {
+      this.mOptionService.setScrollLockMode(false);
     }
-    this.mScrollTop = listElement.scrollTop;
+    this.mScrollHeight = scrollHeight;
+    this.mScrollTop = scrollTop;
   }
 
   private onChatsChanged(chats: Chat[]): void {

@@ -8,11 +8,33 @@ import { ChatPack } from '../ChatPack';
 })
 export class AnimationPackComponent extends ChatPack implements OnInit {
 
+  public title: string;
+  public thumbnail: string;
+  public date: string;
+
   public constructor(injector: Injector) {
     super(injector);
+    this.title = '';
+    this.thumbnail = '';
   }
 
   public ngOnInit() {
+    try {
+      const raw = JSON.parse(this.message.getMessage()) as Param;
+      this.title = raw.title;
+      this.thumbnail = raw.thumbnail;
+      this.date = raw.date;
+    } catch (e) {
+      console.error('fuck', e);
+    }
   }
-
 }
+
+type Param = {
+  date: string,
+  genre: string,
+  link: string,
+  media: string,
+  thumbnail: string,
+  title: string,
+};

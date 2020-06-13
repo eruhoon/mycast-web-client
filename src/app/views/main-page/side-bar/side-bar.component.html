@@ -12,7 +12,7 @@
 
   <div *ngIf="isMobile()">
     <hr />
-    <h3 (click)="onLocalStreamListClick()">마이캐스트 ({{getLocalStreamList().length}})</h3>
+    <h3 (click)="onLocalStreamListClick()">마이캐스트 <small>({{getLocalStreamList().length}})</small></h3>
     <ul class="stream" [ngClass]="isLocalStreamListShow() ? 'selected' : ''">
       <li *ngFor="let stream of getLocalStreamList()" (click)="onStreamClick(stream)">
         <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
@@ -21,7 +21,7 @@
     </ul>
   </div>
   <hr />
-  <h3 (click)="onTwitchListClick()">트위치 ({{getTwitchList().length}})</h3>
+  <h3 (click)="onTwitchListClick()">트위치 <small>({{getTwitchList().length}})</small></h3>
   <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
     <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
       <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
@@ -37,7 +37,7 @@
     </li>
   </ul>
   <hr />-->
-  <h3 (click)="onKakaoListClick()">카카오TV ({{getKakaoList().length}})</h3>
+  <h3 (click)="onKakaoListClick()">카카오TV <small>({{getKakaoList().length}})</small></h3>
   <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
     <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
       <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />

@@ -14,7 +14,16 @@ export class StreamDtoAdapter extends Stream {
 
     public getKeyId(): string { return this.mRaw.keyid; }
 
-    public getIcon(): string { return this.mRaw.icon; }
+    public getIcon(): string {
+        if (this.getPlatform() === 'afreeca') {
+            const dict = this.mRaw.keyid.substring(0, 2);
+            const keyId = this.mRaw.keyid;
+            const host = 'profile.img.afreecatv.com';
+            return `https://${host}/LOGO/${dict}/${keyId}/${keyId}.jpg`;
+        } else {
+            return this.mRaw.icon;
+        }
+    }
 
     public getThumbnail(): string { return this.mRaw.thumbnail; }
 

@@ -71,7 +71,11 @@ export class SideBarComponent implements OnInit {
   }
 
   public onStreamClick(stream: Stream): void {
-    this.mMainService.setCurrentLink(stream.getUrl());
+    if (stream.getPlatform() === 'afreeca') {
+      window.open(stream.getUrl(), '_blank', 'width=800');
+    } else {
+      this.mMainService.setCurrentLink(stream.getUrl());
+    }
     this.mMainService.closeSidebar();
   }
 

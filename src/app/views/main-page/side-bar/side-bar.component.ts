@@ -16,6 +16,7 @@ export class SideBarComponent implements OnInit {
   private mLocalStreamListShow: boolean;
   private mTwitchListShow: boolean;
   private mAfreecaListShow: boolean;
+  public youtubeListShow: boolean;
   private mKakaoListShow: boolean;
 
   constructor(
@@ -23,6 +24,8 @@ export class SideBarComponent implements OnInit {
     private mStreamSrv: StreamService,
     private mOptionSrv: OptionService) {
     this.mMainService = main;
+
+    this.youtubeListShow = false;
   }
 
   public ngOnInit() {
@@ -45,6 +48,11 @@ export class SideBarComponent implements OnInit {
       .filter(stream => stream.getPlatform() === 'afreeca');
   }
 
+  public getYoutubeList(): Stream[] {
+    return this.mStreamSrv.getExternalStreams()
+      .filter(stream => stream.getPlatform() === 'youtube');
+  }
+
   public getKakaoList(): Stream[] {
     return this.mStreamSrv.getExternalStreams()
       .filter(stream => stream.getPlatform() === 'kakaotv');
@@ -60,6 +68,10 @@ export class SideBarComponent implements OnInit {
 
   public isAfreecaListShow(): boolean {
     return this.mAfreecaListShow;
+  }
+
+  public isYoutubeListShow(): boolean {
+    return this.youtubeListShow;
   }
 
   public isKakaoListShow(): boolean {
@@ -115,6 +127,10 @@ export class SideBarComponent implements OnInit {
 
   private toggleAfreecaList(): void {
     this.mAfreecaListShow = !this.mAfreecaListShow;
+  }
+
+  public toggleYoutubeList(): void {
+    this.youtubeListShow = !this.youtubeListShow;
   }
 
   private toggleKakaoList(): void {

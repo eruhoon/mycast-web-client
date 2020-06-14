@@ -37,6 +37,14 @@
     </li>
   </ul>
   <hr />
+  <h3 (click)="toggleYoutubeList()">유튜브 <small>({{getYoutubeList().length}})</small></h3>
+  <ul class="stream" [ngClass]="{selected: youtubeListShow}">
+    <li *ngFor="let stream of getYoutubeList()" (click)="onStreamClick(stream)">
+      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+      <span>{{ stream.getTitle() }}</span>
+    </li>
+  </ul>
+  <hr />
   <h3 (click)="onKakaoListClick()">카카오TV <small>({{getKakaoList().length}})</small></h3>
   <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
     <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">

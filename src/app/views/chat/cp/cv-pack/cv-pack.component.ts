@@ -4,7 +4,7 @@ import { ChatPack } from '../ChatPack';
 @Component({
   selector: 'cv-pack',
   templateUrl: './cv-pack.component.html',
-  styleUrls: ['./cv-pack.component.scss']
+  styleUrls: ['./cv-pack.component.scss', './cv-pack.color.scss']
 })
 export class CvPackComponent extends ChatPack implements OnInit {
 

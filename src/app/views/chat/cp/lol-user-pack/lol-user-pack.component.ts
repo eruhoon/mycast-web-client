@@ -1,3 +1,6 @@
+import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { LinkPopupService } from 'src/app/services/link/link-popup.service';
+
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
@@ -18,7 +21,9 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
   private mPoint: number;
   private mMostChamps: ChampParam[];
 
-  public constructor(injector: Injector) {
+  public constructor(
+    injector: Injector,
+    private mLinkPopup: LinkPopupService) {
     super(injector);
     this.mName = '';
     this.mLevel = 0;
@@ -63,6 +68,11 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
 
   public getMostChamps(): ChampParam[] { return this.mMostChamps; }
 
+  public onClick(): void {
+    const link = `https://www.op.gg/summoner/userName=${this.mName}`;
+    this.mLinkPopup.addLink(new OpggLinkPopup(link));
+  }
+
   private static getTierText(tierObj: TierParam): string {
     const tier = tierObj.tier;
     const division = tier === 'CHALLENGER' ||
@@ -90,3 +100,19 @@ type Param = {
 type ChampParam = { background: string, icon: string, name: string };
 
 type TierParam = { division: string, point: number, tier: string };
+
+class OpggLinkPopup implements LinkPopup {
+  private mLink: string;
+  public constructor(link: string) {
+    this.mLink = link;
+  }
+  public getWidth(): number {
+    return 480;
+  }
+  public getHeight(): number {
+    return 360;
+  }
+  public getLink(): string {
+    return this.mLink;
+  }
+}

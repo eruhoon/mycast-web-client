@@ -84,13 +84,8 @@ class YoutubeLinkPopup implements LinkPopup {
   public constructor(link: string) {
     this.mLink = link;
   }
-  public getWidth(): number {
-    return 480;
-  }
-  public getHeight(): number {
-    return 360;
-  }
-  public getLink(): string {
-    return this.mLink;
-  }
+  public getTitle(): string { return 'YouTube Viewer'; }
+  public getWidth(): number { return 480; }
+  public getHeight(): number { return 360; }
+  public getLink(): string { return this.mLink; }
 }

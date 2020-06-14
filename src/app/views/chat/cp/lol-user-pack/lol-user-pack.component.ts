@@ -106,13 +106,8 @@ class OpggLinkPopup implements LinkPopup {
   public constructor(link: string) {
     this.mLink = link;
   }
-  public getWidth(): number {
-    return 480;
-  }
-  public getHeight(): number {
-    return 360;
-  }
-  public getLink(): string {
-    return this.mLink;
-  }
+  public getTitle(): string { return 'Lol User Info'; }
+  public getWidth(): number { return 800; }
+  public getHeight(): number { return 600; }
+  public getLink(): string { return this.mLink; }
 }

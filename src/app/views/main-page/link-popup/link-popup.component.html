@@ -3,10 +3,9 @@
     height: getHeight()+'px'
 }" cdkDrag>
     <div class="title-bar" (mousedown)="onDragStart()">
-        <span class="material-icons">
-        live_tv
+        <span class="material-icons"> live_tv
         </span>
-        <div class="title">YouTube Viewer</div>
+        <div class="title">{{title}}</div>
         <button (mousedown)="onExit()">
             <i class="material-icons">clear</i>
         </button>

@@ -1,11 +1,9 @@
-import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { Component, Injector, OnInit } from '@angular/core';
+import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
-
-import { Component, Injector, OnInit } from '@angular/core';
-
-import { ChatPack } from '../ChatPack';
 import { OptionService } from 'src/app/services/option/option.service';
+import { ChatPack } from '../ChatPack';
 
 @Component({
   selector: 'youtube-pack',
@@ -61,7 +59,12 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
     if (this.mOptionSrv.isMobile()) {
       this.mMainService.setCurrentLink(this.mLink);
     } else {
-      this.mLinkPopup.addLink(new YoutubeLinkPopup(this.mLink));
+      this.mLinkPopup.addLink(new LinkPopupBuilder()
+        .title('YouTube Viewer')
+        .width(480)
+        .height(360)
+        .link(this.mLink)
+        .build());
     }
   }
 
@@ -78,14 +81,3 @@ type Param = {
   thumbnail: string,
   link: string,
 };
-
-class YoutubeLinkPopup implements LinkPopup {
-  private mLink: string;
-  public constructor(link: string) {
-    this.mLink = link;
-  }
-  public getTitle(): string { return 'YouTube Viewer'; }
-  public getWidth(): number { return 480; }
-  public getHeight(): number { return 360; }
-  public getLink(): string { return this.mLink; }
-}

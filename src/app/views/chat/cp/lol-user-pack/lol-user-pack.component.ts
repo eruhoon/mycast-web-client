@@ -4,6 +4,7 @@ import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
+import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 
 @Component({
   selector: 'lol-user-pack',
@@ -69,8 +70,11 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
   public getMostChamps(): ChampParam[] { return this.mMostChamps; }
 
   public onClick(): void {
-    const link = `https://www.op.gg/summoner/userName=${this.mName}`;
-    this.mLinkPopup.addLink(new OpggLinkPopup(link));
+    this.mLinkPopup.addLink(new LinkPopupBuilder()
+      .title('LOL User Info')
+      .width(800).height(600)
+      .link(`https://www.op.gg/summoner/userName=${this.mName}`)
+      .build());
   }
 
   private static getTierText(tierObj: TierParam): string {
@@ -100,14 +104,3 @@ type Param = {
 type ChampParam = { background: string, icon: string, name: string };
 
 type TierParam = { division: string, point: number, tier: string };
-
-class OpggLinkPopup implements LinkPopup {
-  private mLink: string;
-  public constructor(link: string) {
-    this.mLink = link;
-  }
-  public getTitle(): string { return 'Lol User Info'; }
-  public getWidth(): number { return 800; }
-  public getHeight(): number { return 600; }
-  public getLink(): string { return this.mLink; }
-}

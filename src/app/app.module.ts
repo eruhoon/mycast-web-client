@@ -99,6 +99,7 @@ import {
 } from './views/stream/totoro-player-page/totoro-player-page.component';
 import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
 import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
+import { ModifyCheckerModalComponent } from './views/main-page/modify-checker-modal/modify-checker-modal.component';
 
 @NgModule({
     declarations: [
@@ -161,6 +162,7 @@ import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
         HomePageComponent,
         AnimationPackComponent,
         CvPackComponent,
+        ModifyCheckerModalComponent,
     ],
     imports: [
         BrowserModule,

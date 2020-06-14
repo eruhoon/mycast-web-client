@@ -7,6 +7,10 @@ export class MockChatMessage implements ChatMessage {
         return ChatType.TEXT;
     }
 
+    public getRequest(): string {
+        return '';
+    }
+
     public getMessage(): string {
         return '';
     }

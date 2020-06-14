@@ -24,6 +24,7 @@ export class ChatContianer {
         chat.getMessages().forEach(message => {
             const mutableMessage = new MutableChatMessage();
             mutableMessage.setType(message.getType());
+            mutableMessage.setRequest(message.getRequest());
             mutableMessage.setMessage(message.getMessage());
             mutableMessage.setTimestamp(message.getTimestamp());
             mutableChat.addMessage(mutableMessage);

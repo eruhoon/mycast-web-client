@@ -60,9 +60,9 @@ class RefreshChatMessage implements ChatMessage {
 
     public getType(): ChatType { return this.mType; }
 
+    public getRequest(): string { return this.mDto.msg.request || ''; }
+
     public getMessage(): string { return this.mDto.msg.response; }
 
     public getTimestamp(): number { return this.mTimestamp; }
 }
-
-

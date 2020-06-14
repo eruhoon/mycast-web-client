@@ -14,6 +14,15 @@ export class MagicConchPackComponent extends ChatPack implements OnInit {
   }
 
   public ngOnInit() {
+    try {
+      console.log(this.message);
+      console.log(this.message.getMessage());
+      console.log(this.message.getRequest());
+      const raw = JSON.parse(this.message.getMessage());
+      console.log(raw);
+    } catch (e) {
+      console.error('parse error');
+    }
   }
 
 }

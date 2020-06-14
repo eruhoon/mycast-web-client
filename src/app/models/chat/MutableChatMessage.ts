@@ -4,11 +4,16 @@ import { ChatType } from './ChatType';
 export class MutableChatMessage implements ChatMessage {
 
     private mType: ChatType;
+    private mRequest: string;
     private mMessage: string;
     private mTime: Date;
 
     public getType(): ChatType {
         return this.mType;
+    }
+
+    public getRequest(): string {
+        return this.mRequest;
     }
 
     public getMessage(): string {
@@ -21,6 +26,10 @@ export class MutableChatMessage implements ChatMessage {
 
     public setType(type: ChatType): void {
         this.mType = type;
+    }
+
+    public setRequest(request: string | null): void {
+        this.mRequest = request || '';
     }
 
     public setMessage(message: string | null): void {

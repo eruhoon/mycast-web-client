@@ -1,4 +1,4 @@
-<div class="lol-user-info" *ngIf="!isDataSaveMode()">
+<div class="lol-user-info" *ngIf="!isDataSaveMode()" (click)="onClick()">
     <div class="bg">
         <img [src]="getMostChamps()[0].background">
         <div class="img-overlay"></div>

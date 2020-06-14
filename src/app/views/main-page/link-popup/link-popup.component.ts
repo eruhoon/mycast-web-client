@@ -12,6 +12,7 @@ export class LinkPopupComponent implements OnInit {
 
   @Input() linkPopup: LinkPopup;
 
+  public title: string;
   private mWidth: number;
   private mHeight: number;
   private mLink: string;
@@ -19,6 +20,7 @@ export class LinkPopupComponent implements OnInit {
   private mService: LinkPopupService;
 
   public constructor(linkPopupService: LinkPopupService) {
+    this.title = 'Untitled';
     this.mWidth = 0;
     this.mHeight = 0;
     this.mLink = '';
@@ -27,6 +29,7 @@ export class LinkPopupComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.title = this.linkPopup.getTitle();
     this.mWidth = this.linkPopup.getWidth();
     this.mHeight = this.linkPopup.getHeight();
     this.mLink = this.linkPopup.getLink();

@@ -1,63 +1,15 @@
-<div class="cv-pack">
+<div class="cv-pack" (click)="onClick()">
     <div class="cv-title">
         <p>애니메이션 성우</p>
-        <h3>호리에 유이</h3>
+        <h3>{{name}}</h3>
     </div>
     <div class="cv-list">
-        <div class="cv-box">
+        <div class="cv-box" *ngFor="let character of characters">
             <div class="cv-img">
-                <img src="http://data5.onnada.com/character/202004/thumb_237746802_daeb7089_9CA0EC9DB429.png">
+                <img [src]="character.icon|safe">
             </div>
             <div class="cv-name">
-                <p>사렌<br/><small>(SAREN)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="//member.onnada.com/_/img/blank.png">
-            </div>
-            <div class="cv-name">
-                <p>아이리스<br/><small>(AIRIS)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="http://data5.onnada.com/character/202003/thumb_2070905244_d051d28c_g-body.png">
-            </div>
-            <div class="cv-name">
-                <p>가이드<br/><small>(GUIDE)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="http://data5.onnada.com/character/201910/thumb_237746802_6e945b7b_928EC958829.png">
-            </div>
-            <div class="cv-name">
-                <p>안<br/><small>(AN)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="http://data5.onnada.com/character/201912/thumb_237746802_6f09d39c_9CA0EC9DB429.png">
-            </div>
-            <div class="cv-name">
-                <p>후루하시 시즈루<br/><small>(FURUHASHI SHIZURU)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="http://data5.onnada.com/character/201909/thumb_2108741178_6db4f6dc_8AA4ED8AB829.jpg">
-            </div>
-            <div class="cv-name">
-                <p>벨파스트<br/><small>(BELFAST)</small></p>
-            </div>
-        </div>
-        <div class="cv-box">
-            <div class="cv-img">
-                <img src="http://data5.onnada.com/character/202003/thumb_2070905244_663e1b59_0058.png">
-            </div>
-            <div class="cv-name">
-                <p>위즈<br/><small>(WIZ)</small></p>
+                <p>{{character.description}}</p>
             </div>
         </div>
     </div>

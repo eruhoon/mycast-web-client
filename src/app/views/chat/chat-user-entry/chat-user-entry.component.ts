@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'chat-user-entry',
   templateUrl: './chat-user-entry.component.html',
-  styleUrls: ['./chat-user-entry.component.scss']
+  styleUrls: ['./chat-user-entry.component.scss','./chat-user-entry.color.scss']
 })
 export class ChatUserEntryComponent {
 

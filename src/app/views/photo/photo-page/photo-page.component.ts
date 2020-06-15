@@ -1,5 +1,4 @@
 import { ClipboardImageParser } from 'src/app/models/clipboard/ClipboardImageParser';
-import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, ElementRef, ViewChild } from '@angular/core';

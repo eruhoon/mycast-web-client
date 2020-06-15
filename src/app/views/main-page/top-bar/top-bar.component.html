@@ -3,7 +3,7 @@
     <button (click)="menuClick.emit()">
       <i class="material-icons">menu</i>
     </button>
-    <img class="logo" src="/../assets/image/main/main-logo-30.png" />
+    <img class="logo" src="/../assets/image/main/main-logo-30.png" (click)="refreshPage()" />
   </div>
   <div class="part right">
     <button [class]="isNotificationListShow()?'alert-btn active':'alert-btn'" (click)="toggleNotificationList()">

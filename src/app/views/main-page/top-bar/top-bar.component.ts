@@ -37,6 +37,10 @@ export class TopBarComponent {
     return this.mNotificationService.getUnreadNotificationCount();
   }
 
+  public refreshPage() {
+    location.reload();
+  }
+
   public toggleNotificationList(): void {
     if (!this.mService.isNotiListOpen()) {
       this.mNotificationService.readAll();

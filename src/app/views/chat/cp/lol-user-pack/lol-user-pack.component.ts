@@ -1,10 +1,9 @@
-import { LinkPopup } from 'src/app/models/link/LinkPopup';
+import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
-import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 
 @Component({
   selector: 'lol-user-pack',

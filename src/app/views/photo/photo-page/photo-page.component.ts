@@ -1,5 +1,6 @@
 import { ClipboardImageParser } from 'src/app/models/clipboard/ClipboardImageParser';
 import { PhotoService } from 'src/app/services/photo/photo.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
@@ -18,7 +19,9 @@ export class PhotoPageComponent {
   private mService: PhotoService;
   private mImageParser: ClipboardImageParser;
 
-  public constructor(service: PhotoService) {
+  public constructor(
+    service: PhotoService,
+    private mThemeSrv: ThemeService) {
     this.mService = service;
     this.mMenus = [
       { id: 0, icon: 'insert_photo', name: '포토' },

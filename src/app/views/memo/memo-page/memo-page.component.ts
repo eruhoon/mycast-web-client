@@ -1,5 +1,6 @@
 import { MemoProfileService } from 'src/app/services/memo/memo-profile.service';
 import { MemoService } from 'src/app/services/memo/memo.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,9 @@ export class MemoPageComponent implements OnInit {
   private mService: MemoService;
   private mProfileService: MemoProfileService;
 
-  public constructor(service: MemoService, profileSrv: MemoProfileService) {
+  public constructor(
+    service: MemoService, profileSrv: MemoProfileService,
+    private mThemeSrv: ThemeService) {
     this.mService = service;
     this.mProfileService = profileSrv;
   }

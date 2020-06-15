@@ -1,4 +1,5 @@
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
+import { OptionService } from 'src/app/services/option/option.service';
 
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 
@@ -23,6 +24,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
 
   public constructor(
     injector: Injector,
+    private mOptionSrv: OptionService,
     private mChatListSrv: ChatListService,
     imagePopupService: ImagePopupService) {
 
@@ -87,6 +89,8 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   }
 
   public onImageLoad(): void {
-    this.mChatListSrv.scrollToBottom(false);
+    if (!this.mOptionSrv.isScrollLockMode()) {
+      this.mChatListSrv.scrollToBottom(false);
+    }
   }
 }

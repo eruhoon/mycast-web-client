@@ -38,7 +38,6 @@ export class MainPageComponent {
 
     public constructor(
         private mTopBarSrv: TopBarService,
-        router: Router,
         mainService: MainService,
         notificationService: NotificationService,
         toastService: ToastService,
@@ -48,11 +47,6 @@ export class MainPageComponent {
         profileService: ProfileService,
         clipboardImageService: ClipboardImageService) {
 
-        const userAgent = navigator.userAgent;
-        const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
-        if (isMobile) {
-            router.navigate(['/mobile']);
-        }
         this.mCurrentStream = null;
         this.mMainService = mainService;
         this.mNotificationService = notificationService;

@@ -9,6 +9,7 @@
 
 // 스티커 & 채팅 클리어 & 채팅 인원 안내
 .input-sticker {
+  display: block;
   width: 100%;
   height: 30px;
   background-color: #424242;
@@ -38,15 +39,17 @@
     &:hover {
       color: #ec407a;
     }
-
-    &:last-child,
-    &:nth-last-child(2) {
-      float: right;
-    }
   }
 
   a:first-child {
     margin-left: 5px;
+  }
+
+  & > .sticker-section {
+    display: inline-block;
+    &.right {
+      float: right;
+    }
   }
 }
 
@@ -61,8 +64,4 @@
   border: none;
   border-radius: 5px;
   outline: none;
-}
-
-input.hidden {
-  display: none;
 }

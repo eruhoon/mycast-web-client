@@ -2,36 +2,29 @@
   <div class="input-sticker">
     <!-- left section -->
     <!-- user list -->
-    <a [ngClass]="{active: isChatUserListShow()}" (click)=" onChatUserButtonClick()">
-      <i class="material-icons">
-        assignment_ind
-      </i>
-    </a>
-    <!-- clear chat -->
-    <a (click)="onChatClearButtonClick()">
-      <i class="material-icons">
-        format_clear
-      </i>
-    </a>
-    <!--<a class="toggle-option" [ngClass]="{active: isScrollLockMode()}" (click)="toggleScrollLockMode()">
-      <i class="material-icons">
-        lock
-      </i>
-    </a>-->
-    <a class="toggle-option" *ngIf="isScrollLockMode()" (click)="toggleScrollLockMode()">
-      <i class="material-icons">vertical_align_bottom</i>
-    </a>
+    <div class="sticker-section">
+      <a [ngClass]="{active: isChatUserListShow()}" (click)=" onChatUserButtonClick()">
+        <i class="material-icons">assignment_ind</i>
+      </a>
+      <!-- clear chat -->
+      <a (click)="onChatClearButtonClick()">
+        <i class="material-icons">format_clear</i>
+      </a>
+      <a class="toggle-option" *ngIf="isScrollLockMode()" (click)="toggleScrollLockMode()">
+        <i class="material-icons">vertical_align_bottom</i>
+      </a>
+    </div>
 
     <!-- right section -->
     <!-- imoticon -->
-    <a>
-      <i class="material-icons">
-        insert_emoticon
-      </i>
-    </a>
-    <a [ngClass]="{hidden: !isMobile()}" (click)="openUploadImageDialog()">
-      <i class="material-icons">photo</i>
-    </a>
+    <div class="sticker-section right">
+      <a>
+        <i class="material-icons">insert_emoticon</i>
+      </a>
+      <a *ngIf="isMobile()" (click)="openUploadImageDialog()">
+        <i class="material-icons">photo</i>
+      </a>
+    </div>
   </div>
   <input #inputBox type="text" class="input-box" (keydown.arrowup)="onPressUp()" (keydown.arrowdown)="onPressDown()"
     (keypress)="$event.keyCode!=13 || ($event.keyCode==13 && onPressEnter())" />

@@ -23,6 +23,8 @@
     </text-pack>
     <twitch-pack *ngSwitchCase="'twitch'" [message]="message">
     </twitch-pack>
+    <twitch-clip-pack *ngSwitchCase="'twitch-clip'" [message]="message">
+    </twitch-clip-pack>
     <youtube-pack *ngSwitchCase="'youtube'" [message]="message">
     </youtube-pack>
     <div class="footer" *ngIf="isTimestampShow()">{{getTimeString()}}</div>

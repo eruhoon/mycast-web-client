@@ -1,1 +1,71 @@
-<p>modify-checker-modal works!</p>
+<div class="click-blocker"></div>
+<div class="modal-wrapper">
+  <div class="modal">
+        <div class="title">
+            <h3>스트리머 추가</h3>
+        </div>
+        <div class="live-stream-chk">
+            <div class="live-corp-list">
+                <div class="live-corp">
+                    <div class="live-corp-img">
+                        <img src="../assets/image/stream/twitch.png">
+                        <div class="checks">
+                            <input type="radio" id="live-co1" name="live-corp-select">
+                            <label for="live-co1"></label>
+                        </div>
+                    </div>
+                    <p>트위치</p>
+                </div>
+                <div class="live-corp">
+                    <div class="live-corp-img">
+                        <img src="../assets/image/stream/twitch.png">
+                        <div class="checks">
+                            <input type="radio" id="live-co2" name="live-corp-select">
+                            <label for="live-co2"></label>
+                        </div>
+                    </div>
+                    <p>트위치</p>
+                </div>
+                <div class="live-corp">
+                    <div class="live-corp-img">
+                        <img src="../assets/image/stream/twitch.png">
+                        <div class="checks">
+                            <input type="radio" id="live-co3" name="live-corp-select">
+                            <label for="live-co3"></label>
+                        </div>
+                    </div>
+                    <p>트위치</p>
+                </div>
+                <div class="live-corp">
+                    <div class="live-corp-img">
+                        <img src="../assets/image/stream/twitch.png">
+                        <div class="checks">
+                            <input type="radio" id="live-co4" name="live-corp-select">
+                            <label for="live-co4"></label>
+                        </div>
+                    </div>
+                    <p>트위치</p>
+                </div>
+            </div>
+            <div class="live-stream-search">
+                <label>
+                    <p>방송ID검색</p>
+                </label>
+                <input id="name" maxlength="15" [(ngModel)]="profileForm.name" type="text" />
+                <p class="error-up">닉네임을 입력하세요.</p>
+            </div>
+            <button>검색</button>
+        </div>
+        <div class="live-stream-list">
+            <div class="live-stream">
+
+            </div>
+        </div>
+        
+        <a class="modal-close" (click)="close()">
+        <i class="material-icons">
+            close
+        </i>
+        </a>
+  </div>
+</div>

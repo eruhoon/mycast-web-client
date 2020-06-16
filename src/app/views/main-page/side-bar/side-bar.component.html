@@ -27,7 +27,7 @@
       <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
       <span>{{ stream.getTitle() }}</span>
       <div class="live-btn">
-        <div class="button" style="right: 10px;" (click)="onShareClick(stream)">
+        <div class="button" style="right: 10px;" (click)="onFavoriteClick(stream)">
           <i class="material-icons">star_border</i>
         </div>
         <div class="button" style="right: 10px;" (click)="onShareClick(stream)">

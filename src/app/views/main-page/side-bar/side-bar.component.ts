@@ -1,3 +1,4 @@
+import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
 import { OptionService } from 'src/app/services/option/option.service';
@@ -89,6 +90,20 @@ export class SideBarComponent implements OnInit {
       this.mMainService.setCurrentLink(stream.getUrl());
     }
     this.mMainService.closeSidebar();
+  }
+
+  public onFavoriteClick(): void {
+    // TODO
+    console.log('TODO: favorite');
+  }
+
+  public onShareClick(stream: Stream): void {
+    const share = new StreamShareCommand(stream);
+    share.execute();
+  }
+
+  public onNewWindowClick(stream: Stream): void {
+    window.open(stream.getUrl(), '_blank', 'width=800');
   }
 
   public onMemoClick(): void {

@@ -92,7 +92,7 @@ export class SideBarComponent implements OnInit {
     this.mMainService.closeSidebar();
   }
 
-  public onFavoriteClick(): void {
+  public onFavoriteClick(stream: Stream): void {
     // TODO
     console.log('TODO: favorite');
   }

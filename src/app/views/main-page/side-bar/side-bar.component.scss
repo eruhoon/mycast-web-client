@@ -7,13 +7,10 @@ h3 {
   font-size: 12px; // 폰트 세부 조정 필요
   padding: 7.5px 10px;
   margin: 0;
-  color: #e0e0e0;
   cursor: pointer;
 }
 
 hr {
-  border: 1px solid #515151;
-
   &:last-child {
     margin-bottom: 0px;
   }
@@ -32,11 +29,6 @@ li {
   align-items: center;
   font-size: 16px;
   cursor: pointer;
-  color: #f0f0f0;
-
-  &:hover {
-    background: #515151;
-  }
 
   span {
     padding-left: 10px;
@@ -70,6 +62,7 @@ ul.stream {
   -webkit-transition: none;
 
   li {
+    position: relative;
     img {
       width: 30px;
       height: 30px;
@@ -80,6 +73,36 @@ ul.stream {
       font-size: 12px;
       line-height: 12px;
       padding-top: 4px;
+    }
+
+    .live-btn {
+      width: 81px;
+      height: 24px;
+
+      position: absolute;
+      right: 5px;
+      top: 8px;
+
+      .button {
+        width: 24px;
+        height: 24px;
+        float: left;
+        margin-left: 3px;
+
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+
+        i {
+          font-size: 15px;
+          line-height: 27px;
+
+          &.enabled {
+            color: #cc0;
+          }
+        }
+
+      }
     }
   }
 

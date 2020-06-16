@@ -12,4 +12,8 @@ export class ModifyCheckerModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  public close() {
+
+  }
+
 }

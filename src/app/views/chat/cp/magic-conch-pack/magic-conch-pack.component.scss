@@ -1,0 +1,102 @@
+.magic-conch {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    overflow: hidden;
+
+    * {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    .question {
+        width: calc(100% - 2px);
+        height: auto;
+        border: 1px solid;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        
+        .magic-title {
+            width: 100%;
+            height: 28px;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+
+            h1 {
+                width: auto;
+                height: auto;
+                font-size: 48px;
+                line-height: 32px;
+
+                position: absolute;
+                top: -10px;
+                left: -10px;
+            }
+            p {
+                width: auto;
+                height: auto;
+
+                font-size: 12px;
+                line-height: 16px;
+                
+                padding-top: 10px;
+                padding-left: 35px;
+            }
+        }
+        p.magic-question {
+            width: calc(100% - 20px);
+            font-size: 14px;
+            line-height: 18px;
+            padding-left: 5px;
+            padding-bottom: 10px;
+            padding-right: 20px;
+        }
+    }
+    .answer {
+        width: 100%;
+        height: 50px;
+        display: inline-block;
+        
+        border-radius: 5px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        position: relative;
+    
+        .tri  {
+            width: 0px;
+            height: 0px;
+            position: absolute;
+
+            top: -20px;
+            right: 0px;
+
+            border-top:40px solid none;
+            border-top: 20px solid transparent;
+            border-right: 20px solid;
+        }
+
+        .conch-answer-img {
+            width: 30px;
+            height: 30px;
+            padding:10px;
+            float: left;
+            display: inline-block;
+
+            .img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAYABgAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABgAAAAAQAAAGAAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAB6gAwAEAAAAAQAAAB4AAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIAB4AHgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/3QAEAAL/2gAMAwEAAhEDEQA/AKPgMww6bE9zBbyxG4coZI1YqwPXkfWvQZo9KuNMne7sbf7NcA708pd03HJJxx9a8i8I3UEcVzYyCQSyuJIiASpwvIPp0613utE6j4SjQMWTyx5oU4yueRXfGMZU4yRjCdm0c/4z8O6W+hpqWhaO9sTMsTfZsspHfK9j7gfpXAgxEBdyS49DxXoGj6ldmYWPnlZk2uso/wCWi5xyPUZHPvXN+JHa7vjcSWscU3nzwuq9wjKAf1b8DXPiIRilJbMTfMrs/9Dh/D862utQOzBcMeW+7kggZ9s4r0eK9eOVyI8RSZLIqAKnOBx1JPJJrynGGx14xXR+Hru9vrO90wXUqyJbtNbS7zmNk5wT12ms1P2dSNV7LdephFtppHUWuk2sOqnULadfK2hBCRzFlwTj24FY/jfU/Dz2kVrZwyi/trlzIqoYyu/mXc7fK+59pGOgrJsvEuqFo3aZZVAB/eINxB/2hW5A2mef/brW0jyagnKtghSMZwPfA/Ku6rOFSPu9P1JUrbn/2Q==");
+            }
+        }
+        .conch-answer-text {
+            width: calc(100% - 60px);
+            height: auto;
+            float: left;
+            display: inline-block;
+            padding-top: 15px;
+            padding-right: 10px;
+        }
+    }
+}

@@ -28,5 +28,5 @@
   </div>
   <input #inputBox type="text" class="input-box" (keydown.arrowup)="onPressUp()" (keydown.arrowdown)="onPressDown()"
     (keypress)="$event.keyCode!=13 || ($event.keyCode==13 && onPressEnter())" />
-  <input #imageInput type="file" accept="image/*" class="hidden" (change)="uploadImage()">
+  <input #imageInput type="file" accept="image/*" style="display:none" (change)="uploadImage()">
 </div>

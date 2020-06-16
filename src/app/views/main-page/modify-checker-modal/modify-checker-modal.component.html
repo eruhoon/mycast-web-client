@@ -54,14 +54,26 @@
                 <input id="name" maxlength="15" [(ngModel)]="profileForm.name" type="text" />
                 <p class="error-up">닉네임을 입력하세요.</p>
             </div>
-            <button>검색</button>
+            <button class="live-stream-btn">검색</button>
         </div>
         <div class="live-stream-list">
+            <div class="error-search">
+                <span class="material-icons">
+                    cancel
+                </span>
+                <h3>?_? 무언가 잘못 된거 같아여!</h3>
+                <p>"kimdoe"의 방송 정보를 찾을 수 없습니다.</p>
+            </div>
             <div class="live-stream">
-
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/89e29e2e-f165-40e6-bc0c-d42205935216-profile_image-300x300.png">
+                <div class="stream-info">
+                    <h3>침착맨 <small>(zilioner)</small></h3>
+                    <p>방송플랫폼 : twitch</p>
+                </div>
             </div>
         </div>
-        
+
+        <button class="live-stream-add-btn">스트리머 추가</button>
         <a class="modal-close" (click)="close()">
         <i class="material-icons">
             close

@@ -76,6 +76,10 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
       .build());
   }
 
+  public onIconError(): void {
+    this.mIcon = this.mIcon.replace(/icon\/.*?\.png/, 'icon/0.png');
+  }
+
   private static getTierText(tierObj: TierParam): string {
     const tier = tierObj.tier;
     const division = tier === 'CHALLENGER' ||

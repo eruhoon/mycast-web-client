@@ -3,6 +3,8 @@ import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-imag
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChatCommand } from 'src/app/models/network/ChatCommand';
+import { ChatListService } from '../../chat/chat-list/chat-list.service';
 
 @Component({
   selector: 'clipboard-image-popup',
@@ -14,14 +16,15 @@ export class ClipboardImagePopupComponent implements OnInit {
   @ViewChild('focus', { static: true }) mFocus: ElementRef<HTMLImageElement>;
 
   private mService: ClipboardImageService;
-  private mChatNetwork: ChatNetworkModel;
+  private mChatCommand: ChatCommand;
 
   public constructor(
     service: ClipboardImageService,
-    mainService: MainService
+    chatListSrv: ChatListService,
+    mainSrv: MainService
   ) {
     this.mService = service;
-    this.mChatNetwork = mainService.getChatNework();
+    this.mChatCommand = new ChatCommand(chatListSrv, mainSrv.getChatNework());
   }
 
   public ngOnInit(): void {
@@ -33,7 +36,8 @@ export class ClipboardImagePopupComponent implements OnInit {
   }
 
   public sendImage(): void {
-    this.mChatNetwork.chat(`사진::${this.getCurrentImage()}`);
+    const text = `사진::${this.getCurrentImage()}`;
+    this.mChatCommand.execute(text);
     this.mService.clearImage();
   }
 

@@ -5,6 +5,8 @@ import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-imag
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component } from '@angular/core';
+import { ChatCommand } from 'src/app/models/network/ChatCommand';
+import { ChatListService } from '../chat-list/chat-list.service';
 
 @Component({
   selector: 'chat-page',
@@ -15,17 +17,18 @@ export class ChatPageComponent {
 
   private mChatService: ChatService;
   private mClipboardImageService: ClipboardImageService;
-  private mChatNetwork: ChatNetworkModel;
   private mClipboardManager: ClipboardManager;
+  private mChatCommand: ChatCommand;
 
   public constructor(
     mainService: MainService,
     chatService: ChatService,
-    clipboardImageService: ClipboardImageService) {
+    clipboardImageService: ClipboardImageService,
+    chatListSrv: ChatListService) {
     this.mChatService = chatService;
     this.mClipboardImageService = clipboardImageService;
-    this.mChatNetwork = mainService.getChatNework();
     this.mClipboardManager = new ClipboardManager();
+    this.mChatCommand = new ChatCommand(chatListSrv, mainService.getChatNework());
   }
 
   public isChatUserListShow(): boolean {
@@ -51,10 +54,10 @@ export class ChatPageComponent {
   }
 
   public onChatInput(rawChat: string): void {
-    this.mChatNetwork.chat(rawChat);
+    this.mChatCommand.execute(rawChat);
   }
 
   public onChatEntryIconSelect(icon: string) {
-    this.mChatNetwork.chat(icon);
+    this.mChatCommand.execute(icon);
   }
 }

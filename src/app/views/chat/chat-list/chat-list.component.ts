@@ -66,7 +66,7 @@ export class ChatListComponent implements OnInit {
       if (this.mScrollTimer === -1) {
         this.mScrollTimer = Number(setTimeout(() => {
           this.mOptionService.setScrollLockMode(true);
-        }, 2000));
+        }, 1000));
       }
     } else {
       clearTimeout(this.mScrollTimer);

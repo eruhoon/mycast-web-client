@@ -92,17 +92,20 @@ export class SideBarComponent implements OnInit {
     this.mMainService.closeSidebar();
   }
 
-  public onFavoriteClick(stream: Stream): void {
+  public onFavoriteClick(event: Event, stream: Stream): void {
+    event.stopPropagation();
     // TODO
     console.log('TODO: favorite');
   }
 
-  public onShareClick(stream: Stream): void {
+  public onShareClick(event: Event, stream: Stream): void {
+    event.stopPropagation();
     const share = new StreamShareCommand(stream);
     share.execute();
   }
 
-  public onNewWindowClick(stream: Stream): void {
+  public onNewWindowClick(event: Event, stream: Stream): void {
+    event.stopPropagation();
     window.open(stream.getUrl(), '_blank', 'width=800');
   }
 

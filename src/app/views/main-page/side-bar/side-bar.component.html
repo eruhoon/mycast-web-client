@@ -27,13 +27,13 @@
       <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
       <span>{{ stream.getTitle() }}</span>
       <div class="live-btn">
-        <div class="button" style="right: 10px;" (click)="onFavoriteClick(stream)">
+        <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
           <i class="material-icons">star_border</i>
         </div>
-        <div class="button" style="right: 10px;" (click)="onShareClick(stream)">
+        <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
           <i class="material-icons">link</i>
         </div>
-        <div class="button" style="right: 32px;" (click)="onNewWindowClick(stream)">
+        <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
           <i class="material-icons">open_in_new</i>
         </div>
       </div>

@@ -1,5 +1,9 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
+import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 import { ChatPack } from '../ChatPack';
+import { MainService } from 'src/app/services/main/main.service';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'twitch-clip-pack',
@@ -8,11 +12,54 @@ import { ChatPack } from '../ChatPack';
 })
 export class TwitchClipPackComponent extends ChatPack implements OnInit {
 
-  public constructor(injector: Injector) {
+  public icon: string;
+  public title: string;
+  public thumbnail: string;
+  private mLink: string;
+
+  public constructor(
+    injector: Injector,
+    private mMainSrv: MainService,
+    private mOptionSrv: OptionService,
+    private mLinkPopupSrv: LinkPopupService) {
     super(injector);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    const raw = JSON.parse(this.message.getMessage()) as Param;
+    console.log(raw);
+    this.icon = raw.icon;
+    this.title = raw.title;
+    this.thumbnail = raw.thumbnail;
+    this.mLink = TwitchClipPackComponent.createLink(raw.link);
   }
 
+  public onClick(): void {
+    if (this.mOptionSrv.isMobile()) {
+      this.mMainSrv.setCurrentLink(this.mLink);
+    } else {
+      this.mLinkPopupSrv.addLink(new LinkPopupBuilder()
+        .title('Twitch Clip Viewer')
+        .width(480)
+        .height(360)
+        .link(this.mLink)
+        .build());
+    }
+  }
+
+  public onContextMenu(): void {
+    this.mMainSrv.setCurrentLink(this.mLink);
+  }
+
+  private static createLink(link: string): string {
+    return `${link}&parent=${location.hostname}`;
+  }
 }
+
+type Param = {
+  game: string,
+  icon: string,
+  link: string,
+  thumbnail: string,
+  title: string,
+};

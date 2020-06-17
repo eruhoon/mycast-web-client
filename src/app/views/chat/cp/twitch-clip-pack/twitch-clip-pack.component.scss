@@ -1,0 +1,119 @@
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin marquee($time) {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee $time linear infinite;
+}
+
+.twitch-clip-pack {
+  display: flex;
+  position: relative;
+  width: 230px;
+  height: 130px;
+  margin: 3px 0 3px 0;
+  font-size: 12px;
+  line-height: 15px;
+  word-break: break-all;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: default;
+  color: #e8e8e8;
+
+  &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    content: "";
+    background: #000;
+    opacity: 0.9;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.6;
+    }
+  }
+
+  &.no-thumbnail {
+    height: 60px;
+  }
+
+  .thumbnail {
+    position: absolute;
+    width: 100%;
+    opacity: 0.3;
+  }
+
+  .logo {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    opacity: 0.8;
+
+    // background: $youtube-logo;
+    &.description-added {
+      bottom: 25px;
+    }
+  }
+
+  .title {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: calc(100% - 14px);
+    height: 20px;
+    padding: 0px 7px;
+    border-bottom: solid 1px #aaa;
+    font-size: 15px;
+    line-height: 20px;
+    @include truncate;
+
+    &:hover {
+      @include marquee(5s);
+    }
+
+    &.description-added {
+      bottom: 25px;
+    }
+  }
+
+  .description {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    height: 20px;
+
+    span {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    i {
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+}

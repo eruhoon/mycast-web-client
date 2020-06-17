@@ -10,6 +10,8 @@ export class ChatCommand {
 
     public execute(text: string): void {
         this.mModel.chat(text);
-        this.mChatListSrv.scrollToBottom(false);
+        setTimeout(() => {
+            this.mChatListSrv.scrollToBottom(false);
+        }, 500);
     }
 }

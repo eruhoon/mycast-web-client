@@ -1,6 +1,7 @@
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
@@ -19,6 +20,7 @@ export class MobilePageComponent implements OnInit {
     private mMainSrv: MainService,
     private mTopBarSrv: TopBarService,
     private mProfileService: ProfileService,
+    private mNotiSrv: NotificationService,
     private mThemeSrv: ThemeService,
     private mImagePopupSrv: ImagePopupService,
     private mClipboardImageSrv: ClipboardImageService) {
@@ -68,6 +70,10 @@ export class MobilePageComponent implements OnInit {
   public isModifySettingMode(): boolean {
     const mode = this.mProfileService.getModifyMode();
     return mode === ProfileModifyMode.SETTING;
+  }
+
+  public isNotificationRequestShow(): boolean {
+    return this.mNotiSrv.getTarget() !== null;
   }
 
   public isImagePopup(): boolean {

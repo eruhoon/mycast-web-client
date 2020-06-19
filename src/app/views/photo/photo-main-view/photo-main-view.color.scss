@@ -1,0 +1,83 @@
+:host-context(.theme-light) {
+    .photo-main-content {
+        scrollbar-color: #e0e0e0 #f0f0f0;
+        &::-webkit-scrollbar {
+            border: 3px solid #f0f0f0;
+        }
+        &::-webkit-scrollbar-button:start:decrement,
+        &::-webkit-scrollbar-button:end:increment {
+            background: #f0f0f0;
+        }
+        &::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+        }
+        .ph-search {
+            label {
+                color: #616161;
+            }
+            .ph-search-input {
+                input {
+                    background-color: #f0f0f0;
+                    color: #757575;
+                    border: 1px solid #e3e3e3;
+                }
+                i {
+                    color: #757575;
+                    &:hover {
+                        color: #ff4081;
+                    }
+                }
+            }
+        }
+        .ph-d-list {
+            p {
+                color: #616161;
+            }
+        }
+    }
+}
+  
+:host-context(.theme-dark) {
+    .photo-main-content {
+        scrollbar-color: #616161 #3a3a3a;
+        &::-webkit-scrollbar {
+            border: 3px solid #3a3a3a;
+        }
+        &::-webkit-scrollbar-button:start:decrement,
+        &::-webkit-scrollbar-button:end:increment {
+            background: #3a3a3a;
+        }
+        &::-webkit-scrollbar-track {
+            background: #3a3a3a;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #616161;
+        }
+        .ph-search {
+            label {
+                color: #EEEEEE;
+            }
+            .ph-search-input {
+                input {
+                    background-color: #616161;
+                    color: #EEEEEE;
+                    border: 1px solid #757575;
+                }
+                i {
+                    color: #EEEEEE;
+                    &:hover {
+                        color: #c63d6c;
+                    }
+                }
+            }
+        }
+        .ph-d-list {
+            p {
+                color: #EEEEEE;
+            }
+        }
+    }
+}

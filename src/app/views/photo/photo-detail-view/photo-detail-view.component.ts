@@ -11,7 +11,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'photo-detail-view',
   templateUrl: './photo-detail-view.component.html',
-  styleUrls: ['./photo-detail-view.component.scss']
+  styleUrls: ['./photo-detail-view.component.scss', './photo-detail-view.color.scss']
 })
 export class PhotoDetailViewComponent implements OnInit {
 

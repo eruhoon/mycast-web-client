@@ -1,0 +1,49 @@
+:host-context(.theme-light) {
+  .photo-page {
+    background-color: #f0f0f0;
+    .left-menu {
+      border-right-color: #e3e3e3;
+
+      h2 {
+        color: #f50057;
+      }
+
+      .ph-menu-list {
+        color: #616161;
+        .ph-m-li {
+          &.active {
+            color: #f50057;
+          }
+        }
+      }
+    }
+  }
+  photo-detail-view {
+    background: #f0f0f0;
+  }
+}
+
+:host-context(.theme-dark) {
+  .photo-page {
+    background-color: #3a3a3a;
+    .left-menu {
+      border-right-color: #BDBDBD;
+
+      h2 {
+        color: #c63d6c;
+      }
+
+      .ph-menu-list {
+        .ph-m-li {
+          color: #EEEEEE;
+          &.active {
+            color: #c63d6c;
+          }
+        }
+      }
+    }
+  }
+  photo-detail-view {
+    background: #3a3a3a;
+  }
+}

@@ -7,7 +7,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'photo-main-view',
   templateUrl: './photo-main-view.component.html',
-  styleUrls: ['./photo-main-view.component.scss']
+  styleUrls: ['./photo-main-view.component.scss', './photo-main-view.color.scss']
 })
 export class PhotoMainViewComponent implements OnInit {
 

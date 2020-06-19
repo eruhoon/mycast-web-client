@@ -7,7 +7,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 @Component({
   selector: 'photo-page',
   templateUrl: './photo-page.component.html',
-  styleUrls: ['./photo-page.component.scss']
+  styleUrls: ['./photo-page.component.scss', './photo-page.color.scss']
 })
 export class PhotoPageComponent {
 

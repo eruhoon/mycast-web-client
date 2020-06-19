@@ -15,6 +15,7 @@ import { ChatPack } from '../ChatPack';
 export class TwitchClipPackComponent extends ChatPack implements OnInit {
 
   public icon: string;
+  public type: string;
   public title: string;
   public thumbnail: string;
   private mLink: string;
@@ -30,6 +31,7 @@ export class TwitchClipPackComponent extends ChatPack implements OnInit {
   public ngOnInit(): void {
     const raw = JSON.parse(this.message.getMessage()) as Param;
     this.icon = raw.icon;
+    this.type = raw.game;
     this.title = raw.title;
     this.thumbnail = raw.thumbnail;
     this.mLink = TwitchClipPackComponent.createLink(raw.link);

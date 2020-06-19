@@ -1,9 +1,11 @@
-import { Component, Injector, OnInit } from '@angular/core';
 import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
-import { ChatPack } from '../ChatPack';
 import { MainService } from 'src/app/services/main/main.service';
 import { OptionService } from 'src/app/services/option/option.service';
+
+import { Component, Injector, OnInit } from '@angular/core';
+
+import { ChatPack } from '../ChatPack';
 
 @Component({
   selector: 'twitch-clip-pack',

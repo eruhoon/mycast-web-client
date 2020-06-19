@@ -1,4 +1,5 @@
 import { ChatListService } from 'src/app/views/chat/chat-list/chat-list.service';
+
 import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatCommand {

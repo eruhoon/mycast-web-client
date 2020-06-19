@@ -1,4 +1,5 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+
 import { ChatPack } from '../ChatPack';
 
 @Component({

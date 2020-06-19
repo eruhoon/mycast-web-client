@@ -1,5 +1,5 @@
-import { MutableLinkPopup } from './MutableLinkPopup';
 import { LinkPopup } from './LinkPopup';
+import { MutableLinkPopup } from './MutableLinkPopup';
 
 export class LinkPopupBuilder {
 

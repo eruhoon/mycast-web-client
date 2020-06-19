@@ -2,7 +2,9 @@ import { Chat } from 'src/app/models/chat/Chat';
 import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, HostListener } from '@angular/core';
+import {
+    Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild
+} from '@angular/core';
 
 import { ChatListService } from './chat-list.service';
 

@@ -1,11 +1,11 @@
 import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
-import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+import { ChatCommand } from 'src/app/models/network/ChatCommand';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component } from '@angular/core';
-import { ChatCommand } from 'src/app/models/network/ChatCommand';
+
 import { ChatListService } from '../chat-list/chat-list.service';
 
 @Component({

@@ -1,9 +1,10 @@
+import { ChatCommand } from 'src/app/models/network/ChatCommand';
 import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChatCommand } from 'src/app/models/network/ChatCommand';
+
 import { ChatListService } from '../../chat/chat-list/chat-list.service';
 
 @Component({

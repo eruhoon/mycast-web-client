@@ -33,7 +33,7 @@
     border-radius: 5px;
     content: "";
     background: #000;
-    opacity: 0.9;
+    opacity: 0.75;
   }
 
   &:hover {
@@ -52,68 +52,50 @@
     opacity: 0.3;
   }
 
-  .logo {
+  .tw-str-info {
     position: absolute;
-    top: 8px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    opacity: 0.8;
-
-    // background: $youtube-logo;
-    &.description-added {
-      bottom: 25px;
-    }
-  }
-
-  .title {
-    position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     left: 0px;
-    width: calc(100% - 14px);
-    height: 20px;
-    padding: 0px 7px;
-    border-bottom: solid 1px #aaa;
-    font-size: 15px;
-    line-height: 20px;
-    @include truncate;
-
-    &:hover {
-      @include marquee(5s);
+    width: 100%;
+    *{
+      margin: 0%;
+      padding: 0%;
     }
-
-    &.description-added {
-      bottom: 25px;
+    .logo {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      float: left;
+      border-radius: 50%;
+      box-shadow: 1px 1px 1px rgba($color: #000000, $alpha: .4);
+  
+      // background: $youtube-logo;
+      &.description-added {
+        bottom: 25px;
+      }
     }
-  }
-
-  .description {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    width: calc(100% - 10px);
-    height: 15px;
-    font-size: 12px;
-    line-height: 15px;
-  }
-
-  .time {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    height: 20px;
-
     span {
-      font-size: 15px;
-      line-height: 20px;
-    }
-
-    i {
-      font-size: 15px;
-      line-height: 20px;
+      width: calc(100% - 50px);
+      float: left;
+      margin-top: 6px;
+      h4 {
+        font-size: 16px;
+        line-height: 18px;
+        color: #ffffff;
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: .4);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      p {
+        font-size: 12px;
+        line-height: 16px;
+        color: #e0e0e0;
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: .4);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 }

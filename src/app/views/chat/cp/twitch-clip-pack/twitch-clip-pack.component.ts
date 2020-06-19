@@ -29,7 +29,6 @@ export class TwitchClipPackComponent extends ChatPack implements OnInit {
 
   public ngOnInit(): void {
     const raw = JSON.parse(this.message.getMessage()) as Param;
-    console.log(raw);
     this.icon = raw.icon;
     this.title = raw.title;
     this.thumbnail = raw.thumbnail;

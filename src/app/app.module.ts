@@ -18,8 +18,10 @@ import { ChatPageComponent } from './views/chat/chat-page/chat-page.component';
 import { ChatUserEntryComponent } from './views/chat/chat-user-entry/chat-user-entry.component';
 import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-list.component';
 import { AfreecaPackComponent } from './views/chat/cp/afreeca-pack/afreeca-pack.component';
+import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
 import { BookPackComponent } from './views/chat/cp/book-pack/book-pack.component';
 import { CqHeroPackComponent } from './views/chat/cp/cq-hero-pack/cq-hero-pack.component';
+import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
 import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.component';
 import { LinkPackComponent } from './views/chat/cp/link-pack/link-pack.component';
 import {
@@ -31,6 +33,9 @@ import {
 } from './views/chat/cp/magic-conch-pack/magic-conch-pack.component';
 import { StreamPackComponent } from './views/chat/cp/stream-pack/stream-pack.component';
 import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
+import {
+    TwitchClipPackComponent
+} from './views/chat/cp/twitch-clip-pack/twitch-clip-pack.component';
 import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.component';
 import { YoutubePackComponent } from './views/chat/cp/youtube-pack/youtube-pack.component';
 import { HomePageComponent } from './views/home/home-page/home-page.component';
@@ -44,6 +49,9 @@ import {
 } from './views/main-page/image-popup-viewer/image-popup-viewer.component';
 import { LinkPopupComponent } from './views/main-page/link-popup/link-popup.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
+import {
+    ModifyCheckerModalComponent
+} from './views/main-page/modify-checker-modal/modify-checker-modal.component';
 import {
     ModifyProfileModalComponent
 } from './views/main-page/modify-profile-modal/modify-profile-modal.component';
@@ -97,10 +105,6 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
-import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
-import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
-import { ModifyCheckerModalComponent } from './views/main-page/modify-checker-modal/modify-checker-modal.component';
-import { TwitchClipPackComponent } from './views/chat/cp/twitch-clip-pack/twitch-clip-pack.component';
 
 @NgModule({
     declarations: [

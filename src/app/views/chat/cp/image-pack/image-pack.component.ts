@@ -5,6 +5,7 @@ import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core
 
 import { ChatListService } from '../../chat-list/chat-list.service';
 import { ChatPack } from '../ChatPack';
+import { ImagePackHandler } from './ImagePackHandler';
 
 @Component({
   selector: 'image-pack',
@@ -15,12 +16,10 @@ export class ImagePackComponent extends ChatPack implements OnInit {
 
   @Output() packClick: EventEmitter<string>;
 
-  private mImagePopupService: ImagePopupService;
+  private mHandler: ImagePackHandler;
   private mOpen: boolean;
   private mCensored: boolean;
   private mError: boolean;
-  private mMenuShow: boolean;
-  private mSrcImage: string;
 
   public constructor(
     injector: Injector,
@@ -29,16 +28,16 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     imagePopupService: ImagePopupService) {
 
     super(injector);
-    this.mImagePopupService = imagePopupService;
+    this.mHandler = new ImagePackHandler(imagePopupService);
     this.mOpen = false;
     this.mCensored = false;
     this.mError = false;
-    this.mMenuShow = false;
   }
 
   public ngOnInit(): void {
     this.mOpen = this.isDataSaveMode() ? false : true;
-    this.mSrcImage = this.message.getMessage().trim();
+    const srcImage = this.message.getMessage().trim();
+    this.mHandler.init(srcImage);
   }
 
   public getImage(): string {
@@ -47,7 +46,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     } else if (this.isCensored()) {
       return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
     } else {
-      return this.mSrcImage;
+      return this.mHandler.getImage();
     }
   }
 
@@ -60,15 +59,15 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   }
 
   public isMenuShow(): boolean {
-    return this.mMenuShow;
+    return this.mHandler.isMenuShow();
   }
 
   public showMenu(): void {
-    this.mMenuShow = true;
+    this.mHandler.showMenu();
   }
 
   public hideMenu(): void {
-    this.mMenuShow = false;
+    this.mHandler.hideMenu();
   }
 
   public openImage(): void {
@@ -80,8 +79,7 @@ export class ImagePackComponent extends ChatPack implements OnInit {
   }
 
   public onImageClick(): void {
-    const image = this.message.getMessage();
-    this.mImagePopupService.setImage(image);
+    this.mHandler.onImageClick();
   }
 
   public onImageError(): void {

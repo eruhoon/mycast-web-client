@@ -15,12 +15,22 @@ export class ClipboardManager {
         rawData: DataTransfer | null, callback: TypeCallback<string>): void {
 
         const file = this.mClipboardImageParser.parseImageFile(rawData);
-        if (!file) {
+        if (file !== null) {
+            this.uploadImageCacheWithFile(file, imageUri => {
+                callback(imageUri);
+            });
             return;
         }
-        this.uploadImageCacheWithFile(file, imageUri => {
-            callback(imageUri);
+
+        this.mClipboardImageParser.parseImageUrl(rawData, link => {
+            if (link !== null) {
+                callback(link);
+            }
         });
+    }
+
+    public uploadImageCacheWithUrl(): void {
+
     }
 
     public uploadImageCacheWithFile(

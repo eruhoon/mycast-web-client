@@ -46,10 +46,15 @@ export class ChatPageComponent {
   }
 
   public onDrop(event: DragEvent): boolean {
-    const dataTransfer = event.dataTransfer;
-    this.mClipboardManager.uploadImageCache(dataTransfer, imageUri => {
-      this.mClipboardImageService.setCurrentImage(imageUri);
+    const data = event.dataTransfer;
+    const dropResult = this.mClipboardManager.uploadImageCache(data, uri => {
+      this.mClipboardImageService.setCurrentImage(uri);
     });
+    if (!dropResult) {
+      this.mClipboardManager.uploadImageCacheWithUrl(data, uri => {
+        this.mClipboardImageService.setCurrentImage(uri);
+      });
+    }
     return false;
   }
 

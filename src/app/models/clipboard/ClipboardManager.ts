@@ -12,25 +12,25 @@ export class ClipboardManager {
     }
 
     public uploadImageCache(
-        rawData: DataTransfer | null, callback: TypeCallback<string>): void {
+        rawData: DataTransfer | null, callback: TypeCallback<string>): boolean {
 
         const file = this.mClipboardImageParser.parseImageFile(rawData);
-        if (file !== null) {
-            this.uploadImageCacheWithFile(file, imageUri => {
-                callback(imageUri);
-            });
-            return;
+        if (file === null) {
+            return false;
         }
-
-        this.mClipboardImageParser.parseImageUrl(rawData, link => {
-            if (link !== null) {
-                callback(link);
-            }
+        this.uploadImageCacheWithFile(file, imageUri => {
+            callback(imageUri);
         });
+        return true;
     }
 
-    public uploadImageCacheWithUrl(): void {
-
+    public uploadImageCacheWithUrl(
+        rawData: DataTransfer | null, callback: TypeCallback<string>): void {
+        this.mClipboardImageParser.parseImageUrl(rawData, uri => {
+            if (uri !== null) {
+                callback(uri);
+            }
+        });
     }
 
     public uploadImageCacheWithFile(

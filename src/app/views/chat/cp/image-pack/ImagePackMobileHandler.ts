@@ -29,14 +29,11 @@ export class ImagePackMobileHandler extends ImagePackHandler {
 
     public onHover(hover: boolean): void {
         if (!hover) {
-            console.log('111');
             this.hideMenu();
             this.mStatus = Status.DEFAULT;
         }
     }
-
 }
-
 
 const enum Status {
     DEFAULT,

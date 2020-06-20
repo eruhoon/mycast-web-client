@@ -134,4 +134,5 @@ export const enum ProfileModifyMode {
   PROFILE = 'PROFILE',
   STREAM = 'STREAM',
   SETTING = 'SETTING',
+  STREAM_ADD = 'STREAM_ADD',
 }

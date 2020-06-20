@@ -5,6 +5,7 @@ import { OptionService } from 'src/app/services/option/option.service';
 import { StreamService } from 'src/app/services/stream/stream.service';
 
 import { Component, OnInit } from '@angular/core';
+import { ProfileService, ProfileModifyMode } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -23,6 +24,7 @@ export class SideBarComponent implements OnInit {
   constructor(
     main: MainService,
     private mStreamSrv: StreamService,
+    private mProfileSrv: ProfileService,
     private mOptionSrv: OptionService) {
     this.mMainService = main;
 
@@ -117,6 +119,10 @@ export class SideBarComponent implements OnInit {
   public onPhotoClick(): void {
     this.mMainService.setCurrentLink('./photo');
     this.mMainService.closeSidebar();
+  }
+
+  public onStreamConfigClick(): void {
+    this.mProfileSrv.setModifyMode(ProfileModifyMode.STREAM_ADD);
   }
 
   public onLocalStreamListClick(): void {

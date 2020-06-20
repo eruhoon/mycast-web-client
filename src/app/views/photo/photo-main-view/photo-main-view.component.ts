@@ -14,12 +14,16 @@ export class PhotoMainViewComponent implements OnInit {
   @ViewChild('scroller', { static: false })
   public mScroller: ElementRef<HTMLDivElement>;
 
+  public searchText: string;
+
   private mService: PhotoService;
   private mPhotoSetModel: PhotoSetParam[];
+  private mTimer: number;
 
   public constructor(service: PhotoService) {
     this.mService = service;
     this.mPhotoSetModel = [];
+    this.mTimer = -1;
   }
 
   ngOnInit() {
@@ -28,6 +32,14 @@ export class PhotoMainViewComponent implements OnInit {
   public getPhotoSetModel(): PhotoSetParam[] {
     this.applyPhoto(this.mService.getPhotos());
     return this.mPhotoSetModel;
+  }
+
+  public onKeyDown(): void {
+    clearTimeout(this.mTimer);
+    this.mTimer = Number(setTimeout(() => {
+      console.log('tick');
+      this.mTimer = -1;
+    }, 600));
   }
 
   public onScroll(): void {

@@ -6,6 +6,7 @@ import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core
 import { ChatListService } from '../../chat-list/chat-list.service';
 import { ChatPack } from '../ChatPack';
 import { ImagePackHandler } from './ImagePackHandler';
+import { ImagePackMobileHandler } from './ImagePackMobileHandler';
 
 @Component({
   selector: 'image-pack',
@@ -28,7 +29,10 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     imagePopupService: ImagePopupService) {
 
     super(injector);
-    this.mHandler = new ImagePackHandler(imagePopupService);
+
+    this.mHandler = this.mOptionSrv.isMobile() ?
+      new ImagePackMobileHandler(imagePopupService) :
+      new ImagePackHandler(imagePopupService);
     this.mOpen = false;
     this.mCensored = false;
     this.mError = false;
@@ -62,20 +66,16 @@ export class ImagePackComponent extends ChatPack implements OnInit {
     return this.mHandler.isMenuShow();
   }
 
-  public showMenu(): void {
-    this.mHandler.showMenu();
-  }
-
-  public hideMenu(): void {
-    this.mHandler.hideMenu();
-  }
-
   public openImage(): void {
     this.mOpen = true;
   }
 
   public toggleCensor(): void {
     this.mCensored = !this.mCensored;
+  }
+
+  public onHover(hover: boolean) {
+    this.mHandler.onHover(hover);
   }
 
   public onImageClick(): void {

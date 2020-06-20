@@ -24,6 +24,14 @@ export class ImagePackHandler {
     return this.mMenuShow;
   }
 
+  public onHover(hover: boolean): void {
+    if (hover) {
+      this.showMenu();
+    } else {
+      this.hideMenu();
+    }
+  }
+
   public showMenu(): void {
     this.mMenuShow = true;
   }

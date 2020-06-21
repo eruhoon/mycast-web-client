@@ -71,12 +71,12 @@ $header-height: 50px;
   .side-bar {
     position: absolute;
     top: 0;
-    width: 70vw;
+    width: 100vw;
     height: 100%;
     transition: transform 0.4s ease-in-out;
 
     &.hidden {
-      transform: translateX(-100vw);
+      transform: translateX(-101vw);
     }
   }
 

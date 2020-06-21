@@ -14,57 +14,186 @@
     </li>
   </ul>
 
-  <div *ngIf="isMobile()">
+  <div *ngIf="isMobile()" class="mobile">
     <hr />
-    <h3 (click)="onLocalStreamListClick()">마이캐스트 <small>({{getLocalStreamList().length}})</small></h3>
-    <ul class="stream" [ngClass]="isLocalStreamListShow() ? 'selected' : ''">
-      <li *ngFor="let stream of getLocalStreamList()" (click)="onStreamClick(stream)">
+      <h3 (click)="onLocalStreamListClick()">마이캐스트 <small>({{getLocalStreamList().length}})</small></h3>
+      <ul class="stream" [ngClass]="isLocalStreamListShow() ? 'selected' : ''">
+        <li *ngFor="let stream of getLocalStreamList()" (click)="onStreamClick(stream)">
+          <div class="live-tum-img">
+            <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8dk1m.jpg">
+          </div>
+          <div class="live-info">
+            <div class="stream-info">
+              <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+              <span>{{ stream.getTitle() }}</span>
+            </div>
+            <p>오랜만에 스펠렁키 지옥까지 거지같은 게임 풍월량 </p>
+            <div class="live-btn">
+              <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+                <i class="material-icons">star_border</i>
+              </div>
+              <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+                <i class="material-icons">link</i>
+              </div>
+              <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+                <i class="material-icons">open_in_new</i>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <hr />
+    <h3 (click)="onTwitchListClick()">트위치 <small>({{getTwitchList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
+        <div class="live-tum-img">
+          <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8dk1m.jpg">
+        </div>
+        <div class="live-info">
+          <div class="stream-info">
+            <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+            <span>{{ stream.getTitle() }}</span>
+          </div>
+          <p>오랜만에 스펠렁키 지옥까지 거지같은 게임 풍월량 </p>
+          <div class="live-btn">
+            <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+              <i class="material-icons">star_border</i>
+            </div>
+            <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+              <i class="material-icons">link</i>
+            </div>
+            <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+              <i class="material-icons">open_in_new</i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="onAfreecaListClick()">아프리카 <small>({{getAfreecaList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isAfreecaListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getAfreecaList()" (click)="onStreamClick(stream)">
+        <div class="live-tum-img">
+          <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8dk1m.jpg">
+        </div>
+        <div class="live-info">
+          <div class="stream-info">
+            <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+            <span>{{ stream.getTitle() }}</span>
+          </div>
+          <p>오랜만에 스펠렁키 지옥까지 거지같은 게임 풍월량 </p>
+          <div class="live-btn">
+            <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+              <i class="material-icons">star_border</i>
+            </div>
+            <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+              <i class="material-icons">link</i>
+            </div>
+            <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+              <i class="material-icons">open_in_new</i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="toggleYoutubeList()">유튜브 <small>({{getYoutubeList().length}})</small></h3>
+    <ul class="stream" [ngClass]="{selected: youtubeListShow}">
+      <li *ngFor="let stream of getYoutubeList()" (click)="onStreamClick(stream)">
+        <div class="live-tum-img">
+          <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8dk1m.jpg">
+        </div>
+        <div class="live-info">
+          <div class="stream-info">
+            <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+            <span>{{ stream.getTitle() }}</span>
+          </div>
+          <p>오랜만에 스펠렁키 지옥까지 거지같은 게임 풍월량 </p>
+          <div class="live-btn">
+            <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+              <i class="material-icons">star_border</i>
+            </div>
+            <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+              <i class="material-icons">link</i>
+            </div>
+            <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+              <i class="material-icons">open_in_new</i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="onKakaoListClick()">카카오TV <small>({{getKakaoList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
+        <div class="live-tum-img">
+          <img src="https://w.wallhaven.cc/full/p8/wallhaven-p8dk1m.jpg">
+        </div>
+        <div class="live-info">
+          <div class="stream-info">
+            <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+            <span>{{ stream.getTitle() }}</span>
+          </div>
+          <p>오랜만에 스펠렁키 지옥까지 거지같은 게임 풍월량 </p>
+          <div class="live-btn">
+            <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+              <i class="material-icons">star_border</i>
+            </div>
+            <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+              <i class="material-icons">link</i>
+            </div>
+            <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+              <i class="material-icons">open_in_new</i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="pc">
+    <hr />
+    <h3 (click)="onTwitchListClick()">트위치 <small>({{getTwitchList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
+        <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+        <span>{{ stream.getTitle() }}</span>
+        <div class="live-btn">
+          <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+            <i class="material-icons">star_border</i>
+          </div>
+          <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+            <i class="material-icons">link</i>
+          </div>
+          <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+            <i class="material-icons">open_in_new</i>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="onAfreecaListClick()">아프리카 <small>({{getAfreecaList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isAfreecaListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getAfreecaList()" (click)="onStreamClick(stream)">
+        <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+        <span>{{ stream.getTitle() }}</span>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="toggleYoutubeList()">유튜브 <small>({{getYoutubeList().length}})</small></h3>
+    <ul class="stream" [ngClass]="{selected: youtubeListShow}">
+      <li *ngFor="let stream of getYoutubeList()" (click)="onStreamClick(stream)">
+        <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+        <span>{{ stream.getTitle() }}</span>
+      </li>
+    </ul>
+    <hr />
+    <h3 (click)="onKakaoListClick()">카카오TV <small>({{getKakaoList().length}})</small></h3>
+    <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
+      <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
         <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
         <span>{{ stream.getTitle() }}</span>
       </li>
     </ul>
   </div>
-  <hr />
-  <h3 (click)="onTwitchListClick()">트위치 <small>({{getTwitchList().length}})</small></h3>
-  <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">
-    <li *ngFor="let stream of getTwitchList()" (click)="onStreamClick(stream)">
-      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
-      <span>{{ stream.getTitle() }}</span>
-      <div class="live-btn">
-        <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
-          <i class="material-icons">star_border</i>
-        </div>
-        <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
-          <i class="material-icons">link</i>
-        </div>
-        <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
-          <i class="material-icons">open_in_new</i>
-        </div>
-      </div>
-    </li>
-  </ul>
-  <hr />
-  <h3 (click)="onAfreecaListClick()">아프리카 <small>({{getAfreecaList().length}})</small></h3>
-  <ul class="stream" [ngClass]="isAfreecaListShow() ? 'selected' : ''">
-    <li *ngFor="let stream of getAfreecaList()" (click)="onStreamClick(stream)">
-      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
-      <span>{{ stream.getTitle() }}</span>
-    </li>
-  </ul>
-  <hr />
-  <h3 (click)="toggleYoutubeList()">유튜브 <small>({{getYoutubeList().length}})</small></h3>
-  <ul class="stream" [ngClass]="{selected: youtubeListShow}">
-    <li *ngFor="let stream of getYoutubeList()" (click)="onStreamClick(stream)">
-      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
-      <span>{{ stream.getTitle() }}</span>
-    </li>
-  </ul>
-  <hr />
-  <h3 (click)="onKakaoListClick()">카카오TV <small>({{getKakaoList().length}})</small></h3>
-  <ul class="stream" [ngClass]="isKakaoListShow() ? 'selected' : ''">
-    <li *ngFor="let stream of getKakaoList()" (click)="onStreamClick(stream)">
-      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
-      <span>{{ stream.getTitle() }}</span>
-    </li>
-  </ul>
 </div>

@@ -1,8 +1,12 @@
+import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
 import { Photo } from 'src/app/models/photo/Photo';
 import { DateUtils } from 'src/app/models/util/DateUtils';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
+import { PhotoSetParam } from './PhotoSetParam';
+import { PhotoSetParamContainer } from './PhotoSetParamContainer';
 
 @Component({
   selector: 'photo-main-view',
@@ -16,17 +20,24 @@ export class PhotoMainViewComponent implements OnInit {
 
   public searchText: string;
 
+  private mContainer: PhotoSetParamContainer;
+  private mLoader: VegaPhotoLoader;
   private mService: PhotoService;
   private mPhotoSetModel: PhotoSetParam[];
   private mTimer: number;
 
   public constructor(service: PhotoService) {
+    this.mContainer = new PhotoSetParamContainer();
+    this.mLoader = new VegaPhotoLoader();
     this.mService = service;
     this.mPhotoSetModel = [];
     this.mTimer = -1;
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.mLoader.load(photos => {
+
+    });
   }
 
   public getPhotoSetModel(): PhotoSetParam[] {
@@ -76,8 +87,3 @@ export class PhotoMainViewComponent implements OnInit {
   }
 
 }
-
-type PhotoSetParam = {
-  dateString: string,
-  list: Photo[]
-};

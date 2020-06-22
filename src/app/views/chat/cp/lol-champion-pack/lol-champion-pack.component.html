@@ -1,1 +1,18 @@
-<p>lol-champion-pack works!</p>
+<div class="lol-champion-info" *ngIf="!isDataSaveMode()" (click)="onClick()">
+    <div class="bg">
+        <img src="https://cdn.communitydragon.org/10.12.1/champion/117/splash-art/skin/15">
+        <div class="img-overlay"></div>
+    </div>
+    <div class="user-img">
+        <img src="http://ddragon.leagueoflegends.com/cdn/10.12.1/img/champion/Lulu.png"/>
+    </div>
+    <div class="user-info">
+        <h3 class="title">룰루</h3>
+        <div class="tier">
+            <p>신비술사</p>
+        </div>
+    </div>
+    <!--<div class="skills">
+        <img *ngFor="let champ of getMostChamps()" [src]="champ.icon" [title]="champ.name">
+    </div>-->
+</div>

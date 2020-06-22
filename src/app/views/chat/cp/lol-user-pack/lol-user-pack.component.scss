@@ -84,11 +84,16 @@
       }
     }
   }
-}
-
-.mostpick img {
-  width: 20px;
-  height: 20px;
-  margin-right: 2px;
-  border: solid 1px #888888;
+  .mostpick {
+    width: calc(100% - 62px);
+    float: left;
+    position: relative;
+    
+    img {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    border: solid 1px #2c3548;
+    }
+  }
 }

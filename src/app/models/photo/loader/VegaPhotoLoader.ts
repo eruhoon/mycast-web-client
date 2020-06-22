@@ -15,6 +15,7 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
     private mLoading: boolean;
 
     public constructor() {
+        this.mQuery = '';
         this.mStartIndex = 0;
         this.mIndexLength = VegaPhotoLoader.DEFAULT_INDEX_LENGTH;
         this.mLoading = false;
@@ -26,6 +27,8 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
 
     public setQuery(query: string): void {
         this.mQuery = query;
+        this.mLoading = false;
+        this.mStartIndex = 0;
     }
 
     public setStart(startIndex: number): void {

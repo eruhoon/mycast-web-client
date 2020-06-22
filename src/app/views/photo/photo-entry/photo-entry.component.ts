@@ -14,19 +14,19 @@ export class PhotoEntryComponent implements OnInit {
 
   @Input()
   public photo: Photo;
+  public thumbnail: string;
+  public isAdult: boolean;
+  public isAnimated: boolean;
 
   private mHash: string;
-  private mThumbnail: string;
-  private mAdult: boolean;
-  private mAnimated: boolean;
   private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
 
   public constructor(private mService: PhotoService) {
     this.mHash = '';
-    this.mThumbnail = '';
-    this.mAdult = false;
-    this.mAnimated = false;
+    this.thumbnail = '';
+    this.isAdult = false;
+    this.isAnimated = false;
   }
 
   public ngOnInit() {
@@ -36,21 +36,15 @@ export class PhotoEntryComponent implements OnInit {
   public bind(photo: Photo): void {
     const hash = photo.getHash();
     this.mHash = hash;
-    this.mThumbnail = PhotoEntryComponent.getThumbanil(hash, false);
-    this.mAdult = photo.isForAdult();
-    this.mAnimated = PhotoEntryComponent.isGif(photo.getMimeType());
+    this.thumbnail = PhotoEntryComponent.getThumbanil(hash, false);
+    this.isAdult = photo.isForAdult();
+    this.isAnimated = PhotoEntryComponent.isGif(photo.getMimeType());
     this.mFilterCommand = new PhotoAdultFilterCommand(this.photo);
     this.mShareCommand = new PhotoShareCommand(this.photo);
   }
 
-  public getThumbnail(): string { return this.mThumbnail; }
-
-  public isForAdult(): boolean { return this.mAdult; }
-
-  public isAnimated(): boolean { return this.mAnimated; }
-
   public setHover(hover: boolean): void {
-    this.mThumbnail = PhotoEntryComponent.getThumbanil(this.mHash, hover);
+    this.thumbnail = PhotoEntryComponent.getThumbanil(this.mHash, hover);
   }
 
   public onClick(): void {
@@ -62,7 +56,7 @@ export class PhotoEntryComponent implements OnInit {
     this.mFilterCommand.execute(adult).then(result => {
       if (result) {
         this.mService.setAdult(this.photo.getHash(), adult);
-        this.mAdult = adult;
+        this.isAdult = adult;
       }
     });
   }

@@ -15,38 +15,42 @@ export class PhotoEntryComponent implements OnInit {
   @Input()
   public photo: Photo;
 
-  private mHover: boolean;
-
-  private mService: PhotoService;
+  private mHash: string;
+  private mThumbnail: string;
+  private mAdult: boolean;
+  private mAnimated: boolean;
   private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
 
-  public constructor(service: PhotoService) {
-    this.mService = service;
+  public constructor(private mService: PhotoService) {
+    this.mHash = '';
+    this.mThumbnail = '';
+    this.mAdult = false;
+    this.mAnimated = false;
   }
 
   public ngOnInit() {
+    this.bind(this.photo);
+  }
+
+  public bind(photo: Photo): void {
+    const hash = photo.getHash();
+    this.mHash = hash;
+    this.mThumbnail = PhotoEntryComponent.getThumbanil(hash, false);
+    this.mAdult = photo.isForAdult();
+    this.mAnimated = PhotoEntryComponent.isGif(photo.getMimeType());
     this.mFilterCommand = new PhotoAdultFilterCommand(this.photo);
     this.mShareCommand = new PhotoShareCommand(this.photo);
-    this.mHover = false;
   }
 
-  public getThumbnail(): string {
-    const suffix = this.mHover ? '' : 'm';
-    return `https://i.imgur.com/${this.photo.getHash()}${suffix}.png`;
-  }
+  public getThumbnail(): string { return this.mThumbnail; }
 
-  public isForAdult(): boolean {
-    return this.photo.isForAdult();
-  }
+  public isForAdult(): boolean { return this.mAdult; }
 
-  public isAnimated(): boolean {
-    const mimeType = this.photo.getMimeType();
-    return !mimeType ? false : mimeType.includes('gif');
-  }
+  public isAnimated(): boolean { return this.mAnimated; }
 
   public setHover(hover: boolean): void {
-    this.mHover = hover;
+    this.mThumbnail = PhotoEntryComponent.getThumbanil(this.mHash, hover);
   }
 
   public onClick(): void {
@@ -55,11 +59,24 @@ export class PhotoEntryComponent implements OnInit {
 
   public onFilterClick(): void {
     const adult = !this.photo.isForAdult();
-    this.mService.setAdult(this.photo.getHash(), adult);
-    this.mFilterCommand.execute(adult);
+    this.mFilterCommand.execute(adult).then(result => {
+      if (result) {
+        this.mService.setAdult(this.photo.getHash(), adult);
+        this.mAdult = adult;
+      }
+    });
   }
 
   public onLinkClick(): void {
     this.mShareCommand.execute();
+  }
+
+  private static isGif(mimeType: string): boolean {
+    return !mimeType ? false : mimeType.includes('gif');
+  }
+
+  private static getThumbanil(hash: string, hover: boolean): string {
+    const suffix = hover ? '' : 'm';
+    return `https://i.imgur.com/${hash}${suffix}.png`;
   }
 }

@@ -9,6 +9,7 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
     private static readonly HOST = 'https://mycast.xyz:9011/photo';
     private static readonly DEFAULT_INDEX_LENGTH = 100;
 
+    private mQuery: string;
     private mStartIndex: number;
     private mIndexLength: number;
     private mLoading: boolean;
@@ -21,6 +22,10 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
 
     public isLoading(): boolean {
         return this.mLoading;
+    }
+
+    public setQuery(query: string): void {
+        this.mQuery = query;
     }
 
     public setStart(startIndex: number): void {
@@ -40,7 +45,6 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
         this.mLoading = true;
         const uri = this.getUri();
         Axios.get<PhotoDto[]>(uri).then(res => {
-            console.log(res.data);
             if (!res || !res.data) {
                 callback(null);
                 return;
@@ -53,6 +57,7 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
 
     private getUri(): string {
         const query = qs.stringify({
+            q: this.mQuery,
             start: this.mStartIndex,
             num: this.mIndexLength,
         });

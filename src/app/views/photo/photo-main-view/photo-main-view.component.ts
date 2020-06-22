@@ -1,10 +1,6 @@
-import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
-import { Photo } from 'src/app/models/photo/Photo';
-import { DateUtils } from 'src/app/models/util/DateUtils';
-import { PhotoService } from 'src/app/services/photo/photo.service';
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
+import { PhotoService } from 'src/app/services/photo/photo.service';
 import { PhotoSetParam } from './PhotoSetParam';
 import { PhotoSetParamContainer } from './PhotoSetParamContainer';
 
@@ -18,37 +14,41 @@ export class PhotoMainViewComponent implements OnInit {
   @ViewChild('scroller', { static: false })
   public mScroller: ElementRef<HTMLDivElement>;
 
-  public searchText: string;
+  @ViewChild('searchInput', { static: false })
+  public mSearchInput: ElementRef<HTMLInputElement>;
+
+  public searchForm: { text: string };
 
   private mContainer: PhotoSetParamContainer;
   private mLoader: VegaPhotoLoader;
   private mService: PhotoService;
-  private mPhotoSetModel: PhotoSetParam[];
   private mTimer: number;
 
   public constructor(service: PhotoService) {
+    this.searchForm = { text: '' };
     this.mContainer = new PhotoSetParamContainer();
     this.mLoader = new VegaPhotoLoader();
     this.mService = service;
-    this.mPhotoSetModel = [];
     this.mTimer = -1;
   }
 
   public ngOnInit() {
-    this.mLoader.load(photos => {
-
+    this.mLoader.load(rawPhotos => {
+      const photos = rawPhotos !== null ? rawPhotos : [];
+      this.mContainer.update(photos);
     });
   }
 
   public getPhotoSetModel(): PhotoSetParam[] {
-    this.applyPhoto(this.mService.getPhotos());
-    return this.mPhotoSetModel;
+    return this.mContainer.getPhotoSets();
   }
 
   public onKeyDown(): void {
     clearTimeout(this.mTimer);
     this.mTimer = Number(setTimeout(() => {
-      console.log('tick');
+      const elm = this.mSearchInput.nativeElement;
+      console.log('tick', this.searchForm.text, elm.value);
+      this.searchPhoto();
       this.mTimer = -1;
     }, 600));
   }
@@ -62,28 +62,12 @@ export class PhotoMainViewComponent implements OnInit {
     }
   }
 
-  private applyPhoto(photos: Photo[]): void {
-    photos.forEach(photo => {
-      const dateString = DateUtils.getDateString(photo.getRegDate());
-      let photoSetParam = this.mPhotoSetModel.find(
-        set => set.dateString === dateString);
-
-      if (!photoSetParam) {
-        photoSetParam = this.createPhotoSetParam(dateString);
-        this.mPhotoSetModel.push(photoSetParam);
-      }
-
-      const photoList = photoSetParam.list;
-      if (photoList.every(p => p.getHash() !== photo.getHash())) {
-        photoList.push(photo);
-        photoList.sort(
-          (a, b) => b.getRegDate().getTime() - a.getRegDate().getTime());
-      }
+  private searchPhoto(): void {
+    const elm = this.mSearchInput.nativeElement;
+    this.mLoader.setQuery(elm.value);
+    this.mLoader.load(rawPhotos => {
+      const photos = rawPhotos !== null ? rawPhotos : [];
+      this.mContainer.update(photos);
     });
   }
-
-  private createPhotoSetParam(dateString: string): PhotoSetParam {
-    return { dateString, list: [] };
-  }
-
 }

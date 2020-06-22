@@ -2,7 +2,7 @@
     <div class="ph-search">
         <label>검색</label>
         <div class="ph-search-input">
-            <input type="text" [ngModel]="searchText" (keydown)="onKeyDown()">
+            <input #searchInput type="text" [(ngModel)]="searchText" (keyup)="onKeyDown()">
             <i class="material-icons">search</i>
         </div>
     </div>

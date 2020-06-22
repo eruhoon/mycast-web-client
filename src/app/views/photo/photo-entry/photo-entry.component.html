@@ -1,24 +1,24 @@
 <div class="ph-img" (mouseenter)="setHover(true)" (mouseleave)="setHover(false)">
-    <img [ngClass]="{'blurEffect':isForAdult()}" [src]="getThumbnail() | safe" (click)="onClick()">
-    <div class="ph-info">
-        <div class="bg"></div>
-        <div class="img-wh">
-            <i class="material-icons">crop_original</i>
-            <p>{{photo.getWidth()}}x{{photo.getHeight()}}</p>
-        </div>
-        <div class="ph-btn-group">
-            <a class="ph-btn warning">
-                <i class="material-icons" (click)="onFilterClick()">warning</i>
-            </a>
-            <a class="ph-btn link">
-                <i class="material-icons" (click)="onLinkClick()">link</i>
-            </a>
-        </div>
+  <img [ngClass]="{'blurEffect':isForAdult()}" [src]="getThumbnail() | safe" (click)="onClick()">
+  <div class="ph-info">
+    <div class="bg"></div>
+    <div class="img-wh">
+      <i class="material-icons">crop_original</i>
+      <p>{{photo.getWidth()}}x{{photo.getHeight()}}</p>
     </div>
-    <div class="img-chk attention-limit" *ngIf="isForAdult()">
-        <img class="logo" src="/../assets/image/main/img_19_limit.png" />
+    <div class="ph-btn-group">
+      <a class="ph-btn warning">
+        <i class="material-icons" (click)="onFilterClick()">warning</i>
+      </a>
+      <a class="ph-btn link">
+        <i class="material-icons" (click)="onLinkClick()">link</i>
+      </a>
     </div>
-    <div class="img-chk gif-chk" *ngIf="isAnimated()">
-        <img class="logo" src="/../assets/image/main/img_gif.png" />
-    </div>
+  </div>
+  <div class="img-chk attention-limit" *ngIf="isForAdult()">
+    <img class="logo" src="/../assets/image/main/img_19_limit.png" />
+  </div>
+  <div class="img-chk gif-chk" *ngIf="isAnimated()">
+    <img class="logo" src="/../assets/image/main/img_gif.png" />
+  </div>
 </div>

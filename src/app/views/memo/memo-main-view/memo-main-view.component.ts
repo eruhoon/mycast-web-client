@@ -6,7 +6,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'memo-main-view',
   templateUrl: './memo-main-view.component.html',
-  styleUrls: ['./memo-main-view.component.scss']
+  styleUrls: ['./memo-main-view.component.scss','./memo-main-view.color.scss']
 })
 export class MemoMainViewComponent implements OnInit {
 

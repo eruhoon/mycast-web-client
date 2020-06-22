@@ -7,29 +7,25 @@
   float: left;
   overflow-y: scroll;
 
-  scrollbar-color: #e0e0e0 #f0f0f0;
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
-    border: 3px solid #f0f0f0;
+    border: 3px solid ;
   }
   &::-webkit-scrollbar-button:start:decrement,
   &::-webkit-scrollbar-button:end:increment {
     display: block;
     height: 5px;
-    background: #f0f0f0;
   }
   &::-webkit-scrollbar-track {
-    background: #f0f0f0;
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
     height: 50px;
     width: 50px;
-    background: #e0e0e0;
     -webkit-border-radius: 8px;
     border-radius: 8px;
   }
@@ -46,7 +42,6 @@
       font-size: 16px;
       line-height: 36px;
       margin-left: 10px;
-      color: #616161;
       float: left;
     }
     .mm-search-input {
@@ -60,12 +55,11 @@
         height: 20px;
         line-height: 20px;
         font-size: 14px;
-        color: #757575;
 
         padding: 7px 15px;
         padding-right: 40px;
         border-radius: 25px;
-        border: 1px solid #e3e3e3;
+        border: 1px solid;
         outline: none;
       }
       i {
@@ -76,13 +70,8 @@
         right: 9px;
         top: 1px;
 
-        color: #757575;
         text-align: center;
         line-height: 36px;
-
-        &:hover {
-          color: #ff4081;
-        }
       }
     }
   }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'memo-page',
   templateUrl: './memo-page.component.html',
-  styleUrls: ['./memo-page.component.scss']
+  styleUrls: ['./memo-page.component.scss','./memo-page.color.scss']
 })
 export class MemoPageComponent implements OnInit {
 

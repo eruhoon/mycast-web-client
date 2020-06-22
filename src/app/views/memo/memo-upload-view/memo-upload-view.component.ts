@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'memo-upload-view',
   templateUrl: './memo-upload-view.component.html',
-  styleUrls: ['./memo-upload-view.component.scss']
+  styleUrls: ['./memo-upload-view.component.scss','./memo-upload-view.color.scss']
 })
 export class MemoUploadViewComponent implements OnInit {
 

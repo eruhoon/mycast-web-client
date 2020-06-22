@@ -27,9 +27,6 @@
         top: 50px;
         margin: auto;
         border-radius: 10px;
-  
-        background-color: #fff;
-        background-color: var(--mdc-theme-surface, #fff);
         box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
             0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   
@@ -63,7 +60,6 @@
                 h3 {
                     width: 100%;
                     font-weight: normal;
-                    color: #424242;
                     margin: 0%;
                     padding: 0%;
                     font-size: 24px;
@@ -72,7 +68,6 @@
                 p {
                     width: 100%;
                     font-weight: normal;
-                    color: #616161;
                     margin: 0%;
                     padding: 0%;
                     font-size: 14px;
@@ -89,18 +84,15 @@
               border: 0px;
               min-height: 300px;
               font-size: 16px;
-              color: #424242;
               line-height: 20px;
+              resize: none;
             }
             .sub-btn {
               width: 100%;
               height: 50px;
-              background-color: #ff4081;
-              border: 1px solid #e91e63;
               border-radius: 5px;
               font-size: 20px;
               font-weight: bolder;
-              color: #fff;
               letter-spacing: 3px;
               margin-top: 25px;
             }
@@ -110,7 +102,6 @@
     // 상단, 좌우 버튼
     i.clear {
         font-size: 40px;
-        color: #e0e0e0;
         z-index: 120;
         position: absolute;
         right: 0px;

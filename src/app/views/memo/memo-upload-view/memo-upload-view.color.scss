@@ -1,0 +1,66 @@
+:host-context(.theme-light) {
+    .memo-upload {
+        .memo-box {
+            background-color: #fff;
+            background-color: var(--mdc-theme-surface, #fff);
+            .title {
+                .title-txt {
+                    h3 {
+                        color: #424242;
+                    }
+                    p {
+                        color: #616161;
+                    }
+                }
+            }
+            .content {
+                textarea{
+                  color: #424242;
+                }
+                .sub-btn {
+                  background-color: #ff4081;
+                  border: 1px solid #e91e63;
+                  color: #fff;
+                }
+            }
+        }
+        // 상단, 좌우 버튼
+        i.clear {
+            color: #e0e0e0;
+        }
+    }
+}
+  
+:host-context(.theme-dark) {
+    .memo-upload {
+        .memo-box {
+            background-color: #3a3a3a;
+            background-color: var(--mdc-theme-surface, #3a3a3a);
+            .title {
+                .title-txt {
+                    h3 {
+                        color: #EEEEEE;
+                    }
+                    p {
+                        color: #BDBDBD;
+                    }
+                }
+            }
+            .content {
+                textarea{
+                  color: #EEEEEE;
+                  background-color: #3a3a3a;
+                }
+                .sub-btn {
+                  background-color: #c63d6c;
+                  border: 1px solid #96234b;
+                  color: #fff;
+                }
+            }
+        }
+        // 상단, 좌우 버튼
+        i.clear {
+            color: #e0e0e0;
+        }
+    }
+}

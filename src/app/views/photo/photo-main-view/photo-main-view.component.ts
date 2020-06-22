@@ -46,8 +46,6 @@ export class PhotoMainViewComponent implements OnInit {
   public onKeyDown(): void {
     clearTimeout(this.mTimer);
     this.mTimer = Number(setTimeout(() => {
-      const elm = this.mSearchInput.nativeElement;
-      console.log('tick', this.searchForm.text, elm.value);
       this.searchPhoto();
       this.mTimer = -1;
     }, 600));

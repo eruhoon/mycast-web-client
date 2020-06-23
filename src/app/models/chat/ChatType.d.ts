@@ -5,6 +5,7 @@ export const enum ChatType {
     BOOK = 'book',
     CHARACTER_VOICE = 'character-voice',
     CRUSADERQUEST_HERO = 'cq-hero',
+    GIRLS_FRONTLINE_DOLL = 'gf-doll',
     IMAGE = 'image',
     KAKAO_CLIP = 'kakao-clip',
     LINK = 'link',

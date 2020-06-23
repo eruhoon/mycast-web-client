@@ -10,6 +10,7 @@ export class ChatTypeParser {
             case 'book': return ChatType.BOOK;
             case 'character-voice': return ChatType.CHARACTER_VOICE;
             case 'cqhero': return ChatType.CRUSADERQUEST_HERO;
+            case 'gf-doll': return ChatType.GIRLS_FRONTLINE_DOLL;
             case 'image': return ChatType.IMAGE;
             case 'kakao-clip': return ChatType.KAKAO_CLIP;
             case 'link': return ChatType.LINK;

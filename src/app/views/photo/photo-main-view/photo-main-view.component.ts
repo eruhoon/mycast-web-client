@@ -18,8 +18,6 @@ export class PhotoMainViewComponent implements OnInit {
   @ViewChild('searchInput', { static: false })
   public mSearchInput: ElementRef<HTMLInputElement>;
 
-  public searchForm: { text: string };
-
   private mContainer: PhotoSetParamContainer;
   private mLoader: VegaPhotoLoader;
   private mService: PhotoService;
@@ -27,7 +25,6 @@ export class PhotoMainViewComponent implements OnInit {
   private mTimer: number;
 
   public constructor(service: PhotoService) {
-    this.searchForm = { text: '' };
     this.mContainer = new PhotoSetParamContainer();
     this.mLoader = new VegaPhotoLoader();
     this.mService = service;

@@ -105,6 +105,10 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
+import { MoviePackComponent } from './views/chat/cp/movie-pack/movie-pack.component';
+import { MemoPackComponent } from './views/chat/cp/memo-pack/memo-pack.component';
+import { AlShipPackComponent } from './views/chat/cp/al-ship-pack/al-ship-pack.component';
+import { GfDollPackComponent } from './views/chat/cp/gf-doll-pack/gf-doll-pack.component';
 
 @NgModule({
     declarations: [
@@ -169,6 +173,10 @@ import {
         CvPackComponent,
         ModifyCheckerModalComponent,
         TwitchClipPackComponent,
+        MoviePackComponent,
+        MemoPackComponent,
+        AlShipPackComponent,
+        GfDollPackComponent,
     ],
     imports: [
         BrowserModule,

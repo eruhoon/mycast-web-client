@@ -1,10 +1,8 @@
-import { Keyboard } from 'src/app/models/common/keyboard/Keyboard';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
-
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',

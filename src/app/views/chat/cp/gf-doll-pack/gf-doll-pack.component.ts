@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
+import { ChatPack } from '../ChatPack';
 
 @Component({
-  selector: 'app-gf-doll-pack',
+  selector: 'gf-doll-pack',
   templateUrl: './gf-doll-pack.component.html',
   styleUrls: ['./gf-doll-pack.component.scss']
 })
-export class GfDollPackComponent implements OnInit {
+export class GfDollPackComponent extends ChatPack implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  public constructor(injector: Injector) {
+    super(injector);
   }
 
+  public ngOnInit() { }
 }

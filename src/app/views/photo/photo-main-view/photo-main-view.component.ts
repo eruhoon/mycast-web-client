@@ -3,6 +3,7 @@ import { VegaPhotoLoader } from 'src/app/models/photo/loader/VegaPhotoLoader';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 import { PhotoSetParam } from './PhotoSetParam';
 import { PhotoSetParamContainer } from './PhotoSetParamContainer';
+import { MutablePhoto } from 'src/app/models/photo/MutablePhoto';
 
 @Component({
   selector: 'photo-main-view',
@@ -22,6 +23,7 @@ export class PhotoMainViewComponent implements OnInit {
   private mContainer: PhotoSetParamContainer;
   private mLoader: VegaPhotoLoader;
   private mService: PhotoService;
+  private mNextStart: number;
   private mTimer: number;
 
   public constructor(service: PhotoService) {
@@ -29,6 +31,7 @@ export class PhotoMainViewComponent implements OnInit {
     this.mContainer = new PhotoSetParamContainer();
     this.mLoader = new VegaPhotoLoader();
     this.mService = service;
+    this.mNextStart = 0;
     this.mTimer = -1;
   }
 
@@ -55,17 +58,33 @@ export class PhotoMainViewComponent implements OnInit {
     const elm = this.mScroller.nativeElement;
     const diff = elm.scrollHeight - elm.scrollTop;
     const threashold = elm.clientHeight * 2;
-    if (diff < threashold && !this.mService.isLoading()) {
-      this.mService.loadMore();
+    if (diff < threashold && !this.mLoader.isLoading()) {
+      this.loadMore();
     }
   }
 
   private searchPhoto(): void {
     const elm = this.mSearchInput.nativeElement;
+    this.mNextStart = 0;
+    this.mLoader.setStart(0);
     this.mLoader.setQuery(elm.value);
     this.mLoader.load(rawPhotos => {
       const photos = rawPhotos !== null ? rawPhotos : [];
       this.mContainer.update(photos);
+    });
+  }
+
+  private loadMore(): void {
+    this.mNextStart += 100;
+    this.mLoader.setStart(this.mNextStart);
+    this.mLoader.load(photos => {
+      if (!photos) {
+        console.warn('load failed');
+        return;
+      }
+      const mutablePhotos = photos.map(
+        photo => MutablePhoto.createWithPhoto(photo));
+      this.mContainer.upsert(mutablePhotos);
     });
   }
 }

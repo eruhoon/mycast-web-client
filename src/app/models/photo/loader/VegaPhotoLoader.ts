@@ -13,12 +13,14 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
     private mStartIndex: number;
     private mIndexLength: number;
     private mLoading: boolean;
+    private mAllLoaded: boolean;
 
     public constructor() {
         this.mQuery = '';
         this.mStartIndex = 0;
         this.mIndexLength = VegaPhotoLoader.DEFAULT_INDEX_LENGTH;
         this.mLoading = false;
+        this.mAllLoaded = false;
     }
 
     public isLoading(): boolean {
@@ -28,6 +30,7 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
     public setQuery(query: string): void {
         this.mQuery = query;
         this.mLoading = false;
+        this.mAllLoaded = false;
         this.mStartIndex = 0;
     }
 
@@ -36,6 +39,10 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
     }
 
     public load(callback: OnLoadCallback<Photo[]>): void {
+        if (this.mAllLoaded) {
+            return;
+        }
+
         if (this.mLoading) {
             console.warn('already loading');
             return;
@@ -51,6 +58,9 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
             if (!res || !res.data) {
                 callback(null);
                 return;
+            }
+            if (res.data.length === 0) {
+                this.mAllLoaded = true;
             }
             callback(res.data.map(dto => new PhotoDtoAdapter(dto)));
         }).finally(() => {

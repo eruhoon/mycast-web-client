@@ -151,7 +151,7 @@
       </li>
     </ul>
   </div>
-  <div class="pc">
+  <div *ngIf="!isMobile()" class="pc">
     <hr />
     <h3 (click)="onTwitchListClick()">트위치 <small>({{getTwitchList().length}})</small></h3>
     <ul class="stream" [ngClass]="isTwitchListShow() ? 'selected' : ''">

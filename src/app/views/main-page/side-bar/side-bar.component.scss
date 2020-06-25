@@ -128,13 +128,16 @@ ul.main {
   
     li {
       position: relative;
-      width: 100%;
+      width: calc(100% - 20px);
       height: 25vw;
+      overflow: hidden;
 
       .live-tum-img {
         width: 40vw;
         height: 23vw;
+        overflow: hidden;
         padding: 1vw;
+        float: left;
 
         img {
           width: 100%;
@@ -143,10 +146,11 @@ ul.main {
         }
       }
       .live-info {
-        width: 58vw;
+        width: 48vw;
         height: 23vw;
         padding: 1vw;
         padding-right: 3vw;
+        float: left;
 
         .stream-info {
           width: 100%;
@@ -159,7 +163,7 @@ ul.main {
             float: left;
           }
           span {
-            width: 40vw;
+            width: calc(48vw - 10vw);
             padding: 2vw 2vw;
             float: left;
 
@@ -174,13 +178,12 @@ ul.main {
           }
         }
         p {
-          width: calc(100% - 10px);
+          width: calc(46vw);
           margin: 0%;
           font-size: 14px;
           line-height: 14px;
-          padding: 4px 2px;
+          padding: 4px;
           padding-bottom: 6px;
-          padding-right: 8px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;

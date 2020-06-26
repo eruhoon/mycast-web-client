@@ -1,1 +1,18 @@
-<p>book-pack works!</p>
+<div class="book-pack" *ngIf="!error" (click)="onClick()">
+    <div class="book-box">
+        <img class="book-bg" src="http://image.kyobobook.co.kr/images/book/xlarge/135/x9788937473135.jpg" width="100%" />
+        <div class="img-overlay"></div>
+        <div class="book-info">
+            <div class="title-img">
+                <img src="http://image.kyobobook.co.kr/images/book/xlarge/135/x9788937473135.jpg" />
+            </div>
+            <div class="info-text">
+                <h4>보통의 언어들(나를 숨 쉬게 하는)(양장본 HardCover)</h4>
+                <p>조한남 저</p>
+                <p>Storehouse(스토어하우스)</p>
+                <p>2016-10-14</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="book-pack-failed" *ngIf="error">애니 검색 실패</div>

@@ -75,6 +75,13 @@ export class ModifyStreamModalComponent implements OnInit {
     this.mProfileService.setModifyMode(ProfileModifyMode.NONE);
   }
 
+  public onClick(event: MouseEvent) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    close();
+  }
+
 }
 
 type StreamForm = {

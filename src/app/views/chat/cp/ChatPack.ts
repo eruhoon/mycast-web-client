@@ -14,6 +14,10 @@ export abstract class ChatPack {
 
     }
 
+    public isMobile(): boolean {
+        return this.mOptionService.isMobile();
+    }
+
     public isDataSaveMode(): boolean {
         return this.mOptionService.isDataSaveMode();
     }

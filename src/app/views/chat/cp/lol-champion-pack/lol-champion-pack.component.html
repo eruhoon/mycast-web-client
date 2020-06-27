@@ -1,15 +1,15 @@
-<div class="lol-champion-info" *ngIf="!isDataSaveMode()">
+<div class="lol-champion-info" *ngIf="!isDataSaveMode()" (click)="onClick()">
     <div class="bg">
-        <img src="https://cdn.communitydragon.org/10.12.1/champion/117/splash-art/skin/15">
+        <img [src]="getBackground()|safe">
         <div class="img-overlay"></div>
     </div>
     <div class="user-img">
-        <img src="http://ddragon.leagueoflegends.com/cdn/10.12.1/img/champion/Lulu.png" />
+        <img [src]="icon|safe" />
     </div>
     <div class="user-info">
-        <h3 class="title">룰루</h3>
+        <h3 class="title">{{name}}</h3>
         <div class="tier">
-            <p>신비술사</p>
+            <p>{{description}}</p>
         </div>
     </div>
     <!--<div class="skills">

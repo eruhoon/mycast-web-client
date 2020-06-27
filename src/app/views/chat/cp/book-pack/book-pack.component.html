@@ -1,4 +1,4 @@
-<div class="book-pack" *ngIf="!error" (click)="onClick()">
+<div class="book-pack" *ngIf="!isError()" (click)="onClick()">
     <div class="book-box">
         <img class="book-bg" [src]="image|safe" width="100%" />
         <div class="img-overlay"></div>
@@ -18,4 +18,4 @@
         </div>
     </div>
 </div>
-<div class="book-pack-failed" *ngIf="error">애니 검색 실패</div>
+<div class="book-pack-failed" *ngIf="isError()">책 검색 실패</div>

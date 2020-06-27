@@ -20,6 +20,7 @@ export class BookPackComponent extends ChatPack implements OnInit {
   public date: string;
 
   private mLink: string;
+  private mResult: boolean;
 
   public constructor(
     injector: Injector,
@@ -33,6 +34,7 @@ export class BookPackComponent extends ChatPack implements OnInit {
     this.publish = '';
     this.date = '';
     this.mLink = '';
+    this.mResult = true;
   }
 
   public ngOnInit(): void {
@@ -44,6 +46,8 @@ export class BookPackComponent extends ChatPack implements OnInit {
       console.error('fuck');
     }
   }
+
+  public isError(): boolean { return !this.mResult; }
 
   public onClick(): void {
     if (this.isMobile()) {
@@ -65,10 +69,12 @@ export class BookPackComponent extends ChatPack implements OnInit {
     this.publish = raw.publish;
     this.date = raw.date;
     this.mLink = raw.link;
+    this.mResult = raw.result;
   }
 }
 
 type Param = {
+  result: boolean,
   author: string,
   category: string,
   date: string,

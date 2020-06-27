@@ -50,10 +50,6 @@ export class ChatEntryComponent implements OnInit {
     return false;
   }
 
-  public onImagePackClick(image: string): void {
-    console.log(image);
-  }
-
   private static convertEnv(rawEnv: ChatSenderType): SenderEnv {
     switch (rawEnv) {
       case ChatSenderType.MOBILE: return SenderEnv.MOBILE;

@@ -16,3 +16,4 @@
         <img *ngFor="let champ of getMostChamps()" [src]="champ.icon" [title]="champ.name">
     </div>-->
 </div>
+<div *ngIf="isDataSaveMode()">(대충 챔 {{name}} 정보)</div>

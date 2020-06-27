@@ -32,11 +32,12 @@ export class LolChampionPackComponent extends ChatPack implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.message);
-    console.log(this.message.getMessage());
-    const raw = JSON.parse(this.message.getMessage()) as Param;
-    console.log(raw);
-    this.bind(raw);
+    try {
+      const raw = JSON.parse(this.message.getMessage()) as Param;
+      this.bind(raw);
+    } catch {
+      console.error('fuck');
+    }
   }
 
   public getBackground(): string {

@@ -1,17 +1,17 @@
-<div class="movie-pack" *ngIf="!error" (click)="onClick()">
+<div class="movie-pack" *ngIf="!isError()" (click)="onClick()">
     <div class="movie-box">
-        <img class="movie-bg" src="https://post-phinf.pstatic.net/MjAxOTA0MTlfMjQw/MDAxNTU1NjU3MDYxMzUx.cPXHVZlMi8ZA4N_FQnBUfyGsrP_zxHXfYAjDctqL458g.ifxavPnClO1QSneIR0yXyKDo3V9sHxOiFVjMFrSCJbgg.JPEG/movie_image_%283%29.jpg?type=w1200" width="100%" />
+        <img class="movie-bg" [src]="image|safe" width="100%" />
         <div class="img-overlay"></div>
         <div class="movie-info">
             <div class="title-img">
-                <img src="https://post-phinf.pstatic.net/MjAxOTA0MTlfMjQw/MDAxNTU1NjU3MDYxMzUx.cPXHVZlMi8ZA4N_FQnBUfyGsrP_zxHXfYAjDctqL458g.ifxavPnClO1QSneIR0yXyKDo3V9sHxOiFVjMFrSCJbgg.JPEG/movie_image_%283%29.jpg?type=w1200" />
+                <img [src]="image|safe" />
             </div>
             <div class="info-text">
-                <h4>블랙회사에 다니고 있는데, 지금 나는 한계에 도달했는지도 모른다</h4>
-                <p>존 파브로 감독</p>
-                <p>2008</p>
+                <h4>{{title}}</h4>
+                <p>{{director}}</p>
+                <p>{{pubYear}}</p>
             </div>
         </div>
     </div>
 </div>
-<div class="movie-pack-failed" *ngIf="error">애니 검색 실패</div>
+<div class="movie-pack-failed" *ngIf="isError()">영화 검색 실패</div>

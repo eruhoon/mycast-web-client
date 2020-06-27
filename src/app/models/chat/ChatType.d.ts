@@ -9,6 +9,7 @@ export const enum ChatType {
     IMAGE = 'image',
     KAKAO_CLIP = 'kakao-clip',
     LINK = 'link',
+    MOVIE = 'movie',
     LOL_CHAMPION = 'champion',
     LOL_USER = 'lol-user',
     MAGIC_CONCH = 'magic-conch',

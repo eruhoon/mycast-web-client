@@ -14,6 +14,7 @@ export class ChatTypeParser {
             case 'image': return ChatType.IMAGE;
             case 'kakao-clip': return ChatType.KAKAO_CLIP;
             case 'link': return ChatType.LINK;
+            case 'movie': return ChatType.MOVIE;
             case 'champion': return ChatType.LOL_CHAMPION;
             case 'lol': return ChatType.LOL_USER;
             case 'magic-conch': return ChatType.MAGIC_CONCH;

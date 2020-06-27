@@ -1,0 +1,106 @@
+:host-context(.theme-light) {
+  .side-bar {
+    scrollbar-color: #e0e0e0 #ffffff;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      border-color: #ffffff;
+    }
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      background: #ffffff;
+    }
+    &::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #e0e0e0;
+    }
+  }
+  h3 {
+    color: #616161;
+  }
+  hr {
+    border: 1px solid #f0f0f0;
+  }
+  li {
+    color: #424242;
+    &:hover {
+      background: #e0e0e0;
+    }
+  }
+  ul.stream {
+    li {
+      .live-btn {
+        .button {
+          background: #ffffff;
+          i {
+            color: #bdbdbd;
+          }
+
+          &:hover {
+            background: #515151;
+            i {
+              color: #eeeeee;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:host-context(.theme-dark) {
+  .side-bar {
+    scrollbar-color: #424242 #212121;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      border-color: #212121;
+    }
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      background: #212121;
+    }
+    &::-webkit-scrollbar-track {
+      background: #212121;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #424242;
+    }
+  }
+  h3 {
+    color: #e0e0e0;
+  }
+  hr {
+    border: 1px solid #515151;
+  }
+  li {
+    color: #f0f0f0;
+    &:hover {
+      background: #515151;
+    }
+  }
+  ul.stream {
+    li {
+      .live-btn {
+        .button {
+          background: #212121;
+          i {
+            color: #e0e0e0;
+          }
+
+          &:hover {
+            background: #212121;
+            i {
+              color: #eeeeee;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 사이드바 흑백 전환 모드시 색상 관계 없이
+// 글자 - 흰색 // 테두리 - #424242 ~ #616161

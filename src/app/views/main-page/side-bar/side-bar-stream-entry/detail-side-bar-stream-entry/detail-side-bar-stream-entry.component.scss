@@ -1,0 +1,124 @@
+li {
+  display: flex;
+  height: 30px;
+  list-style-type: none;
+  padding: 5px 10px;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+
+  span {
+    padding-left: 10px;
+    width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+  }
+}
+
+li {
+  i {
+    font-size: 20px;
+  }
+
+  span {
+    font-size: 12px;
+    line-height: 14px;
+    padding-top: 0px;
+  }
+}
+
+li {
+  position: relative;
+  width: calc(100% - 20px);
+  height: 25vw;
+  overflow: hidden;
+
+  .live-tum-img {
+    width: 40vw;
+    height: 23vw;
+    overflow: hidden;
+    padding: 1vw;
+    float: left;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+    }
+  }
+  .live-info {
+    width: 48vw;
+    height: 23vw;
+    padding: 1vw;
+    padding-right: 3vw;
+    float: left;
+
+    .stream-info {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+      img {
+        width: 8vw;
+        height: 8vw;
+        border-radius: 4vw;
+        float: left;
+      }
+      span {
+        width: calc(48vw - 12vw);
+        padding: 2vw 2vw;
+        float: left;
+
+        font-size: 4vw;
+        font-family: "Jeju Gothic", sans-serif !important;
+        font-weight: bolder;
+        line-height: 4vw;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    p {
+      width: calc(46vw);
+      margin: 0%;
+      font-size: 14px;
+      line-height: 14px;
+      padding: 4px;
+      padding-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    span {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 4px;
+    }
+  }
+
+  .live-btn {
+    width: 100%;
+    height: 24px;
+
+    position: relative;
+
+    .button {
+      width: 24px;
+      height: 24px;
+      float: left;
+      margin-left: 3px;
+
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+
+      i {
+        font-size: 15px;
+        line-height: 27px;
+
+        &.enabled {
+          color: #cc0;
+        }
+      }
+    }
+  }
+}

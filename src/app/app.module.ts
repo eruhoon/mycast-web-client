@@ -109,6 +109,9 @@ import { MoviePackComponent } from './views/chat/cp/movie-pack/movie-pack.compon
 import { MemoPackComponent } from './views/chat/cp/memo-pack/memo-pack.component';
 import { AlShipPackComponent } from './views/chat/cp/al-ship-pack/al-ship-pack.component';
 import { GfDollPackComponent } from './views/chat/cp/gf-doll-pack/gf-doll-pack.component';
+import { DetailSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/detail-side-bar-stream-entry/detail-side-bar-stream-entry.component';
+import { SimpleSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/simple-side-bar-stream-entry/simple-side-bar-stream-entry.component';
+import { SideBarStreamListViewComponent } from './views/main-page/side-bar/side-bar-stream-list-view/side-bar-stream-list-view.component';
 
 @NgModule({
     declarations: [
@@ -177,6 +180,9 @@ import { GfDollPackComponent } from './views/chat/cp/gf-doll-pack/gf-doll-pack.c
         MemoPackComponent,
         AlShipPackComponent,
         GfDollPackComponent,
+        DetailSideBarStreamEntryComponent,
+        SimpleSideBarStreamEntryComponent,
+        SideBarStreamListViewComponent,
     ],
     imports: [
         BrowserModule,

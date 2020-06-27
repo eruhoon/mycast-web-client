@@ -45,7 +45,7 @@ export class NotificationRequestPopupComponent implements OnInit {
   public sendNotification(): void {
     const target = this.mNotificationService.getTarget();
     if (target === null) {
-      console.log('no target');
+      console.warn('no target');
       return;
     }
     this.mMainService.notify(target.getHash());

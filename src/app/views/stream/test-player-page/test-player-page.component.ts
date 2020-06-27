@@ -47,7 +47,6 @@ export class TestPlayerPageComponent implements OnInit {
       });
 
       plyr.on('ready', (event: any) => {
-        console.log(event);
         this.mPlayer.play();
       });
 

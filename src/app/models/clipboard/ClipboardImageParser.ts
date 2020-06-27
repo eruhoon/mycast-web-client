@@ -4,8 +4,7 @@ export class ClipboardImageParser {
 
     public parseImageFile(rawData: DataTransfer | null): File | null {
         if (!rawData || !rawData.files || !rawData.files.item(0)) {
-            console.log(rawData);
-            console.warn('no data');
+            console.warn('no data', rawData);
             return null;
         }
         const file = rawData.files.item(0);
@@ -20,8 +19,7 @@ export class ClipboardImageParser {
         rawData: DataTransfer | null, callback: TypeCallback<string | null>) {
 
         if (!rawData || !rawData.items || !rawData.items[0]) {
-            console.log(rawData);
-            console.warn('no data');
+            console.warn('no data', rawData);
             callback(null);
         } else {
             // tslint:disable-next-line: prefer-for-of

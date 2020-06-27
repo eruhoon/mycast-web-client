@@ -41,7 +41,6 @@ export class MoviePackComponent extends ChatPack implements OnInit {
     try {
       const raw = JSON.parse(this.message.getMessage()) as Param;
       this.bind(raw);
-      console.log(raw);
     } catch {
       this.mError = true;
       console.error('fuck');

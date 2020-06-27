@@ -53,7 +53,6 @@ export class TwitchPackComponent extends ChatPack implements OnInit {
   }
 
   public onContextMenu(): void {
-    console.log('contextMenu', this.getLink());
     window.open(this.getLink(), '_blank', 'width=800');
   }
 

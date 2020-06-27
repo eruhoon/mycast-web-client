@@ -50,7 +50,6 @@ export class StreamEntryComponent implements OnInit {
   }
 
   public onShareClick(stream: Stream): void {
-    console.log('share', stream);
     const share = new StreamShareCommand(stream);
     share.execute();
   }

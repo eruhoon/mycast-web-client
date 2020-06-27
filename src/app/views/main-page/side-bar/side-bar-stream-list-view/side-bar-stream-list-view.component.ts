@@ -4,6 +4,8 @@ import { OptionService } from 'src/app/services/option/option.service';
 
 import { Component, Input, OnInit } from '@angular/core';
 
+import { SideBarService } from '../side-bar.service';
+
 @Component({
   selector: 'side-bar-stream-list-view',
   templateUrl: './side-bar-stream-list-view.component.html',
@@ -22,6 +24,7 @@ export class SideBarStreamListViewComponent implements OnInit {
 
   public constructor(
     private mMainSrv: MainService,
+    private mSideBarSrv: SideBarService,
     private mOptionSrv: OptionService) {
     this.streams = [];
     this.mSelected = false;
@@ -48,7 +51,7 @@ export class SideBarStreamListViewComponent implements OnInit {
     } else {
       this.mMainSrv.setCurrentLink(stream.getUrl());
     }
-    this.mMainSrv.closeSidebar();
+    this.mSideBarSrv.setActive(false);
   }
 
 }

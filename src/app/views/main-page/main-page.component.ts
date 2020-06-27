@@ -10,8 +10,8 @@ import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
 
+import { SideBarService } from './side-bar/side-bar.service';
 import { TopBarService } from './top-bar/top-bar.service';
 
 @Component({
@@ -38,6 +38,7 @@ export class MainPageComponent {
 
     public constructor(
         private mTopBarSrv: TopBarService,
+        private mSideBarSrv: SideBarService,
         mainService: MainService,
         notificationService: NotificationService,
         toastService: ToastService,
@@ -93,7 +94,7 @@ export class MainPageComponent {
     }
 
     public isMenuShow(): boolean {
-        return this.mMainService.isSidebarShow();
+        return this.mSideBarSrv.isActive();
     }
 
     public isMoveMode(): boolean {
@@ -195,10 +196,10 @@ export class MainPageComponent {
     }
 
     private toggleMenu() {
-        this.mMainService.toggleSidebar();
+        this.mSideBarSrv.toggleActive();
     }
 
     private closeMenu(): void {
-        this.mMainService.closeSidebar();
+        this.mSideBarSrv.setActive(false);
     }
 }

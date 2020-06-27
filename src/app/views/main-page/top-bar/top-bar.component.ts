@@ -3,6 +3,7 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 
 import { Component, EventEmitter, Output } from '@angular/core';
 
+import { SideBarService } from '../side-bar/side-bar.service';
 import { TopBarService } from './top-bar.service';
 
 @Component({
@@ -14,15 +15,13 @@ export class TopBarComponent {
 
   private static readonly INTERVAL_READ: number = 10000;
 
-  @Output()
-  public menuClick = new EventEmitter();
-
   private mProfileService: ProfileService;
   private mNotificationService: NotificationService;
   private mNotificationTimer: number;
 
   public constructor(
     private mService: TopBarService,
+    private mSideBarSrv: SideBarService,
     profileService: ProfileService,
     notificationService: NotificationService) {
     this.mProfileService = profileService;
@@ -61,6 +60,10 @@ export class TopBarComponent {
 
   public toggleSetting() {
     this.mService.toggleSettingMenu();
+  }
+
+  public toggleSideBar(): void {
+    this.mSideBarSrv.toggleActive();
   }
 
   public closeSetting(): void {

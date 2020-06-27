@@ -30,7 +30,7 @@
     [ngStyle]="{ left: getDividerPosition() + 'px' }"></div>
 </div>
 <nav class="top-bar-section">
-  <top-bar (menuClick)="onMenuClick()"></top-bar>
+  <top-bar></top-bar>
 </nav>
 <link-popup *ngFor="let linkPopup of getLinkPopups()" [linkPopup]="linkPopup"></link-popup>
 <image-popup-viewer *ngIf="isImagePopup()" (backgroundClick)="closeImagePopup()"></image-popup-viewer>

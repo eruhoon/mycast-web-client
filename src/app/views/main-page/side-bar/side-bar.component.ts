@@ -5,6 +5,8 @@ import { StreamService } from 'src/app/services/stream/stream.service';
 
 import { Component, OnInit } from '@angular/core';
 
+import { SideBarService } from './side-bar.service';
+
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -13,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class SideBarComponent implements OnInit {
 
   constructor(
+    private mService: SideBarService,
     private mMainService: MainService,
     private mStreamSrv: StreamService,
     private mProfileSrv: ProfileService) {
@@ -46,12 +49,12 @@ export class SideBarComponent implements OnInit {
 
   public onMemoClick(): void {
     this.mMainService.setCurrentLink('./memo');
-    this.mMainService.closeSidebar();
+    this.mService.setActive(false);
   }
 
   public onPhotoClick(): void {
     this.mMainService.setCurrentLink('./photo');
-    this.mMainService.closeSidebar();
+    this.mService.setActive(false);
   }
 
   public onStreamConfigClick(): void {

@@ -26,7 +26,6 @@ export class MainService {
   private mNotificationService: NotificationService;
   private mChatNetwork: ChatNetworkModel;
   private mCurrentLink: string;
-  private mSidebarShow: boolean;
 
   public constructor(
     profileService: ProfileService,
@@ -40,7 +39,6 @@ export class MainService {
     this.mNotificationService = notificationService;
     this.mChatNetwork = this.createChatNetworkModel();
     this.mCurrentLink = '';
-    this.mSidebarShow = false;
 
     this.mProfileService.setModifyProfileCommand(
       new ModifyProfileCommand(this.mChatNetwork));
@@ -57,22 +55,6 @@ export class MainService {
 
   public getCurrentLink(): string {
     return this.mCurrentLink;
-  }
-
-  public isSidebarShow(): boolean {
-    return this.mSidebarShow;
-  }
-
-  public openSidebar(): void {
-    this.mSidebarShow = true;
-  }
-
-  public closeSidebar(): void {
-    this.mSidebarShow = false;
-  }
-
-  public toggleSidebar(): void {
-    this.mSidebarShow = !this.mSidebarShow;
   }
 
   private createChatNetworkModel(): ChatNetworkModel {

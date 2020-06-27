@@ -7,6 +7,7 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
 
+import { SideBarService } from '../../main-page/side-bar/side-bar.service';
 import { TopBarService } from '../../main-page/top-bar/top-bar.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class MobilePageComponent implements OnInit {
 
   public constructor(
     private mMainSrv: MainService,
+    private mSideBarSrv: SideBarService,
     private mTopBarSrv: TopBarService,
     private mProfileService: ProfileService,
     private mNotiSrv: NotificationService,
@@ -38,7 +40,7 @@ export class MobilePageComponent implements OnInit {
   }
 
   public toggleMenu(): void {
-    this.mMainSrv.toggleSidebar();
+    this.mSideBarSrv.toggleActive();
   }
 
   public closeAllMenu(): void {
@@ -50,7 +52,7 @@ export class MobilePageComponent implements OnInit {
   }
 
   public isSideMenuShow(): boolean {
-    return this.mMainSrv.isSidebarShow();
+    return this.mSideBarSrv.isActive();
   }
 
   public isClipboardImageMode(): boolean {

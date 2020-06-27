@@ -31,7 +31,6 @@ export class SideBarStreamListViewComponent implements OnInit {
   }
 
   public getSelected(): boolean {
-    console.log(this.mSelected);
     return this.mSelected;
   }
 

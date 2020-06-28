@@ -62,7 +62,7 @@ export class StreamPreviewComponent implements OnInit, OnChanges {
     this.thumbnail = '/assets/image/stream/live-no-tum-img.png';
   }
 
-  public onNewWindowClick(event: Event, stream: Stream): void {
+  public onNewWindowClick(event: Event): void {
     event.stopPropagation();
     window.open(this.preview.getUrl(), '_blank', 'width=800');
   }

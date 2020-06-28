@@ -64,7 +64,7 @@ export class StreamPreviewComponent implements OnInit, OnChanges {
 
   public onNewWindowClick(event: Event, stream: Stream): void {
     event.stopPropagation();
-    window.open(stream.getUrl(), '_blank', 'width=800');
+    window.open(this.preview.getUrl(), '_blank', 'width=800');
   }
 
 }

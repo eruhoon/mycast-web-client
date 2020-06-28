@@ -1,21 +1,29 @@
 .container {
-  display: flex;
   width: 100%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 
   .preview-wrapper {
     display: inline-flex;
     flex-flow: column;
-    align-items: center;
-    max-width: 100%;
-    padding: 30px;
+    alsign-items: left;
+    max-width: 320PX;
+    max-height: 280px;
+    margin: 15px;
+   
+    border-radius: 5px;
+    overflow: hidden;
+    
+    position: absolute;
+    top: calc(50% - 140px);
+    left: 0%;
+
+    background: #FFFFFF;
 
     .thumbnail-wrapper {
       display: inline-block;
-      width: 300px;
-      height: auto;
+      width: 320px;
+      height: 180px;
 
       img {
         width: 100%;
@@ -24,38 +32,70 @@
     }
 
     .info-wrapper {
-      padding-top: 10px;
-      font-family: "Jeju Gothic", sans-serif !important;
+      width: 300px;
+      padding: 10px;
+      position: relative; 
+      
       .title {
-        font-size: 1.5em;
-        line-height: 1.5em;
+        font-size: 24px;
+        line-height: 26px;
         font-weight: bolder;
+        font-family: "Jeju Gothic", sans-serif !important;
+        position: absolute;
+        top: -30px;
+        left: 10px;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.75);
       }
       .description {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 20px;
+        color: #616161;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
     .btn-wrapper {
-      padding-top: 10px;
-      $button-size: 50px;
-      button {
-        width: $button-size;
-        height: $button-size;
-        float: left;
-        margin-left: 3px;
+      width: 320px;
+      height: 36px;
 
-        border-radius: 25px;
+      position: relative;
+
+      button {
+        width: 33.33%;
+        height: 36px;
+        float: left;
+        border: 0px;
+
         text-align: center;
         cursor: pointer;
 
-        i {
-          font-size: 25px;
-          line-height: $button-size;
+        background-color: #F5F5F5;
+        border-top: 1px solid #E0E0E0;
+        border-right: 1px solid #E0E0E0;
 
+        i {
+          font-size: 18px;
+          line-height: 27px;
+          
+          color: #424242;
+  
           &.enabled {
             color: #cc0;
+          }
+        }
+
+        &:last-child {
+          border-right: 0px;
+        }
+        &:hover {
+          background-color: #FF4081;
+          border-color: #F5F5F5;
+          i{
+            color: #FFFFFF;
           }
         }
       }

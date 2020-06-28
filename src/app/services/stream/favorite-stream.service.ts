@@ -14,6 +14,10 @@ export class FavoriteStreamService {
     this.loadFavorites();
   }
 
+  public getFavorites(): FavoriteStream[] {
+    return this.mFavorites;
+  }
+
   public addFavorite(platform: string, keyId: string): void {
     if (this.mFavorites.some(favorite =>
       favorite.getPlatform() === platform && favorite.getKeyId() === keyId)) {
@@ -40,6 +44,7 @@ export class FavoriteStreamService {
         favorites.push(favorite);
       }
     });
+    this.mFavorites = favorites;
   }
 
   private saveFavorites() {

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="preview-wrapper">
+    <div class="thumbnail-wrapper">
+      <img class="thumbnail" [src]="thumbnail|safe">
+    </div>
+    <div class="info-wrapper">
+      <div class="title">{{preview.getTitle()}}</div>
+      <div class="description">{{preview.getDescription()}}</div>
+    </div>
+
+    <div class="btn-wrapper">
+      <button (click)="onFavoriteClick($event)">
+        <i class="material-icons">star_border</i>
+      </button>
+      <button (click)="onShareClick($event)">
+        <i class="material-icons">link</i>
+      </button>
+      <button (click)="onNewWindowClick()">
+        <i class="material-icons">open_in_new</i>
+      </button>
+    </div>
+  </div>
+</div>

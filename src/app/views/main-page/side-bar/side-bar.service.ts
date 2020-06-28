@@ -1,3 +1,5 @@
+import { Stream } from 'src/app/models/stream/Stream';
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,9 +8,11 @@ import { Injectable } from '@angular/core';
 export class SideBarService {
 
   private mActive: boolean;
+  private mStreamPreview: Stream | null;
 
   public constructor() {
     this.mActive = false;
+    this.mStreamPreview = null;
   }
 
   public isActive(): boolean { return this.mActive; }
@@ -16,4 +20,10 @@ export class SideBarService {
   public toggleActive(): void { this.mActive = !this.mActive; }
 
   public setActive(active: boolean): void { this.mActive = active; }
+
+  public getStreamPreview(): Stream | null { return this.mStreamPreview; }
+
+  public setStreamPreview(stream: Stream): void {
+    this.mStreamPreview = stream;
+  }
 }

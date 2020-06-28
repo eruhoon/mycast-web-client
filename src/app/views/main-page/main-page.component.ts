@@ -85,6 +85,10 @@ export class MainPageComponent {
         return this.mCurrentStream;
     }
 
+    public getCurrentStreamPreview(): Stream | null {
+        return this.mSideBarSrv.getStreamPreview();
+    }
+
     public isLinkMode(): boolean {
         return this.getCurrentLink() !== null;
     }

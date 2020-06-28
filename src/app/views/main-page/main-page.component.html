@@ -24,6 +24,9 @@
   <div class="side-bar" [ngClass]="isMenuShow() ? 'show' : 'hide'">
     <div class="click-blocker" (click)="onOutOfMenuClick()"></div>
     <app-side-bar></app-side-bar>
+    <div class="stream-preview" *ngIf="getCurrentStreamPreview()!==null">
+      <stream-preview [preview]="getCurrentStreamPreview()"></stream-preview>
+    </div>
   </div>
   <div class="divider" (mousedown)="onDividerMouseDown($event)" (mousemove)="onDividerMove($event)"
     (mouseup)="onDividerMouseUp()" [ngClass]="isMoveMode() ? 'move-mode' : ''"

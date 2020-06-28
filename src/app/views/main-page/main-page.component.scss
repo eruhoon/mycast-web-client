@@ -25,7 +25,7 @@ nav.top-bar-section {
   z-index: 20;
 }
 
-.main-section>.stream-container-view {
+.main-section > .stream-container-view {
   position: absolute;
   left: 0;
   top: 0;
@@ -35,7 +35,7 @@ nav.top-bar-section {
   z-index: 21;
 }
 
-.main-section>.stream-container-view>.component-view {
+.main-section > .stream-container-view > .component-view {
   position: relative;
   width: 100%;
   height: 100%;
@@ -49,7 +49,7 @@ nav.top-bar-section {
 
 // 방송을 켜서 볼경우
 // 색상값 반전 필수 - 검정으로 변경
-.main-section>.stream-container-view>.stream-list-view {
+.main-section > .stream-container-view > .stream-list-view {
   transition: transform 0.4s;
   width: auto;
   height: 60px;
@@ -102,6 +102,7 @@ nav.top-bar-section {
 }
 
 .side-bar {
+  $side-bar-width: 250px;
   position: absolute;
   left: 0;
   top: 0;
@@ -113,12 +114,19 @@ nav.top-bar-section {
     position: absolute;
     left: -250px;
     top: 0;
-    width: 250px;
+    width: $side-bar-width;
     height: 100%;
     background: #212121;
     border-right: 1px solid #424242;
     box-shadow: 0px 3px 5px 1px rgba($color: #000000, $alpha: 0.3);
     transition: 0.2s ease-in-out;
+  }
+
+  .stream-preview {
+    position: absolute;
+    right: 0;
+    width: calc(100% - #{$side-bar-width});
+    height: 100%;
   }
 
   .click-blocker {
@@ -171,7 +179,7 @@ nav.top-bar-section {
   }
 }
 
-.main-section>.chat-list-view {
+.main-section > .chat-list-view {
   position: absolute;
   top: 0;
   right: 0;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SideBarService } from '../../side-bar.service';
 import { SideBarStreamEntry } from '../SideBarStreamEntry';
 
 @Component({
@@ -13,10 +14,14 @@ import { SideBarStreamEntry } from '../SideBarStreamEntry';
 export class SimpleSideBarStreamEntryComponent
   extends SideBarStreamEntry implements OnInit {
 
-  public constructor() {
+  public constructor(private mSideBarSrv: SideBarService) {
     super();
   }
 
   public ngOnInit() {
+  }
+
+  public onSelect(): void {
+    this.mSideBarSrv.setStreamPreview(this.stream);
   }
 }

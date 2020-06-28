@@ -112,6 +112,7 @@ import { GfDollPackComponent } from './views/chat/cp/gf-doll-pack/gf-doll-pack.c
 import { DetailSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/detail-side-bar-stream-entry/detail-side-bar-stream-entry.component';
 import { SimpleSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/simple-side-bar-stream-entry/simple-side-bar-stream-entry.component';
 import { SideBarStreamListViewComponent } from './views/main-page/side-bar/side-bar-stream-list-view/side-bar-stream-list-view.component';
+import { StreamPreviewComponent } from './views/main-page/side-bar/stream-preview/stream-preview.component';
 
 @NgModule({
     declarations: [
@@ -183,6 +184,7 @@ import { SideBarStreamListViewComponent } from './views/main-page/side-bar/side-
         DetailSideBarStreamEntryComponent,
         SimpleSideBarStreamEntryComponent,
         SideBarStreamListViewComponent,
+        StreamPreviewComponent,
     ],
     imports: [
         BrowserModule,

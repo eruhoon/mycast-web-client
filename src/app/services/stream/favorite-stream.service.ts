@@ -18,9 +18,13 @@ export class FavoriteStreamService {
     return this.mFavorites;
   }
 
+  public isFavorite(platform: string, keyId: string): boolean {
+    return this.mFavorites.some(favorite =>
+      favorite.getPlatform() === platform && favorite.getKeyId() === keyId);
+  }
+
   public addFavorite(platform: string, keyId: string): void {
-    if (this.mFavorites.some(favorite =>
-      favorite.getPlatform() === platform && favorite.getKeyId() === keyId)) {
+    if (this.isFavorite(platform, keyId)) {
       console.warn('duplicated favorite');
       return;
     }

@@ -103,6 +103,15 @@ export class LocalStorage {
         this.setItem(LocalStorageKey.THEME, value);
     }
 
+    public getFavorites(): string {
+        const rawFavorites = this.getItem(LocalStorageKey.FAVORITES);
+        return rawFavorites ? rawFavorites : LocalStorage.DEFAULT_STRING;
+    }
+
+    public setFavorites(favorites: string): void {
+        this.setItem(LocalStorageKey.FAVORITES, favorites);
+    }
+
     private getItem(key: LocalStorageKey): string | null {
         return localStorage.getItem(key.toString());
     }
@@ -118,6 +127,7 @@ export class LocalStorage {
 
 enum LocalStorageKey {
     CHAT_POSITION = 'vega.chat_position',
+    FAVORITES = 'vega.favorites',
     NOTIFICATION_ENABLE = 'vega.notification_enable',
     NOTIFICATION_CHANNELS = 'vega.notification_channels',
     NOTIFICATION_SOUND = 'vega.notification_sound',

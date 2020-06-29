@@ -1,4 +1,5 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+
 import { ChatPack } from '../ChatPack';
 
 @Component({
@@ -13,6 +14,10 @@ export class AlShipPackComponent extends ChatPack implements OnInit {
   }
 
   public ngOnInit() {
+    console.log(this.message);
+  }
+
+  public onClick(): void {
     console.log(this.message);
   }
 }

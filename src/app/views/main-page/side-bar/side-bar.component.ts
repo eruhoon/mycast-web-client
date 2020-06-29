@@ -1,5 +1,6 @@
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
+import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { StreamService } from 'src/app/services/stream/stream.service';
 
@@ -16,12 +17,17 @@ export class SideBarComponent implements OnInit {
 
   constructor(
     private mService: SideBarService,
+    private mOptionSrv: OptionService,
     private mMainService: MainService,
     private mStreamSrv: StreamService,
     private mProfileSrv: ProfileService) {
   }
 
   public ngOnInit() { }
+
+  public isMobile(): boolean {
+    return this.mOptionSrv.isMobile();
+  }
 
   public getLocalStreamList(): Stream[] {
     return this.mStreamSrv.getLocalStreams();

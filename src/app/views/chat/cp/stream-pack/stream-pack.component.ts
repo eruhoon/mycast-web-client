@@ -17,6 +17,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   private mIcon: string;
   private mName: string;
   private mPlatform: string;
+  private mPlatformIcon: string;
   private mThumbnail: string;
   private mLink: string;
 
@@ -58,7 +59,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
 
   // TODO: Optimize PlatformIcon
   public getPlatformIcon(): string {
-    return `http://mycast.xyz/home/asset/chat.original/img/stream-pack-plaform-${this.mPlatform}.png`;
+    return `/assets/image/stream/${this.mPlatform}.png`;
   }
 
   public onClick(): void {

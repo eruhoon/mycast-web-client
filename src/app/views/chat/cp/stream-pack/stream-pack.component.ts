@@ -1,5 +1,5 @@
-import { platform } from 'os';
 import { StreamLinkFactory } from 'src/app/models/stream/link/StreamLinkFactory';
+import { StreamPlatformUtils } from 'src/app/models/stream/platform/StreamPlatformUtils';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, Injector, OnInit } from '@angular/core';
@@ -13,11 +13,12 @@ import { ChatPack } from '../ChatPack';
 })
 export class StreamPackComponent extends ChatPack implements OnInit {
 
+  public platformIconSrc: string;
+
   private mId: string;
   private mIcon: string;
   private mName: string;
   private mPlatform: string;
-  private mPlatformIcon: string;
   private mThumbnail: string;
   private mLink: string;
 
@@ -28,6 +29,8 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     private mMainSrv: MainService) {
 
     super(injector);
+
+    this.platformIconSrc = '';
 
     this.mId = '';
     this.mIcon = '';
@@ -43,6 +46,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mIcon = param.icon;
     this.mName = param.nickname;
     this.mPlatform = param.platform;
+    this.platformIconSrc = StreamPlatformUtils.getIcon(param.platform);
     this.mThumbnail = param.thumbnail;
     this.mLink = this.mLinkFactory.createLink(param.platform, param.keyId);
   }

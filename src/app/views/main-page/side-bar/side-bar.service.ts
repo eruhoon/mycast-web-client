@@ -17,9 +17,22 @@ export class SideBarService {
 
   public isActive(): boolean { return this.mActive; }
 
-  public toggleActive(): void { this.mActive = !this.mActive; }
+  public toggleActive(): void {
+    if (this.mActive) {
+      this.deactivate();
+    } else {
+      this.activate();
+    }
+  }
 
-  public setActive(active: boolean): void { this.mActive = active; }
+  public activate(): void {
+    this.mActive = true;
+  }
+
+  public deactivate(): void {
+    this.mActive = false;
+    this.mStreamPreview = null;
+  }
 
   public getStreamPreview(): Stream | null { return this.mStreamPreview; }
 

@@ -70,12 +70,12 @@ export class SideBarComponent implements OnInit {
 
   public onMemoClick(): void {
     this.mMainService.setCurrentLink('./memo');
-    this.mService.setActive(false);
+    this.mService.deactivate();
   }
 
   public onPhotoClick(): void {
     this.mMainService.setCurrentLink('./photo');
-    this.mService.setActive(false);
+    this.mService.deactivate();
   }
 
   public onStreamConfigClick(): void {

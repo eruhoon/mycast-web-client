@@ -204,6 +204,6 @@ export class MainPageComponent {
     }
 
     private closeMenu(): void {
-        this.mSideBarSrv.setActive(false);
+        this.mSideBarSrv.deactivate();
     }
 }

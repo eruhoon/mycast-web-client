@@ -51,7 +51,7 @@ export class SideBarStreamListViewComponent implements OnInit {
     } else {
       this.mMainSrv.setCurrentLink(stream.getUrl());
     }
-    this.mSideBarSrv.setActive(false);
+    this.mSideBarSrv.deactivate();
   }
 
 }

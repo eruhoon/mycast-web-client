@@ -16,8 +16,12 @@
 
   <div>
     <hr />
-    <side-bar-stream-list-view title="마이캐스트" [streams]="getLocalStreamList()"></side-bar-stream-list-view>
-    <hr />
+    <side-bar-stream-list-view title="마이캐스트" [streams]="getLocalStreamList()" *ngIf="isMobile()">
+    </side-bar-stream-list-view>
+    <hr *ngIf="isMobile()" />
+    <side-bar-stream-list-view title="즐겨찾기" [streams]="getFavoriteList()" *ngIf="hasFavorite()">
+    </side-bar-stream-list-view>
+    <hr *ngIf="hasFavorite()" />
     <side-bar-stream-list-view title="트위치" [streams]="getTwitchList()"></side-bar-stream-list-view>
     <hr />
     <side-bar-stream-list-view title="아프리카" [streams]="getAfreecaList()"></side-bar-stream-list-view>

@@ -1,4 +1,4 @@
-<div class="stream-live-box" *ngIf="!isDataSaveMode()">
+<div class="stream-live-box" *ngIf="!isDataSaveMode()" (click)="onClick()">
     <div class="stream-live-img">
         <img [src]="getThumbnail()">
     </div>

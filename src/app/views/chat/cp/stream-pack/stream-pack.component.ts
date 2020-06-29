@@ -1,3 +1,7 @@
+import { platform } from 'os';
+import { StreamLinkFactory } from 'src/app/models/stream/link/StreamLinkFactory';
+import { MainService } from 'src/app/services/main/main.service';
+
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
@@ -13,9 +17,16 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   private mIcon: string;
   private mName: string;
   private mPlatform: string;
+  private mPlatformIcon: string;
   private mThumbnail: string;
+  private mLink: string;
 
-  public constructor(injector: Injector) {
+  private mLinkFactory: StreamLinkFactory;
+
+  public constructor(
+    injector: Injector,
+    private mMainSrv: MainService) {
+
     super(injector);
 
     this.mId = '';
@@ -23,6 +34,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mName = '';
     this.mPlatform = '';
     this.mThumbnail = '';
+    this.mLinkFactory = new StreamLinkFactory();
   }
 
   public ngOnInit() {
@@ -32,6 +44,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mName = param.nickname;
     this.mPlatform = param.platform;
     this.mThumbnail = param.thumbnail;
+    this.mLink = this.mLinkFactory.createLink(param.platform, param.keyId);
   }
 
   public getId(): string { return this.mId; }
@@ -46,7 +59,14 @@ export class StreamPackComponent extends ChatPack implements OnInit {
 
   // TODO: Optimize PlatformIcon
   public getPlatformIcon(): string {
-    return `http://mycast.xyz/home/asset/chat.original/img/stream-pack-plaform-${this.mPlatform}.png`;
+    return `/assets/image/stream/${this.mPlatform}.png`;
   }
 
+  public onClick(): void {
+    if (this.mPlatform === 'afreeca') {
+      window.open(this.mLink, '_blank', 'width=800');
+    } else {
+      this.mMainSrv.setCurrentLink(this.mLink);
+    }
+  }
 }

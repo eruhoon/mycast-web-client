@@ -1,4 +1,5 @@
 import { platform } from 'os';
+import { StreamLinkFactory } from 'src/app/models/stream/link/StreamLinkFactory';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, Injector, OnInit } from '@angular/core';
@@ -19,6 +20,8 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   private mThumbnail: string;
   private mLink: string;
 
+  private mLinkFactory: StreamLinkFactory;
+
   public constructor(
     injector: Injector,
     private mMainSrv: MainService) {
@@ -30,6 +33,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mName = '';
     this.mPlatform = '';
     this.mThumbnail = '';
+    this.mLinkFactory = new StreamLinkFactory();
   }
 
   public ngOnInit() {
@@ -39,7 +43,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mName = param.nickname;
     this.mPlatform = param.platform;
     this.mThumbnail = param.thumbnail;
-    this.mLink = StreamPackComponent.getLink(param.platform, param.keyId);
+    this.mLink = this.mLinkFactory.createLink(param.platform, param.keyId);
   }
 
   public getId(): string { return this.mId; }
@@ -64,15 +68,4 @@ export class StreamPackComponent extends ChatPack implements OnInit {
       this.mMainSrv.setCurrentLink(this.mLink);
     }
   }
-
-  private static getLink(streamPlatform: string, keyId: string): string {
-    switch (streamPlatform) {
-      case 'local': return `//mycast.xyz/player/${keyId}`;
-      case 'twitch':
-        return `//player.twitch.tv/?channel=${keyId}&parent=${location.hostname}`;
-      case 'afreeca': return `http://play.afreecatv.com/${keyId}/embed`;
-      case 'kakaotv': return `//tv.kakao.com/embed/player/livelink/${keyId}`;
-    }
-  }
-
 }

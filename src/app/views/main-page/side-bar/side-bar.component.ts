@@ -36,6 +36,10 @@ export class SideBarComponent implements OnInit {
     return this.mStreamSrv.getLocalStreams();
   }
 
+  public hasFavorite(): boolean {
+    return this.mFavoriteSrv.getFavorites().length > 0;
+  }
+
   public getFavoriteList(): Stream[] {
     return this.mStreamSrv.getExternalStreams().filter(stream => {
       const platform = stream.getPlatform();

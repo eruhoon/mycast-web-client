@@ -124,8 +124,7 @@ nav.top-bar-section {
 
   .stream-preview {
     position: absolute;
-    right: 0;
-    width: calc(100% - #{$side-bar-width});
+    left: $side-bar-width;
     height: 100%;
   }
 

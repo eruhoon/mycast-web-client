@@ -1,6 +1,5 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 
-import { ChatPack } from '../ChatPack';
 import { GeneralPurposePackComponent } from './general-purpose-pack.component';
 import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 
@@ -17,7 +16,6 @@ export class GfDollPackComponent extends GeneralPurposePackComponent {
 
   protected bind(): GeneralPurposeProperty {
     const raw = JSON.parse(this.message.getMessage());
-    console.log(raw);
     return {
       icon: raw.icon,
       link: raw.link,

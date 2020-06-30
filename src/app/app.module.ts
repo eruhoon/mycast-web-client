@@ -20,8 +20,13 @@ import { ChatUserListComponent } from './views/chat/chat-user-list/chat-user-lis
 import { AfreecaPackComponent } from './views/chat/cp/afreeca-pack/afreeca-pack.component';
 import { AnimationPackComponent } from './views/chat/cp/animation-pack/animation-pack.component';
 import { BookPackComponent } from './views/chat/cp/book-pack/book-pack.component';
-import { CqHeroPackComponent } from './views/chat/cp/cq-hero-pack/cq-hero-pack.component';
 import { CvPackComponent } from './views/chat/cp/cv-pack/cv-pack.component';
+import { AlShipPackComponent } from './views/chat/cp/general-purpose-pack/al-ship-pack.component';
+import { CqHeroPackComponent } from './views/chat/cp/general-purpose-pack/cq-hero-pack.component';
+import {
+    GeneralPurposePackComponent
+} from './views/chat/cp/general-purpose-pack/general-purpose-pack.component';
+import { GfDollPackComponent } from './views/chat/cp/general-purpose-pack/gf-doll-pack.component';
 import { ImagePackComponent } from './views/chat/cp/image-pack/image-pack.component';
 import { LinkPackComponent } from './views/chat/cp/link-pack/link-pack.component';
 import {
@@ -31,6 +36,8 @@ import { LolUserPackComponent } from './views/chat/cp/lol-user-pack/lol-user-pac
 import {
     MagicConchPackComponent
 } from './views/chat/cp/magic-conch-pack/magic-conch-pack.component';
+import { MemoPackComponent } from './views/chat/cp/memo-pack/memo-pack.component';
+import { MoviePackComponent } from './views/chat/cp/movie-pack/movie-pack.component';
 import { StreamPackComponent } from './views/chat/cp/stream-pack/stream-pack.component';
 import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component';
 import {
@@ -71,7 +78,19 @@ import {
     NotificationRequestPopupComponent
 } from './views/main-page/notification-request-popup/notification-request-popup.component';
 import { SettingViewComponent } from './views/main-page/setting-view/setting-view.component';
+import {
+    DetailSideBarStreamEntryComponent
+} from './views/main-page/side-bar/side-bar-stream-entry/detail-side-bar-stream-entry/detail-side-bar-stream-entry.component';
+import {
+    SimpleSideBarStreamEntryComponent
+} from './views/main-page/side-bar/side-bar-stream-entry/simple-side-bar-stream-entry/simple-side-bar-stream-entry.component';
+import {
+    SideBarStreamListViewComponent
+} from './views/main-page/side-bar/side-bar-stream-list-view/side-bar-stream-list-view.component';
 import { SideBarComponent } from './views/main-page/side-bar/side-bar.component';
+import {
+    StreamPreviewComponent
+} from './views/main-page/side-bar/stream-preview/stream-preview.component';
 import { StreamListComponent } from './views/main-page/stream-list/stream-list.component';
 import {
     ExternalViewerComponent
@@ -105,14 +124,6 @@ import {
 import {
     TotoroPlayerPageComponent
 } from './views/stream/totoro-player-page/totoro-player-page.component';
-import { MoviePackComponent } from './views/chat/cp/movie-pack/movie-pack.component';
-import { MemoPackComponent } from './views/chat/cp/memo-pack/memo-pack.component';
-import { AlShipPackComponent } from './views/chat/cp/al-ship-pack/al-ship-pack.component';
-import { GfDollPackComponent } from './views/chat/cp/gf-doll-pack/gf-doll-pack.component';
-import { DetailSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/detail-side-bar-stream-entry/detail-side-bar-stream-entry.component';
-import { SimpleSideBarStreamEntryComponent } from './views/main-page/side-bar/side-bar-stream-entry/simple-side-bar-stream-entry/simple-side-bar-stream-entry.component';
-import { SideBarStreamListViewComponent } from './views/main-page/side-bar/side-bar-stream-list-view/side-bar-stream-list-view.component';
-import { StreamPreviewComponent } from './views/main-page/side-bar/stream-preview/stream-preview.component';
 
 @NgModule({
     declarations: [
@@ -185,6 +196,7 @@ import { StreamPreviewComponent } from './views/main-page/side-bar/stream-previe
         SimpleSideBarStreamEntryComponent,
         SideBarStreamListViewComponent,
         StreamPreviewComponent,
+        GeneralPurposePackComponent,
     ],
     imports: [
         BrowserModule,

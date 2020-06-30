@@ -196,7 +196,6 @@ import {
         SimpleSideBarStreamEntryComponent,
         SideBarStreamListViewComponent,
         StreamPreviewComponent,
-        GeneralPurposePackComponent,
     ],
     imports: [
         BrowserModule,

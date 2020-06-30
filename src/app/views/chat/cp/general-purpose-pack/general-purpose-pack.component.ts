@@ -1,16 +1,11 @@
 import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
-import { Component, Injector, OnInit } from '@angular/core';
+import { Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 
-@Component({
-  selector: 'app-general-purpose-pack',
-  templateUrl: './general-purpose-pack.component.html',
-  styleUrls: ['./general-purpose-pack.component.scss']
-})
 export abstract class GeneralPurposePackComponent extends ChatPack implements OnInit {
 
   public prop: GeneralPurposeProperty;

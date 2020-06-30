@@ -2,6 +2,7 @@ import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-imag
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { ToastService } from 'src/app/services/notification/toast.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
@@ -25,6 +26,7 @@ export class MobilePageComponent implements OnInit {
     private mNotiSrv: NotificationService,
     private mThemeSrv: ThemeService,
     private mImagePopupSrv: ImagePopupService,
+    private mToastSrv: ToastService,
     private mClipboardImageSrv: ClipboardImageService) {
   }
 
@@ -80,6 +82,10 @@ export class MobilePageComponent implements OnInit {
 
   public isImagePopup(): boolean {
     return this.mImagePopupSrv.isPopup();
+  }
+
+  public isToastListShow(): boolean {
+    return this.mToastSrv.getToasts().length > 0;
   }
 
   public closeImagePopup(): void {

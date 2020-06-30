@@ -73,9 +73,19 @@ export class SideBarComponent implements OnInit {
     this.mService.deactivate();
   }
 
+  public onMemoContextMenu(): boolean {
+    window.open('/memo', '_blank', 'width=800');
+    return false;
+  }
+
   public onPhotoClick(): void {
     this.mMainService.setCurrentLink('./photo');
     this.mService.deactivate();
+  }
+
+  public onPhotoContextMenu(): boolean {
+    window.open('/photo', '_blank', 'width=800');
+    return false;
   }
 
   public onStreamConfigClick(): void {

@@ -47,6 +47,5 @@ export abstract class GeneralPurposePackComponent extends ChatPack implements On
         .link(this.prop.link)
         .build());
     }
-    console.log(this.message);
   }
 }

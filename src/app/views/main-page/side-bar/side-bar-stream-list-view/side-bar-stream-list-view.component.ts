@@ -20,6 +20,7 @@ export class SideBarStreamListViewComponent implements OnInit {
   public streams: Stream[];
   @Input()
   public title: Stream[];
+  private mActiveStreams: Stream[];
   private mSelected: boolean;
 
   public constructor(
@@ -27,14 +28,23 @@ export class SideBarStreamListViewComponent implements OnInit {
     private mSideBarSrv: SideBarService,
     private mOptionSrv: OptionService) {
     this.streams = [];
+    this.mActiveStreams = [];
     this.mSelected = false;
   }
 
   public ngOnInit() {
   }
 
+  public getSize(): number {
+    return this.streams.length;
+  }
+
   public getSelected(): boolean {
     return this.mSelected;
+  }
+
+  public getActiveStreams(): Stream[] {
+    return this.mActiveStreams;
   }
 
   public isMobile(): boolean {
@@ -42,7 +52,21 @@ export class SideBarStreamListViewComponent implements OnInit {
   }
 
   public onHeaderClick(): void {
-    this.mSelected = !this.mSelected;
+    if (this.mSelected) {
+      this.deselect();
+    } else {
+      this.select();
+    }
+  }
+
+  private select(): void {
+    this.mSelected = true;
+    this.mActiveStreams = this.streams;
+  }
+
+  private deselect(): void {
+    this.mSelected = false;
+    this.mActiveStreams = [];
   }
 
   public onStreamClick(stream: Stream): void {

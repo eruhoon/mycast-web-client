@@ -1,12 +1,14 @@
-<h3 (click)="onHeaderClick()">{{title}} <small>({{streams.length}})</small></h3>
+<h3 (click)="onHeaderClick()">{{title}} <small>({{getSize()}})</small></h3>
 <ul class="stream" [ngClass]="{'selected': getSelected()}">
     <li *ngIf="isMobile(); then detail else simple"></li>
     <ng-template #detail>
-        <detail-side-bar-stream-entry *ngFor="let stream of streams" [stream]="stream" (click)="onStreamClick(stream)">
+        <detail-side-bar-stream-entry *ngFor="let stream of getActiveStreams()" [stream]="stream"
+            (click)="onStreamClick(stream)">
         </detail-side-bar-stream-entry>
     </ng-template>
     <ng-template #simple>
-        <simple-side-bar-stream-entry *ngFor="let stream of streams" [stream]="stream" (click)="onStreamClick(stream)">
+        <simple-side-bar-stream-entry *ngFor="let stream of getActiveStreams()" [stream]="stream"
+            (click)="onStreamClick(stream)">
         </simple-side-bar-stream-entry>
     </ng-template>
 </ul>

@@ -6,7 +6,7 @@ import { ToastService } from 'src/app/services/notification/toast.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 import { SideBarService } from '../../main-page/side-bar/side-bar.service';
 import { TopBarService } from '../../main-page/top-bar/top-bar.service';
@@ -90,5 +90,10 @@ export class MobilePageComponent implements OnInit {
 
   public closeImagePopup(): void {
     this.mImagePopupSrv.setImage(null);
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  public onPopState(event: PopStateEvent) {
+    history.pushState(null, '', window.location.href);
   }
 }

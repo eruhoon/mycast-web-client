@@ -28,6 +28,8 @@ export class MobilePageComponent implements OnInit {
     private mImagePopupSrv: ImagePopupService,
     private mToastSrv: ToastService,
     private mClipboardImageSrv: ClipboardImageService) {
+
+    history.pushState(null, '', window.location.href);
   }
 
   public ngOnInit(): void {

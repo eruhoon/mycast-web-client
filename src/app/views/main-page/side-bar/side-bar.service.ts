@@ -1,18 +1,25 @@
 import { Stream } from 'src/app/models/stream/Stream';
 
 import { Injectable } from '@angular/core';
+import { SideBarComponent } from './side-bar.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SideBarService {
 
+  private mView: SideBarComponent | null;
   private mActive: boolean;
   private mStreamPreview: Stream | null;
 
   public constructor() {
+    this.mView = null;
     this.mActive = false;
     this.mStreamPreview = null;
+  }
+
+  public setView(view: SideBarComponent): void {
+    this.mView = view;
   }
 
   public isActive(): boolean { return this.mActive; }
@@ -27,6 +34,7 @@ export class SideBarService {
 
   public activate(): void {
     this.mActive = true;
+    this.notifyActive();
   }
 
   public deactivate(): void {
@@ -38,5 +46,9 @@ export class SideBarService {
 
   public setStreamPreview(stream: Stream): void {
     this.mStreamPreview = stream;
+  }
+
+  private notifyActive(): void {
+    if (this.mView !== null) { this.mView.onActivated(); }
   }
 }

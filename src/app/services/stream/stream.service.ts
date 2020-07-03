@@ -46,6 +46,9 @@ export class StreamService {
   }
 
   private mergeStreams(origins: Stream[], srcs: Stream[]): Stream[] {
+    if (this.isEquivalent(origins, srcs)) {
+      return origins;
+    }
     const duplicated = origins.filter(
       origin => srcs.some(src => src.isEquivalent(origin)));
     const newStreams = srcs.filter(
@@ -53,9 +56,24 @@ export class StreamService {
     return [...duplicated, ...newStreams];
   }
 
+  private isEquivalent(a: Stream[], b: Stream[]): boolean {
+    if (a.length !== b.length) {
+      return false;
+    }
+
+    const length = a.length;
+    for (let i = 0; i < length; i++) {
+      if (!a[i].isEquivalent(b[i])) {
+        return false;
+      }
+    }
+    console.log('equal');
+    return true;
+  }
+
   private onExternalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
-    this.mExternalStreams = streams;
+    this.mExternalStreams = this.mergeStreams(this.mExternalStreams, streams);
   }
 
   private onNewLocalStream(raw: StreamDto): void {

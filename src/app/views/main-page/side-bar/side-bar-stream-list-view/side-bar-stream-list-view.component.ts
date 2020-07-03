@@ -16,6 +16,8 @@ import { SideBarService } from '../side-bar.service';
 })
 export class SideBarStreamListViewComponent implements OnInit, OnChanges {
 
+  private static readonly DEFAULT_STREAMS: Stream[] = [];
+
   @Input()
   public streams: Stream[];
   @Input()
@@ -27,8 +29,8 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
     private mMainSrv: MainService,
     private mSideBarSrv: SideBarService,
     private mOptionSrv: OptionService) {
-    this.streams = [];
-    this.mActiveStreams = [];
+    this.streams = SideBarStreamListViewComponent.DEFAULT_STREAMS;
+    this.mActiveStreams = SideBarStreamListViewComponent.DEFAULT_STREAMS;
     this.mSelected = false;
   }
 
@@ -70,6 +72,7 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
   }
 
   private refreshStreams(): void {
-    this.mActiveStreams = this.mSelected ? this.streams : [];
+    this.mActiveStreams = this.mSelected ?
+      this.streams : SideBarStreamListViewComponent.DEFAULT_STREAMS;
   }
 }

@@ -14,6 +14,8 @@ import { ChatPack } from '../ChatPack';
 })
 export class YoutubePackComponent extends ChatPack implements OnInit {
 
+  public time: number;
+
   private mTitle: string;
   private mDescription: string;
   private mThumbnail: string;
@@ -29,6 +31,7 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
     mainService: MainService) {
 
     super(injector);
+    this.time = -1;
     this.mLinkPopup = linkPopup;
     this.mMainService = mainService;
   }
@@ -36,6 +39,7 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
   public ngOnInit() {
     try {
       const param: Param = JSON.parse(this.message.getMessage());
+      this.time = param.time ? param.time : -1;
       this.mTitle = param.title;
       this.mDescription = param.description;
       this.mThumbnail = param.thumbnail;
@@ -55,6 +59,16 @@ export class YoutubePackComponent extends ChatPack implements OnInit {
 
   public getThumbnail(): string {
     return this.mThumbnail;
+  }
+
+  public getTimeStr(): string {
+    const h = Math.floor(this.time / 3600);
+    const m = Math.floor((this.time % 3600) / 60);
+    const s = this.time % 60;
+    const hStr = h > 0 ? `${h}h` : '';
+    const mStr = h > 0 || m > 0 ? `${m}m` : '';
+    const sStr = `${s}s`;
+    return `${hStr} ${mStr} ${sStr}`;
   }
 
   public onClick(): void {

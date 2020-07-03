@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginCommand } from 'src/app/models/login/LoginCommand';
 import { PageNavigator } from 'src/app/models/page-navigator/PageNavigator';
 import { SessionStorage } from 'src/app/models/storage/SessionStorage';
+import { ToastService } from 'src/app/services/notification/toast.service';
 
 @Component({
   selector: 'app-login-page',
@@ -19,7 +20,9 @@ export class LoginPageComponent implements OnInit {
 
   private mRedirctTo: string | null;
 
-  constructor(route: ActivatedRoute, router: Router, renderer: Renderer2) {
+  constructor(
+    route: ActivatedRoute, router: Router, renderer: Renderer2,
+    private mToastService: ToastService) {
 
     this.mLoginForm = { id: '', pw: '' };
     this.mRoute = route;
@@ -30,9 +33,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.mSessionStorage.getSessionId());
-    console.log(this.mSessionStorage.getPrivateKey());
-
     this.mRoute.queryParams.subscribe(params => {
       if (params.redirectTo) {
         this.mRedirctTo = params.redirectTo as string;
@@ -52,6 +52,10 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  public isToastListShow(): boolean {
+    return this.mToastService.getToasts().length > 0;
+  }
+
   public onSubmit(): void {
     this.requestLogin();
   }
@@ -62,7 +66,6 @@ export class LoginPageComponent implements OnInit {
 
   private setFocusPassword() {
     const passwordInput = this.mRenderer.selectRootElement('#pw');
-    console.log(passwordInput);
     passwordInput.focus();
   }
 
@@ -74,7 +77,9 @@ export class LoginPageComponent implements OnInit {
       this.mPageNavigator.navigate(this.mRedirctTo);
     });
     login.onFailure(() => {
-      console.warn('failed');
+      this.mToastService.toast('로그인을 실패 했습니다.');
+      this.mLoginForm.pw = '';
+      this.setFocusPassword();
     });
     login.execute();
   }

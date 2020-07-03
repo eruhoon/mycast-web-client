@@ -67,7 +67,6 @@ export class StreamService {
         return false;
       }
     }
-    console.log('equal');
     return true;
   }
 

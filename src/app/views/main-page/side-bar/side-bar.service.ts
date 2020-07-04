@@ -40,6 +40,7 @@ export class SideBarService {
   public deactivate(): void {
     this.mActive = false;
     this.mStreamPreview = null;
+    this.notifyDeactive();
   }
 
   public getStreamPreview(): Stream | null { return this.mStreamPreview; }
@@ -50,5 +51,9 @@ export class SideBarService {
 
   private notifyActive(): void {
     if (this.mView !== null) { this.mView.onActivated(); }
+  }
+
+  private notifyDeactive(): void {
+    if (this.mView !== null) { this.mView.onDeactived(); }
   }
 }

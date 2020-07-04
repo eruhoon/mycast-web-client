@@ -1,13 +1,10 @@
-import { FavoriteStream } from 'src/app/models/stream/favorite/FavoriteStream';
+import { Component, OnInit } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
-import { StreamService } from 'src/app/services/stream/stream.service';
-
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-
+import { StreamService, StreamSrvObserver } from 'src/app/services/stream/stream.service';
 import { SideBarService } from './side-bar.service';
 
 @Component({
@@ -15,7 +12,8 @@ import { SideBarService } from './side-bar.service';
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss', './side-bar.color.scss']
 })
-export class SideBarComponent implements OnInit {
+export class SideBarComponent
+  implements OnInit, StreamSrvObserver {
 
   private static readonly DEFAULT_STREAMS: Stream[] = [];
 
@@ -48,12 +46,30 @@ export class SideBarComponent implements OnInit {
   }
 
   public onActivated(): void {
+    this.mStreamSrv.addObserver(this);
+    this.refreshStreams();
+  }
+
+  public onDeactived(): void {
+    this.mStreamSrv.removeObserver(this);
     this.refreshStreams();
   }
 
   private refreshStreams(): void {
+    this.refreshLocalStreams();
+    this.refreshExternalStreams();
+  }
+
+  private refreshLocalStreams(): void {
     if (this.mService.isActive()) {
       this.mLocals = this.mStreamSrv.getLocalStreams();
+    } else {
+      this.mLocals = SideBarComponent.DEFAULT_STREAMS;
+    }
+  }
+
+  private refreshExternalStreams(): void {
+    if (this.mService.isActive()) {
       const externals = this.mStreamSrv.getExternalStreams();
       this.mTwitches = externals.filter(
         stream => stream.getPlatform() === 'twitch');
@@ -67,9 +83,8 @@ export class SideBarComponent implements OnInit {
         const platform = stream.getPlatform();
         const keyId = stream.getKeyId();
         return this.mFavoriteSrv.isFavorite(platform, keyId);
-      })
+      });
     } else {
-      this.mLocals = SideBarComponent.DEFAULT_STREAMS;
       this.mTwitches = SideBarComponent.DEFAULT_STREAMS;
       this.mAfreecas = SideBarComponent.DEFAULT_STREAMS;
       this.mYoutubes = SideBarComponent.DEFAULT_STREAMS;
@@ -132,5 +147,13 @@ export class SideBarComponent implements OnInit {
 
   public onStreamConfigClick(): void {
     this.mProfileSrv.setModifyMode(ProfileModifyMode.STREAM_ADD);
+  }
+
+  public onLocalStreamChanged(streams: Stream[]): void {
+    this.refreshLocalStreams();
+  }
+
+  public onExternalStreamChanged(streams: Stream[]): void {
+    this.refreshExternalStreams();
   }
 }

@@ -17,6 +17,7 @@ export class StreamService {
   private mSocket: StreamSocketModel;
   private mLocalStreams: Stream[];
   private mExternalStreams: Stream[];
+  private mObservers: StreamSrvObserver[];
 
   public constructor(
     private mNotificationService: NotificationService) {
@@ -30,6 +31,15 @@ export class StreamService {
       stream => this.onNewLocalStream(stream));
     this.mLocalStreams = [];
     this.mExternalStreams = [];
+    this.mObservers = [];
+  }
+
+  public addObserver(observer: StreamSrvObserver): void {
+    this.mObservers.push(observer);
+  }
+
+  public removeObserver(observer: StreamSrvObserver): void {
+    this.mObservers = this.mObservers.filter(o => o !== observer);
   }
 
   public getLocalStreams(): Stream[] {
@@ -41,8 +51,10 @@ export class StreamService {
   }
 
   private onLocalStreamChanged(raws: StreamDto[]): void {
+    console.log('onLocalStreamChanged');
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
     this.mLocalStreams = this.mergeStreams(this.mLocalStreams, streams);
+    this.mObservers.forEach(o => o.onLocalStreamChanged(streams));
   }
 
   private mergeStreams(origins: Stream[], srcs: Stream[]): Stream[] {
@@ -73,6 +85,7 @@ export class StreamService {
   private onExternalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
     this.mExternalStreams = this.mergeStreams(this.mExternalStreams, streams);
+    this.mObservers.forEach(o => o.onExternalStreamChanged(streams));
   }
 
   private onNewLocalStream(raw: StreamDto): void {
@@ -84,4 +97,9 @@ export class StreamService {
     noti.setChannel(NotificationChannelHash.LOCAL_STREAM);
     this.mNotificationService.pushNotification(noti);
   }
+}
+
+export interface StreamSrvObserver {
+  onLocalStreamChanged(streams: Stream[]): void;
+  onExternalStreamChanged(streams: Stream[]): void;
 }

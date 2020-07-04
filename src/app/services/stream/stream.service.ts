@@ -51,7 +51,6 @@ export class StreamService {
   }
 
   private onLocalStreamChanged(raws: StreamDto[]): void {
-    console.log('onLocalStreamChanged');
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
     this.mLocalStreams = this.mergeStreams(this.mLocalStreams, streams);
     this.mObservers.forEach(o => o.onLocalStreamChanged(streams));

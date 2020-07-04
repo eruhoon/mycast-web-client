@@ -36,12 +36,4 @@ export class StreamListComponent implements OnInit {
         favorite.getPlatform() === platform && favorite.getKeyId() === keyId);
     });
   }
-
-  protected onShareClick(stream: Stream): void {
-    console.log('share', stream);
-  }
-
-  protected onNewWindowClick(stream: Stream): void {
-    console.log('new window', stream);
-  }
 }

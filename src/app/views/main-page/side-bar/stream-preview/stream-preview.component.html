@@ -10,9 +10,10 @@
 
     <div class="btn-wrapper">
       <button (click)="onFavoriteClick($event)">
-        <i class="material-icons">star_border</i>
+        <i class="material-icons" *ngIf="!isFavorite()">star_border</i>
+        <i class="material-icons" [ngClass]="{enabled:isFavorite()}" *ngIf="isFavorite()">star</i>
       </button>
-      <button (click)="onShareClick($event)">
+      <button (click)=" onShareClick($event)">
         <i class="material-icons">link</i>
       </button>
       <button (click)="onNewWindowClick($event)">

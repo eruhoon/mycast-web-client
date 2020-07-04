@@ -23,12 +23,13 @@ export class StreamListComponent implements OnInit {
   }
 
   public getStreams(): Stream[] {
-    return this.mService.getLocalStreams();
+    return this.mService.getLocalStreams().getValue();
   }
 
   public getFavorites(): Stream[] {
     const favorites = this.mFavoriteSrv.getFavorites();
-    return this.mService.getExternalStreams().filter(stream => {
+    const externals = this.mService.getExternalStreams().getValue();
+    return externals.filter(stream => {
       const platform = stream.getPlatform();
       const keyId = stream.getKeyId();
       return favorites.some(favorite =>

@@ -42,16 +42,20 @@ export class SideBarComponent
 
   public ngOnInit() {
     this.mService.setView(this);
+    this.mStreamSrv.getLocalStreams().subscribe(streams => {
+      this.refreshLocalStreams();
+    });
+    this.mStreamSrv.getExternalStreams().subscribe(streams => {
+      this.refreshExternalStreams();
+    });
     this.refreshStreams();
   }
 
   public onActivated(): void {
-    this.mStreamSrv.addObserver(this);
     this.refreshStreams();
   }
 
   public onDeactived(): void {
-    this.mStreamSrv.removeObserver(this);
     this.refreshStreams();
   }
 
@@ -62,7 +66,7 @@ export class SideBarComponent
 
   private refreshLocalStreams(): void {
     if (this.mService.isActive()) {
-      this.mLocals = this.mStreamSrv.getLocalStreams();
+      this.mLocals = this.mStreamSrv.getLocalStreams().getValue();
     } else {
       this.mLocals = SideBarComponent.DEFAULT_STREAMS;
     }
@@ -70,7 +74,7 @@ export class SideBarComponent
 
   private refreshExternalStreams(): void {
     if (this.mService.isActive()) {
-      const externals = this.mStreamSrv.getExternalStreams();
+      const externals = this.mStreamSrv.getExternalStreams().getValue();
       this.mTwitches = externals.filter(
         stream => stream.getPlatform() === 'twitch');
       this.mAfreecas = externals.filter(

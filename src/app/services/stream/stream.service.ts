@@ -8,6 +8,7 @@ import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
 import { Injectable } from '@angular/core';
 
 import { NotificationService } from '../notification/notification.service';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ import { NotificationService } from '../notification/notification.service';
 export class StreamService {
 
   private mSocket: StreamSocketModel;
-  private mLocalStreams: Stream[];
-  private mExternalStreams: Stream[];
+  private mLocalStreams: BehaviorSubject<Stream[]>;
+  private mExternalStreams: BehaviorSubject<Stream[]>;
   private mObservers: StreamSrvObserver[];
 
   public constructor(
@@ -29,8 +30,9 @@ export class StreamService {
       streams => this.onExternalStreamChanged(streams));
     this.mSocket.setOnNewLocalStream(
       stream => this.onNewLocalStream(stream));
-    this.mLocalStreams = [];
-    this.mExternalStreams = [];
+
+    this.mLocalStreams = new BehaviorSubject<Stream[]>([]);
+    this.mExternalStreams = new BehaviorSubject<Stream[]>([]);
     this.mObservers = [];
   }
 
@@ -42,18 +44,17 @@ export class StreamService {
     this.mObservers = this.mObservers.filter(o => o !== observer);
   }
 
-  public getLocalStreams(): Stream[] {
+  public getLocalStreams(): BehaviorSubject<Stream[]> {
     return this.mLocalStreams;
   }
 
-  public getExternalStreams(): Stream[] {
+  public getExternalStreams(): BehaviorSubject<Stream[]> {
     return this.mExternalStreams;
   }
 
   private onLocalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
-    this.mLocalStreams = this.mergeStreams(this.mLocalStreams, streams);
-    this.mObservers.forEach(o => o.onLocalStreamChanged(streams));
+    this.mLocalStreams.next(streams);
   }
 
   private mergeStreams(origins: Stream[], srcs: Stream[]): Stream[] {
@@ -83,8 +84,7 @@ export class StreamService {
 
   private onExternalStreamChanged(raws: StreamDto[]): void {
     const streams = raws.map(dto => new StreamDtoAdapter(dto));
-    this.mExternalStreams = this.mergeStreams(this.mExternalStreams, streams);
-    this.mObservers.forEach(o => o.onExternalStreamChanged(streams));
+    this.mExternalStreams.next(streams);
   }
 
   private onNewLocalStream(raw: StreamDto): void {

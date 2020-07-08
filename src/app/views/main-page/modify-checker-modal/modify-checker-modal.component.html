@@ -24,7 +24,7 @@
         <input #searchName id="name" maxlength="15" type="text" />
         <p class="error-up">닉네임을 입력하세요.</p>
       </div>
-      <button class="live-stream-btn" (click)="search()">검색</button>
+      <button class="live-stream-btn" [disabled]="searching" (click)="search()">{{searching?'검색 중':'검색'}}</button>
     </div>
     <div *ngIf="stagedStream!==null">
       <div class="live-stream-list">
@@ -34,13 +34,13 @@
           <p>"kimdoe"의 방송 정보를 찾을 수 없습니다.</p>
         </div>
         <div class="live-stream">
-          <img [src]="stagedStream?.getIcon()|safe">
+          <img [src]="stagedStream?.icon|safe">
           <div class="stream-info">
             <h3>
-              <span>{{stagedStream?.getTitle()}} </span>
-              <small>({{stagedStream?.getKeyId()}})</small>
+              <span>{{stagedStream?.title}} </span>
+              <small>({{stagedStream?.keyId}})</small>
             </h3>
-            <p>방송플랫폼 : {{stagedStream?.getPlatform()}}</p>
+            <p>방송플랫폼 : {{stagedStream?.platform}}</p>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-      <button class="live-stream-add-btn">스트리머 추가</button>
+      <button class="live-stream-add-btn" [disabled]="adding" (click)="addStream()">스트리머 추가</button>
     </div>
     <a class="modal-close" (click)="close()">
       <i class="material-icons">

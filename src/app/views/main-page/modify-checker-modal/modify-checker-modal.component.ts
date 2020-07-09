@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StageStreamCommand } from 'src/app/models/stream/stage/StageStreamCommand';
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import { RegisterStreamCommand } from 'src/app/models/stream/stage/RegisterStreamCommand';
 
 @Component({
   selector: 'modify-checker-modal',
@@ -16,6 +17,7 @@ export class ModifyCheckerModalComponent implements OnInit {
   public currentPlatform: PlatformParam | null;
   public stagedStream: StagedStream | null;
   public searching: boolean;
+  public adding: boolean;
 
   public constructor(
     private mProfileSrv: ProfileService,
@@ -30,6 +32,7 @@ export class ModifyCheckerModalComponent implements OnInit {
     this.currentPlatform = null;
     this.stagedStream = null;
     this.searching = false;
+    this.adding = false;
   }
 
   public ngOnInit() {
@@ -58,6 +61,27 @@ export class ModifyCheckerModalComponent implements OnInit {
       this.stagedStream = staged;
     }).finally(() => {
       this.searching = false;
+    });
+  }
+
+  public addStream(): void {
+    if (!this.stagedStream) {
+      this.mToastSrv.toast('비정상 접근입니다.');
+      return;
+    }
+
+    this.adding = true;
+    const command = new RegisterStreamCommand(
+      this.stagedStream.platform, this.stagedStream.keyId);
+    command.execute().then(success => {
+      if (success) {
+        this.mToastSrv.toast('방송을 추가했습니다.');
+      } else {
+        this.mToastSrv.toast('방송추가를 실패했습니다.');
+      }
+    }).finally(() => {
+      this.adding = false;
+      this.close();
     });
   }
 

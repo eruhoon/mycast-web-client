@@ -15,11 +15,11 @@ export class RegisterStreamCommand {
         const host = 'https://mycast.xyz:9011';
         const url = `${host}/stream`;
         try {
-            const { data } = await Axios.post<StagedStream>(url, qs.stringify({
+            const { data } = await Axios.post<Result>(url, qs.stringify({
                 platform: this.mPlatform,
                 keyId: this.mKeyId,
             }));
-            if (!data) {
+            if (!data || !data.result) {
                 return false;
             }
             return true;
@@ -31,4 +31,7 @@ export class RegisterStreamCommand {
 
 }
 
-
+type Result = {
+    result: boolean,
+    msg: string,
+};

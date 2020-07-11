@@ -16,6 +16,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     private static readonly HTTPS_URL = 'wss://mycast.xyz:8002';
 
     private mPrivKey: string;
+    private mOpen: boolean;
     private mWebSocket: WebSocket;
     private mOnRefreshMyProfile: TypeCallback<Profile>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
@@ -26,6 +27,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     public constructor(privateKey: string) {
         super();
         this.mPrivKey = privateKey;
+        this.mOpen = false;
         this.mOnRefreshChatList = _ => { };
         this.mOnRefreshUserList = _ => { };
         this.mOnNotificationReceived = _ => { };
@@ -33,6 +35,8 @@ export class WebSocketModel extends VegaChatSocketModel {
 
         this.mWebSocket = this.connect();
     }
+
+    public isOpen(): boolean { return this.mOpen; }
 
     public login(): void {
         this.sendMessage('user-login', {
@@ -128,6 +132,7 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private onOpenSocket(): void {
         console.log('connected');
+        this.mOpen = true;
         this.login();
     }
 
@@ -141,6 +146,7 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     private onClose(): void {
         console.log('onClose');
+        this.mOpen = false;
         setTimeout(() => {
             console.log('try to reconnect');
             this.mWebSocket = this.connect();

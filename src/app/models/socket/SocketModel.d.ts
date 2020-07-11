@@ -1,5 +1,5 @@
 export interface SocketModel {
-
+    isOpen(): boolean;
     login(): void;
     chat(chat: string): void;
     notify(to: string): void;

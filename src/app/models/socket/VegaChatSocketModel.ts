@@ -10,6 +10,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
         this.mChatRequestFactory = new ChatRequestFactory();
     }
 
+    public abstract isOpen(): boolean;
     public abstract login(): void;
     public abstract modifyProfile(name: string, icon: string): void;
 

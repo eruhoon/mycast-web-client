@@ -22,6 +22,8 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mOnChat = _ => { };
     }
 
+    public isOpen(): boolean { return this.mSocket.isOpen(); }
+
     public chat(chat: string): void {
         this.mSocket.chat(chat);
     }

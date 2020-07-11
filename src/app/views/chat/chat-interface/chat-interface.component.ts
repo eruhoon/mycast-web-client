@@ -6,10 +6,11 @@ import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-imag
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
 
 import { ChatListService } from '../chat-list/chat-list.service';
+import { MainService } from 'src/app/services/main/main.service';
 
 @Component({
   selector: 'chat-interface',
@@ -33,6 +34,7 @@ export class ChatInterfaceComponent implements OnInit {
   private mClipboardManager: ClipboardManager;
 
   constructor(
+    private mMainSrv: MainService,
     chatService: ChatService,
     optionService: OptionService,
     currentChatService: CurrentChatService,
@@ -48,6 +50,8 @@ export class ChatInterfaceComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  public isOpen(): boolean { return this.mMainSrv.isOpen(); }
 
   public setInput(input: string): void {
     this.getInputBox().value = input;

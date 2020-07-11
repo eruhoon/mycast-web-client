@@ -44,6 +44,8 @@ export class MainService {
       new ModifyProfileCommand(this.mChatNetwork));
   }
 
+  public isOpen(): boolean { return this.mChatNetwork.isOpen(); }
+
   // TODO: Remove
   public getChatNework(): ChatNetworkModel {
     return this.mChatNetwork;

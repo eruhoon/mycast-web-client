@@ -69,11 +69,16 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
   public getMostChamps(): ChampParam[] { return this.mMostChamps; }
 
   public onClick(): void {
-    this.mLinkPopup.addLink(new LinkPopupBuilder()
-      .title('LOL User Info')
-      .width(800).height(600)
-      .link(`https://www.op.gg/summoner/userName=${this.mName}`)
-      .build());
+    const link = this.createLink();
+    if (this.isMobile()) {
+      window.open(link, '_blank');
+    } else {
+      this.mLinkPopup.addLink(new LinkPopupBuilder()
+        .title('LOL User Info')
+        .width(800).height(600)
+        .link(link)
+        .build());
+    }
   }
 
   public onIconError(): void {
@@ -90,6 +95,10 @@ export class LolUserPackComponent extends ChatPack implements OnInit {
     const point = tierObj.point > 0 ? `${tierObj.point}P` : '';
 
     return [tier, division, point].join(' ');
+  }
+
+  private createLink(): string {
+    return `https://www.op.gg/summoner/userName=${this.mName}`;
   }
 
 }

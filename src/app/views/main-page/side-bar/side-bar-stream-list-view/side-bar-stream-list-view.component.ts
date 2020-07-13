@@ -5,6 +5,7 @@ import { OptionService } from 'src/app/services/option/option.service';
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SideBarService } from '../side-bar.service';
+import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 
 @Component({
   selector: 'side-bar-stream-list-view',
@@ -63,6 +64,7 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
   }
 
   public onStreamClick(stream: Stream): void {
+    const link = LinkUtils.addTimestamp(stream.getUrl());
     if (stream.getPlatform() === 'afreeca') {
       window.open(stream.getUrl(), '_blank', 'width=800');
     } else {

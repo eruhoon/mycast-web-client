@@ -3,6 +3,7 @@ import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 
 @Component({
   selector: 'stream-entry',
@@ -37,7 +38,8 @@ export class StreamEntryComponent implements OnInit {
   public getThumbnail(): string { return this.mThumbnail; }
 
   public onIconClick(): void {
-    this.mMainService.setCurrentLink(this.stream.getUrl());
+    const link = LinkUtils.addTimestamp(this.stream.getUrl());
+    this.mMainService.setCurrentLink(link);
   }
 
   public onThumbnailError(): void {

@@ -1,5 +1,5 @@
 import {
-    NotificationChannel, NotificationChannelHash
+  NotificationChannel, NotificationChannelHash
 } from 'src/app/models/notification/NotificationChannel';
 import { NotificationSound } from 'src/app/models/notification/NotificationSound';
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
@@ -78,6 +78,15 @@ export class ModifySettingModalComponent implements OnInit {
   public toggleDataSaveMode(): void {
     const option = this.mOptionSrv.isDataSaveMode();
     return this.mOptionSrv.setDataSaveMode(!option);
+  }
+
+  public isChatBotEnabled(): boolean {
+    return !this.mOptionSrv.isChatBotDisabled();
+  }
+
+  public toggleChatBotEnabled(): void {
+    const option = this.mOptionSrv.isChatBotDisabled();
+    return this.mOptionSrv.setChatBotDisabled(!option);
   }
 
   public isTimestampShow(): boolean {

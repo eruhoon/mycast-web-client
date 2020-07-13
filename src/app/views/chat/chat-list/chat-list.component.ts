@@ -3,10 +3,11 @@ import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-    Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild
 } from '@angular/core';
 
 import { ChatListService } from './chat-list.service';
+import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 
 @Component({
   selector: 'chat-list',
@@ -42,6 +43,13 @@ export class ChatListComponent implements OnInit {
 
   public getChats(): Chat[] {
     return this.mChats;
+  }
+
+  public isHidden(chat: Chat): boolean {
+    if (this.mOptionService.isChatBotDisabled()) {
+      return chat.getSender().getType() === ChatSenderType.BOT;
+    }
+    return false;
   }
 
   public onProfileIconSelect(iconSrc: string): void {

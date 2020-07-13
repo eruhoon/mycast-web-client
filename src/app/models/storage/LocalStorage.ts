@@ -5,6 +5,7 @@ export class LocalStorage {
     private static sInstance: LocalStorage | null = null;
 
     private static readonly DEFAULT_STRING = '';
+    private static readonly DEFAULT_CHAT_BOT_DISABLED = false;
     private static readonly DEFAULT_CHAT_POSITION = 300;
     private static OPTION_TRUE = 'true';
     private static OPTION_FALSE = 'false';
@@ -31,6 +32,20 @@ export class LocalStorage {
     public setChatPosition(value: number): void {
         const pos = Math.round(value);
         this.setItem(LocalStorageKey.CHAT_POSITION, pos.toString());
+    }
+
+    public getChatBotDisabled(): boolean {
+        const raw = this.getItem(LocalStorageKey.CHAT_BOT_DISABLED);
+        if (raw === null) {
+            return LocalStorage.DEFAULT_CHAT_BOT_DISABLED;
+        } else {
+            return raw === LocalStorage.OPTION_TRUE;
+        }
+    }
+
+    public setChatBotDisabled(value: boolean): void {
+        this.setItem(LocalStorageKey.CHAT_BOT_DISABLED, value ?
+            LocalStorage.OPTION_TRUE : LocalStorage.OPTION_FALSE);
     }
 
     public getNotificationEnable(): boolean {
@@ -127,6 +142,7 @@ export class LocalStorage {
 
 enum LocalStorageKey {
     CHAT_POSITION = 'vega.chat_position',
+    CHAT_BOT_DISABLED = 'vega.chat_bot_disabled',
     FAVORITES = 'vega.favorites',
     NOTIFICATION_ENABLE = 'vega.notification_enable',
     NOTIFICATION_CHANNELS = 'vega.notification_channels',

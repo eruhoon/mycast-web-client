@@ -16,6 +16,7 @@ export class OptionService {
   private mStorage: LocalStorage;
   private mThemeParser: ThemeParser;
   private mChatPosition: number;
+  private mChatBotDisabled: boolean;
   private mNotificationEnable: boolean;
   private mNotificationChannels: NotificationChannel[];
   private mNotificationSounds: NotificationSounds;
@@ -31,6 +32,7 @@ export class OptionService {
     this.mStorage = LocalStorage.getInstance();
     this.mThemeParser = new ThemeParser();
     this.mChatPosition = this.mStorage.getChatPosition();
+    this.mChatBotDisabled = this.mStorage.getChatBotDisabled();
     this.mNotificationEnable = this.mStorage.getNotificationEnable();
     this.mNotificationSounds = new NotificationSounds();
     this.mNotificationSoundId = this.mStorage.getNotificationSoundId();
@@ -49,6 +51,15 @@ export class OptionService {
   public setChatPosition(pos: number): void {
     this.mChatPosition = pos;
     this.mStorage.setChatPosition(pos);
+  }
+
+  public isChatBotDisabled(): boolean {
+    return this.mChatBotDisabled;
+  }
+
+  public setChatBotDisabled(value: boolean): void {
+    this.mChatBotDisabled = value;
+    this.mStorage.setChatBotDisabled(value);
   }
 
   public isNotificationEnabled(): boolean {

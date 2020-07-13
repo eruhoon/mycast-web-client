@@ -66,17 +66,17 @@
           </label>
         </div>
       </div>
-      <!-- <div class="site-set-box">
+      <div class="site-set-box">
         <div class="set-title">
           <p>챗봇 표기</p>
         </div>
         <div class="set-switch">
-          <label class="switch">
+          <label class="switch" [ngClass]="{'active':isChatBotEnabled()}" (click)="toggleChatBotEnabled()">
             <span class="slider"></span>
           </label>
         </div>
       </div>
-      <div class="site-set-box">
+      <!--<div class="site-set-box">
         <div class="set-title">
           <p>후방주의</p>
         </div>

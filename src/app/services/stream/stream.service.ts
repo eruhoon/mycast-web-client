@@ -57,17 +57,6 @@ export class StreamService {
     this.mLocalStreams.next(streams);
   }
 
-  private mergeStreams(origins: Stream[], srcs: Stream[]): Stream[] {
-    if (this.isEquivalent(origins, srcs)) {
-      return origins;
-    }
-    const duplicated = origins.filter(
-      origin => srcs.some(src => src.isEquivalent(origin)));
-    const newStreams = srcs.filter(
-      src => origins.every(origin => !origin.isEquivalent(src)));
-    return [...duplicated, ...newStreams];
-  }
-
   private isEquivalent(a: Stream[], b: Stream[]): boolean {
     if (a.length !== b.length) {
       return false;

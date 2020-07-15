@@ -1,5 +1,5 @@
 import { Stream } from 'src/app/models/stream/Stream';
-import { StreamService } from 'src/app/services/stream/stream.service';
+import { StreamService, StreamSrvObserver } from 'src/app/services/stream/stream.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
@@ -12,23 +12,43 @@ import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.s
 export class StreamListComponent implements OnInit {
 
   private mService: StreamService;
+  private mLocalStreams: Stream[];
+  private mFavorites: Stream[];
 
   constructor(
     service: StreamService,
     private mFavoriteSrv: FavoriteStreamService) {
     this.mService = service;
+    this.mLocalStreams = [];
+    this.mFavorites = [];
   }
 
-  public async ngOnInit() {
+  public onLocalStreamChanged(streams: Stream[]): void {
+    this.mLocalStreams = streams;
+  }
+
+  public onExternalStreamChanged(streams: Stream[]): void {
+    this.mFavorites = this.getFavoriteStreams(streams);
+  }
+
+  public ngOnInit() {
+    this.mService.getLocalStreams().subscribe(
+      streams => this.onLocalStreamChanged(streams));
+
+    this.mService.getExternalStreams().subscribe(
+      streams => this.onExternalStreamChanged(streams));
   }
 
   public getStreams(): Stream[] {
-    return this.mService.getLocalStreams().getValue();
+    return this.mLocalStreams;
   }
 
   public getFavorites(): Stream[] {
+    return this.mFavorites;
+  }
+
+  private getFavoriteStreams(externals: Stream[]): Stream[] {
     const favorites = this.mFavoriteSrv.getFavorites();
-    const externals = this.mService.getExternalStreams().getValue();
     return externals.filter(stream => {
       const platform = stream.getPlatform();
       const keyId = stream.getKeyId();

@@ -88,6 +88,9 @@ export class NotificationService {
             body: vegaNoti.getBody(),
             timestamp: vegaNoti.getTimeStamp(),
           });
+          self.addEventListener('notificationclick', event => {
+            console.log(event);
+          });
         }
       });
     };

@@ -1,1 +1,3 @@
-<span [innerHTML]="message.getMessage()"></span>
+<div [ngClass]="{emoji: isEmoji()}">
+    <span [innerHTML]="text"></span>
+</div>

@@ -26,7 +26,7 @@ export class AppComponent {
     }
 
     this.mSwPush.notificationClicks.subscribe(({ action, notification }) => {
-      console.log('notification click', window);
+      console.log('notification click', window, action, notification);
       window.focus();
     });
   }

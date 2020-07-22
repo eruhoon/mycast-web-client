@@ -5,6 +5,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 declare class Plyr {
   constructor(element: any, option: any);
   public on(event: string, callback?: any): void;
+  public increaseVolume(step: number): void;
+  public decreaseVolume(step: number): void;
 }
 declare var flvjs: any;
 
@@ -41,6 +43,27 @@ export class StreamPlayerPageComponent implements OnInit {
   private onPlayerIdChanged(): void {
     if (flvjs.isSupported()) {
       this.initPlayer();
+    }
+  }
+
+  public onWheel(event: WheelEvent): void {
+    const isDownward = event.deltaY > 0;
+    if (isDownward) {
+      this.decreaseVolume();
+    } else {
+      this.increaseVolume();
+    }
+  }
+
+  private decreaseVolume(): void {
+    if (this.mPlyr) {
+      this.mPlyr.decreaseVolume(0.05);
+    }
+  }
+
+  private increaseVolume(): void {
+    if (this.mPlyr) {
+      this.mPlyr.increaseVolume(0.05);
     }
   }
 

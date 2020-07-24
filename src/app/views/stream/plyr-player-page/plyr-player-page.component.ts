@@ -1,6 +1,5 @@
-
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 declare class Plyr {
   constructor(element: any, option: any);
@@ -11,11 +10,11 @@ declare class Plyr {
 declare var flvjs: any;
 
 @Component({
-  selector: 'stream-player-page',
-  templateUrl: './stream-player-page.component.html',
-  styleUrls: ['./stream-player-page.component.scss']
+  selector: 'plyr-player-page',
+  templateUrl: './plyr-player-page.component.html',
+  styleUrls: ['./plyr-player-page.component.scss']
 })
-export class StreamPlayerPageComponent implements OnInit {
+export abstract class PlyrPlayerPageComponent implements OnInit {
 
   @ViewChild('player', { static: true })
   public mPlayerView: ElementRef<HTMLVideoElement>;
@@ -34,6 +33,8 @@ export class StreamPlayerPageComponent implements OnInit {
   public ngOnInit() {
     this.mRoute.paramMap.subscribe(params => this.onParamChanged(params));
   }
+
+  public getPlayerId(): string { return this.mPlayerId; }
 
   private onParamChanged(params: ParamMap): void {
     this.mPlayerId = params.get('playerId') || '';
@@ -83,18 +84,20 @@ export class StreamPlayerPageComponent implements OnInit {
     return plyr;
   }
 
-  private createPlayer(): any {
+  public createPlayer(): any {
     const player = flvjs.createPlayer({
       enableWorker: false,
       lazyLoadMaxDuration: 3 * 60,
       type: 'flv',
       isLive: true,
-      url: `https://mycast.xyz:8087/live/${this.mPlayerId}.flv`
+      url: this.getUrl(),
     });
 
     player.attachMediaElement(this.mPlayerView.nativeElement);
     return player;
   }
+
+  public abstract getUrl(): string;
 
   private initPlayer(): void {
     this.mPlyr = this.createPlyr();

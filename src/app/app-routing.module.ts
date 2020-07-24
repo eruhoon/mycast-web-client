@@ -11,14 +11,14 @@ import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
 import {
-    StreamPlayerPageComponent
-} from './views/stream/stream-player-page/stream-player-page.component';
+  StreamPlayerPageComponent
+} from './views/stream/plyr-player-page/stream-player-page.component';
 import {
-    TestPlayerPageComponent
+  TestPlayerPageComponent
 } from './views/stream/test-player-page/test-player-page.component';
 import {
-    TotoroPlayerPageComponent
-} from './views/stream/totoro-player-page/totoro-player-page.component';
+  TotoroPlayerPageComponent
+} from './views/stream/plyr-player-page/totoro-player-page.component';
 
 const routes: Routes = [
   {

@@ -70,7 +70,6 @@ import { PhotoDetailViewComponent } from './views/photo/photo-detail-view/photo-
 import { PhotoEntryComponent } from './views/photo/photo-entry/photo-entry.component';
 import { PhotoMainViewComponent } from './views/photo/photo-main-view/photo-main-view.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
-import { PlyrPlayerPageComponent } from './views/stream/plyr-player-page/plyr-player-page.component';
 import { StreamPlayerPageComponent } from './views/stream/plyr-player-page/stream-player-page.component';
 import { TotoroPlayerPageComponent } from './views/stream/plyr-player-page/totoro-player-page.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';

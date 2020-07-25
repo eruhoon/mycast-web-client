@@ -19,7 +19,7 @@
     <!-- imoticon -->
     <div class="sticker-section right">
       <a *ngIf="!isOpen()"><i class="material-icons">warning</i></a>
-      <a>
+      <a (click)="openEmojiMenu()">
         <i class="material-icons">insert_emoticon</i>
       </a>
       <a *ngIf="isMobile()" (click)="openUploadImageDialog()">

@@ -32,6 +32,7 @@ export class ChatInterfaceComponent implements OnInit {
   private mOptionService: OptionService;
   private mCurrentChatService: CurrentChatService;
   private mClipboardManager: ClipboardManager;
+  private mEmojiMenuActive: boolean;
 
   constructor(
     private mMainSrv: MainService,
@@ -46,6 +47,7 @@ export class ChatInterfaceComponent implements OnInit {
     this.mCurrentChatService = currentChatService;
     this.mChatHistoryList = new ChatHistoryList();
     this.mClipboardManager = new ClipboardManager();
+    this.mEmojiMenuActive = false;
   }
 
   ngOnInit() {
@@ -132,6 +134,10 @@ export class ChatInterfaceComponent implements OnInit {
 
   public openUploadImageDialog(): void {
     this.mImageInput.nativeElement.click();
+  }
+
+  public openEmojiMenu(): void {
+    this.mEmojiMenuActive = true;
   }
 
   public uploadImage(): void {

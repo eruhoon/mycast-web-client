@@ -140,6 +140,10 @@ export class SettingViewComponent implements OnInit {
     return this.mOptionService.setTimestampShow(!option);
   }
 
+  public openMobilePage(): void {
+    window.open('/mobile', '_blank', 'width=800');
+  }
+
   public openProfileSettingView(): void {
     this.mProfileService.setModifyMode(ProfileModifyMode.PROFILE);
   }
@@ -161,6 +165,10 @@ export class SettingViewComponent implements OnInit {
   public onThemeClick(themeOption: ThemeOption): void {
     this.theme = themeOption.theme;
     this.mOptionService.setTheme(this.theme);
+  }
+
+  public isMobile(): boolean {
+    return this.mOptionService.isMobile();
   }
 }
 

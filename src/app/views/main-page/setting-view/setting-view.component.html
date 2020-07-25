@@ -34,11 +34,10 @@
         {{option.name}}</li>
     </ul>
   </div>
-  <!-- <div class="toggle-option" (click)="toggleDataSaveMode()">
-    <h5>데이터세이브 모드</h5>
-    <i *ngIf="isDataSaveMode()" class="material-icons">done</i>
+  <div class="toggle-option" *ngIf="!isMobile()" (click)="openMobilePage()">
+    <h5>모바일 모드</h5>
   </div>
-  <div class="toggle-option" (click)="toggleChatTimestamp()">
+  <!-- <div class="toggle-option" (click)="toggleChatTimestamp()">
     <h5>채팅 시각 표시</h5>
     <i *ngIf="isTimestampShow()" class="material-icons">done</i>
   </div> -->

@@ -7,7 +7,6 @@ import { MainService } from 'src/app/services/main/main.service';
 import { Component } from '@angular/core';
 
 import { ChatListService } from '../chat-list/chat-list.service';
-import { ChatPageService } from './chat-page.service';
 
 @Component({
   selector: 'chat-page',

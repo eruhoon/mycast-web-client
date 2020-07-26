@@ -158,15 +158,15 @@ export class WebSocketModel extends VegaChatSocketModel {
         this.mWebSocket.send(JSON.stringify(sendMsg));
     }
 
-    private static getUrl(): string {
-        return this.HTTPS_URL;
-    }
-
     private connect(): WebSocket {
         const socket = new WebSocket(WebSocketModel.getUrl());
         socket.onopen = () => this.onOpenSocket();
         socket.onmessage = message => this.onRawMessage(message);
         socket.onclose = () => this.onClose();
         return socket;
+    }
+
+    private static getUrl(): string {
+        return this.HTTPS_URL;
     }
 }

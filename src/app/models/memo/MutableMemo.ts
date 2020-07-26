@@ -15,15 +15,6 @@ export class MutableMemo implements Memo {
         this.mRegDate = new Date(0);
     }
 
-    public static createWithMemo(memo: Memo): MutableMemo {
-        const newMemo = new MutableMemo(memo.getHash());
-        newMemo.setBody(memo.getBody());
-        newMemo.setUserName(memo.getUserName());
-        newMemo.setUserIcon(memo.getUserIcon());
-        newMemo.setRegDate(memo.getRegDate());
-        return newMemo;
-    }
-
     public getHash(): string {
         return this.mHash;
     }
@@ -47,4 +38,13 @@ export class MutableMemo implements Memo {
     public getRegDate(): Date { return this.mRegDate; }
 
     public setRegDate(regDate: Date): void { this.mRegDate = regDate; }
+
+    public static createWithMemo(memo: Memo): MutableMemo {
+        const newMemo = new MutableMemo(memo.getHash());
+        newMemo.setBody(memo.getBody());
+        newMemo.setUserName(memo.getUserName());
+        newMemo.setUserIcon(memo.getUserIcon());
+        newMemo.setRegDate(memo.getRegDate());
+        return newMemo;
+    }
 }

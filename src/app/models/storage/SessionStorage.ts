@@ -6,13 +6,6 @@ export class SessionStorage {
 
     }
 
-    public static getInstance(): SessionStorage {
-        if (this.sInstance === null) {
-            this.sInstance = new SessionStorage();
-        }
-        return this.sInstance;
-    }
-
     public getSessionId(): string | null {
         return this.getItem(SessionStorageKey.SESSION_ID);
     }
@@ -27,6 +20,13 @@ export class SessionStorage {
 
     public setPrivateKey(privateKey: string): void {
         this.setItem(SessionStorageKey.PRIVATE_KEY, privateKey);
+    }
+
+    public static getInstance(): SessionStorage {
+        if (this.sInstance === null) {
+            this.sInstance = new SessionStorage();
+        }
+        return this.sInstance;
     }
 
     private getItem(key: SessionStorageKey): string | null {

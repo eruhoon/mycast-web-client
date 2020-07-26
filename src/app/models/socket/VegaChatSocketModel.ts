@@ -79,7 +79,7 @@ type MessageData = {
 export type ReceivedNotification = {
     from: { icon: string, nickname: string },
     timestamp: number,
-}
+};
 
 export type RefreshMyProfile = {
     coin: number,

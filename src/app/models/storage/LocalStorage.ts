@@ -13,13 +13,6 @@ export class LocalStorage {
     private constructor() {
     }
 
-    public static getInstance(): LocalStorage {
-        if (this.sInstance === null) {
-            this.sInstance = new LocalStorage();
-        }
-        return this.sInstance;
-    }
-
     public getChatPosition(): number {
         const rawPos = this.getItem(LocalStorageKey.CHAT_POSITION);
         if (rawPos === null) {
@@ -125,6 +118,13 @@ export class LocalStorage {
 
     public setFavorites(favorites: string): void {
         this.setItem(LocalStorageKey.FAVORITES, favorites);
+    }
+
+    public static getInstance(): LocalStorage {
+        if (this.sInstance === null) {
+            this.sInstance = new LocalStorage();
+        }
+        return this.sInstance;
     }
 
     private getItem(key: LocalStorageKey): string | null {

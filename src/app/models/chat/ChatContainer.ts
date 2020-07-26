@@ -14,32 +14,6 @@ export class ChatContianer {
         chats.forEach(chat => this.addChat(chat));
     }
 
-    private static createMutableChat(chat: Chat): MutableChat {
-        const mutableChat = new MutableChat();
-        mutableChat.setHash(chat.getHash());
-        mutableChat.setIcon(chat.getSender().getIcon());
-        mutableChat.setLevel(chat.getSender().getLevel());
-        mutableChat.setNickname(chat.getSender().getNickname());
-        mutableChat.setSenderType(chat.getSender().getType());
-        chat.getMessages().forEach(message => {
-            const mutableMessage = new MutableChatMessage();
-            mutableMessage.setType(message.getType());
-            mutableMessage.setRequest(message.getRequest());
-            mutableMessage.setMessage(message.getMessage());
-            mutableMessage.setTimestamp(message.getTimestamp());
-            mutableChat.addMessage(mutableMessage);
-        });
-        return mutableChat;
-    }
-
-    private static isSameSender(s1: ChatSender, s2: ChatSender): boolean {
-        return s1.getHash() === s2.getHash() &&
-            s1.getIcon() === s2.getIcon() &&
-            s1.getLevel() === s2.getLevel() &&
-            s1.getNickname() === s2.getNickname() &&
-            s1.getType() === s2.getType();
-    }
-
     public addChat(chat: Chat): void {
         const src = ChatContianer.createMutableChat(chat);
         const prev = this.mChats.pop();
@@ -65,5 +39,31 @@ export class ChatContianer {
 
     public toArray(): Chat[] {
         return this.mChats;
+    }
+
+    private static createMutableChat(chat: Chat): MutableChat {
+        const mutableChat = new MutableChat();
+        mutableChat.setHash(chat.getHash());
+        mutableChat.setIcon(chat.getSender().getIcon());
+        mutableChat.setLevel(chat.getSender().getLevel());
+        mutableChat.setNickname(chat.getSender().getNickname());
+        mutableChat.setSenderType(chat.getSender().getType());
+        chat.getMessages().forEach(message => {
+            const mutableMessage = new MutableChatMessage();
+            mutableMessage.setType(message.getType());
+            mutableMessage.setRequest(message.getRequest());
+            mutableMessage.setMessage(message.getMessage());
+            mutableMessage.setTimestamp(message.getTimestamp());
+            mutableChat.addMessage(mutableMessage);
+        });
+        return mutableChat;
+    }
+
+    private static isSameSender(s1: ChatSender, s2: ChatSender): boolean {
+        return s1.getHash() === s2.getHash() &&
+            s1.getIcon() === s2.getIcon() &&
+            s1.getLevel() === s2.getLevel() &&
+            s1.getNickname() === s2.getNickname() &&
+            s1.getType() === s2.getType();
     }
 }

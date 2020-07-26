@@ -16,19 +16,6 @@ export class MutablePhoto implements Photo {
         this.mHash = hash;
     }
 
-    public static createWithPhoto(photo: Photo): MutablePhoto {
-        const newPhoto = new MutablePhoto(photo.getHash());
-        newPhoto.setUrl(photo.getUrl());
-        newPhoto.setWidth(photo.getWidth());
-        newPhoto.setHeight(photo.getHeight());
-        newPhoto.setMimeType(photo.getMimeType());
-        newPhoto.setRegDate(photo.getRegDate());
-        newPhoto.setViewer(photo.getViewer());
-        newPhoto.setTags(photo.getTags());
-        newPhoto.setForAdult(photo.isForAdult());
-        return newPhoto;
-    }
-
     public getHash(): string {
         return this.mHash;
     }
@@ -95,5 +82,18 @@ export class MutablePhoto implements Photo {
 
     public setForAdult(adult: boolean): void {
         this.mForAdult = adult;
+    }
+
+    public static createWithPhoto(photo: Photo): MutablePhoto {
+        const newPhoto = new MutablePhoto(photo.getHash());
+        newPhoto.setUrl(photo.getUrl());
+        newPhoto.setWidth(photo.getWidth());
+        newPhoto.setHeight(photo.getHeight());
+        newPhoto.setMimeType(photo.getMimeType());
+        newPhoto.setRegDate(photo.getRegDate());
+        newPhoto.setViewer(photo.getViewer());
+        newPhoto.setTags(photo.getTags());
+        newPhoto.setForAdult(photo.isForAdult());
+        return newPhoto;
     }
 }

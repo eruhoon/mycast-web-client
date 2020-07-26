@@ -16,89 +16,88 @@ import { ProfileService } from '../profile/profile.service';
 import { CurrentUserService } from '../user/current-user.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MainService {
 
-  private mProfileService: ProfileService;
-  private mCurrentChatService: CurrentChatService;
-  private mCurrentUserService: CurrentUserService;
-  private mNotificationService: NotificationService;
-  private mChatNetwork: ChatNetworkModel;
-  private mCurrentLink: string;
+    private mProfileService: ProfileService;
+    private mCurrentChatService: CurrentChatService;
+    private mCurrentUserService: CurrentUserService;
+    private mNotificationService: NotificationService;
+    private mChatNetwork: ChatNetworkModel;
+    private mCurrentLink: string;
 
-  public constructor(
-    profileService: ProfileService,
-    currentChatService: CurrentChatService,
-    currentUserService: CurrentUserService,
-    notificationService: NotificationService) {
+    public constructor(
+        profileService: ProfileService,
+        currentChatService: CurrentChatService,
+        currentUserService: CurrentUserService,
+        notificationService: NotificationService) {
 
-    this.mProfileService = profileService;
-    this.mCurrentChatService = currentChatService;
-    this.mCurrentUserService = currentUserService;
-    this.mNotificationService = notificationService;
-    this.mChatNetwork = this.createChatNetworkModel();
-    this.mCurrentLink = '';
+        this.mProfileService = profileService;
+        this.mCurrentChatService = currentChatService;
+        this.mCurrentUserService = currentUserService;
+        this.mNotificationService = notificationService;
+        this.mChatNetwork = this.createChatNetworkModel();
+        this.mCurrentLink = '';
 
-    this.mProfileService.setModifyProfileCommand(
-      new ModifyProfileCommand(this.mChatNetwork));
-  }
-
-  public isOpen(): boolean { return this.mChatNetwork.isOpen(); }
-
-  // TODO: Remove
-  public getChatNework(): ChatNetworkModel {
-    return this.mChatNetwork;
-  }
-
-  public setCurrentLink(link: string | null) {
-    this.mCurrentLink = link || '';
-  }
-
-  public getCurrentLink(): string {
-    return this.mCurrentLink;
-  }
-
-  private createChatNetworkModel(): ChatNetworkModel {
-    const privateKey = SessionStorage.getInstance().getPrivateKey();
-    if (privateKey === null) {
-      return new NullChatNetworkModel();
+        this.mProfileService.setModifyProfileCommand(
+            new ModifyProfileCommand(this.mChatNetwork));
     }
-    const chatNetwork = new ChatNetworkModelImpl(privateKey);
-    chatNetwork.setOnRefreshMyProfileCallback(
-      profile => this.onMyProfileRefresh(profile));
-    chatNetwork.setOnRefreshChatListCallback(
-      chats => this.onChatListRefresh(chats));
-    chatNetwork.setOnRefreshUserListCallback(
-      users => this.onUserListRefresh(users));
-    chatNetwork.setOnNotificationReceivedCallback(
-      notification => this.onNotificationRecieved(notification));
-    chatNetwork.setOnChatCallback(chat => this.onChat(chat));
-    return chatNetwork;
-  }
 
-  private onMyProfileRefresh(profile: Profile) {
-    this.mProfileService.setProfile(profile);
-  }
+    public isOpen(): boolean { return this.mChatNetwork.isOpen(); }
 
-  private onChatListRefresh(chats: Chat[]) {
-    this.mCurrentChatService.setCurrentChat(chats);
-  }
+    // TODO: Remove
+    public getChatNework(): ChatNetworkModel {
+        return this.mChatNetwork;
+    }
 
-  private onUserListRefresh(users: User[]): void {
-    this.mCurrentUserService.setUsers(users);
-  }
+    public setCurrentLink(link: string | null) {
+        this.mCurrentLink = link || '';
+    }
 
-  private onNotificationRecieved(notification: VegaNotification): void {
-    this.mNotificationService.pushNotification(notification);
-  }
+    public getCurrentLink(): string {
+        return this.mCurrentLink;
+    }
 
-  public onChat(chat: Chat) {
-    this.mCurrentChatService.addChat(chat);
-  }
+    public onChat(chat: Chat) {
+        this.mCurrentChatService.addChat(chat);
+    }
 
-  public notify(to: string): void {
-    this.mChatNetwork.notify(to);
-  }
+    public notify(to: string): void {
+        this.mChatNetwork.notify(to);
+    }
 
+    private createChatNetworkModel(): ChatNetworkModel {
+        const privateKey = SessionStorage.getInstance().getPrivateKey();
+        if (privateKey === null) {
+            return new NullChatNetworkModel();
+        }
+        const chatNetwork = new ChatNetworkModelImpl(privateKey);
+        chatNetwork.setOnRefreshMyProfileCallback(
+            profile => this.onMyProfileRefresh(profile));
+        chatNetwork.setOnRefreshChatListCallback(
+            chats => this.onChatListRefresh(chats));
+        chatNetwork.setOnRefreshUserListCallback(
+            users => this.onUserListRefresh(users));
+        chatNetwork.setOnNotificationReceivedCallback(
+            notification => this.onNotificationRecieved(notification));
+        chatNetwork.setOnChatCallback(chat => this.onChat(chat));
+        return chatNetwork;
+    }
+
+    private onMyProfileRefresh(profile: Profile) {
+        this.mProfileService.setProfile(profile);
+    }
+
+    private onChatListRefresh(chats: Chat[]) {
+        this.mCurrentChatService.setCurrentChat(chats);
+    }
+
+    private onUserListRefresh(users: User[]): void {
+        this.mCurrentUserService.setUsers(users);
+    }
+
+    private onNotificationRecieved(notification: VegaNotification): void {
+        this.mNotificationService.pushNotification(notification);
+    }
 }

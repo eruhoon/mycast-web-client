@@ -32,13 +32,6 @@ export class StreamSocketModel {
         this.mOnNewLocalStream = _ => { };
     }
 
-    private static createSocket(): SocketIOClient.Socket {
-        const privateKey = SessionStorage.getInstance().getPrivateKey();
-        const option = { query: `key=${privateKey}` };
-
-        return io.connect(this.SOCKET_HOST, option);
-    }
-
     public setOnLocalStreamChanged(callback: TypeCallback<StreamDto[]>): void {
         this.mOnLocalStreamChanged = callback;
     }
@@ -65,6 +58,13 @@ export class StreamSocketModel {
 
         this.mOnLocalStreamChanged(this.mLocalStreamDtos);
         this.mOnExtStreamChanged(this.mExtStreamDtos);
+    }
+
+    private static createSocket(): SocketIOClient.Socket {
+        const privateKey = SessionStorage.getInstance().getPrivateKey();
+        const option = { query: `key=${privateKey}` };
+
+        return io.connect(this.SOCKET_HOST, option);
     }
 }
 

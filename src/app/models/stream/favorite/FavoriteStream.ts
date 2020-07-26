@@ -1,6 +1,6 @@
 import { OptionSerializable } from '../../storage/OptionSerializable';
 
-export class FavoriteStream implements OptionSerializable<string>{
+export class FavoriteStream implements OptionSerializable<string> {
 
     private mPlatform: string;
     private mKeyId: string;

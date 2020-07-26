@@ -15,14 +15,6 @@ export class NotificationSound {
         this.mSource = source;
     }
 
-    public static getNone(): NotificationSound {
-        return NotificationSound.NONE;
-    }
-
-    public static getDefaultSound(): NotificationSound {
-        return NotificationSound.DEFAULT_NOTIFICATION_SOUND;
-    }
-
     public getId(): string {
         return this.mId;
     }
@@ -33,5 +25,13 @@ export class NotificationSound {
 
     public getSource(): string {
         return this.mSource;
+    }
+
+    public static getNone(): NotificationSound {
+        return NotificationSound.NONE;
+    }
+
+    public static getDefaultSound(): NotificationSound {
+        return NotificationSound.DEFAULT_NOTIFICATION_SOUND;
     }
 }

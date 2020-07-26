@@ -1,5 +1,5 @@
-<div class="chat-entry" [ngClass]="{'data-save' : isDataSave()}">
-  <div class="icon-section" *ngIf="!isDataSave()">
+<div class="chat-entry">
+  <div class="icon-section">
     <div class="icon">
       <img #icon [src]="getIcon()" (contextmenu)="onIconContextMenu()" />
     </div>

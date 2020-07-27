@@ -30,7 +30,6 @@ export class ChatEntryComponent implements OnInit {
   public ngOnInit(): void {
     const env = this.chat.getSender().getType();
     this.mEnvironment = ChatEntryComponent.convertEnv(env);
-    console.log(this.chat);
     this.mPowerfulHanhwa = this.chat.getSender().getNickname() === '안알랴쥼';
   }
 

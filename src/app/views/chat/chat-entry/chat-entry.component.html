@@ -1,7 +1,8 @@
 <div class="chat-entry">
   <div class="icon-section">
     <div class="icon">
-      <img #icon [src]="getIcon()" (contextmenu)="onIconContextMenu()" />
+      <img #icon [src]="getIcon()" (contextmenu)="onIconContextMenu()"
+        [ngStyle]="{border: isPowerfulHanhwa() ? '2px solid #ff6b01': 'none'}" />
     </div>
   </div>
   <div class="message-section">

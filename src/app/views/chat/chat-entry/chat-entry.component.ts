@@ -3,7 +3,7 @@ import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
 } from '@angular/core';
 
 @Component({
@@ -23,14 +23,18 @@ export class ChatEntryComponent implements OnInit {
   public SenderEnv = SenderEnv;
 
   private mEnvironment: SenderEnv;
+  private mPowerfulHanhwa: boolean;
 
   public constructor(private mOption: OptionService) { }
 
   public ngOnInit(): void {
     const env = this.chat.getSender().getType();
     this.mEnvironment = ChatEntryComponent.convertEnv(env);
-
+    console.log(this.chat);
+    this.mPowerfulHanhwa = this.chat.getSender().getNickname() === '안알랴쥼';
   }
+
+  public isPowerfulHanhwa(): boolean { return this.mPowerfulHanhwa; }
 
   public getIcon(): string {
     return this.chat.getSender().getIcon().trim();

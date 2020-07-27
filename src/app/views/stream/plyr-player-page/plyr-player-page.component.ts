@@ -9,11 +9,6 @@ declare class Plyr {
 }
 declare var flvjs: any;
 
-@Component({
-    selector: 'plyr-player-page',
-    templateUrl: './plyr-player-page.component.html',
-    styleUrls: ['./plyr-player-page.component.scss']
-})
 export abstract class PlyrPlayerPageComponent implements OnInit {
 
     @ViewChild('player', { static: true })

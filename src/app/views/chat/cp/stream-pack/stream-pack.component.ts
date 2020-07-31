@@ -1,11 +1,8 @@
-import { StreamLinkFactory } from 'src/app/models/stream/link/StreamLinkFactory';
+import { Component, Injector, OnInit } from '@angular/core';
+import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 import { StreamPlatformUtils } from 'src/app/models/stream/platform/StreamPlatformUtils';
 import { MainService } from 'src/app/services/main/main.service';
-
-import { Component, Injector, OnInit } from '@angular/core';
-
 import { ChatPack } from '../ChatPack';
-import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 
 @Component({
   selector: 'stream-pack',
@@ -23,8 +20,6 @@ export class StreamPackComponent extends ChatPack implements OnInit {
   private mThumbnail: string;
   private mLink: string;
 
-  private mLinkFactory: StreamLinkFactory;
-
   public constructor(
     injector: Injector,
     private mMainSrv: MainService) {
@@ -38,7 +33,6 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mName = '';
     this.mPlatform = '';
     this.mThumbnail = '';
-    this.mLinkFactory = new StreamLinkFactory();
   }
 
   public ngOnInit() {

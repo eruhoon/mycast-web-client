@@ -56,11 +56,6 @@ export class StreamPackComponent extends ChatPack implements OnInit {
 
   public getThumbnail(): string { return this.mThumbnail; }
 
-  // TODO: Optimize PlatformIcon
-  public getPlatformIcon(): string {
-    return `/assets/image/stream/${this.mPlatform}.png`;
-  }
-
   public onClick(): void {
     if (this.mPlatform === 'afreeca') {
       window.open(this.mLink, '_blank', 'width=800');

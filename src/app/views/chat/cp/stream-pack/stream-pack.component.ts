@@ -5,6 +5,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
+import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 
 @Component({
   selector: 'stream-pack',
@@ -48,7 +49,7 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     this.mPlatform = param.platform;
     this.platformIconSrc = StreamPlatformUtils.getIcon(param.platform);
     this.mThumbnail = param.thumbnail;
-    this.mLink = this.mLinkFactory.createLink(param.platform, param.keyId);
+    this.mLink = param.link;
   }
 
   public getId(): string { return this.mId; }
@@ -70,7 +71,8 @@ export class StreamPackComponent extends ChatPack implements OnInit {
     if (this.mPlatform === 'afreeca') {
       window.open(this.mLink, '_blank', 'width=800');
     } else {
-      this.mMainSrv.setCurrentLink(this.mLink);
+      const link = LinkUtils.addTimestamp(this.mLink);
+      this.mMainSrv.setCurrentLink(link);
     }
   }
 }

@@ -22,7 +22,8 @@ export class StreamShareCommand {
             platform: this.mStream.getPlatform(),
             description: this.mStream.getDescription(),
             thumbnail: this.mStream.getThumbnail(),
-            viewer: this.mStream.getViewer()
+            link: this.mStream.getUrl(),
+            viewer: this.mStream.getViewer(),
         });
         Axios.post(url, qs.stringify({ user: privKey, msg }));
     }

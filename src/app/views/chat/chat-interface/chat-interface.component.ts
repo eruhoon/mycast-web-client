@@ -127,8 +127,20 @@ export class ChatInterfaceComponent implements OnInit {
         this.mImageInput.nativeElement.click();
     }
 
+    public toggleEmojiMenu(): void {
+        if (this.mEmojiMenuActive) {
+            this.closeEmojiMenu();
+        } else {
+            this.openEmojiMenu();
+        }
+    }
+
     public openEmojiMenu(): void {
         this.mEmojiMenuActive = true;
+    }
+
+    public closeEmojiMenu(): void {
+        this.mEmojiMenuActive = false;
     }
 
     public uploadImage(): void {

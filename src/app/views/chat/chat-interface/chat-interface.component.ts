@@ -137,6 +137,7 @@ export class ChatInterfaceComponent implements OnInit {
 
     public openEmojiMenu(): void {
         this.mEmojiMenuActive = true;
+        this.chatInput.emit('🤔');
     }
 
     public closeEmojiMenu(): void {

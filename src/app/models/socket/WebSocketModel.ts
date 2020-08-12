@@ -19,6 +19,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     private mOpen: boolean;
     private mWebSocket: WebSocket;
     private mOnRefreshMyProfile: TypeCallback<Profile>;
+    private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
     private mOnNotificationReceived: TypeCallback<VegaNotification>;
@@ -66,6 +67,10 @@ export class WebSocketModel extends VegaChatSocketModel {
 
     public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
         this.mOnRefreshMyProfile = callback;
+    }
+
+    public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
+        this.mOnUpdateLink = callback;
     }
 
     public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
@@ -116,6 +121,14 @@ export class WebSocketModel extends VegaChatSocketModel {
         notification.setBody(`"${receivedNotification.from.nickname}"로 부터 알림이 왔어요.`);
         notification.setChannel(NotificationChannelHash.ALARM);
         this.mOnNotificationReceived(notification);
+    }
+
+    protected onUpdateLink(chatHash: string, link: any): void {
+        this.mOnUpdateLink({
+            chatHash,
+            title: link.title,
+            thumbnail: link.thumbnail,
+        });
     }
 
     protected onRefreshChatList(refreshChats: RefreshChatDto[]) {
@@ -170,3 +183,9 @@ export class WebSocketModel extends VegaChatSocketModel {
         return this.HTTPS_URL;
     }
 }
+
+export type UpdateLinkResponse = {
+    chatHash: string,
+    title: string,
+    thumbnail: string,
+};

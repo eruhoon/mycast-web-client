@@ -15,6 +15,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
     public abstract modifyProfile(name: string, icon: string): void;
 
     protected abstract onRefreshMyProfile(profile: RefreshMyProfile): void;
+    protected abstract onUpdateLink(chatHash: string, link: any): void;
     protected abstract onRefreshUserList(users: RefreshUser[]): void;
     protected abstract onRefreshChatList(chats: RefreshChatDto[]): void;
     protected abstract onNotificationReceived(
@@ -63,6 +64,9 @@ export abstract class VegaChatSocketModel implements SocketModel {
                 break;
             case 'applyMyStatus':
                 this.onRefreshMyProfile(messageData.response);
+                break;
+            case 'link-update':
+                this.onUpdateLink(messageData.request, messageData.response);
                 break;
             default:
         }

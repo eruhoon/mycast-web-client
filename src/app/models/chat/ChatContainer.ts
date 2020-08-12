@@ -2,6 +2,7 @@ import { Chat } from './Chat';
 import { ChatSender } from './ChatSender';
 import { MutableChat } from './MutableChat';
 import { MutableChatMessage } from './MutableChatMessage';
+import { UpdateLinkResponse } from '../socket/WebSocketModel';
 
 export class ChatContianer {
 
@@ -35,6 +36,15 @@ export class ChatContianer {
         const length = this.mChats.length;
         this.mChats = this.mChats.filter((_, i) =>
             i >= length - ChatContianer.CHAT_CAPACITY);
+    }
+
+    public updateLink(link: UpdateLinkResponse): void {
+        const found = this.mChats.find(chat => chat.getHash() === link.chatHash);
+        if (!found) {
+            console.log('not found');
+            return;
+        }
+        console.log(found);
     }
 
     public toArray(): Chat[] {

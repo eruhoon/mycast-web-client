@@ -14,6 +14,7 @@ import { CurrentChatService } from '../chat/current-chat.service';
 import { NotificationService } from '../notification/notification.service';
 import { ProfileService } from '../profile/profile.service';
 import { CurrentUserService } from '../user/current-user.service';
+import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
 
 @Injectable({
     providedIn: 'root'
@@ -75,6 +76,8 @@ export class MainService {
         const chatNetwork = new ChatNetworkModelImpl(privateKey);
         chatNetwork.setOnRefreshMyProfileCallback(
             profile => this.onMyProfileRefresh(profile));
+        chatNetwork.setOnUpdateLinkCallback(
+            link => this.onUpdateLink(link));
         chatNetwork.setOnRefreshChatListCallback(
             chats => this.onChatListRefresh(chats));
         chatNetwork.setOnRefreshUserListCallback(
@@ -87,6 +90,10 @@ export class MainService {
 
     private onMyProfileRefresh(profile: Profile) {
         this.mProfileService.setProfile(profile);
+    }
+
+    private onUpdateLink(link: UpdateLinkResponse): void {
+        this.mCurrentChatService.updateLink(link);
     }
 
     private onChatListRefresh(chats: Chat[]) {

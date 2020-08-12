@@ -3,7 +3,7 @@ import { TypeCallback } from '../common/callback/TypeCallback';
 import { VegaNotification } from '../notification/VegaNotification';
 import { Profile } from '../profile/Profile';
 import { SocketModel } from '../socket/SocketModel';
-import { WebSocketModel } from '../socket/WebSocketModel';
+import { UpdateLinkResponse, WebSocketModel } from '../socket/WebSocketModel';
 import { User } from '../user/User';
 import { ChatNetworkModel } from './ChatNetworkModel';
 
@@ -11,6 +11,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     private mSocket: SocketModel;
     private mOnRefreshMyProfile: TypeCallback<Profile>;
+    private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
     private mOnRefreshChatList: TypeCallback<Chat[]>;
     private mOnRefreshUserList: TypeCallback<User[]>;
     private mOnNotifcationReceived: TypeCallback<VegaNotification>;
@@ -18,6 +19,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     public constructor(privateKey: string) {
         this.mSocket = this.createSocketModel(privateKey);
+        this.mOnUpdateLink = _ => { };
         this.mOnRefreshChatList = _ => { };
         this.mOnChat = _ => { };
     }
@@ -38,6 +40,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
 
     public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
         this.mOnRefreshMyProfile = callback;
+    }
+
+    public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
+        this.mOnUpdateLink = callback;
     }
 
     public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
@@ -62,6 +68,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         this.mOnRefreshMyProfile(profile);
     }
 
+    private onUpdateLink(link: UpdateLinkResponse): void {
+        this.mOnUpdateLink(link);
+    }
+
     private onRefreshChatList(chats: Chat[]): void {
         this.mOnRefreshChatList(chats);
     }
@@ -74,6 +84,8 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
         const model = new WebSocketModel(privateKey);
         model.setOnRefreshMyProfileCallback(
             profile => this.onRefreshMyProfile(profile));
+        model.setOnUpdateLinkCallback(
+            updateLink => this.onUpdateLink(updateLink));
         model.setOnRefreshChatListCallback(
             chats => this.onRefreshChatList(chats));
         model.setOnRefreshUserListCallback(

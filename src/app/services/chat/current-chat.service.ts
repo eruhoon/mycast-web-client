@@ -4,6 +4,7 @@ import { ChatContianer as ChatContainer } from 'src/app/models/chat/ChatContaine
 import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 import { Injectable } from '@angular/core';
+import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class CurrentChatService {
 
   public getChats(): Observable<Chat[]> {
     return this.mChatSubject.asObservable();
+  }
+
+  public updateLink(link: UpdateLinkResponse): void {
+    this.mChatContainer.updateLink(link);
   }
 
   public setCurrentChat(chats: Chat[]): void {

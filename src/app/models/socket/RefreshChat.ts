@@ -58,6 +58,8 @@ class RefreshChatMessage implements ChatMessage {
         this.mTimestamp = new Date(this.mDto.timestamp).getTime();
     }
 
+    public getHash(): string { return this.mDto.hash; }
+
     public getType(): ChatType { return this.mType; }
 
     public getRequest(): string { return this.mDto.msg.request || ''; }

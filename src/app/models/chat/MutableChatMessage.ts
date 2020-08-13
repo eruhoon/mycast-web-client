@@ -3,10 +3,19 @@ import { ChatType } from './ChatType';
 
 export class MutableChatMessage implements ChatMessage {
 
+    private mHash: string;
     private mType: ChatType;
     private mRequest: string;
     private mMessage: string;
     private mTime: Date;
+
+    public constructor(hash: string) {
+        this.mHash = hash;
+    }
+
+    public getHash(): string {
+        return this.mHash;
+    }
 
     public getType(): ChatType {
         return this.mType;

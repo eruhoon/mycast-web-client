@@ -39,12 +39,13 @@ export class ChatContianer {
     }
 
     public updateLink(link: UpdateLinkResponse): void {
-        const found = this.mChats.find(chat => chat.getHash() === link.chatHash);
-        if (!found) {
-            console.log('not found');
-            return;
-        }
-        console.log(found);
+        console.log(link.chatHash);
+
+        this.mChats.forEach(chat => {
+            const found = chat.getMessages()
+                .find(msg => msg.getHash() === link.chatHash);
+
+        });
     }
 
     public toArray(): Chat[] {
@@ -59,7 +60,7 @@ export class ChatContianer {
         mutableChat.setNickname(chat.getSender().getNickname());
         mutableChat.setSenderType(chat.getSender().getType());
         chat.getMessages().forEach(message => {
-            const mutableMessage = new MutableChatMessage();
+            const mutableMessage = new MutableChatMessage(message.getHash());
             mutableMessage.setType(message.getType());
             mutableMessage.setRequest(message.getRequest());
             mutableMessage.setMessage(message.getMessage());

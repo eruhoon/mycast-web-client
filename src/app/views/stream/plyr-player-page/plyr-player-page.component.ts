@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 declare class Plyr {
     constructor(element: any, option: any);
@@ -10,7 +10,6 @@ declare class Plyr {
 declare var flvjs: any;
 
 export abstract class PlyrPlayerPageComponent implements OnInit {
-
     @ViewChild('player', { static: true })
     public mPlayerView: ElementRef<HTMLVideoElement>;
 
@@ -26,10 +25,12 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.mRoute.paramMap.subscribe(params => this.onParamChanged(params));
+        this.mRoute.paramMap.subscribe((params) => this.onParamChanged(params));
     }
 
-    public getPlayerId(): string { return this.mPlayerId; }
+    public getPlayerId(): string {
+        return this.mPlayerId;
+    }
 
     public onWheel(event: WheelEvent): void {
         const isDownward = event.deltaY > 0;
@@ -69,13 +70,18 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
         const plyr = new Plyr(this.mPlayerView.nativeElement, {
             speed: {
                 selected: 1,
-                options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+                options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
             },
             clickToPlay: false,
             controls: [
-                'play-large', 'play', 'mute',
-                'volume', 'pip', 'airplay', 'fullscreen'
-            ]
+                'play-large',
+                'play',
+                'mute',
+                'volume',
+                'pip',
+                'airplay',
+                'fullscreen',
+            ],
         });
         plyr.on('ready', (event: any) => this.onPlayerReady());
         return plyr;

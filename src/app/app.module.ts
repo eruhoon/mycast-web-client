@@ -1,3 +1,4 @@
+import { PlyrModule } from 'ngx-plyr';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -148,6 +149,7 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
         StreamPreviewComponent,
     ],
     imports: [
+        PlyrModule,
         BrowserModule,
         FormsModule,
         AppRoutingModule,

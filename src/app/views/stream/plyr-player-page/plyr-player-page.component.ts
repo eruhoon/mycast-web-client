@@ -1,27 +1,50 @@
 import { ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-
-declare class Plyr {
-    constructor(element: any, option: any);
-    public on(event: string, callback?: any): void;
-    public increaseVolume(step: number): void;
-    public decreaseVolume(step: number): void;
-}
-declare var flvjs: any;
+import { PlyrComponent, PlyrDriver } from 'ngx-plyr';
+import { VegaPlyrDriver } from './VegaPlyrDriver';
 
 export abstract class PlyrPlayerPageComponent implements OnInit {
+
+    @ViewChild(PlyrComponent, { static: false })
+    public plyr: PlyrComponent;
+
     @ViewChild('player', { static: true })
     public mPlayerView: ElementRef<HTMLVideoElement>;
 
+    public newPlayer: Plyr;
+
+    driver: PlyrDriver | null = null;
+
+    opts: Plyr.Options = {
+        speed: {
+            selected: 1,
+            options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+        },
+        clickToPlay: false,
+        controls: [
+            'play-large',
+            'play',
+            'mute',
+            'volume',
+            'pip',
+            'airplay',
+            'fullscreen',
+        ],
+    };
+
     private mRoute: ActivatedRoute;
     private mPlayerId: string;
-    private mPlyr: Plyr | null;
-    private mPlayer: any;
 
     public constructor(route: ActivatedRoute) {
         this.mRoute = route;
-        this.mPlyr = null;
-        this.mPlayer = null;
+    }
+
+    public init(event: Plyr.PlyrEvent): void {
+        console.log('init', event);
+    }
+
+    public played(event: Plyr.PlyrEvent): void {
+        console.log(event);
     }
 
     public ngOnInit() {
@@ -41,6 +64,12 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
         }
     }
 
+    public onReady(event: Plyr.PlyrEvent): void {
+        if (this.plyr.player) {
+            this.plyr.player.play();
+        }
+    }
+
     public abstract getUrl(): string;
 
     private onParamChanged(params: ParamMap): void {
@@ -49,64 +78,18 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
     }
 
     private onPlayerIdChanged(): void {
-        if (flvjs.isSupported()) {
-            this.initPlayer();
-        }
+        this.driver = new VegaPlyrDriver(this.getUrl());
     }
 
     private decreaseVolume(): void {
-        if (this.mPlyr) {
-            this.mPlyr.decreaseVolume(0.05);
+        if (this.plyr.player) {
+            this.plyr.player.decreaseVolume(0.05);
         }
     }
 
     private increaseVolume(): void {
-        if (this.mPlyr) {
-            this.mPlyr.increaseVolume(0.05);
+        if (this.plyr.player) {
+            this.plyr.player.increaseVolume(0.05);
         }
-    }
-
-    private createPlyr(): Plyr {
-        const plyr = new Plyr(this.mPlayerView.nativeElement, {
-            speed: {
-                selected: 1,
-                options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
-            },
-            clickToPlay: false,
-            controls: [
-                'play-large',
-                'play',
-                'mute',
-                'volume',
-                'pip',
-                'airplay',
-                'fullscreen',
-            ],
-        });
-        plyr.on('ready', (event: any) => this.onPlayerReady());
-        return plyr;
-    }
-
-    private initPlayer(): void {
-        this.mPlyr = this.createPlyr();
-        this.mPlayer = this.createPlayer();
-        this.mPlayer.load();
-    }
-
-    private createPlayer(): any {
-        const player = flvjs.createPlayer({
-            enableWorker: false,
-            lazyLoadMaxDuration: 3 * 60,
-            type: 'flv',
-            isLive: true,
-            url: this.getUrl(),
-        });
-
-        player.attachMediaElement(this.mPlayerView.nativeElement);
-        return player;
-    }
-
-    private onPlayerReady() {
-        this.mPlayer.play();
     }
 }

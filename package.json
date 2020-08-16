@@ -27,6 +27,8 @@
     "@angular/service-worker": "~8.2.14",
     "@types/socket.io-client": "^1.4.33",
     "axios": "^0.19.2",
+    "ngx-plyr": "^4.0.0",
+    "plyr": "^3.6.2",
     "rxjs": "~6.4.0",
     "socket.io-client": "^2.3.0",
     "ts-md5": "^1.2.7",

@@ -11,7 +11,7 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
     @ViewChild('player', { static: true })
     public mPlayerView: ElementRef<HTMLVideoElement>;
 
-    public newPlayer: Plyr;
+    public player: Plyr;
 
     driver: PlyrDriver | null = null;
 
@@ -39,12 +39,7 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
         this.mRoute = route;
     }
 
-    public init(event: Plyr.PlyrEvent): void {
-        console.log('init', event);
-    }
-
     public played(event: Plyr.PlyrEvent): void {
-        console.log(event);
     }
 
     public ngOnInit() {
@@ -65,9 +60,7 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
     }
 
     public onReady(event: Plyr.PlyrEvent): void {
-        if (this.plyr.player) {
-            this.plyr.player.play();
-        }
+        this.player.play();
     }
 
     public abstract getUrl(): string;
@@ -82,14 +75,10 @@ export abstract class PlyrPlayerPageComponent implements OnInit {
     }
 
     private decreaseVolume(): void {
-        if (this.plyr.player) {
-            this.plyr.player.decreaseVolume(0.05);
-        }
+        this.player.decreaseVolume(0.05);
     }
 
     private increaseVolume(): void {
-        if (this.plyr.player) {
-            this.plyr.player.increaseVolume(0.05);
-        }
+        this.player.increaseVolume(0.05);
     }
 }

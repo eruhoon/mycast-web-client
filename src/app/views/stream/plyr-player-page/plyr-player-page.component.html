@@ -1,5 +1,5 @@
 <div class="container" (wheel)="onWheel($event)">
     <plyr style="display: block; width: 100%; height: 100%;" plyrTitle="Video 1" [plyrPlaysInline]="true"
-        [plyrDriver]="driver" [plyrOptions]="opts" (plyrInit)="init($event);" (plyrReady)="onReady($event)"
+        [plyrDriver]="driver" [plyrOptions]="opts" (plyrInit)="player = $event" (plyrReady)="onReady($event)"
         (plyrPlay)="played($event)"></plyr>
 </div>

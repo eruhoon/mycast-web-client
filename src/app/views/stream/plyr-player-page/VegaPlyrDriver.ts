@@ -2,7 +2,7 @@
 import { PlyrDriver, PlyrDriverCreateParams, PlyrDriverDestroyParams, PlyrDriverUpdateSourceParams } from 'ngx-plyr';
 import * as Plyr from 'plyr';
 
-declare var flvjs: any;
+
 
 export class VegaPlyrDriver implements PlyrDriver {
 

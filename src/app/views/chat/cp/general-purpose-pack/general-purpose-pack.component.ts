@@ -1,11 +1,12 @@
 import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
-import { Injector, OnInit } from '@angular/core';
+import { Injector, OnInit, Directive } from '@angular/core';
 
 import { ChatPack } from '../ChatPack';
 import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 
+@Directive()
 export abstract class GeneralPurposePackComponent extends ChatPack implements OnInit {
 
   public prop: GeneralPurposeProperty;

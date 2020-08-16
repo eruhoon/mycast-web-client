@@ -1,8 +1,9 @@
-import { ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ElementRef, OnInit, ViewChild, Directive } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PlyrComponent, PlyrDriver } from 'ngx-plyr';
 import { VegaPlyrDriver } from './VegaPlyrDriver';
 
+@Directive()
 export abstract class PlyrPlayerPageComponent implements OnInit {
 
     @ViewChild(PlyrComponent, { static: false })

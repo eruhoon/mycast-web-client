@@ -1,8 +1,9 @@
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Injector, Input, Optional } from '@angular/core';
+import { Injector, Input, Optional, Directive } from '@angular/core';
 
+@Directive()
 export abstract class ChatPack {
     @Input() message: ChatMessage;
 

@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SideBarService } from '../../side-bar.service';
-import { SideBarStreamEntry } from '../SideBarStreamEntry';
+import { SideBarStreamEntryDirective } from '../SideBarStreamEntry';
 
 @Component({
-  selector: 'simple-side-bar-stream-entry',
-  templateUrl: './simple-side-bar-stream-entry.component.html',
-  styleUrls: [
-    './simple-side-bar-stream-entry.component.scss',
-    '../side-bar-stream-entry.color.scss'
-  ]
+    selector: 'simple-side-bar-stream-entry',
+    templateUrl: './simple-side-bar-stream-entry.component.html',
+    styleUrls: [
+        './simple-side-bar-stream-entry.component.scss',
+        '../side-bar-stream-entry.color.scss'
+    ]
 })
 export class SimpleSideBarStreamEntryComponent
-  extends SideBarStreamEntry implements OnInit {
+    extends SideBarStreamEntryDirective implements OnInit {
 
-  public constructor(private mSideBarSrv: SideBarService) {
-    super();
-  }
+    public constructor(private mSideBarSrv: SideBarService) {
+        super();
+    }
 
-  public ngOnInit() {
-  }
+    public ngOnInit() {
+    }
 
-  public onSelect(): void {
-    this.mSideBarSrv.setStreamPreview(this.stream);
-  }
+    public onSelect(): void {
+        this.mSideBarSrv.setStreamPreview(this.stream);
+    }
 }

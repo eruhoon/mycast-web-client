@@ -3,14 +3,14 @@ import { LinkPopupService } from 'src/app/services/link/link-popup.service';
 
 import { Component, Injector, OnInit } from '@angular/core';
 
-import { ChatPack } from '../ChatPack';
+import { ChatPackDirective } from '../ChatPack';
 
 @Component({
     selector: 'lol-user-pack',
     templateUrl: './lol-user-pack.component.html',
     styleUrls: ['./lol-user-pack.component.scss']
 })
-export class LolUserPackComponent extends ChatPack implements OnInit {
+export class LolUserPackComponent extends ChatPackDirective implements OnInit {
 
     private mName: string;
     private mLevel: number;

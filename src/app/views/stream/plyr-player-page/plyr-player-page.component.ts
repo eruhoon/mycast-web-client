@@ -4,7 +4,7 @@ import { PlyrComponent, PlyrDriver } from 'ngx-plyr';
 import { VegaPlyrDriver } from './VegaPlyrDriver';
 
 @Directive()
-export abstract class PlyrPlayerPageComponent implements OnInit {
+export abstract class PlyrPlayerPageDirective implements OnInit {
 
     @ViewChild(PlyrComponent, { static: false })
     public plyr: PlyrComponent;

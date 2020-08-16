@@ -1,10 +1,9 @@
+import { Directive, Injector, Input } from '@angular/core';
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Injector, Input, Optional, Directive } from '@angular/core';
-
 @Directive()
-export abstract class ChatPack {
+export abstract class ChatPackDirective {
     @Input() message: ChatMessage;
 
     private mOptionService: OptionService;

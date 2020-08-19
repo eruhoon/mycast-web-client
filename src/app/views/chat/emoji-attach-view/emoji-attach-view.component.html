@@ -2,4 +2,7 @@
     <div class="title">
         <h4>Emoji</h4>
     </div>
+    <span *ngFor="let emoji of emojies" (click)="sendEmoji(emoji)">
+        {{emoji}}
+    </span>
 </div>

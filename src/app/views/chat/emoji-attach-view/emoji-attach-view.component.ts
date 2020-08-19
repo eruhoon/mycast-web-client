@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'emoji-attach-view',
-  templateUrl: './emoji-attach-view.component.html',
-  styleUrls: ['./emoji-attach-view.component.scss'],
+    selector: 'emoji-attach-view',
+    templateUrl: './emoji-attach-view.component.html',
+    styleUrls: ['./emoji-attach-view.component.scss'],
 })
 export class EmojiAttachViewComponent implements OnInit {
 
-  public constructor() {}
+    public emojies: string[];
 
-  public ngOnInit(): void { }
+    public constructor() {
+        this.emojies =
+            '😒 😊 😂 🤣 ❤ 😍 👌 😘 🤷‍♂️ 🤷‍♀️ 🤦‍♂️ 🤦‍♀️ 🙌 👍 😁 💕 ✌ 🤞 😉 😎 🎶 😢 💖 😜 🐱‍🏍 🐱‍👤 🤳 🎂 🎉 🌹 💋 👏 🐱‍💻 🐱‍🐉 🐱‍👓 🐱‍🚀 ✔ 👀 😃 ✨ 😆 🤔 🤢 🎁'.split(' ');
+    }
+
+    public ngOnInit(): void { }
+
+    public sendEmoji(text: string): void {
+
+    }
 }

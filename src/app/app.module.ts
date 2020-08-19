@@ -75,6 +75,7 @@ import { StreamPlayerPageComponent } from './views/stream/plyr-player-page/strea
 import { TotoroPlayerPageComponent } from './views/stream/plyr-player-page/totoro-player-page.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
+import { EmojiAttachViewComponent } from './views/chat/emoji-attach-view/emoji-attach-view.component';
 
 @NgModule({
     declarations: [
@@ -147,6 +148,7 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
         SimpleSideBarStreamEntryComponent,
         SideBarStreamListViewComponent,
         StreamPreviewComponent,
+        EmojiAttachViewComponent,
     ],
     imports: [
         PlyrModule,

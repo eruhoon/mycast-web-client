@@ -9,60 +9,67 @@ import { Component } from '@angular/core';
 import { ChatListService } from '../chat-list/chat-list.service';
 
 @Component({
-  selector: 'chat-page',
-  templateUrl: './chat-page.component.html',
-  styleUrls: ['./chat-page.component.scss']
+    selector: 'chat-page',
+    templateUrl: './chat-page.component.html',
+    styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPageComponent {
+    private mChatService: ChatService;
+    private mClipboardImageService: ClipboardImageService;
+    private mClipboardManager: ClipboardManager;
+    private mChatCommand: ChatCommand;
 
-  private mChatService: ChatService;
-  private mClipboardImageService: ClipboardImageService;
-  private mClipboardManager: ClipboardManager;
-  private mChatCommand: ChatCommand;
-
-  public constructor(
-    mainService: MainService,
-    chatService: ChatService,
-    clipboardImageService: ClipboardImageService,
-    chatListSrv: ChatListService) {
-    this.mChatService = chatService;
-    this.mClipboardImageService = clipboardImageService;
-    this.mClipboardManager = new ClipboardManager();
-    this.mChatCommand = new ChatCommand(chatListSrv, mainService.getChatNework());
-  }
-
-  public isChatUserListShow(): boolean {
-    return this.mChatService.isChatUserListShow();
-  }
-
-  public onPaste(event: ClipboardEvent): void {
-    if (!event.clipboardData) {
-      return;
+    public constructor(
+        mainService: MainService,
+        chatService: ChatService,
+        clipboardImageService: ClipboardImageService,
+        chatListSrv: ChatListService
+    ) {
+        this.mChatService = chatService;
+        this.mClipboardImageService = clipboardImageService;
+        this.mClipboardManager = new ClipboardManager();
+        this.mChatCommand = new ChatCommand(
+            chatListSrv,
+            mainService.getChatNework()
+        );
     }
 
-    this.mClipboardManager.uploadImageCache(event.clipboardData, imageUri => {
-      this.mClipboardImageService.setCurrentImage(imageUri);
-    });
-  }
-
-  public onDrop(event: DragEvent): boolean {
-    const data = event.dataTransfer;
-    const dropResult = this.mClipboardManager.uploadImageCache(data, uri => {
-      this.mClipboardImageService.setCurrentImage(uri);
-    });
-    if (!dropResult) {
-      this.mClipboardManager.uploadImageCacheWithUrl(data, uri => {
-        this.mClipboardImageService.setCurrentImage(uri);
-      });
+    public isChatUserListShow(): boolean {
+        return this.mChatService.isChatUserListShow();
     }
-    return false;
-  }
 
-  public onChatInput(rawChat: string): void {
-    this.mChatCommand.execute(rawChat);
-  }
+    public isEmojiAttachViewShow(): boolean {
+        return this.mChatService.isEmojiAttachViewShow();
+    }
 
-  public onChatEntryIconSelect(icon: string) {
-    this.mChatCommand.execute(icon);
-  }
+    public onPaste(event: ClipboardEvent): void {
+        if (!event.clipboardData) {
+            return;
+        }
+
+        this.mClipboardManager.uploadImageCache(event.clipboardData, (imageUri) => {
+            this.mClipboardImageService.setCurrentImage(imageUri);
+        });
+    }
+
+    public onDrop(event: DragEvent): boolean {
+        const data = event.dataTransfer;
+        const dropResult = this.mClipboardManager.uploadImageCache(data, (uri) => {
+            this.mClipboardImageService.setCurrentImage(uri);
+        });
+        if (!dropResult) {
+            this.mClipboardManager.uploadImageCacheWithUrl(data, (uri) => {
+                this.mClipboardImageService.setCurrentImage(uri);
+            });
+        }
+        return false;
+    }
+
+    public onChatInput(rawChat: string): void {
+        this.mChatCommand.execute(rawChat);
+    }
+
+    public onChatEntryIconSelect(icon: string) {
+        this.mChatCommand.execute(icon);
+    }
 }

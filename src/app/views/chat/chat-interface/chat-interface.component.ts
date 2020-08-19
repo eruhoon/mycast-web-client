@@ -128,11 +128,12 @@ export class ChatInterfaceComponent implements OnInit {
     }
 
     public toggleEmojiMenu(): void {
-        if (this.mEmojiMenuActive) {
+        this.mChatService.toggleEmojiAttachView();
+        /*if (this.mEmojiMenuActive) {
             this.closeEmojiMenu();
         } else {
             this.openEmojiMenu();
-        }
+        }*/
     }
 
     public openEmojiMenu(): void {

@@ -1,8 +1,12 @@
 <div class="container">
     <div class="title">
-        <h4>Emoji</h4>
+        <h4>이모티콘</h4>
     </div>
-    <span *ngFor="let emoji of emojies" (click)="sendEmoji(emoji)">
-        {{emoji}}
-    </span>
+    <div class="emoji-list">
+        <div class="def-emoji-list">
+            <span *ngFor="let emoji of emojies" (click)="sendEmoji(emoji)">
+                {{emoji}}
+            </span>
+        </div>
+    </div>
 </div>

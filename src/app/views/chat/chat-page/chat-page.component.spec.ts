@@ -8,9 +8,8 @@ describe('ChatPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatPageComponent ]
-    })
-    .compileComponents();
+      declarations: [ChatPageComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

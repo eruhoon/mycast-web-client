@@ -4,17 +4,26 @@
     <div class="title">
       <h3>스트리머 추가</h3>
     </div>
-    <div class="live-stream-chk" *ngIf="stagedStream===null">
+    <div class="live-stream-chk" *ngIf="stagedStream === null">
       <div class="live-corp-list">
-        <div class="live-corp" *ngFor="let platform of platforms" (click)="selectPlatform(platform)">
+        <div
+          class="live-corp"
+          *ngFor="let platform of platforms"
+          (click)="selectPlatform(platform)"
+        >
           <div class="live-corp-img">
-            <img [src]="platform.icon">
+            <img [src]="platform.icon" />
             <div class="checks">
-              <input type="radio" id="live-co1" name="live-corp-select" [checked]="platform===currentPlatform">
+              <input
+                type="radio"
+                id="live-co1"
+                name="live-corp-select"
+                [checked]="platform === currentPlatform"
+              />
               <label for="live-co1"></label>
             </div>
           </div>
-          <p>{{platform.name}}</p>
+          <p>{{ platform.name }}</p>
         </div>
       </div>
       <div class="live-stream-search">
@@ -24,9 +33,11 @@
         <input #searchName id="name" maxlength="15" type="text" />
         <p class="error-up">닉네임을 입력하세요.</p>
       </div>
-      <button class="live-stream-btn" [disabled]="searching" (click)="search()">{{searching?'검색 중':'검색'}}</button>
+      <button class="live-stream-btn" [disabled]="searching" (click)="search()">
+        {{ searching ? '검색 중' : '검색' }}
+      </button>
     </div>
-    <div *ngIf="stagedStream!==null">
+    <div *ngIf="stagedStream !== null">
       <div class="live-stream-list">
         <div class="error-search">
           <span class="material-icons">cancel</span>
@@ -34,22 +45,26 @@
           <p>"kimdoe"의 방송 정보를 찾을 수 없습니다.</p>
         </div>
         <div class="live-stream">
-          <img [src]="stagedStream?.icon|safe">
+          <img [src]="stagedStream?.icon | safe" />
           <div class="stream-info">
             <h3>
-              <span>{{stagedStream?.title}} </span>
-              <small>({{stagedStream?.keyId}})</small>
+              <span>{{ stagedStream?.title }} </span>
+              <small>({{ stagedStream?.keyId }})</small>
             </h3>
-            <p>방송플랫폼 : {{stagedStream?.platform}}</p>
+            <p>방송플랫폼 : {{ stagedStream?.platform }}</p>
           </div>
         </div>
       </div>
-      <button class="live-stream-add-btn" [disabled]="adding" (click)="addStream()">스트리머 추가</button>
+      <button
+        class="live-stream-add-btn"
+        [disabled]="adding"
+        (click)="addStream()"
+      >
+        스트리머 추가
+      </button>
     </div>
     <a class="modal-close" (click)="close()">
-      <i class="material-icons">
-        close
-      </i>
+      <i class="material-icons"> close </i>
     </a>
   </div>
 </div>

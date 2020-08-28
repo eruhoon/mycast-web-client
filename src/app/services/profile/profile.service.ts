@@ -9,10 +9,9 @@ import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
-
   private mModifyMode: ProfileModifyMode;
   private mProfile: Profile;
   private mStreamPlatform: string;
@@ -108,11 +107,19 @@ export class ProfileService {
   }
 
   public async requestToChangeStream(
-    platform: string, backgroundImage: string,
-    afreecaId: string, twitchId: string, mixerId: string): Promise<void> {
-
+    platform: string,
+    backgroundImage: string,
+    afreecaId: string,
+    twitchId: string,
+    mixerId: string
+  ): Promise<void> {
     const result = await this.mModifyStreamCommand.execute(
-      platform, backgroundImage, afreecaId, twitchId, mixerId);
+      platform,
+      backgroundImage,
+      afreecaId,
+      twitchId,
+      mixerId
+    );
     if (result) {
       this.mStreamPlatform = platform;
       this.setModifyMode(ProfileModifyMode.NONE);
@@ -120,7 +127,7 @@ export class ProfileService {
   }
 
   public requestToChangeStreamPlatform(platform: string): void {
-    this.mModifyPlatformCommand.execute(platform).then(result => {
+    this.mModifyPlatformCommand.execute(platform).then((result) => {
       console.log(result);
       if (result) {
         this.mStreamPlatform = platform;

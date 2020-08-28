@@ -7,10 +7,9 @@ import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MemoService {
-
   private mLoader: VegaMemoLoader;
   private mUploadCommand: MemoUploadCommand;
   private mMemos: MutableMemo[];
@@ -39,13 +38,14 @@ export class MemoService {
   }
 
   public loadMemos(): void {
-    this.mLoader.load(memos => {
+    this.mLoader.load((memos) => {
       if (!memos) {
         console.warn('load failed');
         return;
       }
-      const mutableMemos = memos.map(
-        memo => MutableMemo.createWithMemo(memo));
+      const mutableMemos = memos.map((memo) =>
+        MutableMemo.createWithMemo(memo)
+      );
       this.mMemos = mutableMemos;
     });
   }

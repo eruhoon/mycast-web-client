@@ -3,7 +3,13 @@ import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-  Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+  ViewChild,
 } from '@angular/core';
 
 import { ChatListService } from './chat-list.service';
@@ -12,10 +18,9 @@ import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 @Component({
   selector: 'chat-list',
   templateUrl: './chat-list.component.html',
-  styleUrls: ['./chat-list.component.scss', './chat-list.color.scss']
+  styleUrls: ['./chat-list.component.scss', './chat-list.color.scss'],
 })
 export class ChatListComponent implements OnInit {
-
   @ViewChild('scrollList', { static: true }) mScrollList: ElementRef;
   @Output() entryIconSelect: EventEmitter<string>;
 
@@ -27,8 +32,8 @@ export class ChatListComponent implements OnInit {
   public constructor(
     private mService: ChatListService,
     currentChatService: CurrentChatService,
-    optionService: OptionService) {
-
+    optionService: OptionService
+  ) {
     this.mChats = [];
     this.entryIconSelect = new EventEmitter<string>();
     this.mCurrentChatService = currentChatService;
@@ -36,7 +41,9 @@ export class ChatListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mCurrentChatService.subscribeChat(chats => this.onChatsChanged(chats));
+    this.mCurrentChatService.subscribeChat((chats) =>
+      this.onChatsChanged(chats)
+    );
 
     this.mService.setScroller(this);
   }
@@ -62,7 +69,7 @@ export class ChatListComponent implements OnInit {
       listElement.scrollTo({
         left: 0,
         top: listElement.scrollHeight,
-        behavior: isFirst ? 'auto' : 'smooth'
+        behavior: isFirst ? 'auto' : 'smooth',
       });
     });
   }
@@ -74,9 +81,11 @@ export class ChatListComponent implements OnInit {
     const height = listElement.clientHeight;
     if (scrollHeight > scrollTop + height + 300) {
       if (this.mScrollTimer === -1) {
-        this.mScrollTimer = Number(setTimeout(() => {
-          this.mOptionService.setScrollLockMode(true);
-        }, 1000));
+        this.mScrollTimer = Number(
+          setTimeout(() => {
+            this.mOptionService.setScrollLockMode(true);
+          }, 1000)
+        );
       }
     } else {
       clearTimeout(this.mScrollTimer);

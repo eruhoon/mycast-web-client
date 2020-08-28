@@ -7,10 +7,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 @Component({
   selector: 'photo-page',
   templateUrl: './photo-page.component.html',
-  styleUrls: ['./photo-page.component.scss', './photo-page.color.scss']
+  styleUrls: ['./photo-page.component.scss', './photo-page.color.scss'],
 })
 export class PhotoPageComponent {
-
   @ViewChild('uploadInput', { static: true })
   public uploadInput: ElementRef<HTMLInputElement>;
 
@@ -19,9 +18,7 @@ export class PhotoPageComponent {
   private mService: PhotoService;
   private mImageParser: ClipboardImageParser;
 
-  public constructor(
-    service: PhotoService,
-    private mThemeSrv: ThemeService) {
+  public constructor(service: PhotoService, private mThemeSrv: ThemeService) {
     this.mService = service;
     this.mMenus = [
       { id: 0, icon: 'insert_photo', name: '포토' },
@@ -75,7 +72,7 @@ export class PhotoPageComponent {
     if (!photo) {
       return '- KB';
     }
-    return `${Math.round(photo.size / 1024 * 10) / 10} KB`;
+    return `${Math.round((photo.size / 1024) * 10) / 10} KB`;
   }
 
   public getUploadingFileType(): string {
@@ -117,7 +114,7 @@ export class PhotoPageComponent {
 }
 
 type Menu = {
-  id: number,
-  icon: string,
-  name: string,
+  id: number;
+  icon: string;
+  name: string;
 };

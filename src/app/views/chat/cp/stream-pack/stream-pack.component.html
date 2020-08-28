@@ -1,18 +1,18 @@
 <div class="stream-live-box" *ngIf="!isDataSaveMode()" (click)="onClick()">
-    <div class="stream-live-img">
-        <img [src]="getThumbnail()">
+  <div class="stream-live-img">
+    <img [src]="getThumbnail()" />
+  </div>
+  <div class="stream-live-info">
+    <div class="str-user-img">
+      <img [src]="getIcon() | safe" />
     </div>
-    <div class="stream-live-info">
-        <div class="str-user-img">
-            <img [src]="getIcon() | safe">
-        </div>
-        <div class="str-user-info">
-            <h3>{{getName()}}</h3>
-            <div class="str-live-info">
-                <img [src]="platformIconSrc">
-                <p>{{getId()}} / {{getPlatform()}}</p>
-            </div>
-        </div>
+    <div class="str-user-info">
+      <h3>{{ getName() }}</h3>
+      <div class="str-live-info">
+        <img [src]="platformIconSrc" />
+        <p>{{ getId() }} / {{ getPlatform() }}</p>
+      </div>
     </div>
+  </div>
 </div>
-<div *ngIf="isDataSaveMode()">(대충 {{getName()}} 방송)</div>
+<div *ngIf="isDataSaveMode()">(대충 {{ getName() }} 방송)</div>

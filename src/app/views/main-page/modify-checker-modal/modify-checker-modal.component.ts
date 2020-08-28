@@ -1,16 +1,18 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StageStreamCommand } from 'src/app/models/stream/stage/StageStreamCommand';
 import { ToastService } from 'src/app/services/notification/toast.service';
-import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import {
+  ProfileModifyMode,
+  ProfileService,
+} from 'src/app/services/profile/profile.service';
 import { RegisterStreamCommand } from 'src/app/models/stream/stage/RegisterStreamCommand';
 
 @Component({
   selector: 'modify-checker-modal',
   templateUrl: './modify-checker-modal.component.html',
-  styleUrls: ['./modify-checker-modal.component.scss']
+  styleUrls: ['./modify-checker-modal.component.scss'],
 })
 export class ModifyCheckerModalComponent implements OnInit {
-
   @ViewChild('searchName', { static: false })
   public mSearchInput: ElementRef<HTMLInputElement>;
   public platforms: PlatformParam[];
@@ -21,11 +23,15 @@ export class ModifyCheckerModalComponent implements OnInit {
 
   public constructor(
     private mProfileSrv: ProfileService,
-    private mToastSrv: ToastService,
+    private mToastSrv: ToastService
   ) {
     this.platforms = [
       { id: 'twitch', name: '트위치', icon: '/assets/image/stream/twitch.png' },
-      { id: 'afreeca', name: '아프리카', icon: '/assets/image/stream/afreeca.png' },
+      {
+        id: 'afreeca',
+        name: '아프리카',
+        icon: '/assets/image/stream/afreeca.png',
+      },
       // { name: '유튜브', icon: '/assets/image/stream/youtube.png' },
       // { name: '카카오TV', icon: '/assets/image/stream/kakaotv.png' },
     ];
@@ -35,8 +41,7 @@ export class ModifyCheckerModalComponent implements OnInit {
     this.adding = false;
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public search(): void {
     this.searching = true;
@@ -53,15 +58,18 @@ export class ModifyCheckerModalComponent implements OnInit {
     }
 
     const command = new StageStreamCommand(searchPlatform.id, searchName);
-    command.execute().then(staged => {
-      if (staged === null) {
-        this.mToastSrv.toast('검색결과가 없습니다.');
-        return;
-      }
-      this.stagedStream = staged;
-    }).finally(() => {
-      this.searching = false;
-    });
+    command
+      .execute()
+      .then((staged) => {
+        if (staged === null) {
+          this.mToastSrv.toast('검색결과가 없습니다.');
+          return;
+        }
+        this.stagedStream = staged;
+      })
+      .finally(() => {
+        this.searching = false;
+      });
   }
 
   public addStream(): void {
@@ -72,17 +80,22 @@ export class ModifyCheckerModalComponent implements OnInit {
 
     this.adding = true;
     const command = new RegisterStreamCommand(
-      this.stagedStream.platform, this.stagedStream.keyId);
-    command.execute().then(success => {
-      if (success) {
-        this.mToastSrv.toast('방송을 추가했습니다.');
-      } else {
-        this.mToastSrv.toast('방송추가를 실패했습니다.');
-      }
-    }).finally(() => {
-      this.adding = false;
-      this.close();
-    });
+      this.stagedStream.platform,
+      this.stagedStream.keyId
+    );
+    command
+      .execute()
+      .then((success) => {
+        if (success) {
+          this.mToastSrv.toast('방송을 추가했습니다.');
+        } else {
+          this.mToastSrv.toast('방송추가를 실패했습니다.');
+        }
+      })
+      .finally(() => {
+        this.adding = false;
+        this.close();
+      });
   }
 
   public selectPlatform(platform: PlatformParam): void {
@@ -95,7 +108,7 @@ export class ModifyCheckerModalComponent implements OnInit {
 }
 
 type PlatformParam = {
-  id: string,
-  name: string,
-  icon: string,
+  id: string;
+  name: string;
+  icon: string;
 };

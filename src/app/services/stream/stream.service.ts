@@ -11,25 +11,23 @@ import { NotificationService } from '../notification/notification.service';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StreamService {
-
   private mSocket: StreamSocketModel;
   private mLocalStreams: BehaviorSubject<Stream[]>;
   private mExternalStreams: BehaviorSubject<Stream[]>;
   private mObservers: StreamSrvObserver[];
 
-  public constructor(
-    private mNotificationService: NotificationService) {
-
+  public constructor(private mNotificationService: NotificationService) {
     this.mSocket = new StreamSocketModel();
-    this.mSocket.setOnLocalStreamChanged(
-      streams => this.onLocalStreamChanged(streams));
-    this.mSocket.setOnExtStreamChanged(
-      streams => this.onExternalStreamChanged(streams));
-    this.mSocket.setOnNewLocalStream(
-      stream => this.onNewLocalStream(stream));
+    this.mSocket.setOnLocalStreamChanged((streams) =>
+      this.onLocalStreamChanged(streams)
+    );
+    this.mSocket.setOnExtStreamChanged((streams) =>
+      this.onExternalStreamChanged(streams)
+    );
+    this.mSocket.setOnNewLocalStream((stream) => this.onNewLocalStream(stream));
 
     this.mLocalStreams = new BehaviorSubject<Stream[]>([]);
     this.mExternalStreams = new BehaviorSubject<Stream[]>([]);
@@ -41,7 +39,7 @@ export class StreamService {
   }
 
   public removeObserver(observer: StreamSrvObserver): void {
-    this.mObservers = this.mObservers.filter(o => o !== observer);
+    this.mObservers = this.mObservers.filter((o) => o !== observer);
   }
 
   public getLocalStreams(): BehaviorSubject<Stream[]> {
@@ -53,7 +51,7 @@ export class StreamService {
   }
 
   private onLocalStreamChanged(raws: StreamDto[]): void {
-    const streams = raws.map(dto => new StreamDtoAdapter(dto));
+    const streams = raws.map((dto) => new StreamDtoAdapter(dto));
     this.mLocalStreams.next(streams);
   }
 
@@ -72,7 +70,7 @@ export class StreamService {
   }
 
   private onExternalStreamChanged(raws: StreamDto[]): void {
-    const streams = raws.map(dto => new StreamDtoAdapter(dto));
+    const streams = raws.map((dto) => new StreamDtoAdapter(dto));
     this.mExternalStreams.next(streams);
   }
 

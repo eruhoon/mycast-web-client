@@ -2,7 +2,13 @@ import { Stream } from 'src/app/models/stream/Stream';
 import { MainService } from 'src/app/services/main/main.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 import { SideBarService } from '../side-bar.service';
 import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
@@ -13,10 +19,9 @@ import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
   styleUrls: [
     './side-bar-stream-list-view.component.scss',
     './side-bar-stream-list-view.color.scss',
-  ]
+  ],
 })
 export class SideBarStreamListViewComponent implements OnInit, OnChanges {
-
   private static readonly DEFAULT_STREAMS: Stream[] = [];
 
   @Input()
@@ -29,14 +34,14 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
   public constructor(
     private mMainSrv: MainService,
     private mSideBarSrv: SideBarService,
-    private mOptionSrv: OptionService) {
+    private mOptionSrv: OptionService
+  ) {
     this.streams = SideBarStreamListViewComponent.DEFAULT_STREAMS;
     this.mActiveStreams = SideBarStreamListViewComponent.DEFAULT_STREAMS;
     this.mSelected = false;
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.refreshStreams();
@@ -74,7 +79,8 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
   }
 
   private refreshStreams(): void {
-    this.mActiveStreams = this.mSelected ?
-      this.streams : SideBarStreamListViewComponent.DEFAULT_STREAMS;
+    this.mActiveStreams = this.mSelected
+      ? this.streams
+      : SideBarStreamListViewComponent.DEFAULT_STREAMS;
   }
 }

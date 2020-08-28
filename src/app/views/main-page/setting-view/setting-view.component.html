@@ -1,7 +1,7 @@
 <div class="user-setting">
   <div class="user-info">
     <div class="u-info">
-      <img class="profile" [src]="getIcon() | safe" width="40">
+      <img class="profile" [src]="getIcon() | safe" width="40" />
       <span class="u-name">
         <p class="lv">Lv. {{ getLevel() }}</p>
         <p class="name">{{ getName() }}</p>
@@ -12,8 +12,8 @@
     </div>
   </div>
   <div class="toggle-option stream-set" (click)="openStreamSettingView()">
-    <h5>방송설정 </h5>
-    <img [src]="getPlatformImageSrc()" width="45" height="45">
+    <h5>방송설정</h5>
+    <img [src]="getPlatformImageSrc()" width="45" height="45" />
   </div>
   <div class="toggle-option stream-set" (click)="openOptionSettingView()">
     <h5>옵션</h5>
@@ -30,8 +30,13 @@
   <div class="theme">
     <h5>테마</h5>
     <ul>
-      <li *ngFor="let option of getThemes()" [ngClass]="{'select':option.theme===theme}" (click)="onThemeClick(option)">
-        {{option.name}}</li>
+      <li
+        *ngFor="let option of getThemes()"
+        [ngClass]="{ select: option.theme === theme }"
+        (click)="onThemeClick(option)"
+      >
+        {{ option.name }}
+      </li>
     </ul>
   </div>
   <div class="toggle-option" *ngIf="!isMobile()" (click)="openMobilePage()">

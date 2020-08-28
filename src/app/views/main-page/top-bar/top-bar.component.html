@@ -3,12 +3,21 @@
     <button (click)="toggleSideBar()">
       <i class="material-icons">menu</i>
     </button>
-    <img class="logo" src="/../assets/image/main/main-logo-30.png" (click)="refreshPage()" />
+    <img
+      class="logo"
+      src="/../assets/image/main/main-logo-30.png"
+      (click)="refreshPage()"
+    />
   </div>
   <div class="part right">
-    <button [class]="isNotificationListShow()?'alert-btn active':'alert-btn'" (click)="toggleNotificationList()">
+    <button
+      [class]="isNotificationListShow() ? 'alert-btn active' : 'alert-btn'"
+      (click)="toggleNotificationList()"
+    >
       <i class="material-icons">notifications</i>
-      <div *ngIf="this.getUnreadNotificationCount() > 0">{{this.getUnreadNotificationCount()}}</div>
+      <div *ngIf="this.getUnreadNotificationCount() > 0">
+        {{ this.getUnreadNotificationCount() }}
+      </div>
     </button>
     <button (click)="toggleSetting()">
       <img class="profile" [src]="getProfileIcon() | safe" />
@@ -20,5 +29,5 @@
   <app-setting-view></app-setting-view>
 </div>
 
-<notification-list [class]="isNotificationListShow()?'active':'deactive'">
+<notification-list [class]="isNotificationListShow() ? 'active' : 'deactive'">
 </notification-list>

@@ -1,12 +1,11 @@
 export class Logger {
+  private mTag: string;
 
-    private mTag: string;
+  public constructor(tag: string) {
+    this.mTag = tag;
+  }
 
-    public constructor(tag: string) {
-        this.mTag = tag;
-    }
-
-    public log(str: string) {
-        console.log(this.mTag, str);
-    }
+  public log(str: string) {
+    console.log(this.mTag, str);
+  }
 }

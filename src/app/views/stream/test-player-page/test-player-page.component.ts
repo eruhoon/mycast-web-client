@@ -9,18 +9,16 @@ declare var flvjs: any;
 @Component({
   selector: 'app-test-player-page',
   templateUrl: './test-player-page.component.html',
-  styleUrls: ['./test-player-page.component.scss']
+  styleUrls: ['./test-player-page.component.scss'],
 })
 export class TestPlayerPageComponent implements OnInit {
-
   @ViewChild('player', { static: true })
   public mPlayerView: ElementRef<HTMLVideoElement>;
 
   private mPlyr: Plyr;
   private mPlayer: any;
 
-  public constructor() {
-  }
+  public constructor() {}
 
   ngOnInit() {
     const element = this.mPlayerView.nativeElement;
@@ -29,13 +27,18 @@ export class TestPlayerPageComponent implements OnInit {
       const plyr = new Plyr(element, {
         speed: {
           selected: 1,
-          options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+          options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
         },
         clickToPlay: false,
         controls: [
-          'play-large', 'play', 'mute',
-          'volume', 'pip', 'airplay', 'fullscreen'
-        ]
+          'play-large',
+          'play',
+          'mute',
+          'volume',
+          'pip',
+          'airplay',
+          'fullscreen',
+        ],
       });
 
       this.mPlayer = flvjs.createPlayer({
@@ -43,7 +46,7 @@ export class TestPlayerPageComponent implements OnInit {
         lazyLoadMaxDuration: 3 * 60,
         type: 'flv',
         isLive: true,
-        url: 'https://parasite.banjai.tv:8080/live/mcc1.flv'
+        url: 'https://parasite.banjai.tv:8080/live/mcc1.flv',
       });
 
       plyr.on('ready', (event: any) => {
@@ -57,5 +60,4 @@ export class TestPlayerPageComponent implements OnInit {
       console.log('not support');
     }
   }
-
 }

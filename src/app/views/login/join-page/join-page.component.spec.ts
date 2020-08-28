@@ -8,9 +8,8 @@ describe('JoinPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoinPageComponent ]
-    })
-    .compileComponents();
+      declarations: [JoinPageComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

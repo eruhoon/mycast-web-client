@@ -1,32 +1,32 @@
 :host-context(.theme-light) {
-    .user-icon {
-        border: 1px solid #ececec;
-    }
-    .info {
+  .user-icon {
+    border: 1px solid #ececec;
+  }
+  .info {
+    color: #616161;
+  }
+  .icon {
+    i {
+      color: #dedede;
+      &.active {
         color: #616161;
+      }
     }
-    .icon {
-        i {
-        color: #dedede;
-            &.active {
-                color: #616161;
-            }
-        }
-    }
+  }
 }
 :host-context(.theme-dark) {
-    .user-icon {
-        border: 1px solid #424242;
-    }
-    .info {
+  .user-icon {
+    border: 1px solid #424242;
+  }
+  .info {
+    color: #ffffff;
+  }
+  .icon {
+    i {
+      color: #424242;
+      &.active {
         color: #ffffff;
+      }
     }
-    .icon {
-        i {
-        color: #424242;
-            &.active {
-                color: #ffffff;
-            }
-        }
-    }
+  }
 }

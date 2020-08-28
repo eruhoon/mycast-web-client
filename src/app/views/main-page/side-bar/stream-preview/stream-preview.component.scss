@@ -7,18 +7,18 @@
     display: inline-flex;
     flex-flow: column;
     alsign-items: left;
-    max-width: 320PX;
+    max-width: 320px;
     max-height: 280px;
     margin: 15px;
-   
+
     border-radius: 5px;
     overflow: hidden;
-    
+
     position: absolute;
     top: calc(50% - 140px);
     left: 0%;
 
-    background: #FFFFFF;
+    background: #ffffff;
 
     .thumbnail-wrapper {
       display: inline-block;
@@ -34,17 +34,17 @@
     .info-wrapper {
       width: 300px;
       padding: 10px;
-      position: relative; 
-      
+      position: relative;
+
       .title {
         font-size: 24px;
         line-height: 26px;
         font-weight: bolder;
-        font-family: "Jeju Gothic", sans-serif !important;
+        font-family: 'Jeju Gothic', sans-serif !important;
         position: absolute;
         top: -30px;
         left: 10px;
-        color: #FFFFFF;
+        color: #ffffff;
         text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.75);
       }
       .description {
@@ -73,16 +73,16 @@
         text-align: center;
         cursor: pointer;
 
-        background-color: #F5F5F5;
-        border-top: 1px solid #E0E0E0;
-        border-right: 1px solid #E0E0E0;
+        background-color: #f5f5f5;
+        border-top: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
 
         i {
           font-size: 18px;
           line-height: 27px;
-          
+
           color: #424242;
-  
+
           &.enabled {
             color: #cc0;
           }
@@ -92,10 +92,10 @@
           border-right: 0px;
         }
         &:hover {
-          background-color: #FF4081;
-          border-color: #F5F5F5;
-          i{
-            color: #FFFFFF;
+          background-color: #ff4081;
+          border-color: #f5f5f5;
+          i {
+            color: #ffffff;
           }
         }
       }

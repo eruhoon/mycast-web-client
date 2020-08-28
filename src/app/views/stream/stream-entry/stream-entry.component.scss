@@ -43,7 +43,8 @@ $background-color: #333;
     background-position: center;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
     &.thumbnail {
       height: 135px;
@@ -61,7 +62,13 @@ $background-color: #333;
       position: absolute;
       left: 0px;
       bottom: 0px;
-      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.75)));
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(transparent),
+        to(rgba(0, 0, 0, 0.75))
+      );
       background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
 
       .text {
@@ -80,7 +87,7 @@ $background-color: #333;
           opacity: 1;
           padding-bottom: 5px;
           float: left;
-          text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -132,18 +139,17 @@ $background-color: #333;
           background: $background-color;
           text-align: center;
           cursor: pointer;
-          
-  
+
           i {
             color: #eee;
             font-size: 15px;
             line-height: 33px;
-  
+
             &.enabled {
               color: #cc0;
             }
           }
-  
+
           &:hover {
             background: lighten($background-color, 10%);
           }

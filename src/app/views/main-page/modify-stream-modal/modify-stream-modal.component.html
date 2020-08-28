@@ -8,10 +8,14 @@
     </div>
     <div class="stream-setup-box">
       <div class="ss-list-set">
-        <div *ngFor="let platform of getPlatforms()" class="stream-server-box"
-          [ngClass]="{active:platform.id===getCurrentPlatform()}" (click)="onPlatformClick(platform)">
+        <div
+          *ngFor="let platform of getPlatforms()"
+          class="stream-server-box"
+          [ngClass]="{ active: platform.id === getCurrentPlatform() }"
+          (click)="onPlatformClick(platform)"
+        >
           <img [src]="platform.src" />
-          <p>{{platform.name}}</p>
+          <p>{{ platform.name }}</p>
         </div>
       </div>
       <div class="ss-setup" [ngSwitch]="getCurrentPlatform()">
@@ -23,19 +27,33 @@
             <label>
               <p>배경이미지</p>
             </label>
-            <input type="text" class="stream-img-set" [(ngModel)]="streamForm.backgroundImage">
+            <input
+              type="text"
+              class="stream-img-set"
+              [(ngModel)]="streamForm.backgroundImage"
+            />
           </div>
           <div class="stream-url ss-set-input">
             <label>
               <p>OBS FMS URL</p>
             </label>
-            <input type="text" class="stream-img-set" value="rtmp://mycast.xyz:1935/live" readonly>
+            <input
+              type="text"
+              class="stream-img-set"
+              value="rtmp://mycast.xyz:1935/live"
+              readonly
+            />
           </div>
           <div class="stream-key ss-set-input">
             <label>
               <p>STREAM KEY</p>
             </label>
-            <input type="text" class="stream-img-set" [value]="getLocalId()" readonly>
+            <input
+              type="text"
+              class="stream-img-set"
+              [value]="getLocalId()"
+              readonly
+            />
           </div>
         </div>
         <div class="totoro ss-setup-box" *ngSwitchCase="'totoro'">
@@ -46,19 +64,33 @@
             <label>
               <p>배경이미지</p>
             </label>
-            <input type="text" class="stream-img-set" [(ngModel)]="streamForm.backgroundImage">
+            <input
+              type="text"
+              class="stream-img-set"
+              [(ngModel)]="streamForm.backgroundImage"
+            />
           </div>
           <div class="stream-url ss-set-input">
             <label>
               <p>OBS FMS URL</p>
             </label>
-            <input type="text" class="stream-img-set" value="rtmp://totoro.mycast.xyz/live" readonly>
+            <input
+              type="text"
+              class="stream-img-set"
+              value="rtmp://totoro.mycast.xyz/live"
+              readonly
+            />
           </div>
           <div class="stream-key ss-set-input">
             <label>
               <p>STREAM KEY</p>
             </label>
-            <input type="text" class="stream-img-set" [value]="getLocalId()" readonly>
+            <input
+              type="text"
+              class="stream-img-set"
+              [value]="getLocalId()"
+              readonly
+            />
           </div>
         </div>
         <div class="afreeca ss-setup-box" *ngSwitchCase="'afreeca'">
@@ -66,7 +98,11 @@
             <label>
               <p>STREAM KEY</p>
             </label>
-            <input type="text" class="stream-img-set" [(ngModel)]="streamForm.afreecaId">
+            <input
+              type="text"
+              class="stream-img-set"
+              [(ngModel)]="streamForm.afreecaId"
+            />
           </div>
         </div>
         <div class="twitch ss-setup-box" *ngSwitchCase="'twitch'">
@@ -74,7 +110,11 @@
             <label>
               <p>STREAM KEY</p>
             </label>
-            <input type="text" class="stream-img-set" [(ngModel)]="streamForm.twitchId">
+            <input
+              type="text"
+              class="stream-img-set"
+              [(ngModel)]="streamForm.twitchId"
+            />
           </div>
         </div>
         <div class="mixer ss-setup-box" *ngSwitchCase="'mixer'">
@@ -82,7 +122,11 @@
             <label>
               <p>STREAM KEY</p>
             </label>
-            <input type="text" class="stream-img-set" [(ngModel)]="streamForm.mixerId">
+            <input
+              type="text"
+              class="stream-img-set"
+              [(ngModel)]="streamForm.mixerId"
+            />
           </div>
         </div>
       </div>

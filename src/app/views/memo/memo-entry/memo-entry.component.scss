@@ -1,87 +1,87 @@
 .memo-box {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    margin: 0px 10px;
-    margin-top: 35px;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 0px 10px;
+  margin-top: 35px;
 
+  border-radius: 3px;
+
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+  .mm-info {
+    max-width: 50%;
+    height: 30px;
+    padding: 0px 10px;
+    position: absolute;
+    left: 10px;
+    top: -14px;
+    overflow: hidden;
     border-radius: 3px;
 
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
-    .mm-info {
-        max-width: 50%;
-        height: 30px;
-        padding: 0px 10px;
-        position: absolute;
-        left: 10px;
-        top: -14px;
-        overflow: hidden;
-        border-radius: 3px;
+    text-align: center;
 
-        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
-        text-align: center;
-
-        p {
-            font-size: 12px;
-            line-height: 30px;
-            margin: 0%;
-            padding: 0%;
-        }
+    p {
+      font-size: 12px;
+      line-height: 30px;
+      margin: 0%;
+      padding: 0%;
     }
+  }
 
-    .mm-txt {
-        width: calc(100% - 20px);
-        height: 236px;
-        padding: 25px 10px;
-        padding-bottom: 0px;
-        margin-bottom: 0px;
+  .mm-txt {
+    width: calc(100% - 20px);
+    height: 236px;
+    padding: 25px 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 
-        font-size: 14px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-        /* 여러 줄 자르기 추가 스타일 */
-        white-space: normal;
-        line-height: 1.2;
-        text-align: left;
-        word-wrap: break-word;
-        display: -webkit-box;
-        -webkit-line-clamp: 14;
-        -webkit-box-orient: vertical;
+    /* 여러 줄 자르기 추가 스타일 */
+    white-space: normal;
+    line-height: 1.2;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 14;
+    -webkit-box-orient: vertical;
+  }
+  .mm-user {
+    width: calc(100% - 103px);
+    height: 30px;
+    padding: 5px;
+    float: left;
+
+    p {
+      font-size: 12px;
+      line-height: 25px;
+      margin: 0%;
+      padding: 0%;
     }
-    .mm-user {
-        width: calc(100% - 103px);
-        height: 30px;
-        padding: 5px;
-        float: left;
+  }
+  .mm-btn-group {
+    width: 78px;
+    height: 30px;
+    padding: 5px;
+    float: right;
 
-        p {
-            font-size: 12px;
-            line-height: 25px;
-            margin: 0%;
-            padding: 0%;
-        }
+    .mm-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 28px;
+      line-height: 30px;
+      cursor: pointer;
+      padding: 0px 5px;
+      text-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     }
-    .mm-btn-group {
-        width: 78px;
-        height: 30px;
-        padding: 5px;
-        float: right;
-
-        .mm-btn {
-            width: 30px;
-            height: 30px;
-            font-size: 28px;
-            line-height: 30px;
-            cursor: pointer;
-            padding: 0px 5px;
-            text-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-                0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-        }
-    }
+  }
 }

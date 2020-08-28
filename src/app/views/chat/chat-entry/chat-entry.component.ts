@@ -3,16 +3,21 @@ import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 import { OptionService } from 'src/app/services/option/option.service';
 
 import {
-  Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
   selector: 'chat-entry',
   templateUrl: './chat-entry.component.html',
-  styleUrls: ['./chat-entry.component.scss', './chat-entry.color.scss']
+  styleUrls: ['./chat-entry.component.scss', './chat-entry.color.scss'],
 })
 export class ChatEntryComponent implements OnInit {
-
   @Input() chat: Chat;
 
   @ViewChild('icon', { static: false }) mIconView: ElementRef<HTMLImageElement>;
@@ -25,7 +30,7 @@ export class ChatEntryComponent implements OnInit {
   private mEnvironment: SenderEnv;
   private mPowerfulHanhwa: boolean;
 
-  public constructor(private mOption: OptionService) { }
+  public constructor(private mOption: OptionService) {}
 
   public ngOnInit(): void {
     const env = this.chat.getSender().getType();
@@ -33,7 +38,9 @@ export class ChatEntryComponent implements OnInit {
     this.mPowerfulHanhwa = this.chat.getSender().getNickname() === '안알랴쥼';
   }
 
-  public isPowerfulHanhwa(): boolean { return this.mPowerfulHanhwa; }
+  public isPowerfulHanhwa(): boolean {
+    return this.mPowerfulHanhwa;
+  }
 
   public getIcon(): string {
     return this.chat.getSender().getIcon().trim();
@@ -55,8 +62,10 @@ export class ChatEntryComponent implements OnInit {
 
   private static convertEnv(rawEnv: ChatSenderType): SenderEnv {
     switch (rawEnv) {
-      case ChatSenderType.MOBILE: return SenderEnv.MOBILE;
-      case ChatSenderType.BOT: return SenderEnv.BOT;
+      case ChatSenderType.MOBILE:
+        return SenderEnv.MOBILE;
+      case ChatSenderType.BOT:
+        return SenderEnv.BOT;
       case ChatSenderType.PC:
       default:
         return SenderEnv.PC;

@@ -1,57 +1,57 @@
 :host-context(.theme-light) {
-    .magic-conch {
-        .question {
-            border-color: #CFD8DC;
-            background-color: #ffffff;
-            .magic-title {
-                h1 {
-                    color: #78909C;
-                }
-                p {
-                    color: #78909C;
-                }
-            }
-            p.magic-question {
-                color: #263238;
-            }
+  .magic-conch {
+    .question {
+      border-color: #cfd8dc;
+      background-color: #ffffff;
+      .magic-title {
+        h1 {
+          color: #78909c;
         }
-        .answer {
-            background: #263238;
-            .tri  {
-                border-right-color: #263238;
-            }
-            .conch-answer-text {
-                color: #ffffff;
-                text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
-            }
+        p {
+          color: #78909c;
         }
+      }
+      p.magic-question {
+        color: #263238;
+      }
     }
+    .answer {
+      background: #263238;
+      .tri {
+        border-right-color: #263238;
+      }
+      .conch-answer-text {
+        color: #ffffff;
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
+      }
+    }
+  }
 }
 :host-context(.theme-dark) {
-    .magic-conch {
-        .question {
-            border-color: #CFD8DC;
-            background-color: #424242;
-            .magic-title {
-                h1 {
-                    color: #CFD8DC;
-                }
-                p {
-                    color: #CFD8DC;
-                }
-            }
-            p.magic-question {
-                color: #ffffff;
-            }
+  .magic-conch {
+    .question {
+      border-color: #cfd8dc;
+      background-color: #424242;
+      .magic-title {
+        h1 {
+          color: #cfd8dc;
         }
-        .answer {
-            background: #ffffff;
-            .tri  {
-                border-right-color: #ffffff;
-            }
-            .conch-answer-text {
-                color: #263238;
-            }
+        p {
+          color: #cfd8dc;
         }
+      }
+      p.magic-question {
+        color: #ffffff;
+      }
     }
+    .answer {
+      background: #ffffff;
+      .tri {
+        border-right-color: #ffffff;
+      }
+      .conch-answer-text {
+        color: #263238;
+      }
+    }
+  }
 }

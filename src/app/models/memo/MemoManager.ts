@@ -4,24 +4,21 @@ import { Memo } from './Memo';
 import { MutableMemo } from './MutableMemo';
 
 export class MemoManager {
+  private mLoader: VegaMemoLoader;
 
-    private mLoader: VegaMemoLoader;
+  public constructor() {}
 
-    public constructor() {
+  public load(callback: TypeCallback<Memo[]>): void {
+    this.mLoader.load((memos) => {
+      if (!memos) {
+        console.warn('load failed');
+        return;
+      }
+      const mutableMemos = memos.map((memo) =>
+        MutableMemo.createWithMemo(memo)
+      );
 
-    }
-
-    public load(callback: TypeCallback<Memo[]>): void {
-        this.mLoader.load(memos => {
-            if (!memos) {
-                console.warn('load failed');
-                return;
-            }
-            const mutableMemos = memos.map(
-                memo => MutableMemo.createWithMemo(memo));
-
-            callback(mutableMemos);
-        });
-    }
-
+      callback(mutableMemos);
+    });
+  }
 }

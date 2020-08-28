@@ -1,32 +1,31 @@
 <div class="memo-content">
-    <div class="bg"></div>
-    <div class="memo-box">
-        <div class="title">
-            <div class="user-img">
-                <img [src]="getUserIcon()" />
-            </div>
-            <div class="title-txt">
-                <h3>{{getUserName()}}</h3>
-                <p>03월 26일</p>
-            </div>
-            <div class="favorite" *ngIf="false">
-                <i class="material-icons">star</i>
-                <p>즐겨찾기</p>
-            </div>
-            <div class="content">
-                <p class="text">{{getBody()}}</p>
-                <a class="link" *ngIf="hasLink()" (click)="openLink()">
-                    <p>{{getLink()}}</p>
-                </a>
-            </div>
-
-        </div>
+  <div class="bg"></div>
+  <div class="memo-box">
+    <div class="title">
+      <div class="user-img">
+        <img [src]="getUserIcon()" />
+      </div>
+      <div class="title-txt">
+        <h3>{{ getUserName() }}</h3>
+        <p>03월 26일</p>
+      </div>
+      <div class="favorite" *ngIf="false">
+        <i class="material-icons">star</i>
+        <p>즐겨찾기</p>
+      </div>
+      <div class="content">
+        <p class="text">{{ getBody() }}</p>
+        <a class="link" *ngIf="hasLink()" (click)="openLink()">
+          <p>{{ getLink() }}</p>
+        </a>
+      </div>
     </div>
-    <i class="material-icons clear" (click)="closeDetailView()">clear</i>
-    <a class="left-btn btn" *ngIf="false">
-        <i class="material-icons">navigate_before</i>
-    </a>
-    <a class="right-btn btn" *ngIf="false">
-        <i class="material-icons">navigate_next</i>
-    </a>
+  </div>
+  <i class="material-icons clear" (click)="closeDetailView()">clear</i>
+  <a class="left-btn btn" *ngIf="false">
+    <i class="material-icons">navigate_before</i>
+  </a>
+  <a class="right-btn btn" *ngIf="false">
+    <i class="material-icons">navigate_next</i>
+  </a>
 </div>

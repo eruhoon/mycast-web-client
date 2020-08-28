@@ -11,10 +11,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'photo-detail-view',
   templateUrl: './photo-detail-view.component.html',
-  styleUrls: ['./photo-detail-view.component.scss', './photo-detail-view.color.scss']
+  styleUrls: [
+    './photo-detail-view.component.scss',
+    './photo-detail-view.color.scss',
+  ],
 })
 export class PhotoDetailViewComponent implements OnInit {
-
   @ViewChild('tags', { static: false })
   public tagInput: ElementRef<HTMLInputElement>;
 
@@ -37,8 +39,10 @@ export class PhotoDetailViewComponent implements OnInit {
     this.mViewer = this.getPhoto().getViewer();
     this.mEditTagMode = false;
 
-    new VegaImgurLoader(this.getPhoto().getHash()).load(photo => {
-      if (!photo) { return; }
+    new VegaImgurLoader(this.getPhoto().getHash()).load((photo) => {
+      if (!photo) {
+        return;
+      }
       this.mViewer = photo.getViewer();
     });
   }
@@ -141,13 +145,31 @@ export class PhotoDetailViewComponent implements OnInit {
 }
 
 class EmptyPhoto implements Photo {
-  public getHash(): string { return ''; }
-  public getUrl(): string { return ''; }
-  public getWidth(): number { return 0; }
-  public getHeight(): number { return 0; }
-  public getMimeType(): string { return ''; }
-  public getRegDate(): Date { return new Date(); }
-  public getViewer(): number { return 0; }
-  public getTags(): string[] { return []; }
-  public isForAdult(): boolean { return false; }
+  public getHash(): string {
+    return '';
+  }
+  public getUrl(): string {
+    return '';
+  }
+  public getWidth(): number {
+    return 0;
+  }
+  public getHeight(): number {
+    return 0;
+  }
+  public getMimeType(): string {
+    return '';
+  }
+  public getRegDate(): Date {
+    return new Date();
+  }
+  public getViewer(): number {
+    return 0;
+  }
+  public getTags(): string[] {
+    return [];
+  }
+  public isForAdult(): boolean {
+    return false;
+  }
 }

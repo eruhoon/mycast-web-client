@@ -1,152 +1,152 @@
 :host-context(.theme-light) {
-    .photo-view {
-        background: #f0f0f0;
-        .photo-info {
-          background-color: #ffffff;
-          border-right-color: #e3e3e3;
-          border-left-color: #e3e3e3;
-          .title {
-            h3 {
-              color: #757575;
-            }
-            span {
-              color: #757575;
+  .photo-view {
+    background: #f0f0f0;
+    .photo-info {
+      background-color: #ffffff;
+      border-right-color: #e3e3e3;
+      border-left-color: #e3e3e3;
+      .title {
+        h3 {
+          color: #757575;
+        }
+        span {
+          color: #757575;
+        }
+      }
+      .p-info-box {
+        p.lab {
+          color: #9e9e9e;
+        }
+        p.info-txt {
+          color: #424242;
+        }
+        .add-tag {
+          color: #9e9e9e;
+          span {
+          }
+        }
+        .tag-input-box {
+          .tag-input {
+            color: #757575;
+            border-color: #e3e3e3;
+          }
+          span {
+            color: #757575;
+            &:hover {
+              color: #ff4081;
             }
           }
-          .p-info-box {
-            p.lab {
-              color: #9e9e9e;
+        }
+
+        .tag-list {
+          .tag-box {
+            background-color: #f8bbd0;
+            color: #f50057;
+            p {
             }
-            p.info-txt {
+          }
+        }
+
+        .in-txt {
+          &.attention-limit.active {
+            color: #f50057;
+            span {
+              color: #f50057;
+            }
+            .in-txt-list > p.see-txt {
+              color: #f50057;
+            }
+          }
+          span {
+            color: #424242;
+          }
+          .in-txt-list {
+            p.ma-title {
               color: #424242;
             }
-            .add-tag {
-              color: #9e9e9e;
-              span {
-              }
-            }
-            .tag-input-box {
-              .tag-input {
-                color: #757575;
-                border-color: #e3e3e3;
-              }
-              span {
-                color: #757575;
-                &:hover {
-                  color: #ff4081;
-                }
-              }
-            }
-      
-            .tag-list {
-              .tag-box {
-                background-color: #f8bbd0;
-                color: #f50057;
-                p {
-                }
-              }
-            }
-      
-            .in-txt {
-              &.attention-limit.active {
-                color: #f50057;
-                span {
-                  color: #f50057;
-                }
-                .in-txt-list > p.see-txt {
-                  color: #f50057;
-                }
-              }
-              span {
-                color: #424242;
-              }
-              .in-txt-list {
-                p.ma-title {
-                  color: #424242;
-                }
-                p.sub-text {
-                  color: #757575;
-                }
-              }
+            p.sub-text {
+              color: #757575;
             }
           }
         }
+      }
     }
+  }
 }
-  
+
 :host-context(.theme-dark) {
-    .photo-view {
-        background: #424242;
-        .photo-info {
-          background-color: #212121;
-          border-right-color: #424242;
-          border-left-color: #424242;
-          .title {
-            h3 {
-              color: #FAFAFA;
-            }
-            span {
-              color: #EEEEEE;
-            }
+  .photo-view {
+    background: #424242;
+    .photo-info {
+      background-color: #212121;
+      border-right-color: #424242;
+      border-left-color: #424242;
+      .title {
+        h3 {
+          color: #fafafa;
+        }
+        span {
+          color: #eeeeee;
+        }
+      }
+      .p-info-box {
+        p.lab {
+          color: #bdbdbd;
+        }
+        p.info-txt {
+          color: #e0e0e0;
+        }
+        .add-tag {
+          color: #bdbdbd;
+          span {
           }
-          .p-info-box {
-            p.lab {
-              color: #BDBDBD;
-            }
-            p.info-txt {
-              color: #E0E0E0;
-            }
-            .add-tag {
-              color: #BDBDBD;
-              span {
-              }
-            }
-            .tag-input-box {
-              .tag-input {
-                background: #3a3a3a;
-                color: #BDBDBD;
-                border-color: #424242;
-              }
-              span {
-                color: #BDBDBD;
-                &:hover {
-                  color: #ff4081;
-                }
-              }
-            }
-      
-            .tag-list {
-              .tag-box {
-                background-color: #f50057;
-                color: #f8bbd0;
-                p {
-                }
-              }
-            }
-      
-            .in-txt {
-              &.attention-limit.active {
-                color: #f50057;
-                span {
-                  color: #f50057;
-                }
-                .in-txt-list > p.see-txt {
-                  color: #f50057;
-                }
-              }
-              span {
-                color: #BDBDBD;
-              }
-              .in-txt-list {
-                p.ma-title {
-                  color: #E0E0E0;
-                }
-                p.sub-text {
-                  color: #BDBDBD;
-                }
-              }
+        }
+        .tag-input-box {
+          .tag-input {
+            background: #3a3a3a;
+            color: #bdbdbd;
+            border-color: #424242;
+          }
+          span {
+            color: #bdbdbd;
+            &:hover {
+              color: #ff4081;
             }
           }
         }
+
+        .tag-list {
+          .tag-box {
+            background-color: #f50057;
+            color: #f8bbd0;
+            p {
+            }
+          }
+        }
+
+        .in-txt {
+          &.attention-limit.active {
+            color: #f50057;
+            span {
+              color: #f50057;
+            }
+            .in-txt-list > p.see-txt {
+              color: #f50057;
+            }
+          }
+          span {
+            color: #bdbdbd;
+          }
+          .in-txt-list {
+            p.ma-title {
+              color: #e0e0e0;
+            }
+            p.sub-text {
+              color: #bdbdbd;
+            }
+          }
+        }
+      }
     }
+  }
 }

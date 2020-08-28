@@ -1,7 +1,6 @@
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 
 export class ImagePackHandler {
-
   private mImagePopupService: ImagePopupService;
 
   private mMenuShow: boolean;

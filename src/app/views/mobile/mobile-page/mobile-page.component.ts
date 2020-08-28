@@ -3,7 +3,10 @@ import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { MainService } from 'src/app/services/main/main.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
-import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import {
+  ProfileModifyMode,
+  ProfileService,
+} from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit, HostListener } from '@angular/core';
@@ -14,10 +17,9 @@ import { TopBarService } from '../../main-page/top-bar/top-bar.service';
 @Component({
   selector: 'app-mobile-page',
   templateUrl: './mobile-page.component.html',
-  styleUrls: ['./mobile-page.component.scss', './mobile-page.color.scss']
+  styleUrls: ['./mobile-page.component.scss', './mobile-page.color.scss'],
 })
 export class MobilePageComponent implements OnInit {
-
   public constructor(
     private mMainSrv: MainService,
     private mSideBarSrv: SideBarService,
@@ -27,13 +29,12 @@ export class MobilePageComponent implements OnInit {
     private mThemeSrv: ThemeService,
     private mImagePopupSrv: ImagePopupService,
     private mToastSrv: ToastService,
-    private mClipboardImageSrv: ClipboardImageService) {
-
+    private mClipboardImageSrv: ClipboardImageService
+  ) {
     history.pushState(null, '', window.location.href);
   }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public getCurrentLink(): string {
     return this.mMainSrv.getCurrentLink();

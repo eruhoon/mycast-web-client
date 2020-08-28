@@ -8,9 +8,8 @@ describe('EmojiAttachViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmojiAttachViewComponent ]
-    })
-    .compileComponents();
+      declarations: [EmojiAttachViewComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

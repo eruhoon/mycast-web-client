@@ -1,3 +1,3 @@
 export interface OptionSerializable<T> {
-    toOption(): T;
+  toOption(): T;
 }

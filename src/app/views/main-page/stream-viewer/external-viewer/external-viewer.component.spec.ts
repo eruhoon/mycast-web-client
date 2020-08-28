@@ -8,9 +8,8 @@ describe('ExternalViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExternalViewerComponent ]
-    })
-    .compileComponents();
+      declarations: [ExternalViewerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

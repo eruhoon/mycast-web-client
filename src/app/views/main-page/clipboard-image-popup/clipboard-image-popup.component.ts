@@ -10,10 +10,9 @@ import { ChatListService } from '../../chat/chat-list/chat-list.service';
 @Component({
   selector: 'clipboard-image-popup',
   templateUrl: './clipboard-image-popup.component.html',
-  styleUrls: ['./clipboard-image-popup.component.scss']
+  styleUrls: ['./clipboard-image-popup.component.scss'],
 })
 export class ClipboardImagePopupComponent implements OnInit {
-
   @ViewChild('focus', { static: true }) mFocus: ElementRef<HTMLImageElement>;
 
   private mService: ClipboardImageService;

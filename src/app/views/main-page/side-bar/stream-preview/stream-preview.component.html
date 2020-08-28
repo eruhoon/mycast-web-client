@@ -1,19 +1,24 @@
 <div class="container">
   <div class="preview-wrapper">
     <div class="thumbnail-wrapper">
-      <img class="thumbnail" [src]="thumbnail|safe">
+      <img class="thumbnail" [src]="thumbnail | safe" />
     </div>
     <div class="info-wrapper">
-      <div class="title">{{preview.getTitle()}}</div>
-      <div class="description">{{preview.getDescription()}}</div>
+      <div class="title">{{ preview.getTitle() }}</div>
+      <div class="description">{{ preview.getDescription() }}</div>
     </div>
 
     <div class="btn-wrapper">
       <button (click)="onFavoriteClick($event)">
         <i class="material-icons" *ngIf="!isFavorite()">star_border</i>
-        <i class="material-icons" [ngClass]="{enabled:isFavorite()}" *ngIf="isFavorite()">star</i>
+        <i
+          class="material-icons"
+          [ngClass]="{ enabled: isFavorite() }"
+          *ngIf="isFavorite()"
+          >star</i
+        >
       </button>
-      <button (click)=" onShareClick($event)">
+      <button (click)="onShareClick($event)">
         <i class="material-icons">link</i>
       </button>
       <button (click)="onNewWindowClick($event)">

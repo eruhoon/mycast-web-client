@@ -8,9 +8,8 @@ describe('LocalViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalViewerComponent ]
-    })
-    .compileComponents();
+      declarations: [LocalViewerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

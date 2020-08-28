@@ -8,9 +8,8 @@ describe('LinkPackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LinkPackComponent ]
-    })
-    .compileComponents();
+      declarations: [LinkPackComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

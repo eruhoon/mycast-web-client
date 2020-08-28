@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { ChatListComponent } from './chat-list.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatListService {
-
   private mScroller: ChatListComponent | null;
 
   public constructor() {

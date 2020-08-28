@@ -8,10 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'photo-entry',
   templateUrl: './photo-entry.component.html',
-  styleUrls: ['./photo-entry.component.scss']
+  styleUrls: ['./photo-entry.component.scss'],
 })
 export class PhotoEntryComponent implements OnInit {
-
   @Input()
   public photo: Photo;
   public thumbnail: string;
@@ -53,7 +52,7 @@ export class PhotoEntryComponent implements OnInit {
 
   public onFilterClick(): void {
     const adult = !this.photo.isForAdult();
-    this.mFilterCommand.execute(adult).then(result => {
+    this.mFilterCommand.execute(adult).then((result) => {
       if (result) {
         this.mService.setAdult(this.photo.getHash(), adult);
         this.isAdult = adult;

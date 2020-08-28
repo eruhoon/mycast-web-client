@@ -8,91 +8,97 @@ import { User } from '../user/User';
 import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatNetworkModelImpl implements ChatNetworkModel {
+  private mSocket: SocketModel;
+  private mOnRefreshMyProfile: TypeCallback<Profile>;
+  private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
+  private mOnRefreshChatList: TypeCallback<Chat[]>;
+  private mOnRefreshUserList: TypeCallback<User[]>;
+  private mOnNotifcationReceived: TypeCallback<VegaNotification>;
+  private mOnChat: TypeCallback<Chat>;
 
-    private mSocket: SocketModel;
-    private mOnRefreshMyProfile: TypeCallback<Profile>;
-    private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
-    private mOnRefreshChatList: TypeCallback<Chat[]>;
-    private mOnRefreshUserList: TypeCallback<User[]>;
-    private mOnNotifcationReceived: TypeCallback<VegaNotification>;
-    private mOnChat: TypeCallback<Chat>;
+  public constructor(privateKey: string) {
+    this.mSocket = this.createSocketModel(privateKey);
+    this.mOnUpdateLink = (_) => {};
+    this.mOnRefreshChatList = (_) => {};
+    this.mOnChat = (_) => {};
+  }
 
-    public constructor(privateKey: string) {
-        this.mSocket = this.createSocketModel(privateKey);
-        this.mOnUpdateLink = _ => { };
-        this.mOnRefreshChatList = _ => { };
-        this.mOnChat = _ => { };
-    }
+  public isOpen(): boolean {
+    return this.mSocket.isOpen();
+  }
 
-    public isOpen(): boolean { return this.mSocket.isOpen(); }
+  public chat(chat: string): void {
+    this.mSocket.chat(chat);
+  }
 
-    public chat(chat: string): void {
-        this.mSocket.chat(chat);
-    }
+  public notify(to: string): void {
+    this.mSocket.notify(to);
+  }
 
-    public notify(to: string): void {
-        this.mSocket.notify(to);
-    }
+  public modifyProfile(name: string, icon: string): void {
+    this.mSocket.modifyProfile(name, icon);
+  }
 
-    public modifyProfile(name: string, icon: string): void {
-        this.mSocket.modifyProfile(name, icon);
-    }
+  public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
+    this.mOnRefreshMyProfile = callback;
+  }
 
-    public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
-        this.mOnRefreshMyProfile = callback;
-    }
+  public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
+    this.mOnUpdateLink = callback;
+  }
 
-    public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
-        this.mOnUpdateLink = callback;
-    }
+  public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
+    this.mOnRefreshChatList = callback;
+  }
 
-    public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
-        this.mOnRefreshChatList = callback;
-    }
+  public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
+    this.mOnRefreshUserList = callback;
+  }
 
-    public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
-        this.mOnRefreshUserList = callback;
-    }
+  public setOnNotificationReceivedCallback(
+    callback: TypeCallback<VegaNotification>
+  ): void {
+    this.mOnNotifcationReceived = callback;
+  }
 
-    public setOnNotificationReceivedCallback(
-        callback: TypeCallback<VegaNotification>): void {
+  public setOnChatCallback(callback: TypeCallback<Chat>): void {
+    this.mOnChat = callback;
+  }
 
-        this.mOnNotifcationReceived = callback;
-    }
+  private onRefreshMyProfile(profile: Profile): void {
+    this.mOnRefreshMyProfile(profile);
+  }
 
-    public setOnChatCallback(callback: TypeCallback<Chat>): void {
-        this.mOnChat = callback;
-    }
+  private onUpdateLink(link: UpdateLinkResponse): void {
+    this.mOnUpdateLink(link);
+  }
 
-    private onRefreshMyProfile(profile: Profile): void {
-        this.mOnRefreshMyProfile(profile);
-    }
+  private onRefreshChatList(chats: Chat[]): void {
+    this.mOnRefreshChatList(chats);
+  }
 
-    private onUpdateLink(link: UpdateLinkResponse): void {
-        this.mOnUpdateLink(link);
-    }
+  private onChat(chat: Chat): void {
+    this.mOnChat(chat);
+  }
 
-    private onRefreshChatList(chats: Chat[]): void {
-        this.mOnRefreshChatList(chats);
-    }
-
-    private onChat(chat: Chat): void {
-        this.mOnChat(chat);
-    }
-
-    private createSocketModel(privateKey: string): SocketModel {
-        const model = new WebSocketModel(privateKey);
-        model.setOnRefreshMyProfileCallback(
-            profile => this.onRefreshMyProfile(profile));
-        model.setOnUpdateLinkCallback(
-            updateLink => this.onUpdateLink(updateLink));
-        model.setOnRefreshChatListCallback(
-            chats => this.onRefreshChatList(chats));
-        model.setOnRefreshUserListCallback(
-            users => this.mOnRefreshUserList(users));
-        model.setOnNotificationReceived(
-            notification => this.mOnNotifcationReceived(notification));
-        model.setOnChatCallback(chat => this.onChat(chat));
-        return model;
-    }
+  private createSocketModel(privateKey: string): SocketModel {
+    const model = new WebSocketModel(privateKey);
+    model.setOnRefreshMyProfileCallback((profile) =>
+      this.onRefreshMyProfile(profile)
+    );
+    model.setOnUpdateLinkCallback((updateLink) =>
+      this.onUpdateLink(updateLink)
+    );
+    model.setOnRefreshChatListCallback((chats) =>
+      this.onRefreshChatList(chats)
+    );
+    model.setOnRefreshUserListCallback((users) =>
+      this.mOnRefreshUserList(users)
+    );
+    model.setOnNotificationReceived((notification) =>
+      this.mOnNotifcationReceived(notification)
+    );
+    model.setOnChatCallback((chat) => this.onChat(chat));
+    return model;
+  }
 }

@@ -1,18 +1,27 @@
-<div class="link-popup" [ngStyle]="{
-    width: getWidth()+'px',
-    height: getHeight()+'px'
-}" cdkDrag>
-    <div class="title-bar" (mousedown)="onDragStart()">
-        <span class="material-icons"> live_tv
-        </span>
-        <div class="title">{{title}}</div>
-        <button (mousedown)="onExit()">
-            <i class="material-icons">clear</i>
-        </button>
-    </div>
-    <iframe class="content" [src]="getLink() | safe" allowfullscreen="true" webkitallowfullscreen="true"
-        mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true">
-    </iframe>
-    <div *ngIf="isMoveMode()" class="movebox" (mouseup)="onDragEnd()">
-    </div>
+<div
+  class="link-popup"
+  [ngStyle]="{
+    width: getWidth() + 'px',
+    height: getHeight() + 'px'
+  }"
+  cdkDrag
+>
+  <div class="title-bar" (mousedown)="onDragStart()">
+    <span class="material-icons"> live_tv </span>
+    <div class="title">{{ title }}</div>
+    <button (mousedown)="onExit()">
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+  <iframe
+    class="content"
+    [src]="getLink() | safe"
+    allowfullscreen="true"
+    webkitallowfullscreen="true"
+    mozallowfullscreen="true"
+    oallowfullscreen="true"
+    msallowfullscreen="true"
+  >
+  </iframe>
+  <div *ngIf="isMoveMode()" class="movebox" (mouseup)="onDragEnd()"></div>
 </div>

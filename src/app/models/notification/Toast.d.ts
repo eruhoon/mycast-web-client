@@ -1,4 +1,4 @@
 export interface Toast {
-    getHash(): string;
-    getText(): string;
+  getHash(): string;
+  getText(): string;
 }

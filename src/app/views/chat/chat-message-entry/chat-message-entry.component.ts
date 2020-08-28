@@ -8,17 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './chat-message-entry.component.html',
   styleUrls: [
     './chat-message-entry.component.scss',
-    './chat-message-entry.color.scss']
+    './chat-message-entry.color.scss',
+  ],
 })
 export class ChatMessageEntryComponent implements OnInit {
-
   @Input()
   public message: ChatMessage;
 
   private mTimeStr: string;
 
-  public constructor(
-    private mOption: OptionService) {
+  public constructor(private mOption: OptionService) {
     this.mTimeStr = '';
   }
 
@@ -36,7 +35,7 @@ export class ChatMessageEntryComponent implements OnInit {
   }
 
   private static convertTimeToString(timestamp: number): string {
-    const padZero = (n: number) => n < 10 ? `0${n}` : n;
+    const padZero = (n: number) => (n < 10 ? `0${n}` : n);
     const time = new Date(timestamp);
 
     const y = time.getFullYear();

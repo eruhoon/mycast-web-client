@@ -1,10 +1,18 @@
 <div class="side-bar">
   <ul class="main">
-    <li class="main" (click)="onMemoClick()" (contextmenu)="onMemoContextMenu()">
+    <li
+      class="main"
+      (click)="onMemoClick()"
+      (contextmenu)="onMemoContextMenu()"
+    >
       <i class="material-icons">event_note</i>
       <span>메모</span>
     </li>
-    <li class="main" (click)="onPhotoClick()" (contextmenu)="onPhotoContextMenu()">
+    <li
+      class="main"
+      (click)="onPhotoClick()"
+      (contextmenu)="onPhotoContextMenu()"
+    >
       <i class="material-icons">image</i>
       <span>이미지 갤러리</span>
     </li>
@@ -16,18 +24,38 @@
 
   <div>
     <hr />
-    <side-bar-stream-list-view title="마이캐스트" [streams]="getLocalStreamList()" *ngIf="isMobile()">
+    <side-bar-stream-list-view
+      title="마이캐스트"
+      [streams]="getLocalStreamList()"
+      *ngIf="isMobile()"
+    >
     </side-bar-stream-list-view>
     <hr *ngIf="isMobile()" />
-    <side-bar-stream-list-view title="즐겨찾기" [streams]="getFavoriteList()" *ngIf="hasFavorite()">
+    <side-bar-stream-list-view
+      title="즐겨찾기"
+      [streams]="getFavoriteList()"
+      *ngIf="hasFavorite()"
+    >
     </side-bar-stream-list-view>
     <hr *ngIf="hasFavorite()" />
-    <side-bar-stream-list-view title="트위치" [streams]="getTwitchList()"></side-bar-stream-list-view>
+    <side-bar-stream-list-view
+      title="트위치"
+      [streams]="getTwitchList()"
+    ></side-bar-stream-list-view>
     <hr />
-    <side-bar-stream-list-view title="아프리카" [streams]="getAfreecaList()"></side-bar-stream-list-view>
+    <side-bar-stream-list-view
+      title="아프리카"
+      [streams]="getAfreecaList()"
+    ></side-bar-stream-list-view>
     <hr />
-    <side-bar-stream-list-view title="유튜브" [streams]="getYoutubeList()"></side-bar-stream-list-view>
+    <side-bar-stream-list-view
+      title="유튜브"
+      [streams]="getYoutubeList()"
+    ></side-bar-stream-list-view>
     <hr />
-    <side-bar-stream-list-view title="카카오TV" [streams]="getKakaoList()"></side-bar-stream-list-view>
+    <side-bar-stream-list-view
+      title="카카오TV"
+      [streams]="getKakaoList()"
+    ></side-bar-stream-list-view>
   </div>
 </div>

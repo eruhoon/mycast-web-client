@@ -1,14 +1,17 @@
 <div class="nt-push-list">
-  <div class="nt-push-entry animateOpen" *ngFor="let notification of getNotification()">
+  <div
+    class="nt-push-entry animateOpen"
+    *ngFor="let notification of getNotification()"
+  >
     <div class="entry">
       <img [src]="notification.getIcon()" />
     </div>
     <div class="nt-info-txt">
       <div class="title">
-        <h4>{{notification.getTitle()}}</h4>
+        <h4>{{ notification.getTitle() }}</h4>
       </div>
       <div class="nt-alert">
-        <p>{{notification.getBody()}}</p>
+        <p>{{ notification.getBody() }}</p>
       </div>
     </div>
   </div>

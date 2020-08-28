@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'notification-list',
   templateUrl: './notification-list.component.html',
-  styleUrls: ['./notification-list.component.scss']
+  styleUrls: ['./notification-list.component.scss'],
 })
 export class NotificationListComponent {
-
   private mNotificationService: NotificationService;
 
   public constructor(notificationServive: NotificationService) {
@@ -17,7 +16,7 @@ export class NotificationListComponent {
   }
 
   public getNotificationParams(): Param[] {
-    return this.mNotificationService.getNotifications().map(n => {
+    return this.mNotificationService.getNotifications().map((n) => {
       const timeText = this.createTimeText(n.getTimeStamp());
       return { notification: n, timeText };
     });
@@ -45,6 +44,6 @@ export class NotificationListComponent {
 }
 
 type Param = {
-  notification: VegaNotification,
-  timeText: string,
+  notification: VegaNotification;
+  timeText: string;
 };

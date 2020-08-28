@@ -8,10 +8,12 @@ import { MutablePhoto } from 'src/app/models/photo/MutablePhoto';
 @Component({
   selector: 'photo-main-view',
   templateUrl: './photo-main-view.component.html',
-  styleUrls: ['./photo-main-view.component.scss', './photo-main-view.color.scss']
+  styleUrls: [
+    './photo-main-view.component.scss',
+    './photo-main-view.color.scss',
+  ],
 })
 export class PhotoMainViewComponent implements OnInit {
-
   @ViewChild('scroller', { static: false })
   public mScroller: ElementRef<HTMLDivElement>;
 
@@ -33,7 +35,7 @@ export class PhotoMainViewComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mLoader.load(rawPhotos => {
+    this.mLoader.load((rawPhotos) => {
       const photos = rawPhotos !== null ? rawPhotos : [];
       this.mContainer.update(photos);
     });
@@ -45,10 +47,12 @@ export class PhotoMainViewComponent implements OnInit {
 
   public onKeyDown(): void {
     clearTimeout(this.mTimer);
-    this.mTimer = Number(setTimeout(() => {
-      this.searchPhoto();
-      this.mTimer = -1;
-    }, 600));
+    this.mTimer = Number(
+      setTimeout(() => {
+        this.searchPhoto();
+        this.mTimer = -1;
+      }, 600)
+    );
   }
 
   public onScroll(): void {
@@ -65,7 +69,7 @@ export class PhotoMainViewComponent implements OnInit {
     this.mNextStart = 0;
     this.mLoader.setStart(0);
     this.mLoader.setQuery(elm.value);
-    this.mLoader.load(rawPhotos => {
+    this.mLoader.load((rawPhotos) => {
       const photos = rawPhotos !== null ? rawPhotos : [];
       this.mContainer.update(photos);
     });
@@ -74,13 +78,14 @@ export class PhotoMainViewComponent implements OnInit {
   private loadMore(): void {
     this.mNextStart += 100;
     this.mLoader.setStart(this.mNextStart);
-    this.mLoader.load(photos => {
+    this.mLoader.load((photos) => {
       if (!photos) {
         console.warn('load failed');
         return;
       }
-      const mutablePhotos = photos.map(
-        photo => MutablePhoto.createWithPhoto(photo));
+      const mutablePhotos = photos.map((photo) =>
+        MutablePhoto.createWithPhoto(photo)
+      );
       this.mContainer.upsert(mutablePhotos);
     });
   }

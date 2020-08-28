@@ -8,9 +8,8 @@ describe('NotificationPushListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationPushListComponent ]
-    })
-    .compileComponents();
+      declarations: [NotificationPushListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,9 +8,8 @@ describe('TextPackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextPackComponent ]
-    })
-    .compileComponents();
+      declarations: [TextPackComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

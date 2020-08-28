@@ -9,10 +9,9 @@ import { TopBarService } from './top-bar.service';
 @Component({
   selector: 'top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss', './top-bar.color.scss']
+  styleUrls: ['./top-bar.component.scss', './top-bar.color.scss'],
 })
 export class TopBarComponent {
-
   private static readonly INTERVAL_READ: number = 10000;
 
   private mProfileService: ProfileService;
@@ -23,7 +22,8 @@ export class TopBarComponent {
     private mService: TopBarService,
     private mSideBarSrv: SideBarService,
     profileService: ProfileService,
-    notificationService: NotificationService) {
+    notificationService: NotificationService
+  ) {
     this.mProfileService = profileService;
     this.mNotificationService = notificationService;
   }
@@ -71,9 +71,11 @@ export class TopBarComponent {
   }
 
   private startNotificationTimer(): void {
-    this.mNotificationTimer = Number(setInterval(() => {
-      this.mNotificationService.readAll();
-    }, TopBarComponent.INTERVAL_READ));
+    this.mNotificationTimer = Number(
+      setInterval(() => {
+        this.mNotificationService.readAll();
+      }, TopBarComponent.INTERVAL_READ)
+    );
   }
 
   private stopNotificationTimer(): void {

@@ -1,21 +1,21 @@
 <div class="book-pack" *ngIf="!isError()" (click)="onClick()">
-    <div class="book-box">
-        <img class="book-bg" [src]="image|safe" width="100%" />
-        <div class="img-overlay"></div>
-        <div class="book-info">
-            <div class="title-img">
-                <img [src]="image|safe" />
-            </div>
-            <div class="info-text">
-                <h4>{{title}}</h4>
-                <p>
-                    <span>{{author}} 저</span>
-                    <span *ngIf="translator.length!==0">, {{translator}} 역</span>
-                </p>
-                <p>{{publish}}X</p>
-                <p>{{date}}</p>
-            </div>
-        </div>
+  <div class="book-box">
+    <img class="book-bg" [src]="image | safe" width="100%" />
+    <div class="img-overlay"></div>
+    <div class="book-info">
+      <div class="title-img">
+        <img [src]="image | safe" />
+      </div>
+      <div class="info-text">
+        <h4>{{ title }}</h4>
+        <p>
+          <span>{{ author }} 저</span>
+          <span *ngIf="translator.length !== 0">, {{ translator }} 역</span>
+        </p>
+        <p>{{ publish }}X</p>
+        <p>{{ date }}</p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="book-pack-failed" *ngIf="isError()">책 검색 실패</div>

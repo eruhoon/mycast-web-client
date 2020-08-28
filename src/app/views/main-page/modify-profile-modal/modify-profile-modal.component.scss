@@ -14,7 +14,8 @@
   max-height: 90%;
   background: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .08), 0 0 15px 0 rgba(0, 0, 0, .02), 0 0 20px 4px rgba(0, 0, 0, .06);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08), 0 0 15px 0 rgba(0, 0, 0, 0.02),
+    0 0 20px 4px rgba(0, 0, 0, 0.06);
 
   * {
     padding: 0%;
@@ -35,7 +36,6 @@
       border: 2px solid #f6f6f6;
       border-radius: 50%;
       overflow: hidden;
-
     }
   }
 
@@ -84,12 +84,12 @@
     position: relative;
 
     label {
-      color: #D50000;
+      color: #d50000;
     }
 
     input {
-      border: 1px solid #D50000;
-      background-color: #FFEBEE;
+      border: 1px solid #d50000;
+      background-color: #ffebee;
     }
 
     p.error-up {
@@ -97,7 +97,7 @@
       top: 18px;
       right: 0px;
       font-size: 14px;
-      color: #D50000;
+      color: #d50000;
       display: block;
     }
   }
@@ -110,24 +110,24 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     color: #ffffff;
-    background-color: #FF4081;
-    border: 1px solid #FF4081;
+    background-color: #ff4081;
+    border: 1px solid #ff4081;
 
     font-size: 20px;
     font-weight: bolder;
 
     &:hover {
-      background-color: #E91E63;
-      border-color: #E91E63;
+      background-color: #e91e63;
+      border-color: #e91e63;
     }
 
     &:active {
-      background-color: #D81B60;
-      border-color: #D81B60;
+      background-color: #d81b60;
+      border-color: #d81b60;
     }
 
     &:disabled {
-      background-color: #BDBDBD;
+      background-color: #bdbdbd;
       border-color: #757575;
     }
   }
@@ -139,10 +139,11 @@
     top: calc(0% - 15px);
     right: calc(0% - 15px);
 
-    background-color: #FAFAFA;
-    border: 1px solid #F5F5F5;
+    background-color: #fafafa;
+    border: 1px solid #f5f5f5;
     border-radius: 50%;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, .12);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
     text-align: center;
 
@@ -154,8 +155,8 @@
     }
 
     &:hover {
-      background-color: #FF4081;
-      border: 1px solid #FF4081;
+      background-color: #ff4081;
+      border: 1px solid #ff4081;
 
       i {
         color: #ffffff;
@@ -163,8 +164,8 @@
     }
 
     &:active {
-      background-color: #E91E63;
-      border-color: #E91E63;
+      background-color: #e91e63;
+      border-color: #e91e63;
 
       i {
         color: #ffffff;

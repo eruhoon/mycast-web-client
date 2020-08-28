@@ -1,14 +1,19 @@
 import { Stream } from 'src/app/models/stream/Stream';
 
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-stream-viewer',
   templateUrl: './stream-viewer.component.html',
-  styleUrls: ['./stream-viewer.component.scss']
+  styleUrls: ['./stream-viewer.component.scss'],
 })
 export class StreamViewerComponent implements OnInit, OnChanges {
-
   @Input()
   public stream: Stream;
 
@@ -20,7 +25,7 @@ export class StreamViewerComponent implements OnInit, OnChanges {
     this.mExternalStream = null;
   }
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.isLocal()) {

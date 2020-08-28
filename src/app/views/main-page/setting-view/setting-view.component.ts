@@ -2,7 +2,10 @@ import { NotificationSound } from 'src/app/models/notification/NotificationSound
 import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
 import { Theme } from 'src/app/models/theme/Theme';
 import { OptionService } from 'src/app/services/option/option.service';
-import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import {
+  ProfileModifyMode,
+  ProfileService,
+} from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -10,13 +13,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-setting-view',
   templateUrl: './setting-view.component.html',
-  styleUrls: ['./setting-view.component.scss', './setting-view.color.scss']
+  styleUrls: ['./setting-view.component.scss', './setting-view.color.scss'],
 })
 export class SettingViewComponent implements OnInit {
-
   private static DEFAULT_PLATFORM_IMAGE = {
     default: '',
-    dark: ''
+    dark: '',
   };
 
   public theme: Theme;
@@ -29,7 +31,9 @@ export class SettingViewComponent implements OnInit {
 
   public constructor(
     private mThemeService: ThemeService,
-    profileService: ProfileService, optionService: OptionService) {
+    profileService: ProfileService,
+    optionService: OptionService
+  ) {
     this.theme = Theme.DEFAULT;
 
     this.mProfileService = profileService;
@@ -42,34 +46,39 @@ export class SettingViewComponent implements OnInit {
     ];
     this.mStreamPlatformImages = [
       {
-        id: 'local', src: {
+        id: 'local',
+        src: {
           default: '/assets/image/stream/mycast_b.png',
-          dark: '/assets/image/stream/mycast.png'
-        }
+          dark: '/assets/image/stream/mycast.png',
+        },
       },
       {
-        id: 'twitch', src: {
+        id: 'twitch',
+        src: {
           default: '/assets/image/stream/twitch_b.png',
-          dark: '/assets/image/stream/twitch.png'
-        }
+          dark: '/assets/image/stream/twitch.png',
+        },
       },
       {
-        id: 'afreeca', src: {
+        id: 'afreeca',
+        src: {
           default: '/assets/image/stream/afreeca_b.png',
-          dark: '/assets/image/stream/afreeca.png'
-        }
+          dark: '/assets/image/stream/afreeca.png',
+        },
       },
       {
-        id: 'mixer', src: {
+        id: 'mixer',
+        src: {
           default: '/assets/image/stream/mixer_b.png',
-          dark: '/assets/image/stream/mixer.png'
-        }
+          dark: '/assets/image/stream/mixer.png',
+        },
       },
       {
-        id: 'totoro', src: {
+        id: 'totoro',
+        src: {
           default: '/assets/image/stream/totoro_b.png',
-          dark: '/assets/image/stream/totoro.png'
-        }
+          dark: '/assets/image/stream/totoro.png',
+        },
       },
     ];
     this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
@@ -77,7 +86,9 @@ export class SettingViewComponent implements OnInit {
 
   public ngOnInit(): void {
     this.theme = this.mOptionService.getTheme();
-    this.mNotificationSoundId = this.mOptionService.getNotificationSound().getId();
+    this.mNotificationSoundId = this.mOptionService
+      .getNotificationSound()
+      .getId();
     this.mProfileService.loadStream();
   }
 
@@ -111,7 +122,7 @@ export class SettingViewComponent implements OnInit {
 
   public getPlatformImage(): ImageSrc {
     const platform = this.mProfileService.getStreamPlatform();
-    const image = this.mStreamPlatformImages.find(p => p.id === platform);
+    const image = this.mStreamPlatformImages.find((p) => p.id === platform);
     const src = image ? image.src : SettingViewComponent.DEFAULT_PLATFORM_IMAGE;
     return src;
   }
@@ -172,6 +183,6 @@ export class SettingViewComponent implements OnInit {
   }
 }
 
-type ThemeOption = { name: string, theme: Theme };
+type ThemeOption = { name: string; theme: Theme };
 
-type StreamPlatformImage = { id: string, src: ImageSrc };
+type StreamPlatformImage = { id: string; src: ImageSrc };

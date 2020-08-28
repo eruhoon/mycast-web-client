@@ -1,66 +1,66 @@
 :host-context(.theme-light) {
-    .cv-pack {
-        .cv-title {
-            h3 {
-                color: #424242;
-            }
-            p {
-                color: #616161;
-            }
-        }
-        .cv-list {
-            scrollbar-color: #FF4081 #F5F5F5;
-            &::-webkit-scrollbar {
-                border: 5px solid #F5F5F5;
-            }
-            &::-webkit-scrollbar-button:start:decrement,
-            &::-webkit-scrollbar-button:end:increment {
-                background: #F5F5F5;
-            }
-            &::-webkit-scrollbar-track {
-                background: #F5F5F5;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #FF4081;
-            }
-            .cv-box {
-                .cv-img {
-                    border: 2px solid #FFFFFF;
-                }
-            }
-        }
+  .cv-pack {
+    .cv-title {
+      h3 {
+        color: #424242;
+      }
+      p {
+        color: #616161;
+      }
     }
+    .cv-list {
+      scrollbar-color: #ff4081 #f5f5f5;
+      &::-webkit-scrollbar {
+        border: 5px solid #f5f5f5;
+      }
+      &::-webkit-scrollbar-button:start:decrement,
+      &::-webkit-scrollbar-button:end:increment {
+        background: #f5f5f5;
+      }
+      &::-webkit-scrollbar-track {
+        background: #f5f5f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ff4081;
+      }
+      .cv-box {
+        .cv-img {
+          border: 2px solid #ffffff;
+        }
+      }
+    }
+  }
 }
 :host-context(.theme-dark) {
-    .cv-pack {
-        .cv-title {
-            h3 {
-                color: #FFFFFF;
-            }
-            p {
-                color: #e0e0e0;
-            }
-        }
-        .cv-list {
-            scrollbar-color: #FF4081 #424242;
-            &::-webkit-scrollbar {
-                border: 5px solid #424242;
-            }
-            &::-webkit-scrollbar-button:start:decrement,
-            &::-webkit-scrollbar-button:end:increment {
-                background: #424242;
-            }
-            &::-webkit-scrollbar-track {
-                background: #424242;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #FF4081;
-            }
-            .cv-box {
-                .cv-img {
-                    border: 2px solid #424242;
-                }
-            }
-        }
+  .cv-pack {
+    .cv-title {
+      h3 {
+        color: #ffffff;
+      }
+      p {
+        color: #e0e0e0;
+      }
     }
+    .cv-list {
+      scrollbar-color: #ff4081 #424242;
+      &::-webkit-scrollbar {
+        border: 5px solid #424242;
+      }
+      &::-webkit-scrollbar-button:start:decrement,
+      &::-webkit-scrollbar-button:end:increment {
+        background: #424242;
+      }
+      &::-webkit-scrollbar-track {
+        background: #424242;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ff4081;
+      }
+      .cv-box {
+        .cv-img {
+          border: 2px solid #424242;
+        }
+      }
+    }
+  }
 }

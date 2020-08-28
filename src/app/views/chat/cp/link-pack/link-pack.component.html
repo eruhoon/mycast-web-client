@@ -1,13 +1,22 @@
-<div class="link-pack" [style.height]="getThumbnail()?'100px':'60px'" (click)="onClick()"
-    (contextmenu)="onContextMenu()">
-    <img class="thumbnail" *ngIf="getThumbnail()" [src]="getThumbnail() | safe" style="display: inline;">
-    <div class="container">
-        <div class="title">{{getTitle()}}</div>
-        <div class="link">{{getLink()}}</div>
-    </div>
-    <div class="menu">
-        <button class="button">
-            <i class="material-icons">content_copy</i>
-        </button>
-    </div>
+<div
+  class="link-pack"
+  [style.height]="getThumbnail() ? '100px' : '60px'"
+  (click)="onClick()"
+  (contextmenu)="onContextMenu()"
+>
+  <img
+    class="thumbnail"
+    *ngIf="getThumbnail()"
+    [src]="getThumbnail() | safe"
+    style="display: inline"
+  />
+  <div class="container">
+    <div class="title">{{ getTitle() }}</div>
+    <div class="link">{{ getLink() }}</div>
+  </div>
+  <div class="menu">
+    <button class="button">
+      <i class="material-icons">content_copy</i>
+    </button>
+  </div>
 </div>

@@ -4,10 +4,9 @@ import { User } from 'src/app/models/user/User';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrentUserService {
-
   private mUserSubject: Subject<User[]>;
   private mUsers: User[];
 

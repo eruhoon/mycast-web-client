@@ -6,10 +6,9 @@ import { Photo } from 'src/app/models/photo/Photo';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PhotoService {
-
   private mLoader: VegaPhotoLoader;
   private mPhotoUploadCommand: PhotoUploadCommand;
   private mPhotos: MutablePhoto[];
@@ -19,7 +18,7 @@ export class PhotoService {
   public constructor() {
     this.mLoader = new VegaPhotoLoader();
     this.mPhotoUploadCommand = new PhotoUploadCommand();
-    this.mPhotoUploadCommand.setOnComplete(photo => {
+    this.mPhotoUploadCommand.setOnComplete((photo) => {
       const newPhoto = MutablePhoto.createWithPhoto(photo);
       this.mPhotos = [newPhoto, ...this.mPhotos];
     });
@@ -48,13 +47,14 @@ export class PhotoService {
   }
 
   public loadMore(): void {
-    this.mLoader.load(photos => {
+    this.mLoader.load((photos) => {
       if (!photos) {
         console.warn('load failed');
         return;
       }
-      const mutablePhotos = photos.map(
-        photo => MutablePhoto.createWithPhoto(photo));
+      const mutablePhotos = photos.map((photo) =>
+        MutablePhoto.createWithPhoto(photo)
+      );
       this.mPhotos = [...this.mPhotos, ...mutablePhotos];
       this.mNextStart += 100;
       this.mLoader.setStart(this.mNextStart);
@@ -62,7 +62,7 @@ export class PhotoService {
   }
 
   public setAdult(hash: string, adult: boolean): void {
-    const photo = this.mPhotos.find(p => p.getHash() === hash);
+    const photo = this.mPhotos.find((p) => p.getHash() === hash);
     if (!photo) {
       console.warn('not found');
       return;
@@ -71,12 +71,17 @@ export class PhotoService {
   }
 
   public setTags(hash: string, tagQuery: string): void {
-    const photo = this.mPhotos.find(p => p.getHash() === hash);
+    const photo = this.mPhotos.find((p) => p.getHash() === hash);
     if (!photo) {
       console.warn('not found');
       return;
     }
-    photo.setTags(tagQuery.split(',').map(s => s.trim()).filter(s => s));
+    photo.setTags(
+      tagQuery
+        .split(',')
+        .map((s) => s.trim())
+        .filter((s) => s)
+    );
   }
 
   public isLoading(): boolean {

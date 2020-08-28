@@ -11,7 +11,12 @@
       <label>
         <p>닉네임</p>
       </label>
-      <input id="name" maxlength="15" [(ngModel)]="profileForm.name" type="text" />
+      <input
+        id="name"
+        maxlength="15"
+        [(ngModel)]="profileForm.name"
+        type="text"
+      />
       <p class="error-up">닉네임을 입력하세요.</p>
     </div>
     <div [class]="isIconError() ? 'u-input error' : 'u-input'">
@@ -21,12 +26,15 @@
       <input id="icon" [(ngModel)]="profileForm.icon" type="text" />
       <p class="error-up">아이콘을 입력하세요.</p>
     </div>
-    <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button>
+    <button
+      [disabled]="isNameError() || isIconError()"
+      (click)="onSubmitClick()"
+    >
+      확인
+    </button>
 
     <a class="modal-close" (click)="close()">
-      <i class="material-icons">
-        close
-      </i>
+      <i class="material-icons"> close </i>
     </a>
   </div>
 </div>

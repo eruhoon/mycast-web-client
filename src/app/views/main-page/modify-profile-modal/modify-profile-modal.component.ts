@@ -1,18 +1,19 @@
-import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import {
+  ProfileModifyMode,
+  ProfileService,
+} from 'src/app/services/profile/profile.service';
 
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'modify-profile-modal',
   templateUrl: './modify-profile-modal.component.html',
-  styleUrls: ['./modify-profile-modal.component.scss']
+  styleUrls: ['./modify-profile-modal.component.scss'],
 })
 export class ModifyProfileModalComponent {
-
   public profileForm: ProfileForm;
 
   private mProfileService: ProfileService;
-
 
   public constructor(profileService: ProfileService) {
     this.profileForm = {
@@ -24,7 +25,9 @@ export class ModifyProfileModalComponent {
 
   public onSubmitClick(): void {
     this.mProfileService.requestToModifyProfile(
-      this.profileForm.name, this.profileForm.icon);
+      this.profileForm.name,
+      this.profileForm.icon
+    );
     this.close();
   }
 
@@ -53,4 +56,4 @@ export class ModifyProfileModalComponent {
   }
 }
 
-type ProfileForm = { name: string, icon: string };
+type ProfileForm = { name: string; icon: string };

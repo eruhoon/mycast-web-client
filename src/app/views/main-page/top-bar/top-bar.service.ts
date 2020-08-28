@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TopBarService {
-
   private mSettingMenu: Menu;
   private mNotiList: Menu;
   private mMenus: Menu[];
@@ -16,7 +15,9 @@ export class TopBarService {
   }
 
   public closeAllMenu(): void {
-    this.mMenus.forEach(menu => { menu.open = false; });
+    this.mMenus.forEach((menu) => {
+      menu.open = false;
+    });
   }
 
   public isSettingMenuOpen(): boolean {
@@ -27,17 +28,29 @@ export class TopBarService {
     return this.isMenuOpen(this.mNotiList);
   }
 
-  public openSettingMenu(): void { this.openMenu(this.mSettingMenu); }
+  public openSettingMenu(): void {
+    this.openMenu(this.mSettingMenu);
+  }
 
-  public openNotiList(): void { this.openMenu(this.mNotiList); }
+  public openNotiList(): void {
+    this.openMenu(this.mNotiList);
+  }
 
-  public closeSettingMenu(): void { this.closeMenu(this.mSettingMenu); }
+  public closeSettingMenu(): void {
+    this.closeMenu(this.mSettingMenu);
+  }
 
-  public closeNotiList(): void { this.closeMenu(this.mNotiList); }
+  public closeNotiList(): void {
+    this.closeMenu(this.mNotiList);
+  }
 
-  public toggleSettingMenu(): void { this.toggleMenu(this.mSettingMenu); }
+  public toggleSettingMenu(): void {
+    this.toggleMenu(this.mSettingMenu);
+  }
 
-  public toggleNotiList(): void { this.toggleMenu(this.mNotiList); }
+  public toggleNotiList(): void {
+    this.toggleMenu(this.mNotiList);
+  }
 
   private isMenuOpen(menu: Menu): boolean {
     return menu.open;
@@ -61,4 +74,4 @@ export class TopBarService {
   }
 }
 
-type Menu = { name: string, open: boolean };
+type Menu = { name: string; open: boolean };

@@ -1,65 +1,64 @@
 :host-context(.theme-light) {
-    .chat-user-list {
-        background: white;
+  .chat-user-list {
+    background: white;
+  }
+  .cu-list-title {
+    background-color: #ec407a;
+    color: #ffffff;
+  }
+  .cu-entry {
+    scrollbar-color: #e0e0e0 #ffffff;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      border: 3px solid #fff;
     }
-    .cu-list-title {
-        background-color: #ec407a;
-        color: #ffffff;
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      background: #fff;
     }
-    .cu-entry {
-        scrollbar-color: #E0E0E0 #ffffff;
-        scrollbar-width: thin;
-        &::-webkit-scrollbar {
-            border: 3px solid #fff;
-        }
-        &::-webkit-scrollbar-button:start:decrement,
-        &::-webkit-scrollbar-button:end:increment {
-            background: #fff;
-        }
-        &::-webkit-scrollbar-track {
-            background: #fff;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: #E0E0E0;
-        }
+    &::-webkit-scrollbar-track {
+      background: #fff;
     }
-    chat-user-entry {
-        border-bottom: 1px solid #e8e8e8;
-        &:last-child {
-          border-bottom-color: #ffffff;
-        }
+    &::-webkit-scrollbar-thumb {
+      background: #e0e0e0;
     }
   }
-:host-context(.theme-dark) {
-    .chat-user-list {
-        background: #616161;
+  chat-user-entry {
+    border-bottom: 1px solid #e8e8e8;
+    &:last-child {
+      border-bottom-color: #ffffff;
     }
-    .cu-list-title {
-        background-color: #ec407a;
-        color: #ffffff;
-    }
-    .cu-entry {
-        scrollbar-color: #424242 #616161;
-        scrollbar-width: thin;
-        &::-webkit-scrollbar {
-            border-color: #424242;
-        }
-        &::-webkit-scrollbar-button:start:decrement,
-        &::-webkit-scrollbar-button:end:increment {
-            background: #424242;
-        }
-        &::-webkit-scrollbar-track {
-            background: #424242;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: #616161;
-        }
-    }
-    chat-user-entry {
-        border-bottom: 1px solid #727272;
-        &:last-child {
-          border-bottom-color: #595959;
-        }
-    }
+  }
 }
-  
+:host-context(.theme-dark) {
+  .chat-user-list {
+    background: #616161;
+  }
+  .cu-list-title {
+    background-color: #ec407a;
+    color: #ffffff;
+  }
+  .cu-entry {
+    scrollbar-color: #424242 #616161;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      border-color: #424242;
+    }
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      background: #424242;
+    }
+    &::-webkit-scrollbar-track {
+      background: #424242;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #616161;
+    }
+  }
+  chat-user-entry {
+    border-bottom: 1px solid #727272;
+    &:last-child {
+      border-bottom-color: #595959;
+    }
+  }
+}

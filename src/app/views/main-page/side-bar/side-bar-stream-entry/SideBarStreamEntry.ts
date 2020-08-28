@@ -4,6 +4,6 @@ import { Input, Directive } from '@angular/core';
 
 @Directive()
 export class SideBarStreamEntryDirective {
-    @Input()
-    public stream: Stream;
+  @Input()
+  public stream: Stream;
 }

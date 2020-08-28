@@ -1,41 +1,27 @@
 <div class="body black-text" [ngSwitch]="message.getType()">
-    <afreeca-pack *ngSwitchCase="'afreeca'" [message]="message">
-    </afreeca-pack>
-    <al-ship-pack *ngSwitchCase="'al-ship'" [message]="message">
-    </al-ship-pack>
-    <animation-pack *ngSwitchCase="'animation'" [message]="message">
-    </animation-pack>
-    <book-pack *ngSwitchCase="'book'" [message]="message">
-    </book-pack>
-    <cq-hero-pack *ngSwitchCase="'cq-hero'" [message]="message">
-    </cq-hero-pack>
-    <cv-pack *ngSwitchCase="'character-voice'" [message]="message">
-    </cv-pack>
-    <gf-doll-pack *ngSwitchCase="'gf-doll'" [message]="message">
-    </gf-doll-pack>
-    <image-pack *ngSwitchCase="'image'" [message]="message">
-    </image-pack>
-    <link-pack *ngSwitchCase="'link'" [message]="message">
-    </link-pack>
-    <lol-champion-pack *ngSwitchCase="'champion'" [message]="message">
-    </lol-champion-pack>
-    <lol-user-pack *ngSwitchCase="'lol-user'" [message]="message">
-    </lol-user-pack>
-    <magic-conch-pack *ngSwitchCase="'magic-conch'" [message]="message">
-    </magic-conch-pack>
-    <memo-pack *ngSwitchCase="'memo'" [message]="message">
-    </memo-pack>
-    <movie-pack *ngSwitchCase="'movie'" [message]="message">
-    </movie-pack>
-    <stream-pack *ngSwitchCase="'stream'" [message]="message">
-    </stream-pack>
-    <text-pack *ngSwitchCase="'text'" [message]="message">
-    </text-pack>
-    <twitch-pack *ngSwitchCase="'twitch'" [message]="message">
-    </twitch-pack>
-    <twitch-clip-pack *ngSwitchCase="'twitch-clip'" [message]="message">
-    </twitch-clip-pack>
-    <youtube-pack *ngSwitchCase="'youtube'" [message]="message">
-    </youtube-pack>
-    <div class="footer" *ngIf="isTimestampShow()">{{getTimeString()}}</div>
+  <afreeca-pack *ngSwitchCase="'afreeca'" [message]="message"> </afreeca-pack>
+  <al-ship-pack *ngSwitchCase="'al-ship'" [message]="message"> </al-ship-pack>
+  <animation-pack *ngSwitchCase="'animation'" [message]="message">
+  </animation-pack>
+  <book-pack *ngSwitchCase="'book'" [message]="message"> </book-pack>
+  <cq-hero-pack *ngSwitchCase="'cq-hero'" [message]="message"> </cq-hero-pack>
+  <cv-pack *ngSwitchCase="'character-voice'" [message]="message"> </cv-pack>
+  <gf-doll-pack *ngSwitchCase="'gf-doll'" [message]="message"> </gf-doll-pack>
+  <image-pack *ngSwitchCase="'image'" [message]="message"> </image-pack>
+  <link-pack *ngSwitchCase="'link'" [message]="message"> </link-pack>
+  <lol-champion-pack *ngSwitchCase="'champion'" [message]="message">
+  </lol-champion-pack>
+  <lol-user-pack *ngSwitchCase="'lol-user'" [message]="message">
+  </lol-user-pack>
+  <magic-conch-pack *ngSwitchCase="'magic-conch'" [message]="message">
+  </magic-conch-pack>
+  <memo-pack *ngSwitchCase="'memo'" [message]="message"> </memo-pack>
+  <movie-pack *ngSwitchCase="'movie'" [message]="message"> </movie-pack>
+  <stream-pack *ngSwitchCase="'stream'" [message]="message"> </stream-pack>
+  <text-pack *ngSwitchCase="'text'" [message]="message"> </text-pack>
+  <twitch-pack *ngSwitchCase="'twitch'" [message]="message"> </twitch-pack>
+  <twitch-clip-pack *ngSwitchCase="'twitch-clip'" [message]="message">
+  </twitch-clip-pack>
+  <youtube-pack *ngSwitchCase="'youtube'" [message]="message"> </youtube-pack>
+  <div class="footer" *ngIf="isTimestampShow()">{{ getTimeString() }}</div>
 </div>

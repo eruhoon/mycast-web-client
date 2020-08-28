@@ -1,6 +1,12 @@
 import { Stream } from 'src/app/models/stream/Stream';
 
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 declare var Clappr: any;
 declare var RTMP: any;
@@ -8,10 +14,9 @@ declare var RTMP: any;
 @Component({
   selector: 'app-local-viewer',
   templateUrl: './local-viewer.component.html',
-  styleUrls: ['./local-viewer.component.scss']
+  styleUrls: ['./local-viewer.component.scss'],
 })
 export class LocalViewerComponent implements OnInit, OnChanges {
-
   @Input()
   public stream: Stream;
 
@@ -21,8 +26,7 @@ export class LocalViewerComponent implements OnInit, OnChanges {
     this.mPlayer = null;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     const keyId = this.stream.getKeyId();
@@ -51,22 +55,21 @@ export class LocalViewerComponent implements OnInit, OnChanges {
         switchRules: {
           SufficientBandwidthRule: {
             bandwidthSafetyMultiple: 1.15,
-            minDroppedFps: 2
+            minDroppedFps: 2,
           },
           InsufficientBufferRule: {
-            minBufferLength: 2
+            minBufferLength: 2,
           },
           DroppedFramesRule: {
             downSwitchByOne: 10,
             downSwitchByTwo: 20,
-            downSwitchToZero: 24
+            downSwitchToZero: 24,
           },
           InsufficientBandwidthRule: {
-            bitrateMultiplier: 1.15
-          }
-        }
+            bitrateMultiplier: 1.15,
+          },
+        },
       },
     });
   }
-
 }

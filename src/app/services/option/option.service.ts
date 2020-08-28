@@ -9,10 +9,9 @@ import { ThemeParser } from 'src/app/models/theme/ThemeParser';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OptionService {
-
   private mStorage: LocalStorage;
   private mThemeParser: ThemeParser;
   private mChatPosition: number;
@@ -75,7 +74,7 @@ export class OptionService {
     try {
       const raw = this.mStorage.getRawNotificationChannels();
       const channels = JSON.parse(raw) as NotificationChannel[];
-      return channels.map(ch => ch);
+      return channels.map((ch) => ch);
     } catch {
       return [];
     }
@@ -129,7 +128,7 @@ export class OptionService {
   public setTheme(theme: Theme): void {
     this.mTheme = theme;
     this.mStorage.setTheme(theme);
-    this.mThemeCallbacks.forEach(callback => callback(theme));
+    this.mThemeCallbacks.forEach((callback) => callback(theme));
   }
 
   public addThemeCallback(callback: TypeCallback<Theme>): void {
@@ -142,7 +141,10 @@ export class OptionService {
 
   private static isMobile(): boolean {
     const userAgent = navigator.userAgent;
-    const isMobile = userAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
+    const isMobile =
+      userAgent.match(
+        /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
+      ) != null || userAgent.match(/LG|SAMSUNG|Samsung/) != null;
     return isMobile;
   }
 }

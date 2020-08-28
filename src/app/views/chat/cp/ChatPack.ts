@@ -4,21 +4,19 @@ import { OptionService } from 'src/app/services/option/option.service';
 
 @Directive()
 export abstract class ChatPackDirective {
-    @Input() message: ChatMessage;
+  @Input() message: ChatMessage;
 
-    private mOptionService: OptionService;
+  private mOptionService: OptionService;
 
-    public constructor(injector: Injector) {
+  public constructor(injector: Injector) {
+    this.mOptionService = injector.get(OptionService);
+  }
 
-        this.mOptionService = injector.get(OptionService);
+  public isMobile(): boolean {
+    return this.mOptionService.isMobile();
+  }
 
-    }
-
-    public isMobile(): boolean {
-        return this.mOptionService.isMobile();
-    }
-
-    public isDataSaveMode(): boolean {
-        return this.mOptionService.isDataSaveMode();
-    }
+  public isDataSaveMode(): boolean {
+    return this.mOptionService.isDataSaveMode();
+  }
 }

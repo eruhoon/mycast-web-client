@@ -8,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'notification-request-popup',
   templateUrl: './notification-request-popup.component.html',
-  styleUrls: ['./notification-request-popup.component.scss']
+  styleUrls: ['./notification-request-popup.component.scss'],
 })
 export class NotificationRequestPopupComponent implements OnInit {
-
   private mMainService: MainService;
   private mNotificationService: NotificationService;
   private mToastService: ToastService;
@@ -19,14 +18,14 @@ export class NotificationRequestPopupComponent implements OnInit {
   public constructor(
     mainService: MainService,
     notificationService: NotificationService,
-    toastService: ToastService) {
+    toastService: ToastService
+  ) {
     this.mMainService = mainService;
     this.mNotificationService = notificationService;
     this.mToastService = toastService;
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public onSendClick(): void {
     this.sendNotification();

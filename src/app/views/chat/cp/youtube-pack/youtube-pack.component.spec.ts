@@ -8,9 +8,8 @@ describe('YoutubePackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YoutubePackComponent ]
-    })
-    .compileComponents();
+      declarations: [YoutubePackComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

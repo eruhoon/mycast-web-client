@@ -1,20 +1,23 @@
 <div class="memo-upload">
-    <div class="bg" (click)="close()"></div>
-    <div class="memo-box">
-        <div class="title">
-            <div class="user-img">
-                <img [src]="getIcon()|safe" />
-            </div>
-            <div class="title-txt">
-                <h3>{{getName()}}</h3>
-                <p>{{getDateString()}}</p>
-            </div>
-            <form class="content">
-                <textarea name="memo" placeholder="건전한 메모장을 위해 타인에게 불쾌감을 주는 욕설 또는 위험한 링크를 제한합니다."
-                    [(ngModel)]="memoForm.memo"></textarea>
-                <button class="sub-btn memo-sub" (click)="upload()">메모작성</button>
-            </form>
-        </div>
+  <div class="bg" (click)="close()"></div>
+  <div class="memo-box">
+    <div class="title">
+      <div class="user-img">
+        <img [src]="getIcon() | safe" />
+      </div>
+      <div class="title-txt">
+        <h3>{{ getName() }}</h3>
+        <p>{{ getDateString() }}</p>
+      </div>
+      <form class="content">
+        <textarea
+          name="memo"
+          placeholder="건전한 메모장을 위해 타인에게 불쾌감을 주는 욕설 또는 위험한 링크를 제한합니다."
+          [(ngModel)]="memoForm.memo"
+        ></textarea>
+        <button class="sub-btn memo-sub" (click)="upload()">메모작성</button>
+      </form>
     </div>
-    <i class="material-icons clear" (click)="false">clear</i>
+  </div>
+  <i class="material-icons clear" (click)="(false)">clear</i>
 </div>

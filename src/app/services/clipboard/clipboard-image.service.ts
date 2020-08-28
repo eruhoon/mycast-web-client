@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClipboardImageService {
-
   private mCurrentImage: string | null;
 
   public constructor() {

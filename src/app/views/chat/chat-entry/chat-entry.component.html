@@ -1,8 +1,14 @@
 <div class="chat-entry">
   <div class="icon-section">
     <div class="icon">
-      <img #icon [src]="getIcon()" (contextmenu)="onIconContextMenu()"
-        [ngStyle]="{border: isPowerfulHanhwa() ? '2px solid #ff6b01': 'none'}" />
+      <img
+        #icon
+        [src]="getIcon()"
+        (contextmenu)="onIconContextMenu()"
+        [ngStyle]="{
+          border: isPowerfulHanhwa() ? '2px solid #ff6b01' : 'none'
+        }"
+      />
     </div>
   </div>
   <div class="message-section">
@@ -13,13 +19,17 @@
       <div class="nickname">
         <span>{{ chat.getSender().getNickname() }}</span>
         <span class="type" [ngSwitch]="getEnvironment()">
-          <i *ngSwitchCase="SenderEnv.MOBILE" class="material-icons">smartphone</i>
+          <i *ngSwitchCase="SenderEnv.MOBILE" class="material-icons"
+            >smartphone</i
+          >
           <i *ngSwitchCase="SenderEnv.BOT" class="material-icons">bug_report</i>
         </span>
       </div>
     </div>
-    <chat-message-entry *ngFor="let message of chat.getMessages()" [message]="message">
+    <chat-message-entry
+      *ngFor="let message of chat.getMessages()"
+      [message]="message"
+    >
     </chat-message-entry>
-
   </div>
 </div>

@@ -1,26 +1,26 @@
 <div class="memo-page">
-    <div class="left-menu">
-        <h2>
-            마이<br />
-            캐스트<br />
-            메모
-        </h2>
-        <div class="mm-menu-list">
-            <a class="mm-m-li">
-                <i class="material-icons">insert_drive_file</i>
-                <p>메모</p>
-            </a>
-            <!--<a class="mm-m-li">
+  <div class="left-menu">
+    <h2>
+      마이<br />
+      캐스트<br />
+      메모
+    </h2>
+    <div class="mm-menu-list">
+      <a class="mm-m-li">
+        <i class="material-icons">insert_drive_file</i>
+        <p>메모</p>
+      </a>
+      <!--<a class="mm-m-li">
                 <i class="material-icons">collections_bookmark</i>
                 <p>앨범</p>
             </a>-->
-            <a class="mm-m-li mm-li-btm" (click)="goUploadMode()">
-                <i class="material-icons">edit</i>
-                <p>업로드</p>
-            </a>
-        </div>
+      <a class="mm-m-li mm-li-btm" (click)="goUploadMode()">
+        <i class="material-icons">edit</i>
+        <p>업로드</p>
+      </a>
     </div>
-    <memo-main-view></memo-main-view>
-    <memo-detail-view *ngIf="isDetailMode()"></memo-detail-view>
-    <memo-upload-view *ngIf="isUploadMode()"></memo-upload-view>
+  </div>
+  <memo-main-view></memo-main-view>
+  <memo-detail-view *ngIf="isDetailMode()"></memo-detail-view>
+  <memo-upload-view *ngIf="isUploadMode()"></memo-upload-view>
 </div>

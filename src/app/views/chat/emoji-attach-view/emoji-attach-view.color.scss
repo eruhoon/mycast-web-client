@@ -1,82 +1,82 @@
 :host-context(.theme-light) {
-    .container {
-        background: #ffffff;
-        border-top: 1px solid #e0e0e0;
-        .title {
-            border-bottom: 1px solid #e3e3e3;
-            h4 {
-                color: #424242;
-            }
-        }
-        .emoji-list {
-            background-color: #ffffff;
-            scrollbar-color: #e0e0e0 #ffffff;
-            scrollbar-width: thin;
-            &::-webkit-scrollbar {
-                border-color: #ffffff;
-            }
-            &::-webkit-scrollbar-button:start:decrement,
-            &::-webkit-scrollbar-button:end:increment {
-                background: #ffffff;
-            }
-            &::-webkit-scrollbar-track {
-                background: #ffffff;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #e0e0e0;
-            }
-            .def-emoji-list{
-                span {
-                    &:hover {
-                        background: #f3f3f3;
-                    }
-                    &:active {
-                        background: #eeeeee;
-                    }
-                }
-            }
-        }
+  .container {
+    background: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    .title {
+      border-bottom: 1px solid #e3e3e3;
+      h4 {
+        color: #424242;
+      }
     }
+    .emoji-list {
+      background-color: #ffffff;
+      scrollbar-color: #e0e0e0 #ffffff;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        border-color: #ffffff;
+      }
+      &::-webkit-scrollbar-button:start:decrement,
+      &::-webkit-scrollbar-button:end:increment {
+        background: #ffffff;
+      }
+      &::-webkit-scrollbar-track {
+        background: #ffffff;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #e0e0e0;
+      }
+      .def-emoji-list {
+        span {
+          &:hover {
+            background: #f3f3f3;
+          }
+          &:active {
+            background: #eeeeee;
+          }
+        }
+      }
+    }
+  }
 }
 
 :host-context(.theme-dark) {
-    .container {
-        background: #424242;
-        border-top: 1px solid #333333;
-        .title {
-            border-bottom: 1px solid #727272;
-            h4 {
-                color: #ffffff;
-            }
-        }
-        .emoji-list {
-            background-color: #424242;
-            scrollbar-color: #616161 #424242;
-            scrollbar-width: thin;
-            &::-webkit-scrollbar {
-                border-color: #424242;
-            }
-            &::-webkit-scrollbar-button:start:decrement,
-            &::-webkit-scrollbar-button:end:increment {
-                background: #424242;
-            }
-            &::-webkit-scrollbar-track {
-                background: #424242;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #616161;
-            }
-            .def-emoji-list{
-                background-color: #424242;
-                span {
-                    &:hover {
-                        background: #212121;
-                    }
-                    &:active {
-                        background: #000000;
-                    }
-                }
-            }
-        }
+  .container {
+    background: #424242;
+    border-top: 1px solid #333333;
+    .title {
+      border-bottom: 1px solid #727272;
+      h4 {
+        color: #ffffff;
+      }
     }
+    .emoji-list {
+      background-color: #424242;
+      scrollbar-color: #616161 #424242;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        border-color: #424242;
+      }
+      &::-webkit-scrollbar-button:start:decrement,
+      &::-webkit-scrollbar-button:end:increment {
+        background: #424242;
+      }
+      &::-webkit-scrollbar-track {
+        background: #424242;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #616161;
+      }
+      .def-emoji-list {
+        background-color: #424242;
+        span {
+          &:hover {
+            background: #212121;
+          }
+          &:active {
+            background: #000000;
+          }
+        }
+      }
+    }
+  }
 }

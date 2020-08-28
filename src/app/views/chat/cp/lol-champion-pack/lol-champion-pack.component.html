@@ -1,19 +1,19 @@
 <div class="lol-champion-info" *ngIf="!isDataSaveMode()" (click)="onClick()">
-    <div class="bg">
-        <img [src]="getBackground()|safe">
-        <div class="img-overlay"></div>
+  <div class="bg">
+    <img [src]="getBackground() | safe" />
+    <div class="img-overlay"></div>
+  </div>
+  <div class="user-img">
+    <img [src]="icon | safe" />
+  </div>
+  <div class="user-info">
+    <h3 class="title">{{ name }}</h3>
+    <div class="tier">
+      <p>{{ description }}</p>
     </div>
-    <div class="user-img">
-        <img [src]="icon|safe" />
-    </div>
-    <div class="user-info">
-        <h3 class="title">{{name}}</h3>
-        <div class="tier">
-            <p>{{description}}</p>
-        </div>
-    </div>
-    <!--<div class="skills">
+  </div>
+  <!--<div class="skills">
         <img *ngFor="let champ of getMostChamps()" [src]="champ.icon" [title]="champ.name">
     </div>-->
 </div>
-<div *ngIf="isDataSaveMode()">(대충 챔 {{name}} 정보)</div>
+<div *ngIf="isDataSaveMode()">(대충 챔 {{ name }} 정보)</div>

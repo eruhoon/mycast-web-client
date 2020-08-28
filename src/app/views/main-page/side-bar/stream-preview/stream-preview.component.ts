@@ -1,21 +1,22 @@
-
 import { StreamShareCommand } from 'src/app/models/stream/share/StreamShareCommand';
 import { Stream } from 'src/app/models/stream/Stream';
 
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
 
 @Component({
   selector: 'stream-preview',
   templateUrl: './stream-preview.component.html',
-  styleUrls: [
-    './stream-preview.component.scss',
-    './stream-preview.color.scss',
-  ]
+  styleUrls: ['./stream-preview.component.scss', './stream-preview.color.scss'],
 })
 export class StreamPreviewComponent implements OnInit, OnChanges {
-
   @Input()
   public preview: Stream;
   public thumbnail: string;
@@ -25,7 +26,8 @@ export class StreamPreviewComponent implements OnInit, OnChanges {
 
   public constructor(
     private mFavoriteSrv: FavoriteStreamService,
-    private mToastSrv: ToastService) { }
+    private mToastSrv: ToastService
+  ) {}
 
   public ngOnInit() {
     this.thumbnail = this.preview.getThumbnail();
@@ -66,5 +68,4 @@ export class StreamPreviewComponent implements OnInit, OnChanges {
     event.stopPropagation();
     window.open(this.preview.getUrl(), '_blank', 'width=800');
   }
-
 }

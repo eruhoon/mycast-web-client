@@ -1,7 +1,13 @@
 import { ImagePopupService } from 'src/app/services/image/image-popup.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
-import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { ChatListService } from '../../chat-list/chat-list.service';
 import { ChatPackDirective } from '../ChatPack';
@@ -9,86 +15,85 @@ import { ImagePackHandler } from './ImagePackHandler';
 import { ImagePackMobileHandler } from './ImagePackMobileHandler';
 
 @Component({
-    selector: 'image-pack',
-    templateUrl: './image-pack.component.html',
-    styleUrls: ['./image-pack.component.scss']
+  selector: 'image-pack',
+  templateUrl: './image-pack.component.html',
+  styleUrls: ['./image-pack.component.scss'],
 })
 export class ImagePackComponent extends ChatPackDirective implements OnInit {
+  @Output() packClick: EventEmitter<string>;
 
-    @Output() packClick: EventEmitter<string>;
+  private mHandler: ImagePackHandler;
+  private mOpen: boolean;
+  private mCensored: boolean;
+  private mError: boolean;
 
-    private mHandler: ImagePackHandler;
-    private mOpen: boolean;
-    private mCensored: boolean;
-    private mError: boolean;
+  public constructor(
+    injector: Injector,
+    private mOptionSrv: OptionService,
+    private mChatListSrv: ChatListService,
+    imagePopupService: ImagePopupService
+  ) {
+    super(injector);
 
-    public constructor(
-        injector: Injector,
-        private mOptionSrv: OptionService,
-        private mChatListSrv: ChatListService,
-        imagePopupService: ImagePopupService) {
+    this.mHandler = this.mOptionSrv.isMobile()
+      ? new ImagePackMobileHandler(imagePopupService)
+      : new ImagePackHandler(imagePopupService);
+    this.mOpen = false;
+    this.mCensored = false;
+    this.mError = false;
+  }
 
-        super(injector);
+  public ngOnInit(): void {
+    this.mOpen = this.isDataSaveMode() ? false : true;
+    const srcImage = this.message.getMessage().trim();
+    this.mHandler.init(srcImage);
+  }
 
-        this.mHandler = this.mOptionSrv.isMobile() ?
-            new ImagePackMobileHandler(imagePopupService) :
-            new ImagePackHandler(imagePopupService);
-        this.mOpen = false;
-        this.mCensored = false;
-        this.mError = false;
+  public getImage(): string {
+    if (this.mError) {
+      return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
+    } else if (this.isCensored()) {
+      return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
+    } else {
+      return this.mHandler.getImage();
     }
+  }
 
-    public ngOnInit(): void {
-        this.mOpen = this.isDataSaveMode() ? false : true;
-        const srcImage = this.message.getMessage().trim();
-        this.mHandler.init(srcImage);
-    }
+  public isOpen(): boolean {
+    return this.mOpen;
+  }
 
-    public getImage(): string {
-        if (this.mError) {
-            return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
-        } else if (this.isCensored()) {
-            return 'https://opgg-com-image.akamaized.net/attach/images/20190413062321.228538.gif';
-        } else {
-            return this.mHandler.getImage();
-        }
-    }
+  public isCensored(): boolean {
+    return this.mCensored;
+  }
 
-    public isOpen(): boolean {
-        return this.mOpen;
-    }
+  public isMenuShow(): boolean {
+    return this.mHandler.isMenuShow();
+  }
 
-    public isCensored(): boolean {
-        return this.mCensored;
-    }
+  public openImage(): void {
+    this.mOpen = true;
+  }
 
-    public isMenuShow(): boolean {
-        return this.mHandler.isMenuShow();
-    }
+  public toggleCensor(): void {
+    this.mCensored = !this.mCensored;
+  }
 
-    public openImage(): void {
-        this.mOpen = true;
-    }
+  public onHover(hover: boolean) {
+    this.mHandler.onHover(hover);
+  }
 
-    public toggleCensor(): void {
-        this.mCensored = !this.mCensored;
-    }
+  public onImageClick(): void {
+    this.mHandler.onImageClick();
+  }
 
-    public onHover(hover: boolean) {
-        this.mHandler.onHover(hover);
-    }
+  public onImageError(): void {
+    this.mError = true;
+  }
 
-    public onImageClick(): void {
-        this.mHandler.onImageClick();
+  public onImageLoad(): void {
+    if (!this.mOptionSrv.isScrollLockMode()) {
+      this.mChatListSrv.scrollToBottom(false);
     }
-
-    public onImageError(): void {
-        this.mError = true;
-    }
-
-    public onImageLoad(): void {
-        if (!this.mOptionSrv.isScrollLockMode()) {
-            this.mChatListSrv.scrollToBottom(false);
-        }
-    }
+  }
 }

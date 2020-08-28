@@ -1,68 +1,82 @@
 <div class="photo-view">
-    <div class="photo-info">
-        <div class="title">
-            <h3>정보</h3>
-            <span class="material-icons" (click)="onCloseClick()">clear</span>
-        </div>
-        <div class="p-info-box">
-            <p class="lab">사이즈</p>
-            <p class="info-txt">{{getSizeText()}}</p>
-        </div>
-        <div class="p-info-box">
-            <p class="lab">태그</p>
-            <a class="add-tag" *ngIf="!isEditTagMode()" (click)="setEditTagMode(true)">
-                <span class="material-icons">add_comment</span>
-            </a>
-            <div class="tag-input-box" *ngIf="isEditTagMode()">
-                <input #tags type="text" class="tag-input" [value]="getTags()" (keydown.enter)="onTagSubmit()" />
-                <span class="material-icons" (click)="onTagSubmit()">send</span>
-            </div>
-            <div class="tag-list">
-                <div class="tag-box" *ngFor="let tag of getTags()">
-                    <p>{{tag}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="p-info-box">
-            <p class="lab">세부정보</p>
-            <div class="in-txt">
-                <span class="material-icons">calendar_today</span>
-                <div class="in-txt-list">
-                    <p class="ma-title">{{getDateText()}}</p>
-                    <p class="sub-text">{{getTimeText()}}</p>
-                </div>
-            </div>
-            <div class="in-txt">
-                <span class="material-icons">image</span>
-                <div class="in-txt-list">
-                    <p class="ma-title">{{getMimeType()}}</p>
-                    <p class="sub-text">{{getRawMimeType()}}</p>
-                </div>
-            </div>
-            <div class="in-txt">
-                <span class="material-icons">visibility</span>
-                <div class="in-txt-list">
-                    <p class="ma-title see-txt">{{getViewer()}}명</p>
-                </div>
-            </div>
-        </div>
-        <div class="p-info-box">
-            <p class="lab">세부도구</p>
-            <div class="in-txt tool attention-limit" [ngClass]="{'active':isForAdult()}" (click)="toggleAdult()">
-                <span class="material-icons">verified_user</span>
-                <div class="in-txt-list">
-                    <p class="ma-title see-txt">후방주의 이미지</p>
-                </div>
-            </div>
-            <div class="in-txt tool" (click)="onShareClick()">
-                <span class="material-icons">launch</span>
-                <div class="in-txt-list">
-                    <p class="ma-title see-txt">채팅으로 보내기</p>
-                </div>
-            </div>
-        </div>
+  <div class="photo-info">
+    <div class="title">
+      <h3>정보</h3>
+      <span class="material-icons" (click)="onCloseClick()">clear</span>
     </div>
-    <div class="photo-img">
-        <img [src]="getUri()" class="blurEffect">
+    <div class="p-info-box">
+      <p class="lab">사이즈</p>
+      <p class="info-txt">{{ getSizeText() }}</p>
     </div>
+    <div class="p-info-box">
+      <p class="lab">태그</p>
+      <a
+        class="add-tag"
+        *ngIf="!isEditTagMode()"
+        (click)="setEditTagMode(true)"
+      >
+        <span class="material-icons">add_comment</span>
+      </a>
+      <div class="tag-input-box" *ngIf="isEditTagMode()">
+        <input
+          #tags
+          type="text"
+          class="tag-input"
+          [value]="getTags()"
+          (keydown.enter)="onTagSubmit()"
+        />
+        <span class="material-icons" (click)="onTagSubmit()">send</span>
+      </div>
+      <div class="tag-list">
+        <div class="tag-box" *ngFor="let tag of getTags()">
+          <p>{{ tag }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-info-box">
+      <p class="lab">세부정보</p>
+      <div class="in-txt">
+        <span class="material-icons">calendar_today</span>
+        <div class="in-txt-list">
+          <p class="ma-title">{{ getDateText() }}</p>
+          <p class="sub-text">{{ getTimeText() }}</p>
+        </div>
+      </div>
+      <div class="in-txt">
+        <span class="material-icons">image</span>
+        <div class="in-txt-list">
+          <p class="ma-title">{{ getMimeType() }}</p>
+          <p class="sub-text">{{ getRawMimeType() }}</p>
+        </div>
+      </div>
+      <div class="in-txt">
+        <span class="material-icons">visibility</span>
+        <div class="in-txt-list">
+          <p class="ma-title see-txt">{{ getViewer() }}명</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-info-box">
+      <p class="lab">세부도구</p>
+      <div
+        class="in-txt tool attention-limit"
+        [ngClass]="{ active: isForAdult() }"
+        (click)="toggleAdult()"
+      >
+        <span class="material-icons">verified_user</span>
+        <div class="in-txt-list">
+          <p class="ma-title see-txt">후방주의 이미지</p>
+        </div>
+      </div>
+      <div class="in-txt tool" (click)="onShareClick()">
+        <span class="material-icons">launch</span>
+        <div class="in-txt-list">
+          <p class="ma-title see-txt">채팅으로 보내기</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-img">
+    <img [src]="getUri()" class="blurEffect" />
+  </div>
 </div>

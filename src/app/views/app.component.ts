@@ -4,12 +4,13 @@ import { SwPush } from '@angular/service-worker';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'mycast-web-client';
 
-  readonly VAPID_PUBLIC_KEY = 'BLjdihR3YREJZKH33geqT-5bZPe7Jxkq4QDSqfXq8QdRDqLnlmFpcyYCJrNuWrmIaOs0OxZdXBe7OnRjeffKq1w';
+  readonly VAPID_PUBLIC_KEY =
+    'BLjdihR3YREJZKH33geqT-5bZPe7Jxkq4QDSqfXq8QdRDqLnlmFpcyYCJrNuWrmIaOs0OxZdXBe7OnRjeffKq1w';
 
   constructor(private mSwPush: SwPush) {
     this.subscribeToPush();

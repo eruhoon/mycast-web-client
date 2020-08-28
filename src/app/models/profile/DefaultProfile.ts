@@ -1,16 +1,15 @@
 import { Profile } from './Profile';
 
 export class DefaultProfile implements Profile {
+  public getName(): string {
+    return 'Default';
+  }
 
-    public getName(): string {
-        return 'Default';
-    }
+  public getIcon(): string {
+    return 'https://i.imgur.com/y81MZAJ.png';
+  }
 
-    public getIcon(): string {
-        return 'https://i.imgur.com/y81MZAJ.png';
-    }
-
-    public getLevel(): number {
-        return 1;
-    }
+  public getLevel(): number {
+    return 1;
+  }
 }

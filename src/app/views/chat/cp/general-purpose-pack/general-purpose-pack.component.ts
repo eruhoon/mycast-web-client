@@ -7,41 +7,45 @@ import { ChatPackDirective } from '../ChatPack';
 import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 
 @Directive()
-export abstract class GeneralPurposePackDirective extends ChatPackDirective implements OnInit {
+export abstract class GeneralPurposePackDirective
+  extends ChatPackDirective
+  implements OnInit {
+  public prop: GeneralPurposeProperty;
 
-    public prop: GeneralPurposeProperty;
+  private mLinkPopupSrv: LinkPopupService;
 
-    private mLinkPopupSrv: LinkPopupService;
+  public constructor(injector: Injector) {
+    super(injector);
+    this.mLinkPopupSrv = injector.get(LinkPopupService);
+  }
 
-    public constructor(injector: Injector) {
-        super(injector);
-        this.mLinkPopupSrv = injector.get(LinkPopupService);
+  public ngOnInit() {
+    try {
+      this.prop = this.bind();
+    } catch {
+      this.prop = {
+        title: '',
+        subtitle: '',
+        icon: '',
+        link: '',
+      };
     }
+  }
 
-    public ngOnInit() {
-        try {
-            this.prop = this.bind();
-        } catch {
-            this.prop = {
-                title: '',
-                subtitle: '',
-                icon: '',
-                link: '',
-            };
-        }
+  protected abstract bind(): GeneralPurposeProperty;
+
+  public onClick(): void {
+    if (this.isMobile()) {
+      window.open(this.prop.link, '_blank');
+    } else {
+      this.mLinkPopupSrv.addLink(
+        new LinkPopupBuilder()
+          .title('Item Info')
+          .width(800)
+          .height(600)
+          .link(this.prop.link)
+          .build()
+      );
     }
-
-    protected abstract bind(): GeneralPurposeProperty;
-
-    public onClick(): void {
-        if (this.isMobile()) {
-            window.open(this.prop.link, '_blank');
-        } else {
-            this.mLinkPopupSrv.addLink(new LinkPopupBuilder()
-                .title('Item Info')
-                .width(800).height(600)
-                .link(this.prop.link)
-                .build());
-        }
-    }
+  }
 }

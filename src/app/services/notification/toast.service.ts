@@ -4,10 +4,9 @@ import { Toast } from 'src/app/models/notification/Toast';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastService {
-
   private static readonly SHOW_INTERVAL = 3000;
 
   private mToasts: Toast[];
@@ -22,7 +21,8 @@ export class ToastService {
 
     setTimeout(() => {
       this.mToasts = this.mToasts.filter(
-        t => t.getHash() !== toast.getHash());
+        (t) => t.getHash() !== toast.getHash()
+      );
     }, ToastService.SHOW_INTERVAL);
   }
 

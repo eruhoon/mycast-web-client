@@ -7,7 +7,10 @@ import { MainService } from 'src/app/services/main/main.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToastService } from 'src/app/services/notification/toast.service';
 import { OptionService } from 'src/app/services/option/option.service';
-import { ProfileModifyMode, ProfileService } from 'src/app/services/profile/profile.service';
+import {
+  ProfileModifyMode,
+  ProfileService,
+} from 'src/app/services/profile/profile.service';
 
 import { Component, HostListener } from '@angular/core';
 
@@ -15,195 +18,196 @@ import { SideBarService } from './side-bar/side-bar.service';
 import { TopBarService } from './top-bar/top-bar.service';
 
 @Component({
-    selector: 'app-main-page',
-    templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.scss', './main-page.color.scss']
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss', './main-page.color.scss'],
 })
 export class MainPageComponent {
+  public mCurrentStream: Stream | null;
 
-    public mCurrentStream: Stream | null;
+  private mMainService: MainService;
+  private mNotificationService: NotificationService;
+  private mToastService: ToastService;
+  private mImagePopupService: ImagePopupService;
+  private mLinkPopupService: LinkPopupService;
+  private mOptionService: OptionService;
+  private mProfileService: ProfileService;
+  private mClipboardImageService: ClipboardImageService;
+  private mInnerWidth: number;
+  private mMoveMode: boolean;
+  private mDividerPosition: number;
+  private mStreamListShow: boolean;
 
-    private mMainService: MainService;
-    private mNotificationService: NotificationService;
-    private mToastService: ToastService;
-    private mImagePopupService: ImagePopupService;
-    private mLinkPopupService: LinkPopupService;
-    private mOptionService: OptionService;
-    private mProfileService: ProfileService;
-    private mClipboardImageService: ClipboardImageService;
-    private mInnerWidth: number;
-    private mMoveMode: boolean;
-    private mDividerPosition: number;
-    private mStreamListShow: boolean;
+  public constructor(
+    private mTopBarSrv: TopBarService,
+    private mSideBarSrv: SideBarService,
+    mainService: MainService,
+    notificationService: NotificationService,
+    toastService: ToastService,
+    imagePopupService: ImagePopupService,
+    linkPopupService: LinkPopupService,
+    optionService: OptionService,
+    profileService: ProfileService,
+    clipboardImageService: ClipboardImageService
+  ) {
+    this.mCurrentStream = null;
+    this.mMainService = mainService;
+    this.mNotificationService = notificationService;
+    this.mToastService = toastService;
+    this.mImagePopupService = imagePopupService;
+    this.mLinkPopupService = linkPopupService;
+    this.mOptionService = optionService;
+    this.mProfileService = profileService;
+    this.mClipboardImageService = clipboardImageService;
 
-    public constructor(
-        private mTopBarSrv: TopBarService,
-        private mSideBarSrv: SideBarService,
-        mainService: MainService,
-        notificationService: NotificationService,
-        toastService: ToastService,
-        imagePopupService: ImagePopupService,
-        linkPopupService: LinkPopupService,
-        optionService: OptionService,
-        profileService: ProfileService,
-        clipboardImageService: ClipboardImageService) {
+    this.mMoveMode = false;
+    this.mDividerPosition = optionService.getChatPosition();
+    this.mInnerWidth = window.innerWidth;
+    this.mStreamListShow = true;
+  }
 
-        this.mCurrentStream = null;
-        this.mMainService = mainService;
-        this.mNotificationService = notificationService;
-        this.mToastService = toastService;
-        this.mImagePopupService = imagePopupService;
-        this.mLinkPopupService = linkPopupService;
-        this.mOptionService = optionService;
-        this.mProfileService = profileService;
-        this.mClipboardImageService = clipboardImageService;
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: Event) {
+    this.mInnerWidth = window.innerWidth;
+  }
 
-        this.mMoveMode = false;
-        this.mDividerPosition = optionService.getChatPosition();
-        this.mInnerWidth = window.innerWidth;
-        this.mStreamListShow = true;
+  public isClipboardImageMode(): boolean {
+    return this.mClipboardImageService.getCurrentImage() !== null;
+  }
+
+  public isToastListShow(): boolean {
+    return this.mToastService.getToasts().length > 0;
+  }
+
+  public getCurrentLink(): string {
+    return this.mMainService.getCurrentLink();
+  }
+
+  public getCurrentStream(): Stream | null {
+    return this.mCurrentStream;
+  }
+
+  public getCurrentStreamPreview(): Stream | null {
+    return this.mSideBarSrv.getStreamPreview();
+  }
+
+  public isLinkMode(): boolean {
+    return this.getCurrentLink() !== null;
+  }
+
+  public isStreamActivated(): boolean {
+    return this.getCurrentStream() !== null;
+  }
+
+  public isMenuShow(): boolean {
+    return this.mSideBarSrv.isActive();
+  }
+
+  public isMoveMode(): boolean {
+    return this.mMoveMode;
+  }
+
+  public isChatRight(): boolean {
+    const center = window.innerWidth / 2;
+    return this.mDividerPosition > center;
+  }
+
+  public isImagePopup(): boolean {
+    return this.mImagePopupService.isPopup();
+  }
+
+  public isNotificationRequestShow(): boolean {
+    return this.mNotificationService.getTarget() !== null;
+  }
+
+  public closeImagePopup(): void {
+    this.mImagePopupService.setImage(null);
+  }
+
+  public getChatSize(): number {
+    if (this.isChatRight()) {
+      return this.mInnerWidth - this.getDividerPosition();
+    } else {
+      return this.getDividerPosition();
     }
+  }
 
-    @HostListener('window:resize', ['$event'])
-    public onResize(event: Event) {
-        this.mInnerWidth = window.innerWidth;
+  public getDividerPosition(): number {
+    const minSize = 300;
+    const minX = minSize;
+    const maxX = this.mInnerWidth - minSize;
+    const max = (pos: number) => (pos > minX ? pos : minX);
+    const min = (pos: number) => (pos < maxX ? pos : maxX);
+    return min(max(this.mDividerPosition));
+  }
+
+  public onMenuClick() {
+    this.toggleMenu();
+  }
+
+  public onOutOfMenuClick() {
+    this.closeMenu();
+  }
+
+  public onDividerMouseDown(event: MouseEvent): void {
+    this.mMoveMode = true;
+    this.mDividerPosition = event.clientX;
+  }
+
+  public onDividerMove(event: MouseEvent): void {
+    if (!this.mMoveMode) {
+      return;
     }
+    const left = event.clientX;
+    this.mDividerPosition = left;
+  }
 
-    public isClipboardImageMode(): boolean {
-        return this.mClipboardImageService.getCurrentImage() !== null;
-    }
+  public onDividerMouseUp(): void {
+    this.mMoveMode = false;
+    this.mOptionService.setChatPosition(this.mDividerPosition);
+  }
 
-    public isToastListShow(): boolean {
-        return this.mToastService.getToasts().length > 0;
-    }
+  public getLinkPopups(): LinkPopup[] {
+    return this.mLinkPopupService.getLinks();
+  }
 
-    public getCurrentLink(): string {
-        return this.mMainService.getCurrentLink();
-    }
+  public isModifyProfileMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.PROFILE;
+  }
 
-    public getCurrentStream(): Stream | null {
-        return this.mCurrentStream;
-    }
+  public isModifyStreamMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.STREAM;
+  }
 
-    public getCurrentStreamPreview(): Stream | null {
-        return this.mSideBarSrv.getStreamPreview();
-    }
+  public isModifySettingMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.SETTING;
+  }
 
-    public isLinkMode(): boolean {
-        return this.getCurrentLink() !== null;
-    }
+  public isModifyCheckerMode(): boolean {
+    const mode = this.mProfileService.getModifyMode();
+    return mode === ProfileModifyMode.STREAM_ADD;
+  }
 
-    public isStreamActivated(): boolean {
-        return this.getCurrentStream() !== null;
-    }
+  public isStreamListShow(): boolean {
+    return this.mStreamListShow;
+  }
 
-    public isMenuShow(): boolean {
-        return this.mSideBarSrv.isActive();
-    }
+  public toggleStreamList() {
+    this.mStreamListShow = !this.mStreamListShow;
+  }
 
-    public isMoveMode(): boolean {
-        return this.mMoveMode;
-    }
+  public closeTopBarMenu(): void {
+    this.mTopBarSrv.closeAllMenu();
+  }
 
-    public isChatRight(): boolean {
-        const center = window.innerWidth / 2;
-        return this.mDividerPosition > center;
-    }
+  private toggleMenu() {
+    this.mSideBarSrv.toggleActive();
+  }
 
-    public isImagePopup(): boolean {
-        return this.mImagePopupService.isPopup();
-    }
-
-    public isNotificationRequestShow(): boolean {
-        return this.mNotificationService.getTarget() !== null;
-    }
-
-    public closeImagePopup(): void {
-        this.mImagePopupService.setImage(null);
-    }
-
-    public getChatSize(): number {
-        if (this.isChatRight()) {
-            return this.mInnerWidth - this.getDividerPosition();
-        } else {
-            return this.getDividerPosition();
-        }
-    }
-
-    public getDividerPosition(): number {
-        const minSize = 300;
-        const minX = minSize;
-        const maxX = this.mInnerWidth - minSize;
-        const max = (pos: number) => pos > minX ? pos : minX;
-        const min = (pos: number) => pos < maxX ? pos : maxX;
-        return min(max(this.mDividerPosition));
-    }
-
-    public onMenuClick() {
-        this.toggleMenu();
-    }
-
-    public onOutOfMenuClick() {
-        this.closeMenu();
-    }
-
-    public onDividerMouseDown(event: MouseEvent): void {
-        this.mMoveMode = true;
-        this.mDividerPosition = event.clientX;
-    }
-
-    public onDividerMove(event: MouseEvent): void {
-        if (!this.mMoveMode) {
-            return;
-        }
-        const left = event.clientX;
-        this.mDividerPosition = left;
-    }
-
-    public onDividerMouseUp(): void {
-        this.mMoveMode = false;
-        this.mOptionService.setChatPosition(this.mDividerPosition);
-    }
-
-    public getLinkPopups(): LinkPopup[] {
-        return this.mLinkPopupService.getLinks();
-    }
-
-    public isModifyProfileMode(): boolean {
-        const mode = this.mProfileService.getModifyMode();
-        return mode === ProfileModifyMode.PROFILE;
-    }
-
-    public isModifyStreamMode(): boolean {
-        const mode = this.mProfileService.getModifyMode();
-        return mode === ProfileModifyMode.STREAM;
-    }
-
-    public isModifySettingMode(): boolean {
-        const mode = this.mProfileService.getModifyMode();
-        return mode === ProfileModifyMode.SETTING;
-    }
-
-    public isModifyCheckerMode(): boolean {
-        const mode = this.mProfileService.getModifyMode();
-        return mode === ProfileModifyMode.STREAM_ADD;
-    }
-
-    public isStreamListShow(): boolean { return this.mStreamListShow; }
-
-    public toggleStreamList() {
-        this.mStreamListShow = !this.mStreamListShow;
-    }
-
-    public closeTopBarMenu(): void {
-        this.mTopBarSrv.closeAllMenu();
-    }
-
-    private toggleMenu() {
-        this.mSideBarSrv.toggleActive();
-    }
-
-    private closeMenu(): void {
-        this.mSideBarSrv.deactivate();
-    }
+  private closeMenu(): void {
+    this.mSideBarSrv.deactivate();
+  }
 }

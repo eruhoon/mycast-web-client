@@ -1,21 +1,33 @@
 <li>
   <div class="live-tum-img">
-    <img [src]="thumbnail|safe" (error)="onThumbnailError()">
+    <img [src]="thumbnail | safe" (error)="onThumbnailError()" />
   </div>
   <div class="live-info">
     <div class="stream-info">
-      <img [src]="stream.getIcon()|safe" [alt]="stream.getTitle()" />
+      <img [src]="stream.getIcon() | safe" [alt]="stream.getTitle()" />
       <span>{{ stream.getTitle() }}</span>
     </div>
-    <p>{{stream.getDescription()}}</p>
+    <p>{{ stream.getDescription() }}</p>
     <div class="live-btn">
-      <div class="button" style="right: 10px;" (click)="onFavoriteClick($event, stream)">
+      <div
+        class="button"
+        style="right: 10px"
+        (click)="onFavoriteClick($event, stream)"
+      >
         <i class="material-icons">star_border</i>
       </div>
-      <div class="button" style="right: 10px;" (click)="onShareClick($event, stream)">
+      <div
+        class="button"
+        style="right: 10px"
+        (click)="onShareClick($event, stream)"
+      >
         <i class="material-icons">link</i>
       </div>
-      <div class="button" style="right: 32px;" (click)="onNewWindowClick($event, stream)">
+      <div
+        class="button"
+        style="right: 32px"
+        (click)="onNewWindowClick($event, stream)"
+      >
         <i class="material-icons">open_in_new</i>
       </div>
     </div>

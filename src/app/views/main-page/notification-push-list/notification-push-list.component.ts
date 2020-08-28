@@ -6,18 +6,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'notification-push-list',
   templateUrl: './notification-push-list.component.html',
-  styleUrls: ['./notification-push-list.component.scss']
+  styleUrls: ['./notification-push-list.component.scss'],
 })
 export class NotificationPushListComponent implements OnInit {
-
   private mNotificationService: NotificationService;
 
   public constructor(notificationServive: NotificationService) {
     this.mNotificationService = notificationServive;
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public getNotification(): VegaNotification[] {
     return [...this.mNotificationService.getNotificationPushes()];

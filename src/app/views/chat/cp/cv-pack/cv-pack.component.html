@@ -1,16 +1,18 @@
 <div class="cv-pack" (click)="onClick()">
-    <div class="cv-title">
-        <p>애니메이션 성우</p>
-        <h3>{{name}}</h3>
+  <div class="cv-title">
+    <p>애니메이션 성우</p>
+    <h3>{{ name }}</h3>
+  </div>
+  <div class="cv-list">
+    <div class="cv-box" *ngFor="let character of characters">
+      <div class="cv-img">
+        <img [src]="character.icon | safe" />
+      </div>
+      <div class="cv-name">
+        <p>
+          {{ character.name.ko }}<br /><small>({{ character.name.en }})</small>
+        </p>
+      </div>
     </div>
-    <div class="cv-list">
-        <div class="cv-box" *ngFor="let character of characters">
-            <div class="cv-img">
-                <img [src]="character.icon|safe">
-            </div>
-            <div class="cv-name">
-                <p>{{character.name.ko}}<br /><small>({{character.name.en}})</small></p>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

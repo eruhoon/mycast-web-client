@@ -1,106 +1,106 @@
 .photo-main-content {
-    width: calc(100% - 231px);
-    height: 100%;
-    margin: 0%;
-    padding-left: 10px;
+  width: calc(100% - 231px);
+  height: 100%;
+  margin: 0%;
+  padding-left: 10px;
+  position: relative;
+  float: left;
+  overflow-y: scroll;
+
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border: 3px solid;
+  }
+
+  &::-webkit-scrollbar-button:start:decrement,
+  &::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 50px;
+    width: 50px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+  }
+
+  .ph-search {
+    width: 100%;
+    height: 36px;
+    padding-top: 25px;
+    padding-bottom: 20px;
     position: relative;
-    float: left;
-    overflow-y: scroll;
 
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-        border: 3px solid;
+    label {
+      width: 40px;
+      font-size: 16px;
+      line-height: 36px;
+      margin-left: 10px;
+      float: left;
     }
 
-    &::-webkit-scrollbar-button:start:decrement,
-    &::-webkit-scrollbar-button:end:increment {
-        display: block;
-        height: 5px;
-    }
+    .ph-search-input {
+      width: calc(50% - 30px);
+      height: 36px;
+      position: relative;
+      float: left;
 
-    &::-webkit-scrollbar-track {
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-    }
+      input {
+        width: calc(100% - 64px);
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
 
-    &::-webkit-scrollbar-thumb {
-        height: 50px;
-        width: 50px;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
-    }
+        padding: 7px 15px;
+        padding-right: 40px;
+        border-radius: 25px;
+        border: 1px solid;
+        outline: none;
+      }
 
-    .ph-search {
-        width: 100%;
+      i {
+        width: 36px;
         height: 36px;
-        padding-top: 25px;
-        padding-bottom: 20px;
-        position: relative;
 
-        label {
-            width: 40px;
-            font-size: 16px;
-            line-height: 36px;
-            margin-left: 10px;
-            float: left;
-        }
+        position: absolute;
+        right: 9px;
+        top: 1px;
 
-        .ph-search-input {
-            width: calc(50% - 30px);
-            height: 36px;
-            position: relative;
-            float: left;
+        text-align: center;
+        line-height: 36px;
+      }
+    }
+  }
 
-            input {
-                width: calc(100% - 64px);
-                height: 20px;
-                line-height: 20px;
-                font-size: 14px;
+  .ph-d-list {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 
-                padding: 7px 15px;
-                padding-right: 40px;
-                border-radius: 25px;
-                border: 1px solid;
-                outline: none;
-            }
-
-            i {
-                width: 36px;
-                height: 36px;
-
-                position: absolute;
-                right: 9px;
-                top: 1px;
-
-                text-align: center;
-                line-height: 36px;
-            }
-        }
+    p {
+      width: auto;
+      height: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      margin-left: 10px;
     }
 
-    .ph-d-list {
-        width: 100%;
-        height: auto;
-        margin-bottom: 20px;
+    .ph-list {
+      width: 100%;
+      height: auto;
 
-        p {
-            width: auto;
-            height: 20px;
-            font-size: 16px;
-            line-height: 20px;
-            margin-left: 10px;
-        }
-
-        .ph-list {
-            width: 100%;
-            height: auto;
-
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
+  }
 }

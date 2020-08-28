@@ -8,9 +8,8 @@ describe('MemoUploadViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemoUploadViewComponent ]
-    })
-    .compileComponents();
+      declarations: [MemoUploadViewComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

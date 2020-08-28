@@ -1,14 +1,23 @@
-<div class="image-pack" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
-    <div class="data-save-alter" *ngIf="!isOpen()" (click)="openImage()">
-        클릭해서 이미지 열기
+<div
+  class="image-pack"
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)"
+>
+  <div class="data-save-alter" *ngIf="!isOpen()" (click)="openImage()">
+    클릭해서 이미지 열기
+  </div>
+  <div class="img-wrapper" *ngIf="isOpen()">
+    <img
+      class="img"
+      [src]="getImage() | safe"
+      (click)="onImageClick()"
+      (load)="onImageLoad()"
+      (error)="onImageError()"
+    />
+    <div class="button-wrapper" *ngIf="isMenuShow()">
+      <button (click)="toggleCensor()">
+        <i class="material-icons">security</i>
+      </button>
     </div>
-    <div class="img-wrapper" *ngIf="isOpen()">
-        <img class="img" [src]="getImage() | safe" (click)="onImageClick()" (load)="onImageLoad()"
-            (error)="onImageError()">
-        <div class="button-wrapper" *ngIf="isMenuShow()">
-            <button (click)="toggleCensor()">
-                <i class="material-icons">security</i>
-            </button>
-        </div>
-    </div>
+  </div>
 </div>

@@ -1,20 +1,24 @@
 <div>
   <div class="user-icon">
-    <img [src]="user.getIcon() | safe" style="border-color: #F5F5F5;" (click)="onUserIconClick()" />
+    <img
+      [src]="user.getIcon() | safe"
+      style="border-color: #f5f5f5"
+      (click)="onUserIconClick()"
+    />
   </div>
   <div class="info">
     <div class="nickname">
       <span>{{ user.getName() }} /</span>
     </div>
     <div class="level">
-      <span>Lv.{{user.getLevel()}}</span>
+      <span>Lv.{{ user.getLevel() }}</span>
     </div>
   </div>
   <div class="icon">
-    <i class="material-icons" [ngClass]="user.isMobile()?'active':''">
+    <i class="material-icons" [ngClass]="user.isMobile() ? 'active' : ''">
       phone_iphone
     </i>
-    <i class="material-icons" [ngClass]="user.isComputer()?'active':''">
+    <i class="material-icons" [ngClass]="user.isComputer() ? 'active' : ''">
       computer
     </i>
   </div>

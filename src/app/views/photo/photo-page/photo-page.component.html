@@ -1,43 +1,51 @@
-<div class="photo-page" (paste)="onPaste($event)" (dragover)="$event.preventDefault()"
-    (drop)="$event.preventDefault(); onDrop($event)">
-    <div class="left-menu">
-        <h2>
-            마이<br />
-            캐스트<br />
-            포토
-        </h2>
-        <div class="ph-menu-list">
-            <a class="ph-m-li" *ngFor="let menu of getMenus()" [ngClass]="{'active': getCurrentMenuId()===menu.id}"
-                (click)="setCurrentMenuId(menu.id)">
-                <i class="material-icons">{{menu.icon}}</i>
-                <p>{{menu.name}}</p>
-            </a>
-            <a class="ph-m-li ph-li-btm" (click)="onClickUpload()">
-                <i class="material-icons">cloud_upload</i>
-                <p>업로드</p>
-            </a>
-        </div>
+<div
+  class="photo-page"
+  (paste)="onPaste($event)"
+  (dragover)="$event.preventDefault()"
+  (drop)="$event.preventDefault(); onDrop($event)"
+>
+  <div class="left-menu">
+    <h2>
+      마이<br />
+      캐스트<br />
+      포토
+    </h2>
+    <div class="ph-menu-list">
+      <a
+        class="ph-m-li"
+        *ngFor="let menu of getMenus()"
+        [ngClass]="{ active: getCurrentMenuId() === menu.id }"
+        (click)="setCurrentMenuId(menu.id)"
+      >
+        <i class="material-icons">{{ menu.icon }}</i>
+        <p>{{ menu.name }}</p>
+      </a>
+      <a class="ph-m-li ph-li-btm" (click)="onClickUpload()">
+        <i class="material-icons">cloud_upload</i>
+        <p>업로드</p>
+      </a>
     </div>
-    <photo-main-view *ngIf="getCurrentMenuId()===0"></photo-main-view>
-    <photo-album-view *ngIf="getCurrentMenuId()===1"></photo-album-view>
+  </div>
+  <photo-main-view *ngIf="getCurrentMenuId() === 0"></photo-main-view>
+  <photo-album-view *ngIf="getCurrentMenuId() === 1"></photo-album-view>
 </div>
 <form enctype="multipart/form-data">
-    <input #uploadInput type="file" (change)="onUploadFileStaged()">
+  <input #uploadInput type="file" (change)="onUploadFileStaged()" />
 </form>
 <div class="photo-upload-view" *ngIf="isUploading()">
-    <div class="photo-img-box">
-        <img [src]="getUploadingFileImage()" />
-    </div>
-    <div class="photo-info-box">
-        <h4>{{ getUploadingFileName() }}</h4>
-        <p>{{ getUploadingFileSize() }} / {{ getUploadingFileType()}}</p>
-    </div>
-    <div class="photo-state">
-        <!-- 업로드 중 -->
-        <img src="\assets\image\main\loader-large.gif" />
-        <!-- 업로드 종료 -->
-        <!-- <i class="material-icons">done</i> -->
-    </div>
+  <div class="photo-img-box">
+    <img [src]="getUploadingFileImage()" />
+  </div>
+  <div class="photo-info-box">
+    <h4>{{ getUploadingFileName() }}</h4>
+    <p>{{ getUploadingFileSize() }} / {{ getUploadingFileType() }}</p>
+  </div>
+  <div class="photo-state">
+    <!-- 업로드 중 -->
+    <img src="\assets\image\main\loader-large.gif" />
+    <!-- 업로드 종료 -->
+    <!-- <i class="material-icons">done</i> -->
+  </div>
 </div>
 
 <photo-detail-view *ngIf="isPhotoDetailShow()"></photo-detail-view>

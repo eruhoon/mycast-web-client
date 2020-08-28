@@ -1,17 +1,17 @@
 <div class="movie-pack" *ngIf="!isError()" (click)="onClick()">
-    <div class="movie-box">
-        <img class="movie-bg" [src]="image|safe" width="100%" />
-        <div class="img-overlay"></div>
-        <div class="movie-info">
-            <div class="title-img">
-                <img [src]="image|safe" />
-            </div>
-            <div class="info-text">
-                <h4>{{title}}</h4>
-                <p>{{director}}</p>
-                <p>{{pubYear}}</p>
-            </div>
-        </div>
+  <div class="movie-box">
+    <img class="movie-bg" [src]="image | safe" width="100%" />
+    <div class="img-overlay"></div>
+    <div class="movie-info">
+      <div class="title-img">
+        <img [src]="image | safe" />
+      </div>
+      <div class="info-text">
+        <h4>{{ title }}</h4>
+        <p>{{ director }}</p>
+        <p>{{ pubYear }}</p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="movie-pack-failed" *ngIf="isError()">영화 검색 실패</div>

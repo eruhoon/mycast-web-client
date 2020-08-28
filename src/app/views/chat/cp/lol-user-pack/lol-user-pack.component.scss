@@ -22,8 +22,8 @@
       top: 0;
       height: 100%;
       width: 100%;
-      background-color: rgba(0,0,0,.4);
-  }
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
   .user-img {
     width: 50px;
@@ -60,9 +60,9 @@
 
     margin-top: 5px;
 
-    *{
-      color: #FFFFFF;
-      text-shadow: 0 1px 1px rgba(0,0,0,.75);
+    * {
+      color: #ffffff;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
     }
 
     .title {
@@ -88,12 +88,12 @@
     width: calc(100% - 62px);
     float: left;
     position: relative;
-    
+
     img {
-    width: 20px;
-    height: 20px;
-    margin-right: 2px;
-    border: solid 1px #2c3548;
+      width: 20px;
+      height: 20px;
+      margin-right: 2px;
+      border: solid 1px #2c3548;
     }
   }
 }

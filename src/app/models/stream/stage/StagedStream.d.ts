@@ -1,6 +1,6 @@
 type StagedStream = {
-    keyId: string,
-    icon: string,
-    title: string,
-    platform: string,
-}
+  keyId: string;
+  icon: string;
+  title: string;
+  platform: string;
+};

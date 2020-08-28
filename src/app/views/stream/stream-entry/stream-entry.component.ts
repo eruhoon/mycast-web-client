@@ -8,10 +8,9 @@ import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 @Component({
   selector: 'stream-entry',
   templateUrl: './stream-entry.component.html',
-  styleUrls: ['./stream-entry.component.scss']
+  styleUrls: ['./stream-entry.component.scss'],
 })
 export class StreamEntryComponent implements OnInit {
-
   @Input() stream: Stream;
 
   private mTitle: string;
@@ -32,9 +31,13 @@ export class StreamEntryComponent implements OnInit {
     this.mThumbnail = this.stream.getThumbnail();
   }
 
-  public getTitle(): string { return this.mTitle; }
+  public getTitle(): string {
+    return this.mTitle;
+  }
 
-  public getThumbnail(): string { return this.mThumbnail; }
+  public getThumbnail(): string {
+    return this.mThumbnail;
+  }
 
   public onIconClick(): void {
     const link = LinkUtils.addTimestamp(this.stream.getUrl());

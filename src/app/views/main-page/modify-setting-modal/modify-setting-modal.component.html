@@ -10,7 +10,11 @@
           <p>전체 알람</p>
         </div>
         <div class="set-switch">
-          <label class="switch" [ngClass]="{'active':isNotificationEnabled()}" (click)="toggleNotificationEnable()">
+          <label
+            class="switch"
+            [ngClass]="{ active: isNotificationEnabled() }"
+            (click)="toggleNotificationEnable()"
+          >
             <span class="slider"></span>
           </label>
         </div>
@@ -20,9 +24,13 @@
           <p>알람음</p>
         </div>
         <div class="raido-switch">
-          <div class="radio-switch-btn" *ngFor="let option of getNotificationSounds()"
-            [ngClass]="{'select':option.getId()===getNotficationSoundId()}" (click)="onNotificationSoundClick(option)">
-            {{option.getName()}}
+          <div
+            class="radio-switch-btn"
+            *ngFor="let option of getNotificationSounds()"
+            [ngClass]="{ select: option.getId() === getNotficationSoundId() }"
+            (click)="onNotificationSoundClick(option)"
+          >
+            {{ option.getName() }}
           </div>
         </div>
       </div>
@@ -32,15 +40,21 @@
         </div>
         <div class="radio-box" *ngFor="let channel of getNotifcationChannels()">
           <div class="radio-title">
-            <p>{{channel.name}}</p>
+            <p>{{ channel.name }}</p>
           </div>
           <div class="raido-switch">
-            <div class="radio-switch-btn" [ngClass]="{'select': channel.browser}"
-              (click)="toggleNotificationBrowserChannel(channel.hash)">
+            <div
+              class="radio-switch-btn"
+              [ngClass]="{ select: channel.browser }"
+              (click)="toggleNotificationBrowserChannel(channel.hash)"
+            >
               <p>브라우저</p>
             </div>
-            <div class="radio-switch-btn" [ngClass]="{'select': channel.os}"
-              (click)="toggleNotificationOsChannel(channel.hash)">
+            <div
+              class="radio-switch-btn"
+              [ngClass]="{ select: channel.os }"
+              (click)="toggleNotificationOsChannel(channel.hash)"
+            >
               <p>OS</p>
             </div>
           </div>
@@ -51,7 +65,11 @@
           <p>데이터세이브</p>
         </div>
         <div class="set-switch">
-          <label class="switch" [ngClass]="{'active':isDataSaveMode()}" (click)="toggleDataSaveMode()">
+          <label
+            class="switch"
+            [ngClass]="{ active: isDataSaveMode() }"
+            (click)="toggleDataSaveMode()"
+          >
             <span class="slider"></span>
           </label>
         </div>
@@ -61,7 +79,11 @@
           <p>채팅 시각 표기</p>
         </div>
         <div class="set-switch">
-          <label class="switch" [ngClass]="{'active':isTimestampShow()}" (click)="toggleChatTimestamp()">
+          <label
+            class="switch"
+            [ngClass]="{ active: isTimestampShow() }"
+            (click)="toggleChatTimestamp()"
+          >
             <span class="slider"></span>
           </label>
         </div>
@@ -71,7 +93,11 @@
           <p>챗봇 표기</p>
         </div>
         <div class="set-switch">
-          <label class="switch" [ngClass]="{'active':isChatBotEnabled()}" (click)="toggleChatBotEnabled()">
+          <label
+            class="switch"
+            [ngClass]="{ active: isChatBotEnabled() }"
+            (click)="toggleChatBotEnabled()"
+          >
             <span class="slider"></span>
           </label>
         </div>
@@ -90,9 +116,7 @@
       <!-- <button [disabled]="isNameError() || isIconError()" (click)="onSubmitClick()">확인</button> -->
     </div>
     <a class="modal-close" (click)="close()">
-      <i class="material-icons">
-        close
-      </i>
+      <i class="material-icons"> close </i>
     </a>
   </div>
 </div>

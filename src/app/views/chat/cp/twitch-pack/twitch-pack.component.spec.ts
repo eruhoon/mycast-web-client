@@ -8,9 +8,8 @@ describe('TwitchPackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TwitchPackComponent ]
-    })
-    .compileComponents();
+      declarations: [TwitchPackComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

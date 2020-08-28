@@ -1,15 +1,13 @@
 <div class="chat-user-list">
-    <div class="cu-list-title">
-        <h4>채팅 접속자</h4>
-        <span>
-            <i class="material-icons">
-                person_pin
-            </i>
-            <p>{{ getUserList().length }}명</p>
-        </span>
-    </div>
-    <div class="cu-entry">
-        <chat-user-entry *ngFor="let user of getUserList()" [user]="user">
-        </chat-user-entry>
-    </div>
+  <div class="cu-list-title">
+    <h4>채팅 접속자</h4>
+    <span>
+      <i class="material-icons"> person_pin </i>
+      <p>{{ getUserList().length }}명</p>
+    </span>
+  </div>
+  <div class="cu-entry">
+    <chat-user-entry *ngFor="let user of getUserList()" [user]="user">
+    </chat-user-entry>
+  </div>
 </div>

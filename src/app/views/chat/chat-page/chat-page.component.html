@@ -1,7 +1,11 @@
-<div class="chat-page" (paste)="onPaste($event)" (dragover)="$event.preventDefault()"
-    (drop)="$event.preventDefault(); onDrop($event)">
-    <chat-list (entryIconSelect)="onChatEntryIconSelect($event)"></chat-list>
-    <chat-user-list *ngIf="isChatUserListShow()"></chat-user-list>
-    <emoji-attach-view *ngIf="isEmojiAttachViewShow()"></emoji-attach-view>
-    <chat-interface (chatInput)="onChatInput($event)"></chat-interface>
+<div
+  class="chat-page"
+  (paste)="onPaste($event)"
+  (dragover)="$event.preventDefault()"
+  (drop)="$event.preventDefault(); onDrop($event)"
+>
+  <chat-list (entryIconSelect)="onChatEntryIconSelect($event)"></chat-list>
+  <chat-user-list *ngIf="isChatUserListShow()"></chat-user-list>
+  <emoji-attach-view *ngIf="isEmojiAttachViewShow()"></emoji-attach-view>
+  <chat-interface (chatInput)="onChatInput($event)"></chat-interface>
 </div>

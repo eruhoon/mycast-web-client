@@ -8,10 +8,9 @@ import { ToastService } from 'src/app/services/notification/toast.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-
   public mLoginForm: LoginForm;
   private mRoute: ActivatedRoute;
   private mPageNavigator: PageNavigator;
@@ -21,9 +20,11 @@ export class LoginPageComponent implements OnInit {
   private mRedirctTo: string | null;
 
   constructor(
-    route: ActivatedRoute, router: Router, renderer: Renderer2,
-    private mToastService: ToastService) {
-
+    route: ActivatedRoute,
+    router: Router,
+    renderer: Renderer2,
+    private mToastService: ToastService
+  ) {
     this.mLoginForm = { id: '', pw: '' };
     this.mRoute = route;
     this.mPageNavigator = new PageNavigator(router);
@@ -33,7 +34,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mRoute.queryParams.subscribe(params => {
+    this.mRoute.queryParams.subscribe((params) => {
       if (params.redirectTo) {
         this.mRedirctTo = params.redirectTo as string;
       }
@@ -71,7 +72,7 @@ export class LoginPageComponent implements OnInit {
 
   private requestLogin(): void {
     const login = new LoginCommand(this.mLoginForm.id, this.mLoginForm.pw);
-    login.onSuccess(res => {
+    login.onSuccess((res) => {
       this.mSessionStorage.setSessionId(res.sid);
       this.mSessionStorage.setPrivateKey(res.hash);
       this.mPageNavigator.navigate(this.mRedirctTo);
@@ -83,10 +84,9 @@ export class LoginPageComponent implements OnInit {
     });
     login.execute();
   }
-
 }
 
 type LoginForm = {
-  id: string,
-  pw: string,
+  id: string;
+  pw: string;
 };

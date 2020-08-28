@@ -10,15 +10,9 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import { MemoPageComponent } from './views/memo/memo-page/memo-page.component';
 import { MobilePageComponent } from './views/mobile/mobile-page/mobile-page.component';
 import { PhotoPageComponent } from './views/photo/photo-page/photo-page.component';
-import {
-  StreamPlayerPageComponent
-} from './views/stream/plyr-player-page/stream-player-page.component';
-import {
-  TestPlayerPageComponent
-} from './views/stream/test-player-page/test-player-page.component';
-import {
-  TotoroPlayerPageComponent
-} from './views/stream/plyr-player-page/totoro-player-page.component';
+import { StreamPlayerPageComponent } from './views/stream/plyr-player-page/stream-player-page.component';
+import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
+import { TotoroPlayerPageComponent } from './views/stream/plyr-player-page/totoro-player-page.component';
 
 const routes: Routes = [
   {
@@ -27,58 +21,58 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomePageComponent
-      }
-    ]
+        component: HomePageComponent,
+      },
+    ],
   },
   {
     path: 'main',
     canActivate: [AuthGuard],
-    component: MainPageComponent
+    component: MainPageComponent,
   },
   {
     path: 'mobile',
     canActivate: [AuthGuard],
-    component: MobilePageComponent
+    component: MobilePageComponent,
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
   },
   {
     path: 'join',
-    component: JoinPageComponent
+    component: JoinPageComponent,
   },
   {
     path: 'chat',
-    component: ChatPageComponent
+    component: ChatPageComponent,
   },
   {
     path: 'photo',
     component: PhotoPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'memo',
-    component: MemoPageComponent
+    component: MemoPageComponent,
   },
   {
     path: 'player/:playerId',
-    component: StreamPlayerPageComponent
+    component: StreamPlayerPageComponent,
   },
   {
     path: 'player/totoro/:playerId',
     // canActivate: [AuthGuard],
-    component: TotoroPlayerPageComponent
+    component: TotoroPlayerPageComponent,
   },
   {
     path: 'player_dev',
-    component: TestPlayerPageComponent
-  }
+    component: TestPlayerPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

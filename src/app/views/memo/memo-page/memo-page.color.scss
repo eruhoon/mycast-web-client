@@ -1,49 +1,49 @@
 :host-context(.theme-light) {
-    .memo-page {
-        background-color: #f0f0f0;
-      
-        .left-menu {
-            border-color:#e3e3e3;
-            h2 {
-                color: #f50057;
-            }
-            .mm-menu-list {
-                .mm-m-li {
-                    i {
-                        color: #616161;
-                    }
-                    p {
-                        color: #616161;
-                    }
-                }
-                .mm-li-btm {
-                }
-            }
+  .memo-page {
+    background-color: #f0f0f0;
+
+    .left-menu {
+      border-color: #e3e3e3;
+      h2 {
+        color: #f50057;
+      }
+      .mm-menu-list {
+        .mm-m-li {
+          i {
+            color: #616161;
+          }
+          p {
+            color: #616161;
+          }
         }
+        .mm-li-btm {
+        }
+      }
     }
+  }
 }
-  
+
 :host-context(.theme-dark) {
-    .memo-page {
-        background-color: #3a3a3a;
-      
-        .left-menu {
-            border-color:#BDBDBD;
-            h2 {
-                color: #c63d6c;
-            }
-            .mm-menu-list {
-                .mm-m-li {
-                    i {
-                        color: #EEEEEE;
-                    }
-                    p {
-                        color: #EEEEEE;
-                    }
-                }
-                .mm-li-btm {
-                }
-            }
+  .memo-page {
+    background-color: #3a3a3a;
+
+    .left-menu {
+      border-color: #bdbdbd;
+      h2 {
+        color: #c63d6c;
+      }
+      .mm-menu-list {
+        .mm-m-li {
+          i {
+            color: #eeeeee;
+          }
+          p {
+            color: #eeeeee;
+          }
         }
+        .mm-li-btm {
+        }
+      }
     }
+  }
 }

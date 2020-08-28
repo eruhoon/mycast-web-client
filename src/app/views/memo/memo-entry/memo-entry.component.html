@@ -1,17 +1,17 @@
 <div class="memo-box">
-    <div class="mm-info">
-        <p>{{getRegDate()}}</p>
-    </div>
-    <pre class="mm-txt" (click)="onClick()">{{getBody()}}</pre>
-    <div class="mm-user">
-        <p>{{getAuthor()}} 작성</p>
-    </div>
-    <div class="mm-btn-group">
-        <a class="mm-btn warning">
-            <i class="material-icons">warning</i>
-        </a>
-        <a class="mm-btn link" (click)="shareMemo()">
-            <i class="material-icons">link</i>
-        </a>
-    </div>
+  <div class="mm-info">
+    <p>{{ getRegDate() }}</p>
+  </div>
+  <pre class="mm-txt" (click)="onClick()">{{ getBody() }}</pre>
+  <div class="mm-user">
+    <p>{{ getAuthor() }} 작성</p>
+  </div>
+  <div class="mm-btn-group">
+    <a class="mm-btn warning">
+      <i class="material-icons">warning</i>
+    </a>
+    <a class="mm-btn link" (click)="shareMemo()">
+      <i class="material-icons">link</i>
+    </a>
+  </div>
 </div>

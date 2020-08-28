@@ -7,10 +7,9 @@ import { Injectable } from '@angular/core';
 import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrentChatService {
-
   private mChatSubject: Subject<Chat[]>;
   private mChatContainer: ChatContainer;
 

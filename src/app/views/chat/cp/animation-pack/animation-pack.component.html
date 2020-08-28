@@ -1,16 +1,16 @@
 <div class="ani-pack" *ngIf="!error" (click)="onClick()">
-    <div class="ani-box">
-        <img class="ani-bg" [src]="thumbnail|safe" width="100%" />
-        <div class="img-overlay"></div>
-        <div class="ani-info">
-            <div class="title-img">
-                <img [src]="thumbnail|safe" />
-            </div>
-            <div class="info-text">
-                <h4>{{title}}</h4>
-                <p>방영일: {{date}}</p>
-            </div>
-        </div>
+  <div class="ani-box">
+    <img class="ani-bg" [src]="thumbnail | safe" width="100%" />
+    <div class="img-overlay"></div>
+    <div class="ani-info">
+      <div class="title-img">
+        <img [src]="thumbnail | safe" />
+      </div>
+      <div class="info-text">
+        <h4>{{ title }}</h4>
+        <p>방영일: {{ date }}</p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="ani-pack-failed" *ngIf="error">애니 검색 실패</div>

@@ -18,7 +18,8 @@
   background: #ffffff;
   border-radius: 5px;
   border: 5px solid #ffffff;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 1px 3px 0px rgba(0,0,0,.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   img {
     width: 120px;
@@ -26,7 +27,8 @@
     background: #ffffff;
     border-radius: 15px;
 
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 1px 3px 0px rgba(0,0,0,.12);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
     position: absolute;
     top: -60px;
@@ -55,7 +57,7 @@
     }
     p {
       float: left;
-      color: #ffffff ;
+      color: #ffffff;
       padding: 0%;
       margin: 0%;
       font-size: 14px;
@@ -63,7 +65,7 @@
       padding-left: 5px;
     }
   }
-  
+
   .text {
     width: calc(100% - 140px);
     height: 40px;
@@ -78,26 +80,25 @@
       color: #757575;
     }
   }
-  
+
   button {
     width: calc(100% + 10px);
     height: 60px;
     margin: -5px;
-    background-color: #FF4081;
-    border: 0px solid #F5F5F5;
+    background-color: #ff4081;
+    border: 0px solid #f5f5f5;
 
-    
     color: #ffffff;
 
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin-top: 4px;
 
-    h3{
+    h3 {
       font-size: 24px;
       font-weight: bolder;
       line-height: 24px;
-      padding:0%;
+      padding: 0%;
       margin: 0%;
     }
   }

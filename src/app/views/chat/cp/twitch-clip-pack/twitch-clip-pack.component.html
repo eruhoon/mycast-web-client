@@ -1,12 +1,16 @@
-<div class="twitch-clip-pack" (click)="onClick()" (contextmenu)="onContextMenu()">
-    <img class="thumbnail" [src]="thumbnail|safe">
-    <div class="logo description-added"></div>
-    <div class="tw-str-info">
-        <img class="logo" [src]=" icon|safe">
-        <span>
-            <h4>{{title}}</h4>
-            <p>{{type}}</p>
-        </span>
-    </div>
+<div
+  class="twitch-clip-pack"
+  (click)="onClick()"
+  (contextmenu)="onContextMenu()"
+>
+  <img class="thumbnail" [src]="thumbnail | safe" />
+  <div class="logo description-added"></div>
+  <div class="tw-str-info">
+    <img class="logo" [src]="icon | safe" />
+    <span>
+      <h4>{{ title }}</h4>
+      <p>{{ type }}</p>
+    </span>
+  </div>
 </div>
 <div *ngIf="isDataSaveMode()" (click)="onClick()">(대충 트위치 클립)</div>

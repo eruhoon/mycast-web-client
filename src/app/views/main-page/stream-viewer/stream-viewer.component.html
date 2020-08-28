@@ -1,4 +1,10 @@
 <div class="viewer">
-    <app-local-viewer *ngIf="isLocal()" [stream]="getLocalStream()"></app-local-viewer>
-    <app-external-viewer *ngIf="!isLocal()" [stream]="getExternalStream()"></app-external-viewer>
+  <app-local-viewer
+    *ngIf="isLocal()"
+    [stream]="getLocalStream()"
+  ></app-local-viewer>
+  <app-external-viewer
+    *ngIf="!isLocal()"
+    [stream]="getExternalStream()"
+  ></app-external-viewer>
 </div>

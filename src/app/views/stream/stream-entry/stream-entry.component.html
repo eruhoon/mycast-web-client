@@ -1,26 +1,35 @@
 <div class="icon-wrapper">
-    <img class="icon" [src]="stream.getIcon()|safe" (click)="onIconClick()" />
-    <div class="bridge"></div>
-    <div class="detail thumbnail">
-        <img class="thumbnail" *ngIf="isThumbnailShow()" [src]="getThumbnail()|safe" style="display: inline;"
-            (error)="onThumbnailError()">
-        <div class="wrapper">
-            <div class="text">
-                <h4 class="title">{{getTitle()}}</h4>
-                <div class="viewer">
-                    <span>{{stream.getViewer()}}</span>
-                    <i class="material-icons">person</i>
-                </div>
-            </div>
-            <p class="description">{{stream.getDescription()}}</p>
-            <div class="btn-box">
-                <div class="button" style="right: 10px;" (click)="onShareClick(stream)">
-                    <i class="material-icons">link</i>
-                </div>
-                <div class="button" style="right: 32px;" (click)="onNewWindowClick(stream)">
-                    <i class="material-icons">open_in_new</i>
-                </div>
-            </div>
+  <img class="icon" [src]="stream.getIcon() | safe" (click)="onIconClick()" />
+  <div class="bridge"></div>
+  <div class="detail thumbnail">
+    <img
+      class="thumbnail"
+      *ngIf="isThumbnailShow()"
+      [src]="getThumbnail() | safe"
+      style="display: inline"
+      (error)="onThumbnailError()"
+    />
+    <div class="wrapper">
+      <div class="text">
+        <h4 class="title">{{ getTitle() }}</h4>
+        <div class="viewer">
+          <span>{{ stream.getViewer() }}</span>
+          <i class="material-icons">person</i>
         </div>
+      </div>
+      <p class="description">{{ stream.getDescription() }}</p>
+      <div class="btn-box">
+        <div class="button" style="right: 10px" (click)="onShareClick(stream)">
+          <i class="material-icons">link</i>
+        </div>
+        <div
+          class="button"
+          style="right: 32px"
+          (click)="onNewWindowClick(stream)"
+        >
+          <i class="material-icons">open_in_new</i>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

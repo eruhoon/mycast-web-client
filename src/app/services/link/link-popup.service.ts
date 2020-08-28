@@ -3,10 +3,9 @@ import { LinkPopup } from 'src/app/models/link/LinkPopup';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LinkPopupService {
-
   private mLinks: LinkPopup[];
 
   public constructor() {
@@ -14,7 +13,7 @@ export class LinkPopupService {
   }
 
   public addLink(link: LinkPopup): boolean {
-    if (this.mLinks.every(l => l.getLink() !== link.getLink())) {
+    if (this.mLinks.every((l) => l.getLink() !== link.getLink())) {
       this.mLinks = [...this.mLinks, link];
       return true;
     } else {
@@ -23,11 +22,10 @@ export class LinkPopupService {
   }
 
   public removeLink(link: LinkPopup): void {
-    this.mLinks = this.mLinks.filter(l => l !== link);
+    this.mLinks = this.mLinks.filter((l) => l !== link);
   }
 
   public getLinks(): LinkPopup[] {
     return this.mLinks;
   }
 }
-

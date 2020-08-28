@@ -4,10 +4,9 @@ import { SessionStorage } from 'src/app/models/storage/SessionStorage';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MemoProfileService {
-
   private mProfileLoader: ProfileLoader;
   private mIcon: string;
   private mName: string;
@@ -37,5 +36,4 @@ export class MemoProfileService {
   public getName(): string {
     return this.mName;
   }
-
 }

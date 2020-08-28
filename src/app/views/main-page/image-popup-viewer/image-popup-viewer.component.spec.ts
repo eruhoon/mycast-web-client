@@ -8,9 +8,8 @@ describe('ImagePopupViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImagePopupViewerComponent ]
-    })
-    .compileComponents();
+      declarations: [ImagePopupViewerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

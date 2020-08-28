@@ -14,18 +14,16 @@ import { ChatListService } from '../chat-list/chat-list.service';
   styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPageComponent {
-  private mChatService: ChatService;
   private mClipboardImageService: ClipboardImageService;
   private mClipboardManager: ClipboardManager;
   private mChatCommand: ChatCommand;
 
   public constructor(
     mainService: MainService,
-    chatService: ChatService,
+    private mChatService: ChatService,
     clipboardImageService: ClipboardImageService,
     chatListSrv: ChatListService
   ) {
-    this.mChatService = chatService;
     this.mClipboardImageService = clipboardImageService;
     this.mClipboardManager = new ClipboardManager();
     this.mChatCommand = new ChatCommand(

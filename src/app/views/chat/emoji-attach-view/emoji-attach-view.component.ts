@@ -16,7 +16,7 @@ export class EmojiAttachViewComponent implements OnInit {
   private mChatCommand: ChatCommand;
 
   public constructor(mainSrv: MainService, chatListSrv: ChatListService) {
-    this.emojies = '😒 😊 😂 🤣 ❤ 😍 👌 😘 🤷‍♂️ 🤷‍♀️ 🤦‍♂️ 🤦‍♀️ 🙌 👍 😁 💕 ✌ 🤞 😉 😎 🎶 😢 💖 😜 🐱‍🏍 🐱‍👤 🤳 🎂 🎉 🌹 💋 👏 🐱‍💻 🐱‍🐉 🐱‍👓 🐱‍🚀 ✔ 👀 😃 ✨ 😆 🤔 🤢 🎁'.split(
+    this.emojies = '😒 😊 😂 🤣 ❤ 😍 👌 😘 🤷‍♂️ 🤷‍♀️ 🤦‍♂️ 🤦‍♀️ 🙌 👍 😁 💕 ✌ 🤞 😉 😎 🎶 😢 💖 😜 🤳 🎂 🎉 🌹 💋 👏 ✔ 👀 😃 ✨ 😆 🤔 🤢 🎁'.split(
       ' '
     );
     this.mChatCommand = new ChatCommand(chatListSrv, mainSrv.getChatNework());

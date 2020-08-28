@@ -57,7 +57,7 @@ export class ChatInterfaceComponent implements OnInit {
     this.mEmojiMenuActive = false;
   }
 
-  ngOnInit() {}
+  public ngOnInit() {}
 
   public isOpen(): boolean {
     return this.mMainSrv.isOpen();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stream } from 'src/app/models/stream/Stream';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
 import { StreamService } from 'src/app/services/stream/stream.service';
+import { StreamContainer } from './StreamContainer';
 
 @Component({
   selector: 'app-stream-list',
@@ -10,7 +11,7 @@ import { StreamService } from 'src/app/services/stream/stream.service';
 })
 export class StreamListComponent implements OnInit {
   private mService: StreamService;
-  private mLocalStreams: Stream[];
+  private mLocalStreams: StreamContainer;
   private mFavorites: Stream[];
 
   constructor(
@@ -18,7 +19,7 @@ export class StreamListComponent implements OnInit {
     private mFavoriteSrv: FavoriteStreamService
   ) {
     this.mService = service;
-    this.mLocalStreams = [];
+    this.mLocalStreams = new StreamContainer();
     this.mFavorites = [];
   }
 
@@ -27,7 +28,7 @@ export class StreamListComponent implements OnInit {
   }
 
   public mergeLocals(streams: Stream[]): void {
-    this.mLocalStreams = streams;
+    this.mLocalStreams.upsert(streams);
   }
 
   public onExternalStreamChanged(streams: Stream[]): void {
@@ -44,7 +45,7 @@ export class StreamListComponent implements OnInit {
   }
 
   public getStreams(): Stream[] {
-    return this.mLocalStreams;
+    return this.mLocalStreams.get();
   }
 
   public getFavorites(): Stream[] {

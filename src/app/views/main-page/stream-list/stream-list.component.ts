@@ -1,12 +1,7 @@
-import { Stream } from 'src/app/models/stream/Stream';
-import {
-  StreamService,
-  StreamSrvObserver,
-} from 'src/app/services/stream/stream.service';
-
 import { Component, OnInit } from '@angular/core';
+import { Stream } from 'src/app/models/stream/Stream';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
-import { Observable } from 'rxjs';
+import { StreamService } from 'src/app/services/stream/stream.service';
 
 @Component({
   selector: 'app-stream-list',
@@ -28,6 +23,10 @@ export class StreamListComponent implements OnInit {
   }
 
   public onLocalStreamChanged(streams: Stream[]): void {
+    this.mergeLocals(streams);
+  }
+
+  public mergeLocals(streams: Stream[]): void {
     this.mLocalStreams = streams;
   }
 

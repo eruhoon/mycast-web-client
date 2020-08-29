@@ -8,7 +8,9 @@ import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
 import { Injectable } from '@angular/core';
 
 import { NotificationService } from '../notification/notification.service';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, NextObserver } from 'rxjs';
+import { Callback } from 'src/app/models/common/callback/Callback';
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 @Injectable({
   providedIn: 'root',
@@ -42,8 +44,12 @@ export class StreamService {
     this.mObservers = this.mObservers.filter((o) => o !== observer);
   }
 
-  public getLocalStreams(): BehaviorSubject<Stream[]> {
-    return this.mLocalStreams;
+  public getLocalStreams(): Stream[] {
+    return this.mLocalStreams.getValue();
+  }
+
+  public subscribeLocalStreams(callback: TypeCallback<Stream[]>): void {
+    this.mLocalStreams.subscribe(callback);
   }
 
   public getExternalStreams(): BehaviorSubject<Stream[]> {

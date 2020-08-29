@@ -6,6 +6,7 @@ import {
 
 import { Component, OnInit } from '@angular/core';
 import { FavoriteStreamService } from 'src/app/services/stream/favorite-stream.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stream-list',
@@ -35,10 +36,9 @@ export class StreamListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.mService
-      .getLocalStreams()
-      .subscribe((streams) => this.onLocalStreamChanged(streams));
-
+    this.mService.subscribeLocalStreams((streams) => {
+      this.onLocalStreamChanged(streams);
+    });
     this.mService
       .getExternalStreams()
       .subscribe((streams) => this.onExternalStreamChanged(streams));

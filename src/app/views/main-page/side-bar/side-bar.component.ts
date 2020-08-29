@@ -46,7 +46,7 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
 
   public ngOnInit() {
     this.mService.setView(this);
-    this.mStreamSrv.getLocalStreams().subscribe((streams) => {
+    this.mStreamSrv.subscribeLocalStreams((streams) => {
       this.refreshLocalStreams();
     });
     this.mStreamSrv.getExternalStreams().subscribe((streams) => {
@@ -134,7 +134,7 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
 
   private refreshLocalStreams(): void {
     if (this.mService.isActive()) {
-      this.mLocals = this.mStreamSrv.getLocalStreams().getValue();
+      this.mLocals = this.mStreamSrv.getLocalStreams();
     } else {
       this.mLocals = SideBarComponent.DEFAULT_STREAMS;
     }

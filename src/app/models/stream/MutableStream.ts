@@ -95,4 +95,16 @@ export class MutableStream extends Stream {
   public setOnAir(onAir: boolean): void {
     this.mOnAir = onAir;
   }
+
+  public update(stream: Stream): void {
+    this.mPlatform = stream.getPlatform();
+    this.mKeyId = stream.getKeyId();
+    this.mIcon = stream.getIcon();
+    this.mThumbnail = stream.getThumbnail();
+    this.mTitle = stream.getTitle();
+    this.mDescription = stream.getDescription();
+    this.mUrl = stream.getUrl();
+    this.mViewer = stream.getViewer();
+    this.mOnAir = stream.isOnAir();
+  }
 }

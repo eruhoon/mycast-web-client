@@ -12,6 +12,7 @@ import { StreamContainer } from './StreamContainer';
 export class StreamListComponent implements OnInit {
   private mService: StreamService;
   private mLocalStreams: StreamContainer;
+  private mLocals: Stream[];
   private mFavorites: Stream[];
 
   constructor(
@@ -20,15 +21,13 @@ export class StreamListComponent implements OnInit {
   ) {
     this.mService = service;
     this.mLocalStreams = new StreamContainer();
+    this.mLocals = [];
     this.mFavorites = [];
   }
 
   public onLocalStreamChanged(streams: Stream[]): void {
-    this.mergeLocals(streams);
-  }
-
-  public mergeLocals(streams: Stream[]): void {
-    this.mLocalStreams.upsert(streams);
+    this.mLocalStreams.updateAll(streams);
+    this.mLocals = [...this.mLocalStreams.get()];
   }
 
   public onExternalStreamChanged(streams: Stream[]): void {
@@ -45,7 +44,7 @@ export class StreamListComponent implements OnInit {
   }
 
   public getStreams(): Stream[] {
-    return this.mLocalStreams.get();
+    return this.mLocals;
   }
 
   public getFavorites(): Stream[] {

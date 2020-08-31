@@ -27,6 +27,7 @@ export class StreamEntryComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.mThumbnailShow = true;
     this.mTitle = this.stream.getTitle();
     this.mThumbnail = this.stream.getThumbnail();
   }

@@ -41,8 +41,13 @@ export class StreamEntryComponent implements OnInit {
   }
 
   public onIconClick(): void {
+    const platform = this.stream.getPlatform();
     const link = LinkUtils.addTimestamp(this.stream.getUrl());
-    this.mMainService.setCurrentLink(link);
+    if (platform === 'afreeca') {
+      window.open(link, '_blank', 'width=800, height=450');
+    } else {
+      this.mMainService.setCurrentLink(link);
+    }
   }
 
   public onThumbnailError(): void {

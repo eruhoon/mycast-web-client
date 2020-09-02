@@ -128,8 +128,7 @@
     padding-top: 20px;
     border: 1px soild #e0e0e0;
     border-radius: 5px;
-    box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
-      0 1px 3px 1px rgba(60, 64, 67, 0.16);
+    box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.16);
 
     border: 1px soild #e0e0e0;
 
@@ -186,6 +185,12 @@
         color: #fff;
         letter-spacing: 3px;
         margin-top: 25px;
+
+        &:disabled {
+          background-color: #a8a8a8;
+          border-color: #383838;
+          color: #ffffff;
+        }
       }
     }
 
@@ -221,4 +226,13 @@
       }
     }
   }
+}
+
+toast-list {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 30px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }

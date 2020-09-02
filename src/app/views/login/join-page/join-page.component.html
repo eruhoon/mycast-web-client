@@ -5,12 +5,30 @@
     </div>
     <div class="in-box">
       <!-- 사용자 로그인 정보 -->
-      <input type="text" placeholder="아이디" id="id" />
-      <input type="text" placeholder="닉네임" id="id" />
-      <input type="password" placeholder="비밀번호" id="pw" />
-      <input type="password" placeholder="비밀번호 확인" id="pw" />
+      <input type="text" placeholder="아이디" id="id" [(ngModel)]="form.id" />
+      <input
+        type="text"
+        placeholder="닉네임"
+        id="nick"
+        [(ngModel)]="form.nick"
+      />
+      <input
+        type="password"
+        placeholder="비밀번호"
+        id="pw"
+        [(ngModel)]="form.pw"
+      />
+      <input
+        type="password"
+        placeholder="비밀번호 확인"
+        id="pw"
+        [(ngModel)]="form.pwConfirm"
+      />
       <!-- 로그인 버튼 -->
-      <button type="submit">JOIN</button>
+      <button type="submit" (click)="onClick()" [disabled]="!isValidate()">
+        JOIN
+      </button>
     </div>
   </div>
 </div>
+<toast-list *ngIf="isToastListShow()"></toast-list>

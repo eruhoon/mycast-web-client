@@ -287,3 +287,17 @@
   opacity: 0.8;
   z-index: 100;
 }
+
+// 모바일 영역 설정 세팅값
+@media (min-width: 320px) and (max-width: 480px) {
+  
+.modal {
+  .body {
+    .site-set-box {
+      .set-switch {
+        margin-left: 0px !important;
+      }
+    }
+  }
+}
+}

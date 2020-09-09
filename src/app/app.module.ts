@@ -1,9 +1,10 @@
-import { PlyrModule } from 'ngx-plyr';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PlyrModule } from 'ngx-plyr';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { SafePipe } from './models/pipe/safe.pipe';
@@ -34,6 +35,7 @@ import { TextPackComponent } from './views/chat/cp/text-pack/text-pack.component
 import { TwitchClipPackComponent } from './views/chat/cp/twitch-clip-pack/twitch-clip-pack.component';
 import { TwitchPackComponent } from './views/chat/cp/twitch-pack/twitch-pack.component';
 import { YoutubePackComponent } from './views/chat/cp/youtube-pack/youtube-pack.component';
+import { EmojiAttachViewComponent } from './views/chat/emoji-attach-view/emoji-attach-view.component';
 import { HomePageComponent } from './views/home/home-page/home-page.component';
 import { JoinPageComponent } from './views/login/join-page/join-page.component';
 import { LoginPageComponent } from './views/login/login-page/login-page.component';
@@ -75,7 +77,6 @@ import { StreamPlayerPageComponent } from './views/stream/plyr-player-page/strea
 import { TotoroPlayerPageComponent } from './views/stream/plyr-player-page/totoro-player-page.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
-import { EmojiAttachViewComponent } from './views/chat/emoji-attach-view/emoji-attach-view.component';
 
 @NgModule({
   declarations: [
@@ -156,6 +157,7 @@ import { EmojiAttachViewComponent } from './views/chat/emoji-attach-view/emoji-a
     FormsModule,
     AppRoutingModule,
     DragDropModule,
+    ClipboardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

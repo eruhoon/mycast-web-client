@@ -15,7 +15,11 @@
     <div class="link">{{ getLink() }}</div>
   </div>
   <div class="menu">
-    <button class="button">
+    <button
+      class="button"
+      (click)="onCopyClick($event)"
+      [cdkCopyToClipboard]="getLink()"
+    >
       <i class="material-icons">content_copy</i>
     </button>
   </div>

@@ -3,6 +3,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPackDirective } from '../ChatPack';
+import { ToastService } from 'src/app/services/notification/toast.service';
 
 @Component({
   selector: 'link-pack',
@@ -15,7 +16,11 @@ export class LinkPackComponent extends ChatPackDirective implements OnInit {
   private mTitle: string;
   private mThumbnail: string;
 
-  public constructor(injector: Injector, mainService: MainService) {
+  public constructor(
+    injector: Injector,
+    mainService: MainService,
+    private mToastSrv: ToastService
+  ) {
     super(injector);
     this.mMainService = mainService;
   }
@@ -53,6 +58,11 @@ export class LinkPackComponent extends ChatPackDirective implements OnInit {
 
   public getLink(): string {
     return this.mLink;
+  }
+
+  public onCopyClick(event: Event): void {
+    event.stopPropagation();
+    this.mToastSrv.toast('복사되었습니다.');
   }
 }
 

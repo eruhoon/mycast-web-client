@@ -27,6 +27,7 @@
     "@angular/service-worker": "~10.0.9",
     "@types/socket.io-client": "^1.4.33",
     "axios": "^0.19.2",
+    "ngx-clipboard": "^13.0.1",
     "ngx-plyr": "^4.0.0",
     "plyr": "^3.6.2",
     "rxjs": "~6.6.2",

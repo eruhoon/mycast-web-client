@@ -1,0 +1,10 @@
+<div
+  class="twitch-video-pack"
+  (click)="onClick()"
+  (contextmenu)="onContextMenu()"
+>
+  <img class="thumbnail" [src]="thumbnail" />
+  <div class="logo description-added"></div>
+  <div class="title description-added">{{ title }}</div>
+  <div class="description">{{ user }}</div>
+</div>

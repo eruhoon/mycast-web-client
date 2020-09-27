@@ -18,5 +18,6 @@ export const enum ChatType {
   TEXT = 'text',
   TWITCH = 'twitch',
   TWITCH_CLIP = 'twitch-clip',
+  TWITCH_VIDEO = 'twitch-video',
   YOUTUBE = 'youtube',
 }

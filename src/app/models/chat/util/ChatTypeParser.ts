@@ -41,6 +41,8 @@ export class ChatTypeParser {
         return ChatType.TWITCH;
       case 'twitch-clip':
         return ChatType.TWITCH_CLIP;
+      case 'twitch-video':
+        return ChatType.TWITCH_VIDEO;
       case 'youtube':
         return ChatType.YOUTUBE;
       default:

@@ -77,6 +77,7 @@ import { StreamPlayerPageComponent } from './views/stream/plyr-player-page/strea
 import { TotoroPlayerPageComponent } from './views/stream/plyr-player-page/totoro-player-page.component';
 import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.component';
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
+import { TwitchVideoPackComponent } from './views/chat/cp/twitch-video-pack/twitch-video-pack.component';
 
 @NgModule({
   declarations: [
@@ -150,6 +151,7 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
     SideBarStreamListViewComponent,
     StreamPreviewComponent,
     EmojiAttachViewComponent,
+    TwitchVideoPackComponent,
   ],
   imports: [
     PlyrModule,

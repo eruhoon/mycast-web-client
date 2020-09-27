@@ -55,8 +55,9 @@ export class TwitchVideoPackComponent
     }
   }
 
-  public onContextMenu(): void {
+  public onContextMenu(): boolean {
     this.mMainSrv.setCurrentLink(this.mLink);
+    return false;
   }
 
   private static createLink(id: string): string {

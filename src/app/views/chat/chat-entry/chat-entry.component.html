@@ -5,9 +5,7 @@
         #icon
         [src]="getIcon()"
         (contextmenu)="onIconContextMenu()"
-        [ngStyle]="{
-          border: isPowerfulHanhwa() ? '2px solid #ff6b01' : 'none'
-        }"
+        [ngStyle]="{ border: getBorder() }"
       />
     </div>
   </div>

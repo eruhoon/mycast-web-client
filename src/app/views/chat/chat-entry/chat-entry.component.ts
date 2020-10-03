@@ -29,6 +29,9 @@ export class ChatEntryComponent implements OnInit {
 
   private mEnvironment: SenderEnv;
   private mPowerfulHanhwa: boolean;
+  private mDrx: boolean;
+  private mGen: boolean;
+  private mDwg: boolean;
 
   public constructor(private mOption: OptionService) {}
 
@@ -36,6 +39,9 @@ export class ChatEntryComponent implements OnInit {
     const env = this.chat.getSender().getType();
     this.mEnvironment = ChatEntryComponent.convertEnv(env);
     this.mPowerfulHanhwa = this.chat.getSender().getNickname() === '안알랴쥼';
+    this.mDrx = this.chat.getSender().getNickname().startsWith('DRX');
+    this.mGen = this.chat.getSender().getNickname().startsWith('GEN');
+    this.mDwg = this.chat.getSender().getNickname().startsWith('DWG');
   }
 
   public isPowerfulHanhwa(): boolean {
@@ -58,6 +64,26 @@ export class ChatEntryComponent implements OnInit {
     const iconElm = this.mIconView.nativeElement;
     this.profileIconSelect.emit(iconElm.src);
     return false;
+  }
+
+  public getBorder(): string {
+    if (this.isPowerfulHanhwa()) {
+      return '2px solid #ff6b01';
+    }
+
+    if (this.mDrx) {
+      return '2px solid #5a8dff';
+    }
+
+    if (this.mGen) {
+      return '2px solid #AA8A00';
+    }
+
+    if (this.mDwg) {
+      return '2px solid #54949d';
+    }
+
+    return 'none';
   }
 
   private static convertEnv(rawEnv: ChatSenderType): SenderEnv {

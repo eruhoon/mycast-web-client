@@ -38,6 +38,7 @@ export class VegaPhotoLoader implements AsyncLoader<Photo[]> {
   }
 
   public load(callback: OnLoadCallback<Photo[]>): void {
+    console.log(new Error());
     if (this.mAllLoaded) {
       return;
     }

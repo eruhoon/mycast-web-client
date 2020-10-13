@@ -11,12 +11,14 @@ export abstract class GeneralPurposePackDirective
   extends ChatPackDirective
   implements OnInit {
   public prop: GeneralPurposeProperty;
+  public bindError: boolean;
 
   private mLinkPopupSrv: LinkPopupService;
 
   public constructor(injector: Injector) {
     super(injector);
     this.mLinkPopupSrv = injector.get(LinkPopupService);
+    this.bindError = false;
   }
 
   public ngOnInit() {
@@ -29,10 +31,15 @@ export abstract class GeneralPurposePackDirective
         icon: '',
         link: '',
       };
+      this.bindError = true;
     }
   }
 
   protected abstract bind(): GeneralPurposeProperty;
+
+  public getErrorMessage(): string {
+    return 'error';
+  }
 
   public onClick(): void {
     if (this.isMobile()) {

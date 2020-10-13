@@ -1,4 +1,8 @@
-<div class="game-ch-info" *ngIf="!isDataSaveMode()" (click)="onClick()">
+<div
+  class="game-ch-info"
+  *ngIf="!isDataSaveMode() && !bindError"
+  (click)="onClick()"
+>
   <div class="ch-img">
     <img [src]="prop.icon" />
   </div>
@@ -10,4 +14,5 @@
     <img src="" />
   </div>
 </div>
+<div *ngIf="bindError">{{ getErrorMessage() }}</div>
 <div *ngIf="isDataSaveMode()">(대충 챔 {{ 'name' }} 정보)</div>

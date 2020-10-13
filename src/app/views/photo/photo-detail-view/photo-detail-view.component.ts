@@ -23,7 +23,6 @@ export class PhotoDetailViewComponent implements OnInit {
   private mPhotoService: PhotoService;
   private mFilterCommand: PhotoAdultFilterCommand;
   private mShareCommand: PhotoShareCommand;
-  private mImgurLoader: VegaImgurLoader;
   private mViewer: number;
   private mEditTagMode: boolean;
 

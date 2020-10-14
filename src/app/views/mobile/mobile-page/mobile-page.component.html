@@ -3,8 +3,10 @@
   [ngClass]="{ 'content-mode': isContentMode() }"
   (mousedown)="closeAllMenu()"
 >
-  <div class="main-page-wrapper">
-    <chat-page></chat-page>
+  <div class="main-page-wrapper" [ngSwitch]="getPageType()">
+    <chat-page *ngSwitchCase="'CHAT'"></chat-page>
+    <photo-page *ngSwitchCase="'PHOTO'"></photo-page>
+    <memo-page *ngSwitchCase="'MEMO'"></memo-page>
   </div>
   <div class="contents-viewer">
     <iframe

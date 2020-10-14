@@ -11,6 +11,8 @@ import {
   StreamService,
   StreamSrvObserver,
 } from 'src/app/services/stream/stream.service';
+import { MobilePageService } from '../../mobile/mobile-page/mobile-page.service';
+import { PageType } from '../../mobile/mobile-page/PageType';
 import { SideBarService } from './side-bar.service';
 
 @Component({
@@ -32,6 +34,7 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
     private mService: SideBarService,
     private mOptionSrv: OptionService,
     private mMainService: MainService,
+    private mMobilePageSrv: MobilePageService,
     private mStreamSrv: StreamService,
     private mFavoriteSrv: FavoriteStreamService,
     private mProfileSrv: ProfileService
@@ -96,7 +99,11 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
   }
 
   public onMemoClick(): void {
-    this.mMainService.setCurrentLink('./memo');
+    if (this.isMobile()) {
+      this.mMobilePageSrv.setPageType(PageType.MEMO);
+    } else {
+      this.mMainService.setCurrentLink('./memo');
+    }
     this.mService.deactivate();
   }
 
@@ -106,7 +113,11 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
   }
 
   public onPhotoClick(): void {
-    this.mMainService.setCurrentLink('./photo');
+    if (this.isMobile()) {
+      this.mMobilePageSrv.setPageType(PageType.PHOTO);
+    } else {
+      this.mMainService.setCurrentLink('./photo');
+    }
     this.mService.deactivate();
   }
 

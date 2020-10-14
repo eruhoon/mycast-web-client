@@ -13,6 +13,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 
 import { SideBarService } from '../../main-page/side-bar/side-bar.service';
 import { TopBarService } from '../../main-page/top-bar/top-bar.service';
+import { MobilePageService } from './mobile-page.service';
+import { PageType } from './PageType';
 
 @Component({
   selector: 'app-mobile-page',
@@ -22,6 +24,7 @@ import { TopBarService } from '../../main-page/top-bar/top-bar.service';
 export class MobilePageComponent implements OnInit {
   public constructor(
     private mMainSrv: MainService,
+    private mMobilePageSrv: MobilePageService,
     private mSideBarSrv: SideBarService,
     private mTopBarSrv: TopBarService,
     private mProfileService: ProfileService,
@@ -34,7 +37,13 @@ export class MobilePageComponent implements OnInit {
     history.pushState(null, '', window.location.href);
   }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.mMobilePageSrv.setPageType(PageType.CHAT);
+  }
+
+  public getPageType(): string {
+    return this.mMobilePageSrv.getPageType();
+  }
 
   public getCurrentLink(): string {
     return this.mMainSrv.getCurrentLink();

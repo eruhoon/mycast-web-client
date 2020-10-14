@@ -23,8 +23,7 @@ export class PhotoService {
     this.mPhotoUploadCommand.setOnComplete((photo) => {
       const newPhoto = MutablePhoto.createWithPhoto(photo);
       const current = this.mPhotoSubject.getValue();
-      const next = [newPhoto, ...current];
-      this.mPhotoSubject.next(next);
+      this.mPhotoSubject.next([newPhoto, ...current]);
     });
     this.mCurrentPhoto = null;
     this.mNextStart = 0;

@@ -99,6 +99,9 @@ export class ChatRequestFactory {
       case 'cv':
         return new SimpleChatRequest('character-voice', rawMsg);
 
+      case 'gpc':
+        return new SimpleChatRequest('general-purpose-card', rawMsg);
+
       case '테스트':
       case 'test':
         return new SimpleChatRequest('test', rawMsg);

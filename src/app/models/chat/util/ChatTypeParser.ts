@@ -15,6 +15,8 @@ export class ChatTypeParser {
         return ChatType.CHARACTER_VOICE;
       case 'cqhero':
         return ChatType.CRUSADERQUEST_HERO;
+      case 'general-purpose-card':
+        return ChatType.GENERAL_PURPOSE_CARD;
       case 'gf-doll':
         return ChatType.GIRLS_FRONTLINE_DOLL;
       case 'image':

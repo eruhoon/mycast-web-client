@@ -4,9 +4,11 @@
   (mousedown)="closeAllMenu()"
 >
   <div class="main-page-wrapper" [ngSwitch]="getPageType()">
-    <chat-page *ngSwitchCase="'CHAT'"></chat-page>
     <photo-page *ngSwitchCase="'PHOTO'"></photo-page>
     <memo-page *ngSwitchCase="'MEMO'"></memo-page>
+    <chat-page [ngClass]="{
+      display:getPageType() ==='CHAT' ? 'auto':'none'
+    }"></chat-page>
   </div>
   <div class="contents-viewer">
     <iframe

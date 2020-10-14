@@ -98,6 +98,20 @@ export class SideBarComponent implements OnInit, StreamSrvObserver {
     return this.mKakaos;
   }
 
+  public onChatClick(): void {
+    if (this.isMobile()) {
+      this.mMobilePageSrv.setPageType(PageType.CHAT);
+    } else {
+      this.mMainService.setCurrentLink('./chat');
+    }
+    this.mService.deactivate();
+  }
+
+  public onChatContextMenu(): boolean {
+    window.open('/chat', '_blank', 'width=800');
+    return false;
+  }
+
   public onMemoClick(): void {
     if (this.isMobile()) {
       this.mMobilePageSrv.setPageType(PageType.MEMO);

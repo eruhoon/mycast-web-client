@@ -2,6 +2,15 @@
   <ul class="main">
     <li
       class="main"
+      *ngIf="isMobile()"
+      (click)="onChatClick()"
+      (contextmenu)="onChatContextMenu()"
+    >
+      <i class="material-icons">message</i>
+      <span>채팅</span>
+    </li>
+    <li
+      class="main"
       (click)="onMemoClick()"
       (contextmenu)="onMemoContextMenu()"
     >

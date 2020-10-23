@@ -3,4 +3,5 @@ export type GeneralPurposeProperty = {
   subtitle: string;
   icon: string;
   link: string;
+  newWindow?: boolean;
 };

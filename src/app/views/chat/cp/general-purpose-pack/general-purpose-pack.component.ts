@@ -30,6 +30,7 @@ export abstract class GeneralPurposePackDirective
         subtitle: '',
         icon: '',
         link: '',
+        newWindow: false,
       };
       this.bindError = true;
     }

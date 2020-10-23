@@ -20,6 +20,7 @@ export class DefaultGeneralPurposeCardPackComponent extends GeneralPurposePackDi
       link: raw.link,
       title: raw.title,
       subtitle: raw.subtitle,
+      newWindow: raw.newWindow,
     };
   }
 }

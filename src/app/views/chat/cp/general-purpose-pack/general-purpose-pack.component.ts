@@ -45,15 +45,21 @@ export abstract class GeneralPurposePackDirective
   public onClick(): void {
     if (this.isMobile()) {
       window.open(this.prop.link, '_blank');
-    } else {
-      this.mLinkPopupSrv.addLink(
-        new LinkPopupBuilder()
-          .title('Item Info')
-          .width(800)
-          .height(600)
-          .link(this.prop.link)
-          .build()
-      );
+      return;
     }
+
+    if (this.prop.newWindow) {
+      window.open(this.prop.link, '_blank');
+      return;
+    }
+
+    this.mLinkPopupSrv.addLink(
+      new LinkPopupBuilder()
+        .title('Item Info')
+        .width(800)
+        .height(600)
+        .link(this.prop.link)
+        .build()
+    );
   }
 }

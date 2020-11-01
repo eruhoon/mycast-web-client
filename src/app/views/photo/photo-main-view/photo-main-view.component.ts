@@ -61,11 +61,7 @@ export class PhotoMainViewComponent implements OnInit {
 
   private searchPhoto(): void {
     const elm = this.mSearchInput.nativeElement;
-    this.mLoader.setStart(0);
-    this.mLoader.setQuery(elm.value);
-    this.mLoader.load((rawPhotos) => {
-      const photos = rawPhotos !== null ? rawPhotos : [];
-      this.mContainer.update(photos);
-    });
+    const query = elm.value;
+    this.mService.search(query);
   }
 }

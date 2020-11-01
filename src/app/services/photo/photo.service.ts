@@ -14,6 +14,7 @@ export class PhotoService {
   private mLoader: VegaPhotoLoader;
   private mPhotoUploadCommand: PhotoUploadCommand;
   private mCurrentPhoto: Photo | null;
+  private mCurrentQuery: string;
   private mNextStart: number;
 
   public constructor() {
@@ -26,6 +27,7 @@ export class PhotoService {
       this.mPhotoSubject.next([newPhoto, ...current]);
     });
     this.mCurrentPhoto = null;
+    this.mCurrentQuery = '';
     this.mNextStart = 0;
   }
 
@@ -54,6 +56,22 @@ export class PhotoService {
   public addPhotoByFile(file: File): void {
     this.mPhotoUploadCommand.setFile(file);
     this.mPhotoUploadCommand.execute();
+  }
+
+  public search(query: string): void {
+    this.mCurrentQuery = query;
+    this.mLoader.setQuery(query);
+    this.mLoader.setStart(0);
+    this.mLoader.load((photos) => {
+      if (!photos) {
+        console.warn('load failed');
+        return;
+      }
+      const mutablePhotos = photos.map((photo) =>
+        MutablePhoto.createWithPhoto(photo)
+      );
+      this.mPhotoSubject.next(mutablePhotos);
+    });
   }
 
   public loadMore(): void {

@@ -79,6 +79,7 @@ import { StreamEntryComponent } from './views/stream/stream-entry/stream-entry.c
 import { TestPlayerPageComponent } from './views/stream/test-player-page/test-player-page.component';
 import { TwitchVideoPackComponent } from './views/chat/cp/twitch-video-pack/twitch-video-pack.component';
 import { DefaultGeneralPurposeCardPackComponent } from './views/chat/cp/general-purpose-pack/default-general-purpose-card-pack.component';
+import { StatusMessageListComponent } from './views/main-page/status-message-list/status-message-list.component';
 
 @NgModule({
   declarations: [
@@ -154,6 +155,7 @@ import { DefaultGeneralPurposeCardPackComponent } from './views/chat/cp/general-
     EmojiAttachViewComponent,
     TwitchVideoPackComponent,
     DefaultGeneralPurposeCardPackComponent,
+    StatusMessageListComponent,
   ],
   imports: [
     PlyrModule,

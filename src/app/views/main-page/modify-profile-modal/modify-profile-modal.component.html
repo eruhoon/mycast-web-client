@@ -19,6 +19,18 @@
       />
       <p class="error-up">닉네임을 입력하세요.</p>
     </div>
+    <div [class]="isNameError() ? 'u-input error' : 'u-input'" *ngIf="false">
+      <label>
+        <p>상태 메시지</p>
+      </label>
+      <input
+        id="status-message"
+        maxlength="100"
+        [(ngModel)]="profileForm.statusMessage"
+        type="text"
+      />
+      <p class="error-up">상태메시지 에러</p>
+    </div>
     <div [class]="isIconError() ? 'u-input error' : 'u-input'">
       <label>
         <p>아이콘 이미지 변경</p>

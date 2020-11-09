@@ -95,8 +95,12 @@ export class ProfileService {
     this.mModifyMode = modifyMode;
   }
 
-  public requestToModifyProfile(name: string, icon: string): void {
-    this.mModifyProfileCommand.execute({ name, icon });
+  public requestToModifyProfile(
+    name: string,
+    icon: string,
+    statusMessage: string
+  ): void {
+    this.mModifyProfileCommand.execute({ name, icon, statusMessage });
   }
 
   public async requestToChangeStream(

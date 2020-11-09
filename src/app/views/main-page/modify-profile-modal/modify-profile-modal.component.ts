@@ -19,6 +19,7 @@ export class ModifyProfileModalComponent {
     this.profileForm = {
       name: profileService.getName(),
       icon: profileService.getProfileIcon(),
+      statusMessage: '',
     };
     this.mProfileService = profileService;
   }
@@ -26,7 +27,8 @@ export class ModifyProfileModalComponent {
   public onSubmitClick(): void {
     this.mProfileService.requestToModifyProfile(
       this.profileForm.name,
-      this.profileForm.icon
+      this.profileForm.icon,
+      this.profileForm.statusMessage
     );
     this.close();
   }
@@ -56,4 +58,4 @@ export class ModifyProfileModalComponent {
   }
 }
 
-type ProfileForm = { name: string; icon: string };
+type ProfileForm = { name: string; icon: string; statusMessage: string };

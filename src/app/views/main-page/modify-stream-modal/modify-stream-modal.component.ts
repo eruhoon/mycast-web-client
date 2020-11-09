@@ -24,7 +24,6 @@ export class ModifyStreamModalComponent implements OnInit {
     this.streamForm = {
       backgroundImage: '',
       afreecaId: '',
-      mixerId: '',
       twitchId: '',
     };
     this.mPlatforms = [
@@ -40,7 +39,6 @@ export class ModifyStreamModalComponent implements OnInit {
         src: '/assets/image/stream/afreeca.png',
       },
       { id: 'twitch', name: '트위치', src: '/assets/image/stream/twitch.png' },
-      { id: 'mixer', name: '믹서', src: '/assets/image/stream/mixer.png' },
     ];
     this.mProfileService = profileService;
     this.mToastService = toastService;
@@ -51,7 +49,6 @@ export class ModifyStreamModalComponent implements OnInit {
       this.streamForm.backgroundImage = this.mProfileService.getStreamBackgroundImage();
       this.streamForm.afreecaId = this.mProfileService.getStreamAfreecaId();
       this.streamForm.twitchId = this.mProfileService.getStreamTwitchId();
-      this.streamForm.mixerId = this.mProfileService.getStreamMixerId();
       console.log(this.streamForm);
     });
   }
@@ -79,8 +76,7 @@ export class ModifyStreamModalComponent implements OnInit {
         platform,
         this.streamForm.backgroundImage,
         this.streamForm.afreecaId,
-        this.streamForm.twitchId,
-        this.streamForm.mixerId
+        this.streamForm.twitchId
       );
       this.mToastService.toast('방송설정을 변경했어요!');
     } catch {
@@ -104,7 +100,6 @@ type StreamForm = {
   backgroundImage: string;
   afreecaId: string;
   twitchId: string;
-  mixerId: string;
 };
 
 type PlatformType = { id: string; name: string; src: string };

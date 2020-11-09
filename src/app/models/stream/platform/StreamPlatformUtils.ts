@@ -9,7 +9,6 @@ export class StreamPlatformUtils {
       case 'afreeca':
       case 'kakaotv':
       case 'youtube':
-      case 'mixer':
         return `/${dir}/${streamPlatform}.png`;
       default:
         return '';

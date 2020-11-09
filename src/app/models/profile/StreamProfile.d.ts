@@ -4,5 +4,4 @@ export interface StreamProfile {
   getLocalId(): string;
   getAfreecaId(): string;
   getTwitchId(): string;
-  getMixerId(): string;
 }

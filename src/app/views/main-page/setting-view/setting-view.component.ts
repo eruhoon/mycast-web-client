@@ -67,13 +67,6 @@ export class SettingViewComponent implements OnInit {
         },
       },
       {
-        id: 'mixer',
-        src: {
-          default: '/assets/image/stream/mixer_b.png',
-          dark: '/assets/image/stream/mixer.png',
-        },
-      },
-      {
         id: 'totoro',
         src: {
           default: '/assets/image/stream/totoro_b.png',

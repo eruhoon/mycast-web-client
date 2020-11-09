@@ -26,7 +26,6 @@ type UserStreamDto = {
   localHash: string;
   afreecaId: string;
   twitchId: string;
-  mixerId: string;
 };
 
 class UserStreamDtoAdapter implements StreamProfile {
@@ -45,8 +44,5 @@ class UserStreamDtoAdapter implements StreamProfile {
   }
   public getTwitchId(): string {
     return this.mStream.twitchId;
-  }
-  public getMixerId(): string {
-    return this.mStream.mixerId;
   }
 }

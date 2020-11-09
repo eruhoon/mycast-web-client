@@ -11,8 +11,7 @@ export class ModifyStreamCommand {
     platform: string,
     backgroundImage: string,
     afreecaId: string,
-    twitchId: string,
-    mixerId: string
+    twitchId: string
   ): Promise<boolean> {
     const url = this.getUrl();
     try {
@@ -21,7 +20,6 @@ export class ModifyStreamCommand {
         backgroundImage,
         afreecaId,
         twitchId,
-        mixerId,
       };
       const { data } = await Axios.put<PutStreamDto>(url, form);
       return data.result;

@@ -117,18 +117,6 @@
             />
           </div>
         </div>
-        <div class="mixer ss-setup-box" *ngSwitchCase="'mixer'">
-          <div class="stream-key ss-set-input">
-            <label>
-              <p>STREAM KEY</p>
-            </label>
-            <input
-              type="text"
-              class="stream-img-set"
-              [(ngModel)]="streamForm.mixerId"
-            />
-          </div>
-        </div>
       </div>
     </div>
     <button (click)="submit()">확인</button>

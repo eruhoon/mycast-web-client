@@ -19,7 +19,6 @@ export class ProfileService {
   private mStreamLocalId: string;
   private mStreamTwitchId: string;
   private mStreamAfreecaId: string;
-  private mStreamMixerId: string;
   private mModifyProfileCommand: ModifyProfileCommand;
   private mStreamProfileLoader: VegaStreamProfileLoader;
   private mModifyStreamCommand: ModifyStreamCommand;
@@ -34,7 +33,6 @@ export class ProfileService {
     this.mStreamLocalId = '';
     this.mStreamTwitchId = '';
     this.mStreamAfreecaId = '';
-    this.mStreamMixerId = '';
     this.mStreamProfileLoader = new VegaStreamProfileLoader(privKey);
     this.mModifyStreamCommand = new ModifyStreamCommand(privKey);
     this.mModifyPlatformCommand = new ModifyPlatformCommand(privKey);
@@ -47,7 +45,6 @@ export class ProfileService {
     this.mStreamLocalId = stream.getLocalId();
     this.mStreamTwitchId = stream.getTwitchId();
     this.mStreamAfreecaId = stream.getAfreecaId();
-    this.mStreamMixerId = stream.getMixerId();
   }
 
   public setModifyProfileCommand(command: ModifyProfileCommand): void {
@@ -90,10 +87,6 @@ export class ProfileService {
     return this.mStreamAfreecaId;
   }
 
-  public getStreamMixerId(): string {
-    return this.mStreamMixerId;
-  }
-
   public getStreamTwitchId(): string {
     return this.mStreamTwitchId;
   }
@@ -110,15 +103,13 @@ export class ProfileService {
     platform: string,
     backgroundImage: string,
     afreecaId: string,
-    twitchId: string,
-    mixerId: string
+    twitchId: string
   ): Promise<void> {
     const result = await this.mModifyStreamCommand.execute(
       platform,
       backgroundImage,
       afreecaId,
-      twitchId,
-      mixerId
+      twitchId
     );
     if (result) {
       this.mStreamPlatform = platform;

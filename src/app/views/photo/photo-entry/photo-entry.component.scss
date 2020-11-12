@@ -139,3 +139,24 @@
     top: 30px;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .ph-img {
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0px auto;
+    }
+  }
+}

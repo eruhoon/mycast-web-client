@@ -104,3 +104,76 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .photo-main-content {
+    width: calc(100% - 10px);
+    height: 100%;
+    margin: 0%;
+    padding-left: 10px;
+    position: relative;
+    float: left;
+    overflow-y: scroll;
+  
+    scrollbar-width: thin;
+
+    .ph-search {
+      width: calc(100% - 10px);
+      height: 36px;
+      padding-top: 25px;
+      padding-bottom: 20px;
+      position: relative;
+  
+      label {
+        display: none;
+      }
+  
+      .ph-search-input {
+        width: 100%;
+        height: 36px;
+        position: relative;
+        float: left;
+  
+        input {
+          width: calc(100% - 60px);
+          height: 20px;
+          line-height: 20px;
+          font-size: 14px;
+  
+          padding: 7px 15px;
+          padding-right: 40px;
+          border-radius: 25px;
+          border: 1px solid;
+          outline: none;
+        }
+  
+        i {
+          width: 36px;
+          height: 36px;
+  
+          position: absolute;
+          right: 9px;
+          top: 1px;
+  
+          text-align: center;
+          line-height: 36px;
+        }
+      }
+    }
+    .ph-d-list {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+  
+      p {
+        width: auto;
+        height: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        margin-left: 10px;
+        margin: 0px;
+        padding: 0px;
+      }
+    }
+  }
+}

@@ -21,6 +21,9 @@
       padding: 10px;
       font-size: 36px;
     }
+    h2.mob {
+      display: none;
+    }
 
     .ph-menu-list {
       width: 40px;
@@ -143,4 +146,31 @@ photo-detail-view {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .photo-page {
+  
+    .left-menu {
+      width: 100%;
+      height: 0px;
+      margin: 0px;
+      border-right: 1px solid;
+      position: relative;
+      float: left;
+
+      h2 {
+        display: none;
+      }
+      .ph-menu-list {
+        display: none;
+      }
+    }
+    .photo-upload-view {
+      position: fixed;
+      bottom: 5px;
+      right: 5px;
+    }
+  }
 }

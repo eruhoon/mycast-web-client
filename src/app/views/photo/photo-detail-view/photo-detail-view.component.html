@@ -1,8 +1,12 @@
 <div class="photo-view">
+  <span class="material-icons mob-clear" (click)="onCloseClick()">clear</span>
+  <div class="photo-img">
+    <img [src]="getUri()" class="blurEffect" />
+  </div>
   <div class="photo-info">
     <div class="title">
       <h3>정보</h3>
-      <span class="material-icons" (click)="onCloseClick()">clear</span>
+      <span class="material-icons pc-clear" (click)="onCloseClick()">clear</span>
     </div>
     <div class="p-info-box">
       <p class="lab">사이즈</p>
@@ -75,8 +79,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="photo-img">
-    <img [src]="getUri()" class="blurEffect" />
   </div>
 </div>

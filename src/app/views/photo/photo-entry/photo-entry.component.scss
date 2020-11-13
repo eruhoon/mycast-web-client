@@ -158,13 +158,13 @@
       display: block;
       margin: 0px auto;
     }
-  }
-  .ph-info {
-    display: none;
-  }
-  &:hover {
     .ph-info {
       display: none;
+    }
+    &:hover {
+      .ph-info {
+        display: none;
+      }
     }
   }
 }

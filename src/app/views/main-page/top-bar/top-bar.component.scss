@@ -103,6 +103,8 @@ img.profile {
   transform: translateX(100%);
   transition: transform 0.25s ease-in-out;
 
+  z-index: 9;
+
   &.active {
     transform: translateX(0);
   }

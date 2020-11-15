@@ -75,6 +75,8 @@ $header-height: 50px;
     width: 100vw;
     height: 100%;
     transition: transform 0.4s ease-in-out;
+    
+    z-index: 10;
 
     &.active {
       transform: translateX(100vw);
@@ -96,12 +98,24 @@ $header-height: 50px;
   }
 }
 
+modify-profile-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 15;
+}
+
 modify-stream-modal {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+
+  z-index: 15;
 }
 
 clipboard-image-popup {
@@ -120,4 +134,8 @@ toast-list {
   bottom: 30px;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+
+  
+
+  z-index: 90;
 }

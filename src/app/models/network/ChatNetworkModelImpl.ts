@@ -35,8 +35,12 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     this.mSocket.notify(to);
   }
 
-  public modifyProfile(name: string, icon: string): void {
-    this.mSocket.modifyProfile(name, icon);
+  public modifyProfile(
+    name: string,
+    icon: string,
+    statusMessage: string
+  ): void {
+    this.mSocket.modifyProfile(name, icon, statusMessage);
   }
 
   public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {

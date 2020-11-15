@@ -13,7 +13,11 @@ export class NullChatNetworkModel implements ChatNetworkModel {
     throw new Error('Method not implemented.');
   }
 
-  public modifyProfile(name: string, icon: string): void {
+  public modifyProfile(
+    name: string,
+    icon: string,
+    statusMessage: string
+  ): void {
     throw new Error('Method not implemented.');
   }
 }

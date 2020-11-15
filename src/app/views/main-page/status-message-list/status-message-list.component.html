@@ -1,1 +1,5 @@
-<p>status-message-list works!</p>
+<h3>할말이 있음</h3>
+<p *ngFor="let sm of statusMessages">
+  <img [src]="sm.icon | safe" [alt]="sm.nickname" style="height: 50px; width: 50px;" />
+  {{sm.nickname}} / {{sm.statusMessage}}
+</p>

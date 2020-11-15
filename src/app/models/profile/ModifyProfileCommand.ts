@@ -8,7 +8,7 @@ export class ModifyProfileCommand {
   }
 
   public execute(req: ModifyProfileRequest): void {
-    this.mChatNetwork.modifyProfile(req.name, req.icon);
+    this.mChatNetwork.modifyProfile(req.name, req.icon, req.statusMessage);
   }
 }
 

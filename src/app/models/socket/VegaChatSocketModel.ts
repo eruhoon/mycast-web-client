@@ -95,6 +95,7 @@ export type RefreshMyProfile = {
   level: number;
   need: number;
   nickname: string;
+  statusMessage: string;
 };
 
 export type RefreshUser = {

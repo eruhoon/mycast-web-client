@@ -19,7 +19,7 @@ export class ModifyProfileModalComponent {
     this.profileForm = {
       name: profileService.getName(),
       icon: profileService.getProfileIcon(),
-      statusMessage: '',
+      statusMessage: profileService.getStatusMessage(),
     };
     this.mProfileService = profileService;
   }

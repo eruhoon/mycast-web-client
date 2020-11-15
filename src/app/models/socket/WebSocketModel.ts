@@ -107,6 +107,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     profile.setName(rawProfile.nickname);
     profile.setIcon(rawProfile.icon);
     profile.setLevel(rawProfile.level);
+    profile.setStatusMessage(rawProfile.statusMessage);
     this.mOnRefreshMyProfile(profile);
   }
 

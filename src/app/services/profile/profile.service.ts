@@ -67,6 +67,10 @@ export class ProfileService {
     return this.mProfile.getLevel();
   }
 
+  public getStatusMessage(): string {
+    return this.mProfile.getStatusMessage();
+  }
+
   public getModifyMode(): ProfileModifyMode {
     return this.mModifyMode;
   }

@@ -4,6 +4,7 @@ export class MutableProfile implements Profile {
   private mName: string;
   private mIcon: string;
   private mLevel: number;
+  private mStatusMessage: string;
 
   public constructor(profile: Profile | null = null) {
     if (profile === null) {
@@ -39,5 +40,13 @@ export class MutableProfile implements Profile {
 
   public getLevel(): number {
     return this.mLevel;
+  }
+
+  public setStatusMessage(statusMessage): void {
+    this.mStatusMessage = statusMessage;
+  }
+
+  public getStatusMessage(): string {
+    return this.mStatusMessage;
   }
 }

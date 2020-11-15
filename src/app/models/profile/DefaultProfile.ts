@@ -12,4 +12,8 @@ export class DefaultProfile implements Profile {
   public getLevel(): number {
     return 1;
   }
+
+  public getStatusMessage(): string {
+    return '';
+  }
 }

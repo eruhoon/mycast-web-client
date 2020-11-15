@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ExternalViewerComponent } from './external-viewer.component';
 
@@ -6,7 +6,7 @@ describe('ExternalViewerComponent', () => {
   let component: ExternalViewerComponent;
   let fixture: ComponentFixture<ExternalViewerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ExternalViewerComponent],
     }).compileComponents();

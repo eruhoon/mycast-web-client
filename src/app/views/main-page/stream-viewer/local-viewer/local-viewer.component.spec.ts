@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LocalViewerComponent } from './local-viewer.component';
 
@@ -6,7 +6,7 @@ describe('LocalViewerComponent', () => {
   let component: LocalViewerComponent;
   let fixture: ComponentFixture<LocalViewerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [LocalViewerComponent],
     }).compileComponents();

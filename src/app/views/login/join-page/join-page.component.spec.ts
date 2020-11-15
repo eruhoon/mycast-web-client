@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { JoinPageComponent } from './join-page.component';
 
@@ -6,7 +6,7 @@ describe('JoinPageComponent', () => {
   let component: JoinPageComponent;
   let fixture: ComponentFixture<JoinPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [JoinPageComponent],
     }).compileComponents();

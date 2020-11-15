@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { StreamViewerComponent } from './stream-viewer.component';
 
@@ -6,7 +6,7 @@ describe('StreamViewerComponent', () => {
   let component: StreamViewerComponent;
   let fixture: ComponentFixture<StreamViewerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [StreamViewerComponent],
     }).compileComponents();

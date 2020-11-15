@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EmojiAttachViewComponent } from './emoji-attach-view.component';
 
@@ -6,7 +6,7 @@ describe('EmojiAttachViewComponent', () => {
   let component: EmojiAttachViewComponent;
   let fixture: ComponentFixture<EmojiAttachViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [EmojiAttachViewComponent],
     }).compileComponents();

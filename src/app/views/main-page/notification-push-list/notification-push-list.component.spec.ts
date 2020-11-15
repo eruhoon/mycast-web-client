@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NotificationPushListComponent } from './notification-push-list.component';
 
@@ -6,7 +6,7 @@ describe('NotificationPushListComponent', () => {
   let component: NotificationPushListComponent;
   let fixture: ComponentFixture<NotificationPushListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [NotificationPushListComponent],
     }).compileComponents();

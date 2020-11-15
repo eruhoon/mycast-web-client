@@ -1,5 +1,18 @@
-<h3>할말이 있음</h3>
-<p *ngFor="let sm of statusMessages">
-  <img [src]="sm.icon | safe" [alt]="sm.nickname" style="height: 50px; width: 50px;" />
-  {{sm.nickname}} / {{sm.statusMessage}}
-</p>
+<div class="title">
+  <span class="material-icons">
+    emoji_people
+  </span>
+  <h2>한줄요약</h2>
+</div>
+<div class="message-list">
+  <div class="mess-mod" *ngFor="let sm of statusMessages">
+    <div class="user-img">
+      <img  [src]="sm.icon | safe" [alt]="sm.nickname" style="height: 50px; width: 50px;" />
+      <div class="state-circle"></div>
+    </div>
+    <div class="user-message">
+      <p class="user-name">{{sm.nickname}}</p>
+      <p class="user-mess">{{sm.statusMessage}}</p>
+    </div> 
+  </div>
+</div>

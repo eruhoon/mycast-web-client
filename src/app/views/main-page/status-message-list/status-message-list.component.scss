@@ -1,0 +1,110 @@
+.title {
+  width: 100%;
+  height: 75px;
+  padding: 5px;
+  border-bottom: 1px solid #E0E0E0;
+
+  *{
+    padding: 0%;
+    margin: 0%;
+  }
+
+  span {
+    width: auto;
+    height: auto;
+    float: left;
+    font-size: 60px;
+    color: #757575;
+    display: inline-block;
+    padding-top: 10px;
+  }
+  h2 {
+    width: auto;
+    height: auto;
+    float: left;
+    font-size: 28px;
+    color: #757575;
+    display: inline-block;
+    padding-top: 32px;
+  }
+}
+.message-list {
+  margin: 5px;
+  margin-top: 15px;
+  padding: 0px 10px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .mess-mod {
+    max-width: 500px;
+    min-width: 150px;
+    height: 50px;
+    padding: 5px;
+    padding-right: 15px;
+    margin: 5px;
+    border-radius: 3px;
+
+    float: left;
+    
+    &:hover {
+      background: #ffffff;
+
+      .user-img {
+        .state-circle {
+          border-color: #ffffff;
+        }
+      }
+    }
+
+    .user-img {
+      width: 50px;
+      height: 50px;
+
+      float: left;
+      display: inline-block;
+
+      position: relative;
+
+      img {
+        border-radius: 50%;
+      }
+      .state-circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+
+        // 색상 표기 값 안내
+        // 미 접속 : #78909C
+        // 자리비움 : #E65100
+        // 온라인 : #4CAF50
+        background-color: #4CAF50;
+        border: 4px solid;
+        border-color: #f0f0f0;
+
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+      }
+    }
+    .user-message {
+      min-width: 93px;
+      max-width: 443px;
+      padding-left: 7px;
+
+      float: left;
+      display: inline-block;
+
+      *{
+        margin: 0%;
+        padding: 0%;
+      }
+
+      .user-name {
+        font-size: 12px;
+        padding-bottom: 3px;
+      }
+    }
+  }
+}

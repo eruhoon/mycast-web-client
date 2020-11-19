@@ -29,6 +29,7 @@ export class CurrentChatService {
 
   public updateLink(link: UpdateLinkResponse): void {
     this.mChatContainer.updateLink(link);
+    this.mChatSubject.next(this.mChatContainer.toArray());
   }
 
   public setCurrentChat(chats: Chat[]): void {

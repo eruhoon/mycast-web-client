@@ -39,25 +39,22 @@ export class ChatContianer {
   }
 
   public updateLink(link: UpdateLinkResponse): void {
+    // TODO: optimize
     this.mChats.forEach((chat) => {
-      // TODO: optimize
-      const updated = chat
-        .getMessages()
-        .filter((msg) => msg.getHash() === link.chatHash)
-        .map((msg) => {
-          const orgMessage = JSON.parse(msg.getMessage());
-          orgMessage.info.thumbnail = link.thumbnail;
-          orgMessage.info.title = link.title;
-          const newMessage = new MutableChatMessage(link.chatHash);
-          newMessage.setType(msg.getType());
-          newMessage.setRequest(msg.getRequest());
-          newMessage.setMessage(JSON.stringify(orgMessage));
-          newMessage.setTimestamp(msg.getTimestamp());
-          return newMessage;
-        });
-      if (updated.length > 0) {
-        chat.setMessages(updated);
-      }
+      chat.getMessages().forEach((msg, i, arr) => {
+        if (msg.getHash() !== link.chatHash) {
+          return;
+        }
+        const orgMessage = JSON.parse(msg.getMessage());
+        orgMessage.info.thumbnail = link.thumbnail;
+        orgMessage.info.title = link.title;
+        const newMessage = new MutableChatMessage(link.chatHash);
+        newMessage.setType(msg.getType());
+        newMessage.setRequest(msg.getRequest());
+        newMessage.setMessage(JSON.stringify(orgMessage));
+        newMessage.setTimestamp(msg.getTimestamp());
+        arr[i] = newMessage;
+      });
     });
   }
 

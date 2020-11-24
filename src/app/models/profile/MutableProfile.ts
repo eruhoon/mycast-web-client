@@ -11,10 +11,12 @@ export class MutableProfile implements Profile {
       this.mName = '';
       this.mIcon = 'https://i.imgur.com/y81MZAJ.png';
       this.mLevel = 1;
+      this.mStatusMessage = '';
     } else {
       this.mName = profile.getName();
       this.mIcon = profile.getIcon();
       this.mLevel = profile.getLevel();
+      this.mStatusMessage = profile.getStatusMessage();
     }
   }
 

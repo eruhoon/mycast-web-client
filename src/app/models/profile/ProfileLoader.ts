@@ -19,6 +19,7 @@ export class ProfileLoader {
     const profile = new MutableProfile();
     profile.setIcon(user.icon);
     profile.setName(user.nickname);
+    profile.setStatusMessage(user.statusMessage);
     return profile;
   }
 }
@@ -27,4 +28,5 @@ type UserDto = {
   id: string;
   nickname: string;
   icon: string;
+  statusMessage: string;
 };

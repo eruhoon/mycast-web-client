@@ -53,6 +53,10 @@ export class MutableChat implements Chat {
     this.mSenderType = senderType;
   }
 
+  public setMessages(chatMessages: ChatMessage[]): void {
+    this.mMessages = chatMessages;
+  }
+
   public addMessage(chatMessage: ChatMessage): void {
     this.mMessages.push(chatMessage);
   }

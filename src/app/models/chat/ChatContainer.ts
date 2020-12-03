@@ -39,12 +39,22 @@ export class ChatContianer {
   }
 
   public updateLink(link: UpdateLinkResponse): void {
-    console.log(link.chatHash);
-
+    // TODO: optimize
     this.mChats.forEach((chat) => {
-      const found = chat
-        .getMessages()
-        .find((msg) => msg.getHash() === link.chatHash);
+      chat.getMessages().forEach((msg, i, arr) => {
+        if (msg.getHash() !== link.chatHash) {
+          return;
+        }
+        const orgMessage = JSON.parse(msg.getMessage());
+        orgMessage.info.thumbnail = link.thumbnail;
+        orgMessage.info.title = link.title;
+        const newMessage = new MutableChatMessage(link.chatHash);
+        newMessage.setType(msg.getType());
+        newMessage.setRequest(msg.getRequest());
+        newMessage.setMessage(JSON.stringify(orgMessage));
+        newMessage.setTimestamp(msg.getTimestamp());
+        arr[i] = newMessage;
+      });
     });
   }
 

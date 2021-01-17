@@ -28,24 +28,34 @@ export class ChatEntryComponent implements OnInit {
   public SenderEnv = SenderEnv;
 
   private mEnvironment: SenderEnv;
-  private mPowerfulHanhwa: boolean;
-  private mDrx: boolean;
-  private mGen: boolean;
-  private mDwg: boolean;
+  private mLolFanInfos: string[][] = [
+    ['DK', '#0ec7b5'],
+    ['DRX', '#5a8dff'],
+    ['GEN', '#aa8a00'],
+    ['AF', '#00adef'],
+    ['T1', '#e4002b'],
+    ['KT', '#ffffff'],
+    ['LSB', '#fcbf26'],
+    ['NS', '#de2027'],
+    ['HLE', '#ff6b01'],
+    ['BRO', '#00492b'],
+  ];
+  private mFanColor: string | null;
 
-  public constructor(private mOption: OptionService) {}
+  public constructor(private mOption: OptionService) {
+    this.mFanColor = null;
+  }
 
   public ngOnInit(): void {
     const env = this.chat.getSender().getType();
     this.mEnvironment = ChatEntryComponent.convertEnv(env);
-    this.mPowerfulHanhwa = this.chat.getSender().getNickname() === '안알랴쥼';
-    this.mDrx = this.chat.getSender().getNickname().startsWith('DRX');
-    this.mGen = this.chat.getSender().getNickname().startsWith('GEN');
-    this.mDwg = this.chat.getSender().getNickname().startsWith('DWG');
-  }
 
-  public isPowerfulHanhwa(): boolean {
-    return this.mPowerfulHanhwa;
+    const nickname = this.chat.getSender().getNickname();
+    const fanInfo = this.mLolFanInfos.find((fanInfo) => {
+      const prefix = fanInfo[0];
+      return nickname.toUpperCase().startsWith(prefix);
+    });
+    this.mFanColor = fanInfo ? fanInfo[1] : null;
   }
 
   public getIcon(): string {
@@ -67,20 +77,8 @@ export class ChatEntryComponent implements OnInit {
   }
 
   public getBorder(): string {
-    if (this.isPowerfulHanhwa()) {
-      return '2px solid #ff6b01';
-    }
-
-    if (this.mDrx) {
-      return '2px solid #5a8dff';
-    }
-
-    if (this.mGen) {
-      return '2px solid #AA8A00';
-    }
-
-    if (this.mDwg) {
-      return '2px solid #54949d';
+    if (this.mFanColor) {
+      return `2px solid ${this.mFanColor}`;
     }
 
     return 'none';

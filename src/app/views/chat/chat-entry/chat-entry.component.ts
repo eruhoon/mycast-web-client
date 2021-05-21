@@ -39,8 +39,10 @@ export class ChatEntryComponent implements OnInit {
     ['NS', '#de2027'],
     ['HLE', '#ff6b01'],
     ['BRO', '#00492b'],
+    ['PSG', '#e30041'],
   ];
   private mFanColor: string | null;
+  private mIcon: string;
 
   public constructor(private mOption: OptionService) {
     this.mFanColor = null;
@@ -56,10 +58,12 @@ export class ChatEntryComponent implements OnInit {
       return nickname.toUpperCase().startsWith(prefix);
     });
     this.mFanColor = fanInfo ? fanInfo[1] : null;
+    this.mIcon = nickname.toUpperCase().startsWith('RNG') ?
+      'https://i.imgur.com/KUG4Uvq.png'  : this.chat.getSender().getIcon();
   }
 
   public getIcon(): string {
-    return this.chat.getSender().getIcon().trim();
+    return this.mIcon;
   }
 
   public getEnvironment(): SenderEnv {

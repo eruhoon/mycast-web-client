@@ -102,6 +102,9 @@ export class ChatRequestFactory {
       case 'gpc':
         return new SimpleChatRequest('general-purpose-card', rawMsg);
 
+      case 'gpca':
+        return new SimpleChatRequest('general-purpose-carousel', rawMsg);
+
       case '테스트':
       case 'test':
         return new SimpleChatRequest('test', rawMsg);

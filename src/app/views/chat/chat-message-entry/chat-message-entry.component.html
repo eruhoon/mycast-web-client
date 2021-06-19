@@ -6,7 +6,14 @@
   <book-pack *ngSwitchCase="'book'" [message]="message"> </book-pack>
   <cq-hero-pack *ngSwitchCase="'cq-hero'" [message]="message"> </cq-hero-pack>
   <cv-pack *ngSwitchCase="'character-voice'" [message]="message"> </cv-pack>
-  <default-general-purpose-card-pack *ngSwitchCase="'general-purpose-card'" [message]="message"></default-general-purpose-card-pack>
+  <default-general-purpose-card-pack
+    *ngSwitchCase="'general-purpose-card'"
+    [message]="message"
+  ></default-general-purpose-card-pack>
+  <carousel-pack
+    *ngSwitchCase="'general-purpose-carousel'"
+    [message]="message"
+  ></carousel-pack>
   <gf-doll-pack *ngSwitchCase="'gf-doll'" [message]="message"> </gf-doll-pack>
   <image-pack *ngSwitchCase="'image'" [message]="message"> </image-pack>
   <link-pack *ngSwitchCase="'link'" [message]="message"> </link-pack>

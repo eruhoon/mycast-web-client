@@ -1,0 +1,14 @@
+<div class="card-container" *ngIf="!isDataSaveMode() && !bindError">
+  <div class="card-info" *ngFor="let prop of props" (click)="onClick(prop)">
+    <div class="img">
+      <img [src]="prop.icon" />
+    </div>
+    <div class="info">
+      <h3 class="title">{{ prop.title }}</h3>
+      <p>{{ prop.subtitle }}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="bindError">{{ getErrorMessage() }}</div>
+<div *ngIf="isDataSaveMode()">(대충 많은 양의 내용)</div>

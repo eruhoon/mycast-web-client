@@ -80,6 +80,7 @@ import { TestPlayerPageComponent } from './views/stream/test-player-page/test-pl
 import { TwitchVideoPackComponent } from './views/chat/cp/twitch-video-pack/twitch-video-pack.component';
 import { DefaultGeneralPurposeCardPackComponent } from './views/chat/cp/general-purpose-pack/default-general-purpose-card-pack.component';
 import { StatusMessageListComponent } from './views/main-page/status-message-list/status-message-list.component';
+import { CarouselPackComponent } from './views/chat/cp/carousel-pack/carousel-pack.component';
 
 @NgModule({
   declarations: [
@@ -156,6 +157,7 @@ import { StatusMessageListComponent } from './views/main-page/status-message-lis
     TwitchVideoPackComponent,
     DefaultGeneralPurposeCardPackComponent,
     StatusMessageListComponent,
+    CarouselPackComponent,
   ],
   imports: [
     PlyrModule,

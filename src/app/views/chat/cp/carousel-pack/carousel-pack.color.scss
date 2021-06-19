@@ -14,9 +14,12 @@
     &::-webkit-scrollbar-thumb {
       background: #ff4081;
     }
-    .cv-box {
-      .cv-img {
+    .card-info {
+      .img {
         border: 2px solid #ffffff;
+      }
+      .title {
+        color: #424242;
       }
     }
   }
@@ -38,9 +41,12 @@
     &::-webkit-scrollbar-thumb {
       background: #ff4081;
     }
-    .cv-box {
-      .cv-img {
+    .card-info {
+      .img {
         border: 2px solid #424242;
+      }
+      .title {
+        color: #424242;
       }
     }
   }

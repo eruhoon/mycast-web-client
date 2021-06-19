@@ -7,7 +7,7 @@ import { GeneralPurposeProperty } from '../general-purpose-pack/GeneralPurposePr
 @Component({
   selector: 'carousel-pack',
   templateUrl: './carousel-pack.component.html',
-  styleUrls: ['./carousel-pack.component.scss'],
+  styleUrls: ['./carousel-pack.component.scss', './carousel-pack.color.scss'],
 })
 export class CarouselPackComponent extends ChatPackDirective implements OnInit {
   public props: GeneralPurposeProperty[];
@@ -24,8 +24,7 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
   public ngOnInit(): void {
     try {
       this.props = this.bind();
-    } catch (e) {
-      console.log(e);
+    } catch {
       this.props = [
         {
           title: '',

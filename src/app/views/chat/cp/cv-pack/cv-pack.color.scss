@@ -60,6 +60,16 @@
         .cv-img {
           border: 2px solid #424242;
         }
+        .cv-name {
+          background: #212121;
+          p {
+            font-family: "Jeju Gothic", sans-serif !important;
+            color: #ffffff;
+            small{
+              color: #ffffff;
+            }
+          }
+        }
       }
     }
   }

@@ -41,6 +41,9 @@
   margin-right: 10px;
   border-radius: 3px;
   overflow: hidden;
+  &:last-child{
+    margin-right: 0px;
+  }
   .img {
     width: 80px;
     height: 80px;

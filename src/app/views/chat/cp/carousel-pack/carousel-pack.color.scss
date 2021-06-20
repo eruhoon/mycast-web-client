@@ -1,25 +1,30 @@
 :host-context(.theme-light) {
   .card-container {
-    scrollbar-color: #ff4081 #f5f5f5;
+    scrollbar-color: #ff4081 #ffffff;
     &::-webkit-scrollbar {
-      border: 5px solid #f5f5f5;
+      border: 5px solid #ffffff;
     }
     &::-webkit-scrollbar-button:start:decrement,
     &::-webkit-scrollbar-button:end:increment {
-      background: #f5f5f5;
+      background: #ffffff;
     }
     &::-webkit-scrollbar-track {
-      background: #f5f5f5;
+      background: #ffffff;
     }
     &::-webkit-scrollbar-thumb {
       background: #ff4081;
     }
     .card-info {
+      background-color: #ffffff;
+      border-color: #ffffff;
       .img {
-        border: 2px solid #ffffff;
+        border-color:  #ffffff;
       }
-      .title {
+      .info {
         color: #424242;
+        .title {
+          color: #424242;
+        }
       }
     }
   }
@@ -42,11 +47,16 @@
       background: #ff4081;
     }
     .card-info {
+      background-color: #212121;
+      border-color: #212121;
       .img {
-        border: 2px solid #424242;
+        border-color: #212121;
       }
-      .title {
-        color: #424242;
+      .info {
+        color: #ffffff;
+        .title {
+          color: #ffffff;
+        }
       }
     }
   }

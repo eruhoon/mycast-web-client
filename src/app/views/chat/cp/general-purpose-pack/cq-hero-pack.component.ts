@@ -6,7 +6,7 @@ import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 @Component({
   selector: 'cq-hero-pack',
   templateUrl: './general-purpose-pack.component.html',
-  styleUrls: ['./general-purpose-pack.component.scss'],
+  styleUrls: ['./general-purpose-pack.component.scss', './general-purpose-pack.color.scss'],
 })
 export class CqHeroPackComponent extends GeneralPurposePackDirective {
   public constructor(injector: Injector) {

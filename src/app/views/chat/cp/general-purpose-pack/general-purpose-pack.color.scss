@@ -1,0 +1,30 @@
+:host-context(.theme-light) {
+  .game-ch-info {
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+
+    .ch-img {
+      border-right: 1px solid #eeeeee;
+    }
+    .ch-info {
+      * {
+        color: #424242;
+      }
+    }
+  }
+}
+:host-context(.theme-dark) {
+  .game-ch-info {
+    border: 1px solid #424242;
+    background: #212121;
+
+    .ch-img {
+      border-right: 1px solid #424242;
+    }
+    .ch-info {
+      * {
+        color: #ffffff;
+      }
+    }
+  }
+}

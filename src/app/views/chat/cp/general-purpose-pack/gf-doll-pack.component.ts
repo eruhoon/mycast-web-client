@@ -6,7 +6,7 @@ import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 @Component({
   selector: 'gf-doll-pack',
   templateUrl: './general-purpose-pack.component.html',
-  styleUrls: ['./general-purpose-pack.component.scss'],
+  styleUrls: ['./general-purpose-pack.component.scss', './general-purpose-pack.color.scss'],
 })
 export class GfDollPackComponent extends GeneralPurposePackDirective {
   public constructor(injector: Injector) {

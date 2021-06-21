@@ -32,6 +32,7 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
           icon: '',
           link: '',
           newWindow: false,
+          orientation: 'vertical',
         },
       ];
       this.bindError = true;
@@ -47,6 +48,7 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
         title: raw.title,
         subtitle: raw.subtitle,
         newWindow: raw.newWindow,
+        orientation: raw.orientation || 'vertical',
       };
     });
   }

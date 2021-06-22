@@ -4,4 +4,5 @@ export type GeneralPurposeProperty = {
   icon: string;
   link: string;
   newWindow?: boolean;
+  orientation: 'horizontal' | 'vertical';
 };

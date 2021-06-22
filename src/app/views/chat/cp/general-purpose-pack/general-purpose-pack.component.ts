@@ -31,6 +31,7 @@ export abstract class GeneralPurposePackDirective
         icon: '',
         link: '',
         newWindow: false,
+        orientation: 'horizontal',
       };
       this.bindError = true;
     }

@@ -6,7 +6,10 @@ import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 @Component({
   selector: 'al-ship-pack',
   templateUrl: './general-purpose-pack.component.html',
-  styleUrls: ['./general-purpose-pack.component.scss', './general-purpose-pack.color.scss'],
+  styleUrls: [
+    './general-purpose-pack.component.scss',
+    './general-purpose-pack.color.scss',
+  ],
 })
 export class AlShipPackComponent extends GeneralPurposePackDirective {
   public constructor(injector: Injector) {
@@ -20,6 +23,7 @@ export class AlShipPackComponent extends GeneralPurposePackDirective {
       link: raw.link,
       title: raw.name,
       subtitle: `${raw.rarity} ${raw.type.name}`,
+      orientation: 'horizontal',
     };
   }
 }

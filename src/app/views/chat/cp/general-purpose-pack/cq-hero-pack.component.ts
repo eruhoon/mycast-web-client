@@ -6,7 +6,10 @@ import { GeneralPurposeProperty } from './GeneralPurposeProperty';
 @Component({
   selector: 'cq-hero-pack',
   templateUrl: './general-purpose-pack.component.html',
-  styleUrls: ['./general-purpose-pack.component.scss', './general-purpose-pack.color.scss'],
+  styleUrls: [
+    './general-purpose-pack.component.scss',
+    './general-purpose-pack.color.scss',
+  ],
 })
 export class CqHeroPackComponent extends GeneralPurposePackDirective {
   public constructor(injector: Injector) {
@@ -20,6 +23,7 @@ export class CqHeroPackComponent extends GeneralPurposePackDirective {
       link: raw.link,
       title: raw.name,
       subtitle: `${raw.star}성 ${raw.type}`,
+      orientation: 'horizontal',
     };
   }
 }

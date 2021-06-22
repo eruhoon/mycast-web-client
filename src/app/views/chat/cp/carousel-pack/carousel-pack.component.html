@@ -1,4 +1,4 @@
-<div class="card-container" *ngIf="!isDataSaveMode() && !bindError">
+<div class="card-container vertical" *ngIf="!isDataSaveMode() && !bindError">
   <div class="card-info" *ngFor="let prop of props" (click)="onClick(prop)">
     <div class="img">
       <img [src]="prop.icon" />

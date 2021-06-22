@@ -1,11 +1,11 @@
 .card-container {
   width: 100%;
-  height: 94px;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
   flex-wrap: nowrap;
   flex-direction: row;
+  justify-content: flex-start;
 
   scrollbar-width: thin;
   &::-webkit-scrollbar {
@@ -27,66 +27,111 @@
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
-}
-
-.card-info {
-  width: calc(100% - 10px);
-  height: 80px;
-  border-radius: 3px;
-  border: 1px solid #ffffff;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: calc(100% - 10px);
-  margin-right: 10px;
-  border-radius: 3px;
-  overflow: hidden;
-  &:last-child{
-    margin-right: 0px;
-  }
-  .img {
-    width: 80px;
-    height: 80px;
+  .card-info {
+    border-radius: 3px;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    margin-right: 10px;
+    border-radius: 3px;
     overflow: hidden;
-    float: left;
-    border-right: 1px solid #ffffff;
-    position: relative;
-    background-color: #212121;
-    img {
-      width: 100%;
-      object-fit: cover;
+    
+    &:last-child{
+      margin-right: 0px;
+    }
+    .img {
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      border-right: 1px solid #ffffff;
+      background-color: #212121;
+      margin: 0px;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .info {
+      height: auto;
+      * {
+        margin: 0%;
+        padding: 0%;
+        line-height: 12px;
+      }
+      p {
+        font-size: 12px;
+        &.title {
+          font-family: "Jeju Gothic", sans-serif !important;
+          font-weight: bolder;
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
     }
   }
-  .info {
-    width: calc(100% - 101px);
-    height: auto;
-    padding-left: 5px;
-    padding-right: 15px;
-    
-    float: left;
-    position: relative;
+  
 
-    margin-top: 20px;
-    * {
-      margin: 0%;
-      padding: 0%;
-      line-height: 12px;
+  &.horizontal {
+    height: 94px;
+    .card-info{
+      width: calc(100% - 10px);
+      height: 80px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: calc(100% - 10px);
+      .img {
+        float: left;
+        border-right: 1px solid #ffffff;
+      }
+      .info {
+        width: calc(100% - 101px);
+        padding-left: 5px;
+        padding-right: 15px;
+        float: left;
+        margin-top: 20px;
+        p {
+        padding: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 16px;
+        max-height: 16px;
+        -webkit-line-clamp: 1; /* 표시하고자 하는 라인 수 */
+        -webkit-box-orient: vertical;
+        }
+      }
     }
-    p {
-      font-size: 14px;
-      padding: 5px;
-
-      &.title {
-        font-family: "Jeju Gothic", sans-serif !important;
-        font-weight: bolder;
+  }
+  &.vertical {
+    max-height: 204px;
+    padding-bottom: 5px;
+    .card-info{
+      width: 100px !important;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 100px ;
+      .img {
+        width: 100px;
+        height: 100px;
+        border-bottom: 1px solid #ffffff;
       }
-
-      small {
-        font-size: 10px;
-        color: #616161;
-      }
-      br {
-        line-height: 12px;
+      .info {
+        width: calc(100% - 6px);
+        padding: 5px 3px;
+        margin-top: 5px;
+        overflow: hidden;
+        p {
+          margin-bottom: 4px;
+          text-align: center;
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          line-height: 16px;
+          max-height: 32px;
+          -webkit-line-clamp: 2; /* 표시하고자 하는 라인 수 */
+          -webkit-box-orient: vertical;
+        }
       }
     }
   }

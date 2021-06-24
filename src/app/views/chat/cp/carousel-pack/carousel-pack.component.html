@@ -1,5 +1,9 @@
 <div class="card-container" *ngIf="!isDataSaveMode() && !bindError">
-  <div class="card-info horizontal" *ngFor="let prop of props" (click)="onClick(prop)">
+  <div
+    [ngClass]="'card-info ' + prop.orientation"
+    *ngFor="let prop of props"
+    (click)="onClick(prop)"
+  >
     <div class="img">
       <img [src]="prop.icon" />
     </div>

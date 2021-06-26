@@ -7,6 +7,7 @@
   overflow-x: scroll;
   flex-wrap: nowrap;
   flex-direction: row;
+  align-items: center;
   justify-content: flex-start;
 
   scrollbar-width: thin;
@@ -36,8 +37,8 @@
     margin-right: 10px;
     border-radius: 3px;
     overflow: hidden;
-    
-    &:last-child{
+
+    &:last-child {
       margin-right: 0px;
     }
     .img {
@@ -62,73 +63,75 @@
       p {
         font-size: 12px;
         &.title {
-          font-family: "Jeju Gothic", sans-serif !important;
+          font-family: 'Jeju Gothic', sans-serif !important;
           font-weight: bolder;
           font-size: 14px;
           line-height: 16px;
         }
       }
     }
-      
+
     &.horizontal {
-        width: calc(100% - 10px);
-        height: 80px;
-        flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: calc(100% - 10px);
-        .img {
-          float: left;
-          border-right: 1px solid #ffffff;
-        }
-        .info {
-          width: calc(100% - 101px);
-          padding-left: 5px;
-          padding-right: 15px;
-          float: left;
-          margin-top: 20px;
-          p {
+      width: calc(70% - 10px);
+      height: 100px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: calc(70% - 10px);
+      .img {
+        width: 100px;
+        height: 100px;
+        float: left;
+        border-right: 1px solid #ffffff;
+      }
+      .info {
+        width: calc(100% - 121px);
+        padding-left: 5px;
+        padding-right: 15px;
+        float: left;
+        margin-top: 20px;
+        p {
           padding: 5px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
           line-height: 16px;
-          max-height: 16px;
-          -webkit-line-clamp: 1; /* 표시하고자 하는 라인 수 */
+          max-height: 32px;
+          max-lines: 2;
+          -webkit-line-clamp: 2; /* 표시하고자 하는 라인 수 */
           -webkit-box-orient: vertical;
-          }
-        }
-      
-    }
-    &.vertical {
-        width: 100px !important;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: 100px;
-        .img {
-          width: 100px;
-          height: 100px;
-          border-bottom: 1px solid #ffffff;
-        }
-        .info {
-          width: calc(100% - 6px);
-          padding: 5px 3px;
-          margin-top: 5px;
-          overflow: hidden;
-          p {
-            margin-bottom: 4px;
-            text-align: center;
-            width: 100%;
-            height: auto;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            line-height: 16px;
-            max-height: 32px;
-            -webkit-line-clamp: 2; /* 표시하고자 하는 라인 수 */
-            -webkit-box-orient: vertical;
-          }
         }
       }
-    
+    }
+    &.vertical {
+      width: 100px !important;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 100px;
+      .img {
+        width: 100px;
+        height: 100px;
+        border-bottom: 1px solid #ffffff;
+      }
+      .info {
+        width: calc(100% - 6px);
+        padding: 5px 3px;
+        margin-top: 5px;
+        overflow: hidden;
+        p {
+          margin-bottom: 4px;
+          text-align: center;
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          line-height: 16px;
+          max-height: 32px;
+          max-lines: 2;
+          -webkit-line-clamp: 2; /* 표시하고자 하는 라인 수 */
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
   }
 }

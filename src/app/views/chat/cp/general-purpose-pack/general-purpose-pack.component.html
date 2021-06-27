@@ -1,13 +1,13 @@
 <div
-  class="game-ch-info"
+  [ngClass]="'card-info ' + prop.orientation"
   *ngIf="!isDataSaveMode() && !bindError"
   (click)="onClick()"
 >
-  <div class="ch-img">
+  <div class="img">
     <img [src]="prop.icon" />
   </div>
-  <div class="ch-info">
-    <h3 class="title">{{ prop.title }}</h3>
+  <div class="info">
+    <p class="title">{{ prop.title }}</p>
     <p>{{ prop.subtitle }}</p>
   </div>
   <div class="game-logo">
@@ -15,4 +15,6 @@
   </div>
 </div>
 <div *ngIf="bindError">{{ getErrorMessage() }}</div>
-<div *ngIf="isDataSaveMode()">(대충 {{prop.title}} / {{prop.subtitle}})</div>
+<div *ngIf="isDataSaveMode()">
+  (대충 {{ prop.title }} / {{ prop.subtitle }})
+</div>

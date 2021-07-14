@@ -3,21 +3,19 @@
     <div class="icon">
       <img
         #icon
-        [src]="getIcon()"
+        [src]="prop.icon"
         (contextmenu)="onIconContextMenu()"
-        [ngStyle]="{ border: getBorder() }"
+        [style]="{ border: prop.border }"
       />
     </div>
   </div>
   <div class="message-section">
     <div class="header">
       <div class="nickname">
-        <span>{{ chat.getSender().getNickname() }}</span>
-        <span class="type" [ngSwitch]="getEnvironment()">
-          <i *ngSwitchCase="SenderEnv.MOBILE" class="material-icons"
-            >smartphone</i
-          >
-          <i *ngSwitchCase="SenderEnv.BOT" class="material-icons">bug_report</i>
+        <span>{{ prop.nickname }}</span>
+        <span class="type" [ngSwitch]="prop.environment">
+          <i *ngSwitchCase="ENV_MOBILE" class="material-icons">smartphone</i>
+          <i *ngSwitchCase="ENV_BOT" class="material-icons">bug_report</i>
         </span>
       </div>
     </div>

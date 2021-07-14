@@ -11,6 +11,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { ChatEntryProp, ChatEntryPropSenderType } from './chat-entry.prop';
 
 @Component({
   selector: 'chat-entry',
@@ -22,13 +23,9 @@ export class ChatEntryComponent implements OnInit {
 
   @ViewChild('icon', { static: false }) mIconView: ElementRef<HTMLImageElement>;
 
-  @Output()
-  public profileIconSelect = new EventEmitter<string>();
+  @Output() profileIconSelect = new EventEmitter<string>();
 
-  public SenderEnv = SenderEnv;
-
-  private mEnvironment: SenderEnv;
-  private mLolFanInfos: string[][] = [
+  static lolFanInfos: string[][] = [
     ['DK', '#0ec7b5'],
     ['DRX', '#5a8dff'],
     ['GEN', '#aa8a00'],
@@ -41,33 +38,24 @@ export class ChatEntryComponent implements OnInit {
     ['BRO', '#00492b'],
     ['PSG', '#e30041'],
   ];
-  private mFanColor: string | null;
-  private mIcon: string;
 
-  public constructor(private mOption: OptionService) {
-    this.mFanColor = null;
-  }
+  readonly ENV_PC = 'PC';
+  readonly ENV_MOBILE = 'MOBILE';
+  readonly ENV_BOT = 'BOT';
+
+  prop: ChatEntryProp;
+
+  public constructor(private mOption: OptionService) {}
 
   public ngOnInit(): void {
-    const env = this.chat.getSender().getType();
-    this.mEnvironment = ChatEntryComponent.convertEnv(env);
-
+    const rawSenderType = this.chat.getSender().getType();
+    const senderType = ChatEntryComponent.convertEnv(rawSenderType);
     const nickname = this.chat.getSender().getNickname();
-    const fanInfo = this.mLolFanInfos.find((fanInfo) => {
-      const prefix = fanInfo[0];
-      return nickname.toUpperCase().startsWith(prefix);
-    });
-    this.mFanColor = fanInfo ? fanInfo[1] : null;
-    this.mIcon = nickname.toUpperCase().startsWith('RNG') ?
-      'https://i.imgur.com/KUG4Uvq.png'  : this.chat.getSender().getIcon();
-  }
-
-  public getIcon(): string {
-    return this.mIcon;
-  }
-
-  public getEnvironment(): SenderEnv {
-    return this.mEnvironment;
+    const iconBorder = ChatEntryComponent.createBorder(nickname);
+    const icon = nickname.toUpperCase().startsWith('RNG')
+      ? 'https://i.imgur.com/KUG4Uvq.png'
+      : this.chat.getSender().getIcon();
+    this.prop = new ChatEntryProp(nickname, icon, senderType, iconBorder);
   }
 
   public isDataSave(): boolean {
@@ -80,29 +68,24 @@ export class ChatEntryComponent implements OnInit {
     return false;
   }
 
-  public getBorder(): string {
-    if (this.mFanColor) {
-      return `2px solid ${this.mFanColor}`;
-    }
-
-    return 'none';
+  private static createBorder(nickname: string): string {
+    const fanInfo = this.lolFanInfos.find((fanInfo) => {
+      const prefix = fanInfo[0];
+      return nickname.toUpperCase().startsWith(prefix);
+    });
+    const fanColor = fanInfo ? fanInfo[1] : null;
+    return fanColor ? `2px solid ${fanColor}` : '2px transparent';
   }
 
-  private static convertEnv(rawEnv: ChatSenderType): SenderEnv {
+  private static convertEnv(rawEnv: ChatSenderType): ChatEntryPropSenderType {
     switch (rawEnv) {
       case ChatSenderType.MOBILE:
-        return SenderEnv.MOBILE;
+        return 'MOBILE';
       case ChatSenderType.BOT:
-        return SenderEnv.BOT;
+        return 'BOT';
       case ChatSenderType.PC:
       default:
-        return SenderEnv.PC;
+        return 'PC';
     }
   }
-}
-
-enum SenderEnv {
-  PC,
-  MOBILE,
-  BOT,
 }

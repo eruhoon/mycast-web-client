@@ -39,10 +39,6 @@ export class ChatEntryComponent implements OnInit {
     ['PSG', '#e30041'],
   ];
 
-  readonly ENV_PC = 'PC';
-  readonly ENV_MOBILE = 'MOBILE';
-  readonly ENV_BOT = 'BOT';
-
   prop: ChatEntryProp;
 
   public constructor(private mOption: OptionService) {}
@@ -80,12 +76,12 @@ export class ChatEntryComponent implements OnInit {
   private static convertEnv(rawEnv: ChatSenderType): ChatEntryPropSenderType {
     switch (rawEnv) {
       case ChatSenderType.MOBILE:
-        return 'MOBILE';
+        return ChatEntryProp.TYPE_MOBILE;
       case ChatSenderType.BOT:
-        return 'BOT';
+        return ChatEntryProp.TYPE_BOT;
       case ChatSenderType.PC:
       default:
-        return 'PC';
+        return ChatEntryProp.TYPE_PC;
     }
   }
 }

@@ -14,8 +14,8 @@
       <div class="nickname">
         <span>{{ prop.nickname }}</span>
         <span class="type" [ngSwitch]="prop.environment">
-          <i *ngSwitchCase="ENV_MOBILE" class="material-icons">smartphone</i>
-          <i *ngSwitchCase="ENV_BOT" class="material-icons">bug_report</i>
+          <i *ngSwitchCase="'MOBILE'" class="material-icons">smartphone</i>
+          <i *ngSwitchCase="'BOT'" class="material-icons">bug_report</i>
         </span>
       </div>
     </div>

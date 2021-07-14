@@ -11,9 +11,6 @@
   </div>
   <div class="message-section">
     <div class="header">
-      <div class="level">
-        <span>Lv.{{ chat.getSender().getLevel() }}</span>
-      </div>
       <div class="nickname">
         <span>{{ chat.getSender().getNickname() }}</span>
         <span class="type" [ngSwitch]="getEnvironment()">

@@ -12,7 +12,7 @@
   <div class="message-section">
     <div class="header">
       <div class="nickname">
-        <span>{{ prop.nickname }}</span>
+        <span class="name">{{ prop.nickname }}</span>
         <span class="type" [ngSwitch]="prop.environment">
           <i *ngSwitchCase="'MOBILE'" class="material-icons">smartphone</i>
           <i *ngSwitchCase="'BOT'" class="material-icons">bug_report</i>

@@ -13,7 +13,7 @@
     <div class="header">
       <div class="nickname">
         <span class="name">{{ prop.nickname }}</span>
-        <span class="type" [ngSwitch]="prop.environment">
+        <span class="type" [ngSwitch]="prop.senderType">
           <i *ngSwitchCase="'MOBILE'" class="material-icons">smartphone</i>
           <i *ngSwitchCase="'BOT'" class="material-icons">bug_report</i>
         </span>

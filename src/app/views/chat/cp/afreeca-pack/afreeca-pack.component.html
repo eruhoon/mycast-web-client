@@ -4,10 +4,10 @@
   (click)="onClick()"
   (contextmenu)="onContextMenu(); (false)"
 >
-  <img class="icon" [src]="getIcon() | safe" />
+  <img class="icon" [src]="icon | safe" />
   <div class="logo"></div>
   <div class="name">
-    {{ getName() }} <span>({{ getId() }})</span>
+    {{ title }} <span>({{ keyId }})</span>
   </div>
 </div>
 <div *ngIf="isError()">방송정보가 없습니다.</div>

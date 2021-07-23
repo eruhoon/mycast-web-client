@@ -11,59 +11,46 @@ import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
   styleUrls: ['./afreeca-pack.component.scss'],
 })
 export class AfreecaPackComponent extends ChatPackDirective implements OnInit {
-  private mKeyId: string;
-  private mTitle: string;
-  private mIcon: string;
-  private mLink: string;
-  private mError: boolean;
+  keyId: string;
+  title: string;
+  icon: string;
+  link: string;
+  error: boolean;
 
   public constructor(private mMainService: MainService, injector: Injector) {
     super(injector);
-    this.mKeyId = '';
-    this.mTitle = '';
-    this.mIcon = '';
-    this.mLink = '';
-    this.mError = false;
+    this.title = '';
+    this.icon = '';
+    this.link = '';
+    this.error = false;
   }
 
   public ngOnInit() {
     try {
       const param: Param = JSON.parse(this.message.getMessage());
       const keyId = param.keyid;
-      this.mKeyId = keyId;
-      this.mTitle = param.title;
-      this.mIcon = AfreecaPackComponent.getIcon(keyId);
-      this.mLink = `http://play.afreecatv.com/${keyId}/embed`;
-      this.mError = false;
+      this.keyId = keyId;
+      this.title = param.title;
+      this.icon = AfreecaPackComponent.getIcon(keyId);
+      this.link = `https://play.afreecatv.com/${keyId}/embed`;
+      this.error = false;
     } catch {
       console.log('fuck');
-      this.mError = true;
+      this.error = true;
     }
   }
 
-  public getId(): string {
-    return this.mKeyId;
-  }
-
-  public getName(): string {
-    return this.mTitle;
-  }
-
-  public getIcon(): string {
-    return this.mIcon;
-  }
-
   public onClick(): void {
-    const link = LinkUtils.addTimestamp(this.mLink);
+    const link = LinkUtils.addTimestamp(this.link);
     this.mMainService.setCurrentLink(link);
   }
 
   public onContextMenu(): void {
-    window.open(this.mLink, '_blank', 'width=800');
+    window.open(this.link, '_blank', 'width=800');
   }
 
   public isError(): boolean {
-    return this.mError;
+    return this.error;
   }
 
   private static getIcon(keyId: string): string {

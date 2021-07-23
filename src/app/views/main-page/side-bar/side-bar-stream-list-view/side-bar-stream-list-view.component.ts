@@ -70,11 +70,7 @@ export class SideBarStreamListViewComponent implements OnInit, OnChanges {
 
   public onStreamClick(stream: Stream): void {
     const link = LinkUtils.addTimestamp(stream.getUrl());
-    if (stream.getPlatform() === 'afreeca') {
-      window.open(link, '_blank', 'width=800');
-    } else {
-      this.mMainSrv.setCurrentLink(link);
-    }
+    this.mMainSrv.setCurrentLink(link);
     this.mSideBarSrv.deactivate();
   }
 

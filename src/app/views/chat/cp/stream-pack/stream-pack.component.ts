@@ -63,11 +63,7 @@ export class StreamPackComponent extends ChatPackDirective implements OnInit {
   }
 
   public onClick(): void {
-    if (this.mPlatform === 'afreeca') {
-      window.open(this.mLink, '_blank', 'width=800');
-    } else {
-      const link = LinkUtils.addTimestamp(this.mLink);
-      this.mMainSrv.setCurrentLink(link);
-    }
+    const link = LinkUtils.addTimestamp(this.mLink);
+    this.mMainSrv.setCurrentLink(link);
   }
 }

@@ -3,6 +3,7 @@ import { MainService } from 'src/app/services/main/main.service';
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { ChatPackDirective } from '../ChatPack';
+import { LinkUtils } from 'src/app/models/stream/link/LinkUtils';
 
 @Component({
   selector: 'afreeca-pack',
@@ -53,7 +54,8 @@ export class AfreecaPackComponent extends ChatPackDirective implements OnInit {
   }
 
   public onClick(): void {
-    window.open(this.mLink, '_blank', 'width=800');
+    const link = LinkUtils.addTimestamp(this.mLink);
+    this.mMainService.setCurrentLink(link);
   }
 
   public onContextMenu(): void {

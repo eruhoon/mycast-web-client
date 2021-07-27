@@ -23,6 +23,7 @@ export class CqHeroPackComponent extends GeneralPurposePackDirective {
       link: raw.link,
       title: raw.name,
       subtitle: `${raw.star}성 ${raw.type}`,
+      showType: 'in-app-browser',
       orientation: 'horizontal',
     };
   }

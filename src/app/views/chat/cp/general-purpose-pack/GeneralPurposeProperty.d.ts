@@ -3,6 +3,6 @@ export type GeneralPurposeProperty = {
   subtitle: string;
   icon: string;
   link: string;
-  newWindow?: boolean;
+  showType: 'content-viewer' | 'new-window' | 'in-app-browser';
   orientation: 'horizontal' | 'vertical';
 };

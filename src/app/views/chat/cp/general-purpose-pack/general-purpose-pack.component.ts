@@ -30,7 +30,7 @@ export abstract class GeneralPurposePackDirective
         subtitle: '',
         icon: '',
         link: '',
-        newWindow: false,
+        showType: 'in-app-browser',
         orientation: 'horizontal',
       };
       this.bindError = true;
@@ -44,23 +44,26 @@ export abstract class GeneralPurposePackDirective
   }
 
   public onClick(): void {
-    if (this.isMobile()) {
-      window.open(this.prop.link, '_blank');
-      return;
+    switch (this.prop.showType) {
+      case 'new-window':
+        window.open(this.prop.link, '_blank');
+        break;
+      case 'content-viewer':
+        break;
+      case 'in-app-browser':
+      default:
+        if (this.isMobile()) {
+          window.open(this.prop.link, '_blank');
+        } else {
+          this.mLinkPopupSrv.addLink(
+            new LinkPopupBuilder()
+              .title('Item Info')
+              .width(800)
+              .height(600)
+              .link(this.prop.link)
+              .build()
+          );
+        }
     }
-
-    if (this.prop.newWindow) {
-      window.open(this.prop.link, '_blank');
-      return;
-    }
-
-    this.mLinkPopupSrv.addLink(
-      new LinkPopupBuilder()
-        .title('Item Info')
-        .width(800)
-        .height(600)
-        .link(this.prop.link)
-        .build()
-    );
   }
 }

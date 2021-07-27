@@ -31,7 +31,7 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
           subtitle: '',
           icon: '',
           link: '',
-          newWindow: false,
+          showType: 'in-app-browser',
           orientation: 'vertical',
         },
       ];
@@ -42,12 +42,14 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
   protected bind(): GeneralPurposeProperty[] {
     const raws = JSON.parse(this.message.getMessage()) as any[];
     return raws.map((raw) => {
+      const legacyShowType = raw.newWindow ? 'new-window' : 'in-app-browser';
+      const showType = raw.showType ? raw.showType : legacyShowType;
       return {
         icon: raw.icon,
         link: raw.link,
         title: raw.title,
         subtitle: raw.subtitle,
-        newWindow: raw.newWindow,
+        showType,
         orientation: raw.orientation || 'vertical',
       };
     });
@@ -58,23 +60,26 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
   }
 
   public onClick(prop: GeneralPurposeProperty): void {
-    if (this.isMobile()) {
-      window.open(prop.link, '_blank');
-      return;
+    switch (prop.showType) {
+      case 'new-window':
+        window.open(prop.link, '_blank');
+        break;
+      case 'content-viewer':
+        break;
+      case 'in-app-browser':
+      default:
+        if (this.isMobile()) {
+          window.open(prop.link, '_blank');
+        } else {
+          this.mLinkPopupSrv.addLink(
+            new LinkPopupBuilder()
+              .title('Item Info')
+              .width(800)
+              .height(600)
+              .link(prop.link)
+              .build()
+          );
+        }
     }
-
-    if (prop.newWindow) {
-      window.open(prop.link, '_blank');
-      return;
-    }
-
-    this.mLinkPopupSrv.addLink(
-      new LinkPopupBuilder()
-        .title('Item Info')
-        .width(800)
-        .height(600)
-        .link(prop.link)
-        .build()
-    );
   }
 }

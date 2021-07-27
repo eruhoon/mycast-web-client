@@ -23,6 +23,7 @@ export class AlShipPackComponent extends GeneralPurposePackDirective {
       link: raw.link,
       title: raw.name,
       subtitle: `${raw.rarity} ${raw.type.name}`,
+      showType: 'in-app-browser',
       orientation: 'horizontal',
     };
   }

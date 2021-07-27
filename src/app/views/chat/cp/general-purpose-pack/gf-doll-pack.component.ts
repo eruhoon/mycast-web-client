@@ -23,6 +23,7 @@ export class GfDollPackComponent extends GeneralPurposePackDirective {
       link: raw.link,
       title: raw.name,
       subtitle: `CV: ${raw.voice}`,
+      showType: 'in-app-browser',
       orientation: 'horizontal',
     };
   }

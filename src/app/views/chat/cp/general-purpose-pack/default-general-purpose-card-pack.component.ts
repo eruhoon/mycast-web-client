@@ -18,12 +18,15 @@ export class DefaultGeneralPurposeCardPackComponent extends GeneralPurposePackDi
   protected bind(): GeneralPurposeProperty {
     const raw = JSON.parse(this.message.getMessage());
     console.log(raw);
+
+    const legacyShowType = raw.newWindow ? 'new-window' : 'in-app-browser';
+    const showType = raw.showType ? raw.showType : legacyShowType;
     return {
       icon: raw.icon,
       link: raw.link,
       title: raw.title,
       subtitle: raw.subtitle,
-      newWindow: raw.newWindow,
+      showType,
       orientation: raw.orientation || 'horizontal',
     };
   }

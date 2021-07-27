@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { LinkPopupBuilder } from 'src/app/models/link/LinkPopupBuilder';
 import { LinkPopupService } from 'src/app/services/link/link-popup.service';
+import { MainService } from 'src/app/services/main/main.service';
 import { ChatPackDirective } from '../ChatPack';
 import { GeneralPurposeProperty } from '../general-purpose-pack/GeneralPurposeProperty';
 
@@ -13,10 +14,12 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
   public props: GeneralPurposeProperty[];
   public bindError: boolean = false;
 
+  private mMainSrv: MainService;
   private mLinkPopupSrv: LinkPopupService;
 
   public constructor(injector: Injector) {
     super(injector);
+    this.mMainSrv = injector.get(MainService);
     this.mLinkPopupSrv = injector.get(LinkPopupService);
     this.props = [];
   }
@@ -65,6 +68,7 @@ export class CarouselPackComponent extends ChatPackDirective implements OnInit {
         window.open(prop.link, '_blank');
         break;
       case 'content-viewer':
+        this.mMainSrv.setCurrentLink(prop.link);
         break;
       case 'in-app-browser':
       default:

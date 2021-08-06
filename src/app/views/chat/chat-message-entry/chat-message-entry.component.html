@@ -35,5 +35,7 @@
   <twitch-video-pack *ngSwitchCase="'twitch-video'" [message]="message">
   </twitch-video-pack>
   <youtube-pack *ngSwitchCase="'youtube'" [message]="message"> </youtube-pack>
-  <div class="footer" *ngIf="isTimestampShow()">{{ getTimeString() }}</div>
+</div>
+<div class="footer" *ngIf="isTimestampShow()">
+  {{ getTimeString() }}
 </div>

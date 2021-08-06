@@ -2,9 +2,15 @@
   .black-text {
     color: #424242;
   }
+  .footer {
+    color: #424242;
+  }
 }
 :host-context(.theme-dark) {
   .black-text {
+    color: #eeeeee;
+  }
+  .footer {
     color: #eeeeee;
   }
 }

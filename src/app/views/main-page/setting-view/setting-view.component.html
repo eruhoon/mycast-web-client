@@ -3,13 +3,13 @@
     <div class="u-info">
       <img
         class="profile"
-        [src]="getIcon() | safe"
+        [src]="profileSrv.getProfileIcon() | safe"
         width="40"
         (click)="onProfileIconClick()"
       />
       <span class="u-name">
-        <p class="lv">Lv. {{ getLevel() }}</p>
-        <p class="name">{{ getName() }}</p>
+        <p class="lv">Lv. {{ profileSrv.getLevel() }}</p>
+        <p class="name">{{ profileSrv.getName() }}</p>
       </span>
       <a (click)="openProfileSettingView()">
         <i class="material-icons">settings</i>
@@ -23,20 +23,11 @@
   <div class="toggle-option stream-set" (click)="openOptionSettingView()">
     <h5>옵션</h5>
   </div>
-  <!-- <div class="alarm">
-    <h5>알림음</h5>
-    <ul>
-      <li *ngFor="let option of getNotificationSounds()" [ngClass]="{'select':option.getId()===getNotficationSoundId()}"
-        (click)="onNotificationSoundClick(option)">
-        {{option.getName()}}
-      </li>
-    </ul>
-  </div> -->
   <div class="theme">
     <h5>테마</h5>
     <ul>
       <li
-        *ngFor="let option of getThemes()"
+        *ngFor="let option of themeOptions"
         [ngClass]="{ select: option.theme === theme }"
         (click)="onThemeClick(option)"
       >
@@ -44,13 +35,13 @@
       </li>
     </ul>
   </div>
-  <div class="toggle-option" *ngIf="!isMobile()" (click)="openMobilePage()">
+  <div
+    class="toggle-option"
+    *ngIf="!optionSrv.isMobile()"
+    (click)="openMobilePage()"
+  >
     <h5>모바일 모드</h5>
   </div>
-  <!-- <div class="toggle-option" (click)="toggleChatTimestamp()">
-    <h5>채팅 시각 표시</h5>
-    <i *ngIf="isTimestampShow()" class="material-icons">done</i>
-  </div> -->
   <div class="logout">
     <h5>로그아웃</h5>
   </div>

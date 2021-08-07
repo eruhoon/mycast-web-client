@@ -1,16 +1,13 @@
-import { NotificationSound } from 'src/app/models/notification/NotificationSound';
-import { NotificationSounds } from 'src/app/models/notification/NotificationSounds';
+import { Component, OnInit } from '@angular/core';
 import { Theme } from 'src/app/models/theme/Theme';
+import { ToastService } from 'src/app/services/notification/toast.service';
+import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import {
   ProfileModifyMode,
   ProfileService,
 } from 'src/app/services/profile/profile.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
-
-import { Component, OnInit } from '@angular/core';
-import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
-import { ToastService } from 'src/app/services/notification/toast.service';
 
 @Component({
   selector: 'app-setting-view',
@@ -23,40 +20,38 @@ export class SettingViewComponent implements OnInit {
     dark: '',
   };
 
-  public theme: Theme;
-  private mProfileService: ProfileService;
-  private mOptionService: OptionService;
-  private mNotificationSounds: NotificationSounds;
-  private mThemes: ThemeOption[];
-  private mStreamPlatformImages: StreamPlatformImage[];
-  private mNotificationSoundId: string;
-  #developMode: DevelopModeService;
-  #toast: ToastService;
+  theme: Theme;
+  readonly themeSrv: ThemeService;
+  readonly profileSrv: ProfileService;
+  readonly optionSrv: OptionService;
+  readonly themeOptions: ThemeOption[];
+  readonly #streamPlatformImages: StreamPlatformImage[];
+  readonly #developModeSrv: DevelopModeService;
+  readonly #toastSrv: ToastService;
   #clickCount: number;
   #clickResetTimer: number | null;
 
-  public constructor(
-    private mThemeService: ThemeService,
+  constructor(
+    themeService: ThemeService,
     profileService: ProfileService,
     optionService: OptionService,
-    developMode: DevelopModeService,
-    toast: ToastService
+    developModeService: DevelopModeService,
+    toastService: ToastService
   ) {
     this.theme = Theme.DEFAULT;
-
-    this.mProfileService = profileService;
-    this.mOptionService = optionService;
-    this.#developMode = developMode;
-    this.#toast = toast;
+    this.themeSrv = themeService;
+    this.profileSrv = profileService;
+    this.optionSrv = optionService;
+    this.#developModeSrv = developModeService;
+    this.#toastSrv = toastService;
     this.#clickCount = 0;
     this.#clickResetTimer = null;
-    this.mNotificationSounds = new NotificationSounds();
-    this.mThemes = [
+    this.themeOptions = [
       { theme: Theme.DEFAULT, name: '기본' },
       { theme: Theme.LIGHT, name: '밝게' },
       { theme: Theme.DARK, name: '어둡게' },
     ];
-    this.mStreamPlatformImages = [
+    this.#streamPlatformImages = [
       {
         id: 'local',
         src: {
@@ -86,113 +81,53 @@ export class SettingViewComponent implements OnInit {
         },
       },
     ];
-    this.mNotificationSoundId = NotificationSound.getDefaultSound().getId();
   }
 
-  public ngOnInit(): void {
-    this.theme = this.mOptionService.getTheme();
-    this.mNotificationSoundId = this.mOptionService
-      .getNotificationSound()
-      .getId();
-    this.mProfileService.loadStream();
+  ngOnInit(): void {
+    this.theme = this.optionSrv.getTheme();
+    this.profileSrv.loadStream();
   }
 
-  public getNotficationSoundId(): string {
-    return this.mNotificationSoundId;
-  }
-
-  public getNotificationSounds(): NotificationSound[] {
-    return this.mNotificationSounds.getList();
-  }
-
-  public getThemes(): ThemeOption[] {
-    return this.mThemes;
-  }
-
-  public getName(): string {
-    return this.mProfileService.getName();
-  }
-
-  public getIcon(): string {
-    return this.mProfileService.getProfileIcon();
-  }
-
-  public getLevel(): number {
-    return this.mProfileService.getLevel();
-  }
-
-  public getPlatform(): string {
-    return this.mProfileService.getStreamPlatform();
-  }
-
-  public getPlatformImage(): ImageSrc {
-    const platform = this.mProfileService.getStreamPlatform();
-    const image = this.mStreamPlatformImages.find((p) => p.id === platform);
+  getPlatformImage(): ImageSrc {
+    const platform = this.profileSrv.getStreamPlatform();
+    const image = this.#streamPlatformImages.find((p) => p.id === platform);
     const src = image ? image.src : SettingViewComponent.DEFAULT_PLATFORM_IMAGE;
     return src;
   }
 
-  public getPlatformImageSrc(): string {
-    const darkMode = this.mThemeService.isDarkMode();
+  getPlatformImageSrc(): string {
+    const darkMode = this.themeSrv.isDarkMode();
     const image = this.getPlatformImage();
     return darkMode ? image.dark : image.default;
   }
 
-  public isDataSaveMode(): boolean {
-    return this.mOptionService.isDataSaveMode();
-  }
-
-  public toggleDataSaveMode(): void {
-    const option = this.mOptionService.isDataSaveMode();
-    return this.mOptionService.setDataSaveMode(!option);
-  }
-
-  public isTimestampShow(): boolean {
-    return this.mOptionService.isTimestampShow();
-  }
-
-  public toggleChatTimestamp(): void {
-    const option = this.mOptionService.isTimestampShow();
-    return this.mOptionService.setTimestampShow(!option);
-  }
-
-  public openMobilePage(): void {
+  openMobilePage(): void {
     window.open('/mobile', '_blank', 'width=800');
   }
 
-  public openProfileSettingView(): void {
-    this.mProfileService.setModifyMode(ProfileModifyMode.PROFILE);
+  openProfileSettingView(): void {
+    this.profileSrv.setModifyMode(ProfileModifyMode.PROFILE);
   }
 
-  public openStreamSettingView(): void {
-    this.mProfileService.setModifyMode(ProfileModifyMode.STREAM);
+  openStreamSettingView(): void {
+    this.profileSrv.setModifyMode(ProfileModifyMode.STREAM);
   }
 
-  public openOptionSettingView(): void {
-    this.mProfileService.setModifyMode(ProfileModifyMode.SETTING);
+  openOptionSettingView(): void {
+    this.profileSrv.setModifyMode(ProfileModifyMode.SETTING);
   }
 
-  public onNotificationSoundClick(option: NotificationSound): void {
-    const soundId = option.getId();
-    this.mNotificationSoundId = soundId;
-    this.mOptionService.setNotificationSound(soundId);
-  }
-
-  public onThemeClick(themeOption: ThemeOption): void {
+  onThemeClick(themeOption: ThemeOption): void {
     this.theme = themeOption.theme;
-    this.mOptionService.setTheme(this.theme);
-  }
-
-  public isMobile(): boolean {
-    return this.mOptionService.isMobile();
+    this.optionSrv.setTheme(this.theme);
   }
 
   onProfileIconClick(): void {
     this.resetTimer();
     this.#clickCount++;
     if (this.#clickCount === 5) {
-      this.#toast.toast('Develop Mode Enabled');
-      this.#developMode.enabled = true;
+      this.#toastSrv.toast('Develop Mode Enabled');
+      this.#developModeSrv.enabled = true;
     }
     this.setTimer();
   }

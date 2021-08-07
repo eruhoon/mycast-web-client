@@ -21,90 +21,84 @@ import {
 export class WebSocketModel extends VegaChatSocketModel {
   private static readonly HTTPS_URL = 'wss://mycast.xyz:8002';
 
-  private mPrivKey: string;
-  private mOpen: boolean;
-  private mWebSocket: WebSocket;
-  private mOnRefreshMyProfile: TypeCallback<Profile>;
-  private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
-  private mOnRefreshChatList: TypeCallback<Chat[]>;
-  private mOnRefreshUserList: TypeCallback<User[]>;
-  private mOnNotificationReceived: TypeCallback<VegaNotification>;
-  private mOnChat: TypeCallback<Chat>;
+  #privateKey: string;
+  #open: boolean;
+  #webSocket: WebSocket;
+  #onRefreshMyProfile: TypeCallback<Profile>;
+  #onUpdateLink: TypeCallback<UpdateLinkResponse>;
+  #onRefreshChatList: TypeCallback<Chat[]>;
+  #onRefreshUserList: TypeCallback<User[]>;
+  #onNotificationReceived: TypeCallback<VegaNotification>;
+  #onChat: TypeCallback<Chat>;
 
-  public constructor(privateKey: string) {
+  constructor(privateKey: string) {
     super();
-    this.mPrivKey = privateKey;
-    this.mOpen = false;
-    this.mOnRefreshChatList = (_) => {};
-    this.mOnRefreshUserList = (_) => {};
-    this.mOnNotificationReceived = (_) => {};
-    this.mOnChat = (_) => {};
+    this.#privateKey = privateKey;
+    this.#open = false;
+    this.#onRefreshChatList = (_) => {};
+    this.#onRefreshUserList = (_) => {};
+    this.#onNotificationReceived = (_) => {};
+    this.#onChat = (_) => {};
 
-    this.mWebSocket = this.connect();
+    this.#webSocket = this.connect();
   }
 
-  public isOpen(): boolean {
-    return this.mOpen;
+  isOpen(): boolean {
+    return this.#open;
   }
 
   send(request: SocketRequest): void {
-    this.mWebSocket.send(JSON.stringify(request));
+    this.#webSocket.send(JSON.stringify(request));
   }
 
-  public login(): void {
+  login(): void {
     this.sendMessage('user-login', {
       channel: 'chat',
-      privateKey: this.mPrivKey,
+      privateKey: this.#privateKey,
     });
   }
 
-  public modifyProfile(
-    name: string,
-    icon: string,
-    statusMessage: string
-  ): void {
+  modifyProfile(name: string, icon: string, statusMessage: string): void {
     this.sendMessage('modify-profile', {
-      privateKey: this.mPrivKey,
+      privateKey: this.#privateKey,
       userInfo: { nickname: name, icon, statusMessage },
     });
   }
 
   protected requestChat(request: RawChatRequest): void {
     this.sendMessage('chat', {
-      userKey: this.mPrivKey,
+      userKey: this.#privateKey,
       msg: request.msg,
       type: request.type,
     });
   }
 
   protected requestNotify(to: string): void {
-    this.sendMessage('notify-user', { from: this.mPrivKey, to });
+    this.sendMessage('notify-user', { from: this.#privateKey, to });
   }
 
-  public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
-    this.mOnRefreshMyProfile = callback;
+  setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
+    this.#onRefreshMyProfile = callback;
   }
 
-  public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
-    this.mOnUpdateLink = callback;
+  setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
+    this.#onUpdateLink = callback;
   }
 
-  public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
-    this.mOnRefreshChatList = callback;
+  setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
+    this.#onRefreshChatList = callback;
   }
 
-  public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
-    this.mOnRefreshUserList = callback;
+  setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
+    this.#onRefreshUserList = callback;
   }
 
-  public setOnNotificationReceived(
-    callback: TypeCallback<VegaNotification>
-  ): void {
-    this.mOnNotificationReceived = callback;
+  setOnNotificationReceived(callback: TypeCallback<VegaNotification>): void {
+    this.#onNotificationReceived = callback;
   }
 
-  public setOnChatCallback(callback: TypeCallback<Chat>): void {
-    this.mOnChat = callback;
+  setOnChatCallback(callback: TypeCallback<Chat>): void {
+    this.#onChat = callback;
   }
 
   protected onRefreshMyProfile(rawProfile: RefreshMyProfile): void {
@@ -113,7 +107,7 @@ export class WebSocketModel extends VegaChatSocketModel {
     profile.setIcon(rawProfile.icon);
     profile.setLevel(rawProfile.level);
     profile.setStatusMessage(rawProfile.statusMessage);
-    this.mOnRefreshMyProfile(profile);
+    this.#onRefreshMyProfile(profile);
   }
 
   protected onRefreshUserList(refreshUsers: RefreshUser[]) {
@@ -126,7 +120,7 @@ export class WebSocketModel extends VegaChatSocketModel {
       user.setComputer(refreshUser.computer);
       return user;
     });
-    this.mOnRefreshUserList(users);
+    this.#onRefreshUserList(users);
   }
 
   protected onNotificationReceived(receivedNotification: ReceivedNotification) {
@@ -137,11 +131,11 @@ export class WebSocketModel extends VegaChatSocketModel {
       `"${receivedNotification.from.nickname}"로 부터 알림이 왔어요.`
     );
     notification.setChannel(NotificationChannelHash.ALARM);
-    this.mOnNotificationReceived(notification);
+    this.#onNotificationReceived(notification);
   }
 
   protected onUpdateLink(chatHash: string, link: any): void {
-    this.mOnUpdateLink({
+    this.#onUpdateLink({
       chatHash,
       title: link.title,
       thumbnail: link.thumbnail,
@@ -152,17 +146,17 @@ export class WebSocketModel extends VegaChatSocketModel {
     const chats: Chat[] = refreshChats.map((dto) => {
       return new RefreshChat(dto);
     });
-    this.mOnRefreshChatList(chats);
+    this.#onRefreshChatList(chats);
   }
 
   protected onChat(dto: RefreshChatDto) {
     const chat = new RefreshChat(dto);
-    this.mOnChat(chat);
+    this.#onChat(chat);
   }
 
   private onOpenSocket(): void {
     console.log('connected');
-    this.mOpen = true;
+    this.#open = true;
     this.login();
   }
 
@@ -176,16 +170,16 @@ export class WebSocketModel extends VegaChatSocketModel {
 
   private onClose(): void {
     console.log('onClose');
-    this.mOpen = false;
+    this.#open = false;
     setTimeout(() => {
       console.log('try to reconnect');
-      this.mWebSocket = this.connect();
+      this.#webSocket = this.connect();
     }, 3000);
   }
 
   private sendMessage(commandType: string, resource: any) {
     const sendMsg = { commandType, resource };
-    this.mWebSocket.send(JSON.stringify(sendMsg));
+    this.#webSocket.send(JSON.stringify(sendMsg));
   }
 
   private connect(): WebSocket {

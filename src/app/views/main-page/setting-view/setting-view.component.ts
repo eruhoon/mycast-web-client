@@ -10,6 +10,7 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
 import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
+import { ToastService } from 'src/app/services/notification/toast.service';
 
 @Component({
   selector: 'app-setting-view',
@@ -30,6 +31,7 @@ export class SettingViewComponent implements OnInit {
   private mStreamPlatformImages: StreamPlatformImage[];
   private mNotificationSoundId: string;
   #developMode: DevelopModeService;
+  #toast: ToastService;
   #clickCount: number;
   #clickResetTimer: number | null;
 
@@ -37,13 +39,15 @@ export class SettingViewComponent implements OnInit {
     private mThemeService: ThemeService,
     profileService: ProfileService,
     optionService: OptionService,
-    developMode: DevelopModeService
+    developMode: DevelopModeService,
+    toast: ToastService
   ) {
     this.theme = Theme.DEFAULT;
 
     this.mProfileService = profileService;
     this.mOptionService = optionService;
     this.#developMode = developMode;
+    this.#toast = toast;
     this.#clickCount = 0;
     this.#clickResetTimer = null;
     this.mNotificationSounds = new NotificationSounds();
@@ -184,20 +188,27 @@ export class SettingViewComponent implements OnInit {
   }
 
   onProfileIconClick(): void {
+    this.resetTimer();
+    this.#clickCount++;
+    if (this.#clickCount === 5) {
+      this.#toast.toast('Develop Mode Enabled');
+      this.#developMode.enabled = true;
+    }
+    this.setTimer();
+  }
+
+  private resetTimer(): void {
     if (this.#clickResetTimer !== null) {
       clearTimeout(this.#clickResetTimer);
       this.#clickResetTimer = null;
     }
-    this.#clickCount++;
+  }
+
+  private setTimer(): void {
     this.#clickResetTimer = setTimeout(() => {
       this.#clickResetTimer = null;
       this.#clickCount = 0;
     }, 5000);
-
-    if (this.#clickCount === 5) {
-      alert('developMode');
-      this.#developMode.enabled = true;
-    }
   }
 }
 

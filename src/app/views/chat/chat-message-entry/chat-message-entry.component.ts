@@ -13,32 +13,29 @@ import { OptionService } from 'src/app/services/option/option.service';
 })
 export class ChatMessageEntryComponent implements OnInit {
   @Input()
-  public message: ChatMessage;
-
+  message: ChatMessage;
   reaction: boolean;
-
-  private mTimeStr: string;
   developMode: DevelopModeService;
+  #option: OptionService;
+  #timeStr: string;
 
-  public constructor(
-    private mOption: OptionService,
-    developMode: DevelopModeService
-  ) {
-    this.mTimeStr = '';
+  constructor(option: OptionService, developMode: DevelopModeService) {
+    this.#timeStr = '';
     this.developMode = developMode;
+    this.#option = option;
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     const timestamp = this.message.getTimestamp();
-    this.mTimeStr = ChatMessageEntryComponent.convertTimeToString(timestamp);
+    this.#timeStr = ChatMessageEntryComponent.convertTimeToString(timestamp);
   }
 
-  public isTimestampShow(): boolean {
-    return this.mOption.isTimestampShow();
+  isTimestampShow(): boolean {
+    return this.#option.isTimestampShow();
   }
 
-  public getTimeString() {
-    return this.mTimeStr;
+  getTimeString() {
+    return this.#timeStr;
   }
 
   onReactionClick(): void {

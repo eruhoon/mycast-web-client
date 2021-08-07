@@ -2,12 +2,15 @@ import { Chat } from '../chat/Chat';
 import { TypeCallback } from '../common/callback/TypeCallback';
 import { VegaNotification } from '../notification/VegaNotification';
 import { Profile } from '../profile/Profile';
+import { ChatRequestFactory } from '../socket/chat-request/ChatRequestFactory';
 import { SocketModel } from '../socket/SocketModel';
 import { UpdateLinkResponse, WebSocketModel } from '../socket/WebSocketModel';
 import { User } from '../user/User';
 import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatNetworkModelImpl implements ChatNetworkModel {
+  readonly #privateKey: string;
+  readonly #chatRequestFactory = new ChatRequestFactory();
   private mSocket: SocketModel;
   private mOnRefreshMyProfile: TypeCallback<Profile>;
   private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
@@ -17,6 +20,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   private mOnChat: TypeCallback<Chat>;
 
   public constructor(privateKey: string) {
+    this.#privateKey = privateKey;
     this.mSocket = this.createSocketModel(privateKey);
     this.mOnUpdateLink = (_) => {};
     this.mOnRefreshChatList = (_) => {};
@@ -28,7 +32,17 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   }
 
   public chat(chat: string): void {
-    this.mSocket.chat(chat);
+    const request = this.#chatRequestFactory
+      .getRequest(chat)
+      .toRawChatRequest();
+    this.mSocket.send({
+      commandType: 'chat',
+      resource: {
+        userKey: this.#privateKey,
+        msg: request.msg,
+        type: request.type,
+      },
+    });
   }
 
   reaction(chatHash: string, reaction: string): void {
@@ -39,7 +53,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   }
 
   public notify(to: string): void {
-    this.mSocket.notify(to);
+    this.mSocket.send({
+      commandType: 'notify-user',
+      resource: { from: this.#privateKey, to },
+    });
   }
 
   public modifyProfile(
@@ -47,7 +64,13 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     icon: string,
     statusMessage: string
   ): void {
-    this.mSocket.modifyProfile(name, icon, statusMessage);
+    this.mSocket.send({
+      commandType: 'modify-profile',
+      resource: {
+        privateKey: this.#privateKey,
+        userInfo: { icon, nickname: name, statusMessage },
+      },
+    });
   }
 
   public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {

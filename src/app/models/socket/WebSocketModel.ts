@@ -11,7 +11,6 @@ import { RefreshChat } from './RefreshChat';
 import { RefreshChatDto } from './RefreshChatDto';
 import { SocketRequest } from './SocketModel';
 import {
-  RawChatRequest,
   ReceivedNotification,
   RefreshMyProfile,
   RefreshUser,
@@ -56,25 +55,6 @@ export class WebSocketModel extends VegaChatSocketModel {
       channel: 'chat',
       privateKey: this.#privateKey,
     });
-  }
-
-  modifyProfile(name: string, icon: string, statusMessage: string): void {
-    this.sendMessage('modify-profile', {
-      privateKey: this.#privateKey,
-      userInfo: { nickname: name, icon, statusMessage },
-    });
-  }
-
-  protected requestChat(request: RawChatRequest): void {
-    this.sendMessage('chat', {
-      userKey: this.#privateKey,
-      msg: request.msg,
-      type: request.type,
-    });
-  }
-
-  protected requestNotify(to: string): void {
-    this.sendMessage('notify-user', { from: this.#privateKey, to });
   }
 
   setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {

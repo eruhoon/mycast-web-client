@@ -1,19 +1,49 @@
 export interface SocketModel {
   isOpen(): boolean;
   login(): void;
-  chat(chat: string): void;
-  notify(to: string): void;
-  modifyProfile(name: string, icon: string, statusMessage: string): void;
 
   send(request: SocketRequest): void;
 }
 
-export type SocketRequest = ReactionRequest;
+export type SocketRequest =
+  | ChatRequest
+  | ReactionRequest
+  | ModifyProfileRequest
+  | NotifyUserRequest;
 
-export type ReactionRequest = {
+type ChatRequest = {
+  commandType: 'chat';
+  resource: {
+    userKey: string;
+    msg: string;
+    type: string;
+  };
+};
+
+type ReactionRequest = {
   commandType: 'reaction';
   resource: {
     chatHash: string;
     reaction: string;
+  };
+};
+
+type ModifyProfileRequest = {
+  commandType: 'modify-profile';
+  resource: {
+    privateKey: string;
+    userInfo: {
+      nickname: string;
+      icon: string;
+      statusMessage: string;
+    };
+  };
+};
+
+type NotifyUserRequest = {
+  commandType: 'notify-user';
+  resource: {
+    from: string;
+    to: string;
   };
 };

@@ -1,21 +1,9 @@
-import { ChatRequestFactory } from './chat-request/ChatRequestFactory';
 import { RefreshChatDto } from './RefreshChatDto';
 import { SocketModel, SocketRequest } from './SocketModel';
 
 export abstract class VegaChatSocketModel implements SocketModel {
-  private mChatRequestFactory: ChatRequestFactory;
-
-  public constructor() {
-    this.mChatRequestFactory = new ChatRequestFactory();
-  }
-
   public abstract isOpen(): boolean;
   public abstract login(): void;
-  public abstract modifyProfile(
-    name: string,
-    icon: string,
-    statusMessage: string
-  ): void;
 
   protected abstract onRefreshMyProfile(profile: RefreshMyProfile): void;
   protected abstract onUpdateLink(chatHash: string, link: any): void;
@@ -25,19 +13,8 @@ export abstract class VegaChatSocketModel implements SocketModel {
     notification: ReceivedNotification
   ): void;
   protected abstract onChat(res): void;
-  protected abstract requestChat(request: RawChatRequest): void;
-  protected abstract requestNotify(to: string): void;
 
   abstract send(request: SocketRequest): void;
-
-  public chat(chat: string): void {
-    const request = this.mChatRequestFactory.getRequest(chat);
-    this.requestChat(request.toRawChatRequest());
-  }
-
-  public notify(to: string): void {
-    this.requestNotify(to);
-  }
 
   protected onMessage(rawMessage: string | null) {
     if (!rawMessage) {

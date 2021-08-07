@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
+import { MainService } from 'src/app/services/main/main.service';
 import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
 import { OptionService } from 'src/app/services/option/option.service';
 
@@ -18,11 +19,17 @@ export class ChatMessageEntryComponent implements OnInit {
   readonly option: OptionService;
   reaction: boolean;
   timeText: string;
+  #mainService: MainService;
 
-  constructor(option: OptionService, developMode: DevelopModeService) {
+  constructor(
+    option: OptionService,
+    developMode: DevelopModeService,
+    mainService: MainService
+  ) {
     this.timeText = '';
     this.developMode = developMode;
     this.option = option;
+    this.#mainService = mainService;
   }
 
   ngOnInit() {
@@ -31,6 +38,7 @@ export class ChatMessageEntryComponent implements OnInit {
   }
 
   onReactionClick(): void {
+    this.#mainService.reaction(this.message.getHash(), 'thumb-up');
     this.reaction = true;
   }
 

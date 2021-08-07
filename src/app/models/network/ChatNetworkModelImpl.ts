@@ -31,6 +31,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     this.mSocket.chat(chat);
   }
 
+  reaction(chatHash: string, reaction: string): void {
+    this.mSocket.reaction(chatHash, reaction);
+  }
+
   public notify(to: string): void {
     this.mSocket.notify(to);
   }

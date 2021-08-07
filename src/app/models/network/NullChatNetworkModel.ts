@@ -9,6 +9,10 @@ export class NullChatNetworkModel implements ChatNetworkModel {
     throw new Error('Method not implemented.');
   }
 
+  reaction(chatHash: string, reaction: string): void {
+    throw new Error('Method not implemented.');
+  }
+
   public notify(to: string): void {
     throw new Error('Method not implemented.');
   }

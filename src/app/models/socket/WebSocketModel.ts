@@ -72,6 +72,10 @@ export class WebSocketModel extends VegaChatSocketModel {
     });
   }
 
+  protected requestReaction(chatHash: string, reaction: string): void {
+    this.sendMessage('reaction', { chatHash: chatHash, reaction: reaction });
+  }
+
   protected requestNotify(to: string): void {
     this.sendMessage('notify-user', { from: this.mPrivKey, to });
   }

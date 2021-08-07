@@ -26,11 +26,16 @@ export abstract class VegaChatSocketModel implements SocketModel {
   ): void;
   protected abstract onChat(res): void;
   protected abstract requestChat(request: RawChatRequest): void;
+  protected abstract requestReaction(chatHash: string, reaction: string): void;
   protected abstract requestNotify(to: string): void;
 
   public chat(chat: string): void {
     const request = this.mChatRequestFactory.getRequest(chat);
     this.requestChat(request.toRawChatRequest());
+  }
+
+  reaction(chatHash: string, reaction: string): void {
+    this.requestReaction(chatHash, reaction);
   }
 
   public notify(to: string): void {

@@ -66,6 +66,10 @@ export class MainService {
     this.mCurrentChatService.addChat(chat);
   }
 
+  reaction(chatHash: string, reaction: string): void {
+    this.mChatNetwork.reaction(chatHash, reaction);
+  }
+
   public notify(to: string): void {
     this.mChatNetwork.notify(to);
   }

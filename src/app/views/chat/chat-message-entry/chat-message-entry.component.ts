@@ -14,28 +14,20 @@ import { OptionService } from 'src/app/services/option/option.service';
 export class ChatMessageEntryComponent implements OnInit {
   @Input()
   message: ChatMessage;
+  readonly developMode: DevelopModeService;
+  readonly option: OptionService;
   reaction: boolean;
-  developMode: DevelopModeService;
-  #option: OptionService;
-  #timeStr: string;
+  timeText: string;
 
   constructor(option: OptionService, developMode: DevelopModeService) {
-    this.#timeStr = '';
+    this.timeText = '';
     this.developMode = developMode;
-    this.#option = option;
+    this.option = option;
   }
 
   ngOnInit() {
     const timestamp = this.message.getTimestamp();
-    this.#timeStr = ChatMessageEntryComponent.convertTimeToString(timestamp);
-  }
-
-  isTimestampShow(): boolean {
-    return this.#option.isTimestampShow();
-  }
-
-  getTimeString() {
-    return this.#timeStr;
+    this.timeText = ChatMessageEntryComponent.convertTimeToString(timestamp);
   }
 
   onReactionClick(): void {

@@ -9,6 +9,7 @@ import { MutableUser } from '../user/MutableUser';
 import { User } from '../user/User';
 import { RefreshChat } from './RefreshChat';
 import { RefreshChatDto } from './RefreshChatDto';
+import { SocketRequest } from './SocketModel';
 import {
   RawChatRequest,
   ReceivedNotification,
@@ -46,6 +47,10 @@ export class WebSocketModel extends VegaChatSocketModel {
     return this.mOpen;
   }
 
+  send(request: SocketRequest): void {
+    this.mWebSocket.send(JSON.stringify(request));
+  }
+
   public login(): void {
     this.sendMessage('user-login', {
       channel: 'chat',
@@ -70,10 +75,6 @@ export class WebSocketModel extends VegaChatSocketModel {
       msg: request.msg,
       type: request.type,
     });
-  }
-
-  protected requestReaction(chatHash: string, reaction: string): void {
-    this.sendMessage('reaction', { chatHash: chatHash, reaction: reaction });
   }
 
   protected requestNotify(to: string): void {

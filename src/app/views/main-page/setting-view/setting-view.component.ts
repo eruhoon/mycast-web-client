@@ -9,6 +9,7 @@ import {
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 import { Component, OnInit } from '@angular/core';
+import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
 
 @Component({
   selector: 'app-setting-view',
@@ -28,16 +29,23 @@ export class SettingViewComponent implements OnInit {
   private mThemes: ThemeOption[];
   private mStreamPlatformImages: StreamPlatformImage[];
   private mNotificationSoundId: string;
+  #developMode: DevelopModeService;
+  #clickCount: number;
+  #clickResetTimer: number | null;
 
   public constructor(
     private mThemeService: ThemeService,
     profileService: ProfileService,
-    optionService: OptionService
+    optionService: OptionService,
+    developMode: DevelopModeService
   ) {
     this.theme = Theme.DEFAULT;
 
     this.mProfileService = profileService;
     this.mOptionService = optionService;
+    this.#developMode = developMode;
+    this.#clickCount = 0;
+    this.#clickResetTimer = null;
     this.mNotificationSounds = new NotificationSounds();
     this.mThemes = [
       { theme: Theme.DEFAULT, name: '기본' },
@@ -173,6 +181,23 @@ export class SettingViewComponent implements OnInit {
 
   public isMobile(): boolean {
     return this.mOptionService.isMobile();
+  }
+
+  onProfileIconClick(): void {
+    if (this.#clickResetTimer !== null) {
+      clearTimeout(this.#clickResetTimer);
+      this.#clickResetTimer = null;
+    }
+    this.#clickCount++;
+    this.#clickResetTimer = setTimeout(() => {
+      this.#clickResetTimer = null;
+      this.#clickCount = 0;
+    }, 5000);
+
+    if (this.#clickCount === 5) {
+      alert('developMode');
+      this.#developMode.enabled = true;
+    }
   }
 }
 

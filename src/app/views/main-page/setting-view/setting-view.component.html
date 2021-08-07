@@ -1,7 +1,12 @@
 <div class="user-setting">
   <div class="user-info">
     <div class="u-info">
-      <img class="profile" [src]="getIcon() | safe" width="40" />
+      <img
+        class="profile"
+        [src]="getIcon() | safe"
+        width="40"
+        (click)="onProfileIconClick()"
+      />
       <span class="u-name">
         <p class="lv">Lv. {{ getLevel() }}</p>
         <p class="name">{{ getName() }}</p>

@@ -37,7 +37,7 @@
     </twitch-video-pack>
     <youtube-pack *ngSwitchCase="'youtube'" [message]="message"> </youtube-pack>
   </div>
-  <div class="menu" *ngIf="testMode">
+  <div class="menu" *ngIf="developMode.enabled">
     <button (click)="onReactionClick()">❤️</button>
   </div>
 </div>

@@ -1,8 +1,7 @@
-import { ChatMessage } from 'src/app/models/chat/ChatMessage';
-import { OptionService } from 'src/app/services/option/option.service';
-
 import { Component, Input, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { ChatMessage } from 'src/app/models/chat/ChatMessage';
+import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
+import { OptionService } from 'src/app/services/option/option.service';
 
 @Component({
   selector: 'chat-message-entry',
@@ -16,13 +15,17 @@ export class ChatMessageEntryComponent implements OnInit {
   @Input()
   public message: ChatMessage;
 
-  testMode: boolean = false;
   reaction: boolean;
 
   private mTimeStr: string;
+  developMode: DevelopModeService;
 
-  public constructor(private mOption: OptionService) {
+  public constructor(
+    private mOption: OptionService,
+    developMode: DevelopModeService
+  ) {
     this.mTimeStr = '';
+    this.developMode = developMode;
   }
 
   public ngOnInit() {
@@ -38,6 +41,10 @@ export class ChatMessageEntryComponent implements OnInit {
     return this.mTimeStr;
   }
 
+  onReactionClick(): void {
+    this.reaction = true;
+  }
+
   private static convertTimeToString(timestamp: number): string {
     const padZero = (n: number) => (n < 10 ? `0${n}` : n);
     const time = new Date(timestamp);
@@ -49,9 +56,5 @@ export class ChatMessageEntryComponent implements OnInit {
     const m = padZero(time.getMinutes());
     const s = padZero(time.getSeconds());
     return `${y}-${mm}-${d} ${h}:${m}:${s}`;
-  }
-
-  onReactionClick(): void {
-    this.reaction = true;
   }
 }

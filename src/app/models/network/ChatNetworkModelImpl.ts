@@ -48,7 +48,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   reaction(chatHash: string, reaction: string): void {
     this.#socket.send({
       commandType: 'reaction',
-      resource: { chatHash, reaction },
+      resource: { userKey: this.#privateKey, chatHash, reaction },
     });
   }
 

@@ -23,6 +23,7 @@ type ChatRequest = {
 type ReactionRequest = {
   commandType: 'reaction';
   resource: {
+    userKey: string;
     chatHash: string;
     reaction: string;
   };

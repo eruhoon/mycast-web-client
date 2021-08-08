@@ -1,10 +1,10 @@
+import { ReactionResponse } from '../socket/VegaChatSocketModel';
+import { UpdateLinkResponse } from '../socket/WebSocketModel';
 import { Chat } from './Chat';
 import { ChatSender } from './ChatSender';
 import { MutableChat } from './MutableChat';
 import { MutableChatMessage } from './MutableChatMessage';
-import { UpdateLinkResponse } from '../socket/WebSocketModel';
-import { ReactionResponse } from '../socket/VegaChatSocketModel';
-import { Reaction } from './reaction/Reaction';
+import { ReactionMerger } from './reaction/ReactionMerger';
 
 export class ChatContianer {
   private static readonly CHAT_CAPACITY = 50;
@@ -51,19 +51,10 @@ export class ChatContianer {
         newMessage.setRequest(msg.getRequest());
         newMessage.setMessage(msg.getMessage());
         newMessage.setTimestamp(msg.getTimestamp());
-        newMessage.reactions = [
-          ...msg.getReactions(),
-          {
-            value: reactionRes.reaction,
-            users: [
-              {
-                hash: reactionRes.userHash,
-                icon: reactionRes.icon,
-                nickname: reactionRes.nickname,
-              },
-            ],
-          },
-        ];
+        newMessage.reactions = new ReactionMerger().addReaction(
+          msg.getReactions(),
+          reactionRes
+        );
         arr[i] = newMessage;
       });
     });

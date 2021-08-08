@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
-import { Reaction } from 'src/app/models/chat/reaction/Reaction';
 import { MainService } from 'src/app/services/main/main.service';
 import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
 import { OptionService } from 'src/app/services/option/option.service';
@@ -35,13 +34,17 @@ export class ChatMessageEntryComponent implements OnInit {
 
   ngOnInit() {
     const timestamp = this.message.getTimestamp();
-    this.reactions = this.message.getReactions().map((reaction) => {
-      return {
-        title: reaction.users.map((u) => u.nickname).join(','),
-        value: reaction.value,
-      };
-    });
     this.timeText = ChatMessageEntryComponent.convertTimeToString(timestamp);
+    this.reactions = this.message
+      .getReactions()
+      .filter((r) => r.users.length > 0)
+      .map((r) => {
+        const title =
+          r.users.length === 1
+            ? r.users[0].nickname
+            : `${r.users[0].nickname}외 ${r.users.length - 1}명`;
+        return { title, value: r.value };
+      });
   }
 
   onReactionClick(reaction: string): void {

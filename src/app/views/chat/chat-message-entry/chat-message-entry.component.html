@@ -50,7 +50,9 @@
   >
     <span *ngSwitchCase="'thumb-up'">👍</span>
     <span *ngSwitchCase="'thumb-down'">👎</span>
-    <div class="reaction-item-title">{{ reaction.title }}</div>
+    <div class="reaction-item-title">
+      <span> {{ reaction.title }} </span>
+    </div>
   </div>
 </div>
 <div class="footer" *ngIf="option.isTimestampShow()">

@@ -5,6 +5,16 @@
   .footer {
     color: #424242;
   }
+  .reaction {
+    .reaction-item {
+      .reaction-item-title {
+        span {
+          background: #dddddd;
+          color: #323232;
+        }
+      }
+    }
+  }
 }
 :host-context(.theme-dark) {
   .black-text {
@@ -12,5 +22,15 @@
   }
   .footer {
     color: #eeeeee;
+  }
+  .reaction {
+    .reaction-item {
+      .reaction-item-title {
+        span {
+          background: #323232;
+          color: #dddddd;
+        }
+      }
+    }
   }
 }

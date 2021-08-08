@@ -21,7 +21,7 @@ export class ChatListComponent implements OnInit {
   @ViewChild('scrollList', { static: true }) mScrollList: ElementRef;
   @Output() entryIconSelect = new EventEmitter<string>();
 
-  #chats: Chat[];
+  chats: Chat[];
   #currentChatService: CurrentChatService;
   #optionService: OptionService;
   #scrollTimer = -1;
@@ -32,7 +32,7 @@ export class ChatListComponent implements OnInit {
     currentChatService: CurrentChatService,
     optionService: OptionService
   ) {
-    this.#chats = [];
+    this.chats = [];
     this.#service = service;
     this.#currentChatService = currentChatService;
     this.#optionService = optionService;
@@ -44,10 +44,6 @@ export class ChatListComponent implements OnInit {
     );
 
     this.#service.setScroller(this);
-  }
-
-  getChats(): Chat[] {
-    return this.#chats;
   }
 
   isHidden(chat: Chat): boolean {
@@ -93,8 +89,8 @@ export class ChatListComponent implements OnInit {
   }
 
   private onChatsChanged(chats: Chat[]): void {
-    const prevChats = this.#chats;
-    this.#chats = chats;
+    const prevChats = this.chats;
+    this.chats = chats;
     const isFirst = prevChats.length === 0;
     if (!this.#optionService.isScrollLockMode()) {
       this.scrollToBottom(isFirst);

@@ -1,6 +1,6 @@
 <div #scrollList class="chat-list" (scroll)="onScroll($event)">
   <chat-entry
-    *ngFor="let chat of getChats()"
+    *ngFor="let chat of chats"
     [chat]="chat"
     (profileIconSelect)="onProfileIconSelect($event)"
     [ngStyle]="{ display: isHidden(chat) ? 'none' : 'auto' }"

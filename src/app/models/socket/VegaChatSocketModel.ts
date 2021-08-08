@@ -13,6 +13,7 @@ export abstract class VegaChatSocketModel implements SocketModel {
     notification: ReceivedNotification
   ): void;
   protected abstract onChat(res): void;
+  protected abstract onReaction(res: ReactionResponse): void;
 
   abstract send(request: SocketRequest): void;
 
@@ -43,6 +44,9 @@ export abstract class VegaChatSocketModel implements SocketModel {
         break;
       case 'chat':
         this.onChat(messageData.response);
+        break;
+      case 'reaction':
+        this.onReaction(messageData.response);
         break;
       case 'applyMyStatus':
         this.onRefreshMyProfile(messageData.response);
@@ -95,6 +99,16 @@ export type RefreshChatMessage = {
 export type RawChatRequest = {
   msg: string;
   type: string;
+};
+
+export type ReactionResponse = {
+  chatHash: string;
+  hash: string;
+  icon: string;
+  nickname: string;
+  reaction: string;
+  timestamp: string;
+  userHash: string;
 };
 
 /*

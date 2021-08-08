@@ -11,6 +11,7 @@ import { RefreshChat } from './RefreshChat';
 import { RefreshChatDto } from './RefreshChatDto';
 import { SocketRequest } from './SocketModel';
 import {
+  ReactionResponse,
   ReceivedNotification,
   RefreshMyProfile,
   RefreshUser,
@@ -132,6 +133,10 @@ export class WebSocketModel extends VegaChatSocketModel {
   protected onChat(dto: RefreshChatDto) {
     const chat = new RefreshChat(dto);
     this.#onChat(chat);
+  }
+
+  protected onReaction(reactionResponse: ReactionResponse): void {
+    console.log(reactionResponse);
   }
 
   private onOpenSocket(): void {

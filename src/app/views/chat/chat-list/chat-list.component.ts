@@ -1,19 +1,16 @@
-import { Chat } from 'src/app/models/chat/Chat';
-import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
-import { OptionService } from 'src/app/services/option/option.service';
-
 import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-
-import { ChatListService } from './chat-list.service';
+import { Chat } from 'src/app/models/chat/Chat';
 import { ChatSenderType } from 'src/app/models/chat/ChatSender';
+import { CurrentChatService } from 'src/app/services/chat/current-chat.service';
+import { OptionService } from 'src/app/services/option/option.service';
+import { ChatListService } from './chat-list.service';
 
 @Component({
   selector: 'chat-list',
@@ -22,48 +19,49 @@ import { ChatSenderType } from 'src/app/models/chat/ChatSender';
 })
 export class ChatListComponent implements OnInit {
   @ViewChild('scrollList', { static: true }) mScrollList: ElementRef;
-  @Output() entryIconSelect: EventEmitter<string>;
+  @Output() entryIconSelect = new EventEmitter<string>();
 
-  private mChats: Chat[];
-  private mCurrentChatService: CurrentChatService;
-  private mOptionService: OptionService;
-  private mScrollTimer = -1;
+  #chats: Chat[];
+  #currentChatService: CurrentChatService;
+  #optionService: OptionService;
+  #scrollTimer = -1;
+  #service: ChatListService;
 
-  public constructor(
-    private mService: ChatListService,
+  constructor(
+    service: ChatListService,
     currentChatService: CurrentChatService,
     optionService: OptionService
   ) {
-    this.mChats = [];
-    this.entryIconSelect = new EventEmitter<string>();
-    this.mCurrentChatService = currentChatService;
-    this.mOptionService = optionService;
+    this.#chats = [];
+    this.#service = service;
+    this.#currentChatService = currentChatService;
+    this.#optionService = optionService;
   }
 
-  public ngOnInit() {
-    this.mCurrentChatService.subscribeChat((chats) =>
+  ngOnInit() {
+    this.#currentChatService.subscribeChat((chats) =>
       this.onChatsChanged(chats)
     );
 
-    this.mService.setScroller(this);
+    this.#service.setScroller(this);
   }
 
-  public getChats(): Chat[] {
-    return this.mChats;
+  getChats(): Chat[] {
+    return this.#chats;
   }
 
-  public isHidden(chat: Chat): boolean {
-    if (this.mOptionService.isChatBotDisabled()) {
+  isHidden(chat: Chat): boolean {
+    if (this.#optionService.isChatBotDisabled()) {
       return chat.getSender().getType() === ChatSenderType.BOT;
     }
     return false;
   }
 
-  public onProfileIconSelect(iconSrc: string): void {
+  onProfileIconSelect(iconSrc: string): void {
     this.entryIconSelect.emit(iconSrc);
   }
 
-  public scrollToBottom(isFirst: boolean): void {
+  scrollToBottom(isFirst: boolean): void {
     setTimeout(() => {
       const listElement = this.mScrollList.nativeElement;
       listElement.scrollTo({
@@ -74,31 +72,31 @@ export class ChatListComponent implements OnInit {
     });
   }
 
-  public onScroll(event: Event): void {
+  onScroll(event: Event): void {
     const listElement = this.mScrollList.nativeElement as HTMLDivElement;
     const scrollHeight = listElement.scrollHeight;
     const scrollTop = listElement.scrollTop;
     const height = listElement.clientHeight;
     if (scrollHeight > scrollTop + height + 300) {
-      if (this.mScrollTimer === -1) {
-        this.mScrollTimer = Number(
+      if (this.#scrollTimer === -1) {
+        this.#scrollTimer = Number(
           setTimeout(() => {
-            this.mOptionService.setScrollLockMode(true);
+            this.#optionService.setScrollLockMode(true);
           }, 1000)
         );
       }
     } else {
-      clearTimeout(this.mScrollTimer);
-      this.mScrollTimer = -1;
-      this.mOptionService.setScrollLockMode(false);
+      clearTimeout(this.#scrollTimer);
+      this.#scrollTimer = -1;
+      this.#optionService.setScrollLockMode(false);
     }
   }
 
   private onChatsChanged(chats: Chat[]): void {
-    const prevChats = this.mChats;
-    this.mChats = chats;
+    const prevChats = this.#chats;
+    this.#chats = chats;
     const isFirst = prevChats.length === 0;
-    if (!this.mOptionService.isScrollLockMode()) {
+    if (!this.#optionService.isScrollLockMode()) {
       this.scrollToBottom(isFirst);
     }
   }

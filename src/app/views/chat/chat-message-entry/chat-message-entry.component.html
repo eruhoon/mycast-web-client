@@ -37,12 +37,12 @@
     </twitch-video-pack>
     <youtube-pack *ngSwitchCase="'youtube'" [message]="message"> </youtube-pack>
   </div>
-  <div class="menu" *ngIf="developMode.enabled">
+  <div class="menu">
     <button (click)="onReactionClick('thumb-up')">👍</button>
     <button (click)="onReactionClick('thumb-down')">👎</button>
   </div>
 </div>
-<div class="reaction" *ngIf="developMode.enabled && reactions.length > 0">
+<div class="reaction" *ngIf="reactions.length > 0">
   <div
     class="reaction-item"
     *ngFor="let reaction of reactions"

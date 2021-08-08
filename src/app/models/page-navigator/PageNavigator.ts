@@ -1,25 +1,25 @@
 import { Router } from '@angular/router';
 
 export class PageNavigator {
-  private mRouter: Router;
+  #router: Router;
 
-  public constructor(router: Router) {
-    this.mRouter = router;
+  constructor(router: Router) {
+    this.#router = router;
   }
 
-  public navigate(path: string | null) {
+  navigate(path: string | null) {
     if (!path) {
       this.navigateMainPage();
       return;
     }
-    this.mRouter.navigate([path]);
+    this.#router.navigate([path]);
   }
 
-  public navigateMainPage() {
-    this.mRouter.navigate(['/']);
+  navigateMainPage() {
+    this.#router.navigate(['/']);
   }
 
-  public navigateJoinPage() {
-    this.mRouter.navigate(['/join']);
+  navigateJoinPage() {
+    this.#router.navigate(['/join']);
   }
 }

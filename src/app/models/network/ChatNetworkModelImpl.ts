@@ -11,31 +11,31 @@ import { ChatNetworkModel } from './ChatNetworkModel';
 export class ChatNetworkModelImpl implements ChatNetworkModel {
   readonly #privateKey: string;
   readonly #chatRequestFactory = new ChatRequestFactory();
-  private mSocket: SocketModel;
-  private mOnRefreshMyProfile: TypeCallback<Profile>;
-  private mOnUpdateLink: TypeCallback<UpdateLinkResponse>;
-  private mOnRefreshChatList: TypeCallback<Chat[]>;
-  private mOnRefreshUserList: TypeCallback<User[]>;
-  private mOnNotifcationReceived: TypeCallback<VegaNotification>;
-  private mOnChat: TypeCallback<Chat>;
+  #socket: SocketModel;
+  #onRefreshMyProfile: TypeCallback<Profile>;
+  #onUpdateLink: TypeCallback<UpdateLinkResponse>;
+  #onRefreshChatList: TypeCallback<Chat[]>;
+  #onRefreshUserList: TypeCallback<User[]>;
+  #onNotifcationReceived: TypeCallback<VegaNotification>;
+  #onChat: TypeCallback<Chat>;
 
-  public constructor(privateKey: string) {
+  constructor(privateKey: string) {
     this.#privateKey = privateKey;
-    this.mSocket = this.createSocketModel(privateKey);
-    this.mOnUpdateLink = (_) => {};
-    this.mOnRefreshChatList = (_) => {};
-    this.mOnChat = (_) => {};
+    this.#socket = this.createSocketModel(privateKey);
+    this.#onUpdateLink = (_) => {};
+    this.#onRefreshChatList = (_) => {};
+    this.#onChat = (_) => {};
   }
 
-  public isOpen(): boolean {
-    return this.mSocket.isOpen();
+  isOpen(): boolean {
+    return this.#socket.isOpen();
   }
 
-  public chat(chat: string): void {
+  chat(chat: string): void {
     const request = this.#chatRequestFactory
       .getRequest(chat)
       .toRawChatRequest();
-    this.mSocket.send({
+    this.#socket.send({
       commandType: 'chat',
       resource: {
         userKey: this.#privateKey,
@@ -46,25 +46,21 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   }
 
   reaction(chatHash: string, reaction: string): void {
-    this.mSocket.send({
+    this.#socket.send({
       commandType: 'reaction',
       resource: { chatHash, reaction },
     });
   }
 
-  public notify(to: string): void {
-    this.mSocket.send({
+  notify(to: string): void {
+    this.#socket.send({
       commandType: 'notify-user',
       resource: { from: this.#privateKey, to },
     });
   }
 
-  public modifyProfile(
-    name: string,
-    icon: string,
-    statusMessage: string
-  ): void {
-    this.mSocket.send({
+  modifyProfile(name: string, icon: string, statusMessage: string): void {
+    this.#socket.send({
       commandType: 'modify-profile',
       resource: {
         privateKey: this.#privateKey,
@@ -73,46 +69,46 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     });
   }
 
-  public setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
-    this.mOnRefreshMyProfile = callback;
+  setOnRefreshMyProfileCallback(callback: TypeCallback<Profile>) {
+    this.#onRefreshMyProfile = callback;
   }
 
-  public setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
-    this.mOnUpdateLink = callback;
+  setOnUpdateLinkCallback(callback: TypeCallback<UpdateLinkResponse>) {
+    this.#onUpdateLink = callback;
   }
 
-  public setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
-    this.mOnRefreshChatList = callback;
+  setOnRefreshChatListCallback(callback: TypeCallback<Chat[]>) {
+    this.#onRefreshChatList = callback;
   }
 
-  public setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
-    this.mOnRefreshUserList = callback;
+  setOnRefreshUserListCallback(callback: TypeCallback<User[]>) {
+    this.#onRefreshUserList = callback;
   }
 
-  public setOnNotificationReceivedCallback(
+  setOnNotificationReceivedCallback(
     callback: TypeCallback<VegaNotification>
   ): void {
-    this.mOnNotifcationReceived = callback;
+    this.#onNotifcationReceived = callback;
   }
 
-  public setOnChatCallback(callback: TypeCallback<Chat>): void {
-    this.mOnChat = callback;
+  setOnChatCallback(callback: TypeCallback<Chat>): void {
+    this.#onChat = callback;
   }
 
   private onRefreshMyProfile(profile: Profile): void {
-    this.mOnRefreshMyProfile(profile);
+    this.#onRefreshMyProfile(profile);
   }
 
   private onUpdateLink(link: UpdateLinkResponse): void {
-    this.mOnUpdateLink(link);
+    this.#onUpdateLink(link);
   }
 
   private onRefreshChatList(chats: Chat[]): void {
-    this.mOnRefreshChatList(chats);
+    this.#onRefreshChatList(chats);
   }
 
   private onChat(chat: Chat): void {
-    this.mOnChat(chat);
+    this.#onChat(chat);
   }
 
   private createSocketModel(privateKey: string): SocketModel {
@@ -127,10 +123,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
       this.onRefreshChatList(chats)
     );
     model.setOnRefreshUserListCallback((users) =>
-      this.mOnRefreshUserList(users)
+      this.#onRefreshUserList(users)
     );
     model.setOnNotificationReceived((notification) =>
-      this.mOnNotifcationReceived(notification)
+      this.#onNotifcationReceived(notification)
     );
     model.setOnChatCallback((chat) => this.onChat(chat));
     return model;

@@ -33,6 +33,8 @@
   .reaction-item {
     position: relative;
     display: inline-block;
+    cursor: default;
+
     .reaction-item-title {
       position: absolute;
       left: 0;

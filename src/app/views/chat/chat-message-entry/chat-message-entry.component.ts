@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChatMessage } from 'src/app/models/chat/ChatMessage';
+import { Reaction } from 'src/app/models/chat/reaction/Reaction';
 import { MainService } from 'src/app/services/main/main.service';
 import { DevelopModeService } from 'src/app/services/option/develop-mode.service';
 import { OptionService } from 'src/app/services/option/option.service';
@@ -17,7 +18,7 @@ export class ChatMessageEntryComponent implements OnInit {
   message: ChatMessage;
   readonly developMode: DevelopModeService;
   readonly option: OptionService;
-  reaction: boolean;
+  reactions: ReactionParam[] = [];
   timeText: string;
   #mainService: MainService;
 
@@ -34,12 +35,17 @@ export class ChatMessageEntryComponent implements OnInit {
 
   ngOnInit() {
     const timestamp = this.message.getTimestamp();
+    this.reactions = this.message.getReactions().map((reaction) => {
+      return {
+        title: reaction.users.map((u) => u.nickname).join(','),
+        value: reaction.value,
+      };
+    });
     this.timeText = ChatMessageEntryComponent.convertTimeToString(timestamp);
   }
 
-  onReactionClick(): void {
-    this.#mainService.reaction(this.message.getHash(), 'thumb-up');
-    this.reaction = true;
+  onReactionClick(reaction: string): void {
+    this.#mainService.reaction(this.message.getHash(), reaction);
   }
 
   private static convertTimeToString(timestamp: number): string {
@@ -55,3 +61,8 @@ export class ChatMessageEntryComponent implements OnInit {
     return `${y}-${mm}-${d} ${h}:${m}:${s}`;
   }
 }
+
+type ReactionParam = {
+  value: string;
+  title: string;
+};

@@ -32,6 +32,17 @@
 .reaction {
   display: inline-block;
   height: 0px;
+  .reaction-item {
+    display: inline-block;
+    .reaction-item-title {
+      visibility: collapse;
+    }
+    &:hover {
+      .reaction-item-title {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .footer {

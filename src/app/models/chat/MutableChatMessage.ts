@@ -1,7 +1,9 @@
 import { ChatMessage } from './ChatMessage';
 import { ChatType } from './ChatType';
+import { Reaction } from './reaction/Reaction';
 
 export class MutableChatMessage implements ChatMessage {
+  reactions: Reaction[] = [];
   private mHash: string;
   private mType: ChatType;
   private mRequest: string;
@@ -30,6 +32,10 @@ export class MutableChatMessage implements ChatMessage {
 
   public getTimestamp(): number {
     return this.mTime.getTime();
+  }
+
+  getReactions(): Reaction[] {
+    return this.reactions;
   }
 
   public setType(type: ChatType): void {

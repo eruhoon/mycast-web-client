@@ -3,6 +3,8 @@ import { ChatSender } from './ChatSender';
 import { MutableChat } from './MutableChat';
 import { MutableChatMessage } from './MutableChatMessage';
 import { UpdateLinkResponse } from '../socket/WebSocketModel';
+import { ReactionResponse } from '../socket/VegaChatSocketModel';
+import { Reaction } from './reaction/Reaction';
 
 export class ChatContianer {
   private static readonly CHAT_CAPACITY = 50;
@@ -36,6 +38,35 @@ export class ChatContianer {
     this.mChats = this.mChats.filter(
       (_, i) => i >= length - ChatContianer.CHAT_CAPACITY
     );
+  }
+
+  addReaction(reactionRes: ReactionResponse): void {
+    this.mChats.forEach((chat) => {
+      chat.getMessages().forEach((msg, i, arr) => {
+        if (msg.getHash() !== reactionRes.chatHash) {
+          return;
+        }
+        const newMessage = new MutableChatMessage(msg.getHash());
+        newMessage.setType(msg.getType());
+        newMessage.setRequest(msg.getRequest());
+        newMessage.setMessage(msg.getMessage());
+        newMessage.setTimestamp(msg.getTimestamp());
+        newMessage.reactions = [
+          ...msg.getReactions(),
+          {
+            value: reactionRes.reaction,
+            users: [
+              {
+                hash: reactionRes.userHash,
+                icon: reactionRes.icon,
+                nickname: reactionRes.nickname,
+              },
+            ],
+          },
+        ];
+        arr[i] = newMessage;
+      });
+    });
   }
 
   public updateLink(link: UpdateLinkResponse): void {

@@ -2,6 +2,7 @@ import { Chat } from '../chat/Chat';
 import { ChatMessage } from '../chat/ChatMessage';
 import { ChatSender, ChatSenderType } from '../chat/ChatSender';
 import { ChatType } from '../chat/ChatType';
+import { Reaction } from '../chat/reaction/Reaction';
 import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { RefreshChatDto } from './RefreshChatDto';
 
@@ -87,5 +88,9 @@ class RefreshChatMessage implements ChatMessage {
 
   public getTimestamp(): number {
     return this.mTimestamp;
+  }
+
+  getReactions(): Reaction[] {
+    return [];
   }
 }

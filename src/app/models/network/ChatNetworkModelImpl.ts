@@ -4,6 +4,7 @@ import { VegaNotification } from '../notification/VegaNotification';
 import { Profile } from '../profile/Profile';
 import { ChatRequestFactory } from '../socket/chat-request/ChatRequestFactory';
 import { SocketModel } from '../socket/SocketModel';
+import { ReactionResponse } from '../socket/VegaChatSocketModel';
 import { UpdateLinkResponse, WebSocketModel } from '../socket/WebSocketModel';
 import { User } from '../user/User';
 import { ChatNetworkModel } from './ChatNetworkModel';
@@ -18,6 +19,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
   #onRefreshUserList: TypeCallback<User[]>;
   #onNotifcationReceived: TypeCallback<VegaNotification>;
   #onChat: TypeCallback<Chat>;
+  #onReaction = (reaction: ReactionResponse) => {};
 
   constructor(privateKey: string) {
     this.#privateKey = privateKey;
@@ -95,6 +97,10 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
     this.#onChat = callback;
   }
 
+  setOnReactionCallback(callback: TypeCallback<ReactionResponse>) {
+    this.#onReaction = callback;
+  }
+
   private onRefreshMyProfile(profile: Profile): void {
     this.#onRefreshMyProfile(profile);
   }
@@ -129,6 +135,7 @@ export class ChatNetworkModelImpl implements ChatNetworkModel {
       this.#onNotifcationReceived(notification)
     );
     model.setOnChatCallback((chat) => this.onChat(chat));
+    model.setOnReactionCallback((reaction) => this.#onReaction(reaction));
     return model;
   }
 }

@@ -30,6 +30,7 @@ export class WebSocketModel extends VegaChatSocketModel {
   #onRefreshUserList: TypeCallback<User[]>;
   #onNotificationReceived: TypeCallback<VegaNotification>;
   #onChat: TypeCallback<Chat>;
+  #onReaction: TypeCallback<ReactionResponse>;
 
   constructor(privateKey: string) {
     super();
@@ -80,6 +81,10 @@ export class WebSocketModel extends VegaChatSocketModel {
 
   setOnChatCallback(callback: TypeCallback<Chat>): void {
     this.#onChat = callback;
+  }
+
+  setOnReactionCallback(callback: TypeCallback<ReactionResponse>): void {
+    this.#onReaction = callback;
   }
 
   protected onRefreshMyProfile(rawProfile: RefreshMyProfile): void {
@@ -136,7 +141,7 @@ export class WebSocketModel extends VegaChatSocketModel {
   }
 
   protected onReaction(reactionResponse: ReactionResponse): void {
-    console.log(reactionResponse);
+    this.#onReaction(reactionResponse);
   }
 
   private onOpenSocket(): void {

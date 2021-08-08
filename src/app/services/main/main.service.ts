@@ -15,6 +15,7 @@ import { NotificationService } from '../notification/notification.service';
 import { ProfileService } from '../profile/profile.service';
 import { CurrentUserService } from '../user/current-user.service';
 import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
+import { ReactionResponse } from 'src/app/models/socket/VegaChatSocketModel';
 
 @Injectable({
   providedIn: 'root',
@@ -66,6 +67,10 @@ export class MainService {
     this.mCurrentChatService.addChat(chat);
   }
 
+  public onReaction(reaction: ReactionResponse): void {
+    this.mCurrentChatService.reaction(reaction);
+  }
+
   reaction(chatHash: string, reaction: string): void {
     this.mChatNetwork.reaction(chatHash, reaction);
   }
@@ -94,6 +99,7 @@ export class MainService {
       this.onNotificationRecieved(notification)
     );
     chatNetwork.setOnChatCallback((chat) => this.onChat(chat));
+    chatNetwork.setOnReactionCallback((reaction) => this.onReaction(reaction));
     return chatNetwork;
   }
 

@@ -5,6 +5,7 @@ import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 import { Injectable } from '@angular/core';
 import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
+import { ReactionResponse } from 'src/app/models/socket/VegaChatSocketModel';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,11 @@ export class CurrentChatService {
 
   public addChat(chat: Chat): void {
     this.mChatContainer.addChat(chat);
+    this.mChatSubject.next(this.mChatContainer.toArray());
+  }
+
+  reaction(reaction: ReactionResponse): void {
+    this.mChatContainer.addReaction(reaction);
     this.mChatSubject.next(this.mChatContainer.toArray());
   }
 

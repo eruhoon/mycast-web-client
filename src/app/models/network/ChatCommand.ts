@@ -3,15 +3,15 @@ import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatCommand {
   #chatListService: ChatListService;
-  chatNetwork: ChatNetworkModel;
+  #chatNetwork: ChatNetworkModel;
 
   constructor(chatListService: ChatListService, model: ChatNetworkModel) {
     this.#chatListService = chatListService;
-    this.chatNetwork = model;
+    this.#chatNetwork = model;
   }
 
   execute(text: string): void {
-    this.chatNetwork.chat(text);
+    this.#chatNetwork.chat(text);
     setTimeout(() => {
       this.#chatListService.scrollToBottom(false);
     }, 500);

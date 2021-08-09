@@ -21,63 +21,63 @@ import { ReactionResponse } from 'src/app/models/socket/VegaChatSocketModel';
   providedIn: 'root',
 })
 export class MainService {
-  private mProfileService: ProfileService;
-  private mCurrentChatService: CurrentChatService;
-  private mCurrentUserService: CurrentUserService;
-  private mNotificationService: NotificationService;
-  private mChatNetwork: ChatNetworkModel;
-  private mCurrentLink: string;
+  #profileService: ProfileService;
+  #currentChatService: CurrentChatService;
+  #currentUserService: CurrentUserService;
+  #notificationService: NotificationService;
+  #chatNetwork: ChatNetworkModel;
+  #currentLink: string;
 
-  public constructor(
+  constructor(
     profileService: ProfileService,
     currentChatService: CurrentChatService,
     currentUserService: CurrentUserService,
     notificationService: NotificationService
   ) {
-    this.mProfileService = profileService;
-    this.mCurrentChatService = currentChatService;
-    this.mCurrentUserService = currentUserService;
-    this.mNotificationService = notificationService;
-    this.mChatNetwork = this.createChatNetworkModel();
-    this.mCurrentLink = '';
+    this.#profileService = profileService;
+    this.#currentChatService = currentChatService;
+    this.#currentUserService = currentUserService;
+    this.#notificationService = notificationService;
+    this.#chatNetwork = this.createChatNetworkModel();
+    this.#currentLink = '';
 
-    this.mProfileService.setModifyProfileCommand(
-      new ModifyProfileCommand(this.mChatNetwork)
+    this.#profileService.setModifyProfileCommand(
+      new ModifyProfileCommand(this.#chatNetwork)
     );
   }
 
-  public isOpen(): boolean {
-    return this.mChatNetwork.isOpen();
+  isOpen(): boolean {
+    return this.#chatNetwork.isOpen();
   }
 
   // TODO: Remove
-  public getChatNework(): ChatNetworkModel {
-    return this.mChatNetwork;
+  getChatNework(): ChatNetworkModel {
+    return this.#chatNetwork;
   }
 
-  public setCurrentLink(link: string | null) {
-    this.mCurrentLink = link || '';
+  setCurrentLink(link: string | null) {
+    this.#currentLink = link || '';
   }
 
-  public getCurrentLink(): string {
-    return this.mCurrentLink;
+  getCurrentLink(): string {
+    return this.#currentLink;
   }
 
-  public onChat(chat: Chat) {
-    this.mCurrentChatService.addChat(chat);
+  onChat(chat: Chat) {
+    this.#currentChatService.addChat(chat);
   }
 
-  public onReaction(reaction: ReactionResponse): void {
+  onReaction(reaction: ReactionResponse): void {
     console.log(reaction);
-    this.mCurrentChatService.reaction(reaction);
+    this.#currentChatService.reaction(reaction);
   }
 
   reaction(chatHash: string, reaction: string): void {
-    this.mChatNetwork.reaction(chatHash, reaction);
+    this.#chatNetwork.reaction(chatHash, reaction);
   }
 
-  public notify(to: string): void {
-    this.mChatNetwork.notify(to);
+  notify(to: string): void {
+    this.#chatNetwork.notify(to);
   }
 
   private createChatNetworkModel(): ChatNetworkModel {
@@ -105,22 +105,22 @@ export class MainService {
   }
 
   private onMyProfileRefresh(profile: Profile) {
-    this.mProfileService.setProfile(profile);
+    this.#profileService.setProfile(profile);
   }
 
   private onUpdateLink(link: UpdateLinkResponse): void {
-    this.mCurrentChatService.updateLink(link);
+    this.#currentChatService.updateLink(link);
   }
 
   private onChatListRefresh(chats: Chat[]) {
-    this.mCurrentChatService.setCurrentChat(chats);
+    this.#currentChatService.setCurrentChat(chats);
   }
 
   private onUserListRefresh(users: User[]): void {
-    this.mCurrentUserService.setUsers(users);
+    this.#currentUserService.setUsers(users);
   }
 
   private onNotificationRecieved(notification: VegaNotification): void {
-    this.mNotificationService.pushNotification(notification);
+    this.#notificationService.pushNotification(notification);
   }
 }

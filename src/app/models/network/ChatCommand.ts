@@ -1,17 +1,19 @@
 import { ChatListService } from 'src/app/views/chat/chat-list/chat-list.service';
-
 import { ChatNetworkModel } from './ChatNetworkModel';
 
 export class ChatCommand {
-  public constructor(
-    private mChatListSrv: ChatListService,
-    private mModel: ChatNetworkModel
-  ) {}
+  #chatListService: ChatListService;
+  chatNetwork: ChatNetworkModel;
 
-  public execute(text: string): void {
-    this.mModel.chat(text);
+  constructor(chatListService: ChatListService, model: ChatNetworkModel) {
+    this.#chatListService = chatListService;
+    this.chatNetwork = model;
+  }
+
+  execute(text: string): void {
+    this.chatNetwork.chat(text);
     setTimeout(() => {
-      this.mChatListSrv.scrollToBottom(false);
+      this.#chatListService.scrollToBottom(false);
     }, 500);
   }
 }

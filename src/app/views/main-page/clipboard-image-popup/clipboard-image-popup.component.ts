@@ -1,11 +1,6 @@
-import { ChatCommand } from 'src/app/models/network/ChatCommand';
-import { ChatNetworkModel } from 'src/app/models/network/ChatNetworkModel';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { MainService } from 'src/app/services/main/main.service';
-
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
-import { ChatListService } from '../../chat/chat-list/chat-list.service';
 
 @Component({
   selector: 'clipboard-image-popup',
@@ -15,16 +10,12 @@ import { ChatListService } from '../../chat/chat-list/chat-list.service';
 export class ClipboardImagePopupComponent implements OnInit {
   @ViewChild('focus', { static: true }) mFocus: ElementRef<HTMLImageElement>;
 
-  private mService: ClipboardImageService;
-  private mChatCommand: ChatCommand;
+  #clipboardImageService: ClipboardImageService;
+  #mainService: MainService;
 
-  public constructor(
-    service: ClipboardImageService,
-    chatListSrv: ChatListService,
-    mainSrv: MainService
-  ) {
-    this.mService = service;
-    this.mChatCommand = new ChatCommand(chatListSrv, mainSrv.getChatNework());
+  public constructor(clipboardImage: ClipboardImageService, main: MainService) {
+    this.#clipboardImageService = clipboardImage;
+    this.#mainService = main;
   }
 
   public ngOnInit(): void {
@@ -32,16 +23,16 @@ export class ClipboardImagePopupComponent implements OnInit {
   }
 
   public getCurrentImage(): string | null {
-    return this.mService.getCurrentImage();
+    return this.#clipboardImageService.getCurrentImage();
   }
 
   public sendImage(): void {
     const text = `사진::${this.getCurrentImage()}`;
-    this.mChatCommand.execute(text);
-    this.mService.clearImage();
+    this.#mainService.chat(text);
+    this.#clipboardImageService.clearImage();
   }
 
   public onCloseClick(): void {
-    this.mService.clearImage();
+    this.#clipboardImageService.clearImage();
   }
 }

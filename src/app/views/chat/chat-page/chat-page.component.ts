@@ -1,12 +1,8 @@
+import { Component } from '@angular/core';
 import { ClipboardManager } from 'src/app/models/clipboard/ClipboardManager';
-import { ChatCommand } from 'src/app/models/network/ChatCommand';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { ClipboardImageService } from 'src/app/services/clipboard/clipboard-image.service';
 import { MainService } from 'src/app/services/main/main.service';
-
-import { Component } from '@angular/core';
-
-import { ChatListService } from '../chat-list/chat-list.service';
 
 @Component({
   selector: 'chat-page',
@@ -16,28 +12,26 @@ import { ChatListService } from '../chat-list/chat-list.service';
 export class ChatPageComponent {
   private mClipboardImageService: ClipboardImageService;
   private mClipboardManager: ClipboardManager;
-  private mChatCommand: ChatCommand;
+  #mainService: MainService;
+  #chatService: ChatService;
 
   public constructor(
     mainService: MainService,
-    private mChatService: ChatService,
-    clipboardImageService: ClipboardImageService,
-    chatListSrv: ChatListService
+    chatService: ChatService,
+    clipboardImageService: ClipboardImageService
   ) {
+    this.#mainService = mainService;
+    this.#chatService = chatService;
     this.mClipboardImageService = clipboardImageService;
     this.mClipboardManager = new ClipboardManager();
-    this.mChatCommand = new ChatCommand(
-      chatListSrv,
-      mainService.getChatNework()
-    );
   }
 
   public isChatUserListShow(): boolean {
-    return this.mChatService.isChatUserListShow();
+    return this.#chatService.isChatUserListShow();
   }
 
   public isEmojiAttachViewShow(): boolean {
-    return this.mChatService.isEmojiAttachViewShow();
+    return this.#chatService.isEmojiAttachViewShow();
   }
 
   public onPaste(event: ClipboardEvent): void {
@@ -64,10 +58,10 @@ export class ChatPageComponent {
   }
 
   public onChatInput(rawChat: string): void {
-    this.mChatCommand.execute(rawChat);
+    this.#mainService.chat(rawChat);
   }
 
   public onChatEntryIconSelect(icon: string) {
-    this.mChatCommand.execute(icon);
+    this.#mainService.chat(icon);
   }
 }

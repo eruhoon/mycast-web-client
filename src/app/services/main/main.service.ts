@@ -16,6 +16,8 @@ import { ProfileService } from '../profile/profile.service';
 import { CurrentUserService } from '../user/current-user.service';
 import { UpdateLinkResponse } from 'src/app/models/socket/WebSocketModel';
 import { ReactionResponse } from 'src/app/models/socket/VegaChatSocketModel';
+import { ChatListService } from 'src/app/views/chat/chat-list/chat-list.service';
+import { ChatCommand } from 'src/app/models/network/ChatCommand';
 
 @Injectable({
   providedIn: 'root',
@@ -28,11 +30,14 @@ export class MainService {
   #chatNetwork: ChatNetworkModel;
   #currentLink: string;
 
+  #chatCommand: ChatCommand;
+
   constructor(
     profileService: ProfileService,
     currentChatService: CurrentChatService,
     currentUserService: CurrentUserService,
-    notificationService: NotificationService
+    notificationService: NotificationService,
+    chatListService: ChatListService
   ) {
     this.#profileService = profileService;
     this.#currentChatService = currentChatService;
@@ -44,6 +49,12 @@ export class MainService {
     this.#profileService.setModifyProfileCommand(
       new ModifyProfileCommand(this.#chatNetwork)
     );
+
+    this.#chatCommand = new ChatCommand(chatListService, this.#chatNetwork);
+  }
+
+  chat(text: string): void {
+    this.#chatCommand.execute(text);
   }
 
   isOpen(): boolean {

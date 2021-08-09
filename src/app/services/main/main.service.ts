@@ -61,11 +61,6 @@ export class MainService {
     return this.#chatNetwork.isOpen();
   }
 
-  // TODO: Remove
-  getChatNework(): ChatNetworkModel {
-    return this.#chatNetwork;
-  }
-
   setCurrentLink(link: string | null) {
     this.#currentLink = link || '';
   }

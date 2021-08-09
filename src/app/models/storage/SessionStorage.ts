@@ -1,25 +1,25 @@
 export class SessionStorage {
   private static sInstance: SessionStorage | null = null;
 
-  public constructor() {}
+  constructor() {}
 
-  public getSessionId(): string | null {
+  getSessionId(): string | null {
     return this.getItem(SessionStorageKey.SESSION_ID);
   }
 
-  public setSessionId(id: string): void {
+  setSessionId(id: string): void {
     this.setItem(SessionStorageKey.SESSION_ID, id);
   }
 
-  public getPrivateKey(): string | null {
+  getPrivateKey(): string | null {
     return this.getItem(SessionStorageKey.PRIVATE_KEY);
   }
 
-  public setPrivateKey(privateKey: string): void {
+  setPrivateKey(privateKey: string): void {
     this.setItem(SessionStorageKey.PRIVATE_KEY, privateKey);
   }
 
-  public static getInstance(): SessionStorage {
+  static getInstance(): SessionStorage {
     if (this.sInstance === null) {
       this.sInstance = new SessionStorage();
     }

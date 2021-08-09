@@ -8,5 +8,15 @@ export type RefreshChatDto = {
   msg: RefreshChatMessage;
   nickname: string;
   isMobile: boolean;
+  reactions?: RefreshReactionDto[];
   timestamp: string;
+};
+
+export type RefreshReactionDto = {
+  user: {
+    hash: string;
+    icon: string;
+    nickname: string;
+  };
+  value: string;
 };

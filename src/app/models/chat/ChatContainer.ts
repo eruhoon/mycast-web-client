@@ -5,7 +5,6 @@ import { ChatSender } from './ChatSender';
 import { MutableChat } from './MutableChat';
 import { MutableChatMessage } from './MutableChatMessage';
 import { Reaction } from './reaction/Reaction';
-import { ReactionMerger } from './reaction/ReactionMerger';
 
 export class ChatContianer {
   private static readonly CHAT_CAPACITY = 50;
@@ -111,6 +110,7 @@ export class ChatContianer {
       mutableMessage.setRequest(message.getRequest());
       mutableMessage.setMessage(message.getMessage());
       mutableMessage.setTimestamp(message.getTimestamp());
+      mutableMessage.reactions = message.getReactions();
       mutableChat.addMessage(mutableMessage);
     });
     return mutableChat;

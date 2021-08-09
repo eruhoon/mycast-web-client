@@ -4,60 +4,60 @@ import { ChatSender, ChatSenderType } from './ChatSender';
 import { MutableChatSender } from './MutableChatSender';
 
 export class MutableChat implements Chat {
-  private mHash: string;
-  private mNickname: string;
-  private mLevel: number;
-  private mIcon: string;
-  private mSenderType: ChatSenderType;
-  private mMessages: ChatMessage[];
+  #hash: string;
+  #nickname: string;
+  #level: number;
+  #icon: string;
+  #senderType: ChatSenderType;
+  #messages: ChatMessage[];
 
-  public constructor() {
-    this.mMessages = [];
+  constructor() {
+    this.#messages = [];
   }
 
-  public getSender(): ChatSender {
+  getSender(): ChatSender {
     const sender = new MutableChatSender();
-    sender.setHash(this.mNickname + this.mLevel + this.mIcon);
-    sender.setNickname(this.mNickname);
-    sender.setLevel(this.mLevel);
-    sender.setIcon(this.mIcon);
-    sender.setType(this.mSenderType);
+    sender.setHash(this.#nickname + this.#level + this.#icon);
+    sender.setNickname(this.#nickname);
+    sender.setLevel(this.#level);
+    sender.setIcon(this.#icon);
+    sender.setType(this.#senderType);
     return sender;
   }
 
-  public getMessages(): ChatMessage[] {
-    return this.mMessages;
+  getMessages(): ChatMessage[] {
+    return this.#messages;
   }
 
-  public getHash(): string {
-    return this.mHash;
+  getHash(): string {
+    return this.#hash;
   }
 
-  public setHash(hash: string): void {
-    this.mHash = hash;
+  setHash(hash: string): void {
+    this.#hash = hash;
   }
 
-  public setNickname(nickname: string): void {
-    this.mNickname = nickname;
+  setNickname(nickname: string): void {
+    this.#nickname = nickname;
   }
 
-  public setLevel(level: number): void {
-    this.mLevel = level;
+  setLevel(level: number): void {
+    this.#level = level;
   }
 
-  public setIcon(icon: string): void {
-    this.mIcon = icon;
+  setIcon(icon: string): void {
+    this.#icon = icon;
   }
 
-  public setSenderType(senderType: ChatSenderType): void {
-    this.mSenderType = senderType;
+  setSenderType(senderType: ChatSenderType): void {
+    this.#senderType = senderType;
   }
 
-  public setMessages(chatMessages: ChatMessage[]): void {
-    this.mMessages = chatMessages;
+  setMessages(chatMessages: ChatMessage[]): void {
+    this.#messages = chatMessages;
   }
 
-  public addMessage(chatMessage: ChatMessage): void {
-    this.mMessages.push(chatMessage);
+  addMessage(chatMessage: ChatMessage): void {
+    this.#messages.push(chatMessage);
   }
 }

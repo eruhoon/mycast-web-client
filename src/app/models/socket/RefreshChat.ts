@@ -7,57 +7,62 @@ import { ChatTypeParser } from '../chat/util/ChatTypeParser';
 import { RefreshChatDto, RefreshReactionDto } from './RefreshChatDto';
 
 export class RefreshChat implements Chat {
-  private mSender: ChatSender;
-  private mMessages: ChatMessage[];
+  #dto: RefreshChatDto;
+  #sender: ChatSender;
+  #messages: ChatMessage[];
 
-  constructor(private mDto: RefreshChatDto) {
-    this.mSender = new RefreshChatSender(this.mDto);
-    this.mMessages = [new RefreshChatMessage(this.mDto)];
+  constructor(dto: RefreshChatDto) {
+    this.#dto = dto;
+    this.#sender = new RefreshChatSender(dto);
+    this.#messages = [new RefreshChatMessage(dto)];
   }
   getHash(): string {
-    return this.mDto.hash;
+    return this.#dto.hash;
   }
 
   getSender(): ChatSender {
-    return this.mSender;
+    return this.#sender;
   }
 
   getMessages(): ChatMessage[] {
-    return this.mMessages;
+    return this.#messages;
   }
 }
 
 class RefreshChatSender implements ChatSender {
-  constructor(private mDto: RefreshChatDto) {}
+  #dto: RefreshChatDto;
+  constructor(dto: RefreshChatDto) {
+    this.#dto = dto;
+  }
 
   getHash(): string {
-    return this.mDto.nickname + this.mDto.level + this.mDto.icon;
+    return this.#dto.nickname + this.#dto.level + this.#dto.icon;
   }
 
   getNickname(): string {
-    return this.mDto.nickname;
+    return this.#dto.nickname;
   }
 
   getLevel(): number {
-    return this.mDto.level;
+    return this.#dto.level;
   }
 
   getIcon(): string {
-    return this.mDto.icon;
+    return this.#dto.icon;
   }
 
   getType(): ChatSenderType {
     if (this.isLegacyBot()) {
       return ChatSenderType.BOT;
     }
-    if (this.mDto.isMobile) {
+    if (this.#dto.isMobile) {
       return ChatSenderType.MOBILE;
     }
     return ChatSenderType.PC;
   }
 
   private isLegacyBot(): boolean {
-    return this.mDto.level === 100;
+    return this.#dto.level === 100;
   }
 }
 

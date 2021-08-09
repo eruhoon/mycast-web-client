@@ -74,7 +74,6 @@ export class MainService {
   }
 
   onReaction(reaction: ReactionResponse): void {
-    console.log(reaction);
     this.#currentChatService.reaction(reaction);
   }
 

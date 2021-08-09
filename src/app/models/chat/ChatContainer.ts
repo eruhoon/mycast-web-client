@@ -4,6 +4,7 @@ import { Chat } from './Chat';
 import { ChatSender } from './ChatSender';
 import { MutableChat } from './MutableChat';
 import { MutableChatMessage } from './MutableChatMessage';
+import { Reaction } from './reaction/Reaction';
 import { ReactionMerger } from './reaction/ReactionMerger';
 
 export class ChatContianer {
@@ -40,7 +41,7 @@ export class ChatContianer {
     );
   }
 
-  addReaction(reactionRes: ReactionResponse): void {
+  setReaction(reactionRes: ReactionResponse): void {
     this.mChats.forEach((chat) => {
       chat.getMessages().forEach((msg, i, arr) => {
         if (msg.getHash() !== reactionRes.chatHash) {
@@ -51,13 +52,26 @@ export class ChatContianer {
         newMessage.setRequest(msg.getRequest());
         newMessage.setMessage(msg.getMessage());
         newMessage.setTimestamp(msg.getTimestamp());
-        newMessage.reactions = new ReactionMerger().addReaction(
-          msg.getReactions(),
-          reactionRes
-        );
+        newMessage.reactions = this.makeReactions(reactionRes);
         arr[i] = newMessage;
       });
     });
+  }
+
+  makeReactions(res: ReactionResponse): Reaction[] {
+    const reactions: Reaction[] = [];
+    for (const entry of res.reactions) {
+      const found = reactions.find((r) => r.value === entry.value);
+      if (!found) {
+        reactions.push({
+          users: [entry.user],
+          value: entry.value,
+        });
+      } else {
+        found.users.push(entry.user);
+      }
+    }
+    return reactions;
   }
 
   public updateLink(link: UpdateLinkResponse): void {

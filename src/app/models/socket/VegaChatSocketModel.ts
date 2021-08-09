@@ -103,12 +103,16 @@ export type RawChatRequest = {
 
 export type ReactionResponse = {
   chatHash: string;
-  hash: string;
-  icon: string;
-  nickname: string;
-  reaction: string;
-  timestamp: string;
-  userHash: string;
+  reactions: {
+    hash: string;
+    timestamp: string;
+    user: {
+      hash: string;
+      icon: string;
+      nickname: string;
+    };
+    value: string;
+  }[];
 };
 
 /*

@@ -68,6 +68,7 @@ export class MainService {
   }
 
   public onReaction(reaction: ReactionResponse): void {
+    console.log(reaction);
     this.mCurrentChatService.reaction(reaction);
   }
 

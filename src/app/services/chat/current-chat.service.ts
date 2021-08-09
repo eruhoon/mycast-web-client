@@ -44,7 +44,7 @@ export class CurrentChatService {
   }
 
   reaction(reaction: ReactionResponse): void {
-    this.mChatContainer.addReaction(reaction);
+    this.mChatContainer.setReaction(reaction);
     this.mChatSubject.next(this.mChatContainer.toArray());
   }
 

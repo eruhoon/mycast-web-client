@@ -13,26 +13,26 @@ export class ClipboardImagePopupComponent implements OnInit {
   #clipboardImageService: ClipboardImageService;
   #mainService: MainService;
 
-  public constructor(clipboardImage: ClipboardImageService, main: MainService) {
+  constructor(clipboardImage: ClipboardImageService, main: MainService) {
     this.#clipboardImageService = clipboardImage;
     this.#mainService = main;
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.mFocus.nativeElement.focus();
   }
 
-  public getCurrentImage(): string | null {
+  getCurrentImage(): string | null {
     return this.#clipboardImageService.getCurrentImage();
   }
 
-  public sendImage(): void {
+  sendImage(): void {
     const text = `사진::${this.getCurrentImage()}`;
     this.#mainService.chat(text);
     this.#clipboardImageService.clearImage();
   }
 
-  public onCloseClick(): void {
+  onCloseClick(): void {
     this.#clipboardImageService.clearImage();
   }
 }

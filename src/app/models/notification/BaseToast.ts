@@ -3,17 +3,17 @@ import { Md5 } from 'ts-md5';
 import { Toast } from './Toast';
 
 export abstract class BaseToast implements Toast {
-  private mHash: string;
+  #hash: string;
 
-  public constructor() {
-    this.mHash = BaseToast.generateHash();
+  constructor() {
+    this.#hash = BaseToast.generateHash();
   }
 
-  public getHash(): string {
-    return this.mHash;
+  getHash(): string {
+    return this.#hash;
   }
 
-  public abstract getText(): string;
+  abstract getText(): string;
 
   private static generateHash(): string {
     const key = `vega-toast-${new Date().getTime()}`;

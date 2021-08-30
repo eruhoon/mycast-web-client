@@ -1,16 +1,13 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 import { MutableNotification } from 'src/app/models/notification/MutableNotification';
 import { NotificationChannelHash } from 'src/app/models/notification/NotificationChannel';
 import { StreamSocketModel } from 'src/app/models/stream/socket/StreamSocketModel';
 import { Stream } from 'src/app/models/stream/Stream';
 import { StreamDto } from 'src/app/models/stream/StreamDto';
 import { StreamDtoAdapter } from 'src/app/models/stream/StreamDtoAdapter';
-
-import { Injectable } from '@angular/core';
-
 import { NotificationService } from '../notification/notification.service';
-import { Observable, Subject, BehaviorSubject, NextObserver } from 'rxjs';
-import { Callback } from 'src/app/models/common/callback/Callback';
-import { TypeCallback } from 'src/app/models/common/callback/TypeCallback';
 
 @Injectable({
   providedIn: 'root',

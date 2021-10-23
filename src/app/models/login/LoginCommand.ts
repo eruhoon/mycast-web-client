@@ -25,34 +25,38 @@ export class LoginCommand {
     this.mFailure = failure;
   }
 
-  public execute() {
-    const url = this.getUri();
-    const request = Axios.post<LoginResponse>(
-      url,
-      qs.stringify({
-        mcid: this.mId,
-        mcpw: this.mPassword,
-      })
-    );
+  public async execute() {
+    const urls = [
+      'https://login.mycast.xyz/auth',
+      'https://mycast.xyz:3001/auth',
+    ];
+    for (let i = 0; i < urls.length; i++) {
+      const result = await this.request(urls[i]);
+      if (result) {
+        this.mSuccess(result);
+        return;
+      }
+    }
+    this.mFailure();
+  }
 
-    request
-      .then((res) => {
-        const loginResponse = res.data;
-        this.mSuccess(loginResponse);
-      })
-      .catch((reason) => {
-        console.log(reason);
-        this.mFailure();
-      });
+  private async request(url: string) {
+    try {
+      const res = await Axios.post<LoginResponse>(
+        url,
+        qs.stringify({
+          mcid: this.mId,
+          mcpw: this.mPassword,
+        })
+      );
+      return res.data;
+    } catch {
+      return null;
+    }
   }
 
   private getUri(): string {
-    return 'https://mycast.xyz:3001/auth';
-  }
-
-  private isSecureProtocol(): boolean {
-    const protocol = document.location.protocol;
-    return protocol.startsWith('https');
+    return 'https://login.mycast.xyz/auth';
   }
 }
 
